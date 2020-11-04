@@ -1,0 +1,75 @@
+History file for BbrStdUtils package
+------------------------------------
+ 
+$Id$
+
+13 Jan 10	Roberto Stroili
+	split code in src and include directories
+
+ 8 May 04	Stephen J. Gowdy V00-01-31
+	Remove some ; at the end of namespace declarations to
+	remove warnings.
+
+ 7 Apr 03 	A. De Silva  V00-01-30
+	Bug Fix:  Check boost's return values in babar::String::RegExp methods.
+		  Also removed substr and pass string args to boost::RegEx 
+		  using c_str().
+
+17 May 02	A. De Silva
+	1.  In BbrStdDeleteObject.hh, erase all except
+	       #include "BbrStdUtils/BbrCollectionUtils.hh"
+	       typedef babar::Collection::DeleteObject BbrStdDeleteObject;
+ 	2.  In CollectionUtils.hh, erase all except
+	       #include "BbrStdUtils/BbrCollectionUtils.hh"
+	       typedef babar::Collection::DeleteObject DeleteObject;
+	       typedef babar::Collection::PtrLess BbrPtrLess;
+	3.  In Collection.hh, erase all except
+	       #include "BbrStdUtils/BbrCollectionUtils.hh"
+
+ 4 Apr 02	Gregory Dubois-Felsmann    V00-01-20
+	Corrected declaration of findIndex() to be in terms of
+	difference_type.  Possible now that the CLHEP "typename" bug has
+	been fixed (CLHEP V01-06-01).
+	[History BbrCollectionUtils.hh]
+
+ 3 Apr 02	A. De Silva
+	Moved code to BbrCollectionUtils from other files.
+
+25 Mar 02	M. Kelsey
+	Add BbrStdMapDDL.hh to deal with hash-table migrations.
+
+12 Mar 02	A. De Silva
+	Renamed in-place functions toUpper and toLower to transformToUpper and 
+	transformToLower.
+
+11 Mar 02	A. De Silva
+	Moved testString, testTokenize and testRegEx applications to this
+	 package.
+
+11 Mar 02 	David Norvil Brown
+	Minor fixes to replace_RWContainers.pl.  Mostly cosmetic fixes.
+	The most important fix alleviates problem of multiple 
+	#include<vector> declarations if more than one RW Vector class
+	is used (etc.).
+
+28 Feb 02	David Norvil Brown
+	Added script replace_RWContainers for RW migration of Container 
+	classes.  DOES NOT migrate methods.  DOES correctly account for 
+	pointers in templated pointer classes.
+
+25 Feb 02	A. De Silva
+	RegExp has boost dependencies but lives in babar::String namespace.
+
+24 Feb 02	David Norvil Brown
+	Added script replace_RWCString.pl for RW migration of RWCString class.
+
+12 Feb 02 	A. De Silva
+	Added Tokenize class. 
+
+ 1 Feb 02 	A. De Silva
+	Removed operator>> and operator<< from String.*.
+
+16 Jan 02	A. De Silva
+	String.* added.  These contain functions, which live in a namespace, 
+	that will ease the transition from RWCString to STL string.
+

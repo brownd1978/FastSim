@@ -1,0 +1,51 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AppMethod.icc,v 1.1 2004/08/16 22:16:22 bartoldu Exp $
+//
+// Description:
+//	
+//      Inline implementation of AppMethod
+//
+// Environment:
+//
+//
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+//
+//      This software was designed and developed in cooperation with CLEO.
+//
+//
+// Author List:
+//
+//	Marc Turcotte			Original Author
+//      Marc Turcotte                   Changed for Record 3/26/98
+//      Marc Turcotte                   Added support for parametrized
+//                                      dispatch type  4/7/98
+//      Marc Turcotte                   Modified for expanded use 6/19/98
+//      Marc Turcotte                   Changed AppStatus for AppResult 6/23/98
+//
+//
+//
+// Copyright Information:
+//
+//      Copyright (C) 1998              University of Texas at Dallas
+//
+//------------------------------------------------------------------------
+
+template < class ModuleClass >
+AppResult
+AppMethod< ModuleClass >::execute( AppFrame* aFrame ) {
+  
+  //
+  // Pass the class to the binding
+  //
+  AppResult theResult=AppResult::OK;
+  if (_hasExecuted == false) {
+    theResult=(_targetModule->*_targetMethod)(aFrame); // Do it once...
+    _hasExecuted = true;                               // ...but not twice.
+  }
+  return theResult.value();  
+}
+
+template< class ModuleClass >
+AppMethod< ModuleClass >::~AppMethod(){}

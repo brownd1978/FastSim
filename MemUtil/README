@@ -1,0 +1,75 @@
+
+@author Andy Salnikov
+@date Created: May 24, 2001 
+
+This package contains memory-management (in rather broad sense) classes,
+such as smart pointers, memory pools, etc.
+
+The code in this package was originally developed for SND experiment,
+and ported to BaBar.
+
+
+			Class MemRCPtr<T>
+			=================
+
+Reference-counted pointer class to the objects of type T. This is for 
+non-intrusive reference counting, T can be anything.
+
+			Class MemRCIPtr<T>
+			==================
+
+Intrusive reference-conted pointer class to the objects of type T. Class
+T should inherit from MemRefCounted (better with protected inheritance) 
+and declare class MemRCIPtr<T> to be its friend:
+
+	class MyClass : protected MemRefCounted {
+	  friend class MemRCIPtr<MyClass> ;
+	  ///........
+	} ;
+
+	// using intrusive ref counting:
+	class MyClassWithSmartIntrusivePointer {
+	  /// .....
+	  private:
+	    MemRCIPtr<MyClass>  myClassPtr_ ;
+	} ;
+
+		Class MemClassAllocator<T>
+		--------------------------
+
+This allocator can be used to serve memory requests of the same size sizeof(T). 
+It keeps a pool of deallocated memory blocks of this size. If the request has 
+different size it is redirected to class MemAllocator. Typical usage:
+
+class MyClass {
+public:
+  // ....
+  static void* operator new( size_t size ) {
+    return allocator_.alloc ( size ) ;
+  }
+  static void operator delete ( void* p, size_t size ) {
+    return allocator_.free ( p, size ) ;
+  }
+private:
+  static MemClassAllocator<MyClass> allocator_ ;
+};
+
+		Class MemAllocator
+		------------------
+
+This allocator can serve requests of different sizes, up to some limit 
+(currently 128 bytes). It keeps a list of block pools, one pool per request 
+size. Can be used when the class size is unknown (in base class or classes 
+templates). Typical usage:
+
+template <typename T>
+class MyClass {
+public:
+  // ....
+  static void* operator new( size_t size ) {
+    return MemAllocator::instance().alloc ( size ) ;
+  }
+  static void operator delete ( void* p, size_t size ) {
+    return MemAllocator::instance().free ( p, size ) ;
+  }
+};

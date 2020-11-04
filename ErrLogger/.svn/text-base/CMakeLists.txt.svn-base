@@ -1,0 +1,31 @@
+string(REGEX REPLACE "^.*/([^ ]+)$" "\\1" pkgname ${CMAKE_CURRENT_SOURCE_DIR})
+
+#
+# Set specific compiler flags for the package
+#
+set(${pkgname}_CXX_FLAGS "-Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${${pkgname}_CXX_FLAGS}")
+
+configPkg(${pkgname})
+
+#
+# Generate library
+#
+add_library(${pkgname} ${Sources})
+target_link_libraries(${pkgname} ${LIB_LINK_LIST})
+
+add_executable(testErrLineLogger test/ErrLineLogTest.cc)
+target_link_libraries(testErrLineLogger ${BIN_LINK_LIST})
+add_test(ttestErrLineLogger ${EXECUTABLE_OUTPUT_PATH}/testErrLineLogger)
+
+add_executable(testErrLogger test/ErrLogTest.cc)
+target_link_libraries(testErrLogger ${BIN_LINK_LIST})
+add_test(ttestErrLogger ${EXECUTABLE_OUTPUT_PATH}/testErrLogger)
+
+add_executable(testErrLogger2 test/ErrLogTest2.cc)
+target_link_libraries(testErrLogger2 ${BIN_LINK_LIST})
+add_test(ttestErrLogger2 ${EXECUTABLE_OUTPUT_PATH}/testErrLogger2)
+
+add_executable(testErrLogger3 test/ErrLogTest3.cc)
+target_link_libraries(testErrLogger3 ${BIN_LINK_LIST})
+add_test(ttestErrLogger3 ${EXECUTABLE_OUTPUT_PATH}/testErrLogger3)

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="683"
+   name=""
+   committed-date="2010-09-20T12:45:52.853435Z"
+   url="https://sbrepo.pd.infn.it:8910/Core/MatEnv/tags/V00-01-02"
+   last-author="stroili"
+   kind="dir"
+   uuid="7d373392-5316-41f4-94df-42a166793eec"
+   revision="830"/>
+<entry
+   committed-rev="238"
+   name="ElementsList.data"
+   text-time="2011-04-27T19:07:31.000000Z"
+   committed-date="2009-03-04T07:59:40.671796Z"
+   checksum="7e2fd6ceb5bdf72aba703e421e748553"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:07:28.000000Z"/>
+<entry
+   committed-rev="238"
+   name="Materials_sequence.dat"
+   text-time="2011-04-27T19:07:31.000000Z"
+   committed-date="2009-03-04T07:59:40.671796Z"
+   checksum="587e615db4c8c602c7c7aab3df8a31da"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:07:28.000000Z"/>
+<entry
+   committed-rev="516"
+   name="History"
+   text-time="2011-04-27T19:07:31.000000Z"
+   committed-date="2010-01-15T08:22:00.024602Z"
+   checksum="60fd6ecee5ccb32a4cc3f0a2c60d1e38"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:07:28.000000Z"/>
+<entry
+   committed-rev="238"
+   name="MaterialsList_IR2.data"
+   text-time="2011-04-27T19:07:31.000000Z"
+   committed-date="2009-03-04T07:59:40.671796Z"
+   checksum="cfd6d27599dabfeffbc9fdfece3ac545"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:07:28.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   committed-rev="238"
+   name="Isotopes_sequence.dat"
+   text-time="2011-04-27T19:07:31.000000Z"
+   committed-date="2009-03-04T07:59:40.671796Z"
+   checksum="64167f9beebb66c22697963169352e9a"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:07:30.000000Z"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="516"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:07:31.000000Z"
+   committed-date="2010-01-15T08:22:00.024602Z"
+   checksum="668eef00f13bcba1decf54e29f829798"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:07:30.000000Z"/>
+<entry
+   committed-rev="238"
+   name="IsotopesList.data"
+   text-time="2011-04-27T19:07:31.000000Z"
+   committed-date="2009-03-04T07:59:40.671796Z"
+   checksum="a0d3a827aa01af38d911ed37caaf5a52"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:07:31.000000Z"/>
+<entry
+   committed-rev="238"
+   name="Materials_update_11.3.0.dat"
+   text-time="2011-04-27T19:07:31.000000Z"
+   committed-date="2009-03-04T07:59:40.671796Z"
+   checksum="abc98029c114201a0c43daffd0d464dc"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:07:31.000000Z"/>
+<entry
+   committed-rev="238"
+   name="Elements_sequence.dat"
+   text-time="2011-04-27T19:07:31.000000Z"
+   committed-date="2009-03-04T07:59:40.671796Z"
+   checksum="492f5cf9633996cdec391bf77a613782"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:07:31.000000Z"/>
+<entry
+   committed-rev="238"
+   name="README"
+   text-time="2011-04-27T19:07:31.000000Z"
+   committed-date="2009-03-04T07:59:40.671796Z"
+   checksum="4665fbb5b8e0e8d004a3c1e1ae9e8d37"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:07:31.000000Z"/>
+</wc-entries>

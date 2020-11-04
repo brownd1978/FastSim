@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="219"
+   name=""
+   committed-date="2009-03-02T18:28:11.676294Z"
+   url="https://sbrepo.pd.infn.it:8910/Generators/stdhep/tags/V00-01-05/doc"
+   last-author="stroili"
+   kind="dir"
+   uuid="7b731e25-c66e-4470-8c2d-112e6345f304"
+   revision="886"/>
+<entry
+   committed-rev="219"
+   name="stdmain.ps"
+   text-time="2011-04-27T18:42:39.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="a8130612976cb522c124dbb6d6b6ab7e"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:39.000000Z"/>
+<entry
+   committed-rev="219"
+   name="stdhep.doc"
+   text-time="2011-04-27T18:42:39.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="1787874e18c366d7cd621100e482f6fd"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:39.000000Z"/>
+<entry
+   committed-rev="219"
+   name="mcfio.tex"
+   text-time="2011-04-27T18:42:39.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="dd77b770854bcdcffa841b0b0bf6d7f5"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:39.000000Z"/>
+<entry
+   committed-rev="219"
+   name="mcfio.ps"
+   text-time="2011-04-27T18:42:39.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="fdd06e3e6434548d33c13549b1c58931"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:39.000000Z"/>
+</wc-entries>

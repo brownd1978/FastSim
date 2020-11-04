@@ -1,0 +1,23 @@
+#
+#  Test version of beampipe data file; this
+#  creates a 4-segment beampipe, according
+#  to Bill Dunwoodies BAD note 106
+#  updated to 'model' the B1 magnets as 4cm of steel
+#  (dnb 5/13/02)
+#
+#  A few more notes, especially on the radii
+#  and thickness.
+#   - throughout the beampipe, the inner radius does not
+#     change.
+#
+#   - The thickness of the material is only used to get the material
+#     properties right. That is, the interaction and radiation lengths.
+#   
+#   - the material names are defined in MatEnv/MaterialsList_IR2.data
+#
+# TrkBPLayoutT ! define the tag
+2.6420
+6
+4.0 0.35393 0.28963 0.28963 0.35393 4.0
+pep-Steel pep-BPipeA  pep-BPipeB pep-BPipeC pep-BPipeD pep-Steel
+-50.0 -13.47 -7.871 2.711 10.137 15.73 75.00

@@ -1,0 +1,25 @@
+The BaBar package is meant to hold collaboration-wide 
+include files, documents, etc.
+
+Created Feb 24, 1995 by Bob Jacobsen at the request of David Quarrie.
+
+BaBar.hh is a C++ include file to hold standard definitions, compiler
+workarounds, etc.  The first use was to correct the absence of
+"bool" in early compilers.  Its should not be used for holding
+miscellaneous constants which are better placed in the packages which
+need them.
+
+
+Constants.hh declares the Constants class, which carries numerical
+values for pi, etc.
+
+	    see common reco HNitem 78 for discussion
+
+97.12.22 gpdf - Added BaBarODMGTypes.h for use in defining platform-invariant
+	fundamental types that are also consistent with Objectivity.
+
+	Package BaBar will now become a DataFlow/offline "dual-use" package
+	and will need especially careful control from now on, accordingly.
+
+98.01.31 BobJ completed removing the *Consistency classes from here; they
+        are now only in ProbTools

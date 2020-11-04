@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+   <included>
+
+      <ring name="EmcPbScintBwd" id="0" z="-120.000000" lowradius="31.00000" hiradius="75.000000" thick="14.000000" mat="emc-PbScint" meas="Emc" />
+
+    </included>
+</edml>

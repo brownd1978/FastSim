@@ -1,0 +1,16 @@
+string(REGEX REPLACE "^.*/([^ ]+)$" "\\1" pkgname ${CMAKE_CURRENT_SOURCE_DIR})
+
+set (${pkgname}_CXX_FLAGS "-Wall -Wno-sign-compare -Wno-parentheses  -DCLHEP_CONFIG_FILE=CLHEP/config/CLHEP-gcc-3.h")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${${pkgname}_CXX_FLAGS}")
+
+configPkg(${pkgname})
+
+#
+# Generate library
+#
+add_library(${pkgname} ${Sources})
+target_link_libraries(${pkgname} ${LIB_LINK_LIST})
+
+add_executable(test${pkgname} test/test${pkgname}.cc)
+target_link_libraries(test${pkgname} ${BIN_LINK_LIST})
+add_test(t${pkgname} ${EXECUTABLE_OUTPUT_PATH}/test${pkgname})

@@ -1,0 +1,20 @@
+#ifndef PacDispRing_HH
+#define PacDispRing_HH
+
+#include <stdio.h>
+#include <Rtypes.h>
+#define STRINGSIZE 100
+
+struct PacDispRing {
+  virtual ~PacDispRing() {;}
+  Double_t z,thickness,radlow,radhigh;
+  Int_t imat;
+  PacDispRing(): z(0.0),thickness(-1.0),radlow(1.0),radhigh(-1.0){}
+  static const char* rootnames() {
+    return "z/D:thick/D:radlow/D:radhigh/D:imat/I";
+  }
+  ClassDef(PacDispRing,1)
+};
+
+#endif
+

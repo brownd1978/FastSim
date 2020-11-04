@@ -1,0 +1,20 @@
+#ifndef PacDispTraj_HH
+#define PacDispTraj_HH
+
+#include <stdio.h>
+#include <Rtypes.h>
+#define STRINGSIZE 100
+
+struct PacDispTraj {
+  virtual ~PacDispTraj() {;}
+  Int_t itype, firstpt, lastpt;
+  PacDispTraj(): itype(0), firstpt(0),lastpt(0){}
+  PacDispTraj(Int_t it, Int_t firstpoint, Int_t lastpoint): itype(it), firstpt(firstpoint),lastpt(lastpoint){}
+  static const char* rootnames() {
+    return "itype/I:firstpt/I:lastpt/I";
+  }
+  ClassDef(PacDispTraj,1)
+};
+
+#endif
+

@@ -1,0 +1,10 @@
++EXE.
++USE,*STDHEP,UNIX.
++USE,ISACDE.       ISAJET common blocks
++USE,JETCDES.      JETSET and PYTHIA common blocks
++USE,HERCDES,IBMRT,DOUBLE.      HERWIG common blocks
++PAM,11,           T=C,A./usr/products/lund/v7_03d/src/jetcde
++PAM,12,           T=C,A./usr/products/isajet/v7_02/isajet
++PAM,13,R=HERCDES, T=C,A./usr/products/herwig/v5_6a/src/herwig
++PAM,14,           T=C,A./usr/products/stdhep/v1_05/src/stdhep
++QUIT.

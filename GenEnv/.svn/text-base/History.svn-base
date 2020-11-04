@@ -1,0 +1,317 @@
+#
+# This is the History file for GenEnv
+#
+#   $Id$
+#
+#################################################################
+
+14th January 2010: Roberto Stroili
+	split code in src and include directories
+
+V00-05-02 -----------------------------------------------------------
+15th June 2006: Igor Gaponenko
+	Refactoring/migration of CDB Framework modules to the technology-neutral
+	model.
+
+V00-03-06 -----------------------------------------------------------
+
+8th May 2004: Stephen J. Gowdy
+	Remove some warnings found with +w/-Wall.
+
+V00-03-05 -----------------------------------------------------------
+2003-06-20: Andy Salnikov
+	CdbBdbInit module moved to a different package, changes to includes
+	and dependiencies.
+
+V00-03-04 -----------------------------------------------------------
+
+27th March 2003: Stephen J. Gowdy
+	Update test to use a fixed date (to avoid the problem with
+	the tests never passing). Hmm, although now Solaris pads the day
+	to two characters but Linux doesn't... adjust date to be later
+	in the month...
+	Update the destructor of GenEnv to use the new AbsEnv::resetGen()
+	method.
+
+V00-03-03 -----------------------------------------------------------
+V00-03-00 -----------------------------------------------------------
+
+21st February 2002: Stephen J. Gowdy
+	Do RW migration. Requires new MatReco.
+
+V00-02-06 -----------------------------------------------------------
+
+25th October 2000: Asoka De Silva
+	help() now has arguments.  Also ran Framework/FwkMigrate_v3 script.
+	(Please see script for details.)
+
+V00-02-05 -----------------------------------------------------------
+
+22nd March 2000: Stephen J. Gowdy
+	Updated test program to test new features.
+	Updated dependencies.
+	Test scipt updated for new tests and two new materials which
+	have been added to the database (pep-CFiber & pep-BPipe).
+
+21st March 2000: Bob Jacobsen
+	Fix use of conditions keys in GenEnv.cc.
+
+V00-02-04 -----------------------------------------------------------
+
+15th February 2000: Bob Jacobsen
+	Add new conditions keys.
+
+V00-02-03 -----------------------------------------------------------
+
+13th January 2000: Stephen J. Gowdy
+	Use ComPathNameSearch to find pdt.table.
+	Increase length of time before reporting error in test
+	program.
+
+V00-02-02 -----------------------------------------------------------
+
+24th October 1999: Stephen J. Gowdy
+	Updated dependencies.
+
+V00-02-01 -----------------------------------------------------------
+
+[stuff missing here]
+
+8/6/99  David N. Brown
+	Move the construction of materials out of GenEnv package
+	completely, into MatEnv.  The interface of GenEnv is
+	unchanged, but now, in order to actually access materials,
+	MatEnv/MatBuildEnv must also be in AppUserBuild (-AFTER-
+	GenBuildEnv)
+
+V00-01-04 -----------------------------------------------------------
+
+11th May 1999: Stephen J. Gowdy
+	Tidy up code.
+	Remove all data from interface of GenEnv.
+	Update test script and code.
+	*****Interface change: materialList() removed.
+	materialNames() added (should only be used by test script).
+
+V00-01-03 -----------------------------------------------------------
+
+11th May 1999: David Brown
+	Fix test program to compile on OSF. Add _ before member variable.
+
+11th May 1999: Mattias Steinke
+	Don't get actual materials until they are asked for.
+
+V00-01-02 -----------------------------------------------------------
+
+15th April 1999: Stephen J. Gowdy
+	Make sure everything is initialised in Elm & MatProbObjs,
+	problem reported by A. Calcaterra.
+
+V00-01-01 -----------------------------------------------------------
+
+12th April 1999: Stephen J. Gowdy
+	Tidy up code generally.
+	Updated test script for new output.
+
+V00-01-00 -----------------------------------------------------------
+
+10th April 1999: steinke
+	Change materials to use MatEnv instead of our definition.
+
+V00-00-29 -----------------------------------------------------------
+
+12nd March 1999: Scott Metzler
+	Added blind pointer to HepScalerManager.  It will now
+	be possible to get a scaler manager pointer from the
+	environment in analogy to a tuple manager.
+
+V00-00-28 -----------------------------------------------------------
+
+22nd January 1999: Stephen J. Gowdy
+	Removed option to create HTuple managed in GenBuildEnv. You
+	should now use HbkTupleEnv.
+
+V00-00-27 -----------------------------------------------------------
+
+17th January 1999: Stephen J. Gowdy
+	Fixed in Mat stuff for HP compiler.
+	Also put job information back into testGenEnv.t file.
+
+V00-00-26 -----------------------------------------------------------
+
+12th January 1999: David Brown
+	Added a time to environment during startup.
+
+V00-00-25 -----------------------------------------------------------
+
+10th Decemeber 1998: Mossadek Talby
+	Few fixes to the modifications introduced by Stephen in the 
+	class MtrPropObj.
+
+V00-00-24 -----------------------------------------------------------
+
+8th Decemeber 1998: Stephen J. Gowdy
+	Implemented some methods I had moved out of line.
+
+V00-00-23 -----------------------------------------------------------
+
+8th December 1998: Stephen J. Gowdy
+	Updated test script to include error message about Ntuples.
+	The following changes have been made to some classes.
+	Fixed a couple of abs <-> fabs mixups. No longer have arrays as
+	datamembers. Initialises "arrays" to zero before += in couple of
+	places. More BaBar compliant.
+
+V00-00-22 -----------------------------------------------------------
+
+4th December 1998: Mossadek Talby
+	Added RecoMatFactory and related class objects (ElmPropObj, 
+        MtrPropObj and PhysConst) to build Materials (from Cond. DB) 
+	and their derived quantities (Rad. Length + Ionis. parameters). 
+	Aim: compute Multiple scattering and energy loss in DetMaterial 
+	Class. 
+	Description in README_MAT_RECO file.  
+
+V00-00-21 -----------------------------------------------------------
+
+23rd November 1998: Scott Metzler
+	Added warning about imminent removal of histogramming tcl
+	parameters from GenBuildEnv.
+
+V00-00-20 -----------------------------------------------------------
+
+11th October 1998: David Brown (LBL)
+       Moved prompt reco dictionary to OprEnv
+
+V00-00-19 -----------------------------------------------------------
+
+15th August 1998: David Brown (LBL)
+	Added prompt reco proxy holder.
+
+V00-00-18 -----------------------------------------------------------
+
+14th August 1998: Stephen J. Gowdy
+	Fixed test application and script for changes in GenBuildEnv and
+	in testit utility.
+
+V00-00-17 -----------------------------------------------------------
+
+13th August 1998: Stephen J. Gowdy
+	Removed previous two changes and did framework migration.
+
+16th June 1998: Stephen J. Gowdy
+	Tidied up the code a little. Moved declaration of threaded code to
+	link_GenEnv.mk instead of GNUmakefile. I'm not sure if this is correct
+	or not.
+
+12 June 98: S. Metzler
+	Add useDhp and dhpShared as histogramming options to
+	GenBuildEnv.
+
+V00-00-16 -----------------------------------------------------------
+
+24rth March 1998: Stephen J. Gowdy
+	Changed to use new name and location of HBookFile class.
+
+V00-00-15 -----------------------------------------------------------
+
+19th January 1998: Stephen J. Gowdy
+	Updated testGenEnv.t file to include added materials.
+
+19 Jan 98: A.Salnikov
+	Add more parameters to the GenBuildEnv. "hbookRecLen" defines
+	the record length of the HBOOK file and has default value 1024,
+	"hbookLun" defines the LUN to be used for HBOOK file and has
+	default value 14.
+
+16th January 1998: Terry Hung
+	replace LOADLIBES with ALLLIB in link command for incremental linking.
+
+V00-00-14 -----------------------------------------------------------
+
+11th Decemenber 1997: Dave Brown
+        Made setEventTime function public, moved in implementation which
+        tests the proxy caches when the event time is reset.
+
+4rth December 1997: Stephen J. Gowdy
+	Move destructor for GenHBookFile out of line.
+
+V00-00-13 -----------------------------------------------------------
+
+28th November 1997: Stephen J. Gowdy
+	Moved new time methods out of line.
+
+25th November 1997: David Brown
+	Added new event time attribute to GenEnv.
+
+V00-00-12 -----------------------------------------------------------
+
+7th August 1997: Stephen J. Gowdy
+	Removed dependence on DbiEvent. testGenEnv application
+	now links against much fewer libraries. On OSF there are
+	lots of undefined symbols which aren't needed. I think
+	this is due to templates.
+
+V00-00-11 -----------------------------------------------------------
+
+Wed Jun 11 18:00:38 PDT 1997 : Gautier Hamel de Monchenault
+	Added Quartz, Aluminum and Water materials to the DetMaterial List,
+	for the Dirc.
+
+V00-00-10 -----------------------------------------------------------
+
+21 Apr 1997: David Brown
+	Fix density for GasWire
+
+V00-00-09 -----------------------------------------------------------
+
+18 Apr 1997: Stephen J. Gowdy
+	Changed AbsParmGeneral< bool > to AbsParmBool due to strange
+	output.
+	Added CsI material to DetMaterials list.
+
+18 Apr 1997: David Brown
+	Added materials for drift chamber to DetMaterials list.
+
+V00-00-08 -----------------------------------------------------------
+
+ 1 Apr 1997: Stephen J. Gowdy
+	Put code back in for DetMaterial stuff. DetectorModel is now
+	later in the link order.
+	Updated GenEnv.3 .
+	Added test executable and test script.
+
+V00-00-07 -----------------------------------------------------------
+
+25 Mar 1997: Stephen J. Gowdy
+	Commented out DetMaterial stuff to prevent cyclic dependancy.
+
+V00-00-06 -----------------------------------------------------------
+
+25 Mar 1997: Stephen J. Gowdy
+	Dave Brown has added DetMaterial list to GenEnv.
+	Made GenEnv's copy constructor and operator= private to prevent
+	usage.
+
+V00-00-05 -----------------------------------------------------------
+
+10 Mar 1997: Stephen J. Gowdy
+	Changed destructor of GenBuildEnv to prevent a segmentation
+	violation in certain circumstances.
+
+V00-00-04 -----------------------------------------------------------
+
+25 Feb 1997: Stephen J. Gowdy
+	Added AbsParmGeneral< bool > to determine if initalisation has been
+	done already for the HBookFile. Added GenHBookFile class to help
+	accomplish this.
+
+6  Feb 1997: Stephen J. Gowdy
+	Added pointer to conditions database manager to GenEnv
+	Added Id string to README file
+
+28 Jan 1997: Stephen J. Gowdy
+	Initialising some pointers which weren't
+
+961206	Stephen J. Gowdy	Created 
+

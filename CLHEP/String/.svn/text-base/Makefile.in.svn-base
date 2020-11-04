@@ -1,0 +1,21 @@
+#
+#  Define incdir to be the directory where you want to put the headerfiles.
+#
+incdirCLHEP = $(prefix)/include/CLHEP/String
+
+srcdir = @srcdir@
+VPATH = @srcdir@
+
+SOURCES = CmdArg.cc CmdLine.cc Strings.cc
+
+MAN_PAG = CmdArg CmdLine Strings
+
+ALLOBJECTS = CmdArg.o CmdLine.o Strings.o
+
+#
+# objects used when there are no persistent streams
+#
+SOMEOBJECTS = $(ALLOBJECTS)
+
+include ../config/Makefile.common
+

@@ -1,0 +1,37 @@
+$Id$
+
+14 Jan 2010	R. Stroili
+	split code in src and include directories
+
+01 Jul 2005	S. Gowdy
+	Fixed iterator constness. Tag as V00-03-05.
+
+17 Nov 2004	A. De Silva
+	Allow for "_" in hierarchy and meaning fields.
+	Change warnings to errors in ErrMsg calls.
+
+16 Nov 2004     A. De Silva
+	Use ostringstream and snprintf instead of sprintf to convert to strings
+	in job reporting.
+
+10 Nov 2004	A. De Silva
+	Added existsHiererchy() to check if a hierarchy already exists.
+
+04 Feb 2004	A. De Silva
+	Minor fix in README file - incorrect instruction corrected !
+
+28 Jan 2004	D. Smith
+	Perl module to read job report files.
+	For documentation, do a 'perldoc FjrJobReport.pm'.
+
+27 Jan 2004	A. De Silva
+	Added bfsite, host and pid which will be dumped to the job report
+	file after the start time.
+
+03 Dec 2003 	A. De Silva
+	Changed some warning messages to errors or fatal.
+	Changed time so that it is obtained as a timespec struct rather 
+	than from any other package.
+
+01 Dec 2003 	A. De Silva	
+	First version.  Tagged V00-01-00

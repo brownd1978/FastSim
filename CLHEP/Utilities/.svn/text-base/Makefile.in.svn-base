@@ -1,0 +1,28 @@
+#
+#  Define incdir to be the directory where you want to put the headerfiles.
+#
+incdirCLHEP = $(prefix)/include/CLHEP/Utilities
+
+srcdir = @srcdir@
+VPATH = @srcdir@
+
+SOURCES = 
+
+HEADERS = *.h
+
+MAN_PAG = CLHEP
+
+ALLOBJECTS = 
+
+#
+# objects used when there are no persistent streams
+#
+SOMEOBJECTS = 
+
+OBJECTS = @SRCOBJECTS@
+
+OTHER_TARGETS =
+
+include ../config/Makefile.common
+
+

@@ -1,0 +1,20 @@
+$Id$
+
+14 Jan 2010	R. Stroili
+	split code in src and include directories
+
+17 Sep 2004    A. De Silva
+		Moved abstract decorator class for input modules from 
+		RecoUtils.
+
+19 Feb 2004     A. De Silva
+		Bug fix - check if tcl command exists before creating it.
+
+04 Dec 2003	A. De Silva
+	JobReportCommand is now defined as a top level tcl command.
+
+03 Dec 2003 	A. De Silva
+	JobReportModule is now a normal module instead of an input module.
+
+01 Dec 2003	A. De Silva
+	First version, tagged V00-01-00.

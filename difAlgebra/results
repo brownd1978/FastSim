@@ -1,0 +1,23 @@
+Note: RWBASE is pre-defined in your personal environment as /usr/local/rogue/AIX4-native/rogue.
+      Make sure it is correct for this site.
+-> difAlgebra.lib:
+Making /a/juno/u32/ek/snyder/projects/5.5.1/tmp/AIX4-native//difAlgebra/DifVector.d [1]
+Making /a/juno/u32/ek/snyder/projects/5.5.1/tmp/AIX4-native//difAlgebra/DifRotation.d [1]
+Making /a/juno/u32/ek/snyder/projects/5.5.1/tmp/AIX4-native//difAlgebra/DifPoint.d [1]
+Making /a/juno/u32/ek/snyder/projects/5.5.1/tmp/AIX4-native//difAlgebra/DifNumber.d [1]
+Making /a/juno/u32/ek/snyder/projects/5.5.1/tmp/AIX4-native//difAlgebra/DifIndepPar.d [1]
+Making /a/juno/u32/ek/snyder/projects/5.5.1/tmp/AIX4-native//difAlgebra/DifComplex.d [1]
+Making /a/juno/u32/ek/snyder/projects/5.5.1/tmp/AIX4-native//difAlgebra/DifArray.d [1]
+Compiling DifArray.cc [1]
+Compiling DifComplex.cc [1]
+Compiling DifIndepPar.cc [1]
+Compiling DifNumber.cc [1]
+Compiling DifPoint.cc [1]
+Compiling DifRotation.cc [1]
+Compiling DifVector.cc [1]
+lib stage done in /a/juno/u32/ek/snyder/projects/5.5.1/difAlgebra
+
+real 86.40
+user 22.28
+sys  6.98
+

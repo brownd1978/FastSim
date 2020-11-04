@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <config>
+         <sect name="General">
+             <param name="ConfigKey" type="int" > 1 </param>
+             <param name="ConfigName" type="string"> Test </param>
+         </sect>
+         <sect name="DetectorVolume">
+             <param name="rmax"    type="float"        >  200</param>
+             <param name="zmin"   type="float"         > -50</param>
+             <param name="zmax"    type="float"         >  200</param>
+         </sect>
+         
+     </config>
+     <include file="PacSim/Material_simulation.xml" />
+     <include file="PacTrk/Track_reconstruction.xml" />    
+    <measures>
+        <device name="MWPC1"
+            type="DriftChamber"
+            sensitiveTimeWindow="0.5e-6"
+            rms_par0="0.01"
+            rms_par1="0"
+            rms_par2="0"
+            rms_par3="0"
+            rms_par4="0"
+            rms_par5="0"
+            eff="0.99"
+            cell_size="1.8"
+            trunc_frac="0.8"
+            dedx_par1="0.0013202"
+            dedx_par2="1"
+            dedx_par3="-0.5"
+            angle="0"  />
+            
+        <device name="MWPC2"
+            type="DriftChamber"
+            sensitiveTimeWindow="0.5e-6"
+            rms_par0="0.01"
+            rms_par1="0"
+            rms_par2="0"
+            rms_par3="0"
+            rms_par4="0"
+            rms_par5="0"
+            eff="0.99"
+            cell_size="1.8"
+            trunc_frac="0.8"
+            dedx_par1="0.0013202"
+            dedx_par2="1"
+            dedx_par3="-0.5"
+            angle="1.570798"  />
+            
+    </measures>
+    
+    <detector name="Rect Detector">
+        <volume name="Rectangle Elements">
+            <rect name="R0A" id="0" orientation="0" centerrho="0" centerz="0" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R0B" id="100" orientation="0" centerrho="0" centerz="1" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R1A" id="1" orientation="0" centerrho="0" centerz="10" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R1B" id="101" orientation="0" centerrho="0" centerz="11" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R2A" id="2" orientation="0" centerrho="0" centerz="20" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R2B" id="102" orientation="0" centerrho="0" centerz="21" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R3A" id="3" orientation="0" centerrho="0" centerz="30" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R3B" id="103" orientation="0" centerrho="0" centerz="31" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R4A" id="4" orientation="0" centerrho="0" centerz="40" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R4B" id="104" orientation="0" centerrho="0" centerz="41" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R5A" id="5" orientation="0" centerrho="0" centerz="50" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R5B" id="105" orientation="0" centerrho="0" centerz="51" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R6A" id="6" orientation="0" centerrho="0" centerz="60" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R6B" id="106" orientation="0" centerrho="0" centerz="61" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R7A" id="7" orientation="0" centerrho="0" centerz="70" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R7B" id="107" orientation="0" centerrho="0" centerz="71" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R8A" id="8" orientation="0" centerrho="0" centerz="80" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R8B" id="108" orientation="0" centerrho="0" centerz="81" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R9A" id="9" orientation="0" centerrho="0" centerz="90" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R9B" id="109" orientation="0" centerrho="0" centerz="91" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R10A" id="10" orientation="0" centerrho="0" centerz="100" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R10B" id="1010" orientation="0" centerrho="0" centerz="101" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R11A" id="11" orientation="0" centerrho="0" centerz="110" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R11B" id="1011" orientation="0" centerrho="0" centerz="111" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+            <rect name="R12A" id="12" orientation="0" centerrho="0" centerz="120" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC1" />
+            <rect name="R12B" id="1012" orientation="0" centerrho="0" centerz="121" centerphi="0.0" axisphi="0.0" usize="100" vsize="100" thick="0.01" mat="dch-Aluminum" meas="MWPC2" />
+            
+                        
+        </volume>
+        <volume name="Cylinder">
+            <cyl name="C1" id="0" zmin="0" zmax="150" radius="120" thick="0.1" mat="SB-BPipe" />
+        </volume>    
+    </detector>
+</edml>

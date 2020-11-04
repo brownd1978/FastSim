@@ -1,0 +1,4 @@
++EXE.
++USE,*STDTST.
++PAM,11,T=ATTACH,CARDS./usr/products/stdhep/v1_05/src/stdhep
++QUIT.

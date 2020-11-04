@@ -1,0 +1,222 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: ComTemplatedBitMap.icc 443 2010-01-14 12:24:42Z stroili $
+//
+// Description:
+//	Class ComTemplatedBitMap
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	<Author1>		<originator/contributor etc.>
+//	<Author2>		<originator/contributor etc.>
+//
+// Copyright Information:
+//	Copyright (C) 1997	<Institution>
+//
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+//-----------------------
+// This Class's Header --
+//-----------------------
+#include "CommonUtils/ComTemplatedBitMap.hh"
+
+//-------------
+// C Headers --
+//-------------
+extern "C" {
+}
+
+//---------------
+// C++ Headers --
+//---------------
+
+//-------------------------------
+// Collaborating Class Headers --
+//-------------------------------
+
+#include <vector>
+#include <map>
+
+//-----------------------------------------------------------------------
+// Local Macros, Typedefs, Structures, Unions and Forward Declarations --
+//-----------------------------------------------------------------------
+
+//		----------------------------------------
+// 		-- Public Function Member Definitions --
+//		----------------------------------------
+
+//----------------
+// Constructors --
+//----------------
+
+template <class T>
+ComTemplatedBitMap<T>::ComTemplatedBitMap(const std::vector<T*> &inputVector):
+  _hashFunction(ComTemplatedBitMap<T>::hashFunction),
+  _wordRep(0)
+{
+  
+  _dictionaryIndex = new std::map<const T*, int>();
+
+  _rawIndex = new std::vector<T*>(inputVector);
+  
+  size_t i = 0;
+  typename std::vector<T*>::iterator iter;
+  for (iter = _rawIndex->begin(); iter != _rawIndex->end(); iter++) {
+    (*_dictionaryIndex)[(*iter)] = int(i);
+    i++;
+  }
+
+}
+
+// As above but with hash function defined for a T*
+template <class T>
+ComTemplatedBitMap<T>::ComTemplatedBitMap(const std::vector<T*> &inputVector,
+					  unsigned (*hashFunction)(const T* const&)):
+  _hashFunction(hashFunction),
+  _wordRep(0)
+{
+
+  _dictionaryIndex = new std::map<const T*, int>();
+
+  _rawIndex = new std::vector<T*>(inputVector);
+  
+  size_t i = 0;
+  typename std::vector<T*>::iterator iter;
+  for (iter = _rawIndex->begin(); iter != _rawIndex->end(); iter++) {
+    (*_dictionaryIndex)[(*iter)] = int(i);
+    i++;
+  }
+
+}
+
+// Copy Constructor
+template <class T>
+ComTemplatedBitMap<T>::ComTemplatedBitMap( const ComTemplatedBitMap<T>&other){
+  _hashFunction = other._hashFunction;
+  _dictionaryIndex = new std::map<const T*, int>(*other._dictionaryIndex);
+  _rawIndex = new std::vector<T*>(*other._rawIndex);
+  _wordRep = other._wordRep;
+}
+  
+
+//--------------
+// Destructor --
+//--------------
+
+template <class T>
+ComTemplatedBitMap<T>::~ComTemplatedBitMap(){
+  delete _dictionaryIndex;
+  delete _rawIndex;
+}
+
+//-------------
+// Methods   --
+//-------------
+    
+//-------------
+// Operators --
+//-------------
+template <class T>
+bool
+ComTemplatedBitMap<T>::operator==( const ComTemplatedBitMap<T>&other ) const{
+
+  if (other._wordRep != _wordRep) return false;
+  if ( ! (_rawIndex == other._rawIndex) ) return false; // != in std::vector ?
+  
+  return true;
+}
+
+
+template <class T>
+bool
+ComTemplatedBitMap<T>::operator!=( const ComTemplatedBitMap<T>&other ) const{
+  return (! *this == other);
+}
+  
+    
+//-------------
+// Selectors --
+//-------------
+
+// Returns the value of the bit relating to the object of type T
+
+template <class T>
+bool
+ComTemplatedBitMap<T>::getBit(const T &theObject) const{
+  int index;
+  typename std::map<const T*, int>::iterator iter;
+  iter = _dictionaryIndex->find(&theObject);
+  if (iter != _dictionaryIndex->end()) {
+    index = iter->second;
+  } else {
+    return false;
+  }
+  index+=1;
+  if ((_wordRep >> (32-index)) & 1) return true;
+  return false;
+}
+
+template <class T>
+d_ULong 
+ComTemplatedBitMap<T>::wordRepLong() const{
+  return _wordRep;
+}
+
+template <class T>
+int
+ComTemplatedBitMap<T>::leftHandRep() const{
+  unsigned long lhs = _wordRep >> 16;
+  return lhs & 0xffff ;
+}
+
+template <class T>
+int
+ComTemplatedBitMap<T>::rightHandRep() const{
+  return _wordRep & 0xffff ;
+}
+
+
+//-------------
+// Modifiers --
+//-------------
+
+template <class T>
+bool
+ComTemplatedBitMap<T>::setBit(const T &theObject){
+  int index;
+  typename std::map<const T*, int>::iterator iter;
+  iter = _dictionaryIndex->find(&theObject);
+  if (iter != _dictionaryIndex->end()) {
+    index = iter->second;
+    index+=1;
+    if (index <= 32 && index > 0) {
+      _wordRep |= (1 << (32-index));
+      return true;
+    }
+  }
+  return false;      
+}
+
+
+
+template <class T>
+void
+ComTemplatedBitMap<T>::resetAllBits() {
+  _wordRep = 0;
+}
+
+
+//		-----------------------------------------------
+// 		-- Static Data & Function Member Definitions --
+//		-----------------------------------------------
+
+template <class T>
+unsigned 
+ComTemplatedBitMap<T>::hashFunction(const T* const & ptr){
+   return ((unsigned long) ptr >> 5) & 0x03ff;  
+}
+
+

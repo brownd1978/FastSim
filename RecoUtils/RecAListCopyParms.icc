@@ -1,0 +1,167 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+//      $Id: RecAListCopyParms.icc 32 2010-01-15 11:45:31Z stroili $
+//
+// Description:
+//      Class RecAListCopyParms
+//
+// Environment:
+//      Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//      Michael Kelsey <kelsey@slac.stanford.edu
+//      Dave Brown   copied from TrkCopyParms
+//
+// Copyright Information:
+//      Copyright (C) 2001  Trustees of Stanford University
+//
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+#include "RecoUtils/RecAListCopyParms.hh"
+#include "AbsEvent/AbsEvent.hh"
+#include "CLHEP/Alist/AList.h"
+#include "ProxyDict/Ifd.hh"
+#include "ProxyDict/IfdHepAListProxy.hh"
+#include "ErrLogger/ErrLog.hh"
+#include <assert.h>
+
+
+template <class LISTOBJ> 
+RecAListCopyParms<LISTOBJ>::RecAListCopyParms(AppModule* theModule,
+					       const char *inKeyString,
+					       const char *outKeyString,
+					       const RecCopyParms::Action& initialAction) :
+  RecCopyParms(theModule,inKeyString,outKeyString,initialAction),
+  _removed(new HepAList<LISTOBJ>()),_input(0),_output(0)
+{}
+
+template <class LISTOBJ> 
+RecAListCopyParms<LISTOBJ>::RecAListCopyParms():
+  _removed(new HepAList<LISTOBJ>()),_input(0),_output(0)
+{}
+
+template <class LISTOBJ> 
+RecAListCopyParms<LISTOBJ>::~RecAListCopyParms()
+{
+  delete _removed;
+}
+
+template <class LISTOBJ> 
+void
+RecAListCopyParms<LISTOBJ>::prepare(AbsEvent* anEvent) {
+// make sure we're not screwing up the bookkeeping
+  assert(_input == 0 && _output == 0);
+  _input =  Ifd< HepAList <LISTOBJ> >::get( anEvent,inputKey());
+  if(!noOutput()){
+    if(sameAsInput()){
+      if(sameLists())
+	_output = _input;
+      else
+	ErrMsg(error) << "Can't have different output list for sameAsInput" << endmsg;
+// everything except copy needs a new list
+    } else {
+// first, some sanity checks: it makes no sense to copy from a list to itself
+      if( !sameLists()){
+// see if the list already exists
+	_output = Ifd< HepAList <LISTOBJ> >::get( anEvent,outputKey());
+	if(_output == 0){
+// if not, create the object and put it into the event
+	  _output = new HepAList <LISTOBJ>;
+	  assert(_output != 0);
+	  IfdDataProxy< HepAList<LISTOBJ> >* proxy(0);
+// if stealing or copying, the list takes ownership: create an _owned_ proxy
+	  if(stealFromInput() || copyFromInput())
+	    proxy = new IfdHepAListProxy<LISTOBJ>( _output );
+	  else if(borrowFromInput())
+// borrowing means the original list retains ownership: the proxy is just a
+// standard (non-owning) proxy
+	    proxy = new IfdDataProxy< HepAList<LISTOBJ> >(_output);
+	  assert(proxy != 0);
+	  if(!Ifd< HepAList <LISTOBJ> >::put( anEvent,proxy,outputKey())){
+	    ErrMsg(error) << "Can't put output list proxy into the event" << endmsg;
+	    delete proxy;
+	    delete _output;
+	    _output = 0;
+	  }
+	} else {
+	  ErrMsg(routine) << "Output list already exists in the event" << endmsg;
+	}
+      } else
+	ErrMsg(error) << "Can't copy or borrow or steal from a list to itself" << endmsg;
+    }
+  }
+}
+
+template <class LISTOBJ> 
+LISTOBJ*
+RecAListCopyParms<LISTOBJ>::addOutput(LISTOBJ& inobj) {
+  LISTOBJ* retval(0);
+  if(!noOutput()){
+    assert(_output != 0);
+    if(sameAsInput()) {
+      retval= &inobj;
+    } else {
+      if(copyFromInput()){
+	retval = copyObject(inobj);
+	assert(retval != 0);
+      } else {
+	retval = &inobj;
+	if(stealFromInput())
+// need bookkeeping to cleanup removed tracks
+	  _removed->append(retval);
+      }
+      if(retval != 0)_output->append(retval);
+    }
+  }
+  return retval;
+}
+
+template <class LISTOBJ> 
+void
+RecAListCopyParms<LISTOBJ>::removeOutput(LISTOBJ& outobj) {
+  if(!noOutput()){
+    assert(_output != 0);
+// if output and input are the same, defer removing till finalize
+// (to avoid re-ordering the input list).
+    if(sameAsInput() )
+      _removed->append(outobj);
+    else
+// remove the object from the output list
+      _output->remove(outobj);
+// if we're copying, actually delete the object
+    if(copyFromInput())
+      delete &outobj;
+  }
+}
+
+template <class LISTOBJ> 
+void
+RecAListCopyParms<LISTOBJ>::finalize() {
+  if(!noOutput()){
+    if( _removed->length() > 0){
+      unsigned nremoved = _removed->length();
+// test to see if the full input list is to be removed, and if so remove them quickly
+      if(nremoved == _input->length()){
+	_input->removeAll();
+      } else {
+	for(unsigned iremoved=0;iremoved<nremoved;iremoved++)
+	  _input->remove(_removed[iremoved]);
+      }
+// cleanup my cache
+// for in-place operation, delete the objects
+      if(sameAsInput())
+	HepAListDeleteAll(*_removed);
+      else
+	_removed->removeAll();
+    }
+  }
+// reset for the next event
+  _input = _output = 0;
+}
+
+template <class LISTOBJ> 
+LISTOBJ*
+RecAListCopyParms<LISTOBJ>::copyObject(const LISTOBJ& other) const {
+  return new LISTOBJ(other);
+}

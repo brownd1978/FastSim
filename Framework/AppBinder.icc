@@ -1,0 +1,48 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AppBinder.icc,v 1.1 2004/08/16 22:16:20 bartoldu Exp $
+//
+// Description:
+//
+//	AppBinder inline implementation
+//
+// Environment:
+//
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+//      This software was designed and developed in cooperation with CLEO.
+//
+// Author List:
+//	Marc Turcotte	                Original Author March '98
+//      Marc Turcotte                   Modified for Record 3/26/98
+//      Marc Turcotte                   Modified for Frame delivery 4/7/98
+//      Marc Turcotte                   Modified for expanded use 6/19/98
+//      Marc Turcotte                   Changed AppStatus for AppResult 6/23/98
+//
+// Copyright Information:
+//	Copyright (C) 1998		University of Texas at Dallas
+//
+//------------------------------------------------------------------------
+
+
+//
+// Member functions
+//
+
+template < class ModuleClass >
+AppBinder<ModuleClass>::AppBinder() {
+}
+
+template < class ModuleClass >
+inline
+void
+AppBinder<ModuleClass>::bind(const AppStopType& aStopType,
+			     AppResult (ModuleClass::* aMethod) 
+			     (AppFrame* aFrame),                            
+			     ModuleClass* aModule,
+			     AppFramework* theFramework) {  
+  AppMethodBase* anAppMethod =  new AppMethod<ModuleClass>(aMethod,aModule);
+  aModule->bindMethodToState(aStopType,anAppMethod);            
+  APPList<AppMethodBase*>* myPointer=theFramework->appMethods();
+  myPointer->append(anAppMethod);                                
+}

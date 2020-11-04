@@ -1,0 +1,20 @@
+#
+# WARNING! Bad package, build problems
+#
+string(REGEX REPLACE "^.*/([^ ]+)$" "\\1" pkgname ${CMAKE_CURRENT_SOURCE_DIR})
+
+set(${pkgname}_CXX_FLAGS "-Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${${pkgname}_CXX_FLAGS}")
+
+configPkg(${pkgname})
+
+#set(${pkgname}_CXX_FLAGS "-Wall")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${${pkgname}_CXX_FLAGS}")
+
+#
+# Need to add also fortran sources
+#
+file(GLOB allf src/*.F)
+
+add_library(${pkgname} ${Sources} ${allf})
+target_link_libraries(${pkgname} ${LIB_LINK_LIST})

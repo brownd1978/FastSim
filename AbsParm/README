@@ -1,0 +1,27 @@
+
+This package has some AbsParms in it.  It would have been nice for
+all AbsParms to land here, but history and coupling with the Framework
+led to them being in Framework/  The AbsParms that are here are
+here now because they use Roguewave and RW clssses can not be used
+in the FW package.  It would be nice to migrate the rest of the AbsParms
+here, but that is not a high priority.
+
+AbsParmVector:
+	An AbsParm that has a vector of values.
+	Vector returned is an RWTValOrderedVector
+
+AbsParmNamedValue
+AbsParmNamedObject:
+	AbsParms that associates names (strings) with objects.
+	End user can set the TCL value as one of the names, and the
+	AppModule can get the correct object (pointer) from this.
+
+	The objects are owned by the original user (AppModule), NOT
+	by this class.	AbsParmNamedValue stores by value (copying the
+	original object) and should be used with "simple" things like
+	enums, floats, etc.  AbsParmNamedObject stores a pointer to the
+	original object.
+
+	The dump and restore actions operate on the name strings, not
+	on the underlying objects.  It is possible for an association
+	to be changed in the using AppModule's source code.

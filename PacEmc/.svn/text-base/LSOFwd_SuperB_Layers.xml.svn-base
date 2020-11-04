@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+   <included>
+
+<cone name="EmcLSOFwd" id="0" rho1="55.779" z1="197.826" rho2="93" z2="182.256" thick="1" mat="emc-LSO" meas="Emc" />
+<cone name="EmcLSOFwd" id="1" rho1="56.1891" z1="199.28" rho2="93.6837" z2="183.596" thick="2" mat="emc-LSO" meas="Emc" />
+<cone name="EmcLSOFwd" id="2" rho1="57.0093" z1="202.189" rho2="95.0512" z2="186.276" thick="4" mat="emc-LSO" meas="Emc" />
+<cone name="EmcLSOFwd" id="3" rho1="58.3762" z1="207.037" rho2="97.3303" z2="190.742" thick="6" mat="emc-LSO" meas="Emc" />
+<cone name="EmcLSOFwd" id="4" rho1="60.1533" z1="213.339" rho2="100.293" z2="196.548" thick="7" mat="emc-LSO" meas="Emc" />
+
+    </included>
+</edml>

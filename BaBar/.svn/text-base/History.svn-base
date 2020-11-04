@@ -1,0 +1,275 @@
+$Id$
+
+History for package BaBar
+-------------------------
+
+Initials of modifiers:
+
+	DQ	David Quarrie
+	gpdf	Gregory Dubois-Felsmann
+	samuel	Alex Samuel
+	sjg     Stephen J. Gowdy (package coordinator)
+	ads	Asoka De Silva
+        RB      Rainer Bartoldus
+
+History, latest first:
+----------------------
+2010.01.21 stroili
+	split code in src and include directories
+2008.01.10 kelsey V00-11-09
+	Add SIGRTMAX fixes for MacOSX only (no effect elsewhere)
+2007.09.14 kelsey V00-11-08
+	Bug fix for MacOSX gcc 3.3 <cmath> leaves isnan() undefined.
+	NOTE:  Only incremently lowest digit as doesn't change linkages for
+	any production platforms.  Why confuse people?	
+2006.12.08 ads V00-11-07
+        Fix for gcc 3.4.6.  (missing math.h include file in testBaBar.cc)
+2005.03.09 gowdy V00-11-06
+	Don't include unwanted changes at the HEAD that were pulled
+	into the last tag by mistake.
+2005.02.21 narsky V00-11-05
+	Introduced std::count_if on Solaris, similar to std::count
+	and std::distance introduced by Rainer earlier.
+2004.11.09 sjg V00-11-02
+	Change one more Sun variables that are checked to __SUNPRO_CC.
+	Also adjust BaBar.cc/hh as the function inside is a template.
+	Fix definition in BaBar.cc for std::distance.
+2004.09.20 sjg V00-06-09
+	Update hack in V00-06-08 for the SL3 instead of RHEL3.
+2004.09.20 sjg V00-11-01
+	Change various Sun variables that are checked to __SUNPRO_CC.
+2004.09.16 sjg V00-06-08
+	Add a kludge to allow linking builds on RHEL3 build with gcc 2.95.3
+	and using external packages build on RH72.
+2004.09.15 RB V00-11-00
+	Remove abs() kludge for both Linux and Sun. testBaBar.cc now
+	uses fabs().
+2004.09.14 sjg
+	Define ENODATA and O_LARGEFILE on the Mac. These are not
+	defined there.
+2004.09.09 sjg
+	Make abs patch available to gcc3 too.
+	Fix the testBaBar.t file that I had overwritten on the 11th Aug 04.
+2004.08.24 RB
+	Remove the obsolete BaBar/Experiment.hh header. (This exists
+	as Experiment/Experiment.hh.)
+2004.08.20 RB
+	Introduce emulations of the C++-standard forms of std::count
+	and std::distance for Solaris.
+2004.08.11 sjg
+	Remove the old extraction and insertion operators and getline
+	function which were needed for Classic IOstreams on Solaris. Add
+	some tests to make sure we have them now.
+2004.08.04 sjg
+	Actually, we believe nothing in BaBar.hh is needed just now in VXWORKS
+	so move the clock_t thing outside of VXWORKS scope too.
+2004.08.04 sjg
+	Reduce the exposure of BaBar.hh to VXWORKS to allow it to be used
+	in dataflow.
+2004.05.08 sjg
+	Fix some warnings from BbrTime and its test. Aslo remove these
+	as I don't think they are used.
+2003.08.13 sjg
+	General tidy.
+	Removed defining HAS_BUILTIN_BOOL as this is not used anywhere.
+	Removed abs() patch for Sun CC < 5.0 (we've not used this for
+	a whlie).
+	Remove declaration of regex and regcmp, these were removed
+	a few days ago (2003.07.21 below).
+	Add comment on when iostreams block should be removed.
+2003.08.12 sjg
+	Remove duplicate block in BaBar.hh for supporting RW migration on
+	Solaris.
+2003.08.11 sjg
+	Add definition of __CMATH__ inside the abs patch for gcc 2.95.3 to
+	avoid (incorrect in one case) refdefinition of these in <cmath>.
+2003.07.21 RB
+        Remove the unused reg.cc.
+2003.04.22 sjg
+	Remove support for old clock_gettime which is now supported.
+	Remove support for OSF and remove bool hacks.
+2002.09.30 echarles
+	In BaBar.hh
+	Moved the other definition of abs(long double)) {the one for Sun}
+2002.06.17 echarles
+	In BaBar.hh
+	Moved the definition of abs(long double)) next to the definition of
+	abs(long long) and inside a block that is protected for CINT processing.
+	This is required b/c CINT doesn't seem to be able to handle long double.
+2002.03.07 ryd V00-05-40
+        Forward declaring std::string and declare i/o operators for
+        std::string
+2002.02.10 ads V00-05-38
+	Added 
+	istream& getline(istream& is, std::string& str, char delim = '\n')
+	to BaBar.hh and BabarStringUtils.cc.
+2002.02.07 ryd V00-05-37
+	Moved i/o operators for string to BaBar.hh
+2002.02.01 ads V00-05-36
+	Removed hash from BabarStringUtils.*.
+2002.01.19 ryd V00-05-35
+        Removed the BaBarStdStringFwd.hh file as no longer needed. 
+2002.01.15 ryd V00-05-34
+        The 'clock_t' hack is now invoke if the following is
+        succeeds:
+        defined(SUNCC)&&defined(_XOPEN_SOURCE)&&( _XOPEN_SOURCE - 0 == 500 )
+        This allows this fix to be picked up by the ddl compiler.
+2002.01.07 ryd V00-05-33 
+        Added BaBarStdStringFwd.hh to allow forward declaration
+        of string in ddl files. The ddl compiler can not process
+        the string header on Linux.
+        Added BaBarStringUtils.{cc,hh} which defines a hash function
+        for the standard string, and defines the I/O operators of 
+        std::string on the classic streams.
+
+2002.01.04 ryd V00-05-32
+        Added definition of clock_t for SunOS58 to work around 
+        problem with unix98 compliance in the string header (gpdf)
+
+2001.11.15 gpdf	V00-05-31
+	Added declaration of strsignal() for Solaris when Unix95/98
+	compilation is enabled.  Slightly modified _definition_ of
+	strsignal() for OSF to add error checking.
+	[History BaBar.hh strsignal.cc]
+
+2001.09.27 sjg	[History entry by gpdf, 2001.11.15]
+	The IS_OPEN macro is no longer needed, linux now has the same 
+	interface as other compiliers (rdbuf()->is_open()). I've also 
+	removed a RW define in the same code block. That may be needed so 
+	we should watch the nightly after this goes in.
+	[BaBar.hh]
+
+2001.09.07 gpdf	V00-05-30
+	Removed definitions of _IOEOF and _IOERR for Linux.  These are
+	implementation-specific non-POSIX names that happened to have
+	been used in OprLogManager for historical reasons.  They have
+	been removed from there (OprLogManager V00-05-19) and can now be
+	removed from here as well.
+	[History BaBar.hh]
+
+2001.08.30 gpdf	V00-05-29
+	Removed definition of WIFCONTINUED.  Protected against redefinition
+	of CLOCK_REALTIME.  Modified our special value of CLOCK_REALTIME on
+	Linux to be consistent with that supplied from ACE.  (It's zero.)
+	Removed reference to IfdHepAList from testBaBar.{cc,t}.
+	[History BaBar.hh testBaBar.{cc,t}]
+
+2001.08.29 ads V00-05-28
+	Removed definition of IfdHepAList from BaBar.hh.
+
+2001.08.02 ads V00-05-27
+	Removed definitions of APPMODULERETURN(TYPE|VAL)(1|2).
+
+2001.01.30 gpdf V00-05-26
+	Protect some of the new standards-oriented code in BaBar.hh from
+	ROOT's CINT, which doesn't seem able to handle it.  Reorder some
+	code so that Stephen's V00-05-24 addition and my additions work
+	correctly together.
+	[History BaBar.hh]
+
+2001.01.29 gpdf gpdf-20010129, V00-05-25
+	Remove several Linux kludges (SEM_A, SEM_R, inappropriate non-Sun
+	use of "_POSIX_PTHREAD_SEMANTICS", SIGEMT, SIG_DEF) now that user
+	code has been modified not to use these non-standard constructs.
+	Add an executable that can be used to diagnose the state of the
+	various standard feature-test macros such as POSIX_C_SOURCE
+	(testStandards.cc).  Add a #define of BABAR_socklen_t to allow
+	network code to be written uniformly across our platforms, which
+	differ in their level of adoption of Unix98's networking API.
+	[History GNUmakefile BaBar.hh]
+
+2001.01.24 gowdy V00-05-24
+	Add large file support definitions for Sun.
+
+2000.11.28 echarles
+        Protected 1 line that use timespec with #ifndef __CINT__ directives
+
+2000.11.21 echarles
+        Protected 4 lines that use long long with #ifndef __CINT__ directives
+        to allow building CINT dictionaries of BaBar code.  
+        Added LIBEXTRARDLFILES to GNUmakefile so that BbrEventId and Constants
+        are built into this package's dictionary
+
+2000.11.14 sjg
+	glibc 2.1.3 now has SIGSYS. Check for it being defined before
+	defining it.
+
+2000.10.27 sjg
+	Removed support for glibc 2.0 and updated support for glibc 2.2.
+
+2000.07.10 sjg
+	Updated BaBar.hh and BaBarBoolKludge.cc to work on Solaris 6 and 7.
+
+2000.05.01 BobJ BbrShell is now OprShell, maintained by OPR, so 
+        it has been removed from the BaBar package
+
+99.11.01 gpdf	for V00-05-15
+	Patched in strsignal() for Compaq/OSF.  Implemented as function
+	returning element from __sys_siglist[].  Followed pattern of
+	clock_gettime() in how to set up conditional compilation.  Per
+	agreement with SG. 
+	[History BaBar.hh; new: strsignal.cc]
+
+99.06.28 sjg
+	Fix logic in isastream.
+
+99.06.14 sjg
+	Implement regcmp and regex.
+
+99.06.06 sjg
+	Added declarations of regcmp and regex which are missing on
+	Linux. Added semctl.cc to forward call and add arguement, only
+	does something on Linux (compiles, I'll need to see if it
+	actually links). Will add implementations of regcmp and
+	regex using regcomp and regexec later.
+
+99.06.06 sjg
+	Added new block for problems with Linux in BaBar.hh.
+	Added new file which impliements clock_gettime for Linux only.
+
+99.05.18 samuel & sjg
+	Added BaBarBoolKludge.cc for Sun optimised.
+
+99.05.10 sjg
+	Updated abs patch to apply to linux also. The [u]int64_t is now
+	identical for all platforms.
+	Updated test program to test more of BaBar.hh.
+	Updated test program after feedback from Gregory.
+
+99.05.10 samuel
+	Changed definition of [u]int64_t for Sun platform to explicit
+	typedef instead of including sys/int_types.h. Added test
+	program testBaBar to test these types, and regression test.
+
+99.05.07 samuel
+	Added int64_t and uint64_t types to BaBar.hh. On Sun, these
+	are defined by #include <sys/int_type.h>, while on OSF, they
+	are typedef'ed explicitly.
+
+99.01.29 A. De Silva
+	Moved APPMODULE* macros from Framework into BaBar.hh
+
+98.01.22 gpdf
+	Changed "Linking" message for test program in GNUmakefile to add
+	package name to conform to new standard (meant to ease parsing of
+	build logs for errors).
+
+97.12.22 gpdf (subsequent commit)
+	Changed the definitions of d_Char and d_Octet from "signed char" to
+	plain "char" to conform to the definitions used in the Objectivity
+	header files.  This does mean that the signedness of these types may
+	vary from platform to platform.  Not ideal, but better than the
+	alternative of types incompatible with Objectivity.
+
+97.12.22 gpdf
+	Prepared for use as a "dual-use" DataFlow/offline package. Added
+	link_BaBar.mk to conform to standard.  Added BaBarODMGTypes.h, 
+	with contents copied from HepODBMS/odbms/HepODMGTypes.h and changed
+	to make them more stand-alone.  Added a simple regression test
+	program to check that the types really are the same size across our
+	platforms: new files testBaBarODMGTypes.{cc,t}.  Modified the
+	GNUmakefile accordingly, and to eliminate the defunct dependency
+	rule for consistencyTest.
+
+97.12.22 gpdf
+	History file begun.

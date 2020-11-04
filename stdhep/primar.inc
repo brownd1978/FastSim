@@ -1,0 +1,6 @@
+C
+      common/PRIMAR/NJET,SCM,HALFE,ECM,IDIN(2),NEVENT,NTRIES,NSIGMA
+      save /PRIMAR/
+      integer   NJET,IDIN,NEVENT,NTRIES,NSIGMA
+      real      SCM,HALFE,ECM
+C

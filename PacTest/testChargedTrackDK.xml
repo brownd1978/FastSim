@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+ 
+<!--
+This document is a part of the sample experiment description in a format
+which would eventually turn into EDML:
+ 
+  "Experiment Description Markup (or Modelling) Language"
+ 
+Right now we don't have any formal schema for EDML. Therefore
+the current implementation of a EDML parser would check both
+syntax and semantics of the model. Besides, introducing the formal
+XML schema for EDML may  result in some changes in a syntax
+of EDML.
+-->
+ 
+<edml>
+  <config>
+
+    <!-- ROOT file to save results to -->
+    <param name="outputfile" type="string"> testChargedTrackDecays.root</param>
+
+    <!-- Print event number for every printfreq -->
+    <param name="printfreq" type="long"> 100</param>
+
+    <!-- Prints out Positon/Momentum/Parameter Info (make sure numtracks isn't large!!) -->
+    <param name="veryVerbose" type="bool"> true</param>
+    <param name="verbose" type="bool"> true</param>
+
+    <!-- Number of tracks to generate -->
+    <param name="numtracks" type="long"> 500</param>
+
+    <!-- Whether or not to write trajectory plot to file -->
+    <param name="writetracks" type="bool"> false</param>
+
+    <!-- Flight length of generated particles -->
+    <param name="flightlen_min" type="long"> 80</param>
+    <param name="flightlen_max" type="long"> 120</param>
+    <param name="seedsigmas"    type="vector_double"> 1e-1, 1e-3, 1e-4, 1e-1, 1e-3</param>
+
+    <!-- Initial distance from interaction point -->
+    <param name="r0_sigma" type="double"> 0.2</param>
+
+    <!-- Transverse momentum -->
+    <param name="pt_mean"  type="double"> 2.000</param>
+    <param name="pt_sigma" type="double"> 1.000</param>
+
+    <!-- Longitudinal momentum -->
+    <param name="pz_mean"  type="double"> 0.000</param>
+    <param name="pz_sigma" type="double"> 1.500</param>
+
+    <!-- negative kaon -->
+    <param name="PdtPdg" type="long"> -321</param>
+
+  </config>
+</edml>
+
+    <!-- negative kaon -->
+    <param name="PdtPdg" type="long"> -321</param>
+
+    <!-- negative pion -->
+    <param name="PdtPdg" type="long"> -211</param>
+
+    <!-- Transverse momentum -->
+    <param name="pt_mean"  type="double"> 2.000</param>
+    <param name="pt_sigma" type="double"> 1.000</param>
+
+    <!-- Longitudinal momentum -->
+    <param name="pz_mean"  type="double"> 0.000</param>
+    <param name="pz_sigma" type="double"> 1.500</param>
+
+    <!-- negative muon -->
+    <param name="PdtPdg" type="long"> 13</param>

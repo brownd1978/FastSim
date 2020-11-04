@@ -1,0 +1,5 @@
+C
+      common/ISLOOP/NEVOLV,NFRGMN,IEVOL,IFRG
+      save /ISLOOP/
+      integer NEVOLV,NFRGMN,IEVOL,IFRG
+C

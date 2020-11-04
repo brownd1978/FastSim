@@ -1,0 +1,193 @@
+Test the counters.  Make sure that
+   1.  the value only increments, never decrements
+   2.  the value of each counter is unaffected by
+       destruction of other counters.
+
+Done with counter tests.
+
+Testing IfdTypeKey.  Look for
+   1.  Each type T yeilds a differnt IfdTypeKey value.
+   2.  All instances of any instantiation IfdTypeKey<T> 
+       have the same value.
+   3.  IfdTypeKeys function as Keys (op== works)
+
+IfdTypeKey<int>    tKey1 = IfdTypeKey[int]
+IfdTypeKey<int>    tKey2 = IfdTypeKey[int]
+IfdTypeKey<boogie> tKey3 = IfdTypeKey[boogie]
+IfdTypeKey<boogie> tKey4 = IfdTypeKey[boogie]
+IfdTypeKey<woogie> tKey5 = IfdTypeKey[woogie]
+IfdTypeKey<woogie> tKey6 = IfdTypeKey[woogie]
+Deteting the IfdTypeKey<int>...
+Making the IfdTypeKey<int> over again
+Make sure they have their original values
+IfdTypeKey<int>    tKey1 = IfdTypeKey[int]
+IfdTypeKey<int>    tKey2 = IfdTypeKey[int]
+
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[boogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[boogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[woogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[woogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[boogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[boogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[woogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[woogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[boogie]
+EQUAL
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[boogie]
+EQUAL
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[boogie]
+EQUAL
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[boogie]
+EQUAL
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[woogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[boogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[woogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[boogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[boogie]
+EQUAL
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[boogie]
+EQUAL
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[woogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[boogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[boogie]
+IfdTypeKey[woogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[boogie]
+DIFFER
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[woogie]
+EQUAL
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[woogie]
+EQUAL
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[woogie]
+EQUAL
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[woogie]
+EQUAL
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[woogie]
+EQUAL
+********************************************************************************
+IfdTypeKey[woogie]
+IfdTypeKey[woogie]
+EQUAL

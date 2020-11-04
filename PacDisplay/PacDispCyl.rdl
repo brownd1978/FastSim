@@ -1,0 +1,20 @@
+#ifndef PacDispCyl_HH
+#define PacDispCyl_HH
+
+#include <stdio.h>
+#include <Rtypes.h>
+#define STRINGSIZE 100
+
+struct PacDispCyl {
+  virtual ~PacDispCyl() {;}
+  Double_t radius,thickness,lowZ,hiZ;
+  Int_t imat;
+  PacDispCyl():radius(-1.0),thickness(-1.0),lowZ(-1.0),hiZ(1.0){}
+  static const char* rootnames() {
+    return "radius/D:thick/D:lowZ/D:hiZ/D:imat/I";
+  }
+  ClassDef(PacDispCyl,1)
+};
+
+#endif
+

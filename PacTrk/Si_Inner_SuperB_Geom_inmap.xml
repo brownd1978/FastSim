@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+
+                <!-- Organize the layout in terms of layers.  This guarantees particles from the IP will hit the appropriate detector elements in order.  The order of forward vs backward is arbitrary, since a particle goes either one way or the other -->
+
+                <!-- angular coverage is 300 mrad in forward and backward direction in the 
+		     laboratory frame-->
+                <!-- Inmaps solution with a minimum inner radius of 1.30 cm.
+
+                     Assume Bus support as per hybrid pixel, 50um silicon, and a 0.2% X/X0 CF support
+                     web for layer 0.  For the other inner layers, the assumed support structure is
+                     0.6% X/X0 CF.
+		  -->
+
+                <!-- PIXEL Layer 0: <r_sensor> = 1.300, length = 10.0cm -->
+		<cyl name="Svt-AlBus" id="0" zmin="-5.0" zmax="5.0" radius="1.300" thick="0.0250" mat="SB-HPixel-AlBus"  overlap="0.0" />   
+                <cyl name="SvtHybridPixels" id="0"  zmin="-5.0" zmax="5.0" radius="1.3250" thick="0.0050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />  
+                <cyl name="SvtCF" id="0" zmin="-5.0" zmax="5.0" radius="1.373" thick="0.048" mat="svt-CFiber" gap="0.864" />
+
+
+                <!-- PIXEL Layer 1: <r_sensor> = 3.1, length = 20.0cm -->
+		<cyl name="Svt-AlBus" id="1" zmin="-10.0" zmax="10.0" radius="3.1" thick="0.0250" mat="SB-HPixel-AlBus"  overlap="0.0" />   
+                <cyl name="SvtHybridPixels" id="1"  zmin="-10.0" zmax="10.0" radius="3.1250" thick="0.0050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />  
+                <!--  The CF ribs are modeled as a cylinder with gaps.  The thickness is set to the effective
+                thickness seen by a radial track, and the gap is adjusted so that the total amount of material
+                traversed on average is correct. -->
+                <cyl name="SvtCF" id="1" zmin="-10.0" zmax="10.0" radius="3.1300" thick="0.144" mat="svt-CFiber" gap="0.864" />
+
+
+                <!-- PIXEL Layer 2: <r_sensor> = 3.9, length = 25.0cm -->
+		<cyl name="Svt-AlBus" id="2" zmin="-12.5" zmax="12.5" radius="3.9" thick="0.0250" mat="SB-HPixel-AlBus"  overlap="0.0" />   
+                <cyl name="SvtHybridPixels" id="2"  zmin="-12.5" zmax="12.5" radius="3.9250" thick="0.0050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />  
+                <!--  The CF ribs are modeled as a cylinder with gaps.  The thickness is set to the effective
+                thickness seen by a radial track, and the gap is adjusted so that the total amount of material
+                traversed on average is correct. -->
+                <cyl name="SvtCF" id="2" zmin="-12.5" zmax="12.5" radius="3.9300" thick="0.144" mat="svt-CFiber" gap="0.864" />
+
+                <!-- PIXEL Layer 3: <r_sensor> = 6.1, length = 40.0cm -->
+		<cyl name="Svt-AlBus" id="3" zmin="-20.0" zmax="20.0" radius="6.1" thick="0.0250" mat="SB-HPixel-AlBus"  overlap="0.0" />   
+                <cyl name="SvtHybridPixels" id="3"  zmin="-20.0" zmax="20.0" radius="6.1250" thick="0.0050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />  
+                <!--  The CF ribs are modeled as a cylinder with gaps.  The thickness is set to the effective
+                thickness seen by a radial track, and the gap is adjusted so that the total amount of material
+                traversed on average is correct. -->
+                <cyl name="SvtCF" id="3" zmin="-20.0" zmax="20.0" radius="6.1300" thick="0.144" mat="svt-CFiber" gap="0.864" />
+
+    </included>
+</edml>

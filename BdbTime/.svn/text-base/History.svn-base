@@ -1,0 +1,133 @@
+BdbTime History
+---------------
+
+$Id$
+
+Initials of modifiers:
+
+	gpdf	Gregory Dubois-Felsmann
+	sjg	Stephen J. Gowdy
+	rb	Rainer Bartoldus
+
+History, latest first:
+----------------------
+
+2010.01.13 stroili
+	move code in src and include directories
+
+2005.04.10 rb V00-06-03
+        Extend decodeBdbTime so it accepts +FORMAT strings as defined
+        by strftime().
+
+2005.04.10 rb V00-06-02
+        Fix decodeBdbTime to convert unsigned, not signed int.  This
+        prevented it from converting times after Jan 18 19:14:07 1969
+        on Linux24SL3. (Still happened to work on SunOS58.)  Use
+        strtoul() rather than the dreaded sscanf().  Create a binlist
+        and add this tool to it.
+
+2004.09.08 sjg V00-06-01
+	Put in something I don't really like to allow BdbTime to work
+	on the Mac. There is now an #ifdef __APPLE_CC here. If anyone
+	can thing of a way of doing this without that I'd really like
+	to hear about it.
+
+2004.08.06 rb V00-06-00
+	Automated IOStreams migration.
+
+2004.07.11 gpdf	V00-05-02
+	Correct parseTime's treatment of DST by properly setting the
+	"let the system determine whether DST is in force" flag.
+	[History BdbTime.cc]
+
+2003.02.27 gpdf	V00-05-01
+	Made the constructor for BdbTime from a single string "explicit";
+	this seems like an undesirable implicit conversion.  The other
+	remaining single-argument constructors are all from time-like
+	types, so there implicit conversions are more reasonable and less
+	likely to produce surprises.
+	[History BdbTime.hh]
+
+2003.02.27 gpdf	V00-05-00
+	Regression test updated somewhat.  Needs a bit more work.  Answers
+	are known to be different on Linux and Solaris due to unexplained
+	differences in time zone handling -- reference is currently only
+	correct for Linux, executed under Pacific Standard Time.
+	Cosmetic changes: replaced some references to "R" "W" in comments with
+	"Rogue Wave" to avoid getting spurious hits in global searches...
+	[History BdbTime.{hh,cc} testBdbTime.{cc,t} link_BdbTime.mk]
+
+2003.02.26 gpdf	gpdf-20030226b
+	Assertion condition in BdbTime -> struct tm conversion did not
+	take into account that _local_ times corresponding to BdbTimes
+	near zero can actually be in 1900 (December 31st).  Fix.  :)
+	Sometimes an assertion can have a bug when the code doesn't!
+	[History BdbTime.cc testBdbTime.cc]
+
+2003.02.26 gpdf	gpdf-20030226a
+	Rogue Wave removed.  Committed and tagged to checkpoint.  Not
+	adequately tested yet.  Regression tests not fully developed.
+	[History BdbTime.{hh,cc} GNUmakefile link_BdbTime.mk testBdbTime.cc;
+	 new: BdbTimeInput.{hh,cc} testBdbTimeInput.cc]
+
+2003.02.05 gpdf	V00-04-01
+	Restored one RW-dependent interface temporarily; migration of client
+	code in Conditions DB still needs to be sorted out.  The RW classes
+	involved are forward declared in BdbTime.hh, so this does not
+	transitively bring back any RW headers into other code.
+	[History BdbTime.{hh,cc}]
+
+2003.02.03 gpdf	V00-04-00
+	Removed Rogue Wave from all header files.
+	[History BdbTime.{hh,cc}]
+
+2002.05.07 gpdf	V00-03-02
+	Added asString() function to construct a formatted time string
+	from a BdbTime.
+	[History BdbTime.{hh,cc} testBdbTime.{cc,t}]
+
+2002.05.03 gpdf	gpdf-20020503a
+	Added tm() function to fill in a struct tm from a BdbTime.
+	[History BdbTime.{hh,cc}]
+
+2002.04.30 gpdf	V00-03-01
+	Added static now() function to BdbTime as recommended way to get a
+	high-precision current time.  Marked the old BdbTime default 
+	constructor as deprecated.  Link-compatible with V00-03-00.
+	[History BdbTime.{hh,cc}]
+
+2002.04.24 gpdf	V00-03-00
+	Removed non-const setGmt{Sec,Nsec}() modifiers from BdbTime, in
+	order to get it closer to playing the role of a "value class".  
+	[History BdbTime.hh]
+
+2002.04.23 gpdf	V00-02-00
+	Removed non-const modifiers from BdbDuration, in order to get it
+	closer to playing the role of a "value class".  These were not used
+	in BaBar code; the goal will be to remove these modifiers from
+	BdbTime, too, but they are used in a small number of places and
+	that change can be deferred.
+	Added operators += and -= to BdbTime.  + and - reimplemented in
+	terms of them, a la "More Effective C++", Meyers, Item 22.
+	BdbTime::timeSpec() implementation improved to take into account
+	that most BdbTime values in 1901 cannot be converted to a POSIX
+	time.
+	Static string-to-BdbTime conversion functions added to BdbTime.
+	Regression test extended to do some basic tests of some of the new
+	features.
+	[History BdbDuration.{hh,cc} BdbTime.{hh,cc} testBdbTime.cc]
+
+2002.04.04 gpdf	V00-01-00
+	Reverted HEAD to original version of BdbIntervalBase.hh, suppressing
+	an inappropriate interface change from 2000/10/11 that had never
+	been released.  No change from previous production tag, therefore.
+	Removed some unnecessary "explicit" declarations from BdbTime.hh.
+	Revised BdbTime.cc to account for mktime() restrictions in 1901.
+	Added regression test for BdbTime.
+	[History BdbIntervalBase.hh BdbTime.{hh,cc} GNUmakefile;
+	 new: testBdbTime.{cc,t}]
+
+2002.03.22 gpdf	V00-00-11
+	Initial release of new RW-free interface, though RW interface is
+	maintained.  History file added.
+	[History BdbTime.{hh,cc}]

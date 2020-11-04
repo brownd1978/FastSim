@@ -1,0 +1,123 @@
+// -*- C++ -*-
+//==========================================================================
+// File and Version Information:
+// 	$Id: ComPrintOnDelete.icc 443 2010-01-14 12:24:42Z stroili $
+//
+//--------------------------------------------------------------------------
+// Description:
+//	See ComPrintOnDelete.hh
+//--------------------------------------------------------------------------
+
+#include "BaBar/BaBar.hh"
+#include "CommonUtils/ComPrintOnDelete.hh"
+using std::ostream;
+
+//--------------------------------------------------------------------------
+template<class T>
+ComPrintOnDelete<T>::ComPrintOnDelete() {
+  initialize();
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+ComPrintOnDelete<T>::ComPrintOnDelete(T * pointer) {
+  initialize();
+  setPointer(pointer);
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+ComPrintOnDelete<T>::ComPrintOnDelete(ostream & stream) {
+  initialize();
+  setStream(stream);
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+ComPrintOnDelete<T>::ComPrintOnDelete(T * pointer, ostream & stream) {
+  initialize();
+  setPointer(pointer);
+  setStream(stream);
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+ComPrintOnDelete<T>::~ComPrintOnDelete() {
+  print();
+  deletePointer();
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+const T * 
+ComPrintOnDelete<T>::pointer() const {
+  return _pointer;
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+void 
+ComPrintOnDelete<T>::print() const {
+  if (true == printable()){
+    _pointer->print(*_stream);
+  }
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+bool
+ComPrintOnDelete<T>::printable() const {
+  if (0 != _pointer && 0 != _stream){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+T * 
+ComPrintOnDelete<T>::pointer() {
+  return _pointer;
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+ostream *
+ComPrintOnDelete<T>::stream() {
+  return _stream;
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+void 
+ComPrintOnDelete<T>::setPointer(T * pointer) {
+  deletePointer();
+  _pointer = pointer;
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+void 
+ComPrintOnDelete<T>::setStream(ostream & stream) {
+  _stream = &stream;
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+void 
+ComPrintOnDelete<T>::deletePointer() {
+  if (0 != _pointer){
+    delete _pointer;
+    _pointer = 0;
+  }
+}
+
+//--------------------------------------------------------------------------
+template<class T>
+void 
+ComPrintOnDelete<T>::initialize() {
+  _pointer = 0;
+  _stream = 0;
+}

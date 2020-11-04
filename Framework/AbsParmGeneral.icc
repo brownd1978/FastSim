@@ -1,0 +1,251 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AbsParmGeneral.icc,v 1.4 2006/10/16 18:51:04 desilva Exp $
+//
+// Description:
+//
+//      See header for info
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	Bob Jacobsen 	 	Original Author of AbsParmXXX class
+//      Phil Strother		Imperial College Templating 21/03/96
+//      Luca Lista              string implementation    07/05/96
+//      Marc Turcotte           Merged in R.Kapur's TK interface 5/15/98
+//	Michael Kelsey		Add set_value(long*)	      99/03/30
+//	Gregory Dubois-Felsmann	Add set_value(unsigned*), fix int  99/04/07
+//
+//------------------------------------------------------------------------
+
+//-----------------------
+// This Class's Header --
+//-----------------------
+#include "Framework/AbsParmGeneral.hh"
+
+//-------------
+// C Headers --
+//-------------
+
+#include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#include <string.h>
+#include <iostream>
+#include <sstream>
+#include <iomanip>
+
+//-------------------------------
+// Collaborating Class Headers --
+//-------------------------------
+
+#include "Framework/AppModule.hh"
+#include "FrameUtil/AbsInterp.hh"
+#include "CLHEP/String/Strings.h"
+
+//-----------------------------------------------------------------------
+// Local Macros, Typedefs, Structures, Unions and Forward Declarations --
+//-----------------------------------------------------------------------
+
+
+//		----------------------------------------
+// 		-- Public Function Member Definitions --
+//		----------------------------------------
+
+//----------------
+// Constructors --
+//----------------
+
+
+
+template <class DefType>
+inline AbsParmGeneral<DefType>::AbsParmGeneral( 
+					       const char* const theCommand, 
+					       AppModule* theTarget, 
+					       DefType def )
+  : AbsParm( theCommand, theTarget ), _x(def)
+{
+}
+
+template<class DefType>
+inline AbsParmGeneral<DefType>::AbsParmGeneral(
+					       const AbsParmGeneral& theOther,
+					       AppModule* theTarget)
+  : AbsParm( theOther, theTarget)
+  , _x( theOther._x)
+{
+}
+
+//--------------
+// Destructor --
+//--------------
+
+template <class DefType>
+inline AbsParmGeneral<DefType>::~AbsParmGeneral( )
+{
+}
+
+//		-------------------------------------------
+// 		-- Protected Function Member Definitions --
+//		-------------------------------------------
+
+template <class DefType> 
+inline int AbsParmGeneral<DefType>::setHandler( )
+{
+  AppModule* theInput = target( );
+  
+  if ( _argc == 3 )
+    {
+      set_value(&_x);
+    }
+  else if (_argc < 3)
+    theInput->fullReport("Need to specify new value");
+  else
+    theInput->fullReport("Only one value permitted");
+  
+  return AbsInterp::OK;
+}
+
+template < class DefType >
+inline void AbsParmGeneral<DefType>::listValue( AppModule* theInput ) const
+{
+    std::ostringstream bufstream;
+    bufstream << value();  // DefType is required to understand ' << '
+    theInput->fullReport( bufstream.str().c_str() );
+}
+
+template <>
+inline void
+AbsParmGeneral<bool>::listValue( AppModule* theInput ) const
+{
+  if ( _x ) {
+    theInput->fullReport(" t");
+  } else {
+    theInput->fullReport(" f");
+  }
+}
+
+template <class DefType>
+inline int AbsParmGeneral<DefType>::listHandler( ) const
+{
+  AppModule* theInput = target( );
+  
+  theInput->partialReport("Value of ");
+  theInput->partialReport(command());
+  theInput->partialReport(" for module ");
+  theInput->partialReport(theInput->name());
+  theInput->partialReport(" is ");	
+  this->listValue( theInput );
+  
+  return AbsInterp::OK;
+  
+}
+
+template <class DefType>
+inline int AbsParmGeneral<DefType>::getHandler( )
+{
+  return AbsInterp::OK;
+  
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set_value(double *x)
+{
+  sscanf (getArgument( 2 ), "%lg", x);
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set_value(float *x)
+{
+  sscanf (getArgument( 2 ), "%g", x);
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set_value(HepString *x)
+{
+  (*x) = getArgument( 2 );
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set_value(int *x)
+{
+  sscanf (getArgument( 2 ), "%d", x);
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set_value(long *x)
+{
+  sscanf (getArgument( 2 ), "%ld", x);
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set_value(unsigned* x)
+{
+  sscanf (getArgument( 2 ), "%u", x);
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set_value(short* x)
+{
+  sscanf (getArgument( 2 ), "%hd", x);
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set_value(unsigned short* x)
+{
+  sscanf (getArgument( 2 ), "%hu", x);
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set_value(std::string *x)
+{
+  (*x) = getArgument( 2 );
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set_value(bool *x)
+{
+  if (getArgument( 2 )[0]=='t' || getArgument(2)[0] =='T'
+  	|| getArgument(2)[0] =='1') *x = true;
+  else if (getArgument( 2 )[0]=='f' || getArgument(2)[0] =='F'
+	|| getArgument(2)[0] =='0') *x = false;
+  else {
+    AppModule* theInput = target( );
+    theInput->fullReport("value must start with [TFtf10]");
+  }
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set(const int v)
+{
+  _x = v;
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set(const double v)
+{
+  _x = v;
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set(const float v)
+{
+  _x = v;
+}
+
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::set(const std::string v)
+{
+  _x = v;
+}
+
+template <class DefType>
+inline void AbsParmGeneral<DefType>::restoreState(char* var[])
+{
+  int rval;
+  setArgs(3, var);
+  rval = setHandler();
+}

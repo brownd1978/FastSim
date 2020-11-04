@@ -1,0 +1,23 @@
+#ifndef PacDispSimHit_HH
+#define PacDispSimHit_HH
+
+#include <stdio.h>
+#include <Rtypes.h>
+#define STRINGSIZE 100
+
+struct PacDispSimHit {
+	virtual ~PacDispSimHit() {;}
+	Int_t effect,isimtrk;
+	Double_t eloss;
+  PacDispPoint point;
+  PacDispSimHit() : effect(-1),eloss(0.0){}
+  static const char* rootnames() {
+    static char retval[STRINGSIZE];
+    snprintf(retval,STRINGSIZE,"effect/I:simtrack/I:eloss/D:%s",PacDispPoint::rootnames());
+    return retval;
+  }
+  ClassDef(PacDispSimHit,1)
+};
+
+#endif
+

@@ -1,0 +1,96 @@
+$Id$
+
+History (record new ones at top)
+
+Jan  14, 2010 	Roberto Stroili
+	split code in src and include directries
+
+Feb   4, 2008   Rainer Bartoldus V02-03-03
+        Set myInstance to 0 in the AppErrLogModule destructor to keep
+        getLogHistogram() from returning an invalid pointer after the
+        module has been destroyed. (Found to generate invalid reads
+        during ErrMsg output in the DhpTupleEnv destructor, as well as
+        a crash in Moose.)
+
+Aug  29, 2007   Chih-hsiang Cheng (by Rainer Bartoldus) V02-03-02
+        Update link files.
+
+Jun  25, 2007   Jim Hamilton V02-03-01
+        Fix bugs initializing histogram ptr
+
+Mar  21, 2007   Jim Hamilton V02-03-00
+    	Added framework module to book histogram of ErrMsg severities.
+
+Nov. 16, 2004.  Asoka De Silva V02-02-02
+	Using ostringstream instead of sprintf to convert to strings in
+	job reporting.
+
+Aug. 25, 2004.  Gregory Dubois-Felsmann  V02-02-01
+	Updated "truth table" for AppErrLog behavior in README file.
+	[History README]
+
+Aug. 16, 2004.  Rainer Bartoldus  V02-02-00
+	Automated Framework APP* to App* migration.
+
+Aug. 06, 2004.  Rainer Bartoldus  V02-01-00
+	Automated classic to standard iostreams migration.
+
+Aug. 02, 2004.  Gregory Dubois-Felsmann  V02-00-00
+	Updated link file in a trival way (format only).
+	[link_FrameLogger.mk History]
+
+Aug. 02, 2004.  Gregory Dubois-Felsmann  gpdf-20040802a
+	Migrated to ErrLogger V02-00-00.
+	[AppErrLog.{hh,cc} History]
+
+Jul. 23, 2004.  Asoka De Silva  V01-02-00
+	Modified for new error level in ErrLog.hh.
+
+Feb. 04, 2004 	Asoka De Silva	V01-00-01
+	History file added (split from README).
+	Added job reporting to dump the number of messages by severity.
+	If a message is fatal, the statistics are dumped to the job report
+	file before the fatal crash.
+
+June 17, 2002   Gregory Dubois-Felsmann   V01-00-00
+	Adapt to ErrLogger V01-00-00.  Remove spurious dependencies, including
+	Rogue Wave.
+	[README AppErrLog.{hh,cc} AppActionErrLogger.{hh,cc}
+	 link_FrameLogger.mk; remove: dummy.cc]
+
+Jul. 18, 2001   Rainer Bartoldus
+        Add beforeOther()/afterOther() methods to AppActionErrLogger.
+        Reorder declarations/definitions for readability.
+        Reset current executable/module on afterEndRun() also (was missing).
+
+May. 12, 2000	Asoka De Silva
+	Framework migration.  AppAction method name change.
+
+Mar. 23, 2000	Asoka De Silva 
+	Prepend timestamp to messages if production is set in Framework.
+ 
+Aug. 25, 1999	Scott Metzler	V00-02-01
+	Accept modules, input modules, output modules
+	and filter modules as exec types to check for
+	verbose.
+
+Mar. 04, 1999	Scott Metzler	V00-02-00
+	Include all executable types for generating
+	facility name.  This is accomplished by
+	adding a pointer to the current executable.
+
+Feb. 07, 1999   Scott Metzler	V00-01-07
+	Extend AppActionErrLogger and AppErrLog
+	so that they can be more easily used
+	by OstErrLogger.
+
+Oct. 16, 1998	Scott Metzler	V00-01-04
+	Print error message into ostream instead of
+	ErrStream.  ErrStream is still underlying
+	mechanism.
+
+April 30, 1998	Scott Metzler	V00-01-00
+	Change to return ErrStream instead of ostream.
+
+March 28, 1998	Bob Jacobsen	V00-00-00
+	Create package.

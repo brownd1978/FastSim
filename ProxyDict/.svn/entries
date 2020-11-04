@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="819"
+   name=""
+   committed-date="2011-03-08T15:47:47.252348Z"
+   url="https://sbrepo.pd.infn.it:8910/Core/ProxyDict/tags/V00-01-02"
+   last-author="stroili"
+   kind="dir"
+   uuid="7d373392-5316-41f4-94df-42a166793eec"
+   revision="830"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   committed-rev="243"
+   name="IfdSimpleProxyDictTest.results"
+   text-time="2011-04-27T18:44:48.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="3e504c1c9551dabcaa1295dccc0f511d"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:43.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="2_segment"
+   kind="dir"/>
+<entry
+   committed-rev="243"
+   name="testProxyDict.t"
+   text-time="2011-04-27T18:44:48.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="753caac94ed3a91dd1fa2be271e14b81"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   committed-rev="520"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:44:48.000000Z"
+   committed-date="2010-01-15T11:40:48.080060Z"
+   checksum="3b0357e4d2ef6a69a8f2871c575e8216"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:47.000000Z"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="243"
+   name="GNUmakefile.plain"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="fb43abf6f204885e2d4d1aa76f2f543b"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   committed-rev="243"
+   name="MIGRATION"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="19cb703091cef105af16f1c2229fd888"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   committed-rev="243"
+   name="IfdHepAListTest.results"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="cc13fda0ce6adb827771741cf76e9271"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   committed-rev="243"
+   name="README"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="71a0e814105022b3fb777875d780c5ff"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   committed-rev="243"
+   name="AbsArgTest.results"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="a5a073ea2b032d7f7e52a863c95ab0d5"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   name="0_control"
+   kind="dir"/>
+<entry
+   committed-rev="520"
+   name="History"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2010-01-15T11:40:48.080060Z"
+   checksum="c969831cd03324afc0fb64462863eb01"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   committed-rev="243"
+   name="USAGE"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="f66915c9bd083ab04606e1a71c1b02a0"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   committed-rev="243"
+   name="TODO"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="7014fcc58cbf4cab4935b2e677e7b99e"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   committed-rev="243"
+   name="IfdKeyTest.results"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="9bc108c6b71f6a4be46fb3e4a75eab21"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   committed-rev="243"
+   name="Makefile"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="a62332c93f5d4ac5155581c5cf27467d"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   committed-rev="243"
+   name="IfdTypeKeyTest.results"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2009-03-04T07:59:50.024537Z"
+   checksum="8dd7e2cd2edbb12f46da8c7154bfa350"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+<entry
+   committed-rev="777"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:44:49.000000Z"
+   committed-date="2010-11-25T16:16:46.802282Z"
+   checksum="949b8c4138c8660c64dcf05372b1bf0b"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:44:48.000000Z"/>
+</wc-entries>

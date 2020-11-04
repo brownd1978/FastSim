@@ -1,0 +1,9 @@
+C
+      integer MXJETS
+      parameter (MXJETS=10)
+      common/PJETS/PJETS(5,MXJETS),IDJETS(MXJETS),QWJET(5),IDENTW
+     $,PPAIR(5,4),IDPAIR(4),JPAIR(4),NPAIR,IFRAME(MXJETS)
+      save /PJETS/
+      integer   IDJETS,IDENTW,IDPAIR,JPAIR,NPAIR,IFRAME
+      real      PJETS,QWJET,PPAIR
+C

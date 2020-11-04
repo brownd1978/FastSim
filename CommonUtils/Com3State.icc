@@ -1,0 +1,86 @@
+// -*- C++ -*-
+//==========================================================================
+// File and Version Information:
+// 	$Id: Com3State.icc,v 1.3 2004/08/06 05:54:59 bartoldu Exp $
+//
+//--------------------------------------------------------------------------
+// Description:
+//	See Com3State.hh
+//--------------------------------------------------------------------------
+
+//----------------------
+// Comparison operators:
+//----------------------
+
+inline bool operator==(Com3State c1, Com3State c2) {
+  return (c1._state == c2._state);
+}
+
+//-----------------------------------------------------------------
+inline bool operator!=(Com3State c1, Com3State c2) {
+  return !(c1 == c2);
+}
+
+//-----------------------------------------------------------------
+inline bool operator==(bool b, Com3State c) {
+  if (true == b){
+    return (Com3State::TRUE3 == c._state);
+  }
+  else {
+    return (Com3State::FALSE3 == c._state);
+  }
+}
+
+//-----------------------------------------------------------------
+inline bool operator!=(bool b, Com3State c) {
+  return !(b == c);
+}
+
+//-----------------------------------------------------------------
+inline bool operator==(Com3State c, bool b) {
+  return (b == c);
+}
+
+//-----------------------------------------------------------------
+inline bool operator!=(Com3State c, bool b) {
+  return (b != c);
+}
+
+
+//-----------------------------------------------
+//-- Static Data & Function Member Definitions --
+//-----------------------------------------------
+Com3State 
+Com3State::com3True() {
+  static Com3State result(TRUE3);
+  return result;
+}
+
+//-------------------------------------------------------------
+Com3State 
+Com3State::com3Neutral() {
+  static Com3State result(NEUTRAL3);
+  return result;
+}
+
+//-------------------------------------------------------------
+Com3State 
+Com3State::com3False() {
+  static Com3State result (FALSE3);
+  return result;
+}
+
+//-------------
+// IO operator:
+//-------------
+
+inline std::istream & 
+operator>>(std::istream & stream, Com3State & c) {
+  return c.read(stream);
+}
+
+//------------------------------------------------------------------
+inline std::ostream & 
+operator<<(std::ostream & stream, Com3State c) {
+  return c.print(stream);
+}

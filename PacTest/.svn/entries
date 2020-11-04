@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2618"
+   name=""
+   committed-date="2011-03-23T23:58:58.428422Z"
+   url="https://sbrepo.pd.infn.it:8910/PACRAT/PacTest/trunk"
+   last-author="brownd"
+   kind="dir"
+   uuid="2aa36f44-f9d8-11dc-81b7-9e774fc32887"
+   revision="2642"/>
+<entry
+   committed-rev="2325"
+   name="testVoxels.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2010-08-27T23:05:25.907341Z"
+   checksum="018be8b74055eecb02032030736748ba"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:55:59.000000Z"/>
+<entry
+   committed-rev="747"
+   name="pacrat_DetEffect.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2009-01-28T00:28:35.155955Z"
+   checksum="d104e4d51b3e7c644dea8e7c54eb7453"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:55:59.000000Z"/>
+<entry
+   committed-rev="654"
+   name="cone_test.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2008-12-10T08:24:58.144846Z"
+   checksum="2fd18fd88a7ce145c6a9005f6c4b304a"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:55:59.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="macros"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="1880"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2010-01-25T09:47:55.890076Z"
+   checksum="ec97d7c14cac4a187b8e0f99e00c5617"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="1476"
+   name="testShowerModel.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2009-07-09T14:19:23.464525Z"
+   checksum="8f8f9c362532b00e367e9c5ba8ff6bff"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="1791"
+   name="testDetEffect.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2009-12-16T11:09:50.162249Z"
+   checksum="3630c1445f72fdcc1052a2f06711302c"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   name="bins"
+   kind="dir"/>
+<entry
+   committed-rev="604"
+   name="testChargedTrackDK.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2008-11-23T15:23:23.090732Z"
+   checksum="0b8280209915c472611b7a6a9fafed27"
+   last-author="sokoloff"
+   kind="file"
+   prop-time="2011-04-27T18:56:02.000000Z"/>
+<entry
+   committed-rev="2618"
+   name="testLandau.xml"
+   text-time="2011-04-27T19:37:11.000000Z"
+   committed-date="2011-03-23T23:58:58.428422Z"
+   checksum="8326cea88633856817fbf08945ccd347"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:37:11.000000Z"/>
+<entry
+   committed-rev="796"
+   name="testEmcCluster.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2009-02-05T00:43:05.440792Z"
+   checksum="dfa4d5e029353e4afef8b6acab7b6bc4"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:56:03.000000Z"/>
+<entry
+   committed-rev="2560"
+   name="testOneTrack.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2011-01-19T00:40:13.229437Z"
+   checksum="9e18d050e35252af5b4bde8acff7be9e"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:03.000000Z"/>
+<entry
+   committed-rev="2311"
+   name="testTrackReconstruction.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2010-08-25T23:20:17.955341Z"
+   checksum="e6af35628bcca23700f188865243c180"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:03.000000Z"/>
+<entry
+   committed-rev="1037"
+   name="testEmcBumps.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2009-04-05T00:22:29.666848Z"
+   checksum="0c0c78dad8fbaea5ec66f6c5f7f449c5"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:56:03.000000Z"/>
+<entry
+   committed-rev="2058"
+   name="rectdet1.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2010-04-30T18:29:01.251908Z"
+   checksum="5e1ad353b007546c49b594aef2fa613a"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:03.000000Z"/>
+<entry
+   committed-rev="712"
+   name="testOneNeutral.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2009-01-06T20:00:52.922065Z"
+   checksum="a0ae57cc1a04a1d00ab7a16063465452"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:56:03.000000Z"/>
+<entry
+   committed-rev="2058"
+   name="rectdet2.xml"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2010-04-30T18:29:01.251908Z"
+   checksum="a775686da622ea4acf140943ec658052"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:03.000000Z"/>
+<entry
+   committed-rev="2519"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:56:03.000000Z"
+   committed-date="2010-11-25T16:13:38.229732Z"
+   checksum="740c525c0fd01ebdece94d8c2f2a0fe6"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:56:03.000000Z"/>
+</wc-entries>

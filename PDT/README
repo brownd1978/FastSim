@@ -1,0 +1,35 @@
+Particle Data Table package.
+
+  the scripts:
+  
+      PdtGeant.script
+      PdtLund.script
+      
+  produce automatically the code for PdtGeant and PdtLund classes
+  converting the particle ASCII names in the tables into names 
+  compatible with C++.
+  
+--------------
+14 october 1996
+Luca Lista
+
+Added Binary Search Tree classe Pdtb which uses the FSF derived classes
+PdtEntrySet and PdtEntryBSTSet.  These later two classes are in files named
+PdtbSet and PdtbBSTSet for brevity.   -- J. LoSecco, 20 November 1998
+
+Renamed Pdtb to Pdt so that it is normally used.  Since the internal details
+are hidden this should have no effect on consumers of this code. - J. LoSecco
+January 18, 1999
+
+Workaround in PdtbBSTSet.cc to avoid problem on OSF.  Added a dummy entry to
+struct _fake_node in PdtEntryBSTSet::balance().  The new definition is
+identical to that of PdtEntryBSTNode so optimization etc. does not destroy it.
+Tested on Sun and OSF with and without optimization.  - J. LoSecco
+March 29, 1999
+
+Thu May  6 16:58:17 PDT 1999 - A. Snyder
+
+Modify Pdt to cache entry for most popular particles types.
+
+Fix bug in PdtEntry where it failed to initialize _pidNeutType for 2/3 of
+it constructors.

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+ 
+<!--
+This document is a part of the sample experiment description in a format
+which would eventually turn into EDML:
+ 
+  "Experiment Description Markup (or Modelling) Language"
+ 
+Right now we don't have any formal schema for EDML. Therefore
+the current implementation of a EDML parser would check both
+syntax and semantics of the model. Besides, introducing the formal
+XML schema for EDML may  result in some changes in a syntax
+of EDML.
+-->
+ 
+<edml>
+  <config>
+
+    <!-- Magnetic field -->
+    <param name="B_nom" type="double"> 1.5</param>
+    <param name="DeltaB" type="vector_double"> 0.0, 0.0, 0.0</param>
+    <!-- Detector Material -->
+    <param name="material" type="string"> pep-BPipeB</param>
+    <!-- pathlenth -->
+    <param name="pathlen" type="double"> 0.300</param>
+
+    <sect name="PacShower">
+        <param name="nshower" type="int" > 1 </param> <!-- this is the maximum number of discrete (brems, etc.) EM interactions in a material before the interaction is consider to have initiated a shower -->
+        <param name="hadorder" type="int" > 2 </param> <!-- This is the polynomial order of the exponentially-damped hadron shower longitudinal profile function. -->
+        <param name="hadscale" type="float" > 1.0 </param> <!-- This is the scale for hadronic shower longitudinal profile function (ie position of shower max) -->
+        <param name="hadshowerquantum" type="float" > 0.001 </param> <!-- This is the quantum in GeV used in the Poisson randomization of hadron shower longitudinal profile energy deposition -->
+    </sect>
+    <sect name="PacMaterial">
+
+      <!--
+      Landau Shift Param
+      -->
+      <param name="lanshift" type="float" > -0.10</param>
+      <param name="lanrms"  type="float" > 0.03</param>
+
+      <!--
+      Gauss Shift Param
+      -->
+      <!--
+      <param name="elossshift"    type="float" > 0.00</param>
+      <param name="elossrmsprob"  type="float" > 0.02</param>
+      <param name="elossrmsfact"  type="float" > 5.00</param>
+      <param name="elosscorefact" type="float" > 1.00</param>
+      -->
+
+      <!--
+      Scat Angle Smear Param
+      -->
+      <param name="tailprob" type="float" > 0.02</param>
+      <param name="tailfact" type="float" > 10.00</param>
+      <param name="corefact"  type="float" > 1.00</param>
+    </sect>
+    
+</config>
+  
+</edml>

@@ -1,0 +1,85 @@
+#############################################################
+#
+# Really stupid, stripped down Makefile for ProxyDict outside
+# the context of SoftRelTools.
+#
+# Required:  this is for gnu make.  Tested w/ 3.74.
+#
+# Usage:  cd ProxyDict; gmake -f GNUmakefile.plain all
+#
+#	You may need to mkdir ../BaBar; touch ../BaBar/BaBar.hh
+#	before building (paths are relative to the ProxyDict source
+#	directory.
+#
+# BUGS:  'all' is the only functioning target, besides clean
+#
+#############################################################
+
+PACKAGE = ProxyDict
+
+CXX	 = g++
+CXXFLAGS = -g
+CPPFLAGS = -I.. -I.
+AR 	 = ar
+LDFLAGS	 = -L.
+
+# library product
+LIB = libProxyDict.a
+
+# file lists (standard names, local contents)
+
+#library contents
+#
+CCEXCLUDE = IfdSimpleProxyDictTest.cc IfdKeyTest.cc IfdTypeKeyTest.cc \
+	IfdHepAListTest.cc AbsArgTest.cc \
+	IfdDataProxyTemplate.cc IfdTestClasses.cc Ifd.cc AbsArgCast.cc \
+	AbsArgVal.cc IfdAliasProxy.hh IfdDataProxy.cc
+LIBCCFILES :=  $(filter-out $(CCEXCLUDE), $(wildcard *.cc))
+LIBOFILES = $(subst .cc,.o,$(LIBCCFILES))
+
+# binary products.  Skip IfdHepAList if you don't have CLHEP.  XTRAS 
+# are things not compiled into the library, but which are needed to
+# link the regression tests.  BINS lists the executables for the
+# regression tests.
+#
+XTRAS=IfdTestClasses.cc
+BINS = IfdKeyTest IfdTypeKeyTest IfdSimpleProxyDictTest  AbsArgTest
+#BINS = IfdKeyTest IfdTypeKeyTest IfdSimpleProxyDictTest IfdHepAListTest AbsArgTest
+
+# local library definitions for executable link
+#
+override LIBS += -lProxyDict
+override LOADLIBES += $(LIBS)
+
+##
+# This target is brutal, but correct.  It's the only safe thing
+# without dependencies.
+##
+all:  clean lib bin
+ 
+clean:
+	rm -f *.o
+
+lib: $(LIBOFILES)
+	$(AR) r $(LIB) $(LIBOFILES)
+
+bin: $(BINS)
+
+##
+# The regression tests
+##
+IfdKeyTest: IfdKeyTest.cc $(LIBS)
+	echo Linking $(CXX) $@; $(CXX) $(CXXFLAGS) $(XTRAS) $< $(CPPFLAGS) $(LDFLAGS) -o $@ $(LOADLIBES)
+
+IfdTypeKeyTest: IfdTypeKeyTest.cc $(LIBS)
+	echo Linking $(CXX) $@; $(CXX) $(CXXFLAGS) $(XTRAS) $< $(CPPFLAGS) $(LDFLAGS) -o $@ $(LOADLIBES)
+
+IfdSimpleProxyDictTest: IfdSimpleProxyDictTest.cc $(LIBS)
+	echo Linking $(CXX) $@; $(CXX) $(CXXFLAGS) $(XTRAS) $< $(CPPFLAGS) $(LDFLAGS) -o $@ $(LOADLIBES)
+
+IfdHepAListTest: IfdHepAListTest.cc $(LIBS)
+	echo Linking $(CXX) $@; $(CXX) $(CXXFLAGS) $(XTRAS) $< $(CPPFLAGS) $(LDFLAGS) -o $@ $(LOADLIBES)
+
+AbsArgTest: AbsArgTest.cc $(LIBS)
+	echo Linking $(CXX) $@; $(CXX) $(CXXFLAGS) $(XTRAS) $< $(CPPFLAGS) $(LDFLAGS) -o $@ $(LOADLIBES)
+

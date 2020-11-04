@@ -1,0 +1,871 @@
+This program creates a handfull of keys of various
+kinds and then forms all possible pairs from them.
+Each pair is tested for equality in both directions,
+e.g., both a==b and b==a.  This verifies reflexitivity.
+You should also look for other aspects of correct
+behavior.  For example, make sure that composite
+keys get built up correctly, even if made of other
+composite keys.  Multiple composites are built up
+and tested for this reason.  We also make one composite
+that adds itself to itself to look for pathologies in
+the add() method.
+
+Size of IfdTypeKey     : 20
+Size of IfdStrkKey     : 56
+Size of IfdDictKey     : 40
+Size of IfdCompositeKey: 36
+Size of IfdIntKey      : 20
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[int]
+EQUAL
+********************************************************************************
+IfdTypeKey[int]
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[int]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdTypeKey[int]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdTypeKey[char]
+EQUAL
+********************************************************************************
+IfdTypeKey[char]
+IfdTypeKey[char]
+EQUAL
+********************************************************************************
+IfdTypeKey[char]
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdTypeKey[char]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdTypeKey[char]
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdIntKey(1)
+EQUAL
+********************************************************************************
+IfdIntKey(1)
+IfdIntKey(1)
+EQUAL
+********************************************************************************
+IfdIntKey(1)
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(1)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdIntKey(1)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdIntKey(5)
+EQUAL
+********************************************************************************
+IfdIntKey(5)
+IfdIntKey(5)
+EQUAL
+********************************************************************************
+IfdIntKey(5)
+IfdIntKey(5)
+EQUAL
+********************************************************************************
+IfdIntKey(5)
+IfdIntKey(5)
+EQUAL
+********************************************************************************
+IfdIntKey(5)
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdIntKey(5)
+EQUAL
+********************************************************************************
+IfdIntKey(5)
+IfdIntKey(5)
+EQUAL
+********************************************************************************
+IfdIntKey(5)
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdIntKey(5)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdIntKey(5)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdStrKey(Hello,)
+EQUAL
+********************************************************************************
+IfdStrKey(Hello,)
+IfdStrKey(Hello,)
+EQUAL
+********************************************************************************
+IfdStrKey(Hello,)
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(Hello,)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdStrKey(Hello,)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdStrKey(world)
+EQUAL
+********************************************************************************
+IfdStrKey(world)
+IfdStrKey(world)
+EQUAL
+********************************************************************************
+IfdStrKey(world)
+IfdStrKey(world)
+EQUAL
+********************************************************************************
+IfdStrKey(world)
+IfdStrKey(world)
+EQUAL
+********************************************************************************
+IfdStrKey(world)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdStrKey(world)
+EQUAL
+********************************************************************************
+IfdStrKey(world)
+IfdStrKey(world)
+EQUAL
+********************************************************************************
+IfdStrKey(world)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdStrKey(world)
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdStrKey(world)
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(5)  ]
+DIFFER
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+EQUAL
+********************************************************************************
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ] IfdCompositeKey[ IfdIntKey(5) IfdCompositeKey[ IfdStrKey(Hello,) IfdStrKey(world) IfdIntKey(1)  ]  ] IfdStrKey(world)  ]
+EQUAL
+********************************************************************************
+Test adding a composite key to itself.
+Initial composite: IfdCompositeKey[ IfdIntKey(1) IfdStrKey(Hello,)  ]
+Composite w/ itself added in: IfdCompositeKey[ IfdIntKey(1) IfdStrKey(Hello,) IfdCompositeKey[ IfdIntKey(1) IfdStrKey(Hello,)  ]  ]
+********************************************************************************
+Test of car(), cdr(), and tail() using output of last test.
+car() = IfdIntKey(1)
+cdr() = IfdCompositeKey[ IfdStrKey(Hello,) IfdCompositeKey[ IfdIntKey(1) IfdStrKey(Hello,)  ]  ]
+tail()= IfdCompositeKey[ IfdIntKey(1) IfdStrKey(Hello,)  ]
+Testing StrKey to HepString conversion
+
+Composite  key : IfdCompositeKey[ IfdIntKey(1) IfdStrKey(Hello,)  ]
+Tail as string : Hello,
+

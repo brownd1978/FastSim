@@ -1,0 +1,47 @@
+modifications to STDHEP 3.0 in BaBar
+
+V03-01-01 14-Feb-2002 Lockman
+- StdHepUtil.hh: protect against multiple inclusion
+
+V03-01-00 23-Dec-1999 Lockman
+- CERNLIB 98 migration. Changed #include "geant/ to #include "geant321/
+  in src/hep2geant.F
+- Changed #include "geant/ to #include "jetset74/ in
+src/lunhep.F
+src/stdflpyxsec.F
+src/stdrlubg.F
+src/stdrpybg.F
+src/stdwlubg.F
+src/stdwpybg.F
+- moved link_stdhep.mk into include/ directory
+
+V03-00-11 22-Dec-1998 Lockman
+-stdhep/src/StdHepUtil.F: fill beam mass with hardcoded electron mass if 
+ |id|=11
+
+V03-00-10 21-Dec-1998 Lockman
+-stdhep/src/StdHepUtil.F and stdhep/include/StdHepUtil.hh: 
+ added sdtdhep utility routines, needed by beget and GenFwkInt
+-GNUmakefile: defined and EXPORT'ed PACKAGE variable
+
+V03-00-09
+-hep2geant.inc: moved to stdhep/include
+-hep2geant.F: #include "stdhep/hep2geant.inc" instead of "hep2geant.inc"
+-stdrd_old.F ->stdrd_old.F.unused
+-hep2geant.*:IDMAX->std_IDMAX
+
+V03-00-08
+
+V03-00-07 04-Oct-1998 Lockman
+moved link_stdhep from stdhep/src to stdhep
+
+V03-00-06 29-Sep-1998 Lockman:
+added link_stdhep.mk in src/
+
+  subroutines requiring QQ include files (not in STDHEP distribution)
+  were commented out (name changed to *.F.unused)
+
+  include statements modified to use #include "stdhep/blah.inc" format
+
+  other changes, see code in src
+

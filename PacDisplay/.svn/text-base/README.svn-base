@@ -1,0 +1,51 @@
+PACDISPLAY  README
+
+1)PacDisplay Module
+Module stores neccesary display information in separate .root file
+specified by user. Default name is display.root
+
+talkto PacDisplay {
+	fileName set display.root 	#file name to store data
+	saveGen set true          	#set true to save generated track info
+	saveSim set true		#set true to save simulated track info
+	saveRec set true		#set true to save reconstructed track info
+	saveDet set true		#set true to save detector info
+	saveHit set true		#set true to save hit info
+	resolution set 200		#resolution of track, divide track into N segments (100-300 is reasonable)
+	eventBegin set 0		#event number to start saving
+	eventEnd set 20			#event number to stop saving
+}
+
+2)PacDisplay.C (Macro works in ROOT)
+Typical ROOT session should look as follows
+
+root [0] .L PacDisplay.C++  
+root [1].x PacDisplayStart("display.root","shd",50,1,true)
+
+Options are follows
+"display.root" = file name
+"shd" = types of image to be diplayed
+	(s) = simulated track
+	(g) = generated track
+	(r) = reconstructed track
+	(h) = hits on detector
+	(e) = emc cluster
+	(d) = detector
+50 = sets transparent range [0-100] set 0 for no transparency, 100 for 100% transparent, [40-60%] recommended for good effect 
+1 = starting event
+true = shows/hides end cap
+
+!!Click on object to display object information!!
+
+3) Some useful openGLViewer command
+W = wireframe
+R = rendered surface
+T = rendered surface with wireframe
+Arrow key = move object around
+Arrow key + Ctrl = move object slowly
+Arrow key + Shift = move objects fast 
+J = zoom in
+K = zoom out
+Left Mouse Button  = Rotate view
+Right Mouse Button = Zoom in/out
+Center Mouse Button = Move object around

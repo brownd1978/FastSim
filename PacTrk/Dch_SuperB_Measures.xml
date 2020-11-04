@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+  <included>
+
+    <measures>
+
+<!-- The distribution of the cell spatial resolution is described -->
+<!-- by a 5-th order polynomial with domain [0,1]: rms_par0 +     -->
+<!-- rms_par1*x +...+ rms_par5*x^5. The coefficients below refer  -->
+<!-- to a 'BaBar-like' average resolution of 125 microns.         -->
+<!-- The cell hit efficiency is described with the parameters     -->
+<!-- eff_par0 and eff_par1 through the relation:                  -->
+<!-- cell eff. = eff_par0*(1 - (1-eff_par1)^{x/h})                -->
+<!-- where x is the track pathlength in the cell, h is the cell   -->
+<!-- height, eff_par0 represents the cell efficiency in the       -->
+<!-- limit where the pathlength within the cell is 'infinite',    -->
+<!-- eff_par0*eff_par1 is the cell hit efficiency for high p      -->
+<!-- tracks at theta=90deg.                                       -->
+
+    <device name="Axial"
+          type="DriftChamber"
+           sensitiveTimeWindow="0.5e-6"
+           rms_par0="0.0178977"
+           rms_par1="0"
+           rms_par2="-0.161932"
+           rms_par3="0.357955"
+           rms_par4="-0.238636"
+           rms_par5="0.0409091"
+           eff_par0="0.98"
+           eff_par1="0.83"
+           cell_size="1.8"
+           angle="0"  />
+
+    <device name="Stereo+"
+          type="DriftChamber"
+           sensitiveTimeWindow="0.5e-6"
+           rms_par0="0.0178977"
+           rms_par1="0"
+           rms_par2="-0.161932"
+           rms_par3="0.357955"
+           rms_par4="-0.238636"
+           rms_par5="0.0409091"
+           eff_par0="0.98"
+           eff_par1="0.83"
+           cell_size="1.8"
+           angle="0.06"  />
+
+    <device name="Stereo-"
+          type="DriftChamber"
+           sensitiveTimeWindow="0.5e-6"
+           rms_par0="0.0178977"
+           rms_par1="0"
+           rms_par2="-0.161932"
+           rms_par3="0.357955"
+           rms_par4="-0.238636"
+           rms_par5="0.0409091"
+           eff_par0="0.98"
+           eff_par1="0.83"
+           cell_size="1.8"
+           angle="-0.06"  />
+    <device name="DchdEdx" type="dEdx"
+        HitType="3"
+        trunc_frac="0.7"
+        dedx_par1="0.00154"
+        dedx_par2="1"
+        dedx_par3="-0.34" />  
+
+    </measures>
+
+  </included>
+</edml>

@@ -1,0 +1,14 @@
+TrkFitter contains core classes for charged-particle tracking.  Most
+of the classes here are concrete -- the abstract base classes are in
+the TrkBase package.  In particular, it contains classes for all of
+the simple track representations (circle, helix, line); this includes
+parameter classes (e.g. TrkCircleParams), trajectories (TrkCircleTraj), 
+TrkReps (TrkCircleRep), and factory classes to create them (TrkCircleMaker).
+
+TrkFitter also contains utiliy code. It has support for a visitor
+pattern in the geometric trajectories (TrkGeomTrajs), and one visitor
+(TrkTransformVisitor) that applies a HepTransform to GeomTrajs.  There's 
+also a utility class, TrkHelixUtils, for misc. functions relating to 
+helices.
+
+Package Coordinator: Steve Schaffner (sschaff@slac.stanford.edu).

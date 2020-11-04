@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+   <included>
+
+<cyl name="EmcCsIBarrel" id="0" zmin="-113.925" zmax="182.058" radius="93" thick="2" mat="emc-CsI" meas="Emc" />
+<cyl name="EmcCsIBarrel" id="1" zmin="-116.375" zmax="185.973" radius="95" thick="2" mat="emc-CsI" meas="Emc" />
+<cyl name="EmcCsIBarrel" id="2" zmin="-119.437" zmax="190.867" radius="97.5" thick="3" mat="emc-CsI" meas="Emc" />
+<cyl name="EmcCsIBarrel" id="3" zmin="-123.664" zmax="197.621" radius="100.95" thick="3.9" mat="emc-CsI" meas="Emc" />
+<cyl name="EmcCsIBarrel" id="4" zmin="-127.89" zmax="204.374" radius="104.4" thick="3" mat="emc-CsI" meas="Emc" />
+<cyl name="EmcCsIBarrel" id="5" zmin="-131.565" zmax="173.58" radius="107.4" thick="3" mat="emc-CsI" meas="Emc" />
+<cyl name="EmcCsIBarrel" id="6" zmin="-135.24" zmax="139.475" radius="110.4" thick="3" mat="emc-CsI" meas="Emc" />
+<cyl name="EmcCsIBarrel" id="7" zmin="-110.707" zmax="110.707" radius="113.4" thick="3" mat="emc-CsI" meas="Emc" />
+<cyl name="EmcCsIBarrel" id="8" zmin="-75.8779" zmax="75.8779" radius="116.85" thick="3.9" mat="emc-CsI" meas="Emc" />
+<cyl name="EmcCsIBarrel" id="9" zmin="-45.3666" zmax="45.3666" radius="120.3" thick="3" mat="emc-CsI" meas="Emc" />
+ 
+    </included>
+</edml>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="795"
+   name=""
+   committed-date="2011-03-08T12:23:50.264880Z"
+   url="https://sbrepo.pd.infn.it:8910/Core/BaBar/tags/V00-01-04"
+   last-author="stroili"
+   kind="dir"
+   uuid="7d373392-5316-41f4-94df-42a166793eec"
+   revision="830"/>
+<entry
+   name="0_control"
+   kind="dir"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   name="1_source"
+   kind="dir"/>
+<entry
+   committed-rev="213"
+   name="BUGS"
+   text-time="2011-04-27T18:38:48.000000Z"
+   committed-date="2009-03-04T07:58:49.137382Z"
+   checksum="81c3f290ec74f6bca13d2d1f1855472e"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:45.000000Z"/>
+<entry
+   committed-rev="533"
+   name="History"
+   text-time="2011-04-27T18:38:48.000000Z"
+   committed-date="2010-01-21T09:52:52.438438Z"
+   checksum="f89016aa072eec71ec64fc0e4c853831"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:45.000000Z"/>
+<entry
+   name="2_segment"
+   kind="dir"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="4_event"
+   kind="dir"/>
+<entry
+   name="3_fragment"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="475"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:38:48.000000Z"
+   committed-date="2009-12-04T13:34:21.561983Z"
+   checksum="291b5ce49e9fd0c7a47fae458b0ff1b8"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:48.000000Z"/>
+<entry
+   committed-rev="764"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:38:48.000000Z"
+   committed-date="2010-11-09T16:31:53.009830Z"
+   checksum="5591316a6fb65a7ca92d1d5d7aa63ff5"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:48.000000Z"/>
+<entry
+   committed-rev="213"
+   name="Makefile"
+   text-time="2011-04-27T18:38:49.000000Z"
+   committed-date="2009-03-04T07:58:49.137382Z"
+   checksum="f72fbed8d0578df91d01bb60e7016d39"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:48.000000Z"/>
+<entry
+   committed-rev="213"
+   name="README"
+   text-time="2011-04-27T18:38:49.000000Z"
+   committed-date="2009-03-04T07:58:49.137382Z"
+   checksum="b159fbadc51928f51251398c2949871b"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:48.000000Z"/>
+</wc-entries>

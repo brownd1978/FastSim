@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+
+                <!-- Organize the layout in terms of layers.  This guarantees particles from the IP will hit the appropriate detector elements in order.  The order of forward vs backward is arbitrary, since a particle goes either one way or the other -->
+                <!-- layers 4 and 5 have barrel and lampshade parts.  lampshades are modeled as cones -->
+                <cyl name="SvtSi" id="4" zmin="-22.2850" zmax="22.2850" radius="12.22" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.048" />
+                <cyl name="SvtCF" id="4" zmin="-22.2850" zmax="22.2850" radius="12.92" thick="0.3" mat="svt-CFiber" gap="0.945" />
+
+
+                <cone name="SvtSiFwd" id="4" rho1="12.22" z1="22.3050" rho2="8.75" z2="28.3050" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.02" />
+                <cone name="SvtCFFwd" id="4" rho1="12.92" z1="22.3050" rho2="9.45" z2="28.3050" thick="0.3" mat="svt-CFiber" gap="0.945" />
+
+                <cone name="SvtSiBwd" id="4" rho1="8.75" z1="-28.3050" rho2="12.22" z2="-22.3050" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.02" />
+                <cone name="SvtCFBwd" id="4" rho1="9.45" z1="-28.3050" rho2="12.92" z2="-22.3050" thick="0.3" mat="svt-CFiber" gap="0.945" />
+                
+
+                <cyl name="SvtSi" id="5" zmin="-30.9050" zmax="30.9050" radius="14.22" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.02" />
+                <cyl name="SvtCF" id="5" zmin="-30.9050" zmax="30.9050" radius="14.92" thick="0.3" mat="svt-CFiber" gap="0.947" />    
+                
+                <cone name="SvtSiFwd" id="5" rho1="14.22" z1="30.9250" rho2="11.42" z2="36.9250" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.01" />
+                <cone name="SvtCFFwd" id="5" rho1="14.92" z1="30.9250" rho2="12.12" z2="36.9250" thick="0.3" mat="svt-CFiber" gap="0.947" />
+
+                <cone name="SvtSiBwd" id="5" rho1="11.42" z1="-36.9250" rho2="14.22" z2="-30.9250" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.01" />
+                <cone name="SvtCFBwd" id="5" rho1="12.12" z1="-36.9250" rho2="14.92" z2="-30.9250" thick="0.3" mat="svt-CFiber" gap="0.947" />
+
+    </included>
+</edml>

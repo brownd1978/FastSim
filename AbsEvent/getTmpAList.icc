@@ -1,0 +1,86 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: getTmpAList.icc 487 2010-01-13 16:40:34Z stroili $
+//
+// Description:
+//	See the corresponding .hh  file.
+//      
+//      EXCLUDE THIS FILE FROM THE LIST OF .CC FILE TO COMPILE!
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	Ed Frank		University of Pennsylvania
+//
+// Copyright Information:
+//	Copyright (C) 1997
+//
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+#include <iostream>
+#include <stdlib.h>
+
+class IfdKey;
+template <class T> class HepAList;
+
+#include "CLHEP/Alist/AList.h"
+#include "ProxyDict/IfdHepAListProxy.hh"
+#include "ProxyDict/Ifd.hh"
+
+// The next include is needed because we implicitly do a conversion
+// to base class (AbsEvent->IfdProxyDict), below.
+
+#include "AbsEvent/AbsEvent.hh"
+
+
+// ********************************************************************
+template <class T>
+void
+getTmpAList( AbsEvent* ev, HepAList<T>* &list ) {
+// ********************************************************************
+
+  list =  Ifd< HepAList<T> >::get( ev, "Default" );
+  if ( 0 != list ) return;
+
+  // no other list yet, so we can make one and add it.
+
+  HepAList<T> *ifdl = new HepAList<T>;
+  IfdHepAListProxy<T> *proxy = new IfdHepAListProxy<T>( ifdl );
+
+  if ( Ifd< HepAList<T> >::put( ev, proxy, "Default" ) ) {
+    list = ifdl;
+  } else {
+    list = 0;
+  }
+
+  return;
+}
+
+
+// ********************************************************************
+template <class T>
+void
+getTmpAList( AbsEvent* ev, HepAList<T>* &list, const IfdKey& k ) {
+// ********************************************************************
+  // Like getTmpAList, but with a secondary key.  Why not use
+  // a default arg?  Because some compilers don't allow default
+  // args in template functions.
+  
+  list =  Ifd< HepAList<T> >::get( ev, k );
+  if ( 0 != list ) return;
+
+  // no other list yet, so we can make one and add it.
+
+  HepAList<T> *ifdl = new HepAList<T>;
+  IfdHepAListProxy<T> *proxy = new IfdHepAListProxy<T>( ifdl );
+
+  if ( Ifd< HepAList<T> >::put( ev, proxy, k ) ) {
+    list = ifdl;
+  } else {
+    list = 0;
+  }
+
+  return;
+}

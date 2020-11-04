@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+
+                <!-- Organize the layout in terms of layers.  This guarantees particles from the IP will hit the appropriate detector elements in order.  The order of forward vs backward is arbitrary, since a particle goes either one way or the other -->
+
+                <!-- angular coverage is 300 mrad in forward and backward direction in the 
+		     laboratory frame-->
+                <!-- layer0 Hybrid Pixel solution, according to F. Bosi drawing: 8 modules layout. 
+		    The average radius for the sensor is estimated about 1.60 cm. The amount of material for 
+		     support, cooling and front end chip considers also the overlap between
+		     modules and has been evaluated from the drawing. (radius enlarged to reduce bkg rate NN 07/10/09)
+		  -->
+
+		<cyl name="Svt-AlBus" id="0" zmin="14.8276" zmax="25.1724" radius="1.5750" thick="0.0250" mat="SB-HPixel-AlBus"  overlap="0.0" />   
+                <cyl name="SvtHybridPixels" id="0"  zmin="14.8276" zmax="25.1724" radius="1.6000" thick="0.0200" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />  
+                <cyl name="SvtHybridPixelsSupport" id="0" zmin="14.8276" zmax="25.1724" radius="1.6200" thick="0.1450" mat="SB-HPixel-SupportFeChip" overlap="0.0" /> 
+
+                <!-- Now the BaBar SVT -->
+
+                <cyl name="SvtSupp" id="1" zmin="9.2670" zmax="30.733" radius="3.3" thick="0.00902656" mat="svt-SimFanOut" /> 
+                <cyl name="SvtSi" id="1"  zmin="9.2670" zmax="30.733" radius="3.32" thick="0.0310" mat="svt-Silicon" meas="2SideSiInner,SiStripsdEdx" overlap="0.034" /> 
+
+                <!--  The CF ribs are modeled as a cylinder with gaps.  The thickness is set to the effective
+                thickness seen by a radial track, and the gap is adjusted so that the total amount of material
+                traversed on average is correct. -->
+                <cyl name="SvtCF" id="1" zmin="9.2670" zmax="30.733" radius="3.7" thick="0.1" mat="svt-CFiber" gap="0.864" />
+                <cyl name="SvtSupp" id="2" zmin="7.0040" zmax="32.996" radius="4" thick="0.00902656" mat="svt-SimFanOut" />
+                <cyl name="SvtSi" id="2" zmin="7.0040" zmax="32.996" radius="4.02" thick="0.0310" mat="svt-Silicon" meas="2SideSiInner,SiStripsdEdx" overlap="0.024" />
+                <cyl name="SvtCF" id="2" zmin="7.0040" zmax="32.996" radius="4.84" thick="0.1" mat="svt-CFiber" gap="0.736" /> 
+                <cyl name="SvtSupp" id="3" zmin="0.8620" zmax="39.138" radius="5.9" thick="0.00902656" mat="svt-SimFanOut" />
+                <cyl name="SvtSi" id="3" zmin="0.8620" zmax="39.138" radius="5.92" thick="0.0310" mat="svt-Silicon" meas="2SideSiLayer3,SiStripsdEdx" overlap="0.015" />
+		<!-- check the radius for CF material below -->
+                <cyl name="SvtCF" id="3" zmin="0.8620" zmax="39.138" radius="5.92" thick="0.1" mat="svt-CFiber" gap="0.778" /> 
+
+    </included>
+</edml>

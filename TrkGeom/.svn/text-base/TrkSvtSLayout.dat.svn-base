@@ -1,0 +1,28 @@
+#
+#  Test version of support tube data file; this
+#  creates a 1-segment tube.
+#
+# order of numbers:
+#	1) number of tubular elements
+#	2) number of segments
+#	then a loop over the number of elements:
+#	3) radii of the tubes
+#	for each element there are n segments;
+#	and therefore loop over the number segments for this element:
+#	3a) thicknesses of the material
+#	3b) material description of the segments
+#	3c) low z-ends of this segment
+#	3d) high z-ends of is segment
+#
+#
+# TrkSvtSLayoutT ! define the tag
+2
+1
+3.2
+0.0125
+svt-Shield
+-13.47 15.73
+20.0
+0.0102
+svt-Bag
+-44.418 77.616

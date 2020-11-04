@@ -1,0 +1,87 @@
+1)
+Make sourceing of .cfg files position-independent.  Right now the files work, assuming you are
+in workdir (1 directory to the 'side' of PacTrk).
+
+2)
+Make Detector description parameterizable layer-by-layer.  It should also include parameters
+defining the material of each layer, and a parameter flag to say if it is active or passive
+(ie no hits should be generated). (done dnb 19 may 2008)
+
+3)
+Add material effects to the PacDetector DetectorModel.  This means migrating the
+description to using DetElements and DetSets instead of the simple geometry objects
+currently being used.  (done dnb Apr 2008)
+
+4)
+Split the files in PacTrk so that there is one class/file.
+(done dnb 1Apr2008)
+
+5)
+Rename the classes in PacTrk to correspond to the BaBar naming conventions (?)
+Fake -> Pac (done dnb 1Apr2008)
+
+6)
+Create an interface in PacDetector to simulate a single track that can be called from PravdaMC.
+Modified: keep the old structure of classes to simulate and reconstruct tracks, but rename them to fit in the PacTrk package.  (done dnb 23 Apr 2008)
+
+7)
+Turn off correction of BField inhomogeneity in Kalman fitting: that just adds time
+(done dnb Apr 2008)
+
+8)
+Add a configuration option so that the Kalman fit is valid only at the ends (not in the middle).
+That should save roughly 30% in CPU time.  (done dnb 1Apr2008.  Saves almost exactly 30%!)
+
+9) Add a extraction file so that PacTrk and related packages can be extracted from a release (or test release) and built into the tarball for standalone non-BaBar runnning.
+
+10) Add a configuration file for building PacTrk outside BaBar, including location of external packages (CLHEP, Root, ...)
+
+11) Scheme to deal with PackageList: for now, it's a patch file.
+We need to bring PackageList into subversion, or replace it entirely with a better build system.
+
+12) Need a better way to fill TrkEnv from pactrk: right now, I'm stealing the obsolete class name TrkBuildCoreEnv to have friendship.  This will be a recurring problem loading environment classes in non-framework applications that use the environment.  (done dnb Apr 2008)
+
+13) Add support for planar geometry for Si disk detectors
+
+14) Add GTrack pointer to PacTrkHit (currently null) when constructed.
+(done: modified: GTrack pointer goes into the PacSimTrack class instead).
+
+15) Fix PacHit memory leak: needs reference-counted pointer to accommodate shared hits.
+
+
+16) DetectorModel element and type registries (to define unique IDs, provide lookup, etc).  Could these handle the memory management?
+
+17) Prepend Pac* class data members with underscores (babar convention) (done? DNB revision 153)
+
+18) Change random number generator in hit smearing to be externally seedable (and access the seed for checkpointing)  (done dnb 15 may 2008)
+
+19) Change hit position smearing to 2-dimensions instead of 3: the 3rd dimension is redundant, but is needed in the current implementation as the smearing is not done perpendicular to the trajectory.
+(done dnb 15 may 2008)
+
+20) specialize (subclass) the PacDetElem classes to include Si and Dch-specific elements (now item 27)
+
+21) expose the Dch stereo angle definition enum to all tracking (in Pac or BaBar?).  Decision: use a geometric description of the readout view direction (in local coordinates) (now in item 27)
+
+22) Use BaBar piecewise traj class instead of piecewise helix (?).  This will save time in simulation.
+(done DNB revision 152)
+
+23) Use search path file location tool to find PdtTable (done: migrated to PacBuildEnv)
+
+24) suppress creation of field correction sites when DeltaB = 0 (done in configuration, revision 152 DNB)
+
+25) propagate fit failures from TrackReconstructor instead of simply passing on bad fits (done DNB: bad fits are not not turned into BtaCandidates in PravdaMC.)
+
+26) put TrkDirection enum in a namespace (perhaps all TrkEnums?) (now item 27)
+
+27) Generalize description of hit direction(s) in terms of angle in local coordinate system.
+(done dnb 15 may 2008.  Introduced a new class to represent a measurement view, and a class to represent a measurement which can contain several views)
+
+28) stop particles which hit the magnets
+
+29) set limits on Z layer-by-layer
+
+30) Simulate loopers?  These may be important if they hit the endcap.  This goes together with simulating any track which doesn't come from the IP (more importantly, doesn't pass through the layers in order of increasing radius)
+
+31) simulate beamspot, including average position and width.
+
+32) Move random number generator out of PacDetector into PacConfig (or env)

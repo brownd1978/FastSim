@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file and subfiles describes the BaBar detector in the EDML schema
+-->
+ 
+<edml>
+
+    <!-- Define the BaBar detector.  -->
+
+    <!-- the following includes add volumes and elements to the detector, and define the specific measurements and
+    configurations of those detectors.  They need to be included in order from the IP outwards -->
+
+  <include file="PacDetector/IP_BaBar.xml"  />
+
+  <include file="PacTrk/Si_BaBar.xml"  /> 
+
+  <include file="PacTrk/Dch_BaBar.xml" />
+
+  <include file="PacDirc/Dirc_BaBar.xml" />
+
+  <include file="PacEmc/PacEmcGeom_BaBar.xml" />
+
+  <include file="PacEmc/Emc_BaBar.xml" />
+
+  <include file="PacIfr/Ifr_BaBar.xml" />
+
+  <!-- generic configuration -->
+
+  <include file="PacTrk/Track_reconstruction.xml" />
+
+  <include file="PacSim/Material_simulation.xml" />
+  
+  <include file="PacDetector/BaBarVolume.xml" />
+  
+  <include file="PacDetector/Machine_BaBar.xml"  />
+  
+  <!-- define this configuration -->
+  <config>
+      <sect name="General">
+          <param name="ConfigKey" type="int" > 1 </param>
+          <param name="ConfigName" type="string"> BaBar </param>
+      </sect>
+  </config>
+
+</edml>

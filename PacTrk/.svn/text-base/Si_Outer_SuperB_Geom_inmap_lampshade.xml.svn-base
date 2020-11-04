@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+
+<!--- Lampshade design for the INMAP SuperB Detector options.  This design uses inmap sensors for all of the detector.  Assume
+      that the bus material is that of the hybrid pixel solution, and then modify the geometry according to:
+           Layer 4/5:  Bus = as per hybrid pixel, 50um silicon, and a 1.146% X/X0 CF support
+--->
+
+
+<!-- Layer 4 -->
+                <cyl name="Svt-AlBus" id="4" zmin="-22.50" zmax="22.50" radius="12.22" thick="0.0250" mat="SB-HPixel-AlBus"  overlap="0.0" />   
+                <cyl name="SvtHybridPixels" id="4"  zmin="-22.50" zmax="22.50" radius="12.245" thick="0.0050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />  
+                <cyl name="SvtCF" id="4" zmin="-22.50" zmax="22.50" radius="12.25" thick="0.273" mat="svt-CFiber" gap="0.864" />
+
+                <cone name="Svt-AlBusFwd" id="4" rho1="12.22" z1="22.50" rho2="8.75" z2="28.3050" thick="0.0250" mat="SB-HPixel-AlBus" gap="0.0" />
+                <cone name="SvtHybridPixelsFwd" id="4"  rho1="12.245" z1="22.50" rho2="8.775" z2="28.3050" thick="0.050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />
+                <cone name="SvtCFFWD" id="4" rho1="12.250" z1="22.50" rho2="8.7550" z2="28.3050" thick="0.273" mat="svt-CFiber" gap="0.864" />
+
+                <cone name="Svt-AlBusBwd" id="4" rho1="8.75" z1="-28.3050" rho2="12.22" z2="-22.50" thick="0.0250" mat="SB-HPixel-AlBus" gap="0.0" />
+                <cone name="SvtHybridPixelsBwd" id="4"  rho1="-8.775" z1="-28.3050" rho2="12.245" z2="-22.50" thick="0.050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />
+                <cone name="SvtCFBwd" id="4" rho1="-8.78" z1="-28.3050" rho2="12.25" z2="-22.50" thick="0.273" mat="svt-CFiber" gap="0.864" />
+
+
+<!-- Layer 5 -->
+                <cyl name="Svt-AlBus" id="5" zmin="-30.0" zmax="30.0" radius="14.22" thick="0.0250" mat="SB-HPixel-AlBus"  overlap="0.0" />   
+                <cyl name="SvtHybridPixels" id="5"  zmin="-30.0" zmax="30.0" radius="14.245" thick="0.0050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />  
+                <cyl name="SvtCF" id="5" zmin="-30.0" zmax="30.0" radius="14.250" thick="0.273" mat="svt-CFiber" gap="0.864" />
+
+
+                <cone name="Svt-AlBusFwd" id="5" rho1="14.22" z1="30.0250" rho2="11.42" z2="36.9250" thick="0.0250" mat="SB-HPixel-AlBus" gap="0.0" />
+                <cone name="SvtHybridPixelsFwd" id="5"  rho1="14.245" z1="30.0250" rho2="11.445" z2="36.9250" thick="0.050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />
+                <cone name="SvtCFFWD" id="5" rho1="14.25" z1="30.0250" rho2="11.45" z2="36.9250" thick="0.273" mat="svt-CFiber" gap="0.864" />
+
+                <cone name="Svt-AlBusBwd" id="5" rho1="11.42" z1="-36.9250" rho2="14.22" z2="-30.0250" thick="0.0250" mat="SB-HPixel-AlBus" gap="0.0" />
+                <cone name="SvtHybridPixelsBwd" id="5"  rho1="11.445" z1="-36.9250" rho2="14.245" z2="-30.0250" thick="0.050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />
+                <cone name="SvtCFBwd" id="5" rho1="-11.45" z1="-36.9250" rho2="14.25" z2="-30.0250" thick="0.273" mat="svt-CFiber" gap="0.864" />
+
+    </included>
+</edml>

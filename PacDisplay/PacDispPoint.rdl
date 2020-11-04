@@ -1,0 +1,20 @@
+#ifndef PacDispPoint_HH
+#define PacDispPoint_HH
+
+#include <stdio.h>
+#include <Rtypes.h>
+#define STRINGSIZE 100
+
+struct PacDispPoint {
+  virtual ~PacDispPoint() {;}
+  Double_t x,y,z;
+  PacDispPoint(Double_t xin, Double_t yin, Double_t zin) : x(xin),y(yin),z(zin){}
+  PacDispPoint(): x(0.0),y(0.0),z(0.0){}
+  static const char* rootnames() {
+    return "x/D:y/D:z/D";
+  }
+  ClassDef(PacDispPoint,1)
+};
+
+#endif
+

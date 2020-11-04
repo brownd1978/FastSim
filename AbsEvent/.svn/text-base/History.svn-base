@@ -1,0 +1,26 @@
+Jan. 13, 2010   Roberto Stroili
+	split code in src and include directories
+
+May. 08, 2004   Stephen J. Gowdy
+	Remove some warnings with +w.
+
+Aug. 02, 2001	Asoka De Silva
+	Removed ProxyDict/IfdData.hh include.
+
+Tag V01-02-09 ---------------------
+Feb. 15, 2001   Eric Charles	
+	Added AbsEvent_LinkDef.rdl to control cint generation
+
+Jan. 04, 2001	Asoka De Silva
+	Ran Framework/FwkMigrate_v3 script to finish long forgotten migrations.
+
+V00-01-01 April 98 BobJ
+	Quarrie added new classes for EventID, I removed rscid
+	and added baBar.hh to get up to date
+
+V00-06-15 Sept 97 Bob J
+	Removed old form accessors
+
+Feb 98 Bob J finally add AbsDigi
+
+Sept 26, 98 Bob J add link_AbsEvent.mk file, update README

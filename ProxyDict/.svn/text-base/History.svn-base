@@ -1,0 +1,432 @@
+
+
+
+	      Reverse chronological history of ProxyDict
+	      ------------------------------------------
+
+If you make changes to this package, please
+	a)  Enter your initials in the "who" table below w/ full name and
+	    email
+	b)  Explain what you did in the history table
+	c)  Record any tag you made.  (You need not tag in order to
+	    make an entry in the table.)
+
+
+Explanation of "Who"
+--------------------
+   EDF	  Ed Frank          Univ. of Pennsylvania,  efrank@upenn5.hep.upenn.edu
+                            Univ. of Chicago        efrank@hep.uchicago.edu    
+   SJG	  Stephen J. Gowdy  LBL                     SGowdy@lbl.gov
+   DQ     David Quarrie     LBNL                    DRQuarrie@LBL.Gov
+   NG     Neil Geddes	    RAL                     N.I.Geddes@rl.ac.uk
+   DNB	  Dave Brown	    LBL			    Dave_Brown@LBL.gov
+   RB     Rainer Bartoldus  SLAC                    bartoldu@slac.stanford.edu 
+   JML    John LoSecco      Notre Dame              losecco@nd.edu
+   ryd    Anders Ryd        Caltech                 ryd@hep.caltech.edu
+   ads	  Asoka De Silva    TRIUMF		    desilva@triumf.ca
+   GB     Gaurav Bansal	    SLAC		    gbansal@slac.stanford.edu
+   cmr    Chris Roat        Stanford                croat@stanford.edu
+   RS     Roberto Stroili   Padova University       roberto.stroili@pd.infn.it
+
+============================================================================
+Tag		Date	Who	Description
+============================================================================
+		15Jan10 RS	split code in src and include directories
+V02-02-01       24Sep04 perazzo Remove include BaBar.hh from hh files.
+V02-02-00       05Aug04 RB      Change #define IFDKEY_BUFSIZE to enum in
+                                IfdStrKey.hh to work around a bug in ROOT
+                                4.00-08 Cint.
+V02-01-00       04Aug04 RB      Automated iostreams migration.
+V02-00-08	10May04 SJG	Remove a set of warnings in a test unit.
+V02-00-07	10May04 SJG	Remove cmr's changes below.
+V02-00-06	08May04 SJG	Remove warnings with +w/-Wall.
+V02-00-05	11Feb04 perazzo  Add ifndef VXWORKS around std::string
+				 to allow compilation with the old
+				 (2.7.2) gcc cross compiler which is used
+				 to build the segment level.
+
+cmr-031123      23Nov03 cmr      Add IfdDataMakerProxy (and corresponding
+                                 IfdHepAListMakerProxy) to support lazy
+                                 evaluation of data from the dictionary.
+                                 IfdMaker class added as base class for
+                                 the lazy evaluaiton.
+V02-00-04       18Aug03 GB       Put in insertion markers for the iostreams
+				 migration into AbsArgTest.cc, IfdKeyTest.cc
+				 and IfdSimpleProxyDictTest.cc. (This is a 
+				 comment line which gives a hint to the 
+				 migration script as to where to put the
+				 using std::<keyword> declarations.)
+
+V01-00-05	24Jul03 perazzo	 Based on V01-00-04, get IfdTypeKey.hh
+				 from the head of CVS.
+
+V02-00-03	10Jul03 EDF	 Rip out IFDTYPEKEY_SPECIALIZE entirely. 
+				 Although, technically, this is an interface
+	                         change, no one ever used this feature.  It
+                                 is a relic from the development 7 years ago.
+				 So I'm just bumping up the patch number, not
+                                 the major version number
+
+rb-030709       09Jul03 RB       Deprecate the use of IFDTYPEKEY_SPECIALIZE
+                                 by disabling the corresponding macro
+                                 definition.  This switch was introduced as a
+                                 work-around for compilers that don't support
+                                 static data in templated classes.  It is no
+                                 longer needed by any of our current compilers,
+                                 but the macro recently got in the way of the
+                                 iostreams migration.  So I am trying to
+                                 retire it now.
+
+V02-00-02	12Nov02 EDF	 Make it compile on linux. 
+
+V02-00-01       12Nov02 perazzo  Changes for Online build via control/ and
+				 segment/ subdir makefiles.
+V02-00-00	09Nov02 EDF	 Add ctor from std::string for IfdStrKey.
+				 Since this is the first use of the standard
+				 library in ProxyDict, bump the major release
+				 number up to 2.
+
+V01-00-02	26Feb02 EDF	 Remove IfdSimpleProxyDictSpeedTest.cc from
+                                 build.  I'm having some link troubles and
+                                 we don't need this at the moment.
+
+V01-00-00	06Aug01 EDF	 Remove IfdData.  It's been defunct for a long
+	                         time.  There are no inheritance requirements 
+				 for something to be put into a proxy dict.
+
+		02Aug01 ads	 Removed IfdhepAList.hh forwarding header.
+
+	        09Jan01 ads      Ran Framework/FwkMigrate_v3 script 
+			         (please see script for details of changes.)
+			         Removed catch, if any, from tcl scripts.
+			         Updated *.mk files with link-makefiles script.
+
+V00-07-02	27Oct99 EDF	-Tag for Jaceks change to memset for fast init
+
+V00-07-01	28Jul99 EDF	-Tag for ryd-990728
+ryd-990728      28Jul99 ryd     -Fix memory leak in Ifd.cc for markForStore
+                                 and itemStore members.
+V00-07-00	02Jun99 EDF	-Enough screwing around with the pseudo off
+				 by one error.  Abandon link compatability,
+				 change shape of IfdSimpleProxyDictEntry and
+				 IfdSimpleProxyDict and code the deletion
+				 list correctly.  Checked leaks w/ workshop.
+				 Reported errors all look OK (not real leaks).
+
+V00-06-10	27May99 SJG	-Updated entry in this file for me
+				-Added // $$ before hack in IfdSimplePD.cc
+                27May99 JML     -Fixed an initialization bug (off by 1 count)
+                                 in IfdSimpleProxyDict.cc
+V00-06-09	18apr99 EDF	-Missed a case in the dtor for the _myData.
+V00-06-08	18apr99 EDF	-Screwed up link compatibility w/ 8.0.1 becuase
+				 of Rainers' fix.  Patched.
+V00-06-07	18apr99 EDF	-Fix leak introduced in 06-06, found by gpdf
+
+rb-990417       17Apr99 RB      -Make char* argument of Ifd<T>::put const.  
+
+V00-06-06	17apr99 EDF	-Make simple proxydict delete in order
+				 of insertion because of Trk code.  Impl.
+				 is disgusting in order to be link compatible
+				 w/ 8.0.1.  Will make cleaner/faster when
+				 we build a release.
+
+V00-06-05	08apr99 EDF	-Back out the clever DictKey stuff, below.
+
+V00-06-04	07Apr99 EDF	-Some cleanup relative to work below.  changes
+				 object shapes.  
+
+V00-06-03	07Apr99 EDF	-Lots of optimization work.
+				   a)  Keys now have better hash values.
+				   b)  SimpleProxyDict now does hashing.
+				   c)  DictKeys violoate Liskov by not
+					owning their kids (the parent does
+					own them.).  Will perhaps clean later.
+					Gives big speedup.
+				   d)  Added speed test.  May only work on sun
+
+V00-06-02	17Mar99 EDF	-Yury's fix for delete in IfdAliasProxy.
+				-Accessor for cardinality in composite key.
+
+V00-06-01	01Feb99 EDF	-Add some air to IfdKey that will allow me
+				 to do some snooping in a test release w/o
+				 a full release build.
+
+V00-06-00	28Oct98 EDF	-Modify storeAllMarked() to take an enum
+				 that controls whether the "need to store"
+				 flags in a dictionary get cleared when
+				 store is done.  This means you can load
+				 a dictionary and then just keep on storing
+				 it over and over without having to remark
+				 the entries.  I'm not sure this will make
+				 sense for all dictionaries.
+
+V00-05-02	29Sep98 EDF	-Add link_ProxyDict.mk
+
+V00-05-01	20Aug98 EDF	-Modify regr. test script.
+
+		???	DNB	-Add AbsArg include to simple proxy dict
+				 and mess with online makefiles.
+
+V00-05-00	01Aug98 EDF	-Add new keyKind to IfdKey enumeration for
+				 odfTypeKeys.
+				-Big reorganization
+					o  move much code from inline to
+					   out of line, now that CXX 5* is
+					   gone.
+				-Add IfdNoComplileTest.  This makes sure
+				 that template definitions that are not
+				 used in regression tests (shame on me)
+				 at least get compiled once before release.
+
+DNB-02          09Jun98 DNB     -Update online Makefiles to use wildcard
+                                 targets
+
+V00-04-12	30Apr98	DNB	-Move destructors in templated classes to be
+				 the first declared function.  This is a workaround
+				 for a VxWorks template instantiation bug.
+
+		29Apr98	DNB	-Add 2_segment level. This
+				 has no effect on the offline behavior of the
+				 package.
+
+		29Apr98 EDF	-Change ints to size_t's and rearrange
+				 order of member initializers in SimplePD ctor.
+
+
+DNB-01		09Apr98	DNB	-Add online Makefile and 0_control level. This
+				 has no effect on the offline behavior of the
+				 package.
+
+V00-04-11	09Mar98 EDF	-Add missing BaBar.hh includes to .cc files.
+
+V00-04-10	28Jan98 EDF	-Finally get regression tests to run
+				 automatically from makefile and have
+				 system independent output.
+
+V00-04-09	14Jan98 EDF	-A fix for HP aCC
+
+V00-04-08	14Jan98 EDF	-Fix IfdSimpleProxyDictTest.cc compilation for
+				 patched sun compiler. Who knows who was right?
+				-Change print method in IfdSimpleProxyDict
+				 so that one may select whether or not address-
+				 es of proxies and AbsARgs are printed.  This
+				 is needed for portable printout for regress-
+				 ion test logs.  (What a pain).
+
+V00-04-07	07Jan98 EDF	-Remove all the rcsid and rscid statics
+				-Remove class static in IfdCounter.
+				-Base IfdCounter on long, not int.
+				-Only limited testing done, and only on Sun.
+
+V00-04-06	02Dec97	EDF	-Remove pure virt dtor in IfdTypeKeyIFace
+				 since some of our compilers can't deal with
+				 it.
+
+V00-04-05	02Dec97 EDF	-Improved debugging of type keys.  Added
+			           static char* IfdTypeKey<T>::name( char *)
+				   void IfdTypeKeyIFace::dumpName(ostream&)
+				 The former may be called to set a name
+				 associated with a *whole* class of type
+				 keys,
+					IfdTypeKey<MyClass>::name("MyClass")
+				 This affects the output of print(ostram&)
+				 and the output of dumpName(), but is UNRELATED
+				 to the operator==() which defines the key
+				 behavior.   The dumpName(ostream) is just
+				 a print method in the abstract base class
+				 that calls print() and then flushes w/ endl;
+				 Intended use:  while in a debugger, if
+				 you print the value of a type key, the
+				 integer value definign op== is printed, which
+				 is not so useful for systems debugging.  If
+				 you use name() you can associate a name to
+				 this to figure out what is what in the code.
+
+				-Moved some impl. of IfdTypeKeyIFace into .cc
+		
+
+		20Nov97 SJG	-Makefile fixes to keep .o out of src dir
+
+V00-04-02	07Nov97 NG 	-Refer to elements in base classes explicitly
+				 via derivatives this pointer for templated
+				 classes.
+
+V00-04-01	04Nov97 EDF	-Remove a print statement.
+
+V00-04-00	17Sep97 EDF	-AbsArgs
+				   +Make class data be static data in 
+				    getTypeKey to support gcc.
+				   +Improve constness:  clone, getTypeKey.
+				-Ifd:  move nullArg to a helper function.
+				-IfdStrKey:  remove CLHEP/Strings.h
+				   +asString now returns char*, not HepString.
+				   +Take some methods out of line.
+				-IfdTypeKey:  move static into a method.
+				   +Rename NO_STATIC_IN_TEMPLATE to be
+				    IFDTYPEKEY_SPECIALIZE to refect its new
+				    function.
+				-Reimplement IfdSimpleProxyDict w/ array
+				    rather than CLHEP AList.  Now have no
+				    dependency on CLHEP in ProxyDict.
+
+
+V00-03-04	30Aug97 EDF	-Fix an include from "foo" to "ProxyDict/foo"
+
+V00-03-03	29Aug97 EDF	-Make work on various platforms.  Had troble
+				 w/ virtual dtor in templated Ifd<T> on HP.
+
+         	29Aug97 EDF	-Remove pure virtual dtor from 
+				 IfdProxyDictFrontEnd for compilation on
+				 AIX and HP.  (dtor is virtual now, not pure).
+
+V00-03-02	29Aug97 EDF	-Remove dead code (IfdDictKeyT<T>).
+
+V00-03-01	29Aug97 EDF	-Introduce IfdProxyDictFrontEnd, a base class
+				 for Ifd<T>.  Now Ifd<T> is a replaceable
+				 component and multiple, application specific,
+				 front ends may be written.
+
+V00-03-00	28Aug97 EDF     -Remove requirement that data inherit from
+				 IfdData.  Internals are now in terms of void*
+				-Add Ifd<T>::put(IfdProxyDict*, T*).  This
+				 guy builds an IfdDataProxy for the passed T*.
+
+V00-02-06	02Jul97 EDF	-Fix for compilation on SunOS5
+				-add keyUsed(), keyUsed(const IfdKey&)
+				-Make IfdSimpleProxyDict::entry into a clas
+				-at file level (in separate file).
+
+V00-02-05	12Jun97 EDF	-Add IfdKey* IfdCompositeKey::tail(void).
+				-Add HepString IfdStrKey::asString();
+					warning:  signature may change.
+
+V00-02-04	09Jun97 DQ/EDF	-Add IfdHepAListProxyTemplate
+				-Remove fwd decls from IfdDictKey.
+
+V00-02-03	06Jun97 EDF	-Add migration document
+V00-02-02	06Jun97 EDF	-Add test of IfdDataProxyTemplate to test.
+				 Fix bug: delete arg after stoareAllMarked()
+
+V00-02-01	04Jun97 EDF	-Fix crash during deletion of IfdSimplePD
+				 by remembering to init arg in entry to 0.
+				 (Thanks to BobJ).
+				-Add test of deletion of IfdSimplePD to tests
+V00-02-00	02Jun97	EDF	-Replace NULL with 0 everywhere.
+				-IfdDataProxy is no longer the base for
+				 making proxies.  IfdDataProxyTemplate is.
+				-Extend arg list passed to proxies:
+				   faultHandler(IfdProxyDict*, const IfdKey&,
+						AbsArg&)
+				   storeHandler(IfdProxyDict*, const IfdKey&,
+						AbsArg&, T*)
+				-Extend Ifd<> interface
+				   Extra args may be passed to proxies.
+				   markForStore(...)
+				   storeItem(...)
+				-Modify IfdProxyDict  interface:
+				   invalidateProxyCaches() is  now called
+				   testProxyCaches().
+				-Extend IfdProxyDict interface:
+				   markForStore(const IfdDictKey&, AbsArg&)
+				   storeAllMarked()
+				   storeItem( const IfdDictKey&, AbsArg&)
+				-IfdSimpleProxyDict:
+				   Implement new mthods from IfdProxyDict
+				-Improve testing software
+				-Extend IfdCompositeKey:
+				   car()    returns head of list as IfdKey*
+				   cdr()    returns remainder of list as
+					    IfdCompositeKey*
+
+<none>		27May97	EDF	-Add AbsArgs:  type-safe replacement for
+				 replacement for void* when no RTTI.
+
+V00-01-12 (??)	05May97 SJG	-Added BaBar.hh to IfdTypeKey for template
+				 instantiation on HP. Needed due to a change
+				 in Beast.
+				-Also fix a mistake in testProxyDict.t file.
+
+V00-01-11	19Apr97 EDF	-Allow get() and put() to take a char*
+				 argument, rather than an IfdKey.  We convert
+				 the char* to an IfdStrKey to provide
+				 a more convenient interface for the user.
+
+V00-01-10	31Mar97 EDF	-Fix gnumakefile for building test sw on
+				 OSF by adding -define_templates for 
+				 compilation of test sw only.
+
+V00-01-09	13Mar97 SJG	-add #include "ProxyDict/IfdProxyDict.hh"
+				 to Ifd.hh
+				-add testProxyDict.t file.
+
+V00-01-07	07Mar97 EDF	-change foo(X x) to foo(X) for foo's thta do
+				 do not actually use the arg x.  This is to
+				 get the HP compile to stfu.
+				-reduce the maximum size of a composit key
+				 from 16 to 4 for space reasons.
+
+V00-01-06	24Feb97 EDF	-add invalildateProxyCaches().
+				 Luca's fixes for HP "not used" msgs.
+V00-01-05	13Feb97 EDF	-Move copy ctor for compositeKey to .cc
+				 .  No longer inline.  Needed for HP.
+
+V00-01-04	12Feb97 EDF	-IfdData dtor in .cc file.  Use this tag
+				 for first system build on AIX.
+
+V00-01-03	08Feb97 EDF	-Fix a decl found by cxx.
+
+V00-01-02	07Feb97 EDF	-Try to get reasonable copy and assignment
+				 ops for *all* classes.  For the most part,
+				 these operations are never allowed in Ifd
+				 classes.
+
+V00-01-01	07Feb97 EDF	-Compiles, links, and passes tests on
+				 g++ 2.7.2.2 (morgan10).
+
+V00-01-00	07Feb97 EDF	-Adopt filenames following TLA "Ifd" for
+				 "Interface Dictionary."  Nothing compiles.
+				 All documentation is wrong.  This will be
+				 the base of our repairs.  Have mercy, CVS.
+
+V00-00-09	07Feb97 EDF	-A tag prior to fixing up TLA naming
+
+V00-00-08	28Jan97 EDF	-compiles on DEC, HPUX, AIX.  Readme file
+				 is non-negligible, but still not enough
+				 for someone to read it and use PD.
+				 We're releaseing this tag.
+
+V00-00-07	28Jan97 EDF	-Same as V00-00-06, but mods for HP-UP
+				 (hep4.llnl.gov)
+
+V00-00-06	28Jan97 EDF	-Same as V00-00-05 but w/ simple mods
+				 for AIX4/xlC compilation (morgan04)
+
+V00-00-05       28Jan97 EDF	-Change to dictFE<T> front end.
+				-Add get/put with no 2ndary key.
+				-Create PDHepAList and proxy for it along
+				 with Test program.  This will all move
+				 to AbsEvent soon.
+				-Works on DEC OSF1V4.0 cxx V5.4-006 (online01)
+				-Readme file is now out of date but I want to
+				 release.
+
+V00-00-04       03Dec96 EDF     -A version that runs on all of our platforms.
+
+V00-00-03	29Nov96	EDF	-A version that runs on HP-UX B.10.20 using
+				 HP C++ HPCPLUSPLUS A.10.22.  Tested on
+				 HP-UX hep4 B.10.20 A 9000/780 2005911167
+				 a.k.a, hep4.llnl.gov.
+
+V00-00-02	22Nov96	EDF	-A version that runs on OSF 4.0 using
+				 DEC C++ V5.4-006 on Digital UNIX (Alpha)
+				 on online01.lbl.gov
+
+V00-00-01	19Nov96	EDF	-A version that runs on AIX 3.2 under xlC
+				 1.01.  Lots of improvement to the makefile.
+
+V00-00-00	14Nov96	EDF	-First tagged version.  Runs on SunOS5.5
+				 with Sun's CC 4.0.1, SRT 1.2.1, and head
+				 of CLHEP and BaBar(w/ a mod)
+
+============================================================================
+

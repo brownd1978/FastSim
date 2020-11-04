@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+        <config>
+            <sect name="TrackReconstructor">
+                <param name="bend_sites"     type="bool"  > false</param>
+                <param name="material_sites" type="bool"  > true</param>
+                <param name="inner_radius"  type="float" > 2.49</param>
+                <param name="inner_zmin"    type="float" > -25</param>
+                <param name="inner_zmax"    type="float" > 40</param>
+                <param name="outer_radius"  type="float" > 81.0</param>
+                <param name="outer_zmin"    type="float" > -115</param>
+                <param name="outer_zmax"    type="float" > 200</param>
+                <param name="fastfit"       type="bool"  > false</param>
+                <param name="minsimhit"       type="int"  > 4</param>
+                <param name="minsvthit"       type="int"  > 8</param>
+                <param name="mindchhit"       type="int"  > 15</param>
+                <param name="minpt"       type="float"    > 0.04</param>                
+                <param name="hitchicut"     type="float" >   5. </param> 
+                <param name="trkchicut"     type="float" >   5. </param> 
+                <param name="weedhits"      type="bool"  > true </param> 
+                <param name="maxweed"       type="int"   >   10  </param>
+                <param name="seedsmear"       type="float"   >   1.0  </param>
+                <param name="smearfactor"       type="float"   >   1e4  </param>
+                <param name="maxiterations"       type="int"   >   2  </param>
+                <param name="momupdatefactor"       type="float"   >   1.0  </param>
+                <param name="maxgap"       type="float"   >   1.0  </param>
+                <param name="scatterfraction" type="float" > 0.999 </param>
+                <param name="debug"       type="bool"   >   false  </param>
+                <param name="dopatrec"       type="bool"   >   false  </param>
+            </sect>
+        </config>
+    </included>
+</edml>

@@ -1,0 +1,19 @@
+string(REGEX REPLACE "^.*/([^ ]+)$" "\\1" pkgname ${CMAKE_CURRENT_SOURCE_DIR})
+
+#
+# Set specific compiler flags for the package
+#
+set(${pkgname}_CXX_FLAGS "-Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${${pkgname}_CXX_FLAGS}")
+
+configPkg(${pkgname})
+
+#
+# Generate library
+#
+add_library(${pkgname} ${Sources})
+target_link_libraries(${pkgname} ${LIB_LINK_LIST})
+
+add_executable(testRanecuSkipper test/testRanecuSkipper.cc)
+target_link_libraries(testRanecuSkipper ${BIN_LINK_LIST})
+add_test(ttestRanecuSkipper ${EXECUTABLE_OUTPUT_PATH}/testRanecuSkipper)

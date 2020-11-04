@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+   <included>
+      <measures>
+
+         <device name="Emc"
+                 type="EmcCluster" />
+
+      </measures>
+
+    </included>
+</edml>

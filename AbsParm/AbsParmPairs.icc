@@ -1,0 +1,218 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AbsParmPairs.icc 618 2010-04-14 14:19:15Z stroili $
+//
+// Description:
+//	Templated class AbsParmPairs<K,V>
+//
+//      See header for more info
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	Yury Kolomensky
+//
+// Copyright Information:
+//	Copyright (C) 2004	LBNL and UC Berkeley
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+#include "Experiment/Experiment.hh"
+#include "AbsParm/AbsParmPairs.hh"
+
+#include <iostream>
+#include <stdio.h>
+
+#include "Framework/AppModule.hh"
+#include "FrameUtil/AbsInterp.hh"
+#include <map>
+#include <sstream>
+using std::cerr;
+using std::cout;
+using std::endl;
+using std::ostream;
+
+//-------------------------------
+// Constructors and Destructor --
+//-------------------------------
+
+template <class K, class V>
+AbsParmPairs<K,V>::AbsParmPairs(const char* const theCommand,
+                                AppModule* theTarget)
+  : AbsParm(theCommand, theTarget)
+  , _dict(0)
+{
+  _dict = new std::map<K,V>();
+}
+
+template <class K, class V>
+AbsParmPairs<K,V>::AbsParmPairs(const AbsParmPairs& theOther,
+                              AppModule* theTarget)
+  : AbsParm(theOther, theTarget)
+  , _dict(new std::map<K,V>(*theOther._dict))
+{
+}
+
+
+template <class K, class V>
+AbsParmPairs<K,V>::~AbsParmPairs() {
+  delete _dict;
+}
+
+
+//----------------------------------------
+//-- Public Function Member Definitions --
+//----------------------------------------
+template <class K, class V>
+void 
+AbsParmPairs<K,V>::set(const K& k, const V& v) 
+{ 
+  // first set the value
+  if( _dict!=0 ) {
+    (*_dict)[k] = v;
+  }
+}
+
+
+// Output name
+template <class K, class V>
+void 
+AbsParmPairs<K,V>::print(ostream& o) const 
+{
+  typename std::map<K,V>::iterator iter;
+  for (iter=_dict->begin(); iter!=_dict->end(); iter++) {
+    o << command() << "[" << iter->first << "] =" << iter->second << endl;
+  }
+}
+
+template <class K, class V>
+ostream& 
+operator<<(ostream& o, const AbsParmPairs<K,V>& anAbsPS) {
+  anAbsPS.print(o);
+  return o;
+}
+
+//-------------------------------------------
+//-- Protected Function Member Definitions --
+//-------------------------------------------
+
+template <class K, class V>
+int 
+AbsParmPairs<K,V>::setHandler() {
+  if (_argc != 4) {
+    cerr << "TCL syntax: " << command() << " set Name Value" << endl;
+  } else {
+    K key;
+    V value;
+    read_value(getArgument(2),key);
+    read_value(getArgument(3),value);
+    set(key,value);
+  }
+  
+  return AbsInterp::OK;
+}
+
+template <class K, class V>
+int AbsParmPairs<K,V>::listHandler() const 
+{
+  AppModule* theInput = target( );
+  cout << "Value of " <<  command()  << " for module " << theInput->name()
+       << ": " << endl;
+  print( cout );
+  
+  return AbsInterp::OK;
+}
+
+template <class K, class V>
+int  AbsParmPairs<K,V>::getHandler() {
+  return AbsInterp::OK;
+}
+
+template <class K, class V>
+void 
+AbsParmPairs<K,V>::restoreState(char* var[]) {
+  int rval;
+  setArgs(4, var);
+  rval = setHandler();
+}  
+
+template <class K, class V>
+void 
+AbsParmPairs<K,V>::dumpState(AppConfigRecorder* r)
+{
+  if (0 != _dict) {
+    typename std::map<K,V>::iterator iter;
+    for( iter=_dict->begin(); iter != _dict->end(); iter++ ) {
+      std::ostringstream command;
+      command << "set " << iter->first;
+      r->store( iter->second, const_cast<char*>(command.str().c_str()) );
+    }
+  }
+}
+
+
+template <class K, class V>
+const V* 
+AbsParmPairs<K,V>::value(const K& key) const
+{
+  typename std::map<K,V>::iterator iter = _dict->find(key);
+  if ( iter != _dict->end() ) {
+    return &iter->second;
+  }
+
+  return 0;
+}
+ 
+
+//
+// The following methods ought to be external to this class, eg., just
+// some converter functions, set_value_from_char( X).  That way we
+// don't have to remake them for every specialization of
+// AbsParmPairs<T> *and* every specialization of AbsParmGeneral<T>.
+// Actually, this would be a great use of explicit template
+// specialization, but we don't do that in BaBar.
+//    -Ed
+
+
+template <class K, class V>
+void AbsParmPairs<K,V>::read_value(const char* buffer, double &x)
+{
+  sscanf (buffer, "%lg", &x);
+}
+
+template <class K, class V>
+void AbsParmPairs<K,V>::read_value(const char* buffer, float &x)
+{
+  sscanf (buffer, "%g", &x);
+}
+
+
+template <class K, class V>
+void AbsParmPairs<K,V>::read_value(const char* buffer, long& x)
+{
+   sscanf (buffer, "%ld", &x);
+}
+
+template <class K, class V>
+void AbsParmPairs<K,V>::read_value(const char* buffer, int& x)
+{
+   sscanf (buffer, "%d", &x);
+}
+
+template <class K, class V>
+void AbsParmPairs<K,V>::read_value(const char* buffer, std::string& x)
+{
+  x = buffer;
+}
+
+template <class K, class V>
+void AbsParmPairs<K,V>::read_value(const char* buffer, bool& x)
+{
+  if (buffer[0]=='t' || buffer[0] =='T') x = true;
+  else if (buffer[0]=='f' || buffer[0] =='F') x = false;
+  else {
+    AppModule* theInput = target( );
+    theInput->fullReport("value must start with [TFtf]");
+  }
+}

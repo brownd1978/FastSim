@@ -1,0 +1,134 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AppHash.icc,v 1.1 2004/08/16 22:16:21 bartoldu Exp $
+//
+// Description:
+//	Class AppHash. Hash Table class for BaBar Application Framework.
+//	Keys are character strings and are case-sensitive.
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	David R. Quarrie		Original Author
+//
+// Copyright Information:
+//	Copyright (C) 1994, 1995	Lawrence Berkeley Laboratory
+//
+//------------------------------------------------------------------------
+
+//-----------------------
+// This Class's Header --
+//-----------------------
+#include "Framework/AppHash.hh"
+
+//-------------
+// C Headers --
+//-------------
+#include <assert.h>
+
+//----------------
+// Constructors --
+//----------------
+
+template<class Item> 
+AppHash<Item>::AppHash( )
+{
+  _tclHashTable = new Tcl_HashTable;
+  Tcl_InitHashTable( _tclHashTable, TCL_STRING_KEYS );
+}
+
+//--------------
+// Destructor --
+//--------------
+
+template<class Item> 
+AppHash<Item>::~AppHash( )
+{
+  Tcl_DeleteHashTable( _tclHashTable );
+  delete _tclHashTable;
+  _tclHashTable = NULL;
+}
+
+//-------------
+// Selectors --
+//-------------
+    
+template<class Item> 
+Item* 
+AppHash<Item>::fetch( const char* const aKey ) const
+{
+  Tcl_HashEntry* entry;
+  Item* result = NULL;
+  
+  assert( NULL != aKey );
+  
+  entry = Tcl_FindHashEntry( _tclHashTable, (char*)aKey );
+  if ( NULL != entry ) {
+    result = (Item*) Tcl_GetHashValue( entry );
+  }
+  return result;
+}
+
+template<class Item> 
+bool 
+AppHash<Item>::has( const char* const aKey ) const
+{
+  Tcl_HashEntry* entry;
+  
+  assert( NULL != aKey );
+  
+  entry = Tcl_FindHashEntry( _tclHashTable, (char*)aKey );
+  return ( NULL != entry );
+}
+
+//-------------
+// Modifiers --
+//-------------
+
+template<class Item> 
+bool 
+AppHash<Item>::add( const char* const aKey, const Item* const anItem )
+{
+  bool result = false;
+  int ok;
+  Tcl_HashEntry* entry;
+  
+  assert( NULL != aKey   );
+  assert( NULL != anItem );
+  
+  entry = Tcl_CreateHashEntry( _tclHashTable, (char*)aKey, &ok );
+  if ( ok ) {
+    Tcl_SetHashValue( entry, (ClientData)anItem );
+    result = true;
+  }
+  return result;
+}
+
+template<class Item> 
+void 
+AppHash<Item>::force( const char* const aKey, const Item* const anItem )
+{
+  int ok;
+  Tcl_HashEntry* entry;
+  
+  assert( NULL != aKey   );
+  assert( NULL != anItem );
+  
+  entry = Tcl_CreateHashEntry( _tclHashTable, (char*)aKey, &ok );
+  Tcl_SetHashValue( entry, (ClientData)anItem );
+}
+
+template<class Item> 
+void 
+AppHash<Item>::remove( const char* const aKey )
+{
+  Tcl_HashEntry* entry;
+  
+  assert( NULL != aKey );
+  
+  entry = Tcl_FindHashEntry( _tclHashTable, (char*)aKey );
+  if ( NULL != entry ) {
+    Tcl_DeleteHashEntry( entry );
+  }
+}

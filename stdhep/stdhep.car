@@ -1,0 +1,3441 @@
+C   STDHEP   1.04     921103
+C          convert Monte Carlo generator events to and from standard format
+C
++PATCH,HISTORY,IF=NEVER.
+Author:
+        Lynn Garren, FNAL
+C1.05  Sep.  20, 1993
+      Make compatible with new SUSY particles in ISAJET 7.02
+      Add HPTRLST subroutines to stdhep library
+      Add routines to read and print the particle info supplied by PDG
+C1.04  Nov.  3, 1992
+      Add new JETSET particles
+C1.03  Oct. 30, 1991
+      Add ZEBRA I/O routines
+      Add flag HEPDBG for extra debugging code
+      Add flag HPZTST to select ZEBRA output in test jobs
+C1.02  Aug. 29, 1991
+      Add I/O of HEPEVT
+      Add test programs
+      Add HERWIG event conversion
+            --- all that changes is IDHEP convention
+            --- also move from double precision to single precision
+      Improve HEPNAM and HEPCMP
+C1.01
+      Convert ISAJET and JETSET events
++PATCH,COPYRIGHT
+Copyright (c) 1991   Universities Research Association, Inc.
+                    All Rights Reserved
+ 
+                                DISCLAIMER
+ 
+  The software is licensed on an "as is" basis only.  Universities Research
+  Association, Inc. (URA) makes no representations or warranties, express
+  or implied.  By way of example but not of limitation, URA makes no
+  representations or WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY
+  PARTICULAR PURPOSE, that  the use of the licensed software will not
+  infringe any patent, copyright, or trademark, or as to the use (or the
+  results of the use) of the licensed  software or written material in
+  terms of correctness, accuracy, reliability, currentness or otherwise.
+  The entire risk as to the results and performance of the  licensed
+  software is assumed by the user.  Universities Research Association, Inc.
+  and any of its trustees, overseers, directors, officers, employees,
+  agents or contractors shall not be liable under any claim, charge, or
+  demand, whether in contract, tort, criminal law, or otherwise, for any
+  and all loss, cost, charge, claim, demand, fee, expense, or damage of
+  every nature and kind arising out of, connected with, resulting from or
+  sustained as a result of using this software. In no event shall URA be
+  liable for special, direct, indirect or consequential damages, losses,
+  costs, charges, claims, demands, fees or expenses of any  nature or kind.
+ 
+  This material resulted from work developed under a Government Contract
+  and is subject to the following license:  The Government retains a
+  paid-up, nonexclusive, irrevocable worldwide license to reproduce,
+  prepare derivative works, perform publicly and display publicly by or for
+  the Government,  including the right to distribute to other Government
+  contractors.  Neither the United States nor the United States Department
+  of Energy, nor any of their employees, makes any warranty, express or
+  implied, or assumes any legal liability or responsibility for the
+  accuracy, completeness, or usefulness of any  information, apparatus,
+  product, or process disclosed, or represents that its use would not
+  infringe privately owned rights.
+ 
+                           Lynn Garren
+                           Fermi National Accelerator Laboratory (FNAL)
+                           (708) 840-2061
++PATCH,*STDHEP.
++USE,STDDCYTRAN,ISATRNS,LUNTRNS,HWGTRNS,PDGTRNS.
++USE,STDDES.
++PATCH,*STDTST.
++USE,TESTSTD.
++USE,STDDES.
++PATCH,*TSTIO.
++USE,TESTIO.
++USE,TESTHST.
++USE,STDDES.
++USE,UNIX,IF=SGI,DECS,SUN,IBMRT.
++PATCH,*STDTSTI.
++USE,TESTISA.
++USE,TESTHST.
++USE,STDDES.
++USE,UNIX,IF=SGI,DECS,SUN,IBMRT.
++PATCH,*STDTSTJ.
++USE,TESTJET.
++USE,TESTHST.
++USE,STDDES.
++USE,UNIX,IF=SGI,DECS,SUN,IBMRT.
++PATCH,*STDTSTH.
++USE,TESTHWG.
++USE,TESTHST.
++USE,STDDES.
++USE,UNIX,IF=SGI,DECS,SUN,IBMRT.
++PATCH,STDDES.
++DECK,BLANKDEK.
++KEEP,HEPLUN
+      INTEGER LNHWRT,LNHRD,LNHOUT,LNHDCY
+      COMMON/HEPLUN/LNHWRT,LNHRD,LNHOUT,LNHDCY
+      SAVE /HEPLUN/
++KEEP,HEPEVTC
+      INTEGER NMXHEP
+      PARAMETER (NMXHEP=4000)
+      COMMON/HEPEVT/NEVHEP,NHEP,ISTHEP(NMXHEP),IDHEP(NMXHEP),
+     &JMOHEP(2,NMXHEP),JDAHEP(2,NMXHEP),PHEP(5,NMXHEP),VHEP(4,NMXHEP)
+      INTEGER NEVHEP,NHEP,ISTHEP,IDHEP,JMOHEP,JDAHEP
+      REAL PHEP,VHEP
+      SAVE /HEPEVT/
+C...      NEVHEP       - event number
+C...      NHEP         - number of entries in this event
+C...      ISTHEP(..)   - status code
+C...      IDHEP(..)    - particle ID, P.D.G. standard
+C...      JMOHEP(1,..) - position of mother particle in list
+C...      JMOHEP(2,..) - position of second mother particle in list
+C...      JDAHEP(1,..) - position of first daughter in list
+C...      JDAHEP(2,..) - position of last daughter in list
+C...      PHEP(1,..)   - x momentum in GeV/c
+C...      PHEP(2,..)   - y momentum in GeV/c
+C...      PHEP(3,..)   - z momentum in GeV/c
+C...      PHEP(4,..)   - energy in GeV
+C...      PHEP(5,..)   - mass in GeV/c**2
+C...      VHEP(1,..)   - x vertex position in mm
+C...      VHEP(2,..)   - y vertex position in mm
+C...      VHEP(3,..)   - z vertex position in mm
+C...      VHEP(4,..)   - production time in mm/c
++KEEP,HEPEVTS
+      COMMON/HEPEVT/NEVHEPS,NHEPS,ISTHEPS(NMXHEP),IDHEPS(NMXHEP),
+     &JMOHEPS(2,NMXHEP),JDAHEPS(2,NMXHEP),PHEPS(5,NMXHEP),
+     &VHEPS(4,NMXHEP)
+      INTEGER NEVHEPS,NHEPS,ISTHEPS,IDHEPS,JMOHEPS,JDAHEPS
+      REAL PHEPS,VHEPS
+      SAVE /HEPEVT/
++KEEP,HEPZBR
+      INTEGER NNQ
+C... STDHEP has 75,002 words
+      PARAMETER (NNQ=200000)
+      COMMON/HEPZEB/HPXSTR,HPXDCY,HPXEVT,FENCE(8),LZSTOR(NNQ)
+      COMMON/HEPLNK/LDCY,LE1,LE2,LE3,LE4,LE5
+      INTEGER HPXSTR,HPXDCY,HPXEVT,FENCE,LZSTOR
+      INTEGER LDCY,LE1,LE2,LE3,LE4,LE5
+      REAL Q(NNQ)
+      INTEGER IQ(NNQ),LQ(NNQ)
+      EQUIVALENCE (LZSTOR(1),LQ(1)),(LQ(9),IQ(1),Q(1))
++KEEP,STDTBL
+      INTEGER NMXLN
+      PARAMETER (NMXLN=1600)
+      INTEGER IDT
+      REAL STMERR,STWERR
+      DOUBLE PRECISION STMASS,STWIDTH
+      CHARACTER*21 STNAME
+      COMMON/STDTBL/ IDT(NMXLN),STMERR(2,NMXLN),STWERR(2,NMXLN),
+     1             STMASS(NMXLN),STWIDTH(NMXLN),STNAME(NMXLN)
++KEEP,PDGTBL
+      INTEGER NMXLN2
+      PARAMETER (NMXLN2=1000)
+      INTEGER IDPDG
+      REAL PDMERR,PDWERR
+      DOUBLE PRECISION PDMASS,PDWIDTH
+      CHARACTER*21 PDNAME
+      COMMON/PDGTBL/ IDPDG(NMXLN2),PDMERR(2,NMXLN2),PDWERR(2,NMXLN2),
+     1             PDMASS(NMXLN2),PDWIDTH(NMXLN2),PDNAME(NMXLN2)
++PATCH,STDDCYTRAN.
++DECK,HEPLST
+      SUBROUTINE HEPLST(MLST)
+
+C...Purpose: to list an event from the standard common block.
+C
+C... MLST = 1   -- print all parameters except vertex
+C... MLST = 2   -- print all parameters, including vertex
+
++SEQ,HEPEVTC
++SEQ,HEPLUN
+
+      CHARACTER CHAP*20,CHAC*20,CHDL(4)*4
+      DATA CHDL/' ','()','!!','<>'/
+      SAVE CHDL
+
+C...Write header
+      LMX=18
+      IF(MLST.EQ.1)THEN
+        WRITE(LNHOUT,1100) NEVHEP
+      ELSEIF(MLST.EQ.2)THEN
+        WRITE(LNHOUT,1300) NEVHEP
+      ELSE
+        WRITE(LNHOUT,1500) NEVHEP,MLST
+        MLST = 1
+      ENDIF
+
+      DO 120 I=1,NHEP
+
+C...Get particle name, pad it and check it is not too long.
+        CHAP = CHDL(1)
+        IF(IDHEP(I).NE.0) CALL HEPNAM(IDHEP(I),CHAP)
+        LEN=0
+        DO 100 LEM=1,18
+  100     IF(CHAP(LEM:LEM).NE.' ') LEN=LEM
+        IF(ISTHEP(I).EQ.1) THEN
+          CHAC=CHAP
+          IF(LEN.GT.LMX) CHAC(LMX:LMX)='?'
+        ELSE
+          ICHR = 3
+          IF(ISTHEP(I).EQ.2) ICHR = 2
+C... This is for isajet partons
+          IF(ISTHEP(I).EQ.21 .OR. ISTHEP(I).EQ.22) ICHR = 4
+          IF(LEN.EQ.0) THEN
+            CHAC=CHDL(ICHR)(1:2)//' '
+          ELSE
+            CHAC=CHDL(ICHR)(1:1)//CHAP(1:MIN(LEN,LMX-2))//
+     &      CHDL(ICHR)(2:2)//' '
+            IF(LEN+2.GT.LMX) CHAC(LMX:LMX)='?'
+          ENDIF
+        ENDIF
+
+C...Write data for particle/jet.
+        IF(MLST.EQ.1)THEN
+          WRITE(LNHOUT,1200) I,CHAC,ISTHEP(I),IDHEP(I),
+     1       (JMOHEP(J1,I),J1=1,2),(JDAHEP(J2,I),J2=1,2),
+     2       (PHEP(J3,I),J3=1,5)
+        ELSEIF(MLST.EQ.2)THEN
+          WRITE(LNHOUT,1400) I,CHAC,ISTHEP(I),IDHEP(I),
+     1       (JMOHEP(J1,I),J1=1,2),(JDAHEP(J2,I),J2=1,2),
+     2       (PHEP(J3,I),J3=1,5),(VHEP(J,I),J=1,4)
+        ENDIF
+
+  120 CONTINUE
+
+      RETURN
+C...Format statements for output on unit LNHOUT:
+ 1100 FORMAT(///18X,'Event listing (HEP format)',12X,'Event: ',I8
+     1   //4X,'I',2X,'particle/jet',5X,'ISTHEP',2X,'IDHEP',5X,'JMOHEP',
+     2   6X,'JDAHEP',4X,'PHEP(1,I)',3X,'PHEP(2,I)',3X,'PHEP(3,I)',
+     3   3X,'PHEP(4,I)',3X,'PHEP(5,I)')
+ 1200 FORMAT(1X,I4,2X,A18,2X,I3,1X,I6,4(2X,I4),5F12.5)
+ 1300 FORMAT(///18X,'Event listing (HEP format with vertices)',
+     1   12X,'Event: ',I8
+     1   //4X,'I',2X,'particle/jet',5X,'ISTHEP',2X,'IDHEP',5X,'JMOHEP',
+     2   6X,'JDAHEP',4X,'PHEP(1,I)',3X,'PHEP(2,I)',3X,'PHEP(3,I)',
+     3   3X,'PHEP(4,I)',3X,'PHEP(5,I)'
+     4   /65X,'VHEP(1,I)',3X,'VHEP(2,I)',3X,'VHEP(3,I)',3X,'VHEP(4,I)'/)
+ 1400 FORMAT(1X,I4,2X,A18,2X,I3,1X,I6,4(2X,I4),5F12.5/58X,4(F12.3))
+ 1500 FORMAT(///18X,'Event listing (HEP format)',12X,'Event: ',I8
+     *   /20X,' Output type changed from unsupported',I5,' to 1'
+     1   //4X,'I',2X,'particle/jet',5X,'ISTHEP',2X,'IDHEP',5X,'JMOHEP',
+     2   6X,'JDAHEP',4X,'PHEP(1,I)',3X,'PHEP(2,I)',3X,'PHEP(3,I)',
+     3   3X,'PHEP(4,I)',3X,'PHEP(5,I)')
+
+      END
+
++DECK,HEPNAM
+      SUBROUTINE HEPNAM(ID,CHAU)
+
+C...Purpose: to give the particle/parton name as a character string.
+
+      CHARACTER CHAU*20
+      CHARACTER CHSP(1600)*15
+
+      DATA (CHSP(I), I=1,109) /'d','u','s','c','b','t','l','h',2*' ',
+     1'e','nu_e','mu','nu_mu','tau','nu_tau','chi','nu_chi',2*' ',
+     2'g','gamma','Z','W','H_1',' ','eta_tech','LQ','R','Z_2',
+     3'W_2','H_2','H_2','H_2','Z_3','H_3','H_3','H_3','H_4','H_5',
+     4'L susy d','L susy u','L susy s','L susy c',
+     5'L susy b','L susy t','gluino','photino',2*' ',
+     6'L susy e','L susy nu_e','L susy mu','L susy nu_mu',
+     7'L susy tau','L susy nu_tau','susy HL','susy HH','susy HA',
+     8' ','R susy d','R susy u','R susy s','R susy c',
+     9'R susy b','R susy t','zino','susy Z2','susy Z3',
+     *'susy Z4','R susy e','R susy nu_e','R susy mu',
+     1'R susy nu_mu','R susy tau','R susy nu_tau','wino',
+     2'susy W2',2*' ',19*'gen. code',' ','KS','KL','diquark',
+     3 2*'pi_diffr','n_diffr','p_diffr','l-baryon','h-baryon'/
+      DATA (CHSP(I), I=110,209) /'pi','a_0(980)','pi(1300)',7*' ',
+     1'rho(770)','b_1(1235)','a_1(1260)','rho(1450)','rho(1700)',5*' ',
+     2'a_2(1320)','pi_2(1670)',8*' ','rho_3(1690)',19*' ','eta',
+     3'f_0(975)','eta(1295)','f_0(1400)','eta(1440)','f_0(1590)',
+     4'f_0(1710)',3*' ','omega(783)','h_1(1170)','f_1(1285)',
+     5'omega(1390)','f_1(1420)','f_1(1510)','omega(1600)',3*' ',
+     6'f_2(1270)',' ','f_2(2010)','f_2(2300)','f_2(2340)',5*' ',
+     7'omega_3(1670)',9*' ','f_4(2050)',9*' '/
+      DATA (CHSP(I), I=210,359) /'eta''(958)','f''0',8*' ','phi(1020)',
+     1 'h_1(1380)','f_1(1420)','phi(1680)','f''_1',5*' ','f''_2(1525)',
+     2 9*' ','phi_3(1850)',19*' ','eta_c(1S)','chi_c0(1P)','eta_c(2S)',
+     3 7*' ','J/PSI','hc(1P)','chi_c1(1P)','PSI(2S)','PSI(3770)',
+     4 'PSI(4040)','PSI(4160)','PSI(4415)',2*' ','chi_c2(1P)',29*' ',
+     5 'eta_b(1S)','chi_b0(1P)','eta_b(2S)','chi_b0(2P)','eta_b(3S)',
+     6 5*' ','upsilon(1S)','h_b(1P)','chi_b1(1P)','upsilon(2S)',
+     7 'h_b(2P)','chi_b1(2P)','upsilon(3S)','upsilon(4S)',
+     8 'upsilon(10860)','upsilon(11020)','chi_b2(1P)','chi_b2(2P)',
+     9 28*' '/
+      DATA (CHSP(I), I=360,409) /'eta_t','chi_t0',8*' ','theta',
+     1'h_1t','chi_t1',7*' ','chi_t2',29*' '/
+      DATA (CHSP(I), I=410,439) /'eta_l','chi_l0',' ',
+     2'theta_l','h_1l','chi_l1','chi_l2',8*' ','eta_h',
+     3'chi_h0',' ','theta_h','h_1h','chi_h1','chi_h2',8*' '/
+      DATA (CHSP(I), I=440,489) /'pi','a_0(980)','pi(1300)',7*' ',
+     1'rho(770)','b_1(1235)','a_1(1260)','rho(1450)','rho(1700)',5*' ',
+     2'a_2(1320)','pi_2(1670)',8*' ','rho_3(1690)',19*' '/
+      DATA (CHSP(I), I=490,589) /'K','K*_0(1430)',8*' ','K*(892)',
+     1'K_1(1270)','K_1(1400)','K*(1410)','K*(1680)',5*' ','K*_2(1430)',
+     2'K_2(1770)',8*' ','K*_3(1780)',9*' ','K*_4(2045)',9*' ',
+     3'K','K*_0(1430)',8*' ','K*(892)','K_1(1270)','K_1(1400)',
+     4'K*(1410)','K*(1680)',5*' ','K*_2(1430)','K_2(1770)',8*' ',
+     5'K*_3(1780)',9*' ','K*_4(2045)',9*' '/
+      DATA (CHSP(I), I=590,739) /'D','D*_0',8*' ','D*(2010)',
+     1'D_1(2420)','D*_1',7*' ','D*_2(2460)',29*' ','D','D*_0',8*' ',
+     2'D*(2010)','D_1(2420)','D*_1',7*' ','D*_2(2460)',29*' ','D_s',
+     3'D*_s0',8*' ','D*_s','D_s1(2536)','D*_s1',7*' ','D*_s2',29*' '/
+      DATA (CHSP(I), I=740,939) /'B','B*_0',8*' ','B*',
+     1'B_1','B*_1',7*' ','B*_2',29*' ','B','B*_0',8*' ',
+     2'B*','B_1','B*_1',7*' ','B*_2',29*' ','B_s',
+     3'B*_s0',8*' ','B*_s','B_s1','B*_s1',7*' ','B*_s2',29*' ','B_c',
+     3'B*_c0',8*' ','B*_c','B_c1','B*_c1',7*' ','B*_c2',29*' '/
+      DATA (CHSP(I), I=940,1189) /'T','T*_0',8*' ','T*',
+     1'T_1','T*_1',7*' ','T*_2',29*' ','T','T*_0',8*' ',
+     2'T*','T_1','T*_1',7*' ','T*_2',29*' ','T_s',
+     3'T*_s0',8*' ','T*_s','T_s1','T*_s1',7*' ','T*_s2',29*' ','T_c',
+     3'T*_c0',8*' ','T*_c','T_c1','T*_c1',7*' ','T*_c2',29*' ','T_b',
+     3'T*_b0',8*' ','T*_b','T_b1','T*_b1',7*' ','T*_b2',29*' '/
+      DATA (CHSP(I), I=1190,1279) /'L','L*_0',' ','L*','L_1','L*_1',
+     1'L*_2',8*' ','L','L*_0',' ','L*','L_1','L*_1','L*_2',8*' ',
+     2'L_s','L*_s0',' ','L*_s','L_s1','L*_s1','L*_s2',8*' ',
+     3'L_c','L*_c0',' ','L*_c','L_c1','L*_c1','L*_c2',8*' ',
+     4'L_b','L*_b0',' ','L*_b','L_b1','L*_b1','L*_b2',8*' ',
+     5'L_t','L*_t0',' ','L*_t','L_t1','L*_t1','L*_t2',8*' '/
+      DATA (CHSP(I), I=1280,1384) /'H','H*_0',' ','H*','H_1','H*_1',
+     1'H*_2',8*' ','H','H*_0',' ','H*','H_1','H*_1','H*_2',8*' ',
+     2'H_s','H*_s0',' ','H*_s','H_s1','H*_s1','H*_s2',8*' ',
+     3'H_c','H*_c0',' ','H*_c','H_c1','H*_c1','H*_c2',8*' ',
+     4'H_b','H*_b0',' ','H*_b','H_b1','H*_b1','H*_b2',8*' ',
+     5'H_t','H*_t0',' ','H*_t','H_t1','H*_t1','H*_t2',8*' ',
+     6'H_l','H*_l0',' ','H*_l','H_l1','H*_l1','H*_l2',8*' '/
+      DATA (CHSP(I), I=1385,1425) /' ','Lambda','Lambda_c',
+     1'Xi_c''','Xi_c''','Lambda_b','Xi_b''','Xi_b''','Xi_bc''',
+     2'Xi_bc''','Omega_bc''','Lambda_t','Xi_t''','Xi_t''',
+     3'Xi_tc''','Xi_tc''','Omega_tc''','Xi_tb''','Xi_tb''',
+     4'Omega_tb''','Omega_tbc''','Lambda*','Lambda_c*',
+     1'Xi_c*''','Xi_c*''','Lambda_b*','Xi_b*''','Xi_b*''',
+     2'Xi_bc*''','Xi_bc*''','Omega_bc*''','Lambda_t*',
+     3'Xi_t*''','Xi_t*''','Xi_tc*''','Xi_tc*''','Omega_tc*''',
+     4'Xi_tb*''','Xi_tb*''','Omega_tb*''','Omega_tbc*'''/
+      DATA (CHSP(I), I=1426,1485) /' ','n','p',' ','Sigma','Sigma',
+     1'Sigma','Xi','Xi',' ','Sigma_c','Sigma_c','Sigma_c','Xi_c','Xi_c',
+     2'Omega_c','Xi_cc','Xi_cc','Omega_cc',' ','Sigma_b','Sigma_b',
+     3'Sigma_b','Xi_b','Xi_b','Omega_b','Xi_bc','Xi_bc','Omega_bc',
+     4'Omega_bcc','Xi_bb','Xi_bb','Omega_bb','Omega_bbc',' ',
+     5'Sigma_t','Sigma_t','Sigma_t','Xi_t','Xi_t','Omega_t','Xi_tc',
+     6'Xi_tc','Omega_tc','Omega_tcc','Xi_tb','Xi_tb','Omega_tb',
+     7'Omega_tbc','Omega_tbb','Xi_tt','Xi_tt','Omega_tt','Omega_ttc',
+     8'Omega_ttb',5*' '/
+      DATA (CHSP(I), I=1486,1545) /'Delta','Delta','Delta','Delta',
+     1'Sigma*','Sigma*','Sigma*','Xi*','Xi*','Omega',
+     2'Sigma*_c','Sigma*_c','Sigma*_c','Xi*_c','Xi*_c','Omega*_c',
+     3'Xi*_cc','Xi*_cc','Omega*_cc','Omega*_ccc',
+     4'Sigma*_b','Sigma*_b','Sigma*_b','Xi*_b','Xi*_b','Omega*_b',
+     5'Xi*_bc','Xi*_bc','Omega*_bc','Omega*_bcc',
+     6'Xi*_bb','Xi*_bb','Omega*_bb','Omega*_bbc','Omega*_bbb',
+     7'Sigma*_t','Sigma*_t','Sigma*_t','Xi*_t','Xi*_t','Omega*_t',
+     8'Xi*_tc','Xi*_tc','Omega*_tc','Omega*_tcc','Xi*_tb','Xi*_tb',
+     9'Omega*_tb','Omega*_tbc','Omega*_tbb','Xi*_tt','Xi*_tt',
+     *'Omega*_tt','Omega*_ttc','Omega*_ttb','Omega*_ttt',4*' '/
+
+      SAVE CHSP
+
+
+C...Initial values. Charge (in units of 1/3). Subdivide code.
+      CHAU=' '
+      IDA=IABS(ID)
+      IF(IDA.EQ.0) RETURN
+
+      IDCM=HEPCMP(ID)
+      IF(IDCM.LE.0) RETURN
+
+      LEN=0
+      KQ=HEPCHG(ID)
+      IDQ3=MOD(IDA/1000,10)
+      IDQ2=MOD(IDA/100,10)
+      IDQ1=MOD(IDA/10,10)
+      IDJS=MOD(IDA,10)
+      IDEX=MOD(IDA/10000,10)
+
+C...Read out root name and spin for simple particles and special cases
+      IF(IDA.LE.100) THEN
+        CHAU=CHSP(IDCM)
+        LEN=0
+        DO 100 LEM=1,20
+  100     IF(CHAU(LEM:LEM).NE.' ') LEN=LEM
+      ELSEIF(IDJS.EQ.0)THEN
+        CHAU=CHSP(IDCM)
+        LEN=0
+        DO 150 LEM=1,20
+  150     IF(CHAU(LEM:LEM).NE.' ') LEN=LEM
+
+C...Construct root name for diquark. Add on spin.
+      ELSEIF(IDQ1.EQ.0) THEN
+        CHAU(1:2)=CHSP(IDQ3)(1:1)//CHSP(IDQ2)(1:1)
+        IF(IDJS.EQ.1) CHAU(3:4)='_0'
+        IF(IDJS.EQ.3) CHAU(3:4)='_1'
+        LEN=4
+
+C...Construct root name for meson.
+      ELSEIF(IDQ3.EQ.0) THEN
+        CHAU=CHSP(IDCM)
+        LEN=0
+        DO 200 LEM=1,20
+  200     IF(CHAU(LEM:LEM).NE.' ') LEN=LEM
+
+C...Construct root name and spin for heavy baryon.
+      ELSE
+        IF(IDQ3.LE.6) THEN
+          CHAU=CHSP(IDCM)
+          LEN=0
+          DO 300 LEM=1,20
+  300       IF(CHAU(LEM:LEM).NE.' ') LEN=LEM
+        ELSE
+          LEN=0
+          IF(IDQ2.LE.2 .AND. IDQ1.LE.2)THEN
+            CHAU='Sigma'
+            IF(IDJS.EQ.4) CHAU='Sigma*'
+            IF(IDQ1.GT.IDQ2) CHAU='Lambda'
+          ELSEIF(IDQ1.LE.2) THEN
+            CHAU='Xi'
+            IF(IDJS.EQ.4) CHAU='Xi*'
+          ELSEIF(IDQ2.LE.2) THEN
+            CHAU='Xi'''
+            IF(IDJS.EQ.4) CHAU='Xi*'''
+          ELSEIF(IDQ1.GT.IDQ2) THEN
+            CHAU='Omega'''
+            IF(IDJS.EQ.4) CHAU='Omega*'''
+          ELSE
+            CHAU='Omega'
+            IF(IDJS.EQ.4) CHAU='Omega*'
+          ENDIF
+          DO 320 LEM=1,20
+  320       IF(CHAU(LEM:LEM).NE.' ') LEN=LEM
+
+C...Add on heavy flavour content for heavy baryon.
+          CHAU(LEN+1:LEN+2)='_'//CHSP(IDQ3)(1:1)
+          LEN=LEN+2
+          IF(IDQ2.GE.IDQ1.AND.IDQ1.GE.4) THEN
+            CHAU(LEN+1:LEN+2)=CHSP(IDQ2)(1:1)//CHSP(IDQ1)(1:1)
+            LEN=LEN+2
+          ELSEIF(IDQ2.GE.IDQ1.AND.IDQ2.GE.4) THEN
+            CHAU(LEN+1:LEN+1)=CHSP(IDQ2)(1:1)
+            LEN=LEN+1
+          ELSEIF(IDQ1.GT.IDQ2.AND.IDQ2.GE.4) THEN
+            CHAU(LEN+1:LEN+2)=CHSP(IDQ1)(1:1)//CHSP(IDQ2)(1:1)
+            LEN=LEN+2
+          ELSEIF(IDQ1.GT.IDQ2.AND.IDQ1.GE.4) THEN
+            CHAU(LEN+1:LEN+1)=CHSP(IDQ1)(1:1)
+            LEN=LEN+1
+          ENDIF
+        ENDIF
+      ENDIF
+
+C...Add on bar sign for antiparticle (where necessary).
+      IF(ID.GT.0.OR.LEN.EQ.0) THEN
+      ELSEIF(IDA.GT.10.AND.IDA.LE.40.AND.KQ.NE.0) THEN
+      ELSEIF(IDA.GT.46.AND.IDA.LE.60.AND.KQ.NE.0) THEN
+      ELSEIF(IDA.GT.66.AND.IDA.LE.80.AND.KQ.NE.0) THEN
+      ELSEIF(IDA.GE.81.AND.IDA.LE.99) THEN
+      ELSEIF(IDA.GT.100.AND.IDQ3.EQ.0.AND.KQ.NE.0) THEN
+      ELSE
+        CHAU(LEN+1:LEN+1)='~'
+        LEN=LEN+1
+      ENDIF
+
+C...Add on charge where applicable (conventional cases skipped).
+      IF(IDA.GE.81.AND.IDA.LE.100) THEN
+C...generator specific codes
+      ELSEIF(LEN.NE.0)THEN
+C...everything else
+        IF(KQ.EQ.6) CHAU(LEN+1:LEN+2)='++'
+        IF(KQ.EQ.-6) CHAU(LEN+1:LEN+2)='--'
+        IF(KQ.EQ.3) CHAU(LEN+1:LEN+1)='+'
+        IF(KQ.EQ.-3) CHAU(LEN+1:LEN+1)='-'
+
+        IF(KQ.EQ.0.AND.IDA.LE.22) THEN
+C...quarks and leptons
+        ELSEIF(KQ.EQ.0.AND.(IDA.GE.41.AND.IDA.LE.56)) THEN
+C...left squarks, sleptons, etc.
+        ELSEIF(KQ.EQ.0.AND.(IDA.GE.61.AND.IDA.LE.67)) THEN
+C...right squarks
+        ELSEIF(KQ.EQ.0.AND.(IDA.GE.71.AND.IDA.LE.76)) THEN
+C...right sleptons
+        ELSEIF(IDA.GT.100.AND.IDQ3.EQ.0.AND.IDQ2.EQ.IDQ1.AND.
+     &      IDQ2.NE.1) THEN
+C... eta, psi, upsilon, etc.
+        ELSEIF(KQ.EQ.0) THEN
+          CHAU(LEN+1:LEN+1)='0'
+        ENDIF
+      ENDIF
+
+      RETURN
+      END
+
++DECK,HEPCMP
+      FUNCTION HEPCMP(KQ)
+
+C...Purpose: to compress the standard ID codes for use in mass and decay
+C...arrays; also to check whether a given code actually is defined.
+
+C...Subdivide standard ID code into constituent pieces.
+      HEPCMP=0
+      KQA=IABS(KQ)
+      KQX=MOD(KQA/10000,10)
+      KQ3=MOD(KQA/1000,10)
+      KQ2=MOD(KQA/100,10)
+      KQ1=MOD(KQA/10,10)
+      KQJ=MOD(KQA,10)
+      KQSM=(KQJ-1)/2
+
+C...Simple cases: direct translation or special codes.
+      IF(KQA.EQ.0.OR.KQA.GE.100000) THEN
+C... illegal
+      ELSEIF(KQA.LE.99) THEN
+        HEPCMP=KQA
+C... need to check antiparticle legality
+        ICH=HEPCHG(KQ)
+        IF(KQ.LT.0.AND.ICH.EQ.0)THEN
+          IF(KQA.GE.1.AND.KQA.LE.8)THEN
+C... quarks
+          ELSEIF(KQA.GE.11.AND.KQA.LE.18)THEN
+C... leptons
+          ELSEIF(KQA.EQ.28 .OR. KQA.EQ.29 .OR. KQA.EQ.40)THEN
+          ELSEIF(KQA.GE.41.AND.KQA.LE.46)THEN
+C... left squarks
+          ELSEIF(KQA.GE.51.AND.KQA.LE.56)THEN
+C... left sleptons
+          ELSEIF(KQA.GE.61.AND.KQA.LE.66)THEN
+C... right squarks
+          ELSEIF(KQA.GE.71.AND.KQA.LE.76)THEN
+C... right sleptons
+          ELSEIF(KQA.GE.81.AND.KQA.LE.99)THEN
+C... internal definitions
+          ELSE
+            HEPCMP=0
+          ENDIF
+        ENDIF
+      ELSEIF(KQJ.EQ.0) THEN
+C... KS and KL
+        IF(KQ.EQ.130) HEPCMP=102
+        IF(KQ.EQ.310) HEPCMP=101
+C... jetset diffr particles
+        IF(KQ.EQ.110) HEPCMP=104
+        IF(KQA.EQ.210) HEPCMP=105
+        IF(KQA.EQ.2110) HEPCMP=106
+        IF(KQA.EQ.2210) HEPCMP=107
+C...Mesons.
+      ELSEIF(KQ3.EQ.0) THEN
+        IF(KQ2.EQ.0.OR.KQ2.EQ.9.OR.KQ1.EQ.0.OR.KQ1.EQ.9) THEN
+C... illegal (no gluons allowed)
+        ELSEIF(KQ2.LT.KQ1) THEN
+C... illegal quark order
+        ELSEIF(KQ.LT.0.AND.(KQ2.EQ.KQ1)) THEN
+C... illegal antiparticle
+        ELSEIF(MOD(KQJ,2).EQ.0)THEN
+C... illegal spin
+        ELSEIF(KQ2.EQ.KQ1) THEN
+          IF(KQ2.LE.6)THEN
+            HEPCMP = 110 + (KQ2-1)*50 + KQSM*10 + KQX
+          ELSEIF(KQX.LE.2)THEN
+            HEPCMP = 410 + (KQ2-7)*15 + KQSM*3 + KQX
+          ENDIF
+        ELSEIF(KQ2.EQ.3 .OR. KQ2.EQ.2) THEN
+          HEPCMP = 440 + (KQ2+KQ1-3)*50 + KQSM*10 + KQX
+        ELSEIF(KQ2.EQ.4)THEN
+          HEPCMP = 590 + (KQ1-1)*50 + KQSM*10 + KQX
+        ELSEIF(KQ2.EQ.5)THEN
+          HEPCMP = 740 + (KQ1-1)*50 + KQSM*10 + KQX
+        ELSEIF(KQ2.EQ.6)THEN
+          HEPCMP = 940 + (KQ1-1)*50 + KQSM*10 + KQX
+        ELSEIF(KQ2.EQ.7.AND.KQX.LE.2)THEN
+          HEPCMP = 1190 + (KQ1-1)*15 + KQSM*3 + KQX
+        ELSEIF(KQ2.EQ.8.AND.KQX.LE.2)THEN
+          HEPCMP = 1280 + (KQ1-1)*15 + KQSM*3 + KQX
+        ENDIF
+
+C...Diquarks.
+      ELSEIF(KQ1.EQ.0) THEN
+        IF(KQX.NE.0)THEN
+C... no excited states
+        ELSEIF(KQJ.NE.1.AND.KQJ.NE.3) THEN
+C... only 2 spin states
+        ELSEIF(KQ3.EQ.0.OR.KQ3.EQ.9.OR.KQ2.EQ.0.OR.KQ2.EQ.9) THEN
+C... illegal (no gluons allowed)
+        ELSEIF(KQ3.LT.KQ2) THEN
+C... illegal quark order
+        ELSE
+C... all diquarks are the same...
+          HEPCMP=103
+        ENDIF
+
+C...Baryons.
+      ELSEIF(KQX.EQ.0.AND.(KQJ.EQ.2.OR.KQJ.EQ.4)) THEN
+C... no excited states and only spins 1/2 and 3/2
+        IF(KQ3.EQ.0.OR.KQ3.EQ.9.OR.KQ2.EQ.0.OR.KQ2.EQ.9.OR.
+     1        KQ1.EQ.0.OR.KQ1.EQ.9) THEN
+C... illegal (no gluons allowed)
+        ELSEIF(KQ3.LT.KQ1.OR.KQ3.LT.KQ2) THEN
+C... illegal quark order
+        ELSEIF(KQ3.GE.7) THEN
+C... l and h baryons are all the same
+          HEPCMP=101+KQ3
+          IF(KQ3.EQ.KQ1.AND.KQ3.EQ.KQ2.AND.KQJ.EQ.2) HEPCMP=0
+          IF(KQ2.LT.KQ1 .AND. KQ3.EQ.KQ1) HEPCMP=0
+          IF(KQ2.LT.KQ1 .AND. KQJ.EQ.4) HEPCMP=0
+          IF(KQ3.GT.8) HEPCMP=0
+        ELSEIF(KQJ.EQ.2) THEN
+C...Spin 1/2 baryons.
+          IF(KQ3.EQ.KQ1 .AND. KQ3.EQ.KQ2)THEN
+          ELSEIF(KQ2.LT.KQ1 .AND. KQ3.EQ.KQ1)THEN
+          ELSEIF(KQ2.LT.KQ1) THEN
+            HEPCMP=1385+((KQ3-1)*(KQ3-2)*(KQ3-3))/6+
+     1                  ((KQ1-1)*(KQ1-2))/2+KQ2
+          ELSE
+            HEPCMP=1425+((KQ3+1)*KQ3*(KQ3-1))/6+(KQ2*(KQ2-1))/2+KQ1
+          ENDIF
+        ELSEIF(KQJ.EQ.4) THEN
+C...Spin 3/2 baryons.
+          IF(KQ2.LT.KQ1 .AND. KQ3.EQ.KQ1)THEN
+          ELSEIF(KQ2.LT.KQ1) THEN
+            HEPCMP=1405+((KQ3-1)*(KQ3-2)*(KQ3-3))/6+
+     1                  ((KQ1-1)*(KQ1-2))/2+KQ2
+          ELSE
+            HEPCMP=1485+((KQ3+1)*KQ3*(KQ3-1))/6+(KQ2*(KQ2-1))/2+KQ1
+          ENDIF
+        ENDIF
+
+      ENDIF
+
+      RETURN
+      END
+
++DECK,HEPCHG
+      FUNCTION HEPCHG(KQ)
+
+C...Purpose: to give three times the charge for a particle/parton.
+      INTEGER ICHG(109)
+      DATA ICHG/-1,2,-1,2,-1,2,-1,2,2*0,-3,0,-3,0,-3,0,-3,6*0,
+     1          3,6*0,3,0,3,6,2*0,3,6,2*0,-1,2,-1,2,-1,2,4*0,
+     2          -3,0,-3,0,-3,5*0,-1,2,-1,2,-1,2,4*0,
+     3		-3,0,-3,0,-3,0,2*3,2*0,29*0/
+      SAVE ICHG
+
+C...Initial values. Simple case of direct readout.
+      HEPCHG=0
+
+      KQA=IABS(KQ)
+      KQX=MOD(KQA/10000,10)
+      KQ3=MOD(KQA/1000,10)
+      KQ2=MOD(KQA/100,10)
+      KQ1=MOD(KQA/10,10)
+      KQJ=MOD(KQA,10)
+
+C...Simple cases: direct translation or special codes.
+      IF(KQA.EQ.0.OR.KQA.GE.100000) THEN
+C... illegal
+      ELSEIF(KQA.LE.100) THEN
+        HEPCHG = ICHG(KQA)
+      ELSEIF(KQJ.EQ.0) THEN
+C... KS and KL (and undefined)
+        HEPCHG = 0
+C... jetset diffr particles
+        IF(KQA.EQ.210) HEPCHG=3
+        IF(KQA.EQ.2210) HEPCHG=3
+
+C...Construction from quark content for heavy meson, diquark, baryon.
+      ELSEIF(KQ3.EQ.0) THEN
+C...Mesons.
+        HEPCHG = ICHG(KQ2) - ICHG(KQ1)
+C...Strange mesons.
+        IF(KQ2.EQ.3) HEPCHG = ICHG(KQ1) - ICHG(KQ2)
+C...Beauty mesons.
+        IF(KQ2.EQ.5) HEPCHG = ICHG(KQ1) - ICHG(KQ2)
+      ELSEIF(KQ1.EQ.0) THEN
+C...Diquarks.
+        HEPCHG = ICHG(KQ3) + ICHG(KQ2)
+      ELSE
+C...Baryons
+        HEPCHG = ICHG(KQ3) + ICHG(KQ2) + ICHG(KQ1)
+      ENDIF
+
+C... fix sign of charge
+      IF(KQ.LT.0 .AND. HEPCHG.NE.0) HEPCHG = -HEPCHG
+
+      RETURN
+      END
+
++DECK,HEPRD
+      SUBROUTINE HEPRD(LOK)
+
+C...Purpose: to read an event from the standard common block.
+C
++SEQ,HEPEVTC
++SEQ,HEPLUN
+
+      LOGICAL LOK
+      INTEGER I,J,K
+
+      LOK = .TRUE.
+      IF(LNHRD.LE.0)THEN
+      ELSE
+C...read the event number and size
+        READ(LNHRD,ERR=900,END=900) NEVHEP,NHEP
+C...set everything to zero
+        DO 120 J=1,NMXHEP
+          ISTHEP(J)=0
+          IDHEP(J)=0
+          DO 100 K=1,2
+            JMOHEP(K,J)=0
+  100       JDAHEP(K,J)=0
+          DO 105 K=1,5
+  105       PHEP(K,J)=0.
+          DO 110 K=1,4
+  110       VHEP(K,J)=0.
+  120   CONTINUE
+C...now read the rest of the event
+        IF(NHEP.LE.0)THEN
+          WRITE(LNHOUT,101) NEVHEP
+        ELSE
+          READ(LNHRD,ERR=900) (ISTHEP(I),I=1,NHEP),(IDHEP(I),I=1,NHEP),
+     1        ((JMOHEP(K,I),K=1,2),I=1,NHEP),
+     2        ((JDAHEP(K,I),K=1,2),I=1,NHEP),
+     3        ((PHEP(K,I),K=1,5),I=1,NHEP),
+     4        ((VHEP(K,I),K=1,5),I=1,NHEP)
+        ENDIF
+      ENDIF
+      RETURN
+  900 WRITE (LNHOUT,901) NEVHEP
+      LOK=.FALSE.
+      RETURN
+  101 FORMAT(/5X,'HEPRD: no particles to read in event',I8)
+  901 FORMAT(/5X,'HEPRD: read error on event',I8)
+      END
+
++DECK,HEPWRT
+      SUBROUTINE HEPWRT(LOK)
+
+C...Purpose: to write an event from the standard common block.
+C
++SEQ,HEPEVTC
++SEQ,HEPLUN
+
+      LOGICAL LOK
+      INTEGER I,K
+
+      LOK=.TRUE.
+      IF(LNHWRT.LE.0)THEN
+      ELSEIF(NHEP.LE.0)THEN
+        WRITE(LNHOUT,101) NEVHEP
+      ELSE
+        WRITE(LNHWRT,ERR=900) NEVHEP,NHEP
+        WRITE(LNHWRT,ERR=900) (ISTHEP(I),I=1,NHEP),(IDHEP(I),I=1,NHEP),
+     1        ((JMOHEP(K,I),K=1,2),I=1,NHEP),
+     2        ((JDAHEP(K,I),K=1,2),I=1,NHEP),
+     3        ((PHEP(K,I),K=1,5),I=1,NHEP),
+     4        ((VHEP(K,I),K=1,5),I=1,NHEP)
+      ENDIF
+      RETURN
+  900 WRITE (LNHOUT,901) NEVHEP
+      LOK=.FALSE.
+      RETURN
+  101 FORMAT(/5X,'HEPWRT: no particles to write in event',I8)
+  901 FORMAT(/5X,'HEPWRT: write error on event',I8)
+      END
+
++DECK,HEPZRD
+      SUBROUTINE HEPZRD(LOK)
+C
+C...read an event from a zebra FZ file
+C
+      IMPLICIT NONE
++SEQ,HEPEVTC
++SEQ,HEPLUN
++SEQ,HEPZBR
+
+      LOGICAL LOK
+      INTEGER I,J,K,LL,NUH,IUH
+
+      LOK = .TRUE.
+      IF(LNHRD.LE.0)THEN
+        WRITE(LNHOUT,102) LNHRD
+        LOK=.FALSE.
+      ELSE
+C...read the event 
+        CALL MZWIPE(HPXEVT)
+        CALL FZIN(LNHRD,HPXEVT,LE1,1,' ',NUH,IUH)
+C...unpack and fill HEPEVT
+        CALL HPZFLC
+        IF(NHEP.LE.0)THEN
+          WRITE(LNHOUT,101) NEVHEP,IUH
+          LOK=.FALSE.
+        ENDIF
+      ENDIF
+      RETURN
+  102 FORMAT(/5X,'HEPZRD: illegal output unit number:',I8)
+  101 FORMAT(/5X,'HEPZRD: no data for event',I8,' header:',I10)
+      END
+
++DECK,HEPZWRT
+      SUBROUTINE HEPZWRT(LOK)
+C
+C... write an event in zebra FZ format
+C
+      IMPLICIT NONE
++SEQ,HEPEVTC
++SEQ,HEPLUN
++SEQ,HEPZBR
+
+      LOGICAL LOK
+      INTEGER I,K,LL
+
+      LOK=.TRUE.
+      CALL HPZFLB
+      IF(LNHWRT.LE.0)THEN
+        WRITE(LNHOUT,102) LNHOUT
+        LOK=.FALSE.
+      ELSEIF(NHEP.LE.0)THEN
+        WRITE(LNHOUT,101) NEVHEP
+        LOK=.FALSE.
+      ELSE
++SELF,IF=HEPDBG.
+C... debugging calls
+        CALL DZSTOR('Display store',HPXSTR)
+        CALL DZSURV('Survey event division',HPXEVT,LE1)
+        CALL DZSHOW('Display bank1',HPXEVT,LE1,'DLV',0,0,0,0)
++SELF.
+C... call zebra output here
+        CALL FZOUT(LNHWRT,HPXEVT,LE1,1,' ',2,1,NEVHEP)
+      ENDIF
+      RETURN
+  101 FORMAT(/5X,'HEPZWRT: no particles to write in event',I8)
+  102 FORMAT(/5X,'HEPZWRT: illegal output unit number:',I8)
+      END
+
++DECK,HEPZINIT.
+      SUBROUTINE HEPZINIT
+C
+C   Initialize HEPZEB (event data Zebra common)
+C
+      IMPLICIT NONE
++SEQ,HEPLUN
++SEQ,HEPZBR
+
+      INTEGER NREF,NDIV
+      PARAMETER (NDIV=40000)
+      PARAMETER (NREF=9)
+C
+      INTEGER LISTIN(4)
+
+      DATA  LISTIN / 3, 1,-1, 0 /
+C  LISTIN(1) = 3 elements in list
+C  LISTIN(2) = default log level 
+C  LISTIN(3) = lun for log printing (-1 => IQLOG=IQTYPE)
+C  LISTIN(4) = lun for output printing (0 => IQPRNT=IQLOG; -1 => IQPRNT=IQTYPE)
+C
+      LISTIN(3)=LNHOUT
+      CALL MZEBRA(LISTIN)
+      CALL MZVERS
+C... Initialize store in /HEPZEB/ common
+      CALL MZSTOR (HPXSTR,'/HEPZEB/',' ',FENCE,LQ(1),LQ(NREF),
+     1          LQ(2*NREF),LQ(NDIV),IQ(NNQ))
+
++SELF,IF=HEPDBG.
+      CALL MZLOGL (HPXSTR,3)
++SELF.
+      CALL VZERO  (LZSTOR,150)
+C... Make divisions
+      CALL MZDIV (HPXSTR,HPXDCY,'DECAY',5000,50000,' ')
+      CALL MZDIV (HPXSTR,HPXEVT, 'EVENT',5000,80000,' ')
+C...define links
+      CALL MZLINK(HPXSTR,'/HEPLNK/',LDCY,LE5,LDCY)
+      RETURN
+      END
+
++DECK,HPZFLB.
+      SUBROUTINE HPZFLB
+C
+C  create and fill zebra data banks
+C
+      IMPLICIT NONE
++SEQ,HEPEVTC
++SEQ,HEPLUN
++SEQ,HEPZBR
+
+      INTEGER I,K,LL,KK
+C
+C...start by wiping the division
+      CALL MZWIPE(HPXEVT)
+C...declare bank
+      CALL MZBOOK(HPXEVT,LE1,LE1,1,'EVT',6,6,2,2,0)
+      IQ(LE1+1)=NEVHEP
+      IQ(LE1+2)=NHEP
+      CALL MZBOOK(HPXEVT,LL,LE1,-1,'ISTA',0,0,NHEP,2,0)
+      CALL MZBOOK(HPXEVT,LL,LE1,-2,'IDA',0,0,NHEP,2,0)
+      CALL MZBOOK(HPXEVT,LL,LE1,-3,'JMOA',0,0,2*NHEP,2,0)
+      CALL MZBOOK(HPXEVT,LL,LE1,-4,'JDAA',0,0,2*NHEP,2,0)
+      CALL MZBOOK(HPXEVT,LL,LE1,-5,'PA',0,0,5*NHEP,3,0)
+      CALL MZBOOK(HPXEVT,LL,LE1,-6,'VA',0,0,4*NHEP,3,0)
+    
+      DO 200 I=1,NHEP
+        LL=LQ(LE1-1)
+        IQ(LL+I)=ISTHEP(I)
+        LL=LQ(LE1-2)
+        IQ(LL+I)=IDHEP(I)
+        LL=LQ(LE1-3)
+        IQ(LL+I)=JMOHEP(1,I)
+        IQ(LL+NHEP+I)=JMOHEP(2,I)
+        LL=LQ(LE1-4)
+        IQ(LL+I)=JDAHEP(1,I)
+        IQ(LL+NHEP+I)=JDAHEP(2,I)
+        LL=LQ(LE1-5)
+        DO 130 K=1,5
+          KK=LL+NHEP*(K-1)+I
+ 130      Q(KK)=PHEP(K,I)
+        LL=LQ(LE1-6)
+        DO 140 K=1,4
+          KK=LL+NHEP*(K-1)+I
+ 140      Q(KK)=VHEP(K,I)
+ 200  CONTINUE
+
+      RETURN
+      END
+
++DECK,HPZFLC.
+      SUBROUTINE HPZFLC
+C
+C...fill HEPEVT from zebra banks
+C
+      IMPLICIT NONE
++SEQ,HEPEVTC
++SEQ,HEPLUN
++SEQ,HEPZBR
+
+      INTEGER I,J,K,LL,NUH,IUH,KK
+
+C...set everything to zero
+      NEVHEP = 0
+      NHEP = 0
+      DO 120 J=1,NMXHEP
+        ISTHEP(J)=0
+        IDHEP(J)=0
+        DO 100 K=1,2
+          JMOHEP(K,J)=0
+  100     JDAHEP(K,J)=0
+        DO 105 K=1,5
+  105     PHEP(K,J)=0.
+        DO 110 K=1,4
+  110     VHEP(K,J)=0.
+  120 CONTINUE
+
+C...unpack and fill HEPEVT
+      NEVHEP=IQ(LE1+1)
+      NHEP=IQ(LE1+2)
+      IF(NHEP.GT.0)THEN
+        DO 200 I=1,NHEP
+          LL=LQ(LE1-1)
+          ISTHEP(I)=IQ(LL+I)
+          LL=LQ(LE1-2)
+          IDHEP(I)=IQ(LL+I)
+          LL=LQ(LE1-3)
+          JMOHEP(1,I)=IQ(LL+I)
+          JMOHEP(2,I)=IQ(LL+NHEP+I)
+          LL=LQ(LE1-4)
+          JDAHEP(1,I)=IQ(LL+I)
+          JDAHEP(2,I)=IQ(LL+NHEP+I)
+          LL=LQ(LE1-5)
+          DO 170 K=1,5
+            KK=LL+NHEP*(K-1)+I
+ 170        PHEP(K,I)=Q(KK)
+          LL=LQ(LE1-6)
+          DO 180 K=1,4
+            KK=LL+NHEP*(K-1)+I
+ 180        VHEP(K,I)=Q(KK)
+ 200    CONTINUE
+      ENDIF
+      RETURN
+      END
+
++PATCH,ISATRNS.
++DECK,ISAHEP
+      SUBROUTINE ISAHEP(MCONV)
+
+C...Purpose: to convert ISAJET event record contents to or from
+C...the standard event record common block.
+
++SEQ,HEPEVTC
+
+C...for event number
++SEQ,IDRUN
+C...initial partons
++SEQ,PJETS
++SEQ,PRIMAR
+C...partons created during decay
++SEQ,JETSET
+C...particles created in the decay, including final state particles
++SEQ,PARTCL
+
+      INTEGER I1,IHP,MPART,JET,NPOFF,NJHEP,NWHEP,IMO,IJT
+      INTEGER JPMO(2,MXJSET),JPDA(2,MXJSET),JMX(MXJSET),JMN(MXJSET)
+      INTEGER JTMO(2,MXPTCL),JTDA(2,MXPTCL)
+
+      SAVE /IDRUN/,/JETSET/,/PARTCL/,/PINITS/,/PJETS/
+
+C...Conversion from ISAJET to standard
+      IF(MCONV.EQ.1) THEN
+        NEVHEP = IEVT
+C...initial jets
+        NHEP = 0
+C... W or Z
+        IF(IDENTW.NE.0)THEN
+          NHEP = NHEP + 1
+          ISTHEP(NHEP)=12
+          JMOHEP(1,NHEP)=0
+          JMOHEP(2,NHEP)=0
+          JDAHEP(1,NHEP)= 2
+          JDAHEP(2,NHEP)= NJET + 1
+          IDHEP(NHEP) = ISTRAN(IDENTW,1)
+          DO 100 J=1,5
+ 100        PHEP(J,NHEP) = QWJET(J)
+        ENDIF
+        NWHEP = NHEP
+C... jets
+        IF(NJET.GT.0)THEN
+          DO 120 I=1,NJET
+            NHEP = NHEP + 1
+            ISTHEP(NHEP)=11
+            JMOHEP(1,NHEP)=0
+            IF(IDENTW.NE.0) JMOHEP(1,NHEP) = 1
+            JMOHEP(2,NHEP)= I
+            JDAHEP(1,NHEP)=0
+            JDAHEP(2,NHEP)=0
+            IDHEP(NHEP) = ISTRAN(IDJETS(I),1)
+            DO 110 J=1,5
+ 110          PHEP(J,NHEP) = PJETS(J,I)
+ 120      CONTINUE
+        ENDIF
+        NJHEP = NHEP
+C... pairs
+        IF(NPAIR.GT.0)THEN
+          DO 150 I=1,NPAIR
+            NHEP = NHEP + 1
+            ISTHEP(NHEP)=13
+            JMOHEP(1,NHEP)= JPAIR(I) + NWHEP
+            JMOHEP(2,NHEP)= JPAIR(I)
+            JDAHEP(1,NHEP)=0
+            JDAHEP(2,NHEP)=0
+            IDHEP(NHEP) = ISTRAN(IDPAIR(I),1)
+            DO 140 J=1,5
+ 140          PHEP(J,NHEP) = PPAIR(J,I)
+ 150      CONTINUE
+        ENDIF
+        DO 160 I=1,NHEP
+          DO 160 J=1,4
+ 160        VHEP(J,I) = 0.
+C...save offset into hep list
+        NPOFF = NHEP
+C...partons
+        DO 200 I=1,NJSET
+          IHP = NHEP + I
+C...use JMX and JMN to find daughters in hadron list
+          JMX(I) = 0
+          JMN(I) = NHEP + NPTCL + 1
+          IDHEP(IHP) = ISTRAN(JTYPE(I),1)
+          MPART=MOD(JORIG(I),JPACK)
+          JMOHEP(1,IHP)=0
+          IJT = JORIG(I)/JPACK
+          IF(MPART.NE.0)THEN
+            JMOHEP(1,IHP)=MPART+NHEP
+          ELSEIF(MPART.EQ.0 .AND. IJT.LT.10)THEN
+C...find mother in jet/pair list
+            IMO = IJT + NWHEP
+            IF(NJHEP.LT.NPOFF)THEN
+              KST = NJHEP + 1
+              DO 170 K=KST,NPOFF
+                IF(IDHEP(K).EQ.IDHEP(IHP)) IMO=K
+ 170          CONTINUE
+            ENDIF
+            JMOHEP(1,IHP)= IMO
+            IF(JDAHEP(1,IMO).EQ.0) JDAHEP(1,IMO)=IHP
+            JDAHEP(1,IMO) = MIN(IHP,JDAHEP(1,IMO))
+            JDAHEP(2,IMO) = MAX(IHP,JDAHEP(2,IMO))
+C...amend information if a parton thinks this is it's daughter
+            KND = IHP-1
+            DO 175 K=NPOFF,KND
+              IF(IHP.GE.JDAHEP(1,K) .AND. IHP.LE.JDAHEP(2,K))
+     1             JMOHEP(1,IHP)=K
+ 175        CONTINUE
+          ENDIF
+          JMOHEP(2,IHP)= IJT
+          IF(JDCAY(I).EQ.0)THEN
+            ISTHEP(IHP) = 21
+            JDAHEP(1,IHP)=0
+            JDAHEP(2,IHP)=0
+          ELSE
+            ISTHEP(IHP) = 22
+            JDAHEP(1,IHP) = JDCAY(I)/JPACK + NHEP
+            JDAHEP(2,IHP) = MOD(JDCAY(I),JPACK) + NHEP
+          ENDIF
+          DO 180 J=1,5
+ 180        PHEP(J,IHP) = PJSET(J,I)
+          DO 190 J=1,4
+ 190        VHEP(J,IHP) = 0.
+ 200    CONTINUE
+        NHEP = NHEP + NJSET
+C...hadrons
+        DO 250 I=1,NPTCL
+          IHP = NHEP + I
+          IDHEP(IHP) = ISTRAN(IDENT(I),1)
+          I1 = MOD(IABS(IORIG(I)),IPACK)
+          JMOHEP(1,IHP)=0
+          JMOHEP(2,IHP)=IABS(IORIG(I))/IPACK
+C...mother is pomeron
+          IF(I1.EQ.0)THEN
+C...mother is in parton list
+          ELSEIF(IORIG(I).LT.0)THEN
+            JMOHEP(1,IHP) = I1 + NPOFF
+            JMN(I1) = MIN(JMN(I1),I)
+            JMX(I1) = MAX(JMX(I1),I)
+C...mother is in hadron list
+          ELSEIF(IORIG(I).GT.0)THEN
+            JMOHEP(1,IHP) = I1 + NHEP
+          ENDIF
+          IF(IDCAY(I).EQ.0)THEN
+            ISTHEP(IHP) = 1
+            JDAHEP(1,IHP)=0
+            JDAHEP(2,IHP)=0
+          ELSE
+            ISTHEP(IHP) = 2
+            JDAHEP(1,IHP) = IDCAY(I)/IPACK + NHEP
+            JDAHEP(2,IHP) = MOD(IDCAY(I),IPACK) + NHEP
+          ENDIF
+          DO 210 J=1,5
+ 210        PHEP(J,IHP) = PPTCL(J,I)
+          DO 220 J=1,4
+ 220        VHEP(J,IHP) = 0.
+ 250    CONTINUE
+        NHEP = NHEP + NPTCL
+C...fill in missing daughter info for partons
+        DO 270 I=1,NJSET
+          IF(JMX(I).NE.0)THEN
+            JDAHEP(1,I+NPOFF) = JMN(I) + NPOFF + NJSET
+            JDAHEP(2,I+NPOFF) = JMX(I) + NPOFF + NJSET
+          ENDIF
+ 270    CONTINUE
+C...Conversion from standard to ISAJET
+      ELSEIF(MCONV.EQ.2)THEN
+        IEVT = NEVHEP
+C...        missing information
+        IDENTW = 0
+        NPAIR = 0
+        DO 330 I=1,5
+          QWJET(I) = 0.
+          DO 330 J=1,4
+            PPAIR(I,J) = 0.
+ 330    CONTINUE
+        DO 340 I=1,4
+          IDPAIR(I) = 0
+ 340      JPAIR(I) = 0
+C...zero counters
+        IJ1 = 0
+        IJ2 = 0
+        IJ3 = 0
+        IP = 0
+        IPT = 0
+        DO 500 I=1,NHEP
+C...initial jets
+C... jets
+          IF(ISTHEP(I).EQ.11)THEN
+            IJ1 = IJ1 + 1
+            IDJETS(IJ1) = ISTRAN(IDHEP(I),2)
+            DO 410 J=1,5
+ 410          PJETS(J,IJ1) = PHEP(J,I)
+C... W
+          ELSEIF(ISTHEP(I).EQ.12)THEN
+            IJ2 = IJ2 + 1
+            IDENTW = ISTRAN(IDHEP(I),2)
+            DO 420 J=1,5
+ 420          QWJET(J) = PHEP(J,I)
+C... pairs
+          ELSEIF(ISTHEP(I).EQ.13)THEN
+            IJ3 = IJ3 + 1
+            IDPAIR(IJ3) = ISTRAN(IDHEP(I),2)
+            JPAIR(IJ3) = JMOHEP(2,I)
+            DO 430 J=1,5
+ 430          PPAIR(J,IJ3) = PHEP(J,I)
+C...partons
+          ELSEIF(ISTHEP(I).EQ.21 .OR. ISTHEP(I).EQ.22)THEN
+            IP = IP + 1
+            JTYPE(IP) = ISTRAN(IDHEP(I),2)
+            DO 440 J=1,5
+ 440          PJSET(J,IP) = PHEP(J,I)
+C...      temporary storage until have counts
+            JPMO(1,IP) = JMOHEP(1,I)
+            JPMO(2,IP) = JMOHEP(2,I)
+            JPDA(1,IP) = JDAHEP(1,I)
+            JPDA(2,IP) = JDAHEP(2,I)
+C...hadrons
+          ELSE
+            IPT = IPT + 1
+            IDENT(IPT) = ISTRAN(IDHEP(I),2)
+            DO 450 J=1,5
+ 450          PPTCL(J,IPT) = PHEP(J,I)
+C...      temporary storage until have counts
+            JTMO(1,IPT) = JMOHEP(1,I)
+            JTMO(2,IPT) = JMOHEP(2,I)
+            JTDA(1,IPT) = JDAHEP(1,I)
+            JTDA(2,IPT) = JDAHEP(2,I)
+          ENDIF
+ 500    CONTINUE
+C...completed counts
+        NJET = IJ1
+        NPAIR = IJ3
+        NJSET = IP
+        NPTCL = IPT
+C...get mother/daughter information
+        NSUM1 = NJET + IJ2 + NPAIR
+        NSUM2 = NSUM1 + NJSET
+        DO 520 I=1,NJSET
+          IF(JPDA(1,I).EQ.0)THEN
+            JDCAY(I) = 0
+          ELSEIF(JPDA(1,I).GT.NSUM2)THEN
+            JDCAY(I) = 0
+          ELSE
+            JDCAY(I) = JPACK*(JPDA(1,I)-NSUM1) + JPDA(2,I)-NSUM1
+          ENDIF
+          IF(JPMO(1,I).LE.NSUM1)THEN
+            JORIG(I) = JPACK*JPMO(2,I)
+          ELSE
+            JORIG(I) = JPACK*JPMO(2,I) + JPMO(1,I)-NSUM1
+          ENDIF
+ 520    CONTINUE
+        DO 550 I=1,NPTCL
+          IF(JTDA(1,I).EQ.0)THEN
+            IDCAY(I) = 0
+          ELSE
+            IDCAY(I) = IPACK*(JTDA(1,I)-NSUM2) + JTDA(2,I)-NSUM2
+          ENDIF
+          IF(JTMO(1,I).LE.NSUM1)THEN
+            IORIG(I) = JTMO(2,I)*IPACK + 0
+          ELSEIF(JTMO(1,I).LE.NSUM2)THEN
+            IORIG(I) = -(JTMO(2,I)*IPACK + JTMO(1,I)-NSUM1)
+          ELSE
+            IORIG(I) = JTMO(2,I)*IPACK + JTMO(1,I)-NSUM2
+          ENDIF
+ 550    CONTINUE
+      ENDIF
+      RETURN
+      END
+
++DECK,ISTRAN
+      INTEGER FUNCTION ISTRAN(ID,MCONV)
+C...convert (MCONV=1) from ISAJET numbering scheme to PDG numbering scheme
+C...     or (MCONV=2) from PDG numbering scheme to ISAJET numbering scheme
+
++SEQ,ITAPES
+
+C... ITABI(I) converts miscellaneous ISAJET particle ID's to a standard scheme
+      INTEGER ITABI(99,2), NOANT(15)
+      DATA ITABI/2,1,3,4,5,6,7,8,21,22,
+     1           12,11,14,13,16,15,0,0,0,310,
+     2           42,41,43,44,45,46,0,0,47,67,
+     3           52,51,54,53,56,55,0,0,77,68,
+     4           62,61,63,64,65,66,0,0,78,69,
+     5           72,71,74,73,76,75,0,0,0,70,
+     6           0,0,0,0,0,0,0,0,0,0,
+     7           0,0,0,0,0,0,0,0,0,24,
+     8           25,57,58,59,40,33,37,34,38,23,
+     9           0,0,0,0,0,0,0,0,0,
+     *           2,1,3,4,5,6,7,8,0,0,
+     1           12,11,14,13,16,15,0,0,0,0,
+     2           9,10,90,80,81,0,0,0,0,0,
+     3           0,82,86,88,0,83,87,89,84,85,
+     4           22,21,23,24,25,26,29,0,0,0,
+     5           32,31,34,33,36,35,82,83,84,0,
+     6           42,41,43,44,45,46,30,40,50,60,
+     7           52,51,54,53,56,55,39,49,0,0,
+     8           0,0,0,0,0,0,0,0,0,0,
+     9           0,0,0,0,0,0,0,0,0/
+      DATA NOANT/-21,-22,-23,-25,-30,-35,-47,-48,-57,-58,-59,
+     1           -67,-68,-69,-70/
+      SAVE ITABI,NOANT,/ITAPES/
+
+      IDA=IABS(ID)
+      ISTRAN=0
+      IF(MCONV.NE.1) GO TO 200
+C...ISAJET algorithm routine
+      CALL ISFLAVR(ID,IF1,IF2,IF3,JS,IND)
+      IF(IDA.EQ.0)THEN
+        WRITE(ITLIS,*) ' ISTRAN: particle ID is zero'
+      ELSEIF(IDA.LT.100)THEN
+        ISTRAN=ISIGN(ITABI(IDA,1),ID)
+        IF(ID.EQ.-20) ISTRAN=130
+C...check for illegal antiparticles
+        ITMP=ISTRAN
+        IF(ITMP.LT.0)THEN
+          DO 101 J=1,15
+            IF(ITMP.EQ.NOANT(J)) ISTRAN=0
+ 101      CONTINUE
+        ENDIF
+      ELSEIF(IND.NE.0)THEN
+        IS1=IABS(IF1)
+        IS2=IABS(IF2)
+        IS3=IABS(IF3)
+C...mesons
+        IF(IS1.EQ.0)THEN
+          IF(IS2.LE.2 .AND. IS3.LE.2)THEN
+C...         don't change
+          ELSE
+C...         u and d have opposite definitions
+            IF(IS2.LE.2) IS2=ITABI(IS2,1)
+            IF(IS3.LE.2) IS3=ITABI(IS3,1)
+          ENDIF
+          ISTRAN=IS3*100 + IS2*10 + 2*JS+1
+          ISTRAN=ISIGN(ISTRAN,ID)
+C...         charmed and top mesons have wrong sign
+          IF(IS3.EQ.4 .AND. IS2.NE.4) ISTRAN=-ISTRAN
+          IF(IS3.EQ.6 .AND. IS2.NE.6 .AND. IS2.NE.4) ISTRAN=-ISTRAN
+C...check for illegal antiparticles
+          IF(IS2.EQ.IS3 .AND. ID.LT.0) ISTRAN=0
+C...diquarks
+        ELSEIF(IS3.EQ.0)THEN
+C...         u and d have opposite definitions
+          IF(IS1.LE.2) IS1=ITABI(IS1,1)
+          IF(IS2.LE.2) IS2=ITABI(IS2,1)
+          IF(IS2.LT.IS1)THEN
+            ISTRAN=IS1*1000 + IS2*100 + 2*JS+1
+          ELSE
+            ISTRAN=IS2*1000 + IS1*100 + 2*JS+1
+          ENDIF
+          ISTRAN=ISIGN(ISTRAN,ID)
+C...         charmed and top mesons have wrong sign
+          IF(IS2.EQ.4 .AND. IS1.NE.4) ISTRAN=-ISTRAN
+          IF(IS2.EQ.6 .AND. IS1.NE.6 .AND. IS1.NE.4) ISTRAN=-ISTRAN
+C...baryons
+        ELSE
+C...         u and d have opposite definitions
+          IF(IS1.LE.2) IS1=ITABI(IS1,1)
+          IF(IS2.LE.2) IS2=ITABI(IS2,1)
+          IF(IS3.LE.2) IS3=ITABI(IS3,1)
+          IF(IS3.LE.2)THEN
+            ISTRAN=IS1*1000 + IS2*100 + IS3*10 + 2*JS+2
+          ELSEIF(IS1.LE.2 .AND. IS2.LE.2)THEN
+            ISTRAN=IS3*1000 + IS1*100 + IS2*10 + 2*JS+2
+          ELSE
+            ISTRAN=IS3*1000 + IS2*100 + IS1*10 + 2*JS+2
+          ENDIF
+          ISTRAN=ISIGN(ISTRAN,ID)
+        ENDIF
+      ENDIF
+      GO TO 300
+
+ 200  IF(MCONV.NE.2) GO TO 300
+      J1=MOD(IDA,10)
+      I1=MOD(IDA/10,10)
+      I2=MOD(IDA/100,10)
+      I3=MOD(IDA/1000,10)
+      I4=MOD(IDA/10000,10)
+      IF(IDA.EQ.0)THEN
+        WRITE(ITLIS,*) ' ISTRAN: particle ID is zero'
+C...elementary particles
+      ELSEIF(IDA.LT.100)THEN
+        ISTRAN=ISIGN(ITABI(IDA,2),ID)
+C...check for illegal antiparticles
+        IF(ID.LT.0)THEN
+          DO 201 J=1,15
+            IF(ID.EQ.NOANT(J)) ISTRAN=0
+ 201      CONTINUE
+        ENDIF
+C...K short and K long
+      ELSEIF(ID.EQ.130)THEN
+        ISTRAN=-20
+      ELSEIF(ID.EQ.310)THEN
+        ISTRAN=20
+C...mesons
+      ELSEIF(I3.EQ.0)THEN
+          IF(I1.LE.2 .AND. I2.LE.2)THEN
+C...         don't change
+          ELSE
+C...         u and d have opposite definitions
+            IF(I1.LE.2) I1=ITABI(I1,2)
+            IF(I2.LE.2) I2=ITABI(I2,2)
+          ENDIF
+          ISTRAN=I1*100 + I2*10 + (J1-1)/2
+          ISTRAN=ISIGN(ISTRAN,ID)
+C...         charmed and top mesons have wrong sign
+          IF(I2.EQ.4 .AND. I1.NE.4) ISTRAN=-ISTRAN
+          IF(I2.EQ.6 .AND. I1.NE.6 .AND. I1.NE.4) ISTRAN=-ISTRAN
+C...check for illegal antiparticles
+          IF(I2.EQ.I1 .AND. ID.LT.0) ISTRAN=0
+C...diquarks
+      ELSEIF(I1.EQ.0)THEN
+C...         u and d have opposite definitions
+          IF(I3.LE.2) I3=ITABI(I3,2)
+          IF(I2.LE.2) I2=ITABI(I2,2)
+          IF(I3.LT.I2)THEN
+            ISTRAN=I3*1000 + I2*100 + (J1-1)/2
+          ELSE
+            ISTRAN=I2*1000 + I3*100 + (J1-1)/2
+          ENDIF
+          ISTRAN=ISIGN(ISTRAN,ID)
+C...         charmed and top mesons have wrong sign
+          IF(I2.EQ.4 .AND. I3.NE.4) ISTRAN=-ISTRAN
+          IF(I2.EQ.6 .AND. I3.NE.6 .AND. I3.NE.4) ISTRAN=-ISTRAN
+C...baryons
+      ELSE
+C...         u and d have opposite definitions
+          IF(I3.LE.2) I3=ITABI(I3,2)
+          IF(I2.LE.2) I2=ITABI(I2,2)
+          IF(I1.LE.2) I1=ITABI(I1,2)
+          IF(I3.LE.2)THEN
+            ISTRAN=I3*1000 + I2*100 + I1*10 + (J1-2)/2
+          ELSEIF(I1.LE.2 .AND. I2.LE.2)THEN
+            ISTRAN=I2*1000 + I1*100 + I3*10 + (J1-2)/2
+          ELSE
+            ISTRAN=I1*1000 + I2*100 + I3*10 + (J1-2)/2
+          ENDIF
+          ISTRAN=ISIGN(ISTRAN,ID)
+      ENDIF
+
+ 300  RETURN
+      END
+
++DECK,ISAPRTLST.
+      SUBROUTINE ISAPRTLST(JTLIS)
+C
+C      list defined particles
+C
+      INTEGER JTLIS,ID
+      INTEGER IFL1,IFL2,IFL3,JSPIN1,INDEX
+      CHARACTER*8 LB,ISLABL
+C
+
+      WRITE(JTLIS,101)
+      DO 200 I=1,10000
+        ID = I
+        CALL ISFLAVR(ID,IFL1,IFL2,IFL3,JSPIN,INDEX)
+        IF(INDEX.GT.0)THEN
+          LB = ISLABL(ID)
+          IF(LB.NE.'LERR' .AND. LB.NE.'ERR')THEN
+            AM = AMASS(ID)
+            CG = CHARGE(ID)
+            WRITE(JTLIS,102) ID,LB,AM,CG,IFL1,IFL2,IFL3,JSPIN,INDEX
+          ENDIF
+        ENDIF
+        ID = -I
+        CALL ISFLAVR(ID,IFL1,IFL2,IFL3,JSPIN,INDEX)
+        IF(INDEX.GT.0)THEN
+          LB = ISLABL(ID)
+          IF(LB.NE.'LERR' .AND. LB.NE.'ERR')THEN
+            AM = AMASS(ID)
+            CG = CHARGE(ID)
+            WRITE(JTLIS,102) ID,LB,AM,CG,IFL1,IFL2,IFL3,JSPIN,INDEX
+          ENDIF
+        ENDIF
+ 200  CONTINUE
+      RETURN
+ 101  FORMAT(//10X,'ISAJET particles'/2X,'ID     PARTICLE',
+     1     5X,'MASS',8X,'CHARGE',9X,'FLAVOR',6X,'SPIN',2X,'INDEX')
+ 102  FORMAT(1X,I6,A10,F15.8,F7.2,5I6)
+      END
+
++DECK,ISFLAVR.
+      SUBROUTINE ISFLAVR(ID,IFL1,IFL2,IFL3,JSPIN,INDEX)
+C
+C          THIS SUBROUTINE UNPACKS THE IDENT CODE ID=+/-IJKL
+C
+C          MESONS--
+C          I=0, J<=K, +/- IS SIGN FOR J
+C          ID=110 FOR PI0, ID=220 FOR ETA, ETC.
+C
+C          BARYONS--
+C          I<=J<=K IN GENERAL
+C          J<I<K FOR SECOND STATE ANTISYMMETRIC IN (I,J), EG. L = 2130
+C
+C          OTHER--
+C          ID=1,...,6 FOR QUARKS
+C          ID=9 FOR GLUON
+C          ID=10 FOR PHOTON
+C          ID=11,...,16 FOR LEPTONS
+C          ID=20 FOR KS, ID=-20 FOR KL
+C
+C          I=21...26 FOR SCALAR QUARKS
+C          I=29 FOR GLUINO
+C          I=30 FOR PHOTINO
+C          I=31...36 FOR SCALAR LEPTONS
+C          I=39 FOR WINO
+C          I=40 FOR ZINO
+C
+C          ID=80 FOR W+
+C          ID=81,...,89 FOR HIGGS MESONS
+C          ID=90 FOR Z0
+C
+C          DIQUARKS--
+C          ID=+/-IJ00, I<J FOR DIQUARK COMPOSED OF I,J.
+C
+C          INDEX IS A SEQUENCE NUMBER USED INTERNALLY
+C
+C  5/11/92  LAG  Modified ISAJET original function 
+C                return INDEX=0 for illegal particles
++CDE,ITAPES
++CDE,QLMASS
+      IDABS=IABS(ID)
+      I=IDABS/1000
+      J=MOD(IDABS/100,10)
+      K=MOD(IDABS/10,10)
+      JSPIN=MOD(IDABS,10)
+      IF(ID.NE.0.AND.MOD(ID,100).EQ.0) GO TO 300
+      IF(J.EQ.0) GO TO 200
+      IF(I.EQ.0) GO TO 100
+C          BARYONS
+C          ONLY X,Y BARYONS ARE QQX, QQY, Q=U,D,S.
+      IF(J.EQ.9 .OR. K.EQ.9 .OR. I.EQ.9 .OR. K.EQ.0) GO TO 400
+      IF(JSPIN.GT.1) GO TO 400
+      IF(J.GT.K .OR. I.GT.K) GO TO 400
+      IF(I.EQ.K .AND. J.NE.K) GO TO 400
+      IFL1=ISIGN(I,ID)
+      IFL2=ISIGN(J,ID)
+      IFL3=ISIGN(K,ID)
+      IF(K.LE.6) THEN
+        INDEX=MAX0(I-1,J-1)**2+I+MAX0(I-J,0)+(K-1)*K*(2*K-1)/6
+     1  +109*JSPIN+36*NMES+NQLEP+11
+      ELSE
+        IF(I.GT.3 .OR. J.GT.3) GO TO 400
+        INDEX=MAX0(I-1,J-1)**2+I+MAX0(I-J,0)+9*(K-7)+91
+     1  +109*JSPIN+36*NMES+NQLEP+11
+      ENDIF
+      RETURN
+C          MESONS
+100   CONTINUE
+      IF(J.EQ.9 .OR. K.EQ.9 .OR. K.EQ.0) GO TO 400
+      IF(JSPIN.GT.1) GO TO 400
+      IF(J.GT.K) GO TO 400
+      IF(J.EQ.K .AND. ID.LT.0) GO TO 400
+      IFL1=0
+      IFL2=ISIGN(J,ID)
+      IFL3=ISIGN(K,-ID)
+      INDEX=J+K*(K-1)/2+36*JSPIN+NQLEP
+      INDEX=INDEX+11
+      RETURN
+C          QUARKS, LEPTONS, ETC
+200   CONTINUE
+      IFL1=0
+      IFL2=0
+      IFL3=0
+      JSPIN=0
+      INDEX=IDABS
+      IF(IDABS.LT.20) RETURN
+C          DEFINE INDEX=20 FOR KS, INDEX=21 FOR KL
+      INDEX=IDABS+1
+      IF(ID.EQ.20) INDEX=20
+C          INDEX=NQLEP+1,...,NQLEP+11 FOR W+, HIGGS, Z0
+      IF(IDABS.LT.80 .AND. IDABS.GT.60) INDEX=0
+      IF(IDABS.LT.80) RETURN
+      INDEX=NQLEP+IDABS-79
+      IF(IDABS.GT.90) INDEX=0
+      RETURN
+C          DIQUARKS
+300   IFL1=ISIGN(I,ID)
+      IFL2=ISIGN(J,ID)
+      IFL3=0
+      JSPIN=0
+      IF(I.EQ.0 .OR. J.EQ.0 .OR. I.GT.6 .OR. J.GT.6) GO TO 400
+      IF(I.GT.J) GO TO 400
+      INDEX=109*NBARY+36*NMES+NQLEP+11+I+J*(J-1)/2
+      RETURN
+C          UNDEFINED
+400   IFL1=0
+      IFL2=0
+      IFL3=0
+      JSPIN=0
+      INDEX=0
+      RETURN
+      END
++EOD
++DECK,ISLABL.
+      FUNCTION ISLABL(ID)
+C
+C          Return the CHARACTER*8 label for the particle ID.
+C          Quark-based IDENT code.
+C          MSSM names for squarks, sleptons, Higgs bosons.
+C
+C  5/11/92  LAG  Modified ISAJET original function to return LERR if INDEX < 1
++CDE,ITAPES
++CDE,QLMASS
+C
++SELF,IF=LEVEL2.
+C          DUMMY COMMON BLOCK TO ALLOW LEVEL2 STORAGE.
+      COMMON/XLABEL/LLEP,LMES0,LMES1,LBAR0,LABAR0,LBAR1,LABAR1,LQQ,LAQQ
+      LEVEL2,/XLABEL/
++SELF.
+      CHARACTER*8 ISLABL
+      CHARACTER*8 LLEP,LMES0,LMES1,LBAR0,LABAR0,LBAR1,LABAR1
+      CHARACTER*8 LQQ,LAQQ
+      DIMENSION LLEP(145)
+      DIMENSION LMES0(64),LMES1(64)
+      DIMENSION LBAR0(109),LABAR0(109),LBAR1(109),LABAR1(109)
+      DIMENSION LQQ(21),LAQQ(21)
+C          DIQUARK LABELS
+      DATA LQQ/
+     1'UU0. ','UD0. ','DD0. ','US0. ','DS0. ','SS0. ','UC0. ','DC0. ',
+     2'SC0. ','CC0. ','UB0. ','DB0. ','SB0. ','CB0. ','BB0. ','UT0. ',
+     3'DT0. ','ST0. ','CT0. ','BT0. ','TT0. '/
+      DATA LAQQ/
+     1'AUU0.','AUD0.','ADD0.','AUS0.','ADS0.','ASS0.','AUC0.','ADC0.',
+     2'ASC0.','ACC0.','AUB0.','ADB0.','ASB0.','ACB0.','ABB0.','AUT0.',
+     3'ADT0.','AST0.','ACT0.','ABT0.','ATT0.'/
+C          QUARK AND LEPTON LABELS
+      DATA LLEP/
+     $'     ','UP   ','UB   ','DN   ','DB   ','ST   ','SB   ','CH   ',
+     $'CB   ','BT   ','BB   ','TP   ','TB   ','Y    ','YB   ','X    ',
+     $'XB   ','GL   ','ERR  ','GM   ','ERR  ','NUE  ','ANUE ','E-   ',
+     $'E+   ','NUM  ','ANUM ','MU-  ','MU+  ','NUT  ','ANUT ','TAU- ',
+     $'TAU+ ','ERR  ','ERR  ','ERR  ','ERR  ','ERR  ','ERR  ','KS   ',
+     $'ERR  ','ERR  ','KL   ',
+     $'UPL  ','UBL  ','DNL  ','DBL  ','STL  ','SBL  ','CHL  ','CBL  ',
+     $'BTL  ','BBL  ','TPL  ','TBL  ','ERR  ','ERR  ','ERR  ','ERR  ',
+     $'GLSS ','ERR  ','Z1SS ','ERR  ','NUEL ','ANUEL','EL-  ','EL+  ',
+     $'NUML ','ANUML','MUL- ','MUL+ ','NUTL ','ANUTL','TAUL-','TAUL+',
+     $'ERR  ','ERR  ','ERR  ','ERR  ','W1SS+','W1SS-','Z2SS ','ERR  ',
+     $'UPR  ','UBR  ','DNR  ','DBR  ','STR  ','SBR  ','CHR  ','CBR  ',
+     $'BTR  ','BBR  ','TPR  ','TBR  ','ERR  ','ERR  ','ERR  ','ERR  ',
+     $'W2SS+','W2SS-','Z3SS ','ERR  ','NUER ','ANUER','ER-  ','ER+  ',
+     $'NUMR ','ANUMR','MUR- ','MUR+ ','NUTR ','ANUTR','TAUR-','TAUR+',
+     $'ERR  ','ERR  ','ERR  ','ERR  ','ERR  ','ERR  ','Z4SS ','ERR  ',
+     $'W+   ','W-   ','HIGGS','ERR  ','HL0  ','ERR  ','HH0  ','ERR ',
+     $'HA0  ','ERR  ','H40  ','AH40 ','H+   ','H-   ','H2+  ','H2-  ',
+     $'H1++ ','H1-- ','H2++ ','H2-- ','Z0   ','ERR  '/
+C          0- MESON LABELS
+      DATA LMES0/
+     1'PI0  ','PI+  ','ETA  ','PI-  ','K+   ','K0   ','ETAP ','AK0  ',
+     2'K-   ','AD0  ','D-   ','F-   ','ETAC ','F+   ','D+   ','D0   ',
+     2'UB.  ','DB.  ','SB.  ','CB.  ','BB.  ','BC.  ','BS.  ','BD.  ',
+     3'BU.  ','UT.  ','DT.  ','ST.  ','CT.  ','BT.  ','TT.  ','TB.  ',
+     4'TC.  ','TS.  ','TD.  ','TU.  ','UY.  ','DY.  ','SY.  ','CY.  ',
+     5'BY.  ','TY.  ','YY.  ','YT.  ','YB.  ','YC.  ','YS.  ','YD.  ',
+     6'YU.  ','UX.  ','DX.  ','SX.  ','CX.  ','BX.  ','TX.  ','YX.  ',
+     7'XX.  ','XY.  ','XT.  ','XB.  ','XC.  ','XS.  ','XD.  ','XU.  '/
+C          1- MESON LABELS
+      DATA LMES1/
+     1'RHO0 ','RHO+ ','OMEG ','RHO- ','K*+  ','K*0  ','PHI  ','AK*0 ',
+     2'K*-  ','AD*0 ','D*-  ','F*-  ','JPSI ','F*+  ','D*+  ','D*0  ',
+     3'UB*  ','DB*  ','SB*  ','CB*  ','UPSL ','BC*  ','BS*  ','BD*  ',
+     4'BU*  ','UT*  ','DT*  ','ST*  ','CT*  ','BT*  ','TT*  ','TB*  ',
+     5'TC*  ','TS*  ','TD*  ','TU*  ','UY*  ','DY*  ','SY*  ','CY*  ',
+     6'BY*  ','TY*  ','YY*  ','YT*  ','YB*  ','YC*  ','YS*  ','YD*  ',
+     7'YU*  ','UX*  ','DX*  ','SX*  ','CX*  ','BX*  ','TX*  ','YX*  ',
+     8'XX*  ','XY*  ','XT*  ','XB*  ','XC*  ','XS*  ','XD*  ','XU*  '/
+C          1/2+ BARYON LABELS
+      DATA LBAR0/
+     1'ERR  ','P    ','N    ','ERR  ','ERR  ','S+   ','S0   ','S-   ',
+     2'L    ','XI0  ','XI-  ','ERR  ','ERR  ','ERR  ','SC++ ','SC+  ',
+     3'SC0  ','LC+  ','USC. ','DSC. ','SSC. ','SDC. ','SUC. ','UCC. ',
+     4'DCC. ','SCC. ','ERR  ','ERR  ','ERR  ','ERR  ','UUB. ','UDB. ',
+     5'DDB. ','DUB. ','USB. ','DSB. ','SSB. ','SDB. ','SUB. ','UCB. ',
+     6'DCB. ','SCB. ','CCB. ','CSB. ','CDB. ','CUB. ','UBB. ','DBB. ',
+     7'SBB. ','CBB. ','ERR  ','ERR  ','ERR  ','ERR  ','ERR  ','UUT. ',
+     8'UDT. ','DDT. ','DUT. ','UST. ','DST. ','SST. ','SDT. ','SUT. ',
+     9'UCT. ','DCT. ','SCT. ','CCT. ','CST. ','CDT. ','CUT. ','UBT. ',
+     1'DBT. ','SBT. ','CBT. ','BBT. ','BCT. ','BST. ','BDT. ','BUT. ',
+     2'UTT. ','DTT. ','STT. ','CTT. ','BTT. ','ERR  ','ERR  ','ERR  ',
+     3'ERR  ','ERR  ','ERR  ','UUY. ','UDY. ','DDY. ','DUY. ','USY. ',
+     4'DSY. ','SSY. ','SDY. ','SUY. ','UUX. ','UDX. ','DDX. ','DUX. ',
+     5'USX. ','DSX. ','SSX. ','SDX. ','SUX. '/
+      DATA LABAR0/
+     1'ERR  ','AP   ','AN   ','ERR  ','ERR  ','AS-  ','AS0  ','AS+  ',
+     2'AL   ','AXI0 ','AXI+ ','ERR  ','ERR  ','ERR  ','ASC--','ASC- ',
+     3'ASC0 ','ALC- ','AUSC.','ADSC.','ASSC.','ASDC.','ASUC.','AUCC.',
+     4'ADCC.','ASCC.','ERR  ','ERR  ','ERR  ','ERR  ','AUUB.','AUDB.',
+     5'ADDB.','ADUB.','AUSB.','ADSB.','ASSB.','ASDB.','ASUB.','AUCB.',
+     6'ADCB.','ASCB.','ACCB.','ACSB.','ACDB.','ACUB.','AUBB.','ADBB.',
+     7'ASBB.','ACBB.','ERR  ','ERR  ','ERR  ','ERR  ','ERR  ','AUUT.',
+     8'AUDT.','ADDT.','ADUT.','AUST.','ADST.','ASST.','ASDT.','ASUT.',
+     9'AUCT.','ADCT.','ASCT.','ACCT.','ACST.','ACDT.','ACUT.','AUBT.',
+     1'ADBT.','ASBT.','ACBT.','ABBT.','ABCT.','ABST.','ABDT.','ABUT.',
+     2'AUTT.','ADTT.','ASTT.','ACTT.','ABTT.','ERR  ','ERR  ','ERR  ',
+     3'ERR  ','ERR  ','ERR  ','AUUY.','AUDY.','ADDY.','ADUY.','AUSY.',
+     4'ADSY.','ASSY.','ASDY.','ASUY.','AUUX.','AUDX.','ADDX.','ADUX.',
+     5'AUSX.','ADSX.','ASSX.','ASDX.','ASUX.'/
+C          3/2+ BARYON LABELS
+      DATA LBAR1/
+     1'DL++ ','DL+  ','DL0  ','DL-  ','ERR  ','S*+  ','S*0  ','S*-  ',
+     2'ERR  ','XI*0 ','XI*- ','OM-  ','ERR  ','ERR  ','UUC* ','UDC* ',
+     3'DDC* ','ERR  ','USC* ','DSC* ','SSC* ','ERR  ','ERR  ','UCC* ',
+     4'DCC* ','SCC* ','CCC* ','ERR  ','ERR  ','ERR  ','UUB* ','UDB* ',
+     5'DDB* ','ERR  ','USB* ','DSB* ','SSB* ','ERR  ','ERR  ','UCB* ',
+     6'DCB* ','SCB* ','CCB* ','ERR  ','ERR  ','ERR  ','UBB* ','DBB* ',
+     7'SBB* ','CBB* ','BBB* ','ERR  ','ERR  ','ERR  ','ERR  ','UUT* ',
+     8'UDT* ','DDT* ','ERR  ','UST* ','DST* ','SST* ','ERR  ','ERR  ',
+     9'UCT* ','DCT* ','SCT* ','CCT* ','ERR  ','ERR  ','ERR  ','UBT* ',
+     1'DBT* ','SBT* ','CBT* ','BBT* ','ERR  ','ERR  ','ERR  ','ERR  ',
+     2'UTT* ','DTT* ','STT* ','CTT* ','BTT* ','TTT* ','ERR  ','ERR  ',
+     3'ERR  ','ERR  ','ERR  ','UUY* ','UDY* ','DDY* ','ERR  ','USY* ',
+     4'DSY* ','SSY* ','ERR  ','ERR  ','UUX* ','UDX* ','DDX* ','ERR  ',
+     5'USX* ','DSX* ','SSX* ','ERR  ','ERR  '/
+      DATA LABAR1/
+     1'ADL--','ADL- ','ADL0 ','ADL+ ','ERR  ','AS*- ','AS*0 ','AS*+ ',
+     2'ERR  ','AXI*0','AXI*+','AOM+ ','ERR  ','ERR  ','AUUC*','AUDC*',
+     3'ADDC*','ERR  ','AUSC*','ADSC*','ASSC*','ERR  ','ERR  ','AUCC*',
+     4'ADCC*','ASCC*','ACCC*','ERR  ','ERR  ','ERR  ','AUUB*','AUDB*',
+     5'ADDB*','ERR  ','AUSB*','ADSB*','ASSB*','ERR  ','ERR  ','AUCB*',
+     6'ADCB*','ASCB*','ACCB*','ERR  ','ERR  ','ERR  ','AUBB*','ADBB*',
+     7'ASBB*','ACBB*','ABBB*','ERR  ','ERR  ','ERR  ','ERR  ','AUUT*',
+     8'AUDT*','ADDT*','ERR  ','AUST*','ADST*','ASST*','ERR  ','ERR  ',
+     9'AUCT*','ADCT*','ASCT*','ACCT*','ERR  ','ERR  ','ERR  ','AUBT*',
+     1'ADBT*','ASBT*','ACBT*','ABBT*','ERR  ','ERR  ','ERR  ','ERR  ',
+     2'AUTT*','ADTT*','ASTT*','ACTT*','ABTT*','ATTT*','ERR  ','ERR  ',
+     3'ERR  ','ERR  ','ERR  ','AUUY*','AUDY*','ADDY*','ERR  ','AUSY*',
+     4'ADSY*','ASSY*','ERR  ','ERR  ','AUUX*','AUDX*','ADDX*','ERR  ',
+     5'AUSX*','ADSX*','ASSX*','ERR  ','ERR  '/
+C          ENTRY
+      ISLABL='LERR'
+      CALL ISFLAVR(ID,IFL1,IFL2,IFL3,JSPIN,INDEX)
+      IF(INDEX.LE.0) RETURN
+      IF(IABS(ID).LT.100) GO TO 200
+      IF(IABS(ID).LT.1000) GO TO 100
+      IF(ID.NE.0.AND.MOD(ID,100).EQ.0) GO TO 300
+C          BARYONS
+      INDEX=INDEX-109*JSPIN-36*NMES-NQLEP
+      INDEX=INDEX-11
+      IF(JSPIN.EQ.0.AND.ID.GT.0) ISLABL=LBAR0(INDEX)
+      IF(JSPIN.EQ.0.AND.ID.LT.0) ISLABL=LABAR0(INDEX)
+      IF(JSPIN.EQ.1.AND.ID.GT.0) ISLABL=LBAR1(INDEX)
+      IF(JSPIN.EQ.1.AND.ID.LT.0) ISLABL=LABAR1(INDEX)
+      GO TO 999
+C          MESONS
+100   CONTINUE
+      I=MAX0(IFL2,IFL3)
+      J=-MIN0(IFL2,IFL3)
+      INDEX=MAX0(I-1,J-1)**2+I+MAX0(I-J,0)
+      IF(JSPIN.EQ.0) ISLABL=LMES0(INDEX)
+      IF(JSPIN.EQ.1) ISLABL=LMES1(INDEX)
+      GO TO 999
+C          QUARKS, LEPTONS, ETC.
+200   CONTINUE
+      INDEX=2*INDEX
+      IF(ID.LE.0) INDEX=INDEX+1
+      ISLABL=LLEP(INDEX)
+      GO TO 999
+300   I=IABS(IFL1)
+      J=IABS(IFL2)
+      INDEX=I+J*(J-1)/2
+      IF(ID.GT.0) ISLABL=LQQ(INDEX)
+      IF(ID.LT.0) ISLABL=LAQQ(INDEX)
+C
+999   CONTINUE
+C.      IF(ISLABL(1:3).EQ.'ERR') THEN
+C.        WRITE(ITLIS,1000) ID
+C.1000    FORMAT(' ERROR IN LABEL, ID = ',I8)
+C.      ENDIF
+      RETURN
+      END
++EOD
++DECK, HPTRLSTI
+      SUBROUTINE HPTRLSTI
+
++SEQ,HEPLUN
+      INTEGER I,IFL1,IFL2,IFL3,JSPIN,IDEX
+      INTEGER ID1,ID2,IT1,IT2,ITT1,ITT2,ISTRAN
+      CHARACTER*8 LB1,LB2,ISLABL
+      CHARACTER*20 HNAM1,HNAM2
+
+      WRITE(LNHOUT,101)
+      WRITE(LNHOUT,102)
+      DO 200 I=1,10000
+        ID1 = I
+        ID2=-ID1
+        CALL ISFLAVR(ID1,IFL1,IFL2,IFL3,JSPIN,IDEX)
+        IF(I.EQ.100) WRITE(LNHOUT,103)
+        IF(I.EQ.1000) WRITE(LNHOUT,104)
+        IF(IDEX.GT.0)THEN
+          LB1 = ISLABL(ID1)
+          IF(LB1.NE.'LERR' .AND. LB1.NE.'ERR')THEN
+            IT1=ISTRAN(ID1,1)
+            IT2=ISTRAN(ID2,1)
+            ITT1=ISTRAN(IT1,2)
+            LB2=ISLABL(ID2)
+            CALL HEPNAM(IT1,HNAM1)
+            IF(LB2.NE.'LERR' .AND. LB2.NE.'ERR' .AND. IT2.NE.0)THEN
+              ITT2=ISTRAN(IT2,2)
+              CALL HEPNAM(IT2,HNAM2)
+              WRITE(LNHOUT,1102) ID1,IT1,HNAM1,ITT1,LB1,
+     1              ID2,IT2,HNAM2,ITT2,LB2
+            ELSE
+              WRITE(LNHOUT,1101) ID1,IT1,HNAM1,ITT1,LB1
+            ENDIF
+          ENDIF
+        ENDIF
+ 200  CONTINUE
+      RETURN
+ 101  FORMAT(//10X,'ISAJET particle translation'/)
+ 102  FORMAT(//5X,'Special Cases'/4X,'IISA',4X,'ISTD  HNAM',15X,
+     1     'IISA  INAME',11X,'IISA',4X,'ISTD  HNAM',15X,'IISA  INAME')
+ 103  FORMAT(//5X,'Mesons'/4X,'IISA',4X,'ISTD  HNAM',15X,'IISA  INAME',
+     1     11X,'IISA',4X,'ISTD  HNAM',15X,'IISA  INAME')
+ 104  FORMAT(/5X,'baryons and diquarks'/4X,'IISA',4X,'IPDG  HNAM',15X,
+     1     'IISA  INAME',11X,'IISA',4X,'IPDG  HNAM',15X,'IISA  INAME')
+1101  FORMAT(1X,I7,1X,I7,2X,A15,1X,I7,2X,A8)
+1102  FORMAT(1X,I7,1X,I7,2X,A15,1X,I7,2X,A8,
+     1       5X,I7,1X,I7,2X,A15,1X,I7,2X,A8)
+      END
+
++PATCH,LUNTRNS.
++DECK,LUNHEP
+      SUBROUTINE LUNHEP(MCONV)
+
+C...Purpose: to convert JETSET event record contents to or from
+C...the standard event record common block.
+
++SEQ,HEPEVTC
++SEQ,LUJETS
++SEQ,LUDAT1
++SEQ,LUDAT2
+
+      LOGICAL LFIRST
+      DATA LFIRST/.TRUE./
+      SAVE LFIRST
+
+C...Conversion from JETSET to standard, the easy part.
+      IF(MCONV.EQ.1) THEN
+        IF(LFIRST)THEN
+          NEVHEP=0
+          LFIRST=.FALSE.
+        ENDIF
+        NEVHEP=NEVHEP + 1
+        IF(N.GT.NMXHEP) CALL LUERRM(8,
+     &  '(LUNHEP:) no more space in /HEPEVT/')
+        NHEP=MIN(N,NMXHEP)
+        DO 140 I=1,NHEP
+        ISTHEP(I)=0
+        IF(K(I,1).GE.1.AND.K(I,1).LE.10) ISTHEP(I)=1
+        IF(K(I,1).GE.11.AND.K(I,1).LE.20) ISTHEP(I)=2
+        IF(K(I,1).GE.21.AND.K(I,1).LE.30) ISTHEP(I)=3
+        IF(K(I,1).GE.31.AND.K(I,1).LE.100) ISTHEP(I)=K(I,1)
+        IDHEP(I)=LUTRAN(K(I,2),1)
+        JMOHEP(1,I)=K(I,3)
+        JMOHEP(2,I)=0
+        IF(K(I,1).NE.3.AND.K(I,1).NE.13.AND.K(I,1).NE.14) THEN
+          JDAHEP(1,I)=K(I,4)
+          JDAHEP(2,I)=K(I,5)
+        ELSE
+          JDAHEP(1,I)=0
+          JDAHEP(2,I)=0
+        ENDIF
+        DO 100 J=1,5
+  100   PHEP(J,I)=P(I,J)
+        DO 110 J=1,4
+  110   VHEP(J,I)=V(I,J)
+
+C...Fill in missing mother information.
+        IF(I.GE.3.AND.K(I,1).EQ.21.AND.K(I,3).EQ.0) THEN
+          IMO1=I-2
+          IF(I.GE.4.AND.K(I-1,1).EQ.21.AND.K(I-1,3).EQ.0) IMO1=IMO1-1
+          JMOHEP(1,I)=IMO1
+          JMOHEP(2,I)=IMO1+1
+        ELSEIF(K(I,2).GE.91.AND.K(I,2).LE.93) THEN
+          I1=K(I,3)-1
+  120     I1=I1+1
+          IF(I1.GE.I) CALL LUERRM(8,
+     &    '(LUNHEP:) translation of inconsistent event history')
+          IF(I1.LT.I.AND.K(I1,1).NE.1.AND.K(I1,1).NE.11) GOTO 120
+          KC=LUCOMP(K(I1,2))
+          IF(I1.LT.I.AND.KC.EQ.0) GOTO 120
+          IF(I1.LT.I.AND.KCHG(KC,2).EQ.0) GOTO 120
+          JMOHEP(2,I)=I1
+        ELSEIF(K(I,2).EQ.94) THEN
+          NJET=2
+          IF(NHEP.GE.I+3.AND.K(I+3,3).LE.I) NJET=3
+          IF(NHEP.GE.I+4.AND.K(I+4,3).LE.I) NJET=4
+          JMOHEP(2,I)=MOD(K(I+NJET,4)/MSTU(5),MSTU(5))
+          IF(JMOHEP(2,I).EQ.JMOHEP(1,I)) JMOHEP(2,I)=
+     &    MOD(K(I+1,4)/MSTU(5),MSTU(5))
+        ENDIF
+
+C...Fill in missing daughter information.
+        IF(K(I,2).EQ.94.AND.MSTU(16).NE.2) THEN
+          DO 130 I1=JDAHEP(1,I),JDAHEP(2,I)
+          I2=MOD(K(I1,4)/MSTU(5),MSTU(5))
+  130     JDAHEP(1,I2)=I
+        ENDIF
+        IF(K(I,2).GE.91.AND.K(I,2).LE.94) GOTO 140
+        I1=JMOHEP(1,I)
+        IF(I1.LE.0.OR.I1.GT.NHEP) GOTO 140
+        IF(K(I1,1).NE.13.AND.K(I1,1).NE.14) GOTO 140
+        IF(JDAHEP(1,I1).EQ.0) THEN
+          JDAHEP(1,I1)=I
+        ELSE
+          JDAHEP(2,I1)=I
+        ENDIF
+  140   CONTINUE
+        DO 150 I=1,NHEP
+        IF(K(I,1).NE.13.AND.K(I,1).NE.14) GOTO 150
+        IF(JDAHEP(2,I).EQ.0) JDAHEP(2,I)=JDAHEP(1,I)
+  150   CONTINUE
+
+C...Conversion from standard to JETSET, the easy part.
+      ELSE
+        IF(NHEP.GT.MSTU(4)) CALL LUERRM(8,
+     &  '(LUNHEP:) insufficient space in /LUJETS/')
+        N=MIN(NHEP,MSTU(4))
+        NKQ=0
+        KQSUM=0
+        DO 180 I=1,N
+        K(I,1)=0
+        IF(ISTHEP(I).EQ.1) K(I,1)=1
+        IF(ISTHEP(I).EQ.2) K(I,1)=11
+        IF(ISTHEP(I).EQ.3) K(I,1)=21
+        K(I,2)=LUTRAN(IDHEP(I),2)
+        K(I,3)=JMOHEP(1,I)
+        K(I,4)=JDAHEP(1,I)
+        K(I,5)=JDAHEP(2,I)
+        DO 160 J=1,5
+  160   P(I,J)=PHEP(J,I)
+        DO 170 J=1,4
+  170   V(I,J)=VHEP(J,I)
+        V(I,5)=0.
+        IF(ISTHEP(I).EQ.2.AND.PHEP(4,I).GT.PHEP(5,I)) THEN
+          I1=JDAHEP(1,I)
+          IF(I1.GT.0.AND.I1.LE.NHEP) V(I,5)=(VHEP(4,I1)-VHEP(4,I))*
+     &    PHEP(5,I)/PHEP(4,I)
+        ENDIF
+
+C...Fill in missing information on colour connection in jet systems.
+        IF(ISTHEP(I).EQ.1) THEN
+          KC=LUCOMP(K(I,2))
+          KQ=0
+          IF(KC.NE.0) KQ=KCHG(KC,2)*ISIGN(1,K(I,2))
+          IF(KQ.NE.0) NKQ=NKQ+1
+          IF(KQ.NE.2) KQSUM=KQSUM+KQ
+          IF(KQ.NE.0.AND.KQSUM.NE.0) THEN
+            K(I,1)=2
+          ELSEIF(KQ.EQ.2.AND.I.LT.N) THEN
+            IF(K(I+1,2).EQ.21) K(I,1)=2
+          ENDIF
+        ENDIF
+  180   CONTINUE
+        IF(NKQ.EQ.1.OR.KQSUM.NE.0) CALL LUERRM(8,
+     &  '(LUNHEP:) input parton configuration not colour singlet')
+      ENDIF
+      RETURN
+      END
+
++DECK,LUTRAN
+      INTEGER FUNCTION LUTRAN(ID,MCONV)
+C...convert (MCONV=1) from JETSET numbering scheme to PDG numbering scheme
+C...     or (MCONV=2) from PDG numbering scheme to JETSET numbering scheme
+
+C... ITABJ(I) converts miscellaneous JETSET particle ID's to a standard scheme
+C...      only 31-40 change
+      INTEGER ITABJ(99,2), NOANT(11)
+      DATA ITABJ/1,2,3,4,5,6,7,8,0,0,
+     1           11,12,13,14,15,16,17,18,0,0,
+     2           21,22,23,24,25,0,0,0,0,0,
+     3           0,30,35,31,32,36,33,27,28,29,
+     4           0,0,0,0,0,0,0,0,0,0,
+     5           0,0,0,0,0,0,0,0,0,0,
+     6           0,0,0,0,0,0,0,0,0,0,
+     7           0,0,0,0,0,0,0,0,0,0,
+     8           81,82,83,84,85,86,87,88,89,90,
+     9           91,92,93,94,95,96,97,98,99,
+     *           1,2,3,4,5,6,7,8,0,0,
+     1           11,12,13,14,15,16,17,18,0,0,
+     2           21,22,23,24,25,0,38,39,40,32,
+     3           34,35,37,0,33,36,0,0,0,0,
+     4           0,0,0,0,0,0,0,0,0,0,
+     5           0,0,0,0,0,0,0,0,0,0,
+     6           0,0,0,0,0,0,0,0,0,0,
+     7           0,0,0,0,0,0,0,0,0,0,
+     8           81,82,83,84,85,86,87,88,89,90,
+     9           91,92,93,94,95,96,97,98,99/
+      DATA NOANT/-21,-22,-23,-25,-27,-30,-35,-32,-36,-81,-83/
+      SAVE ITABJ,NOANT
+
+      LUTRAN=ID
+      IDA=IABS(ID)
+      J1=MOD(IDA,10)
+      I1=MOD(IDA/10,10)
+      I2=MOD(IDA/100,10)
+      I3=MOD(IDA/1000,10)
+      I4=MOD(IDA/10000,10)
+
+      IF(IDA.EQ.0)THEN
+        CALL LUERRM(8,'(LUTRAN 1:) particle ID is zero')
+      ELSEIF(MCONV.LT.1 .OR. MCONV.GT.2)THEN
+        LUTRAN=0
+        CALL LUERRM(8,'(LUTRAN 2:) unallowed conversion option')
+C...Higgs, etc.
+      ELSEIF(IDA.LT.100)THEN
+        LUTRAN=ISIGN(ITABJ(IDA,MCONV),ID)
+C...check for illegal antiparticles
+        IF(ID.LT.0)THEN
+          IF(LUTRAN.GE.-99 .AND. LUTRAN.LE.-91) LUTRAN=0
+          DO 101 J=1,11
+            IF(LUTRAN.EQ.NOANT(J)) LUTRAN=0
+ 101      CONTINUE
+        ENDIF
+C...spin 1/2 baryons
+      ELSEIF(I1.NE.0 .AND. I3.NE.0 .AND. J1.EQ.2)THEN
+        IF(I1.NE.I2 .AND. I3.NE.I2)THEN
+          IF(I1.GT.2 .OR. I2.GT.2)THEN
+            LUTRAN=I4*10000 + I3*1000 + I1*100 + I2*10 + J1
+            LUTRAN=ISIGN(LUTRAN,ID)
+          ENDIF
+        ENDIF
+C...spin 3/2 baryons
+      ELSEIF(I1.NE.0 .AND. I3.NE.0 .AND. J1.EQ.4)THEN
+C...special case "baryons"
+      ELSEIF(I1.NE.0 .AND. I3.NE.0 .AND. J1.EQ.0)THEN
+C...mesons (only 1 difference)
+      ELSEIF(I1.NE.0 .AND. I2.NE.0 .AND. I3.EQ.0)THEN
+        IF(MCONV.EQ.1)THEN
+          IF(IDA.EQ.20333) LUTRAN=ISIGN(40333,ID)
+        ELSEIF(MCONV.EQ.2) THEN
+          IF(IDA.EQ.20333)THEN
+            LUTRAN=0
+          ELSEIF(IDA.EQ.40333)THEN
+            LUTRAN=ISIGN(20333,ID)
+          ENDIF
+        ENDIF
+C...check for illegal antiparticles
+        IF(I1.EQ.I2 .AND. ID.LT.0) LUTRAN=0
+C...diquarks
+      ELSEIF(I2.NE.0 .AND. I3.NE.0 .AND. I1.EQ.0)THEN
+C...undefined
+      ELSE
+        LUTRAN=0
+      ENDIF
+C...check for illegal anti KS, KL, pi_diffr0
+      IF(ID.EQ.-130 .OR. ID.EQ.-310 .OR. ID.EQ.-110) LUTRAN=0
+
+      IF(LUTRAN.EQ.0)
+     1   CALL LUERRM(8,'(LUTRAN 3:) particle ID translation is zero')
+      RETURN
+      END
++DECK, HPTRLSTJ
+      SUBROUTINE HPTRLSTJ
+C
+C    compare particle ID for jetset and standard
+C
++SEQ,HEPLUN
+      INTEGER ID1,ID2,IT1,IT2,ITT1,ITT2,ITMP
+      INTEGER LUTRAN
+      CHARACTER*16 CNAM1,CNAM2
+      CHARACTER*20 HNAM1,HNAM2
+
+C...special cases
+      WRITE(LNHOUT,1001)
+      DO 100 I=1,100
+        ITMP=LUCOMP(I)
+        IF(ITMP.GT.0)THEN
+          ID1=I
+          IT1=LUTRAN(ID1,1)
+          ITT1=LUTRAN(IT1,2)
+          CALL LUNAME(ID1,CNAM1)
+          CALL HEPNAM(IT1,HNAM1)
+          ID2=-I
+          IT2=LUTRAN(ID2,1)
+          IF(IT1.EQ.0)THEN
+            WRITE(LNHOUT,1101) ID1,IT1,HNAM1,ITT1,CNAM1
+          ELSEIF(IT2.EQ.0)THEN
+            WRITE(LNHOUT,1101) ID1,IT1,HNAM1,ITT1,CNAM1
+          ELSE
+            ITT2=LUTRAN(IT2,2)
+            CALL LUNAME(ID2,CNAM2)
+            CALL HEPNAM(IT2,HNAM2)
+            WRITE(LNHOUT,1102) ID1,IT1,HNAM1,ITT1,CNAM1,
+     1               ID2,IT2,HNAM2,ITT2,CNAM2
+          ENDIF
+        ENDIF
+ 100  CONTINUE
+      DO 150 J=11,50
+        I=J*10
+        ITMP=LUCOMP(I)
+        IF(ITMP.GT.0)THEN
+          ID1=I
+          IT1=LUTRAN(ID1,1)
+          ITT1=LUTRAN(IT1,2)
+          CALL LUNAME(ID1,CNAM1)
+          CALL HEPNAM(IT1,HNAM1)
+          ID2=-I
+          IT2=LUTRAN(ID2,1)
+          IF(IT1.EQ.0)THEN
+            WRITE(LNHOUT,1101) ID1,IT1,HNAM1,ITT1,CNAM1
+          ELSEIF(IT2.EQ.0)THEN
+            WRITE(LNHOUT,1101) ID1,IT1,HNAM1,ITT1,CNAM1
+          ELSE
+            ITT2=LUTRAN(IT2,2)
+            CALL LUNAME(ID2,CNAM2)
+            CALL HEPNAM(IT2,HNAM2)
+            WRITE(LNHOUT,1102) ID1,IT1,HNAM1,ITT1,CNAM1,
+     1               ID2,IT2,HNAM2,ITT2,CNAM2
+          ENDIF
+        ENDIF
+ 150  CONTINUE
+C...diquarks
+      WRITE(LNHOUT,1002)
+      DO 200 I=11,99
+        DO 190 J=1,10
+          ID1=100*I+J-1
+          ITMP=LUCOMP(ID1)
+          IF(ITMP.GT.0)THEN
+            ID2=-ID1
+            IT1=LUTRAN(ID1,1)
+            ITT1=LUTRAN(IT1,2)
+            CALL LUNAME(ID1,CNAM1)
+            CALL HEPNAM(IT1,HNAM1)
+            IT2=LUTRAN(ID2,1)
+            IF(IT1.EQ.0)THEN
+              WRITE(LNHOUT,1101) ID1,IT1,HNAM1,ITT1,CNAM1
+            ELSEIF(IT2.EQ.0)THEN
+              WRITE(LNHOUT,1101) ID1,IT1,HNAM1,ITT1,CNAM1
+            ELSE
+              ITT2=LUTRAN(IT2,2)
+              CALL LUNAME(ID2,CNAM2)
+              CALL HEPNAM(IT2,HNAM2)
+              WRITE(LNHOUT,1102) ID1,IT1,HNAM1,ITT1,CNAM1,ID2,
+     1                IT2,HNAM2,ITT2,CNAM2
+            ENDIF
+          ENDIF
+ 190    CONTINUE
+ 200  CONTINUE
+C...mesons
+      WRITE(LNHOUT,1003)
+      DO 300 I=1,9
+        DO 290 J=1,9
+          DO 280 K=1,10
+            DO 270 L=1,10
+              ID1=10000*(L-1)+100*I+10*J+K-1
+              ITMP=LUCOMP(ID1)
+              IF(ITMP.GT.0)THEN
+                ID2=-ID1
+                IT1=LUTRAN(ID1,1)
+                ITT1=LUTRAN(IT1,2)
+                CALL LUNAME(ID1,CNAM1)
+                CALL HEPNAM(IT1,HNAM1)
+                IT2=LUTRAN(ID2,1)
+                IF(IT1.EQ.0)THEN
+                  WRITE(LNHOUT,1101) ID1,IT1,HNAM1,ITT1,CNAM1
+                ELSEIF(IT2.EQ.0)THEN
+                  WRITE(LNHOUT,1101) ID1,IT1,HNAM1,ITT1,CNAM1
+                ELSE
+                  ITT2=LUTRAN(IT2,2)
+                  CALL LUNAME(ID2,CNAM2)
+                  CALL HEPNAM(IT2,HNAM2)
+                  WRITE(LNHOUT,1102) ID1,IT1,HNAM1,ITT1,CNAM1,
+     1                   ID2,IT2,HNAM2,ITT2,CNAM2
+                ENDIF
+              ENDIF
+ 270        CONTINUE
+ 280      CONTINUE
+ 290    CONTINUE
+ 300  CONTINUE
+C...baryons
+      WRITE(LNHOUT,1004)
+      DO 400 I=1,9
+        DO 390 J=1,9
+          DO 380 K=1,9
+            DO 370 L=1,10
+              ID1=1000*I+100*J+10*K+L-1
+              ITMP=LUCOMP(ID1)
+              IF(ITMP.GT.0)THEN
+                ID2=-ID1
+                IT1=LUTRAN(ID1,1)
+                ITT1=LUTRAN(IT1,2)
+                CALL LUNAME(ID1,CNAM1)
+                CALL HEPNAM(IT1,HNAM1)
+                IT2=LUTRAN(ID2,1)
+                IF(IT1.EQ.0)THEN
+                  WRITE(LNHOUT,1101) ID1,IT1,HNAM1,ITT1,CNAM1
+                ELSEIF(IT2.EQ.0)THEN
+                  WRITE(LNHOUT,1101) ID1,IT1,HNAM1,ITT1,CNAM1
+                ELSE
+                  ITT2=LUTRAN(IT2,2)
+                  CALL LUNAME(ID2,CNAM2)
+                  CALL HEPNAM(IT2,HNAM2)
+                  WRITE(LNHOUT,1102) ID1,IT1,HNAM1,ITT1,CNAM1,
+     1                      ID2,IT2,HNAM2,ITT2,CNAM2
+                ENDIF
+              ENDIF
+ 370        CONTINUE
+ 380      CONTINUE
+ 390    CONTINUE
+ 400  CONTINUE
+      RETURN
+ 1001 FORMAT(//5X,'Special Cases'/4X,'IJET',4X,'ISTD  HNAM',15X,
+     1     'IJET  JNAME',13X,'IJET',4X,'ISTD  HNAM',15X,'IJET  JNAME')
+ 1002 FORMAT(//5X,'Diquarks'/4X,'IJET',4X,'ISTD  HNAM',15X,
+     1     'IJET  JNAME',13X,'IJET',4X,'ISTD  HNAM',15X,'IJET  JNAME')
+ 1003 FORMAT(//5X,'Mesons'/4X,'IJET',4X,'ISTD  HNAM',15X,'IJET  JNAME',
+     1     13X,'IJET',4X,'ISTD  HNAM',15X,'IJET  JNAME')
+ 1004 FORMAT(//5X,'Baryons'/4X,'IJET',4X,'ISTD  HNAM',15X,'IJET  JNAME',
+     1     13X,'IJET',4X,'ISTD  HNAM',15X,'IJET  JNAME')
+ 1101 FORMAT(1X,I7,1X,I7,2X,A15,1X,I7,2X,A15)
+ 1102 FORMAT(1X,I7,1X,I7,2X,A15,1X,I7,2X,A15,
+     1          I7,1X,I7,2X,A15,1X,I7,2X,A15)
+      END
+
++PATCH,HWGTRNS.
++DECK,HWGHEP
+      SUBROUTINE HWGHEP(MCONV)
+
+C...Purpose: to convert HERWIG event record contents to or from
+C...the standard event record common block.
+
+C...Transfer between single and double precision
+C...Only IDHEP needs to be changed
+
++SEQ,HERCDES
+
++SEQ,HEPEVTS
+
+      INTEGER ITMP,HWTRAN,MCONV,I,J
+
+C...Conversion from HERWIG to standard.
+      IF(MCONV.EQ.1) THEN
+        NHEPS = NHEP
+        NEVHEPS = NEVHEP
+        DO 140 I=1,NHEPS
+          ISTHEPS(I) = ISTHEP(I)
+          IF(IDHEP(I).NE.0)THEN
+            ITMP=IDHEP(I)
+            IDHEPS(I) = HWTRAN(ITMP,1)
+          ELSEIF(IDHW(I).EQ.20)THEN
+C...????
+            IDHEPS(I)=89
+          ELSEIF(IDHW(I).LE.18)THEN
+C...the oddball intermediate states
+            IDHEPS(I)=IDHW(I)+67
+          ELSE
+C...undefined
+            IDHEPS(I)=0
+          ENDIF
+          DO 110 J=1,2
+            JMOHEPS(J,I) = JMOHEP(J,I)
+ 110        JDAHEPS(J,I) = JDAHEP(J,I)
+          DO 120 J=1,5
+ 120        PHEPS(J,I) = PHEP(J,I)
+          DO 130 J=1,4
+ 130        VHEPS(J,I) = VHEP(J,I)
+ 140    CONTINUE
+C...Conversion from standard to HERWIG.
+      ELSEIF(MCONV.EQ.2)THEN
+        NHEP = NHEPS
+        NEVHEP = NEVHEPS
+        DO 180 I=1,NHEP
+          ISTHEP(I) = ISTHEPS(I)
+          ITMP=IDHEPS(I)
+          IDHEP(I) = HWTRAN(ITMP,2)
+          DO 150 J=1,2
+            JMOHEP(J,I) = JMOHEPS(J,I)
+ 150        JDAHEP(J,I) = JDAHEPS(J,I)
+          DO 160 J=1,5
+ 160        PHEP(J,I) = PHEPS(J,I)
+          DO 170 J=1,4
+ 170        VHEP(J,I) = VHEPS(J,I)
+ 180    CONTINUE
+      ENDIF
+      RETURN
+      END
+
++DECK,HWTRAN
+      INTEGER FUNCTION HWTRAN(ID,MCONV)
+C...convert (MCONV=1) from HERWIG numbering scheme to PDG numbering scheme
+C...     or (MCONV=2) from PDG numbering scheme to HERWIG numbering scheme
+
++SEQ,HEPLUN
+C... ITABJ(I) converts miscellaneous HERWIG particle ID's to a standard scheme
+      INTEGER ITABJ(99,2), NOANT(4)
+      DATA ITABJ/1,2,3,4,5,6,7,8,0,0,
+     1           11,12,13,14,15,16,0,0,0,0,
+     2           21,22,23,24,25,0,0,0,0,0,
+     3           0,0,0,0,0,0,0,0,0,0,
+     4           0,0,0,0,0,0,0,0,0,0,
+     5           0,0,0,0,0,0,0,0,0,0,
+     6           0,0,0,0,0,0,0,0,0,0,
+     7           0,0,0,0,0,0,0,0,0,0,
+     8           81,82,83,84,85,86,87,88,89,90,
+     9           91,92,93,94,95,96,97,98,99,
+     *           1,2,3,4,5,6,7,8,0,0,
+     1           11,12,13,14,15,16,0,0,0,0,
+     2           21,22,23,24,25,0,0,0,0,0,
+     3           0,0,0,0,0,0,0,0,0,0,
+     4           0,0,0,0,0,0,0,0,0,0,
+     5           0,0,0,0,0,0,0,0,0,0,
+     6           0,0,0,0,0,0,0,0,0,0,
+     7           0,0,0,0,0,0,0,0,0,0,
+     8           81,82,83,84,85,86,87,88,89,90,
+     9           91,92,93,94,95,96,97,98,99/
+      DATA NOANT/-21,-22,-23,-25/
+      SAVE ITABJ,NOANT
+
+      HWTRAN=ID
+      IDA=IABS(ID)
+      J1=MOD(IDA,10)
+      I1=MOD(IDA/10,10)
+      I2=MOD(IDA/100,10)
+      I3=MOD(IDA/1000,10)
+      I4=MOD(IDA/10000,10)
+
+      IF(IDA.EQ.0)THEN
+C..        WRITE(LNHOUT,*) ' HWTRAN 1: particle ID is zero'
+      ELSEIF(MCONV.LT.1 .OR. MCONV.GT.2)THEN
+        HWTRAN=0
+        WRITE(LNHOUT,*) ' HWTRAN 2: unallowed conversion option'
+      ELSEIF(IDA.LT.100)THEN
+C...Higgs, etc.
+        HWTRAN=ISIGN(ITABJ(IDA,MCONV),ID)
+C...check for illegal antiparticles
+        IF(ID.LT.0)THEN
+          IF(HWTRAN.GE.-99 .AND. HWTRAN.LE.-81) HWTRAN=0
+          DO 101 J=1,4
+            IF(HWTRAN.EQ.NOANT(J)) HWTRAN=0
+ 101      CONTINUE
+        ENDIF
+      ELSEIF(I1.NE.0 .AND. I3.NE.0 .AND. J1.EQ.2)THEN
+C...spin 1/2 baryons
+        IF(I1.NE.I2 .AND. I3.NE.I2)THEN
+          IF(I1.GT.2 .OR. I2.GT.2)THEN
+            HWTRAN=I4*10000 + I3*1000 + I1*100 + I2*10 + J1
+            HWTRAN=ISIGN(HWTRAN,ID)
+          ENDIF
+        ENDIF
+      ELSEIF(I1.NE.0 .AND. I3.NE.0 .AND. J1.EQ.4)THEN
+C...spin 3/2 baryons
+      ELSEIF(I1.NE.0 .AND. I3.NE.0 .AND. J1.EQ.0)THEN
+C...special case "baryons"
+      ELSEIF(I1.NE.0 .AND. I2.NE.0 .AND. I3.EQ.0)THEN
+C...mesons 
+        IF(MCONV.EQ.1)THEN
+          IF(IDA.EQ.20413) HWTRAN=ISIGN(10413,ID)
+          IF(IDA.EQ.20423) HWTRAN=ISIGN(10423,ID)
+          IF(IDA.EQ.20433) HWTRAN=ISIGN(10433,ID)
+          IF(IDA.EQ.20443) HWTRAN=ISIGN(30443,ID)
+          IF(IDA.EQ.30443) HWTRAN=ISIGN(40443,ID)
+        ELSEIF(MCONV.EQ.2) THEN
+          IF(IDA.EQ.10413) HWTRAN=ISIGN(20413,ID)
+          IF(IDA.EQ.10423) HWTRAN=ISIGN(20423,ID)
+          IF(IDA.EQ.10433) HWTRAN=ISIGN(20433,ID)
+          IF(IDA.EQ.30443) HWTRAN=ISIGN(20443,ID)
+          IF(IDA.EQ.40443) HWTRAN=ISIGN(30443,ID)
+          IF(IDA.EQ.20413) HWTRAN=0
+          IF(IDA.EQ.20423) HWTRAN=0
+          IF(IDA.EQ.20433) HWTRAN=0
+C...all 3 chi c states map to a single chi c state
+          IF(IDA.EQ.20443) HWTRAN=10441
+          IF(IDA.EQ.445) HWTRAN=10441
+        ENDIF
+C...check for illegal antiparticles
+        IF(I1.EQ.I2 .AND. ID.LT.0) HWTRAN=0
+      ELSEIF(I2.NE.0 .AND. I3.NE.0 .AND. I1.EQ.0)THEN
+C...diquarks
+      ELSE
+C...undefined
+        HWTRAN=0
+      ENDIF
+C...check for illegal anti KS, KL
+      IF(ID.EQ.-130 .OR. ID.EQ.-310) HWTRAN=0
+
+      IF(HWTRAN.EQ.0 .AND. IDA.NE.0)THEN
+        IF(MCONV.EQ.1) WRITE(LNHOUT,111) ID
+        IF(MCONV.EQ.2) WRITE(LNHOUT,112) ID
+      ENDIF
+ 111  FORMAT('  HWTRAN 3: HERWIG particle ',I8,' translates to zero')
+ 112  FORMAT('  HWTRAN 3: PDG particle ',I8,' translates to zero')
+      RETURN
+      END
+
++DECK, HPTRLSTH
+      SUBROUTINE HPTRLSTH
+C
+C    compare particle ID for herwig and standard
+C
++SEQ,HERCDES
++SEQ,HEPLUN
+      INTEGER I,ID1,IT1,ITT1,ITMP
+      INTEGER HWTRAN
+      CHARACTER*20 CNAM1
+      CHARACTER*4 NHWG1
+
+      WRITE(LNHOUT,1001)
+C... I=IHWG (short list)
+      DO 100 I=1,NRES
+        CNAM1 = ' '
+        IT1 = 0
+        ITT1 = 0
+        CALL HWUIDT(2,ID1,I,NHWG1)
+        IF(ID1.EQ.0)THEN
+C... illegal or confused
+          IF(I.EQ.20) IT1=89
+          IF(I.GE.14 .AND. I.LE.18) IT1=I+67
+          IF(IT1.GT.0) CALL HEPNAM(IT1,CNAM1)
+        ELSE
+          IT1=HWTRAN(ID1,1)
+          ITT1=HWTRAN(IT1,2)
+          CALL HEPNAM(IT1,CNAM1)
+        ENDIF
+        WRITE(LNHOUT,1101) I,ID1,IT1,CNAM1,ITT1,NHWG1
+ 100  CONTINUE
+      RETURN
+ 1001 FORMAT(//5X,'Herwig Translation'/
+     1 4X,'ISHT',4X,'IHWG',4X,'ISTD  HPNAM',14X,'IHWG  HNAME')
+ 1101 FORMAT(1X,I7,1X,I7,1X,I7,2X,A15,1X,I7,2X,A4,6X)
+      END
+
++PATCH,PDGTRNS
++DECK,PDGRDTB
+      SUBROUTINE PDGRDTB
+C
+C   read mass and width table supplied by PDG
+C   fill two common blocks 
+C	PDGTBL - complete list of particles in PDG table
+C	STDTBL - list of particles in PDG table defined by STDHEP
+C
++SEQ,PDGTBL.
++SEQ,STDTBL.
++SEQ,HEPLUN.
+C
+      CHARACTER CLINE*80
+      CHARACTER CTYPE*1
+      CHARACTER CPARTIC*21,CHEPN*20
+      INTEGER I,J,IIDNUM,INDX,ITR,PDGTRAN,ICNT,ICNT2
+      INTEGER AIDNUM(4),ITMP(NMXLN2)
+      REAL RPOS,RNEG,TMPL(NMXLN2),TMPH(NMXLN2)
+      DOUBLE PRECISION RVAL,TMPW(NMXLN2)
++SELF,IF=UNIX
+      CHARACTER*100 PDGMASST
++SELF
+C
++SELF,IF=UNIX
+C  point to standard decay tables
+      CALL GETENV( 'PDG_MASS_TBL', PDGMASST )
+      IF ( PDGMASST .EQ. ' ' ) THEN
+         PDGMASST = 'pdg_mass.tbl'
+      ENDIF
+      OPEN(UNIT=LNHDCY, FILE=PDGMASST, STATUS='OLD')
++SELF,IF=VAX
+      OPEN(UNIT=LNHDCY, FILE='PDG_MASS_TBL', STATUS='OLD', READONLY)
++SELF
+      ICNT = 0
+      ICNT2 = 0
+ 100  CONTINUE
+      READ (LNHDCY, FMT = '(A)', END = 600) CLINE
+      IF (CLINE (1 : 1) .EQ. 'M' .OR. CLINE (1 : 1) .EQ. 'W') THEN
+          READ (CLINE,
+     &    FMT = '(BN, A1, 4I6, 1X, E15.0, 1X, 2E8.0, 1X, A21)')
+     &    CTYPE, (AIDNUM(IIDNUM), IIDNUM = 1, 4), RVAL, RPOS, RNEG,
+     &    CPARTIC
+C... fill stdtbl here
+        DO J=1,4
+          IF(AIDNUM(J).NE.0)THEN
+C... translate to STDHEP numbering
+            ITR = PDGTRAN(AIDNUM(J),1)
+            IF(ITR.NE.0)THEN
+C... get stdhep compressed index
+              INDX = HEPCMP(ITR)
+              IF(INDX.GT.0)THEN
+                IF(CTYPE.EQ.'M')THEN
+C... this is a mass definition
+                  CALL HEPNAM(ITR,CHEPN)
+                  IDT(INDX) = ITR
+                  STMASS(INDX) = RVAL
+                  STMERR(1,INDX) = RPOS
+                  STMERR(2,INDX) = RNEG
+                  STNAME(INDX) = CHEPN
+                ELSEIF(CTYPE.EQ.'W')THEN
+C... this is a width definition
+                  STWIDTH(INDX) = RVAL
+                  STWERR(1,INDX) = RPOS
+                  STWERR(2,INDX) = RNEG
+                ENDIF
+              ENDIF
+            ENDIF
+          ENDIF
+        ENDDO
+C... fill pdgtbl here
+        DO J=1,4
+          IF(AIDNUM(J).NE.0)THEN
+            IF(CTYPE.EQ.'M')THEN
+C... this is a mass definition
+              ICNT = ICNT + 1
+              IDPDG(ICNT) = AIDNUM(J)
+              PDMASS(ICNT) = RVAL
+              PDMERR(1,ICNT) = RPOS
+              PDMERR(2,ICNT) = RNEG
+              PDNAME(ICNT)=CPARTIC
+            ELSEIF(CTYPE.EQ.'W')THEN
+C... this is a width definition
+              ICNT2 = ICNT2 + 1
+              ITMP(ICNT2) = AIDNUM(J)
+              TMPW(ICNT2) = RVAL
+              TMPH(ICNT2) = RPOS
+              TMPL(ICNT2) = RNEG
+            ENDIF
+          ENDIF
+        ENDDO
+      ENDIF
+      GO TO 100
+ 600  CLOSE(UNIT=LNHDCY)
+C... match widths to masses for PDG list
+      DO I=1,ICNT2
+        DO J=1,ICNT
+          IF(ITMP(I).EQ.IDPDG(J))THEN
+            PDWIDTH(J) = TMPW(I)
+            PDWERR(1,J) = TMPH(I)
+            PDWERR(2,J) = TMPL(I)
+            GO TO 610
+          ENDIF
+        ENDDO
+C... no match??
+        WRITE(LNHOUT,111) ITMP(I)
+ 610    CONTINUE
+      ENDDO
+      RETURN
+ 101  FORMAT(' Cannot compress particle  ',
+     1     A1, 1X, A21, 1X, 4I8, 1X, E25.16, 1X, 2E9.1)
+ 102  FORMAT(' Cannot translate particle ',
+     1     A1, 1X, A21, 1X, 4I8, 1X, E25.16, 1X, 2E9.1)
+ 111  FORMAT(' Failed to find match of width for ',I8)
+      END
++DECK,PDGPRTB
+      SUBROUTINE PDGPRTB(ITYP,LUN)
+C
+C   print mass and width table from appropriate common block
+C   actions:
+C	ITYP = 1	print table to LUN in STD format
+C	ITYP = 2	print table to LUN in PDG format
+C
++SEQ,PDGTBL.
++SEQ,STDTBL.
++SEQ,HEPLUN.
+C
+      INTEGER LUN,ITYP,I
+C
+      IF(ITYP.EQ.1)THEN
+        WRITE(LUN,104)
+        DO I=1,NMXLN
+          IF(IDT(I).NE.0) WRITE(LUN,103) IDT(I),STNAME(I),STMASS(I),
+     1     STMERR(1,I),STMERR(2,I),STWIDTH(I),STWERR(1,I),STWERR(2,I)
+        ENDDO
+      ELSEIF(ITYP.EQ.2)THEN
+        WRITE(LUN,105)
+        DO I=1,NMXLN2
+          IF(IDPDG(I).NE.0) WRITE(LUN,103) IDPDG(I),PDNAME(I),
+     1       PDMASS(I),PDMERR(1,I),PDMERR(2,I),
+     2       PDWIDTH(I),PDWERR(1,I),PDWERR(2,I)
+        ENDDO
+      ELSE
+        WRITE(LNHOUT,*) ' PDGPRTB: Illegal table type, use 1 or 2 '
+      ENDIF
+      RETURN
+ 103  FORMAT(1X, I6, 1X, A21, 1X, E25.16, 1X, 2E9.1, 1X,
+     1          E25.16, 1X, 2E9.1)
+ 104  FORMAT(//20X,'Table of particles from PDG in STDHEP format'//
+     1     2X,'IDHEP',2X,'NAME',23X,'MASS',
+     2     20X,'MASS ERROR',9X,'WIDTH',21X,'WIDTH ERROR')
+ 105  FORMAT(//20X,'Table of particles from PDG in PDG format'//
+     1     2X,'IDPDG',2X,'NAME',9X,'CHARGES',7X,'MASS',
+     2     20X,'MASS ERROR',9X,'WIDTH',21X,'WIDTH ERROR')
+      END
++DECK,PDGTRAN
+      INTEGER FUNCTION PDGTRAN(ID,MCONV)
+C...convert (MCONV=1) from PDG92 numbering scheme to STD numbering scheme
+C...     or (MCONV=2) from STD numbering scheme to PDG92 numbering scheme
+
++SEQ,HEPLUN
+C... ITABJ(I) converts miscellaneous PDG92 particle ID's to a standard scheme
+      INTEGER ITABJ(99,2), NOANT(6,2)
+
+      DATA ITABJ/1,2,3,4,5,6,7,8,0,0,
+     1           11,12,13,14,15,16,0,0,0,0,
+     2           21,22,23,24,25,0,0,0,0,0,
+     3           0,0,0,0,32,36,33,0,0,0,
+     4           0,0,0,0,0,0,0,0,0,0,
+     5           0,0,0,0,0,0,0,0,0,0,
+     6           0,0,0,0,0,0,0,0,0,0,
+     7           0,0,0,0,0,0,0,0,0,0,
+     8           81,82,83,84,85,86,87,88,89,90,
+     9           91,92,93,94,95,96,97,98,99,
+     *           1,2,3,4,5,6,7,8,0,0,
+     1           11,12,13,14,15,16,0,0,0,0,
+     2           21,22,23,24,25,0,0,0,0,0,
+     3           0,35,37,0,0,36,0,0,0,0,
+     4           0,0,0,0,0,0,0,0,0,0,
+     5           0,0,0,0,0,0,0,0,0,0,
+     6           0,0,0,0,0,0,0,0,0,0,
+     7           0,0,0,0,0,0,0,0,0,0,
+     8           81,82,83,84,85,86,87,88,89,90,
+     9           91,92,93,94,95,96,97,98,99/
+      DATA NOANT/-21,-22,-23,-25,-32,-36,-21,-22,-23,-25,-35,-36/
+      SAVE ITABJ,NOANT
+
+      PDGTRAN=ID
+      IDA=IABS(ID)
+      J1=MOD(IDA,10)
+      I1=MOD(IDA/10,10)
+      I2=MOD(IDA/100,10)
+      I3=MOD(IDA/1000,10)
+      I4=MOD(IDA/10000,10)
+
+      IF(IDA.EQ.0)THEN
+C..        WRITE(LNHOUT,*) ' PDGTRAN 1: particle ID is zero'
+      ELSEIF(MCONV.LT.1 .OR. MCONV.GT.2)THEN
+        PDGTRAN=0
+        WRITE(LNHOUT,*) ' PDGTRAN 2: unallowed conversion option'
+      ELSEIF(IDA.LT.100)THEN
+C...Higgs, etc.
+        PDGTRAN=ISIGN(ITABJ(IDA,MCONV),ID)
+C...check for illegal antiparticles
+        IF(ID.LT.0)THEN
+          IF(PDGTRAN.GE.-99 .AND. PDGTRAN.LE.-81) PDGTRAN = 0
+          DO 101 J=1,6
+            IF(PDGTRAN.EQ.NOANT(J,MCONV)) PDGTRAN = 0
+ 101      CONTINUE
+        ENDIF
+      ELSEIF(I1.NE.0 .AND. I3.NE.0 .AND. J1.EQ.2)THEN
+C...spin 1/2 baryons
+C...no excited baryon states
+        IF(MCONV.EQ.1)THEN
+          IF(I4.NE.0) PDGTRAN = 0
+          IF(I3.EQ.1) PDGTRAN = 0
+          IF(I3.EQ.2 .AND. I2.EQ.1 .AND. I1.EQ.2) PDGTRAN = 0
+          IF(I3.EQ.2 .AND. I2.EQ.2 .AND. I1.EQ.2) PDGTRAN = 0
+        ENDIF
+      ELSEIF(I1.NE.0 .AND. I3.NE.0 .AND. J1.EQ.4)THEN
+C...spin 3/2 baryons
+C...no excited baryon states
+        IF(MCONV.EQ.1)THEN
+          IF(I4.NE.0) PDGTRAN = 0
+          IF(I3.GE.3 .AND. I2.EQ.1 .AND. I1.EQ.2) PDGTRAN = 0
+          IF(I3.EQ.1 .AND. I2.EQ.2 .AND. I1.EQ.1) PDGTRAN = 0
+          IF(I3.EQ.2 .AND. I2.EQ.1 .AND. I1.EQ.2) PDGTRAN = 0
+        ENDIF
+      ELSEIF(I1.NE.0 .AND. I2.NE.0 .AND. I3.EQ.0)THEN
+C...mesons 
+        IF(MCONV.EQ.1)THEN
+          IF(IDA.EQ.30113) PDGTRAN=ISIGN(40113,ID)
+          IF(IDA.EQ.30213) PDGTRAN=ISIGN(40213,ID)
+          IF(IDA.EQ.40113) PDGTRAN=ISIGN(30113,ID)
+          IF(IDA.EQ.40213) PDGTRAN=ISIGN(30213,ID)
+          IF(IDA.EQ.30223) PDGTRAN=ISIGN(40223,ID)
+          IF(IDA.EQ.40223) PDGTRAN=ISIGN(50223,ID)
+          IF(IDA.EQ.50223) PDGTRAN=ISIGN(30223,ID)
+          IF(IDA.EQ.10333) PDGTRAN=ISIGN(30333,ID)
+          IF(IDA.EQ.10443) PDGTRAN=ISIGN(20443,ID)
+          IF(IDA.EQ.20443) PDGTRAN=ISIGN(30443,ID)
+          IF(IDA.EQ.30443) PDGTRAN=ISIGN(40443,ID)
+          IF(IDA.EQ.40443) PDGTRAN=ISIGN(50443,ID)
+          IF(IDA.EQ.50443) PDGTRAN=ISIGN(60443,ID)
+          IF(IDA.EQ.60443) PDGTRAN=ISIGN(70443,ID)
+          IF(IDA.EQ.551)   PDGTRAN=ISIGN(10551,ID)
+          IF(IDA.EQ.10551) PDGTRAN=ISIGN(30551,ID)
+          IF(IDA.EQ.10553) PDGTRAN=ISIGN(20553,ID)
+          IF(IDA.EQ.20553) PDGTRAN=ISIGN(30553,ID)
+          IF(IDA.EQ.30553) PDGTRAN=ISIGN(60553,ID)
+          IF(IDA.EQ.40553) PDGTRAN=ISIGN(70553,ID)
+          IF(IDA.EQ.50553) PDGTRAN=ISIGN(80553,ID)
+          IF(IDA.EQ.60553) PDGTRAN=ISIGN(90553,ID)
+          IF(IDA.EQ.70553) PDGTRAN=ISIGN(50553,ID)
+        ELSEIF(MCONV.EQ.2) THEN
+          IF(IDA.EQ.40113) PDGTRAN=ISIGN(30113,ID)
+          IF(IDA.EQ.40213) PDGTRAN=ISIGN(30213,ID)
+          IF(IDA.EQ.30113) PDGTRAN=ISIGN(40113,ID)
+          IF(IDA.EQ.30213) PDGTRAN=ISIGN(40213,ID)
+          IF(IDA.EQ.40223) PDGTRAN=ISIGN(30223,ID)
+          IF(IDA.EQ.50223) PDGTRAN=ISIGN(40223,ID)
+          IF(IDA.EQ.30223) PDGTRAN=ISIGN(50223,ID)
+          IF(IDA.EQ.30333) PDGTRAN=ISIGN(10333,ID)
+          IF(IDA.EQ.20443) PDGTRAN=ISIGN(10443,ID)
+          IF(IDA.EQ.30443) PDGTRAN=ISIGN(20443,ID)
+          IF(IDA.EQ.40443) PDGTRAN=ISIGN(30443,ID)
+          IF(IDA.EQ.50443) PDGTRAN=ISIGN(40443,ID)
+          IF(IDA.EQ.60443) PDGTRAN=ISIGN(50443,ID)
+          IF(IDA.EQ.70443) PDGTRAN=ISIGN(60443,ID)
+          IF(IDA.EQ.10551) PDGTRAN=ISIGN(551,ID)
+          IF(IDA.EQ.30551) PDGTRAN=ISIGN(10551,ID)
+          IF(IDA.EQ.20553) PDGTRAN=ISIGN(10553,ID)
+          IF(IDA.EQ.30553) PDGTRAN=ISIGN(20553,ID)
+          IF(IDA.EQ.60553) PDGTRAN=ISIGN(30553,ID)
+          IF(IDA.EQ.70553) PDGTRAN=ISIGN(40553,ID)
+          IF(IDA.EQ.80553) PDGTRAN=ISIGN(50553,ID)
+          IF(IDA.EQ.90553) PDGTRAN=ISIGN(60553,ID)
+          IF(IDA.EQ.50553) PDGTRAN=ISIGN(70553,ID)
+        ENDIF
+C...check for illegal antiparticles
+        IF(I1.EQ.I2 .AND. ID.LT.0) PDGTRAN=0
+      ELSEIF(I2.NE.0 .AND. I3.NE.0 .AND. I1.EQ.0)THEN
+C...diquarks
+      ELSE
+C...undefined
+        PDGTRAN=0
+      ENDIF
+C...check for illegal anti KS, KL
+      IF(ID.EQ.-130 .OR. ID.EQ.-310) PDGTRAN=0
++SELF,IF=HEPDBG.
+C...there are too many warnings - use only for debugging purposes
+      IF(PDGTRAN.EQ.0 .AND. IDA.NE.0)THEN
+        IF(MCONV.EQ.1) WRITE(LNHOUT,111) ID
+        IF(MCONV.EQ.2) WRITE(LNHOUT,112) ID
+      ENDIF
++SELF.
+      RETURN
+ 111  FORMAT('  PDGTRAN 3: PDG92 particle ',I8,' translates to zero')
+ 112  FORMAT('  PDGTRAN 3: STD particle ',I8,' translates to zero')
+      END
++PATCH,STDINC
++DECK,STDINCLU
+C
++SEQ,HEPEVTC
+C
++SEQ,HEPLUN
+C
++PATCH,TESTISA
++DECK,TSTISA
+      PROGRAM TSTISA
+C   
+C     JTDKY = +/- unit number for decay table file.    
+C                 If it is negative, decay table is not printed.   
+C     JTEVT = +/- unit number for output event file.   
+C                 If it is negative, only stable particles are written on it. 
+C     JTCOM =     unit number for command file.    
+C     JTLIS =     unit number for listing. 
+C   
+      IMPLICIT NONE 
++SEQ,ITAPES
++SEQ,IDRUN
++SEQ,PRIMAR
++SEQ,ISLOOP
+C
++SEQ,HEPEVTC
++SEQ,HEPLUN
++SEQ,QUEST,IF=HPZTST,IF=UNIX.
+      INTEGER IQUEST,IERR
+C   
+      INTEGER JTDKY,JTEVT,JTCOM,JTLIS,IFL,ILOOP,IPRT,INDEC
+      CHARACTER*132 ISADEC
+      LOGICAL OK,DONE,LOK
+      SAVE /ITAPES/,/IDRUN/,/PRIMAR/,/ISLOOP/
+      SAVE ILOOP,JTDKY,JTEVT,JTCOM,JTLIS
+
+      EXTERNAL ALDATA
+C   
+C          Initialize ISAJET    
+C   
+      JTDKY=-1
+      JTEVT=-2
+      JTCOM=21
+      JTLIS=22
++SELF,IF=UNIX
+C  point to standard decay tables
+      CALL GETENV( 'ISAJET_DIR', ISADEC )
+      IF ( ISADEC .EQ. ' ' ) THEN
+         ISADEC = 'isadecay.dat'
+      ELSE
+         INDEC   = INDEX ( ISADEC , ' ' ) - 1
+         ISADEC  = ISADEC(:INDEC) // '/isadecay.dat'
+      ENDIF
+      OPEN(UNIT=1,FILE=ISADEC,STATUS='OLD')
++SELF,IF=VAX
+      OPEN(UNIT=1,FILE='ISAJET_DIR:ISADECAY.DAT',STATUS='OLD',READONLY)
++SELF
+      OPEN(UNIT=2,FILE='ISAOUT.DAT',STATUS='NEW',FORM='UNFORMATTED')
+      OPEN(UNIT=JTCOM,FILE='STDTEST.CMD',STATUS='OLD')
++SELF,IF=-HPZTST.
+      OPEN(UNIT=JTLIS,FILE='ISAJET.DAT',STATUS='NEW')
++SELF,IF=HPZTST.
+      OPEN(UNIT=JTLIS,FILE='ISAJETZ.DAT',STATUS='NEW')
++SELF
+      CALL ISAINI(JTDKY,JTEVT,JTCOM,JTLIS)  
+C initialize HEP logical units
+      LNHWRT=23
+      LNHRD=0
+      LNHDCY=0
+      LNHOUT=JTLIS
++SELF,IF=-HPZTST.
+      OPEN(UNIT=LNHWRT,FILE='ISAJET.IO',STATUS='NEW',FORM='UNFORMATTED')
++SELF,IF=HPZTST.
+      CALL HEPZINIT
++SELF.
++SELF,IF=HPZTST,IF=-UNIX.
+      OPEN(UNIT=LNHWRT,FILE='ISAJET.FZ',STATUS='NEW',RECORDTYPE='FIXED',
+     1       FORM='UNFORMATTED',RECL=900,BLOCKSIZE=3600)
+C...setup output file
+      CALL FZFILE(LNHWRT,0,'XO')
++SELF.
++SELF,IF=HPZTST,IF=UNIX.
+      CALL CFOPEN(IQUEST(1),0,900,'w',2,'ISAJET.FZ',IERR)
+C...setup output file
+      CALL FZFILE(LNHWRT,0,'XLO')
++SELF.
++SELF,IF=HEPDBG,IF=HPZTST.
+      CALL FZLOGL(LNHWRT,3)
++SELF.
+      CALL TSTBKEM(40)
+      IPRT=1
+C   
+C print out list of defined particles and their translations
+C    (you have to call ISAINI first)
+C
+      CALL ISAPRTLST(JTLIS)
+C
+C    compare particle ID for isajet and standard
+C
+      CALL HPTRLSTI
+C   
+C          Read instructions; terminate for STOP command or error.  
+C   
+ 201  IFL=0 
+      CALL ISABEG(IFL)  
+      IF(IFL.NE.0)THEN
++SELF,IF=HPZTST.
+C... close zebra file
+        CALL FZENDO(LNHWRT,'ET')
++SELF.
+C...print histograms
+        CALL HOUTPU(LNHOUT)
+        CALL HISTDO
+      ENDIF
+      IF(IFL.NE.0) STOP
+C          Write begin-run record   
+      CALL ISAWBG   
+C   
+C          Event loop   
+C   
+      ILOOP=0   
+ 301  CONTINUE  
+      ILOOP=ILOOP+1   
+C        Generate one event - discard if .NOT.OK  
+      CALL ISAEVT(ILOOP,OK,DONE)  
+C        Write event record   
+      IF(OK)THEN
+        CALL ISAHEP(1)
+        IF(NEVHEP.LE.IPRT)THEN
+           CALL PRTEVT(0)
+           CALL HEPLST(1)
+        ENDIF
+        CALL TSTFLEM(40)
+        CALL ISAWEV
++SELF,IF=-HPZTST.
+        CALL HEPWRT(LOK)
++SELF,IF=HPZTST.
+        CALL HEPZWRT(LOK)
++SELF.
+      ENDIF
+      IF(.NOT.DONE) GO TO 301   
+C   
+C          Calculate cross section and luminosity   
+C   
+      CALL ISAEND   
+C          Write end-of-run record  
+      CALL ISAWND   
+      GO TO 201   
+      END 
+
++PATCH,TESTJET
++DECK,TSTJET
+      PROGRAM TSTJET
+C
+C      test program
+C      compare event list in jetset and standard structure
+C
++SEQ,LUDAT1
++SEQ,HEPLUN
++SEQ,QUEST,IF=HPZTST,IF=UNIX.
+      INTEGER IQUEST,IERR
+
+      LOGICAL LOK
+      INTEGER NEVT,I,NPRNT
+C
+      NEVT=100
+      NPRNT=1
+C initialize HEP logical units
+      LNHWRT=23
+      LNHRD=0
+      LNHDCY=0
+      LNHOUT=22
+      MSTU(11)=LNHOUT
++SELF,IF=-HPZTST.
+      OPEN(UNIT=LNHOUT,FILE='JETSET.DAT',STATUS='NEW')
+      OPEN(UNIT=LNHWRT,FILE='JETSET.IO',STATUS='NEW',FORM='UNFORMATTED')
++SELF,IF=HPZTST.
+      OPEN(UNIT=LNHOUT,FILE='JETSETZ.DAT',STATUS='NEW')
+      CALL HEPZINIT
++SELF.
++SELF,IF=HPZTST,IF=-UNIX.
+      OPEN(UNIT=LNHWRT,FILE='JETSET.FZ',STATUS='NEW',RECORDTYPE='FIXED',
+     1       FORM='UNFORMATTED',RECL=900,BLOCKSIZE=3600)
+C...setup output file
+      CALL FZFILE(LNHWRT,0,'XO')
++SELF.
++SELF,IF=HPZTST,IF=UNIX.
+      CALL CFOPEN(IQUEST(1),0,900,'w',2,'JETSET.FZ',IERR)
+C...setup output file
+      CALL FZFILE(LNHWRT,0,'XLO')
++SELF.
+C
++SELF,IF=HEPDBG,IF=HPZTST.
+      CALL FZLOGL(LNHWRT,3)
++SELF.
+      CALL TSTBKEM(20)
+C... this I/O call will fail - no event generated yet
++SELF,IF=-HPZTST.
+      CALL HEPWRT(LOK)
++SELF,IF=HPZTST.
+      CALL HEPZWRT(LOK)
++SELF.
+      CALL HPTRLSTJ
+C
+      DO 100 I=1,NEVT
+        CALL LU2ENT(0.,2,-2,20.)
+        CALL LUNHEP(1)
+        IF(I.LE.NPRNT)THEN
+          CALL LULIST(2)
+          CALL HEPLST(1)
+        ENDIF
+        CALL TSTFLEM(20)
++SELF,IF=-HPZTST.
+        CALL HEPWRT(LOK)
++SELF,IF=HPZTST.
+        CALL HEPZWRT(LOK)
++SELF.
+ 100  CONTINUE
+C
++SELF,IF=HPZTST.
+C... close zebra file
+      CALL FZENDO(LNHWRT,'ET')
++SELF.
+C...print histograms
+      CALL HOUTPU(LNHOUT)
+      CALL HISTDO
+      CLOSE(UNIT=LNHOUT)
+      CLOSE(UNIT=LNHWRT)
+      STOP
+      END
+
++PATCH,TESTHWG
++DECK,TSTHWG
+      PROGRAM TSTHWG
+C
+C      test program
+C      compare event list in herwig and standard structure
++SEQ,HERCDES
++SEQ,HEPLUN
++SEQ,QUEST,IF=HPZTST,IF=UNIX.
+      INTEGER IQUEST,IERR
+
+      EXTERNAL HWUDAT
+      LOGICAL LOK
+      INTEGER I,J,N
+C
+C initialize HEP logical units
+      LNHWRT=23
+      LNHRD=0
+      LNHDCY=0
+      LNHOUT=22
+      LHWOUT=LNHOUT
++SELF,IF=-HPZTST.
+      OPEN(UNIT=LNHOUT,FILE='HERWIG.DAT',STATUS='NEW')
+      OPEN(UNIT=LNHWRT,FILE='HERWIG.IO',STATUS='NEW',FORM='UNFORMATTED')
++SELF,IF=HPZTST.
+      OPEN(UNIT=LNHOUT,FILE='HERWIGZ.DAT',STATUS='NEW')
+      CALL HEPZINIT
++SELF.
++SELF,IF=HPZTST,IF=-UNIX.
+      OPEN(UNIT=LNHWRT,FILE='HERWIG.FZ',STATUS='NEW',RECORDTYPE='FIXED',
+     1       FORM='UNFORMATTED',RECL=900,BLOCKSIZE=3600)
+C...setup output file
+      CALL FZFILE(LNHWRT,0,'XO')
++SELF.
++SELF,IF=HPZTST,IF=UNIX.
+      CALL CFOPEN(IQUEST(1),0,900,'w',2,'HERWIG.FZ',IERR)
+C...setup output file
+      CALL FZFILE(LNHWRT,0,'XLO')
++SELF.
++SELF,IF=HEPDBG,IF=HPZTST.
+      CALL FZLOGL(LNHWRT,3)
++SELF.
+      CALL TSTBKEM(0)
+C
+      CALL HPTRLSTH
+C
+C---max number of events this run
+      MAXEV=20
+C---process
+      IPROC=1500
+C---beams
+      PBEAM1=900.
+      PBEAM2=900.
+      PART1='PBAR'
+      PART2='P   '
+C---initialise other common blocks
+      CALL HWIGIN
+C---user can reset parameters at this point,
+C   otherwise values set in HWIGIN will be used.
+      LRSUD=0
+      LWSUD=0
+      MAXPR=1
+      NRN(1)=106645411
+      NRN(2)=135135175
+      MAXER=100
+      TLOUT=15.
+      PTMIN=10.
+      PTMAX=80.
+      EMMIN=40.
+      EMMAX=80.
+      Q2MIN=1600.
+      Q2MAX=3600.
+C---HIGGS mass
+      RMASS(201)=400.
+C---compute parameter-dependent constants
+      CALL HWUINC
+C---call HWUSTA to make any particle stable
+      CALL HWUSTA('PI0 ')
+C---user's initial calculations
+      CALL HWABEG
+C---initialise elementary process
+      CALL HWEINI
+C---loop over events
+      DO 100 N=1,MAXEV
+C---initialise event
+        CALL HWUINE
+C---generate hard subprocess
+        CALL HWEPRO
+C---generate parton cascades
+        CALL HWBGEN
+C---do cluster hadronization
+        CALL HWCFOR
+C---do cluster decay
+        CALL HWCDEC
+C---do unstable particle decays
+        CALL HWDHAD
+C---do heavy flavour decays
+        CALL HWDHVY
+C---add soft underlying event if needed
+        CALL HWMEVT
+C---user's event analysis
+        CALL HWGHEP(1)
+        CALL HWANAL
+        IF(NEVHEP.LE.MAXPR) CALL HEPLST(1)
+        CALL TSTFLEM(0)
++SELF,IF=-HPZTST.
+        CALL HEPWRT(LOK)
++SELF,IF=HPZTST.
+        CALL HEPZWRT(LOK)
++SELF.
+  100 CONTINUE
+C---terminate elementary process
+      CALL HWEFIN
+C---user's terminal calculations
+      CALL HWAEND
++SELF,IF=HPZTST.
+C... close zebra file
+      CALL FZENDO(LNHWRT,'ET')
++SELF.
+C...print histograms
+      CALL HOUTPU(LNHOUT)
+      CALL HISTDO
+      CLOSE(UNIT=LNHOUT)
+      CLOSE(UNIT=LNHWRT)
+      STOP
+      END
++DECK, HWUSER
+C----------------------------------------------------------------------
+      SUBROUTINE HWABEG
+C     USER'S ROUTINE FOR INITIALIZATION
+  999 END
+      SUBROUTINE HWAEND
+C     USER'S ROUTINE FOR TERMINAL CALCULATIONS, HISTOGRAM OUTPUT, ETC
+  999 END
+      SUBROUTINE HWANAL
+C     USER'S ROUTINE TO ANALYSE DATA FROM EVENT
+  999 END
+C----------------------------------------------------------------------
+
++PATCH,TESTSTD
++DECK,TSTSTD
+      PROGRAM TST
+C
+C      test program
+C      list standard particle definitions
+C      read the PDG mass and width list
+C
++SEQ,HEPLUN
+
+C initialize HEP logical units
+      LNHWRT=0
+      LNHRD=0
+      LNHDCY=30
+      LNHOUT=22
+      OPEN(UNIT=LNHOUT,FILE='STDHEP.DAT',STATUS='NEW')
+C
+      CALL TRLIST(LNHOUT)
+C
+      CALL PDGRDTB
+C
+      CALL PDGPRTB(1,LNHOUT)
+C
+      CLOSE(UNIT=LNHOUT)
+      STOP
+      END
++DECK,TRLIST
+      SUBROUTINE TRLIST(LUN)
+C
+C    list particle ID for stdhep 
+C
+      INTEGER ID1,ID2,ITMP1,ITMP2
+      INTEGER LUN
+      CHARACTER*20 HNAM1,HNAM2
+
+C...special cases
+      WRITE(LUN,1001)
+      DO 100 I=1,100
+        ITMP1=HEPCMP(I)
+        IF(ITMP1.GT.0)THEN
+          ID1=I
+          CALL HEPNAM(ID1,HNAM1)
+          ID2=-I
+          ITMP2=HEPCMP(ID2)
+          IF(ITMP2.EQ.0)THEN
+            WRITE(LUN,1101) ID1,HNAM1,ITMP1
+          ELSE
+            CALL HEPNAM(ID2,HNAM2)
+            WRITE(LUN,1102) ID1,HNAM1,ITMP1,ID2,HNAM2,ITMP2
+          ENDIF
+        ENDIF
+ 100  CONTINUE
+      DO 150 J=11,99
+        I=J*10
+        ITMP1=HEPCMP(I)
+        IF(ITMP1.GT.0)THEN
+          ID1=I
+          CALL HEPNAM(ID1,HNAM1)
+          ID2=-I
+          ITMP2=HEPCMP(ID2)
+          IF(ITMP2.EQ.0)THEN
+            WRITE(LUN,1101) ID1,HNAM1,ITMP1
+          ELSE
+            CALL HEPNAM(ID2,HNAM2)
+            WRITE(LUN,1102) ID1,HNAM1,ITMP1,ID2,HNAM2,ITMP2
+          ENDIF
+        ENDIF
+ 150  CONTINUE
+C...diquarks
+      WRITE(LUN,1002)
+      DO 200 I=11,99
+        DO 190 J=1,10
+          ID1=100*I+J-1
+          ITMP1=HEPCMP(ID1)
+          IF(ITMP1.GT.0)THEN
+            ID2=-ID1
+            CALL HEPNAM(ID1,HNAM1)
+            ITMP2=HEPCMP(ID2)
+            IF(ITMP2.EQ.0)THEN
+              WRITE(LUN,1101) ID1,HNAM1,ITMP1
+            ELSE
+              CALL HEPNAM(ID2,HNAM2)
+              WRITE(LUN,1102) ID1,HNAM1,ITMP1,ID2,HNAM2,ITMP2
+            ENDIF
+          ENDIF
+ 190    CONTINUE
+ 200  CONTINUE
+C...mesons
+      WRITE(LUN,1003)
+      DO 300 I=1,9
+        DO 290 J=1,9
+          DO 280 K=1,10
+            DO 270 L=1,10
+              ID1=10000*(L-1)+100*I+10*J+K-1
+              ITMP1=HEPCMP(ID1)
+              IF(ITMP1.GT.0)THEN
+                ID2=-ID1
+                CALL HEPNAM(ID1,HNAM1)
+                ITMP2=HEPCMP(ID2)
+                IF(ITMP2.EQ.0)THEN
+                  WRITE(LUN,1101) ID1,HNAM1,ITMP1
+                ELSE
+                  CALL HEPNAM(ID2,HNAM2)
+                  WRITE(LUN,1102) ID1,HNAM1,ITMP1,ID2,HNAM2,ITMP2
+                ENDIF
+              ENDIF
+ 270        CONTINUE
+ 280      CONTINUE
+ 290    CONTINUE
+ 300  CONTINUE
+C...baryons
+      WRITE(LUN,1004)
+      DO 400 I=1,9
+        DO 390 J=1,9
+          DO 380 K=1,9
+            DO 370 L=1,10
+              ID1=1000*I+100*J+10*K+L-1
+              ITMP1=HEPCMP(ID1)
+              IF(ITMP1.GT.0)THEN
+                ID2=-ID1
+                CALL HEPNAM(ID1,HNAM1)
+                ITMP2=HEPCMP(ID2)
+                IF(ITMP2.EQ.0)THEN
+                  WRITE(LUN,1101) ID1,HNAM1,ITMP1
+                ELSE
+                  CALL HEPNAM(ID2,HNAM2)
+                  WRITE(LUN,1102) ID1,HNAM1,ITMP1,ID2,HNAM2,ITMP2
+                ENDIF
+              ENDIF
+ 370        CONTINUE
+ 380      CONTINUE
+ 390    CONTINUE
+ 400  CONTINUE
+      RETURN
+ 1001 FORMAT(//5X,'Special Cases'
+     1     /4X,'ISTD  HNAM',14X,'ICOMP',8X,'ISTD  HNAM',14X,'ICOMP')
+ 1002 FORMAT(//5X,'Diquarks'
+     1     /4X,'ISTD  HNAM',14X,'ICOMP',8X,'ISTD  HNAM',14X,'ICOMP')
+ 1003 FORMAT(//5X,'Mesons'
+     1     /4X,'ISTD  HNAM',14X,'ICOMP',8X,'ISTD  HNAM',14X,'ICOMP')
+ 1004 FORMAT(//5X,'Baryons'
+     1     /4X,'ISTD  HNAM',14X,'ICOMP',8X,'ISTD  HNAM',14X,'ICOMP')
+ 1101 FORMAT(1X,I7,2X,A15,1X,I7)
+ 1102 FORMAT(1X,I7,2X,A15,1X,I7,5X,I7,2X,A15,1X,I7)
+      END
+
++PATCH,TESTIO
++DECK,TSTIO
+      PROGRAM TSTIO
+C
+C      read in events and histogram contents
+C
++SEQ,HEPLUN
++SEQ,QUEST,IF=HPZTST,IF=UNIX.
+      INTEGER IQUEST,IERR
+      LOGICAL LOK
+
+C initialize HEP logical units
+      LNHWRT=0
+      LNHRD=23
+      LNHDCY=0
+      LNHOUT=22
+C...now open and read events
++SELF,IF=-HPZTST.
+      OPEN(UNIT=LNHOUT,FILE='STDHEPIO.DAT',STATUS='NEW')
+      OPEN(UNIT=LNHRD,FILE='HERWIG.IO',STATUS='OLD',ERR=100,
+     1       FORM='UNFORMATTED')
++SELF,IF=HPZTST.
+      OPEN(UNIT=LNHOUT,FILE='STDHEPIOZ.DAT',STATUS='NEW')
+      CALL HEPZINIT
++SELF.
++SELF,IF=HPZTST,IF=-UNIX.
+      OPEN(UNIT=LNHRD,FILE='HERWIG.FZ',STATUS='OLD',ERR=200,
+     1       FORM='UNFORMATTED',RECORDTYPE='FIXED',RECL=900,
+     2       BLOCKSIZE=3600)
+      CALL FZFILE(LNHRD,0,'XI')
++SELF.
++SELF,IF=HPZTST,IF=UNIX.
+      CALL CFOPEN(IQUEST(1),0,900,'r',2,'HERWIG.FZ',IERR)
+      CALL FZFILE(LNHRD,0,'XLI')
++SELF.
++SELF,IF=HEPDBG,IF=HPZTST.
+      CALL FZLOGL(LNHRD,3)
++SELF.
+      CALL TSTBKEM(-1)
++SELF,IF=-HPZTST.
+  10  CALL HEPRD(LOK)
++SELF,IF=HPZTST.
+  10  CALL HEPZRD(LOK)
++SELF.
+      IF(.NOT.LOK) GOTO 100
+      CALL TSTFLEM(0)
+      GO TO 10
+ 100  CONTINUE
++SELF,IF=HPZTST.
+C...close and drop the zebra file
+      CALL FZENDI(LNHRD,'TU')
++SELF.
+      CLOSE(UNIT=LNHRD)
++SELF,IF=-HPZTST.
+      OPEN(UNIT=LNHRD,FILE='JETSET.IO',STATUS='OLD',ERR=200,
+     1       FORM='UNFORMATTED')
++SELF,IF=HPZTST,IF=-UNIX.
+      OPEN(UNIT=LNHRD,FILE='JETSET.FZ',STATUS='OLD',ERR=200,
+     1       FORM='UNFORMATTED',RECORDTYPE='FIXED',RECL=900,
+     2       BLOCKSIZE=3600)
+      CALL FZFILE(LNHRD,0,'XI')
++SELF.
++SELF,IF=HPZTST,IF=UNIX.
+      CALL CFOPEN(IQUEST(1),0,900,'r',2,'JETSET.FZ',IERR)
+      CALL FZFILE(LNHRD,0,'XLI')
++SELF.
++SELF,IF=HEPDBG,IF=HPZTST.
+      CALL FZLOGL(LNHRD,3)
++SELF.
++SELF,IF=-HPZTST.
+ 110  CALL HEPRD(LOK)
++SELF,IF=HPZTST.
+ 110  CALL HEPZRD(LOK)
++SELF.
+      IF(.NOT.LOK) GOTO 200
+      CALL TSTFLEM(20)
+      GO TO 110
+ 200  CONTINUE
++SELF,IF=HPZTST.
+C...close and drop the zebra file
+      CALL FZENDI(LNHRD,'TU')
++SELF.
+      CLOSE(UNIT=LNHRD)
++SELF,IF=-HPZTST.
+      OPEN(UNIT=LNHRD,FILE='ISAJET.IO',STATUS='OLD',ERR=300,
+     1        FORM='UNFORMATTED')
++SELF.
++SELF,IF=HPZTST,IF=-UNIX.
+      OPEN(UNIT=LNHRD,FILE='ISAJET.FZ',STATUS='OLD',ERR=200,
+     1       FORM='UNFORMATTED',RECORDTYPE='FIXED',RECL=900,
+     2       BLOCKSIZE=3600)
+      CALL FZFILE(LNHRD,0,'XI')
++SELF.
++SELF,IF=HPZTST,IF=UNIX.
+      CALL CFOPEN(IQUEST(1),0,900,'r',2,'ISAJET.FZ',IERR)
+      CALL FZFILE(LNHRD,0,'XLI')
++SELF.
++SELF,IF=HEPDBG,IF=HPZTST.
+      CALL FZLOGL(LNHRD,3)
++SELF.
++SELF,IF=-HPZTST.
+ 210  CALL HEPRD(LOK)
++SELF,IF=HPZTST.
+ 210  CALL HEPZRD(LOK)
++SELF.
+      IF(.NOT.LOK) GOTO 300
+      CALL TSTFLEM(40)
+      GO TO 210
+ 300  CONTINUE
++SELF,IF=HPZTST.
+C...close and drop the zebra file
+      CALL FZENDI(LNHRD,'TU')
++SELF.
+      CLOSE(UNIT=LNHRD)
+C...print histograms
+      CALL HOUTPU(LNHOUT)
+      CALL HISTDO
+      END
+
++PATCH,TESTHST
++DECK,TSTFLEM
+      SUBROUTINE TSTFLEM(IOFF)
+C... fill histograms
++SEQ,HEPEVTC
+
+      INTEGER IOFF,I
+
+      CALL HFILL(IOFF+11,FLOAT(NEVHEP),0.,1.)
+      CALL HFILL(IOFF+12,FLOAT(NHEP),0.,1.)
+      DO 100 I=1,NHEP
+        CALL HFILL(IOFF+13,FLOAT(IDHEP(I)),0.,1.)
+        CALL HFILL(IOFF+14,FLOAT(ISTHEP(I)),0.,1.)
+        CALL HFILL(IOFF+15,FLOAT(JMOHEP(1,I)),0.,1.)
+        CALL HFILL(IOFF+16,FLOAT(JMOHEP(2,I)),0.,1.)
+        CALL HFILL(IOFF+17,FLOAT(JDAHEP(1,I)),0.,1.)
+        CALL HFILL(IOFF+18,FLOAT(JDAHEP(2,I)),0.,1.)
+        CALL HFILL(IOFF+21,PHEP(1,I),0.,1.)
+        CALL HFILL(IOFF+22,PHEP(2,I),0.,1.)
+        CALL HFILL(IOFF+23,PHEP(3,I),0.,1.)
+        CALL HFILL(IOFF+24,PHEP(4,I),0.,1.)
+        CALL HFILL(IOFF+25,PHEP(5,I),0.,1.)
+        CALL HFILL(IOFF+26,VHEP(1,I),0.,1.)
+        CALL HFILL(IOFF+27,VHEP(2,I),0.,1.)
+        CALL HFILL(IOFF+28,VHEP(3,I),0.,1.)
+        CALL HFILL(IOFF+29,VHEP(4,I),0.,1.)
+ 100  CONTINUE
+      RETURN
+      END
++DECK,TSTBKEM
+      SUBROUTINE TSTBKEM(IOFF)
+C--- book histograms
+C             IOFF =  0  --> HERWIG
+C             IOFF = 20  --> JETSET
+C             IOFF = 40  --> ISAJET
+C             IOFF = -1  --> all three
+C
+      IMPLICIT NONE
+C---   The HBOOK common
+      REAL HMEMOR
+      COMMON/PAWC/HMEMOR(50000)
+      INTEGER IOFF
+C---   Setup the HBOOK memory limit.
++SELF,IF=-HPZTST.
+      CALL HLIMIT(50000)
++SELF,IF=HPZTST.
+      CALL HLIMIT(-50000)
++SELF.
+C---   Book histograms.
+      IF(IOFF.EQ.20) GOTO 100
+      IF(IOFF.EQ.40) GOTO 200
+      CALL HBOOK1(11,'HERWIG: NEVHEP',100,0.0,100.0,0.)
+      CALL HBOOK1(12,'HERWIG: NHEP',100,0.,1000.,0.)
+      CALL HBOOK1(13,'HERWIG: IDHEP',100,0.,100.,0.)
+      CALL HBOOK1(14,'HERWIG: ISTHEP',100,0.,200.,0.)
+      CALL HBOOK1(15,'HERWIG: JMOHEP(1,)',100,0.,1000.,0.)
+      CALL HBOOK1(16,'HERWIG: JMOHEP(2,)',100,0.,1000.,0.)
+      CALL HBOOK1(17,'HERWIG: JDAHEP(1,)',100,0.,1000.,0.)
+      CALL HBOOK1(18,'HERWIG: JDAHEP(2,)',100,0.,1000.,0.)
+      CALL HBOOK1(21,'HERWIG: PHEP(1,)',100,-100.,100.,0.)
+      CALL HBOOK1(22,'HERWIG: PHEP(2,)',100,-100.,100.,0.)
+      CALL HBOOK1(23,'HERWIG: PHEP(3,)',100,-1000.,1000.,0.)
+      CALL HBOOK1(24,'HERWIG: PHEP(4,)',100,-1000.,1000.,0.)
+      CALL HBOOK1(25,'HERWIG: PHEP(5,)',50,-250.,250.,0.)
+      CALL HBOOK1(26,'HERWIG: VHEP(1,)',10,-1.,1.,0.)
+      CALL HBOOK1(27,'HERWIG: VHEP(2,)',10,-1.,1.,0.)
+      CALL HBOOK1(28,'HERWIG: VHEP(3,)',10,-1.,1.,0.)
+      CALL HBOOK1(29,'HERWIG: VHEP(4,)',10,0.,1.,0.)
+      IF(IOFF.GE.0) GOTO 300
+ 100  CALL HBOOK1(31,'JETSET: NEVHEP',100,0.,100.,0.)
+      CALL HBOOK1(32,'JETSET: NHEP',100,0.,200.,0.)
+      CALL HBOOK1(33,'JETSET: IDHEP',100,0.,100.,0.)
+      CALL HBOOK1(34,'JETSET: ISTHEP',20,0.,20.,0.)
+      CALL HBOOK1(35,'JETSET: JMOHEP(1,)',100,0.,100.,0.)
+      CALL HBOOK1(36,'JETSET: JMOHEP(2,)',100,0.,100.,0.)
+      CALL HBOOK1(37,'JETSET: JDAHEP(1,)',100,0.,100.,0.)
+      CALL HBOOK1(38,'JETSET: JDAHEP(2,)',100,0.,100.,0.)
+      CALL HBOOK1(41,'JETSET: PHEP(1,)',100,-100.,100.,0.)
+      CALL HBOOK1(42,'JETSET: PHEP(2,)',100,-100.,100.,0.)
+      CALL HBOOK1(43,'JETSET: PHEP(3,)',100,-100.,100.,0.)
+      CALL HBOOK1(44,'JETSET: PHEP(4,)',100,-100.,100.,0.)
+      CALL HBOOK1(45,'JETSET: PHEP(5,)',100,-100.,100.,0.)
+      CALL HBOOK1(46,'JETSET: VHEP(1,)',100,-50.,50.,0.)
+      CALL HBOOK1(47,'JETSET: VHEP(2,)',100,-50.,50.,0.)
+      CALL HBOOK1(48,'JETSET: VHEP(3,)',100,-50.,50.,0.)
+      CALL HBOOK1(49,'JETSET: VHEP(4,)',100,0.,100.,0.)
+      IF(IOFF.GE.0) GOTO 300
+ 200  CALL HBOOK1(51,'ISAJET: NEVHEP',100,0.,100.,0.)
+      CALL HBOOK1(52,'ISAJET: NHEP',100,0.,1000.,0.)
+      CALL HBOOK1(53,'ISAJET: IDHEP',100,0.,100.,0.)
+      CALL HBOOK1(54,'ISAJET: ISTHEP',50,0.,50.,0.)
+      CALL HBOOK1(55,'ISAJET: JMOHEP(1,)',100,0.,1000.,0.)
+      CALL HBOOK1(56,'ISAJET: JMOHEP(2,)',100,0.,1000.,0.)
+      CALL HBOOK1(57,'ISAJET: JDAHEP(1,)',100,0.,1000.,0.)
+      CALL HBOOK1(58,'ISAJET: JDAHEP(2,)',100,0.,1000.,0.)
+      CALL HBOOK1(61,'ISAJET: PHEP(1,)',100,-500.,500.,0.)
+      CALL HBOOK1(62,'ISAJET: PHEP(2,)',100,-500.,500.,0.)
+      CALL HBOOK1(63,'ISAJET: PHEP(3,)',100,-500.,500.,0.)
+      CALL HBOOK1(64,'ISAJET: PHEP(4,)',100,-500.,500.,0.)
+      CALL HBOOK1(65,'ISAJET: PHEP(5,)',100,-500.,500.,0.)
+      CALL HBOOK1(66,'ISAJET: VHEP(1,)',10,-1.,1.,0.)
+      CALL HBOOK1(67,'ISAJET: VHEP(2,)',10,-1.,1.,0.)
+      CALL HBOOK1(68,'ISAJET: VHEP(3,)',10,-1.,1.,0.)
+      CALL HBOOK1(69,'ISAJET: VHEP(4,)',10,0.,1.,0.)
+ 300  CONTINUE
+      RETURN
+      END

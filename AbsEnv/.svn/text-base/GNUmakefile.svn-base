@@ -1,0 +1,36 @@
+# Please see SoftRelTools/HOWTO-GNUmakefile for documentation
+# $Id$
+#################################################################
+#++ library products				[build it with 'lib']
+
+LIBREMOVEFILES := 
+LIBTMPLFILES := 
+LIBDDLORDERED := 
+LIBEXTRARDLFILES := AbsEnv.hh
+
+#################################################################
+#++ extra binary products	[not in production, build it with extrabin]
+
+EXTRABINS := 
+
+#################################################################
+#++ binary products				[build it with 'bin']
+
+BINS := 
+BINCCFILES := $(BINS:=.cc)
+
+#++ Binary rules		 [in production, build it with 'bin']
+
+$(bindir)$(BINS): $(BINCCFILES:.cc=.o)
+
+#++ shell script products.. 			[build it with 'bin']
+BINSCRIPTS := 
+
+#################################################################
+#++ regression test scripts			[build it with 'test']
+
+SUBDIRS = src test
+
+#################################################################
+#++ include standard makefile from SoftRelTools.
+include SoftRelTools/standard.mk

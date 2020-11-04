@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="863"
+   name=""
+   committed-date="2011-03-08T15:48:57.243524Z"
+   url="https://sbrepo.pd.infn.it:8910/Generators/RandControl/tags/V00-01-04"
+   last-author="stroili"
+   kind="dir"
+   uuid="7b731e25-c66e-4470-8c2d-112e6345f304"
+   revision="886"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   committed-rev="449"
+   name="History"
+   text-time="2011-04-27T18:53:29.000000Z"
+   committed-date="2010-01-15T11:42:59.611173Z"
+   checksum="5189d030fd4379ca4b017eb88635e1ee"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:53:27.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="doc"
+   kind="dir"/>
+<entry
+   committed-rev="216"
+   name="randControl.tcl"
+   text-time="2011-04-27T18:53:30.000000Z"
+   committed-date="2009-03-02T18:24:24.199389Z"
+   checksum="db1b3c32842f4fa7da581d89d6a5ee53"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:53:28.000000Z"/>
+<entry
+   committed-rev="216"
+   name="testRandControl.tcl"
+   text-time="2011-04-27T18:53:30.000000Z"
+   committed-date="2009-03-02T18:24:24.199389Z"
+   checksum="7fd92f3837e26f69eeb3e33a90d03c4d"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:53:28.000000Z"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="449"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:53:30.000000Z"
+   committed-date="2010-01-15T11:42:59.611173Z"
+   checksum="8ddbd3a4c0cb8e6298be9e91c0ca8e28"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:53:28.000000Z"/>
+<entry
+   committed-rev="806"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:53:30.000000Z"
+   committed-date="2010-10-18T12:17:24.203178Z"
+   checksum="40475eb42e4edd47821d01c6e4052642"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T18:53:29.000000Z"/>
+<entry
+   committed-rev="216"
+   name="README"
+   text-time="2011-04-27T18:53:30.000000Z"
+   committed-date="2009-03-02T18:24:24.199389Z"
+   checksum="83bcfa1103e7cdf26a710d9f692ebdfb"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:53:29.000000Z"/>
+</wc-entries>

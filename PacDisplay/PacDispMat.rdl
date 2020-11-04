@@ -1,0 +1,20 @@
+#ifndef PacDispMat_HH
+#define PacDispMat_HH
+
+#include <stdio.h>
+#include <Rtypes.h>
+#define STRINGSIZE 100
+
+struct PacDispMat {
+  virtual ~PacDispMat() {;}
+  Double_t zeff,aeff,density,radlen,intlen;
+  char matname[STRINGSIZE];
+  PacDispMat() : zeff(-1.0),aeff(-1.0),density(-1.0),radlen(-1.0),intlen(-1.0){}
+  static const char* rootnames() {
+    return "zeff/D:aeff/D:density/D:radlen/D:intlen/D:matname/C";
+  }
+  ClassDef(PacDispMat,1) 
+};
+
+#endif
+

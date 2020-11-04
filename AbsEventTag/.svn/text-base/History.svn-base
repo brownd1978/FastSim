@@ -1,0 +1,38 @@
+//
+// History File for AbsEventTag
+//
+//     $Id$
+//
+ 
+$Log: History,v $
+
+2010/01/13 Roberto Stroili
+	split code in src and include directories
+
+Revision 1.4  2004/05/07 22:59:20  gpdf
+2004.05.07 gpdf	V00-00-12
+	Added dummyAbsEventTag function to provide a compilation test
+	and ensure a non-empty library.
+	[History; new: dummyAbsEventTag.cc]
+
+Revision 1.3  2002/03/25 17:18:04  kelsey
+Need |return| statement on getXXX call-throughs.
+
+Revision 1.2  2000/02/03 18:17:07  yury
+Thu Feb  3 10:13:56 PST 2000 yury
+
+- Added methods to support packing of ints and floats
+
+Revision 1.1  1998/03/28 00:42:27  quarrie
+AbsEventTag.hh
+GNUmakefile
+History
+README
+link_AbsEventTag.mk
+	These files form the minimal implementation of the BdbEventTag
+	package representing an abstract transient event tag.
+	The inferface definition file to the abstract transient event tag.
+
+David Quarrie
+
+

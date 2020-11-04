@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2618"
+   name=""
+   committed-date="2011-03-23T23:58:58.428422Z"
+   url="https://sbrepo.pd.infn.it:8910/PACRAT/PacTest/trunk/bins"
+   last-author="brownd"
+   kind="dir"
+   uuid="2aa36f44-f9d8-11dc-81b7-9e774fc32887"
+   revision="2642"/>
+<entry
+   committed-rev="2532"
+   name="testEmcBumps.cc"
+   text-time="2011-04-27T18:56:02.000000Z"
+   committed-date="2010-12-07T01:00:02.510910Z"
+   checksum="bf1e3268f6684d192e7f7dedc34c87f2"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="2585"
+   name="testOneNeutral.cc"
+   text-time="2011-04-27T18:56:02.000000Z"
+   committed-date="2011-02-28T17:57:25.442530Z"
+   checksum="7c85281ea596a8f8ed177d3f91ab21ff"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="1880"
+   name="testEdmlParser.cc"
+   text-time="2011-04-27T18:56:02.000000Z"
+   committed-date="2010-01-25T09:47:55.890076Z"
+   checksum="a19e52e81230c9413404847dcfb25b92"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="2529"
+   name="testVoxels.cc"
+   text-time="2011-04-27T18:56:02.000000Z"
+   committed-date="2010-12-06T18:55:11.830337Z"
+   checksum="f86796a016854fcc404742b4ec688911"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="2532"
+   name="testChargedTrackDK.cc"
+   text-time="2011-04-27T18:56:02.000000Z"
+   committed-date="2010-12-07T01:00:02.510910Z"
+   checksum="ff980266c2f8b3d36ac1fde6c4695f67"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="2427"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:56:02.000000Z"
+   committed-date="2010-10-06T10:36:57.855077Z"
+   checksum="2afe5da41d144d994490957d107118c4"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="2618"
+   name="testLandau.cc"
+   text-time="2011-04-27T19:37:11.000000Z"
+   committed-date="2011-03-23T23:58:58.428422Z"
+   checksum="ef0af99bf9fa11a0e03e15772a76275b"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:37:11.000000Z"/>
+<entry
+   committed-rev="2585"
+   name="testEmcCluster.cc"
+   text-time="2011-04-27T18:56:02.000000Z"
+   committed-date="2011-02-28T17:57:25.442530Z"
+   checksum="a3057f8ae1ac66b5d8d26989c260420d"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="2585"
+   name="testOneTrack.cc"
+   text-time="2011-04-27T18:56:02.000000Z"
+   committed-date="2011-02-28T17:57:25.442530Z"
+   checksum="4e0f0318bf8575153a7ea4726ddd0e78"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="2585"
+   name="testTrackReconstruction.cc"
+   text-time="2011-04-27T18:56:02.000000Z"
+   committed-date="2011-02-28T17:57:25.442530Z"
+   checksum="f4a03861859a10dae6c530aea894b5f3"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="2220"
+   name="testShowerModel.cc"
+   text-time="2011-04-27T18:56:02.000000Z"
+   committed-date="2010-07-16T07:42:25.824404Z"
+   checksum="55014f62bf2d7b4d8571c4ef0112eafa"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:56:01.000000Z"/>
+<entry
+   committed-rev="2618"
+   name="testDetEffect.cc"
+   text-time="2011-04-27T19:37:11.000000Z"
+   committed-date="2011-03-23T23:58:58.428422Z"
+   checksum="f7c1e1ef2a4ecdaafd84caf6982d42da"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:37:11.000000Z"/>
+</wc-entries>

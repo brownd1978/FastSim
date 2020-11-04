@@ -1,0 +1,9 @@
++EXE.
++USE,*STDTSTI,IBMRT,UNIX.
++USE,HPZTST
++USE,ISACDE.       ISAJET common blocks
++USE,QCDE.         ZEBRA common blocks
++PAM,11,R=QCDE,T=C,A./usr/products/cern/v93c/src/car/zebra
++PAM,12,T=C,A./usr/products/isajet/v7_02/isajet
++PAM,13,T=C,A./usr/products/stdhep/v1_05/src/stdhep
++QUIT.

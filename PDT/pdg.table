@@ -1,0 +1,1744 @@
+add	p	Parton	d	1	0.99E-02	0	0	-1	1	0
+add	p	Parton	d~	-1	0.99E-02	0	0	1	1	0
+add	p	Parton	u	2	0.56E-02	0	0	2	1	0
+add	p	Parton	u~	-2	0.56E-02	0	0	-2	1	0
+add	p	Parton	s	3	0.199	0	0	-1	1	0
+add	p	Parton	s~	-3	0.199	0	0	1	1	0
+add	p	Parton	c	4	0.135E+01	0	0	2	1	0
+add	p	Parton	c~	-4	0.135E+01	0	0	-2	1	0
+add	p	Parton	b	5	0.5E+01	0	0	-1	1	0
+add	p	Parton	b~	-5	0.5E+01	0	0	1	1	0
+add	p	Parton	t	6	0.12E+03	0	0	2	1	0
+add	p	Parton	t~	-6	0.12E+03	0	0	-2	1	0
+add	p	Parton	g	21	0	0	0	0	2	0
+add	p	Lepton	e-	11	0.51E-03	0	0	-3	1	0
+add	p	Lepton	e+	-11	0.51E-03	0	0	3	1	0
+add	p	Lepton	nu_e	12	0	0	0	0	1	0
+add	p	Lepton	nu_e~	-12	0	0	0	0	1	0
+add	p	Lepton	mu-	13	0.1057	0	0	-3	1	0.65865E+06
+add	p	Lepton	mu+	-13	0.1057	0	0	3	1	0.65865E+06
+add	p	Lepton	nu_mu	14	0	0	0	0	1	0
+add	p	Lepton	nu_mu~	-14	0	0	0	0	1	0
+add	p	Lepton	tau-	15	0.17841E+01	0	0	-3	1	0.91E-01
+add	p	Lepton	tau+	-15	0.17841E+01	0	0	3	1	0.91E-01
+add	p	Lepton	nu_tau	16	0	0	0	0	1	0
+add	p	Lepton	nu_tau~	-16	0	0	0	0	1	0
+add	p	Lepton	chi-	17	0.1E+03	0	0	-3	1	0
+add	p	Lepton	chi+	-17	0.1E+03	0	0	3	1	0
+add	p	Lepton	nu_chi	18	0	0	0	0	1	0
+add	p	Lepton	nu_chi~	-18	0	0	0	0	1	0
+add	p	VectorBoson	gamma	22	0	0	0	0	2	0
+add	p	VectorBoson	Z0	23	0.912E+02	0.25E+01	0.2E+02	0	2	0
+add	p	VectorBoson	W+	24	0.8E+02	0.21E+01	0.2E+02	3	2	0
+add	p	VectorBoson	W-	-24	0.8E+02	0.21E+01	0.2E+02	-3	2	0
+add	p	VectorBoson	Higgs0	25	0.5E+02	0	0	0	2	0
+add	p	VectorBoson	Z'0	32	0.5E+03	0	0	0	2	0
+add	p	VectorBoson	Z"0	33	0.9E+03	0	0	0	2	0
+add	p	VectorBoson	W'+	34	0.5E+03	0	0	3	2	0
+add	p	VectorBoson	W'-	-34	0.5E+03	0	0	-3	2	0
+add	p	VectorBoson	Higgs'0	35	0.3E+03	0	0	0	2	0
+add	p	VectorBoson	HiggsA0	36	0.3E+03	0	0	0	2	0
+add	p	VectorBoson	Higgs+	37	0.3E+03	0	0	3	2	0
+add	p	VectorBoson	Higgs-	-37	0.3E+03	0	0	-3	2	0
+add	p	VectorBoson	R0	40	0.5E+04	0	0	0	2	0
+add	p	VectorBoson	R~0	-40	0.5E+04	0	0	0	2	0
+add	p	Meson	Xu0	41	0	0	0	0	0	0
+add	p	Meson	Xu+	42	0	0	0	3	0	0
+add	p	Meson	Xu-	-42	0	0	0	-3	0	0
+add	p	Meson	specflav	81	0	0	0	0	0	0
+add	p	Meson	rndmflav	82	0	0	0	0	0	0
+add	p	Meson	rndmflav~	-82	0	0	0	0	0	0
+add	p	Meson	phasespa	83	0	0	0	0	0	0
+add	p	Meson	c-hadron	84	0	0	0	2	0	0.1
+add	p	Meson	c-hadron~	-84	0	0	0	-2	0	0.1
+add	p	Meson	b-hadron	85	0	0	0	-1	0	0.43
+add	p	Meson	b-hadron~	-85	0	0	0	1	0	0.43
+add	p	Meson	t-hadron	86	0	0	0	2	0	0
+add	p	Meson	t-hadron~	-86	0	0	0	-2	0	0
+add	p	Meson	l-hadron	87	0	0	0	-1	0	0
+add	p	Meson	l-hadron~	-87	0	0	0	1	0	0
+add	p	Meson	h-hadron	88	0	0	0	2	0	0
+add	p	Meson	h-hadron~	-88	0	0	0	-2	0	0
+add	p	Meson	Wvirt+	89	0	0	0	3	0	0
+add	p	Meson	Wvirt-	-89	0	0	0	-3	0	0
+add	p	Meson	cluster	91	0	0	0	0	0	0
+add	p	Meson	string	92	0	0	0	0	0	0
+add	p	Meson	indep.	93	0	0	0	0	0	0
+add	p	Meson	CMshower	94	0	0	0	0	0	0
+add	p	Meson	SPHEaxis	95	0	0	0	0	0	0
+add	p	Meson	THRUaxis	96	0	0	0	0	0	0
+add	p	Meson	CLUSjet	97	0	0	0	0	0	0
+add	p	Meson	CELLjet	98	0	0	0	0	0	0
+add	p	Meson	table	99	0	0	0	0	0	0
+add	p	Meson	pi0	111	0.135	0	0	0	0	0
+add	p	Meson	rho0	113	0.77	0.153	0.4	0	1	0
+add	p	Meson	a_20	115	0.1318E+01	0.11	0.25	0	2	0
+add	p	Meson	K_L0	130	0.4977	0	0	0	0	0.1554E+05
+add	p	Meson	pi_diffr+	210	0	0	0	3	0	0
+add	p	Meson	pi_diffr-	-210	0	0	0	-3	0	0
+add	p	Meson	pi+	211	0.1396	0	0	3	0	0.7803E+04
+add	p	Meson	pi-	-211	0.1396	0	0	-3	0	0.7803E+04
+add	p	Meson	rho+	213	0.7669	0.149	0.4	3	1	0
+add	p	Meson	rho-	-213	0.7669	0.149	0.4	-3	1	0
+add	p	Meson	a_2+	215	0.1318E+01	0.11	0.25	3	2	0
+add	p	Meson	a_2-	-215	0.1318E+01	0.11	0.25	-3	2	0
+add	p	Meson	eta	221	0.5488	0	0	0	0	0
+add	p	Meson	omega	223	0.782	0.85E-02	0.1	0	1	0
+add	p	Meson	f_2	225	0.1274E+01	0.185	0.17	0	2	0
+add	p	Meson	K_S0	310	0.4977	0	0	0	0	0.2675E+02
+add	p	Meson	K0	311	0.4977	0	0	0	0	0
+add	p	Meson	K~0	-311	0.4977	0	0	0	0	0
+add	p	Meson	K*0	313	0.8962	0.505E-01	0.2	0	1	0
+add	p	Meson	K*~0	-313	0.8962	0.505E-01	0.2	0	1	0
+add	p	Meson	K*_20	315	0.1426E+01	0.115	0.12	0	2	0
+add	p	Meson	K*_2~0	-315	0.1426E+01	0.115	0.12	0	2	0
+add	p	Meson	K+	321	0.4936	0	0	3	0	0.3709E+04
+add	p	Meson	K-	-321	0.4936	0	0	-3	0	0.3709E+04
+add	p	Meson	K*+	323	0.8921	0.513E-01	0.2	3	1	0
+add	p	Meson	K*-	-323	0.8921	0.513E-01	0.2	-3	1	0
+add	p	Meson	K*_2+	325	0.1426E+01	0.99E-01	0.12	3	2	0
+add	p	Meson	K*_2-	-325	0.1426E+01	0.99E-01	0.12	-3	2	0
+add	p	Meson	eta'	331	0.9575	0.2E-03	0.2E-02	0	0	0
+add	p	Meson	phi	333	0.10194E+01	0.44E-02	0.15E-01	0	1	0
+add	p	Meson	f'_2	335	0.1525E+01	0.76E-01	0.2	0	2	0
+add	p	Meson	D+	411	0.18693E+01	0	0	3	0	0.32
+add	p	Meson	D-	-411	0.18693E+01	0	0	-3	0	0.32
+add	p	Meson	D*+	413	0.20101E+01	0	0	3	1	0
+add	p	Meson	D*-	-413	0.20101E+01	0	0	-3	1	0
+add	p	Meson	D*_2+	415	0.2422E+01	0.6E-01	0.12	3	2	0
+add	p	Meson	D*_2-	-415	0.2422E+01	0.6E-01	0.12	-3	2	0
+add	p	Meson	D0	421	0.18645E+01	0	0	0	0	0.128
+add	p	Meson	D~0	-421	0.18645E+01	0	0	0	0	0.128
+add	p	Meson	D*0	423	0.20071E+01	0	0	0	1	0
+add	p	Meson	D*~0	-423	0.20071E+01	0	0	0	1	0
+add	p	Meson	D*_20	425	0.2422E+01	0.6E-01	0.12	0	2	0
+add	p	Meson	D*_2~0	-425	0.2422E+01	0.6E-01	0.12	0	2	0
+add	p	Meson	D_s+	431	0.19693E+01	0	0	3	0	0.131
+add	p	Meson	D_s-	-431	0.19693E+01	0	0	-3	0	0.131
+add	p	Meson	D*_s+	433	0.21127E+01	0	0	3	1	0
+add	p	Meson	D*_s-	-433	0.21127E+01	0	0	-3	1	0
+add	p	Meson	D*_2s+	435	0.261E+01	0.1	0.2	3	2	0
+add	p	Meson	D*_2s-	-435	0.261E+01	0.1	0.2	-3	2	0
+add	p	Meson	eta_c	441	0.29796E+01	0.1E-02	0.5E-02	0	0	0
+add	p	Meson	J/psi	443	0.30969E+01	0	0	0	1	0
+add	p	Meson	chi_2c	445	0.35563E+01	0.26E-02	0.1E-01	0	2	0
+add	p	Meson	B0	511	0.52794E+01	0	0	0	0	0.393
+add	p	Meson	B~0	-511	0.52794E+01	0	0	0	0	0.393
+add	p	Meson	B*0	513	0.53354E+01	0	0	0	1	0
+add	p	Meson	B*~0	-513	0.53354E+01	0	0	0	1	0
+add	p	Meson	B*_20	515	0.583E+01	0.1	0.2	0	2	0
+add	p	Meson	B*_2~0	-515	0.583E+01	0.1	0.2	0	2	0
+add	p	Meson	B+	521	0.52776E+01	0	0	3	0	0.393
+add	p	Meson	B-	-521	0.52776E+01	0	0	-3	0	0.393
+add	p	Meson	B*+	523	0.53354E+01	0	0	3	1	0
+add	p	Meson	B*-	-523	0.53354E+01	0	0	-3	1	0
+add	p	Meson	B*_2+	525	0.583E+01	0.1	0.2	3	2	0
+add	p	Meson	B*_2-	-525	0.583E+01	0.1	0.2	-3	2	0
+add	p	Meson	B_s0	531	0.547972E+01	0	0	0	0	0.393
+add	p	Meson	B_s~0	-531	0.547972E+01	0	0	0	0	0.393
+add	p	Meson	B*_s0	533	0.55068E+01	0	0	0	1	0
+add	p	Meson	B*_s~0	-533	0.55068E+01	0	0	0	1	0
+add	p	Meson	B*_2s0	535	0.607E+01	0.1	0.2	0	2	0
+add	p	Meson	B*_2s~0	-535	0.607E+01	0.1	0.2	0	2	0
+add	p	Meson	B_c+	541	0	0	0	-1	0	0.43
+add	p	Meson	B_c-	-541	0	0	0	1	0	0.43
+add	p	Meson	B*_c+	543	0	0	0	-1	1	0.43
+add	p	Meson	B*_c-	-543	0	0	0	1	1	0.43
+add	p	Meson	B*_2c+	545	0	0	0	-1	2	0.43
+add	p	Meson	B*_2c-	-545	0	0	0	1	2	0.43
+add	p	Meson	eta_b	551	0.94E+01	0	0	0	0	0
+add	p	Meson	Upsilon	553	0.94603E+01	0	0	0	2	0
+add	p	Meson	Upsilon4S	70553	10.58000	0	0	0	2	0	
+add	p	Meson	chi_2b	555	0.99132E+01	0	0	0	2	0
+add	p	Meson	T+	611	0	0	0	2	0	0
+add	p	Meson	T-	-611	0	0	0	-2	0	0
+add	p	Meson	T*+	613	0	0	0	2	1	0
+add	p	Meson	T*-	-613	0	0	0	-2	1	0
+add	p	Meson	T*_2+	615	0	0	0	2	2	0
+add	p	Meson	T*_2-	-615	0	0	0	-2	2	0
+add	p	Meson	T0	621	0	0	0	2	0	0
+add	p	Meson	T~0	-621	0	0	0	-2	0	0
+add	p	Meson	T*0	623	0	0	0	2	1	0
+add	p	Meson	T*~0	-623	0	0	0	-2	1	0
+add	p	Meson	T*_20	625	0	0	0	2	2	0
+add	p	Meson	T*_2~0	-625	0	0	0	-2	2	0
+add	p	Meson	T_s+	631	0	0	0	2	0	0
+add	p	Meson	T_s-	-631	0	0	0	-2	0	0
+add	p	Meson	T*_s+	633	0	0	0	2	1	0
+add	p	Meson	T*_s-	-633	0	0	0	-2	1	0
+add	p	Meson	T*_2s+	635	0	0	0	2	2	0
+add	p	Meson	T*_2s-	-635	0	0	0	-2	2	0
+add	p	Meson	T_c0	641	0	0	0	2	0	0
+add	p	Meson	T_c~0	-641	0	0	0	-2	0	0
+add	p	Meson	T*_c0	643	0	0	0	2	1	0
+add	p	Meson	T*_c~0	-643	0	0	0	-2	1	0
+add	p	Meson	T*_2c0	645	0	0	0	2	2	0
+add	p	Meson	T*_2c~0	-645	0	0	0	-2	2	0
+add	p	Meson	T_b+	651	0	0	0	2	0	0
+add	p	Meson	T_b-	-651	0	0	0	-2	0	0
+add	p	Meson	T*_b+	653	0	0	0	2	1	0
+add	p	Meson	T*_b-	-653	0	0	0	-2	1	0
+add	p	Meson	T*_2b+	655	0	0	0	2	2	0
+add	p	Meson	T*_2b-	-655	0	0	0	-2	2	0
+add	p	Meson	eta_t	661	0.238E+03	0	0	0	0	0
+add	p	Meson	Theta	663	0.238E+03	0	0	0	1	0
+add	p	Meson	chi_2t	665	0.23845E+03	0	0	0	2	0
+add	p	Meson	L0	711	0	0	0	-1	0	0
+add	p	Meson	L~0	-711	0	0	0	1	0	0
+add	p	Meson	L*0	713	0	0	0	-1	1	0
+add	p	Meson	L*~0	-713	0	0	0	1	1	0
+add	p	Meson	L*_20	715	0	0	0	-1	2	0
+add	p	Meson	L*_2~0	-715	0	0	0	1	2	0
+add	p	Meson	L+	721	0	0	0	-1	0	0
+add	p	Meson	L-	-721	0	0	0	1	0	0
+add	p	Meson	L*+	723	0	0	0	-1	1	0
+add	p	Meson	L*-	-723	0	0	0	1	1	0
+add	p	Meson	L*_2+	725	0	0	0	-1	2	0
+add	p	Meson	L*_2-	-725	0	0	0	1	2	0
+add	p	Meson	L_s0	731	0	0	0	-1	0	0
+add	p	Meson	L_s~0	-731	0	0	0	1	0	0
+add	p	Meson	L*_s0	733	0	0	0	-1	1	0
+add	p	Meson	L*_s~0	-733	0	0	0	1	1	0
+add	p	Meson	L*_2s0	735	0	0	0	-1	2	0
+add	p	Meson	L*_2s~0	-735	0	0	0	1	2	0
+add	p	Meson	L_c+	741	0	0	0	-1	0	0
+add	p	Meson	L_c-	-741	0	0	0	1	0	0
+add	p	Meson	L*_c+	743	0	0	0	-1	1	0
+add	p	Meson	L*_c-	-743	0	0	0	1	1	0
+add	p	Meson	L*_2c+	745	0	0	0	-1	2	0
+add	p	Meson	L*_2c-	-745	0	0	0	1	2	0
+add	p	Meson	L_b0	751	0	0	0	-1	0	0
+add	p	Meson	L_b~0	-751	0	0	0	1	0	0
+add	p	Meson	L*_b0	753	0	0	0	-1	1	0
+add	p	Meson	L*_b~0	-753	0	0	0	1	1	0
+add	p	Meson	L*_2b0	755	0	0	0	-1	2	0
+add	p	Meson	L*_2b~0	-755	0	0	0	1	2	0
+add	p	Meson	L_t+	761	0	0	0	-1	0	0
+add	p	Meson	L_t-	-761	0	0	0	1	0	0
+add	p	Meson	L*_t+	763	0	0	0	-1	1	0
+add	p	Meson	L*_t-	-763	0	0	0	1	1	0
+add	p	Meson	L*_2t+	765	0	0	0	-1	2	0
+add	p	Meson	L*_2t-	-765	0	0	0	1	2	0
+add	p	Meson	eta_l	771	0.238E+03	0	0	0	0	0
+add	p	Meson	Theta_l	773	0.238E+03	0	0	0	1	0
+add	p	Meson	chi_2l	775	0.23845E+03	0	0	0	2	0
+add	p	Meson	H+	811	0	0	0	2	0	0
+add	p	Meson	H-	-811	0	0	0	-2	0	0
+add	p	Meson	H*+	813	0	0	0	2	1	0
+add	p	Meson	H*-	-813	0	0	0	-2	1	0
+add	p	Meson	H*_2+	815	0	0	0	2	2	0
+add	p	Meson	H*_2-	-815	0	0	0	-2	2	0
+add	p	Meson	H0	821	0	0	0	2	0	0
+add	p	Meson	H~0	-821	0	0	0	-2	0	0
+add	p	Meson	H*0	823	0	0	0	2	1	0
+add	p	Meson	H*~0	-823	0	0	0	-2	1	0
+add	p	Meson	H*_20	825	0	0	0	2	2	0
+add	p	Meson	H*_2~0	-825	0	0	0	-2	2	0
+add	p	Meson	H_s+	831	0	0	0	2	0	0
+add	p	Meson	H_s-	-831	0	0	0	-2	0	0
+add	p	Meson	H*_s+	833	0	0	0	2	1	0
+add	p	Meson	H*_s-	-833	0	0	0	-2	1	0
+add	p	Meson	H*_2s+	835	0	0	0	2	2	0
+add	p	Meson	H*_2s-	-835	0	0	0	-2	2	0
+add	p	Meson	H_c0	841	0	0	0	2	0	0
+add	p	Meson	H_c~0	-841	0	0	0	-2	0	0
+add	p	Meson	H*_c0	843	0	0	0	2	1	0
+add	p	Meson	H*_c~0	-843	0	0	0	-2	1	0
+add	p	Meson	H*_2c0	845	0	0	0	2	2	0
+add	p	Meson	H*_2c~0	-845	0	0	0	-2	2	0
+add	p	Meson	H_b+	851	0	0	0	2	0	0
+add	p	Meson	H_b-	-851	0	0	0	-2	0	0
+add	p	Meson	H*_b+	853	0	0	0	2	1	0
+add	p	Meson	H*_b-	-853	0	0	0	-2	1	0
+add	p	Meson	H*_2b+	855	0	0	0	2	2	0
+add	p	Meson	H*_2b-	-855	0	0	0	-2	2	0
+add	p	Meson	H_t0	861	0	0	0	2	0	0
+add	p	Meson	H_t~0	-861	0	0	0	-2	0	0
+add	p	Meson	H*_t0	863	0	0	0	2	1	0
+add	p	Meson	H*_t~0	-863	0	0	0	-2	1	0
+add	p	Meson	H*_2t0	865	0	0	0	2	2	0
+add	p	Meson	H*_2t~0	-865	0	0	0	-2	2	0
+add	p	Meson	H_l+	871	0	0	0	2	0	0
+add	p	Meson	H_l-	-871	0	0	0	-2	0	0
+add	p	Meson	H*_l+	873	0	0	0	2	1	0
+add	p	Meson	H*_l-	-873	0	0	0	-2	1	0
+add	p	Meson	H*_2l+	875	0	0	0	2	2	0
+add	p	Meson	H*_2l-	-875	0	0	0	-2	2	0
+add	p	Meson	eta_h	881	0.397E+03	0	0	0	0	0
+add	p	Meson	Theta_h	883	0.397E+03	0	0	0	1	0
+add	p	Meson	chi_2h	885	0.39745E+03	0	0	0	2	0
+add	p	Baryon	Delta-	1114	0.1234E+01	0.115	0.14	-3	1	0
+add	p	Baryon	Delta~+	-1114	0.1234E+01	0.115	0.14	3	1	0
+add	p	Baryon	n_diffr0	2110	0	0	0	0	0	0
+add	p	Baryon	n_diffr~0	-2110	0	0	0	0	0	0
+add	p	Baryon	n0	2112	0.9396	0	0	0	0	0
+add	p	Baryon	n~0	-2112	0.9396	0	0	0	0	0
+add	p	Baryon	Delta0	2114	0.1233E+01	0.115	0.14	0	1	0
+add	p	Baryon	Delta~0	-2114	0.1233E+01	0.115	0.14	0	1	0
+add	p	Baryon	p_diffr+	2210	0	0	0	3	0	0
+add	p	Baryon	p_diffr~-	-2210	0	0	0	-3	0	0
+add	p	Baryon	p+	2212	0.9383	0	0	3	0	0
+add	p	Baryon	p~-	-2212	0.9383	0	0	-3	0	0
+add	p	Baryon	Delta+	2214	0.1232E+01	0.115	0.14	3	1	0
+add	p	Baryon	Delta~-	-2214	0.1232E+01	0.115	0.14	-3	1	0
+add	p	Baryon	Delta++	2224	0.1231E+01	0.115	0.14	6	1	0
+add	p	Baryon	Delta~--	-2224	0.1231E+01	0.115	0.14	-6	1	0
+add	p	Baryon	Sigma-	3112	0.11974E+01	0	0	-3	0	0.443E+02
+add	p	Baryon	Sigma~+	-3112	0.11974E+01	0	0	3	0	0.443E+02
+add	p	Baryon	Sigma*-	3114	0.13872E+01	0.39E-01	0.4E-01	-3	1	0
+add	p	Baryon	Sigma*~+	-3114	0.13872E+01	0.39E-01	0.4E-01	3	1	0
+add	p	Baryon	Lambda0	3122	0.11156E+01	0	0	0	0	0.7888E+02
+add	p	Baryon	Lambda~0	-3122	0.11156E+01	0	0	0	0	0.7888E+02
+add	p	Baryon	Sigma0	3212	0.11926E+01	0	0	0	0	0
+add	p	Baryon	Sigma~0	-3212	0.11926E+01	0	0	0	0	0
+add	p	Baryon	Sigma*0	3214	0.13837E+01	0.36E-01	0.35E-01	0	1	0
+add	p	Baryon	Sigma*~0	-3214	0.13837E+01	0.36E-01	0.35E-01	0	1	0
+add	p	Baryon	Sigma+	3222	0.11894E+01	0	0	3	0	0.24E+02
+add	p	Baryon	Sigma~-	-3222	0.11894E+01	0	0	-3	0	0.24E+02
+add	p	Baryon	Sigma*+	3224	0.13828E+01	0.36E-01	0.35E-01	3	1	0
+add	p	Baryon	Sigma*~-	-3224	0.13828E+01	0.36E-01	0.35E-01	-3	1	0
+add	p	Baryon	Xi-	3312	0.13213E+01	0	0	-3	0	0.491E+02
+add	p	Baryon	Xi~+	-3312	0.13213E+01	0	0	3	0	0.491E+02
+add	p	Baryon	Xi*-	3314	0.1535E+01	0.99E-02	0.5E-01	-3	1	0
+add	p	Baryon	Xi*~+	-3314	0.1535E+01	0.99E-02	0.5E-01	3	1	0
+add	p	Baryon	Xi0	3322	0.13149E+01	0	0	0	0	0.869E+02
+add	p	Baryon	Xi~0	-3322	0.13149E+01	0	0	0	0	0.869E+02
+add	p	Baryon	Xi*0	3324	0.15318E+01	0.91E-02	0.5E-01	0	1	0
+add	p	Baryon	Xi*~0	-3324	0.15318E+01	0.91E-02	0.5E-01	0	1	0
+add	p	Baryon	Omega-	3334	0.16724E+01	0	0	-3	1	0.246E+02
+add	p	Baryon	Omega~+	-3334	0.16724E+01	0	0	3	1	0.246E+02
+add	p	Baryon	Sigma_c0	4112	0.2454E+01	0	0	0	0	0
+add	p	Baryon	Sigma_c~0	-4112	0.2454E+01	0	0	0	0	0
+add	p	Baryon	Sigma*_c0	4114	0.25E+01	0	0	0	1	0
+add	p	Baryon	Sigma*_c~0	-4114	0.25E+01	0	0	0	1	0
+add	p	Baryon	Lambda_c+	4122	0.22849E+01	0	0	3	0	0.54E-01
+add	p	Baryon	Lambda_c~-	-4122	0.22849E+01	0	0	-3	0	0.54E-01
+add	p	Baryon	Xi_c0	4132	0.246E+01	0	0	0	0	0.13
+add	p	Baryon	Xi_c~0	-4132	0.246E+01	0	0	0	0	0.13
+add	p	Baryon	Sigma_c+	4212	0.24529E+01	0	0	3	0	0
+add	p	Baryon	Sigma_c~-	-4212	0.24529E+01	0	0	-3	0	0
+add	p	Baryon	Sigma*_c+	4214	0.25E+01	0	0	3	1	0
+add	p	Baryon	Sigma*_c~-	-4214	0.25E+01	0	0	-3	1	0
+add	p	Baryon	Sigma_c++	4222	0.24522E+01	0	0	6	0	0
+add	p	Baryon	Sigma_c~--	-4222	0.24522E+01	0	0	-6	0	0
+add	p	Baryon	Sigma*_c++	4224	0.25E+01	0	0	6	1	0
+add	p	Baryon	Sigma*_c~--	-4224	0.25E+01	0	0	-6	1	0
+add	p	Baryon	Xi_c+	4232	0.246E+01	0	0	3	0	0.13
+add	p	Baryon	Xi_c~-	-4232	0.246E+01	0	0	-3	0	0.13
+add	p	Baryon	Xi'_c0	4312	0.255E+01	0	0	0	0	0
+add	p	Baryon	Xi'_c~0	-4312	0.255E+01	0	0	0	0	0
+add	p	Baryon	Xi*_c0	4314	0.263E+01	0	0	0	1	0
+add	p	Baryon	Xi*_c~0	-4314	0.263E+01	0	0	0	1	0
+add	p	Baryon	Xi'_c+	4322	0.255E+01	0	0	3	0	0
+add	p	Baryon	Xi'_c~-	-4322	0.255E+01	0	0	-3	0	0
+add	p	Baryon	Xi*_c+	4324	0.263E+01	0	0	3	1	0
+add	p	Baryon	Xi*_c~-	-4324	0.263E+01	0	0	-3	1	0
+add	p	Baryon	Omega_c0	4332	0.273E+01	0	0	0	0	0.13
+add	p	Baryon	Omega_c~0	-4332	0.273E+01	0	0	0	0	0.13
+add	p	Baryon	Omega*_c0	4334	0.28E+01	0	0	0	1	0
+add	p	Baryon	Omega*_c~0	-4334	0.28E+01	0	0	0	1	0
+add	p	Baryon	Xi_cc+	4412	0	0	0	2	0	0.1
+add	p	Baryon	Xi_cc~-	-4412	0	0	0	-2	0	0.1
+add	p	Baryon	Xi*_cc+	4414	0	0	0	2	1	0.1
+add	p	Baryon	Xi*_cc~-	-4414	0	0	0	-2	1	0.1
+add	p	Baryon	Xi_cc++	4422	0	0	0	2	0	0.1
+add	p	Baryon	Xi_cc~--	-4422	0	0	0	-2	0	0.1
+add	p	Baryon	Xi*_cc++	4424	0	0	0	2	1	0.1
+add	p	Baryon	Xi*_cc~--	-4424	0	0	0	-2	1	0.1
+add	p	Baryon	Omega_cc+	4432	0	0	0	2	0	0.1
+add	p	Baryon	Omega_cc~-	-4432	0	0	0	-2	0	0.1
+add	p	Baryon	Omega*_cc+	4434	0	0	0	2	1	0.1
+add	p	Baryon	Omega*_cc~-	-4434	0	0	0	-2	1	0.1
+add	p	Baryon	Omega*_ccc++	4444	0	0	0	2	1	0.1
+add	p	Baryon	Omega*_ccc~--	-4444	0	0	0	-2	1	0.1
+add	p	Baryon	Sigma_b-	5112	0.58E+01	0	0	-3	0	0
+add	p	Baryon	Sigma_b~+	-5112	0.58E+01	0	0	3	0	0
+add	p	Baryon	Sigma*_b-	5114	0.581E+01	0	0	-3	1	0
+add	p	Baryon	Sigma*_b~+	-5114	0.581E+01	0	0	3	1	0
+add	p	Baryon	Lambda_b0	5122	0.562E+01	0	0	0	0	0.393
+add	p	Baryon	Lambda_b~0	-5122	0.562E+01	0	0	0	0	0.393
+add	p	Baryon	Xi_b-	5132	0.584E+01	0	0	-3	0	0.393
+add	p	Baryon	Xi_b~+	-5132	0.584E+01	0	0	3	0	0.393
+add	p	Baryon	Xi_bc0	5142	0	0	0	-1	0	0.43
+add	p	Baryon	Xi_bc~0	-5142	0	0	0	1	0	0.43
+add	p	Baryon	Sigma_b0	5212	0.58E+01	0	0	0	0	0
+add	p	Baryon	Sigma_b~0	-5212	0.58E+01	0	0	0	0	0
+add	p	Baryon	Sigma*_b0	5214	0.581E+01	0	0	0	1	0
+add	p	Baryon	Sigma*_b~0	-5214	0.581E+01	0	0	0	1	0
+add	p	Baryon	Sigma_b+	5222	0.58E+01	0	0	3	0	0
+add	p	Baryon	Sigma_b~-	-5222	0.58E+01	0	0	-3	0	0
+add	p	Baryon	Sigma*_	5224	0.581E+01	0	0	3	1	0
+add	p	Baryon	Sigma*_b~-	-5224	0.581E+01	0	0	-3	1	0
+add	p	Baryon	Xi_b0	5232	0.584E+01	0	0	0	0	0.393
+add	p	Baryon	Xi_b~0	-5232	0.584E+01	0	0	0	0	0.393
+add	p	Baryon	Xi_bc+	5242	0	0	0	-1	0	0.43
+add	p	Baryon	Xi_bc~-	-5242	0	0	0	1	0	0.43
+add	p	Baryon	Xi'_b-	5312	0.596E+01	0	0	-3	0	0
+add	p	Baryon	Xi'_b~+	-5312	0.596E+01	0	0	3	0	0
+add	p	Baryon	Xi*_b-	5314	0.597E+01	0	0	-3	1	0
+add	p	Baryon	Xi*_b~+	-5314	0.597E+01	0	0	3	1	0
+add	p	Baryon	Xi'_b0	5322	0.596E+01	0	0	0	0	0
+add	p	Baryon	Xi'_b~0	-5322	0.596E+01	0	0	0	0	0
+add	p	Baryon	Xi*_b0	5324	0.597E+01	0	0	0	1	0
+add	p	Baryon	Xi*_b~0	-5324	0.597E+01	0	0	0	1	0
+add	p	Baryon	Omega_b-	5332	0.612E+01	0	0	-3	0	0.393
+add	p	Baryon	Omega_b~+	-5332	0.612E+01	0	0	3	0	0.393
+add	p	Baryon	Omega*_b-	5334	0.613E+01	0	0	-3	1	0
+add	p	Baryon	Omega*_b~+	-5334	0.613E+01	0	0	3	1	0
+add	p	Baryon	Omega_bc0	5342	0	0	0	-1	0	0.43
+add	p	Baryon	Omega_bc~0	-5342	0	0	0	1	0	0.43
+add	p	Baryon	Xi'_bc0	5412	0	0	0	-1	0	0.43
+add	p	Baryon	Xi'_bc~0	-5412	0	0	0	1	0	0.43
+add	p	Baryon	Xi*_bc0	5414	0	0	0	-1	1	0.43
+add	p	Baryon	Xi*_bc~0	-5414	0	0	0	1	1	0.43
+add	p	Baryon	Xi'_bc+	5422	0	0	0	-1	0	0.43
+add	p	Baryon	Xi'_bc~-	-5422	0	0	0	1	0	0.43
+add	p	Baryon	Xi*_bc+	5424	0	0	0	-1	1	0.43
+add	p	Baryon	Xi*_bc~-	-5424	0	0	0	1	1	0.43
+add	p	Baryon	Omega'_bc0	5432	0	0	0	-1	0	0.43
+add	p	Baryon	Omega'_bc~0	-5432	0	0	0	1	0	0.43
+add	p	Baryon	Omega*_bc0	5434	0	0	0	-1	1	0.43
+add	p	Baryon	Omega*_bc~0	-5434	0	0	0	1	1	0.43
+add	p	Baryon	Omega_bcc+	5442	0	0	0	-1	0	0.43
+add	p	Baryon	Omega_bcc~-	-5442	0	0	0	1	0	0.43
+add	p	Baryon	Omega*_bcc+	5444	0	0	0	-1	1	0.43
+add	p	Baryon	Omega*_bcc~-	-5444	0	0	0	1	1	0.43
+add	p	Baryon	Xi_bb-	5512	0	0	0	-1	0	0.43
+add	p	Baryon	Xi_bb~+	-5512	0	0	0	1	0	0.43
+add	p	Baryon	Xi*_bb-	5514	0	0	0	-1	1	0.43
+add	p	Baryon	Xi*_bb~+	-5514	0	0	0	1	1	0.43
+add	p	Baryon	Xi_bb0	5522	0	0	0	-1	0	0.43
+add	p	Baryon	Xi_bb~0	-5522	0	0	0	1	0	0.43
+add	p	Baryon	Xi*_bb0	5524	0	0	0	-1	1	0.43
+add	p	Baryon	Xi*_bb~0	-5524	0	0	0	1	1	0.43
+add	p	Baryon	Omega_bb-	5532	0	0	0	-1	0	0.43
+add	p	Baryon	Omega_bb~+	-5532	0	0	0	1	0	0.43
+add	p	Baryon	Omega*_bb-	5534	0	0	0	-1	1	0.43
+add	p	Baryon	Omega*_bb~+	-5534	0	0	0	1	1	0.43
+add	p	Baryon	Omega_bbc0	5542	0	0	0	-1	0	0.43
+add	p	Baryon	Omega_bbc~0	-5542	0	0	0	1	0	0.43
+add	p	Baryon	Omega*_bbc0	5544	0	0	0	-1	1	0.43
+add	p	Baryon	Omega*_bbc~0	-5544	0	0	0	1	1	0.43
+add	p	Baryon	Omega*_bbb-	5554	0	0	0	-1	1	0.43
+add	p	Baryon	Omega*_bbb~+	-5554	0	0	0	1	1	0.43
+add	p	Baryon	Sigma_t0	6112	0	0	0	2	0	0
+add	p	Baryon	Sigma_t~0	-6112	0	0	0	-2	0	0
+add	p	Baryon	Sigma*_t0	6114	0	0	0	2	1	0
+add	p	Baryon	Sigma*_t~0	-6114	0	0	0	-2	1	0
+add	p	Baryon	Lambda_t+	6122	0	0	0	2	0	0
+add	p	Baryon	Lambda_t~-	-6122	0	0	0	-2	0	0
+add	p	Baryon	Xi_t0	6132	0	0	0	2	0	0
+add	p	Baryon	Xi_t~0	-6132	0	0	0	-2	0	0
+add	p	Baryon	Xi_tc+	6142	0	0	0	2	0	0
+add	p	Baryon	Xi_tc~-	-6142	0	0	0	-2	0	0
+add	p	Baryon	Xi_tb0	6152	0	0	0	2	0	0
+add	p	Baryon	Xi_tb~0	-6152	0	0	0	-2	0	0
+add	p	Baryon	Sigma_t+	6212	0	0	0	2	0	0
+add	p	Baryon	Sigma_t~-	-6212	0	0	0	-2	0	0
+add	p	Baryon	Sigma*_t+	6214	0	0	0	2	1	0
+add	p	Baryon	Sigma*_t~-	-6214	0	0	0	-2	1	0
+add	p	Baryon	Sigma_t++	6222	0	0	0	2	0	0
+add	p	Baryon	Sigma_t~--	-6222	0	0	0	-2	0	0
+add	p	Baryon	Sigma*_t++	6224	0	0	0	2	1	0
+add	p	Baryon	Sigma*_t~--	-6224	0	0	0	-2	1	0
+add	p	Baryon	Xi_t+	6232	0	0	0	2	0	0
+add	p	Baryon	Xi_t~-	-6232	0	0	0	-2	0	0
+add	p	Baryon	Xi_tc++	6242	0	0	0	2	0	0
+add	p	Baryon	Xi_tc~--	-6242	0	0	0	-2	0	0
+add	p	Baryon	Xi_tb+	6252	0	0	0	2	0	0
+add	p	Baryon	Xi_tb~-	-6252	0	0	0	-2	0	0
+add	p	Baryon	Xi'_t0	6312	0	0	0	2	0	0
+add	p	Baryon	Xi'_t~0	-6312	0	0	0	-2	0	0
+add	p	Baryon	Xi*_t0	6314	0	0	0	2	1	0
+add	p	Baryon	Xi*_t~0	-6314	0	0	0	-2	1	0
+add	p	Baryon	Xi'_t+	6322	0	0	0	2	0	0
+add	p	Baryon	Xi'_t~-	-6322	0	0	0	-2	0	0
+add	p	Baryon	Xi*_t+	6324	0	0	0	2	1	0
+add	p	Baryon	Xi*_t~-	-6324	0	0	0	-2	1	0
+add	p	Baryon	Omega_t0	6332	0	0	0	2	0	0
+add	p	Baryon	Omega_t~0	-6332	0	0	0	-2	0	0
+add	p	Baryon	Omega*_t0	6334	0	0	0	2	1	0
+add	p	Baryon	Omega*_t~0	-6334	0	0	0	-2	1	0
+add	p	Baryon	Omega_tc+	6342	0	0	0	2	0	0
+add	p	Baryon	Omega_tc~-	-6342	0	0	0	-2	0	0
+add	p	Baryon	Omega_tb0	6352	0	0	0	2	0	0
+add	p	Baryon	Omega_tb~0	-6352	0	0	0	-2	0	0
+add	p	Baryon	Xi'_tc+	6412	0	0	0	2	0	0
+add	p	Baryon	Xi'_tc~-	-6412	0	0	0	-2	0	0
+add	p	Baryon	Xi*_tc+	6414	0	0	0	2	1	0
+add	p	Baryon	Xi*_tc~-	-6414	0	0	0	-2	1	0
+add	p	Baryon	Xi'_tc++	6422	0	0	0	2	0	0
+add	p	Baryon	Xi'_tc~--	-6422	0	0	0	-2	0	0
+add	p	Baryon	Xi*_tc++	6424	0	0	0	2	1	0
+add	p	Baryon	Xi*_tc~--	-6424	0	0	0	-2	1	0
+add	p	Baryon	Omega'_tc+	6432	0	0	0	2	0	0
+add	p	Baryon	Omega'_tc~-	-6432	0	0	0	-2	0	0
+add	p	Baryon	Omega*_tc+	6434	0	0	0	2	1	0
+add	p	Baryon	Omega*_tc~-	-6434	0	0	0	-2	1	0
+add	p	Baryon	Omega_tcc++	6442	0	0	0	2	0	0
+add	p	Baryon	Omega_tcc~--	-6442	0	0	0	-2	0	0
+add	p	Baryon	Omega*_tcc++	6444	0	0	0	2	1	0
+add	p	Baryon	Omega*_tcc~--	-6444	0	0	0	-2	1	0
+add	p	Baryon	Omega_tbc+	6452	0	0	0	2	0	0
+add	p	Baryon	Omega_tbc~-	-6452	0	0	0	-2	0	0
+add	p	Baryon	Xi'_tb0	6512	0	0	0	2	0	0
+add	p	Baryon	Xi'_tb~0	-6512	0	0	0	-2	0	0
+add	p	Baryon	Xi*_tb0	6514	0	0	0	2	1	0
+add	p	Baryon	Xi*_tb~0	-6514	0	0	0	-2	1	0
+add	p	Baryon	Xi'_tb+	6522	0	0	0	2	0	0
+add	p	Baryon	Xi'_tb~-	-6522	0	0	0	-2	0	0
+add	p	Baryon	Xi*_tb+	6524	0	0	0	2	1	0
+add	p	Baryon	Xi*_tb~-	-6524	0	0	0	-2	1	0
+add	p	Baryon	Omega'_tb0	6532	0	0	0	2	0	0
+add	p	Baryon	Omega'_tb~0	-6532	0	0	0	-2	0	0
+add	p	Baryon	Omega*_tb0	6534	0	0	0	2	1	0
+add	p	Baryon	Omega*_tb~0	-6534	0	0	0	-2	1	0
+add	p	Baryon	Omega'_tbc+	6542	0	0	0	2	0	0
+add	p	Baryon	Omega'_tbc~-	-6542	0	0	0	-2	0	0
+add	p	Baryon	Omega*_tbc+	6544	0	0	0	2	1	0
+add	p	Baryon	Omega*_tbc~-	-6544	0	0	0	-2	1	0
+add	p	Baryon	Omega_tbb0	6552	0	0	0	2	0	0
+add	p	Baryon	Omega_tbb~0	-6552	0	0	0	-2	0	0
+add	p	Baryon	Omega*_tbb0	6554	0	0	0	2	1	0
+add	p	Baryon	Omega*_tbb~0	-6554	0	0	0	-2	1	0
+add	p	Baryon	Xi_tt+	6612	0	0	0	2	0	0
+add	p	Baryon	Xi_tt~-	-6612	0	0	0	-2	0	0
+add	p	Baryon	Xi*_tt+	6614	0	0	0	2	1	0
+add	p	Baryon	Xi*_tt~-	-6614	0	0	0	-2	1	0
+add	p	Baryon	Xi_tt++	6622	0	0	0	2	0	0
+add	p	Baryon	Xi_tt~--	-6622	0	0	0	-2	0	0
+add	p	Baryon	Xi*_tt++	6624	0	0	0	2	1	0
+add	p	Baryon	Xi*_tt~--	-6624	0	0	0	-2	1	0
+add	p	Baryon	Omega_tt+	6632	0	0	0	2	0	0
+add	p	Baryon	Omega_tt~-	-6632	0	0	0	-2	0	0
+add	p	Baryon	Omega*_tt+	6634	0	0	0	2	1	0
+add	p	Baryon	Omega*_tt~-	-6634	0	0	0	-2	1	0
+add	p	Baryon	Omega_ttc++	6642	0	0	0	2	0	0
+add	p	Baryon	Omega_ttc~--	-6642	0	0	0	-2	0	0
+add	p	Baryon	Omega*_ttc++	6644	0	0	0	2	1	0
+add	p	Baryon	Omega*_ttc~--	-6644	0	0	0	-2	1	0
+add	p	Baryon	Omega_ttb+	6652	0	0	0	2	0	0
+add	p	Baryon	Omega_ttb~-	-6652	0	0	0	-2	0	0
+add	p	Baryon	Omega*_ttb+	6654	0	0	0	2	1	0
+add	p	Baryon	Omega*_ttb~-	-6654	0	0	0	-2	1	0
+add	p	Baryon	Omega*_ttt++	6664	0	0	0	2	1	0
+add	p	Baryon	Omega*_ttt~--	-6664	0	0	0	-2	1	0
+add	p	Baryon	Sigma_l-	7112	0	0	0	-1	0	0
+add	p	Baryon	Sigma_l~+	-7112	0	0	0	1	0	0
+add	p	Baryon	Sigma*_l-	7114	0	0	0	-1	1	0
+add	p	Baryon	Sigma*_l~+	-7114	0	0	0	1	1	0
+add	p	Baryon	Lambda_l0	7122	0	0	0	-1	0	0
+add	p	Baryon	Lambda_l~0	-7122	0	0	0	1	0	0
+add	p	Baryon	Xi_l-	7132	0	0	0	-1	0	0
+add	p	Baryon	Xi_l~+	-7132	0	0	0	1	0	0
+add	p	Baryon	Xi_lc0	7142	0	0	0	-1	0	0
+add	p	Baryon	Xi_lc~0	-7142	0	0	0	1	0	0
+add	p	Baryon	Xi_lb-	7152	0	0	0	-1	0	0
+add	p	Baryon	Xi_lb~+	-7152	0	0	0	1	0	0
+add	p	Baryon	Xi_lt0	7162	0	0	0	-1	0	0
+add	p	Baryon	Xi_lt~0	-7162	0	0	0	1	0	0
+add	p	Baryon	Sigma_l0	7212	0	0	0	-1	0	0
+add	p	Baryon	Sigma_l~0	-7212	0	0	0	1	0	0
+add	p	Baryon	Sigma*_l0	7214	0	0	0	-1	1	0
+add	p	Baryon	Sigma*_l~0	-7214	0	0	0	1	1	0
+add	p	Baryon	Sigma_l+	7222	0	0	0	-1	0	0
+add	p	Baryon	Sigma_l~-	-7222	0	0	0	1	0	0
+add	p	Baryon	Sigma*_l+	7224	0	0	0	-1	1	0
+add	p	Baryon	Sigma*_l~-	-7224	0	0	0	1	1	0
+add	p	Baryon	Xi_l0	7232	0	0	0	-1	0	0
+add	p	Baryon	Xi_l~0	-7232	0	0	0	1	0	0
+add	p	Baryon	Xi_lc+	7242	0	0	0	-1	0	0
+add	p	Baryon	Xi_lc~-	-7242	0	0	0	1	0	0
+add	p	Baryon	Xi_lb0	7252	0	0	0	-1	0	0
+add	p	Baryon	Xi_lb~0	-7252	0	0	0	1	0	0
+add	p	Baryon	Xi_lt+	7262	0	0	0	-1	0	0
+add	p	Baryon	Xi_lt~-	-7262	0	0	0	1	0	0
+add	p	Baryon	Xi'_l-	7312	0	0	0	-1	0	0
+add	p	Baryon	Xi'_l~+	-7312	0	0	0	1	0	0
+add	p	Baryon	Xi*_l-	7314	0	0	0	-1	1	0
+add	p	Baryon	Xi*_l~+	-7314	0	0	0	1	1	0
+add	p	Baryon	Xi'_l0	7322	0	0	0	-1	0	0
+add	p	Baryon	Xi'_l~0	-7322	0	0	0	1	0	0
+add	p	Baryon	Xi*_l0	7324	0	0	0	-1	1	0
+add	p	Baryon	Xi*_l~0	-7324	0	0	0	1	1	0
+add	p	Baryon	Omega_l-	7332	0	0	0	-1	0	0
+add	p	Baryon	Omega_l~+	-7332	0	0	0	1	0	0
+add	p	Baryon	Omega*_l-	7334	0	0	0	-1	1	0
+add	p	Baryon	Omega*_l~+	-7334	0	0	0	1	1	0
+add	p	Baryon	Omega_lc0	7342	0	0	0	-1	0	0
+add	p	Baryon	Omega_lc~0	-7342	0	0	0	1	0	0
+add	p	Baryon	Omega_lb-	7352	0	0	0	-1	0	0
+add	p	Baryon	Omega_lb~+	-7352	0	0	0	1	0	0
+add	p	Baryon	Omega_lt0	7362	0	0	0	-1	0	0
+add	p	Baryon	Omega_lt~0	-7362	0	0	0	1	0	0
+add	p	Baryon	Xi'_lc0	7412	0	0	0	-1	0	0
+add	p	Baryon	Xi'_lc~0	-7412	0	0	0	1	0	0
+add	p	Baryon	Xi*_lc0	7414	0	0	0	-1	1	0
+add	p	Baryon	Xi*_lc~0	-7414	0	0	0	1	1	0
+add	p	Baryon	Xi'_lc+	7422	0	0	0	-1	0	0
+add	p	Baryon	Xi'_lc~-	-7422	0	0	0	1	0	0
+add	p	Baryon	Xi*_lc+	7424	0	0	0	-1	1	0
+add	p	Baryon	Xi*_lc~-	-7424	0	0	0	1	1	0
+add	p	Baryon	Omega'_lc0	7432	0	0	0	-1	0	0
+add	p	Baryon	Omega'_lc~0	-7432	0	0	0	1	0	0
+add	p	Baryon	Omega*_lc0	7434	0	0	0	-1	1	0
+add	p	Baryon	Omega*_lc~0	-7434	0	0	0	1	1	0
+add	p	Baryon	Omega_lcc+	7442	0	0	0	-1	0	0
+add	p	Baryon	Omega_lcc~-	-7442	0	0	0	1	0	0
+add	p	Baryon	Omega*_lcc+	7444	0	0	0	-1	1	0
+add	p	Baryon	Omega*_lcc~-	-7444	0	0	0	1	1	0
+add	p	Baryon	Omega_lbc0	7452	0	0	0	-1	0	0
+add	p	Baryon	Omega_lbc~0	-7452	0	0	0	1	0	0
+add	p	Baryon	Omega_ltc+	7462	0	0	0	-1	0	0
+add	p	Baryon	Omega_ltc~-	-7462	0	0	0	1	0	0
+add	p	Baryon	Xi'_lb-	7512	0	0	0	-1	0	0
+add	p	Baryon	Xi'_lb~+	-7512	0	0	0	1	0	0
+add	p	Baryon	Xi*_lb-	7514	0	0	0	-1	1	0
+add	p	Baryon	Xi*_lb~+	-7514	0	0	0	1	1	0
+add	p	Baryon	Xi'_lb0	7522	0	0	0	-1	0	0
+add	p	Baryon	Xi'_lb~0	-7522	0	0	0	1	0	0
+add	p	Baryon	Xi*_lb0	7524	0	0	0	-1	1	0
+add	p	Baryon	Xi*_lb~0	-7524	0	0	0	1	1	0
+add	p	Baryon	Omega'_lb-	7532	0	0	0	-1	0	0
+add	p	Baryon	Omega'_lb~+	-7532	0	0	0	1	0	0
+add	p	Baryon	Omega*_lb-	7534	0	0	0	-1	1	0
+add	p	Baryon	Omega*_lb~+	-7534	0	0	0	1	1	0
+add	p	Baryon	Omega'_lbc0	7542	0	0	0	-1	0	0
+add	p	Baryon	Omega'_lbc~0	-7542	0	0	0	1	0	0
+add	p	Baryon	Omega*_lbc0	7544	0	0	0	-1	1	0
+add	p	Baryon	Omega*_lbc~0	-7544	0	0	0	1	1	0
+add	p	Baryon	Omega_lbb-	7552	0	0	0	-1	0	0
+add	p	Baryon	Omega_lbb~+	-7552	0	0	0	1	0	0
+add	p	Baryon	Omega*_lbb-	7554	0	0	0	-1	1	0
+add	p	Baryon	Omega*_lbb~+	-7554	0	0	0	1	1	0
+add	p	Baryon	Omega_ltb0	7562	0	0	0	-1	0	0
+add	p	Baryon	Omega_ltb~0	-7562	0	0	0	1	0	0
+add	p	Baryon	Xi'_lt0	7612	0	0	0	-1	0	0
+add	p	Baryon	Xi'_lt~0	-7612	0	0	0	1	0	0
+add	p	Baryon	Xi*_lt0	7614	0	0	0	-1	1	0
+add	p	Baryon	Xi*_lt~0	-7614	0	0	0	1	1	0
+add	p	Baryon	Xi'_lt+	7622	0	0	0	-1	0	0
+add	p	Baryon	Xi'_lt~-	-7622	0	0	0	1	0	0
+add	p	Baryon	Xi*_lt+	7624	0	0	0	-1	1	0
+add	p	Baryon	Xi*_lt~-	-7624	0	0	0	1	1	0
+add	p	Baryon	Omega'_lt0	7632	0	0	0	-1	0	0
+add	p	Baryon	Omega'_lt~0	-7632	0	0	0	1	0	0
+add	p	Baryon	Omega*_lt0	7634	0	0	0	-1	1	0
+add	p	Baryon	Omega*_lt~0	-7634	0	0	0	1	1	0
+add	p	Baryon	Omega'_ltc+	7642	0	0	0	-1	0	0
+add	p	Baryon	Omega'_ltc~-	-7642	0	0	0	1	0	0
+add	p	Baryon	Omega*_ltc+	7644	0	0	0	-1	1	0
+add	p	Baryon	Omega*_ltc~-	-7644	0	0	0	1	1	0
+add	p	Baryon	Omega'_ltb0	7652	0	0	0	-1	0	0
+add	p	Baryon	Omega'_ltb~0	-7652	0	0	0	1	0	0
+add	p	Baryon	Omega*_ltb0	7654	0	0	0	-1	1	0
+add	p	Baryon	Omega*_ltb~0	-7654	0	0	0	1	1	0
+add	p	Baryon	Omega_ltt+	7662	0	0	0	-1	0	0
+add	p	Baryon	Omega_ltt~-	-7662	0	0	0	1	0	0
+add	p	Baryon	Omega*_ltt+	7664	0	0	0	-1	1	0
+add	p	Baryon	Omega*_ltt~-	-7664	0	0	0	1	1	0
+add	p	Baryon	Xi_ll-	7712	0	0	0	-1	0	0
+add	p	Baryon	Xi_ll~+	-7712	0	0	0	1	0	0
+add	p	Baryon	Xi*_ll-	7714	0	0	0	-1	1	0
+add	p	Baryon	Xi*_ll~+	-7714	0	0	0	1	1	0
+add	p	Baryon	Xi_ll0	7722	0	0	0	-1	0	0
+add	p	Baryon	Xi_ll~0	-7722	0	0	0	1	0	0
+add	p	Baryon	Xi*_ll0	7724	0	0	0	-1	1	0
+add	p	Baryon	Xi*_ll~0	-7724	0	0	0	1	1	0
+add	p	Baryon	Omega_ll-	7732	0	0	0	-1	0	0
+add	p	Baryon	Omega_ll~+	-7732	0	0	0	1	0	0
+add	p	Baryon	Omega*_ll-	7734	0	0	0	-1	1	0
+add	p	Baryon	Omega*_ll~+	-7734	0	0	0	1	1	0
+add	p	Baryon	Omega_llc0	7742	0	0	0	-1	0	0
+add	p	Baryon	Omega_llc~0	-7742	0	0	0	1	0	0
+add	p	Baryon	Omega*_llc0	7744	0	0	0	-1	1	0
+add	p	Baryon	Omega*_llc~0	-7744	0	0	0	1	1	0
+add	p	Baryon	Omega_llb-	7752	0	0	0	-1	0	0
+add	p	Baryon	Omega_llb~+	-7752	0	0	0	1	0	0
+add	p	Baryon	Omega*_llb-	7754	0	0	0	-1	1	0
+add	p	Baryon	Omega*_llb~+	-7754	0	0	0	1	1	0
+add	p	Baryon	Omega_llt0	7762	0	0	0	-1	0	0
+add	p	Baryon	Omega_llt~0	-7762	0	0	0	1	0	0
+add	p	Baryon	Omega*_llt0	7764	0	0	0	-1	1	0
+add	p	Baryon	Omega*_llt~0	-7764	0	0	0	1	1	0
+add	p	Baryon	Omega*_lll-	7774	0	0	0	-1	1	0
+add	p	Baryon	Omega*_lll~+	-7774	0	0	0	1	1	0
+add	p	Baryon	Sigma_h0	8112	0	0	0	2	0	0
+add	p	Baryon	Sigma_h~0	-8112	0	0	0	-2	0	0
+add	p	Baryon	Sigma*_h0	8114	0	0	0	2	1	0
+add	p	Baryon	Sigma*_h~0	-8114	0	0	0	-2	1	0
+add	p	Baryon	Lambda_h+	8122	0	0	0	2	0	0
+add	p	Baryon	Lambda_h~-	-8122	0	0	0	-2	0	0
+add	p	Baryon	Xi_h0	8132	0	0	0	2	0	0
+add	p	Baryon	Xi_h~0	-8132	0	0	0	-2	0	0
+add	p	Baryon	Xi_hc+	8142	0	0	0	2	0	0
+add	p	Baryon	Xi_hc~-	-8142	0	0	0	-2	0	0
+add	p	Baryon	Xi_hb0	8152	0	0	0	2	0	0
+add	p	Baryon	Xi_hb~0	-8152	0	0	0	-2	0	0
+add	p	Baryon	Xi_ht+	8162	0	0	0	2	0	0
+add	p	Baryon	Xi_ht~-	-8162	0	0	0	-2	0	0
+add	p	Baryon	Xi_hl0	8172	0	0	0	2	0	0
+add	p	Baryon	Xi_hl~0	-8172	0	0	0	-2	0	0
+add	p	Baryon	Sigma_h+	8212	0	0	0	2	0	0
+add	p	Baryon	Sigma_h~-	-8212	0	0	0	-2	0	0
+add	p	Baryon	Sigma*_h+	8214	0	0	0	2	1	0
+add	p	Baryon	Sigma*_h~-	-8214	0	0	0	-2	1	0
+add	p	Baryon	Sigma_h++	8222	0	0	0	2	0	0
+add	p	Baryon	Sigma_h~--	-8222	0	0	0	-2	0	0
+add	p	Baryon	Sigma*_h++	8224	0	0	0	2	1	0
+add	p	Baryon	Sigma*_h~--	-8224	0	0	0	-2	1	0
+add	p	Baryon	Xi_h+	8232	0	0	0	2	0	0
+add	p	Baryon	Xi_h~-	-8232	0	0	0	-2	0	0
+add	p	Baryon	Xi_hc++	8242	0	0	0	2	0	0
+add	p	Baryon	Xi_hc~--	-8242	0	0	0	-2	0	0
+add	p	Baryon	Xi_hb+	8252	0	0	0	2	0	0
+add	p	Baryon	Xi_hb~-	-8252	0	0	0	-2	0	0
+add	p	Baryon	Xi_ht++	8262	0	0	0	2	0	0
+add	p	Baryon	Xi_ht~--	-8262	0	0	0	-2	0	0
+add	p	Baryon	Xi_hl+	8272	0	0	0	2	0	0
+add	p	Baryon	Xi_hl~-	-8272	0	0	0	-2	0	0
+add	p	Baryon	Xi'_h0	8312	0	0	0	2	0	0
+add	p	Baryon	Xi'_h~0	-8312	0	0	0	-2	0	0
+add	p	Baryon	Xi*_h0	8314	0	0	0	2	1	0
+add	p	Baryon	Xi*_h~0	-8314	0	0	0	-2	1	0
+add	p	Baryon	Xi'_h+	8322	0	0	0	2	0	0
+add	p	Baryon	Xi'_h~-	-8322	0	0	0	-2	0	0
+add	p	Baryon	Xi*_h+	8324	0	0	0	2	1	0
+add	p	Baryon	Xi*_h~-	-8324	0	0	0	-2	1	0
+add	p	Baryon	Omega_h0	8332	0	0	0	2	0	0
+add	p	Baryon	Omega_h~0	-8332	0	0	0	-2	0	0
+add	p	Baryon	Omega*_h0	8334	0	0	0	2	1	0
+add	p	Baryon	Omega*_h~0	-8334	0	0	0	-2	1	0
+add	p	Baryon	Omega_hc+	8342	0	0	0	2	0	0
+add	p	Baryon	Omega_hc~-	-8342	0	0	0	-2	0	0
+add	p	Baryon	Omega_hb0	8352	0	0	0	2	0	0
+add	p	Baryon	Omega_hb~0	-8352	0	0	0	-2	0	0
+add	p	Baryon	Omega_ht+	8362	0	0	0	2	0	0
+add	p	Baryon	Omega_ht~-	-8362	0	0	0	-2	0	0
+add	p	Baryon	Omega_hl0	8372	0	0	0	2	0	0
+add	p	Baryon	Omega_hl~0	-8372	0	0	0	-2	0	0
+add	p	Baryon	Xi'_hc+	8412	0	0	0	2	0	0
+add	p	Baryon	Xi'_hc~-	-8412	0	0	0	-2	0	0
+add	p	Baryon	Xi*_hc+	8414	0	0	0	2	1	0
+add	p	Baryon	Xi*_hc~-	-8414	0	0	0	-2	1	0
+add	p	Baryon	Xi'_hc++	8422	0	0	0	2	0	0
+add	p	Baryon	Xi'_hc~--	-8422	0	0	0	-2	0	0
+add	p	Baryon	Xi*_hc++	8424	0	0	0	2	1	0
+add	p	Baryon	Xi*_hc~--	-8424	0	0	0	-2	1	0
+add	p	Baryon	Omega'_hc+	8432	0	0	0	2	0	0
+add	p	Baryon	Omega'_hc~-	-8432	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hc+	8434	0	0	0	2	1	0
+add	p	Baryon	Omega*_hc~-	-8434	0	0	0	-2	1	0
+add	p	Baryon	Omega_hcc++	8442	0	0	0	2	0	0
+add	p	Baryon	Omega_hcc~--	-8442	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hcc++	8444	0	0	0	2	1	0
+add	p	Baryon	Omega*_hcc~--	-8444	0	0	0	-2	1	0
+add	p	Baryon	Omega_hbc+	8452	0	0	0	2	0	0
+add	p	Baryon	Omega_hbc~-	-8452	0	0	0	-2	0	0
+add	p	Baryon	Omega_htc++	8462	0	0	0	2	0	0
+add	p	Baryon	Omega_htc~--	-8462	0	0	0	-2	0	0
+add	p	Baryon	Omega_hlc+	8472	0	0	0	2	0	0
+add	p	Baryon	Omega_hlc~-	-8472	0	0	0	-2	0	0
+add	p	Baryon	Xi'_hb0	8512	0	0	0	2	0	0
+add	p	Baryon	Xi'_hb~0	-8512	0	0	0	-2	0	0
+add	p	Baryon	Xi*_hb0	8514	0	0	0	2	1	0
+add	p	Baryon	Xi*_hb~0	-8514	0	0	0	-2	1	0
+add	p	Baryon	Xi'_hb+	8522	0	0	0	2	0	0
+add	p	Baryon	Xi'_hb~-	-8522	0	0	0	-2	0	0
+add	p	Baryon	Xi*_hb+	8524	0	0	0	2	1	0
+add	p	Baryon	Xi*_hb~-	-8524	0	0	0	-2	1	0
+add	p	Baryon	Omega'_hb0	8532	0	0	0	2	0	0
+add	p	Baryon	Omega'_hb~0	-8532	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hb0	8534	0	0	0	2	1	0
+add	p	Baryon	Omega*_hb~0	-8534	0	0	0	-2	1	0
+add	p	Baryon	Omega'_hbc+	8542	0	0	0	2	0	0
+add	p	Baryon	Omega'_hbc~-	-8542	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hbc+	8544	0	0	0	2	1	0
+add	p	Baryon	Omega*_hbc~-	-8544	0	0	0	-2	1	0
+add	p	Baryon	Omega_hbb0	8552	0	0	0	2	0	0
+add	p	Baryon	Omega_hbb~0	-8552	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hbb0	8554	0	0	0	2	1	0
+add	p	Baryon	Omega*_hbb~0	-8554	0	0	0	-2	1	0
+add	p	Baryon	Omega_htb+	8562	0	0	0	2	0	0
+add	p	Baryon	Omega_htb~-	-8562	0	0	0	-2	0	0
+add	p	Baryon	Omega_hlb0	8572	0	0	0	2	0	0
+add	p	Baryon	Omega_hlb~0	-8572	0	0	0	-2	0	0
+add	p	Baryon	Xi'_ht+	8612	0	0	0	2	0	0
+add	p	Baryon	Xi'_ht~-	-8612	0	0	0	-2	0	0
+add	p	Baryon	Xi*_ht+	8614	0	0	0	2	1	0
+add	p	Baryon	Xi*_ht~-	-8614	0	0	0	-2	1	0
+add	p	Baryon	Xi'_ht++	8622	0	0	0	2	0	0
+add	p	Baryon	Xi'_ht~--	-8622	0	0	0	-2	0	0
+add	p	Baryon	Xi*_ht++	8624	0	0	0	2	1	0
+add	p	Baryon	Xi*_ht~--	-8624	0	0	0	-2	1	0
+add	p	Baryon	Omega'_ht+	8632	0	0	0	2	0	0
+add	p	Baryon	Omega'_ht~-	-8632	0	0	0	-2	0	0
+add	p	Baryon	Omega*_ht+	8634	0	0	0	2	1	0
+add	p	Baryon	Omega*_ht~-	-8634	0	0	0	-2	1	0
+add	p	Baryon	Omega'_htc++	8642	0	0	0	2	0	0
+add	p	Baryon	Omega'_htc~--	-8642	0	0	0	-2	0	0
+add	p	Baryon	Omega*_htc++	8644	0	0	0	2	1	0
+add	p	Baryon	Omega*_htc~--	-8644	0	0	0	-2	1	0
+add	p	Baryon	Omega'_htb+	8652	0	0	0	2	0	0
+add	p	Baryon	Omega'_htb~-	-8652	0	0	0	-2	0	0
+add	p	Baryon	Omega*_htb+	8654	0	0	0	2	1	0
+add	p	Baryon	Omega*_htb~-	-8654	0	0	0	-2	1	0
+add	p	Baryon	Omega_htt++	8662	0	0	0	2	0	0
+add	p	Baryon	Omega_htt~--	-8662	0	0	0	-2	0	0
+add	p	Baryon	Omega*_htt++	8664	0	0	0	2	1	0
+add	p	Baryon	Omega*_htt~--	-8664	0	0	0	-2	1	0
+add	p	Baryon	Omega_hlt+	8672	0	0	0	2	0	0
+add	p	Baryon	Omega_hlt~-	-8672	0	0	0	-2	0	0
+add	p	Baryon	Xi'_hl0	8712	0	0	0	2	0	0
+add	p	Baryon	Xi'_hl~0	-8712	0	0	0	-2	0	0
+add	p	Baryon	Xi*_hl0	8714	0	0	0	2	1	0
+add	p	Baryon	Xi*_hl~0	-8714	0	0	0	-2	1	0
+add	p	Baryon	Xi'_hl+	8722	0	0	0	2	0	0
+add	p	Baryon	Xi'_hl~-	-8722	0	0	0	-2	0	0
+add	p	Baryon	Xi*_hl+	8724	0	0	0	2	1	0
+add	p	Baryon	Xi*_hl~-	-8724	0	0	0	-2	1	0
+add	p	Baryon	Omega'_hl0	8732	0	0	0	2	0	0
+add	p	Baryon	Omega'_hl~0	-8732	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hl0	8734	0	0	0	2	1	0
+add	p	Baryon	Omega*_hl~0	-8734	0	0	0	-2	1	0
+add	p	Baryon	Omega'_hlc+	8742	0	0	0	2	0	0
+add	p	Baryon	Omega'_hlc~-	-8742	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hlc+	8744	0	0	0	2	1	0
+add	p	Baryon	Omega*_hlc~-	-8744	0	0	0	-2	1	0
+add	p	Baryon	Omega'_hlb0	8752	0	0	0	2	0	0
+add	p	Baryon	Omega'_hlb~0	-8752	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hlb0	8754	0	0	0	2	1	0
+add	p	Baryon	Omega*_hlb~0	-8754	0	0	0	-2	1	0
+add	p	Baryon	Omega'_hlt+	8762	0	0	0	2	0	0
+add	p	Baryon	Omega'_hlt~-	-8762	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hlt+	8764	0	0	0	2	1	0
+add	p	Baryon	Omega*_hlt~-	-8764	0	0	0	-2	1	0
+add	p	Baryon	Omega_hll0	8772	0	0	0	2	0	0
+add	p	Baryon	Omega_hll~0	-8772	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hll0	8774	0	0	0	2	1	0
+add	p	Baryon	Omega*_hll~0	-8774	0	0	0	-2	1	0
+add	p	Baryon	Xi_hh+	8812	0	0	0	2	0	0
+add	p	Baryon	Xi_hh~-	-8812	0	0	0	-2	0	0
+add	p	Baryon	Xi*_hh+	8814	0	0	0	2	1	0
+add	p	Baryon	Xi*_hh~-	-8814	0	0	0	-2	1	0
+add	p	Baryon	Xi_hh++	8822	0	0	0	2	0	0
+add	p	Baryon	Xi_hh~--	-8822	0	0	0	-2	0	0
+add	p	Baryon	Xi*_hh++	8824	0	0	0	2	1	0
+add	p	Baryon	Xi*_hh~--	-8824	0	0	0	-2	1	0
+add	p	Baryon	Omega_hh+	8832	0	0	0	2	0	0
+add	p	Baryon	Omega_hh~-	-8832	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hh+	8834	0	0	0	2	1	0
+add	p	Baryon	Omega*_hh~-	-8834	0	0	0	-2	1	0
+add	p	Baryon	Omega_hhc++	8842	0	0	0	2	0	0
+add	p	Baryon	Omega_hhc~--	-8842	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hhc++	8844	0	0	0	2	1	0
+add	p	Baryon	Omega*_hhc~--	-8844	0	0	0	-2	1	0
+add	p	Baryon	Omega_hhb+	8852	0	0	0	2	0	0
+add	p	Baryon	Omega_hhb~-	-8852	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hhb+	8854	0	0	0	2	1	0
+add	p	Baryon	Omega*_hhb~-	-8854	0	0	0	-2	1	0
+add	p	Baryon	Omega_hht++	8862	0	0	0	2	0	0
+add	p	Baryon	Omega_hht~--	-8862	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hht++	8864	0	0	0	2	1	0
+add	p	Baryon	Omega*_hht~--	-8864	0	0	0	-2	1	0
+add	p	Baryon	Omega_hhl+	8872	0	0	0	2	0	0
+add	p	Baryon	Omega_hhl~-	-8872	0	0	0	-2	0	0
+add	p	Baryon	Omega*_hhl+	8874	0	0	0	2	1	0
+add	p	Baryon	Omega*_hhl~-	-8874	0	0	0	-2	1	0
+add	p	Baryon	Omega*_hhh++	8884	0	0	0	2	1	0
+add	p	Baryon	Omega*_hhh~--	-8884	0	0	0	-2	1	0
+add	p	Meson	a_00	10111	0.983	0.57E-01	0.5E-01	0	0	0
+add	p	Meson	b_10	10113	0.1233E+01	0.15	0.25	0	1	0
+add	p	Meson	a_0+	10211	0.983	0.57E-01	0.5E-01	3	0	0
+add	p	Meson	a_0-	-10211	0.983	0.57E-01	0.5E-01	-3	0	0
+add	p	Meson	b_1+	10213	0.1233E+01	0.15	0.25	3	1	0
+add	p	Meson	b_1-	-10213	0.1233E+01	0.15	0.25	-3	1	0
+add	p	Meson	f_0	10221	0.1E+01	0	0	0	0	0
+add	p	Meson	h_1	10223	0.117E+01	0.335	0.2	0	1	0
+add	p	Meson	K*_00	10311	0.1429E+01	0.287	0.4	0	0	0
+add	p	Meson	K*_0~0	-10311	0.1429E+01	0.287	0.4	0	0	0
+add	p	Meson	K_10	10313	0.13E+01	0.9E-01	0.1E-01	0	1	0
+add	p	Meson	K_1~0	-10313	0.13E+01	0.9E-01	0.1E-01	0	1	0
+add	p	Meson	K*_0+	10321	0.1429E+01	0.287	0.4	3	0	0
+add	p	Meson	K*_0-	-10321	0.1429E+01	0.287	0.4	-3	0	0
+add	p	Meson	K_1+	10323	0.13E+01	0.9E-01	0.1E-01	3	1	0
+add	p	Meson	K_1-	-10323	0.13E+01	0.9E-01	0.1E-01	-3	1	0
+add	p	Meson	f'_0	10331	0.14E+01	0.25	0.35	0	0	0
+add	p	Meson	h'_1	10333	0.141E+01	0.8E-01	0.1E-02	0	1	0
+add	p	Meson	D*_0+	10411	0.2272E+01	0.6E-01	0.8E-01	3	0	0
+add	p	Meson	D*_0-	-10411	0.2272E+01	0.6E-01	0.8E-01	-3	0	0
+add	p	Meson	D_1+	10413	0.2322E+01	0.6E-01	0.8E-01	3	1	0
+add	p	Meson	D_1-	-10413	0.2322E+01	0.6E-01	0.8E-01	-3	1	0
+add	p	Meson	D*_00	10421	0.2272E+01	0.6E-01	0.8E-01	0	0	0
+add	p	Meson	D*_0~0	-10421	0.2272E+01	0.6E-01	0.8E-01	0	0	0
+add	p	Meson	D_10	10423	0.2322E+01	0.6E-01	0.8E-01	0	1	0
+add	p	Meson	D_1~0	-10423	0.2322E+01	0.6E-01	0.8E-01	0	1	0
+add	p	Meson	D*_0s+	10431	0.246E+01	0.4E-01	0.8E-01	3	0	0
+add	p	Meson	D*_0s-	-10431	0.246E+01	0.4E-01	0.8E-01	-3	0	0
+add	p	Meson	D_1s+	10433	0.251E+01	0.4E-01	0.8E-01	3	1	0
+add	p	Meson	D_1s-	-10433	0.251E+01	0.4E-01	0.8E-01	-3	1	0
+add	p	Meson	chi_0c	10441	0.34151E+01	0.135E-01	0.5E-01	0	0	0
+add	p	Meson	h_1c	10443	0.346E+01	0.1E-01	0.2E-01	0	1	0
+add	p	Meson	B*_00	10511	0.568E+01	0.1	0.2	0	0	0
+add	p	Meson	B*_0~0	-10511	0.568E+01	0.1	0.2	0	0	0
+add	p	Meson	B_10	10513	0.573E+01	0.1	0.2	0	1	0
+add	p	Meson	B_1~0	-10513	0.573E+01	0.1	0.2	0	1	0
+add	p	Meson	B*_0+	10521	0.568E+01	0.1	0.2	3	0	0
+add	p	Meson	B*_0-	-10521	0.568E+01	0.1	0.2	-3	0	0
+add	p	Meson	B_1+	10523	0.573E+01	0.1	0.2	3	1	0
+add	p	Meson	B_1-	-10523	0.573E+01	0.1	0.2	-3	1	0
+add	p	Meson	B*_0s0	10531	0.592E+01	0.1	0.12	0	0	0
+add	p	Meson	B*_0s~0	-10531	0.592E+01	0.1	0.12	0	0	0
+add	p	Meson	B_1s0	10533	0.597E+01	0.1	0.12	0	1	0
+add	p	Meson	B_1s~0	-10533	0.597E+01	0.1	0.12	0	1	0
+add	p	Meson	B*_0c+	10541	0	0	0	-1	0	0.43
+add	p	Meson	B*_0c-	-10541	0	0	0	1	0	0.43
+add	p	Meson	B_1c+	10543	0	0	0	-1	1	0.43
+add	p	Meson	B_1c-	-10543	0	0	0	1	1	0.43
+add	p	Meson	chi_0b	10551	0.98598E+01	0	0	0	0	0
+add	p	Meson	h_1b	10553	0.9875E+01	0.1E-01	0.2E-01	0	1	0
+add	p	Meson	T*_0+	10611	0	0	0	2	0	0
+add	p	Meson	T*_0-	-10611	0	0	0	-2	0	0
+add	p	Meson	T_1+	10613	0	0	0	2	1	0
+add	p	Meson	T_1-	-10613	0	0	0	-2	1	0
+add	p	Meson	T*_00	10621	0	0	0	2	0	0
+add	p	Meson	T*_0~0	-10621	0	0	0	-2	0	0
+add	p	Meson	T_10	10623	0	0	0	2	1	0
+add	p	Meson	T_1~0	-10623	0	0	0	-2	1	0
+add	p	Meson	T*_0s+	10631	0	0	0	2	0	0
+add	p	Meson	T*_0s-	-10631	0	0	0	-2	0	0
+add	p	Meson	T_1s+	10633	0	0	0	2	1	0
+add	p	Meson	T_1s-	-10633	0	0	0	-2	1	0
+add	p	Meson	T*_0c0	10641	0	0	0	2	0	0
+add	p	Meson	T*_0c~0	-10641	0	0	0	-2	0	0
+add	p	Meson	T_1c0	10643	0	0	0	2	1	0
+add	p	Meson	T_1c~0	-10643	0	0	0	-2	1	0
+add	p	Meson	T*_0b+	10651	0	0	0	2	0	0
+add	p	Meson	T*_0b-	-10651	0	0	0	-2	0	0
+add	p	Meson	T_1b+	10653	0	0	0	2	1	0
+add	p	Meson	T_1b-	-10653	0	0	0	-2	1	0
+add	p	Meson	chi_0t	10661	0.2384E+03	0	0	0	0	0
+add	p	Meson	h_1t	10663	0.23842E+03	0	0	0	1	0
+add	p	Meson	L*_00	10711	0	0	0	-1	0	0
+add	p	Meson	L*_0~0	-10711	0	0	0	1	0	0
+add	p	Meson	L_10	10713	0	0	0	-1	1	0
+add	p	Meson	L_1~0	-10713	0	0	0	1	1	0
+add	p	Meson	L*_0+	10721	0	0	0	-1	0	0
+add	p	Meson	L*_0-	-10721	0	0	0	1	0	0
+add	p	Meson	L_1+	10723	0	0	0	-1	1	0
+add	p	Meson	L_1-	-10723	0	0	0	1	1	0
+add	p	Meson	L*_0s0	10731	0	0	0	-1	0	0
+add	p	Meson	L*_0s~0	-10731	0	0	0	1	0	0
+add	p	Meson	L_1s0	10733	0	0	0	-1	1	0
+add	p	Meson	L_1s~0	-10733	0	0	0	1	1	0
+add	p	Meson	L*_0c+	10741	0	0	0	-1	0	0
+add	p	Meson	L*_0c-	-10741	0	0	0	1	0	0
+add	p	Meson	L_1c+	10743	0	0	0	-1	1	0
+add	p	Meson	L_1c-	-10743	0	0	0	1	1	0
+add	p	Meson	L*_0b0	10751	0	0	0	-1	0	0
+add	p	Meson	L*_0b~0	-10751	0	0	0	1	0	0
+add	p	Meson	L_1b0	10753	0	0	0	-1	1	0
+add	p	Meson	L_1b~0	-10753	0	0	0	1	1	0
+add	p	Meson	L*_0t+	10761	0	0	0	-1	0	0
+add	p	Meson	L*_0t-	-10761	0	0	0	1	0	0
+add	p	Meson	L_1t+	10763	0	0	0	-1	1	0
+add	p	Meson	L_1t-	-10763	0	0	0	1	1	0
+add	p	Meson	chi_0l	10771	0.2384E+03	0	0	0	0	0
+add	p	Meson	h_1l	10773	0.23842E+03	0	0	0	1	0
+add	p	Meson	H*_0+	10811	0	0	0	2	0	0
+add	p	Meson	H*_0-	-10811	0	0	0	-2	0	0
+add	p	Meson	H_1+	10813	0	0	0	2	1	0
+add	p	Meson	H_1-	-10813	0	0	0	-2	1	0
+add	p	Meson	H*_00	10821	0	0	0	2	0	0
+add	p	Meson	H*_0~0	-10821	0	0	0	-2	0	0
+add	p	Meson	H_10	10823	0	0	0	2	1	0
+add	p	Meson	H_1~0	-10823	0	0	0	-2	1	0
+add	p	Meson	H*_0s+	10831	0	0	0	2	0	0
+add	p	Meson	H*_0s-	-10831	0	0	0	-2	0	0
+add	p	Meson	H_1s+	10833	0	0	0	2	1	0
+add	p	Meson	H_1s-	-10833	0	0	0	-2	1	0
+add	p	Meson	H*_0c0	10841	0	0	0	2	0	0
+add	p	Meson	H*_0c~0	-10841	0	0	0	-2	0	0
+add	p	Meson	H_1c0	10843	0	0	0	2	1	0
+add	p	Meson	H_1c~0	-10843	0	0	0	-2	1	0
+add	p	Meson	H*_0b+	10851	0	0	0	2	0	0
+add	p	Meson	H*_0b-	-10851	0	0	0	-2	0	0
+add	p	Meson	H_1b+	10853	0	0	0	2	1	0
+add	p	Meson	H_1b-	-10853	0	0	0	-2	1	0
+add	p	Meson	H*_0t0	10861	0	0	0	2	0	0
+add	p	Meson	H*_0t~0	-10861	0	0	0	-2	0	0
+add	p	Meson	H_1t0	10863	0	0	0	2	1	0
+add	p	Meson	H_1t~0	-10863	0	0	0	-2	1	0
+add	p	Meson	H*_0l+	10871	0	0	0	2	0	0
+add	p	Meson	H*_0l-	-10871	0	0	0	-2	0	0
+add	p	Meson	H_1l+	10873	0	0	0	2	1	0
+add	p	Meson	H_1l-	-10873	0	0	0	-2	1	0
+add	p	Meson	chi_0h	10881	0.3974E+03	0	0	0	0	0
+add	p	Meson	h_1h	10883	0.39742E+03	0	0	0	1	0
+add	p	Meson	a_10	20113	0.126E+01	0.4	0.3	0	1	0
+add	p	Meson	a_1+	20213	0.126E+01	0.4	0.3	3	1	0
+add	p	Meson	a_1-	-20213	0.126E+01	0.4	0.3	-3	1	0
+add	p	Meson	f_1	20223	0.1283E+01	0.25E-01	0.5E-01	0	1	0
+add	p	Meson	K*_10	20313	0.1401E+01	0.184	0.3	0	1	0
+add	p	Meson	K*_1~0	-20313	0.1401E+01	0.184	0.3	0	1	0
+add	p	Meson	K*_1+	20323	0.1401E+01	0.184	0.3	3	1	0
+add	p	Meson	K*_1-	-20323	0.1401E+01	0.184	0.3	-3	1	0
+add	p	Meson	f'_1	20333	0.1422E+01	0.55E-01	0.25E-01	0	1	0
+add	p	Meson	D*_1+	20413	0.2372E+01	0.6E-01	0.8E-01	3	1	0
+add	p	Meson	D*_1-	-20413	0.2372E+01	0.6E-01	0.8E-01	-3	1	0
+add	p	Meson	D*_10	20423	0.2372E+01	0.6E-01	0.8E-01	0	1	0
+add	p	Meson	D*_1~0	-20423	0.2372E+01	0.6E-01	0.8E-01	0	1	0
+add	p	Meson	D*_1s+	20433	0.256E+01	0.4E-01	0.6E-01	3	1	0
+add	p	Meson	D*_1s-	-20433	0.256E+01	0.4E-01	0.6E-01	-3	1	0
+add	p	Meson	chi_1c	20443	0.35106E+01	0.135E-01	0.1E-02	0	1	0.4E-02
+add	p	Meson	B*_10	20513	0.578E+01	0.1	0.2	0	1	0
+add	p	Meson	B*_1~0	-20513	0.578E+01	0.1	0.2	0	1	0
+add	p	Meson	B*_1+	20523	0.578E+01	0.1	0.2	3	1	0
+add	p	Meson	B*_1-	-20523	0.578E+01	0.1	0.2	-3	1	0
+add	p	Meson	B*_1s0	20533	0.602E+01	0.1	0.12	0	1	0
+add	p	Meson	B*_1s~0	-20533	0.602E+01	0.1	0.12	0	1	0
+add	p	Meson	B*_1c+	20543	0	0	0	-1	1	0.43
+add	p	Meson	B*_1c-	-20543	0	0	0	1	1	0.43
+add	p	Meson	chi_1b	20553	0.98919E+01	0	0	0	1	0
+add	p	Meson	T*_1+	20613	0	0	0	2	1	0
+add	p	Meson	T*_1-	-20613	0	0	0	-2	1	0
+add	p	Meson	T*_10	20623	0	0	0	2	1	0
+add	p	Meson	T*_1~0	-20623	0	0	0	-2	1	0
+add	p	Meson	T*_1s+	20633	0	0	0	2	1	0
+add	p	Meson	T*_1s-	-20633	0	0	0	-2	1	0
+add	p	Meson	T*_1c0	20643	0	0	0	2	1	0
+add	p	Meson	T*_1c~0	-20643	0	0	0	-2	1	0
+add	p	Meson	T*_1b+	20653	0	0	0	2	1	0
+add	p	Meson	T*_1b-	-20653	0	0	0	-2	1	0
+add	p	Meson	chi_1t	20663	0.2385E+03	0	0	0	1	0
+add	p	Meson	L*_10	20713	0	0	0	-1	1	0
+add	p	Meson	L*_1~0	-20713	0	0	0	1	1	0
+add	p	Meson	L*_1+	20723	0	0	0	-1	1	0
+add	p	Meson	L*_1-	-20723	0	0	0	1	1	0
+add	p	Meson	L*_1s0	20733	0	0	0	-1	1	0
+add	p	Meson	L*_1s~0	-20733	0	0	0	1	1	0
+add	p	Meson	L*_1c+	20743	0	0	0	-1	1	0
+add	p	Meson	L*_1c-	-20743	0	0	0	1	1	0
+add	p	Meson	L*_1b0	20753	0	0	0	-1	1	0
+add	p	Meson	L*_1b~0	-20753	0	0	0	1	1	0
+add	p	Meson	L*_1t+	20763	0	0	0	-1	1	0
+add	p	Meson	L*_1t-	-20763	0	0	0	1	1	0
+add	p	Meson	chi_1l	20773	0.2385E+03	0	0	0	1	0
+add	p	Meson	H*_1+	20813	0	0	0	2	1	0
+add	p	Meson	H*_1-	-20813	0	0	0	-2	1	0
+add	p	Meson	H*_10	20823	0	0	0	2	1	0
+add	p	Meson	H*_1~0	-20823	0	0	0	-2	1	0
+add	p	Meson	H*_1s+	20833	0	0	0	2	1	0
+add	p	Meson	H*_1s-	-20833	0	0	0	-2	1	0
+add	p	Meson	H*_1c0	20843	0	0	0	2	1	0
+add	p	Meson	H*_1c~0	-20843	0	0	0	-2	1	0
+add	p	Meson	H*_1b+	20853	0	0	0	2	1	0
+add	p	Meson	H*_1b-	-20853	0	0	0	-2	1	0
+add	p	Meson	H*_1t0	20863	0	0	0	2	1	0
+add	p	Meson	H*_1t~0	-20863	0	0	0	-2	1	0
+add	p	Meson	H*_1l+	20873	0	0	0	2	1	0
+add	p	Meson	H*_1l-	-20873	0	0	0	-2	1	0
+add	p	Meson	chi_1h	20883	0.3975E+03	0	0	0	1	0
+add	p	DiQuark	dd_0	1101	0	0	0	-2	0	0
+add	p	DiQuark	ud_0	2101	0	0	0	1	0	0
+add	p	DiQuark	uu_0	2201	0	0	0	4	0	0
+add	p	DiQuark	sd_0	3101	0	0	0	-2	0	0
+add	p	DiQuark	su_0	3201	0	0	0	1	0	0
+add	p	DiQuark	ss_0	3301	0	0	0	-2	0	0
+add	p	DiQuark	cd_0	4101	0	0	0	1	0	0
+add	p	DiQuark	cu_0	4201	0	0	0	4	0	0
+add	p	DiQuark	cs_0	4301	0	0	0	1	0	0
+add	p	DiQuark	cc_0	4401	0	0	0	4	0	0
+add	p	DiQuark	bd_0	5101	0	0	0	-2	0	0
+add	p	DiQuark	bu_0	5201	0	0	0	1	0	0
+add	p	DiQuark	bs_0	5301	0	0	0	-2	0	0
+add	p	DiQuark	bc_0	5401	0	0	0	1	0	0
+add	p	DiQuark	bb_0	5501	0	0	0	-2	0	0
+add	p	DiQuark	dd_1	1103	0	0	0	-2	2	0
+add	p	DiQuark	ud_1	2103	0	0	0	1	2	0
+add	p	DiQuark	uu_1	2203	0	0	0	4	2	0
+add	p	DiQuark	sd_1	3103	0	0	0	-2	2	0
+add	p	DiQuark	su_1	3203	0	0	0	1	2	0
+add	p	DiQuark	ss_1	3303	0	0	0	-2	2	0
+add	p	DiQuark	cd_1	4103	0	0	0	1	2	0
+add	p	DiQuark	cu_1	4203	0	0	0	4	2	0
+add	p	DiQuark	cs_1	4303	0	0	0	1	2	0
+add	p	DiQuark	cc_1	4403	0	0	0	4	2	0
+add	p	DiQuark	bd_1	5103	0	0	0	-2	2	0
+add	p	DiQuark	bu_1	5203	0	0	0	1	2	0
+add	p	DiQuark	bs_1	5303	0	0	0	-2	2	0
+add	p	DiQuark	bc_1	5403	0	0	0	1	2	0
+add	p	DiQuark	bb_1	5503	0	0	0	-2	2	0
+add	c	13	1.000000	sage	3	-12	11	14
+add	c	-13	1.000000	sage	3	12	-11	-14
+add	c	15	0.177000	sage	3	-12	11	16
+add	c	15	0.177000	sage	3	-14	13	16
+add	c	15	0.108000	2body	2	16	-211
+add	c	15	0.225000	2body	2	16	-213
+add	c	15	0.003000	sage	3	16	-211	111
+add	c	15	0.060000	sage	3	16	-213	111
+add	c	15	0.020000	sage	4	16	-211	111	111
+add	c	15	0.025000	sage	4	16	-213	111	111
+add	c	15	0.013000	sage	8	16	-211	111	111	111	16	-211	310
+add	c	15	0.004000	sage	3	16	-211	310
+add	c	15	0.004000	sage	3	16	-211	130
+add	c	15	0.007000	2body	2	16	-321
+add	c	15	0.014000	2body	2	16	-323
+add	c	15	0.002000	sage	3	16	-321	111
+add	c	15	0.002000	sage	3	16	-323	111
+add	c	15	0.001000	sage	3	16	-321	310
+add	c	15	0.001000	sage	3	16	-321	130
+add	c	15	0.054000	sage	3	16	-211	113
+add	c	15	0.014000	sage	4	16	-211	211	-211
+add	c	15	0.016000	sage	3	16	-211	223
+add	c	15	0.005000	sage	3	16	-211	221
+add	c	15	0.012000	sage	3	16	-213	113
+add	c	15	0.012000	sage	4	16	-211	113	111
+add	c	15	0.006000	sage	4	16	-213	211	-211
+add	c	15	0.006000	sage	8	16	-211	211	-211	111	16	-213	223
+add	c	15	0.006000	sage	3	16	-213	223
+add	c	15	0.006000	sage	4	16	-211	223	111
+add	c	15	0.006000	sage	3	16	-213	221
+add	c	15	0.002000	sage	4	16	-211	221	111
+add	c	15	0.001000	sage	4	16	-213	113	111
+add	c	15	0.001000	sage	4	16	-211	113	113
+add	c	15	0.002000	sage	4	16	-211	221	221
+add	c	15	0.002000	sage	9	16	-211	113	111	111	16	-211	213	-213
+add	c	15	0.002000	sage	4	16	-211	213	-213
+add	c	15	0.002000	sage	10	16	-211	213	-211	111	16	-211	-213	211	111
+add	c	15	0.002000	sage	7	16	-211	-213	211	111	22	15
+add	c	-15	0.177000	sage	3	12	-11	-16
+add	c	-15	0.177000	sage	3	14	-13	-16
+add	c	-15	0.108000	2body	2	-16	211
+add	c	-15	0.225000	2body	2	-16	213
+add	c	-15	0.003000	sage	3	-16	211	111
+add	c	-15	0.060000	sage	3	-16	213	111
+add	c	-15	0.020000	sage	4	-16	211	111	111
+add	c	-15	0.025000	sage	4	-16	213	111	111
+add	c	-15	0.013000	sage	8	-16	211	111	111	111	-16	211	310
+add	c	-15	0.004000	sage	3	-16	211	310
+add	c	-15	0.004000	sage	3	-16	211	130
+add	c	-15	0.007000	2body	2	-16	321
+add	c	-15	0.014000	2body	2	-16	323
+add	c	-15	0.002000	sage	3	-16	321	111
+add	c	-15	0.002000	sage	3	-16	323	111
+add	c	-15	0.001000	sage	3	-16	321	310
+add	c	-15	0.001000	sage	3	-16	321	130
+add	c	-15	0.054000	sage	3	-16	211	113
+add	c	-15	0.014000	sage	4	-16	211	-211	211
+add	c	-15	0.016000	sage	3	-16	211	223
+add	c	-15	0.005000	sage	3	-16	211	221
+add	c	-15	0.012000	sage	3	-16	213	113
+add	c	-15	0.012000	sage	4	-16	211	113	111
+add	c	-15	0.006000	sage	4	-16	213	-211	211
+add	c	-15	0.006000	sage	8	-16	211	-211	211	111	-16	213	223
+add	c	-15	0.006000	sage	3	-16	213	223
+add	c	-15	0.006000	sage	4	-16	211	223	111
+add	c	-15	0.006000	sage	3	-16	213	221
+add	c	-15	0.002000	sage	4	-16	211	221	111
+add	c	-15	0.001000	sage	4	-16	213	113	111
+add	c	-15	0.001000	sage	4	-16	211	113	113
+add	c	-15	0.002000	sage	4	-16	211	221	221
+add	c	-15	0.002000	sage	9	-16	211	113	111	111	-16	211	-213	213
+add	c	-15	0.002000	sage	4	-16	211	-213	213
+add	c	-15	0.002000	sage	10	-16	211	-213	211	111	-16	211	213	-211	111
+add	c	-15	0.002000	sage	7	-16	211	213	-211	111	22	-15
+add	c	17	1.000000	2body	2	-89	18
+add	c	-17	1.000000	2body	2	89	-18
+add	c	83	1.000000	2body	2	82	-82
+add	c	111	0.988000	2body	2	22	22
+add	c	111	0.012000	sage	3	22	11	-11
+add	c	113	1.000000	2body	2	211	-211
+add	c	115	0.350000	2body	2	213	-211
+add	c	115	0.350000	2body	2	-213	211
+add	c	115	0.144000	2body	2	221	111
+add	c	115	0.105000	sage	3	223	211	-211
+add	c	115	0.024000	2body	2	321	-321
+add	c	115	0.024000	2body	2	130	310
+add	c	115	0.003000	2body	2	111	22
+add	c	130	0.217000	sage	3	111	111	111
+add	c	130	0.124000	sage	3	211	-211	111
+add	c	130	0.193000	sage	3	-12	11	211
+add	c	130	0.193000	sage	3	12	-11	-211
+add	c	130	0.135000	sage	3	-14	13	211
+add	c	130	0.135000	sage	3	14	-13	-211
+add	c	130	0.002000	2body	2	211	-211
+add	c	130	0.001000	2body	2	111	111
+add	c	211	1.000000	2body	2	-13	14
+add	c	-211	1.000000	2body	2	13	-14
+add	c	213	1.000000	2body	2	211	111
+add	c	-213	1.000000	2body	2	-211	111
+add	c	215	0.350000	2body	2	213	111
+add	c	215	0.350000	2body	2	113	211
+add	c	215	0.144000	2body	2	221	211
+add	c	215	0.105000	sage	3	223	211	111
+add	c	215	0.048000	2body	2	321	-311
+add	c	215	0.003000	2body	2	211	22
+add	c	-215	0.350000	2body	2	-213	111
+add	c	-215	0.350000	2body	2	113	-211
+add	c	-215	0.144000	2body	2	221	-211
+add	c	-215	0.105000	sage	3	223	-211	111
+add	c	-215	0.048000	2body	2	-321	311
+add	c	-215	0.003000	2body	2	-211	22
+add	c	221	0.389000	2body	2	22	22
+add	c	221	0.319000	sage	3	111	111	111
+add	c	221	0.237000	sage	3	211	-211	111
+add	c	221	0.049000	sage	3	22	211	-211
+add	c	221	0.005000	sage	3	22	11	-11
+add	c	221	0.001000	sage	4	211	-211	11	-11
+add	c	223	0.893000	sage	3	211	-211	111
+add	c	223	0.080000	2body	2	22	111
+add	c	223	0.017000	2body	2	211	-211
+add	c	223	0.005000	sage	3	111	111	22
+add	c	223	0.005000	sage	3	111	111	111
+add	c	225	0.573000	2body	2	211	-211
+add	c	225	0.287000	2body	2	111	111
+add	c	225	0.063000	sage	4	211	-211	111	111
+add	c	225	0.028000	sage	4	211	-211	211	-211
+add	c	225	0.021000	2body	2	321	-321
+add	c	225	0.021000	2body	2	130	310
+add	c	225	0.004000	2body	2	221	221
+add	c	225	0.003000	sage	4	111	111	111	111
+add	c	310	0.686000	2body	2	211	-211
+add	c	310	0.314000	2body	2	111	111
+add	c	313	0.665000	2body	2	321	-211
+add	c	313	0.333000	2body	2	311	111
+add	c	313	0.002000	2body	2	311	22
+add	c	-313	0.665000	2body	2	-321	211
+add	c	-313	0.333000	2body	2	-311	111
+add	c	-313	0.002000	2body	2	-311	22
+add	c	315	0.332000	2body	2	321	-211
+add	c	315	0.166000	2body	2	311	111
+add	c	315	0.168000	2body	2	323	-211
+add	c	315	0.084000	2body	2	313	111
+add	c	315	0.086000	sage	3	323	-211	111
+add	c	315	0.043000	sage	3	313	211	-211
+add	c	315	0.059000	2body	2	321	-213
+add	c	315	0.029000	2body	2	311	113
+add	c	315	0.029000	2body	2	311	223
+add	c	315	0.002000	2body	2	311	221
+add	c	315	0.002000	2body	2	311	22
+add	c	-315	0.332000	2body	2	-321	211
+add	c	-315	0.166000	2body	2	-311	111
+add	c	-315	0.168000	2body	2	-323	211
+add	c	-315	0.084000	2body	2	-313	111
+add	c	-315	0.086000	sage	3	-323	211	111
+add	c	-315	0.043000	sage	3	-313	-211	211
+add	c	-315	0.059000	2body	2	-321	213
+add	c	-315	0.029000	2body	2	-311	113
+add	c	-315	0.029000	2body	2	-311	223
+add	c	-315	0.002000	2body	2	-311	221
+add	c	-315	0.002000	2body	2	-311	22
+add	c	321	0.635000	2body	2	-13	14
+add	c	321	0.212000	2body	2	211	111
+add	c	321	0.056000	sage	3	211	211	-211
+add	c	321	0.017000	sage	3	211	111	111
+add	c	321	0.048000	sage	3	12	-11	111
+add	c	321	0.032000	sage	3	14	-13	111
+add	c	-321	0.635000	2body	2	13	-14
+add	c	-321	0.212000	2body	2	-211	111
+add	c	-321	0.056000	sage	3	-211	-211	211
+add	c	-321	0.017000	sage	3	-211	111	111
+add	c	-321	0.048000	sage	3	-12	11	111
+add	c	-321	0.032000	sage	3	-14	13	111
+add	c	323	0.666000	2body	2	311	211
+add	c	323	0.333000	2body	2	321	111
+add	c	323	0.001000	2body	2	321	22
+add	c	-323	0.666000	2body	2	-311	-211
+add	c	-323	0.333000	2body	2	-321	111
+add	c	-323	0.001000	2body	2	-321	22
+add	c	325	0.332000	2body	2	311	211
+add	c	325	0.166000	2body	2	321	111
+add	c	325	0.168000	2body	2	313	211
+add	c	325	0.084000	2body	2	323	111
+add	c	325	0.086000	sage	3	313	211	111
+add	c	325	0.043000	sage	3	323	211	-211
+add	c	325	0.059000	2body	2	311	213
+add	c	325	0.029000	2body	2	321	113
+add	c	325	0.029000	2body	2	321	223
+add	c	325	0.002000	2body	2	321	221
+add	c	325	0.002000	2body	2	321	22
+add	c	-325	0.332000	2body	2	-311	-211
+add	c	-325	0.166000	2body	2	-321	111
+add	c	-325	0.168000	2body	2	-313	-211
+add	c	-325	0.084000	2body	2	-323	111
+add	c	-325	0.086000	sage	3	-313	-211	111
+add	c	-325	0.043000	sage	3	-323	-211	211
+add	c	-325	0.059000	2body	2	-311	-213
+add	c	-325	0.029000	2body	2	-321	113
+add	c	-325	0.029000	2body	2	-321	223
+add	c	-325	0.002000	2body	2	-321	221
+add	c	-325	0.002000	2body	2	-321	22
+add	c	331	0.441000	sage	3	211	-211	221
+add	c	331	0.205000	sage	3	111	111	221
+add	c	331	0.301000	2body	2	22	113
+add	c	331	0.030000	2body	2	22	223
+add	c	331	0.022000	2body	2	22	22
+add	c	331	0.001000	sage	3	111	111	111
+add	c	333	0.495000	2body	2	321	-321
+add	c	333	0.343000	2body	2	130	310
+add	c	333	0.043000	2body	2	-213	211
+add	c	333	0.043000	2body	2	113	111
+add	c	333	0.043000	2body	2	213	-211
+add	c	333	0.019000	sage	3	211	-211	111
+add	c	333	0.013000	2body	2	22	221
+add	c	333	0.001000	2body	2	111	22
+add	c	335	0.500000	2body	2	321	-321
+add	c	335	0.500000	2body	2	130	310
+add	c	413	0.490000	2body	2	421	211
+add	c	413	0.340000	2body	2	411	111
+add	c	413	0.170000	2body	2	411	22
+add	c	-413	0.490000	2body	2	-421	-211
+add	c	-413	0.340000	2body	2	-411	111
+add	c	-413	0.170000	2body	2	-411	22
+add	c	415	0.300000	2body	2	421	211
+add	c	415	0.150000	2body	2	411	111
+add	c	415	0.160000	2body	2	423	211
+add	c	415	0.080000	2body	2	413	111
+add	c	415	0.130000	sage	3	423	211	111
+add	c	415	0.060000	sage	3	413	211	-211
+add	c	415	0.080000	sage	3	421	211	111
+add	c	415	0.040000	sage	3	411	211	-211
+add	c	-415	0.300000	2body	2	-421	-211
+add	c	-415	0.150000	2body	2	-411	111
+add	c	-415	0.160000	2body	2	-423	-211
+add	c	-415	0.080000	2body	2	-413	111
+add	c	-415	0.130000	sage	3	-423	-211	111
+add	c	-415	0.060000	sage	3	-413	-211	211
+add	c	-415	0.080000	sage	3	-421	-211	111
+add	c	-415	0.040000	sage	3	-411	-211	211
+add	c	423	0.520000	2body	2	421	111
+add	c	423	0.480000	2body	2	421	22
+add	c	-423	0.520000	2body	2	-421	111
+add	c	-423	0.480000	2body	2	-421	22
+add	c	425	0.300000	2body	2	411	-211
+add	c	425	0.150000	2body	2	421	111
+add	c	425	0.160000	2body	2	413	-211
+add	c	425	0.080000	2body	2	423	111
+add	c	425	0.130000	sage	3	413	-211	111
+add	c	425	0.060000	sage	3	423	211	-211
+add	c	425	0.080000	sage	3	411	-211	111
+add	c	425	0.040000	sage	3	421	211	-211
+add	c	-425	0.300000	2body	2	-411	211
+add	c	-425	0.150000	2body	2	-421	111
+add	c	-425	0.160000	2body	2	-413	211
+add	c	-425	0.080000	2body	2	-423	111
+add	c	-425	0.130000	sage	3	-413	211	111
+add	c	-425	0.060000	sage	3	-423	-211	211
+add	c	-425	0.080000	sage	3	-411	211	111
+add	c	-425	0.040000	sage	3	-421	-211	211
+add	c	433	1.000000	2body	2	431	22
+add	c	-433	1.000000	2body	2	-431	22
+add	c	435	0.400000	2body	2	421	321
+add	c	435	0.400000	2body	2	411	311
+add	c	435	0.100000	2body	2	433	111
+add	c	435	0.050000	2body	2	431	111
+add	c	435	0.050000	sage	3	431	211	-211
+add	c	-435	0.400000	2body	2	-421	-321
+add	c	-435	0.400000	2body	2	-411	-311
+add	c	-435	0.100000	2body	2	-433	111
+add	c	-435	0.050000	2body	2	-431	111
+add	c	-435	0.050000	sage	3	-431	-211	211
+add	c	443	0.069000	2body	2	11	-11
+add	c	443	0.069000	2body	2	13	-13
+add	c	443	0.862000	2body	2	82	-82
+add	c	445	0.150000	2body	2	443	22
+add	c	445	0.850000	2body	2	82	-82
+add	c	513	1.000000	2body	2	511	22
+add	c	-513	1.000000	2body	2	-511	22
+add	c	515	0.300000	2body	2	521	-211
+add	c	515	0.150000	2body	2	511	111
+add	c	515	0.160000	2body	2	523	-211
+add	c	515	0.080000	2body	2	513	111
+add	c	515	0.130000	sage	3	523	-211	111
+add	c	515	0.060000	sage	3	513	211	-211
+add	c	515	0.080000	sage	3	521	-211	111
+add	c	515	0.040000	sage	3	511	211	-211
+add	c	-515	0.300000	2body	2	-521	211
+add	c	-515	0.150000	2body	2	-511	111
+add	c	-515	0.160000	2body	2	-523	211
+add	c	-515	0.080000	2body	2	-513	111
+add	c	-515	0.130000	sage	3	-523	211	111
+add	c	-515	0.060000	sage	3	-513	-211	211
+add	c	-515	0.080000	sage	3	-521	211	111
+add	c	-515	0.040000	sage	3	-511	-211	211
+add	c	523	1.000000	2body	2	521	22
+add	c	-523	1.000000	2body	2	-521	22
+add	c	525	0.300000	2body	2	511	211
+add	c	525	0.150000	2body	2	521	111
+add	c	525	0.160000	2body	2	513	211
+add	c	525	0.080000	2body	2	523	111
+add	c	525	0.130000	sage	3	513	211	111
+add	c	525	0.060000	sage	3	523	211	-211
+add	c	525	0.080000	sage	3	511	211	111
+add	c	525	0.040000	sage	3	521	211	-211
+add	c	-525	0.300000	2body	2	-511	-211
+add	c	-525	0.150000	2body	2	-521	111
+add	c	-525	0.160000	2body	2	-513	-211
+add	c	-525	0.080000	2body	2	-523	111
+add	c	-525	0.130000	sage	3	-513	-211	111
+add	c	-525	0.060000	sage	3	-523	-211	211
+add	c	-525	0.080000	sage	3	-511	-211	111
+add	c	-525	0.040000	sage	3	-521	-211	211
+add	c	533	1.000000	2body	2	531	22
+add	c	-533	1.000000	2body	2	-531	22
+add	c	535	0.400000	2body	2	521	-321
+add	c	535	0.400000	2body	2	511	-311
+add	c	535	0.100000	2body	2	533	111
+add	c	535	0.050000	2body	2	531	111
+add	c	535	0.050000	sage	3	531	211	-211
+add	c	-535	0.400000	2body	2	-521	321
+add	c	-535	0.400000	2body	2	-511	311
+add	c	-535	0.100000	2body	2	-533	111
+add	c	-535	0.050000	2body	2	-531	111
+add	c	-535	0.050000	sage	3	-531	-211	211
+add	c	555	0.220000	2body	2	553	22
+add	c	665	0.300000	2body	2	663	22
+add	c	1114	1.000000	2body	2	2112	-211
+add	c	-1114	1.000000	2body	2	-2112	211
+add	c	2114	0.331000	2body	2	2212	-211
+add	c	2114	0.663000	2body	2	2112	111
+add	c	2114	0.006000	2body	2	2112	22
+add	c	-2114	0.331000	2body	2	-2212	211
+add	c	-2114	0.663000	2body	2	-2112	111
+add	c	-2114	0.006000	2body	2	-2112	22
+add	c	2214	0.663000	2body	2	2212	111
+add	c	2214	0.331000	2body	2	2112	211
+add	c	2214	0.006000	2body	2	2212	22
+add	c	-2214	0.663000	2body	2	-2212	111
+add	c	-2214	0.331000	2body	2	-2112	-211
+add	c	-2214	0.006000	2body	2	-2212	22
+add	c	2224	1.000000	2body	2	2212	211
+add	c	-2224	1.000000	2body	2	-2212	-211
+add	c	3112	0.999000	2body	2	2112	-211
+add	c	3112	0.001000	sage	3	-12	11	2112
+add	c	-3112	0.999000	2body	2	-2112	211
+add	c	-3112	0.001000	sage	3	12	-11	-2112
+add	c	3114	0.880000	2body	2	3122	-211
+add	c	3114	0.060000	2body	2	3212	-211
+add	c	3114	0.060000	2body	2	3112	111
+add	c	-3114	0.880000	2body	2	-3122	211
+add	c	-3114	0.060000	2body	2	-3212	211
+add	c	-3114	0.060000	2body	2	-3112	111
+add	c	3122	0.641000	2body	2	2212	-211
+add	c	3122	0.357000	2body	2	2112	111
+add	c	3122	0.001000	2body	2	2112	22
+add	c	3122	0.001000	sage	3	-12	11	2212
+add	c	-3122	0.641000	2body	2	-2212	211
+add	c	-3122	0.357000	2body	2	-2112	111
+add	c	-3122	0.001000	2body	2	-2112	22
+add	c	-3122	0.001000	sage	3	12	-11	-2212
+add	c	3212	1.000000	2body	2	3122	22
+add	c	-3212	1.000000	2body	2	-3122	22
+add	c	3214	0.880000	2body	2	3122	111
+add	c	3214	0.060000	2body	2	3222	-211
+add	c	3214	0.060000	2body	2	3112	211
+add	c	-3214	0.880000	2body	2	-3122	111
+add	c	-3214	0.060000	2body	2	-3222	211
+add	c	-3214	0.060000	2body	2	-3112	-211
+add	c	3222	0.516000	2body	2	2212	111
+add	c	3222	0.483000	2body	2	2112	211
+add	c	3222	0.001000	2body	2	2212	22
+add	c	-3222	0.516000	2body	2	-2212	111
+add	c	-3222	0.483000	2body	2	-2112	-211
+add	c	-3222	0.001000	2body	2	-2212	22
+add	c	3224	0.880000	2body	2	3122	211
+add	c	3224	0.060000	2body	2	3222	111
+add	c	3224	0.060000	2body	2	3212	211
+add	c	-3224	0.880000	2body	2	-3122	-211
+add	c	-3224	0.060000	2body	2	-3222	111
+add	c	-3224	0.060000	2body	2	-3212	-211
+add	c	3312	1.000000	2body	2	3122	-211
+add	c	-3312	1.000000	2body	2	-3122	211
+add	c	3314	0.667000	2body	2	3322	-211
+add	c	3314	0.333000	2body	2	3312	111
+add	c	-3314	0.667000	2body	2	-3322	211
+add	c	-3314	0.333000	2body	2	-3312	111
+add	c	3322	0.995000	2body	2	3122	111
+add	c	3322	0.005000	2body	2	3122	22
+add	c	-3322	0.995000	2body	2	-3122	111
+add	c	-3322	0.005000	2body	2	-3122	22
+add	c	3324	0.333000	2body	2	3322	111
+add	c	3324	0.667000	2body	2	3312	211
+add	c	-3324	0.333000	2body	2	-3322	111
+add	c	-3324	0.667000	2body	2	-3312	-211
+add	c	3334	0.676000	2body	2	3122	-321
+add	c	3334	0.234000	2body	2	3322	-211
+add	c	3334	0.085000	2body	2	3312	111
+add	c	3334	0.005000	sage	3	-12	11	3322
+add	c	-3334	0.676000	2body	2	-3122	321
+add	c	-3334	0.234000	2body	2	-3322	211
+add	c	-3334	0.085000	2body	2	-3312	111
+add	c	-3334	0.005000	sage	3	12	-11	-3322
+add	c	4112	1.000000	2body	2	4122	-211
+add	c	-4112	1.000000	2body	2	-4122	211
+add	c	4114	1.000000	2body	2	4122	-211
+add	c	-4114	1.000000	2body	2	-4122	211
+add	c	4212	1.000000	2body	2	4122	111
+add	c	-4212	1.000000	2body	2	-4122	111
+add	c	4214	1.000000	2body	2	4122	111
+add	c	-4214	1.000000	2body	2	-4122	111
+add	c	4222	1.000000	2body	2	4122	211
+add	c	-4222	1.000000	2body	2	-4122	-211
+add	c	4224	1.000000	2body	2	4122	211
+add	c	-4224	1.000000	2body	2	-4122	-211
+add	c	4312	1.000000	2body	2	4132	22
+add	c	-4312	1.000000	2body	2	-4132	22
+add	c	4314	0.500000	2body	2	4132	111
+add	c	4314	0.500000	2body	2	4132	22
+add	c	-4314	0.500000	2body	2	-4132	111
+add	c	-4314	0.500000	2body	2	-4132	22
+add	c	4322	1.000000	2body	2	4232	22
+add	c	-4322	1.000000	2body	2	-4232	22
+add	c	4324	0.500000	2body	2	4232	111
+add	c	4324	0.500000	2body	2	4232	22
+add	c	-4324	0.500000	2body	2	-4232	111
+add	c	-4324	0.500000	2body	2	-4232	22
+add	c	4334	1.000000	2body	2	4332	22
+add	c	-4334	1.000000	2body	2	-4332	22
+add	c	5112	1.000000	2body	2	5122	-211
+add	c	-5112	1.000000	2body	2	-5122	211
+add	c	5114	1.000000	2body	2	5122	-211
+add	c	-5114	1.000000	2body	2	-5122	211
+add	c	5212	1.000000	2body	2	5122	111
+add	c	-5212	1.000000	2body	2	-5122	111
+add	c	5214	1.000000	2body	2	5122	111
+add	c	-5214	1.000000	2body	2	-5122	111
+add	c	5222	1.000000	2body	2	5122	211
+add	c	-5222	1.000000	2body	2	-5122	-211
+add	c	5224	1.000000	2body	2	5122	211
+add	c	-5224	1.000000	2body	2	-5122	-211
+add	c	5312	1.000000	2body	2	5132	22
+add	c	-5312	1.000000	2body	2	-5132	22
+add	c	5314	1.000000	2body	2	5132	22
+add	c	-5314	1.000000	2body	2	-5132	22
+add	c	5322	1.000000	2body	2	5232	22
+add	c	-5322	1.000000	2body	2	-5232	22
+add	c	5324	1.000000	2body	2	5232	22
+add	c	-5324	1.000000	2body	2	-5232	22
+add	c	5334	1.000000	2body	2	5332	22
+add	c	-5334	1.000000	2body	2	-5332	22
+add	c	10111	0.800000	2body	2	221	111
+add	c	10111	0.100000	2body	2	213	-211
+add	c	10111	0.100000	2body	2	-213	211
+add	c	10113	1.000000	2body	2	223	111
+add	c	10211	0.800000	2body	2	221	211
+add	c	10211	0.100000	2body	2	213	111
+add	c	10211	0.100000	2body	2	113	211
+add	c	-10211	0.800000	2body	2	221	-211
+add	c	-10211	0.100000	2body	2	-213	111
+add	c	-10211	0.100000	2body	2	113	-211
+add	c	10213	1.000000	2body	2	223	211
+add	c	-10213	1.000000	2body	2	223	-211
+add	c	10221	0.520000	2body	2	211	-211
+add	c	10221	0.260000	2body	2	111	111
+add	c	10221	0.110000	2body	2	321	-321
+add	c	10221	0.110000	2body	2	130	310
+add	c	10223	0.333000	2body	2	213	-211
+add	c	10223	0.334000	2body	2	113	111
+add	c	10223	0.333000	2body	2	-213	211
+add	c	10311	0.667000	2body	2	321	-211
+add	c	10311	0.333000	2body	2	311	111
+add	c	-10311	0.667000	2body	2	-321	211
+add	c	-10311	0.333000	2body	2	-311	111
+add	c	10313	0.280000	2body	2	321	-213
+add	c	10313	0.140000	2body	2	311	113
+add	c	10313	0.313000	2body	2	323	-211
+add	c	10313	0.157000	2body	2	313	111
+add	c	10313	0.110000	2body	2	311	223
+add	c	-10313	0.280000	2body	2	-321	213
+add	c	-10313	0.140000	2body	2	-311	113
+add	c	-10313	0.313000	2body	2	-323	211
+add	c	-10313	0.157000	2body	2	-313	111
+add	c	-10313	0.110000	2body	2	-311	223
+add	c	10321	0.667000	2body	2	311	211
+add	c	10321	0.333000	2body	2	321	111
+add	c	-10321	0.667000	2body	2	-311	-211
+add	c	-10321	0.333000	2body	2	-321	111
+add	c	10323	0.280000	2body	2	311	211
+add	c	10323	0.140000	2body	2	321	111
+add	c	10323	0.313000	2body	2	313	211
+add	c	10323	0.157000	2body	2	323	111
+add	c	10323	0.110000	2body	2	321	223
+add	c	-10323	0.280000	2body	2	-311	-211
+add	c	-10323	0.140000	2body	2	-321	111
+add	c	-10323	0.313000	2body	2	-313	-211
+add	c	-10323	0.157000	2body	2	-323	111
+add	c	-10323	0.110000	2body	2	-321	223
+add	c	10331	0.620000	2body	2	211	-211
+add	c	10331	0.310000	2body	2	111	111
+add	c	10331	0.035000	2body	2	321	-321
+add	c	10331	0.035000	2body	2	130	310
+add	c	10333	0.250000	2body	2	313	-311
+add	c	10333	0.250000	2body	2	-313	311
+add	c	10333	0.250000	2body	2	323	-321
+add	c	10333	0.250000	2body	2	-323	321
+add	c	10411	0.600000	2body	2	421	211
+add	c	10411	0.300000	2body	2	411	111
+add	c	10411	0.067000	2body	2	423	211
+add	c	10411	0.033000	2body	2	413	111
+add	c	-10411	0.600000	2body	2	-421	-211
+add	c	-10411	0.300000	2body	2	-411	111
+add	c	-10411	0.067000	2body	2	-423	-211
+add	c	-10411	0.033000	2body	2	-413	111
+add	c	10413	0.667000	2body	2	421	211
+add	c	10413	0.333000	2body	2	411	111
+add	c	-10413	0.667000	2body	2	-421	-211
+add	c	-10413	0.333000	2body	2	-411	111
+add	c	10421	0.600000	2body	2	411	-211
+add	c	10421	0.300000	2body	2	421	111
+add	c	10421	0.067000	2body	2	413	-211
+add	c	10421	0.033000	2body	2	423	111
+add	c	-10421	0.600000	2body	2	-411	211
+add	c	-10421	0.300000	2body	2	-421	111
+add	c	-10421	0.067000	2body	2	-413	211
+add	c	-10421	0.033000	2body	2	-423	111
+add	c	10423	0.667000	2body	2	411	-211
+add	c	10423	0.333000	2body	2	421	111
+add	c	-10423	0.667000	2body	2	-411	211
+add	c	-10423	0.333000	2body	2	-421	111
+add	c	10431	0.500000	2body	2	431	111
+add	c	10431	0.500000	2body	2	433	111
+add	c	-10431	0.500000	2body	2	-431	111
+add	c	-10431	0.500000	2body	2	-433	111
+add	c	10433	1.000000	2body	2	433	111
+add	c	-10433	1.000000	2body	2	-433	111
+add	c	10441	0.007000	2body	2	443	22
+add	c	10441	0.993000	2body	2	82	-82
+add	c	10443	1.000000	2body	2	82	-82
+add	c	10511	0.600000	2body	2	521	-211
+add	c	10511	0.300000	2body	2	511	111
+add	c	10511	0.067000	2body	2	523	-211
+add	c	10511	0.033000	2body	2	513	111
+add	c	-10511	0.600000	2body	2	-521	211
+add	c	-10511	0.300000	2body	2	-511	111
+add	c	-10511	0.067000	2body	2	-523	211
+add	c	-10511	0.033000	2body	2	-513	111
+add	c	10513	0.667000	2body	2	521	-211
+add	c	10513	0.333000	2body	2	511	111
+add	c	-10513	0.667000	2body	2	-521	211
+add	c	-10513	0.333000	2body	2	-511	111
+add	c	10521	0.600000	2body	2	511	211
+add	c	10521	0.300000	2body	2	521	111
+add	c	10521	0.067000	2body	2	513	211
+add	c	10521	0.033000	2body	2	523	111
+add	c	-10521	0.600000	2body	2	-511	-211
+add	c	-10521	0.300000	2body	2	-521	111
+add	c	-10521	0.067000	2body	2	-513	-211
+add	c	-10521	0.033000	2body	2	-523	111
+add	c	10523	0.667000	2body	2	511	211
+add	c	10523	0.333000	2body	2	521	111
+add	c	-10523	0.667000	2body	2	-511	-211
+add	c	-10523	0.333000	2body	2	-521	111
+add	c	10531	0.400000	2body	2	521	-321
+add	c	10531	0.400000	2body	2	511	-311
+add	c	10531	0.100000	2body	2	531	111
+add	c	10531	0.100000	2body	2	533	111
+add	c	-10531	0.400000	2body	2	-521	321
+add	c	-10531	0.400000	2body	2	-511	311
+add	c	-10531	0.100000	2body	2	-531	111
+add	c	-10531	0.100000	2body	2	-533	111
+add	c	10533	0.500000	2body	2	523	-321
+add	c	10533	0.500000	2body	2	513	-311
+add	c	-10533	0.500000	2body	2	-523	321
+add	c	-10533	0.500000	2body	2	-513	311
+add	c	10551	0.020000	2body	2	553	22
+add	c	10661	0.300000	2body	2	663	22
+add	c	10663	0.300000	2body	2	663	22
+add	c	20113	0.500000	2body	2	213	-211
+add	c	20113	0.500000	2body	2	-213	211
+add	c	20213	0.500000	2body	2	113	211
+add	c	20213	0.500000	2body	2	213	111
+add	c	-20213	0.500000	2body	2	113	-211
+add	c	-20213	0.500000	2body	2	-213	111
+add	c	20223	0.140000	2body	2	10211	-211
+add	c	20223	0.140000	2body	2	10111	111
+add	c	20223	0.140000	2body	2	-10211	211
+add	c	20223	0.100000	sage	3	221	211	-211
+add	c	20223	0.050000	sage	3	221	111	111
+add	c	20223	0.080000	sage	3	213	-211	111
+add	c	20223	0.080000	sage	3	113	211	-211
+add	c	20223	0.080000	sage	3	113	111	111
+add	c	20223	0.080000	sage	3	-213	211	111
+add	c	20223	0.028000	sage	3	321	-321	111
+add	c	20223	0.027000	sage	3	321	-311	-211
+add	c	20223	0.028000	sage	3	311	-311	111
+add	c	20223	0.027000	sage	3	311	-321	211
+add	c	20313	0.667000	2body	2	323	-211
+add	c	20313	0.333000	2body	2	313	111
+add	c	-20313	0.667000	2body	2	-323	211
+add	c	-20313	0.333000	2body	2	-313	111
+add	c	20323	0.667000	2body	2	313	211
+add	c	20323	0.333000	2body	2	323	111
+add	c	-20323	0.667000	2body	2	-313	-211
+add	c	-20323	0.333000	2body	2	-323	111
+add	c	20333	0.250000	2body	2	313	-311
+add	c	20333	0.250000	2body	2	-313	311
+add	c	20333	0.250000	2body	2	323	-321
+add	c	20333	0.250000	2body	2	-323	321
+add	c	20413	0.667000	2body	2	423	211
+add	c	20413	0.333000	2body	2	413	111
+add	c	-20413	0.667000	2body	2	-423	-211
+add	c	-20413	0.333000	2body	2	-413	111
+add	c	20423	0.667000	2body	2	413	-211
+add	c	20423	0.333000	2body	2	423	111
+add	c	-20423	0.667000	2body	2	-413	211
+add	c	-20423	0.333000	2body	2	-423	111
+add	c	20433	0.350000	2body	2	421	321
+add	c	20433	0.350000	2body	2	411	311
+add	c	20433	0.300000	2body	2	433	111
+add	c	-20433	0.350000	2body	2	-421	-321
+add	c	-20433	0.350000	2body	2	-411	-311
+add	c	-20433	0.300000	2body	2	-433	111
+add	c	20443	0.273000	2body	2	443	22
+add	c	20443	0.727000	2body	2	82	-82
+add	c	20513	0.667000	2body	2	523	-211
+add	c	20513	0.333000	2body	2	513	111
+add	c	-20513	0.667000	2body	2	-523	211
+add	c	-20513	0.333000	2body	2	-513	111
+add	c	20523	0.667000	2body	2	513	211
+add	c	20523	0.333000	2body	2	523	111
+add	c	-20523	0.667000	2body	2	-513	-211
+add	c	-20523	0.333000	2body	2	-523	111
+add	c	20533	0.350000	2body	2	521	-321
+add	c	20533	0.350000	2body	2	511	-311
+add	c	20533	0.300000	2body	2	533	111
+add	c	-20533	0.350000	2body	2	-521	321
+add	c	-20533	0.350000	2body	2	-511	311
+add	c	-20533	0.300000	2body	2	-533	111
+add	c	20553	0.350000	2body	2	553	22
+add	c	20663	0.300000	2body	2	663	22
+add	c	70553	0.500000	2body	2	511	-511
+add	c	70553	0.500000	2body	2	521	-521
+sets	p	e-	isStable	1
+sets	p	e+	isStable	1
+sets	p	nu_e	isStable	1
+sets	p	nu_e~	isStable	1
+sets	p	mu-	isStable	1
+sets	p	mu+	isStable	1
+sets	p	nu_mu	isStable	1
+sets	p	nu_mu~	isStable	1
+sets	p	nu_tau	isStable	1
+sets	p	nu_tau~	isStable	1
+sets	p	nu_chi	isStable	1
+sets	p	nu_chi~	isStable	1
+sets	p	gamma	isStable	1
+sets	p	Z"0	isStable	1
+sets	p	H'0	isStable	1
+sets	p	A0	isStable	1
+sets	p	K_L0	isStable	1
+sets	p	pi_diffr+	isStable	1
+sets	p	pi_diffr-	isStable	1
+sets	p	pi+	isStable	1
+sets	p	pi-	isStable	1
+sets	p	K+	isStable	1
+sets	p	K-	isStable	1
+sets	p	n_diffr0	isStable	1
+sets	p	n_diffr~0	isStable	1
+sets	p	n0	isStable	1
+sets	p	n~0	isStable	1
+sets	p	p_diffr+	isStable	1	
+sets	p	p_diffr~-	isStable	1
+sets	p	p+	isStable	1
+sets	p	p~-	isStable	1
+end

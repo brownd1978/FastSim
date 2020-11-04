@@ -1,0 +1,6 @@
++EXE.
++USE,*STDTSTI,UNIX.
++USE,ISACDE.       ISAJET common blocks
++PAM,11,T=C,A./usr/products/isajet/v7_02/isajet
++PAM,12,T=C,A./usr/products/stdhep/v1_05/src/stdhep
++QUIT.

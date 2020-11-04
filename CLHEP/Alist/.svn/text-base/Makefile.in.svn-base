@@ -1,0 +1,20 @@
+#
+#  Define incdir to be the directory where you want to put the headerfiles.
+#
+incdirCLHEP = $(prefix)/include/CLHEP/Alist
+
+srcdir = @srcdir@
+VPATH = @srcdir@
+
+SOURCES = AIteratorBase.cc AListBase.cc
+
+MAN_PAG = AIteratorBase AListBase AIterator AList CIterator CList ConstAIterator ConstAList
+
+ALLOBJECTS = AIteratorBase.o AListBase.o
+
+#
+# objects used when there are no persistent streams
+#
+SOMEOBJECTS = $(ALLOBJECTS)
+
+include ../config/Makefile.common

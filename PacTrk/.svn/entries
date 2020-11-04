@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2648"
+   name=""
+   committed-date="2011-05-04T11:07:28.407014Z"
+   url="https://sbrepo.pd.infn.it:8910/PACRAT/PacTrk/trunk"
+   last-author="brownd"
+   kind="dir"
+   uuid="2aa36f44-f9d8-11dc-81b7-9e774fc32887"
+   revision="2648"/>
+<entry
+   committed-rev="1287"
+   name="Si_Outer_SuperB_Geom.xml"
+   text-time="2011-04-27T18:50:29.000000Z"
+   committed-date="2009-06-15T12:59:08.884372Z"
+   checksum="9eab77af1b42529ff898d29852e71112"
+   last-author="mbomben"
+   kind="file"
+   prop-time="2011-04-27T18:50:24.000000Z"/>
+<entry
+   committed-rev="2118"
+   name="Si_Inner_SuperB_Geom_inmap.xml"
+   text-time="2011-04-27T18:50:29.000000Z"
+   committed-date="2010-06-02T09:18:07.126991Z"
+   checksum="c845407a7cb7a7c8ee74b03d1ef336a7"
+   last-author="bevan"
+   kind="file"
+   prop-time="2011-04-27T18:50:24.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Dch_SuperB_Measures.xml"
+   text-time="2011-04-27T18:50:29.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="1552d2396f3e33ac9c6fa975f68755a2"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:24.000000Z"/>
+<entry
+   committed-rev="2118"
+   name="Si_Outer_SuperB_Geom_inmap_lampshade.xml"
+   text-time="2011-04-27T18:50:29.000000Z"
+   committed-date="2010-06-02T09:18:07.126991Z"
+   checksum="bbc7a7921315e0c10da394773868c532"
+   last-author="bevan"
+   kind="file"
+   prop-time="2011-04-27T18:50:24.000000Z"/>
+<entry
+   committed-rev="1794"
+   name="Dch_BaBar.xml"
+   text-time="2011-04-27T18:50:29.000000Z"
+   committed-date="2009-12-18T10:04:30.237159Z"
+   checksum="de867e7e934d7ab1ce15c4cd8c5e3742"
+   last-author="Mrama"
+   kind="file"
+   prop-time="2011-04-27T18:50:25.000000Z"/>
+<entry
+   committed-rev="1517"
+   name="Si_SupportCones_BaBar.xml"
+   text-time="2011-04-27T18:50:29.000000Z"
+   committed-date="2009-07-14T23:21:33.539387Z"
+   checksum="a5915b0408eaddee12394ab897130c20"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:25.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Dch_SuperB_Geom_baseline.xml"
+   text-time="2011-04-27T18:50:29.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="f579c86491991f0ff13aea6e13294c18"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:25.000000Z"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="1"
+   name="NOTES"
+   text-time="2011-04-27T18:50:29.000000Z"
+   committed-date="2008-03-28T18:49:34.420201Z"
+   checksum="b8f1898de24011746a606268887b2a83"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_Inner_baseline_supp_IP20cm.xml"
+   text-time="2011-04-27T18:50:29.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="52565dfb26cda8c05cc0393ce07fb2d3"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_Inner_L0Str.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="25ee9c396e3378ec35dfc04c45f4506a"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="1551"
+   name="Dch_SuperB_longbwd.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2009-07-20T13:29:26.743623Z"
+   checksum="740ffe959059e1ce90eee49e79998a9f"
+   last-author="Mrama"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_long.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="f6be432d947a0f525cbb2f67b906ed50"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_Outer_baseline.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="501b477b821ac899d56e631ff40dd73d"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="1551"
+   name="Dch_SuperB_longbwdfwd.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2009-07-20T13:29:26.743623Z"
+   checksum="3c254f0a5e8e468d3a0c63e9fbaa36a4"
+   last-author="Mrama"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="1516"
+   name="Si_SuperB.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2009-07-14T23:09:27.166000Z"
+   checksum="8ef9c9fd3b9f8fb3d64e4e95bc614ffd"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="2118"
+   name="Si_SuperB_Geom_inmap_long_barrel.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-06-02T09:18:07.126991Z"
+   checksum="f6bd0ce5be1f0865fd9684e5c9c6dec9"
+   last-author="bevan"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="1287"
+   name="Si_Inner_SuperB_Geom.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2009-06-15T12:59:08.884372Z"
+   checksum="ddc1d28d2b8720852218bce4021240bd"
+   last-author="mbomben"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Dch_BaBar_Geom_baseline.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="2474aee7288a125fa4e14cfdf618d659"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="1551"
+   name="Dch_SuperB_longfwd.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2009-07-20T13:29:26.743623Z"
+   checksum="b80ee4e8c97ebc2976aa6b6cd08db246"
+   last-author="Mrama"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="1794"
+   name="Dch_SuperB_shortfwd.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2009-12-18T10:04:30.237159Z"
+   checksum="020a18d3e87311102f2470f3c1b5be58"
+   last-author="Mrama"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="1952"
+   name="Si_SupportCones.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-02-10T17:07:40.856586Z"
+   checksum="bcc04c54bd75a7f73f43ec82de3b14e7"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="1839"
+   name="fastfit.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-01-19T22:08:52.390224Z"
+   checksum="9574e87813d58bb450d262294dc90abc"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="2347"
+   name="Dch_SuperB_convex.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-09-05T01:05:59.964197Z"
+   checksum="35556c340fc91f7b54b8d01b8cee7b35"
+   last-author="swerskyd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="154"
+   name="BUILD"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2008-05-02T18:59:47.231673Z"
+   checksum="e46de50c4d24a575605646c0dbf72761"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Dch_SuperB_Geom_longbwd.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="cbffc001f47963705939cfd03fb24284"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_Outer_baseline_supp.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="ae5995879bca4d0f014a82b23d4a30df"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="2340"
+   name="Dch_SuperB_weddingcake.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-09-03T17:02:20.243570Z"
+   checksum="7dbbddddc25bfa1225e7b466e316ab0a"
+   last-author="swerskyd"
+   kind="file"
+   prop-time="2011-04-27T18:50:26.000000Z"/>
+<entry
+   committed-rev="2648"
+   name="Track_reconstruction.xml"
+   text-time="2011-05-04T16:08:21.000000Z"
+   committed-date="2011-05-04T11:07:28.407014Z"
+   checksum="516b4cc8c501c4612bbf5fe9cfd43fb9"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-05-04T16:08:21.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Dch_SuperB_Geom_longfwd.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="d174afd484b38e0644f5e720268e7aca"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:27.000000Z"/>
+<entry
+   committed-rev="1839"
+   name="fullfit.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-01-19T22:08:52.390224Z"
+   checksum="2463e6c64368859389004dc56fd77675"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:27.000000Z"/>
+<entry
+   committed-rev="2347"
+   name="Dch_SuperB_spherical.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-09-05T01:05:59.964197Z"
+   checksum="cf87763cec2e1a501d73a50df007c9f7"
+   last-author="swerskyd"
+   kind="file"
+   prop-time="2011-04-27T18:50:27.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Dch_SuperB_Geom_weddingcake.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="9aa5fdc3f56902963cb1a20689afeb15"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:27.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_Outer_baseline_supp_IP20cm.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="aec70c966992a89e9298df61dfd3d2d1"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:27.000000Z"/>
+<entry
+   committed-rev="2482"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-10-18T12:17:11.198478Z"
+   checksum="51875b8490bbaf065abc7e1fb1b567f1"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T18:50:27.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Dch_SuperB_Geom_spherical.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="b57a88d798a00266c8a43b92b6ed7020"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:27.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_Inner_baseline_supp.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="588ffa7208105ae48389a76f5c3d69ea"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:27.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_Measures_baseline.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="9b0881539fea3805336f3fe4cabf8cee"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:27.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   committed-rev="2525"
+   name="Si_disk.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="de10d980aa9a428c6d8dca0dbd3d4055"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="1881"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-01-25T09:48:45.436628Z"
+   checksum="cd097422901df5ef27cbf8a511ca6754"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Dch_BaBar_Measures.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="3e01ec8ffe79ee1f8fe642d77f9569a9"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="217"
+   name="README"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2008-06-27T19:39:18.261286Z"
+   checksum="37572cb9a394f5e68c839ec4c7c71771"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="1516"
+   name="Si_SuperB_Measures.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2009-07-14T23:09:27.166000Z"
+   checksum="08b375fe025b78186d60c8386e8dbc8f"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="1712"
+   name="Si_BaBar.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2009-10-21T21:37:27.606614Z"
+   checksum="e87b4afe6e8362be4d793052462e80e4"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Dch_SuperB_Geom_longbwdfwd.xml"
+   text-time="2011-04-27T18:50:30.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="b58d5c7fc5a496dd3dc2ec161204e3b2"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="2318"
+   name="Si_SuperB_Geom.xml"
+   text-time="2011-04-27T18:50:31.000000Z"
+   committed-date="2010-08-27T23:01:24.254468Z"
+   checksum="4a5bcbc682957854573d4b3be10e12f9"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_Inner_HP_supp.xml"
+   text-time="2011-04-27T18:50:31.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="5fa4efc3801cd5fd5d6e81059c66534c"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="2118"
+   name="Si_SuperB_Geom_inmap_lampshade.xml"
+   text-time="2011-04-27T18:50:31.000000Z"
+   committed-date="2010-06-02T09:18:07.126991Z"
+   checksum="fed1375b6b25ea7545d3d1ec3218bf21"
+   last-author="bevan"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Dch_SuperB_Geom_shortfwd.xml"
+   text-time="2011-04-27T18:50:31.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="768d9592834c3de86d83b971258bbddb"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_BaBar_Measures.xml"
+   text-time="2011-04-27T18:50:31.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="30c295e2b611bf246a82baec2ab014cf"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Dch_SuperB_Geom_convex.xml"
+   text-time="2011-04-27T18:50:31.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="b67f00c9dea7336441518599c61e94ec"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_Inner_baseline.xml"
+   text-time="2011-04-27T18:50:31.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="7704123660720861c1f690a8331decf9"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="2525"
+   name="Si_BaBar_Geom.xml"
+   text-time="2011-04-27T18:50:31.000000Z"
+   committed-date="2010-12-06T18:53:25.477502Z"
+   checksum="4bc889a4d74f0854fce47c4b615f521a"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="2118"
+   name="Si_Outer_SuperB_Geom_inmap_longbarrel.xml"
+   text-time="2011-04-27T18:50:31.000000Z"
+   committed-date="2010-06-02T09:18:07.126991Z"
+   checksum="3925949e32a2d422c854322da426c7ff"
+   last-author="bevan"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="1551"
+   name="Dch_SuperB.xml"
+   text-time="2011-04-27T18:50:31.000000Z"
+   committed-date="2009-07-20T13:29:26.743623Z"
+   checksum="a626ebaf46a089fc4cb3adb95e2ea2be"
+   last-author="Mrama"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+<entry
+   committed-rev="217"
+   name="WORKLIST"
+   text-time="2011-04-27T18:50:31.000000Z"
+   committed-date="2008-06-27T19:39:18.261286Z"
+   checksum="ba6574f0a47ed80472ccc838853d458d"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:50:29.000000Z"/>
+</wc-entries>

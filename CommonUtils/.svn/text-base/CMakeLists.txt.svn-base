@@ -1,0 +1,67 @@
+string(REGEX REPLACE "^.*/([^ ]+)$" "\\1" pkgname ${CMAKE_CURRENT_SOURCE_DIR})
+
+#
+# Set specific compiler flags for the package
+#
+set(${pkgname}_CXX_FLAGS "-Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${${pkgname}_CXX_FLAGS}")
+
+configPkg(${pkgname})
+
+#
+# Generate library
+#
+add_library(${pkgname} ${Sources})
+target_link_libraries(${pkgname} ${LIB_LINK_LIST})
+
+add_executable(searchFile test/searchFile.cc)
+target_link_libraries(searchFile ${LIB_LINK_LIST})
+add_test(tsearchFile ${EXECUTABLE_OUTPUT_PATH}/searchFile)
+
+add_executable(terminationDecoder test/terminationDecoder.cc)
+target_link_libraries(terminationDecoder ${LIB_LINK_LIST})
+add_test(tterminationDecoder ${EXECUTABLE_OUTPUT_PATH}/terminationDecoder)
+
+add_executable(terminator test/terminator.cc)
+target_link_libraries(terminator ${LIB_LINK_LIST})
+add_test(tterminator ${EXECUTABLE_OUTPUT_PATH}/terminator)
+
+add_executable(testBbrBitVector test/testBbrBitVector.cc)
+target_link_libraries(testBbrBitVector ${LIB_LINK_LIST})
+add_test(ttestBbrBitVector ${EXECUTABLE_OUTPUT_PATH}/testBbrBitVector)
+
+add_executable(testBbrRefCountedPointer test/testBbrRefCountedPointer.cc)
+target_link_libraries(testBbrRefCountedPointer ${LIB_LINK_LIST})
+add_test(ttestBbrRefCountedPointer ${EXECUTABLE_OUTPUT_PATH}/testBbrRefCountedPointer)
+
+add_executable(testCenterSignedExpPack test/testCenterSignedExpPack.cc)
+target_link_libraries(testCenterSignedExpPack ${LIB_LINK_LIST})
+add_test(ttestCenterSignedExpPack ${EXECUTABLE_OUTPUT_PATH}/testCenterSignedExpPack)
+
+add_executable(testComExtendedArgValues test/testComExtendedArgValues.cc)
+target_link_libraries(testComExtendedArgValues ${LIB_LINK_LIST})
+add_test(ttestComExtendedArgValues ${EXECUTABLE_OUTPUT_PATH}/testComExtendedArgValues)
+
+add_executable(testComExtendedSyntaxParser test/testComExtendedSyntaxParser.cc)
+target_link_libraries(testComExtendedSyntaxParser ${LIB_LINK_LIST})
+add_test(ttestComExtendedSyntaxParser ${EXECUTABLE_OUTPUT_PATH}/testComExtendedSyntaxParser)
+
+add_executable(testComPackBoolsIntoOctet test/testComPackBoolsIntoOctet.cc)
+target_link_libraries(testComPackBoolsIntoOctet ${LIB_LINK_LIST})
+add_test(ttestComPackBoolsIntoOctet ${EXECUTABLE_OUTPUT_PATH}/testComPackBoolsIntoOctet)
+
+add_executable(testComPackEngine test/testComPackEngine.cc)
+target_link_libraries(testComPackEngine ${LIB_LINK_LIST})
+add_test(ttestComPackEngine ${EXECUTABLE_OUTPUT_PATH}/testComPackEngine)
+
+add_executable(testCommonUtils test/testCommonUtils.cc)
+target_link_libraries(testCommonUtils ${LIB_LINK_LIST})
+add_test(ttestCommonUtils ${EXECUTABLE_OUTPUT_PATH}/testCommonUtils)
+
+add_executable(testExpPack test/testExpPack.cc)
+target_link_libraries(testExpPack ${LIB_LINK_LIST})
+add_test(ttestExpPack ${EXECUTABLE_OUTPUT_PATH}/testExpPack)
+
+add_executable(testRatPack test/testRatPack.cc)
+target_link_libraries(testRatPack ${LIB_LINK_LIST})
+add_test(ttestRatPack ${EXECUTABLE_OUTPUT_PATH}/testRatPack)

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2636"
+   name=""
+   committed-date="2011-04-20T21:06:59.813599Z"
+   url="https://sbrepo.pd.infn.it:8910/PACRAT/PacEmc/trunk/calib"
+   last-author="chcheng"
+   kind="dir"
+   uuid="2aa36f44-f9d8-11dc-81b7-9e774fc32887"
+   revision="2648"/>
+<entry
+   committed-rev="2632"
+   name="BAR-1.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="b10092c292f4d85dfa2f47c09f4e86bb"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BAR-0.1.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="ea3198d1fa1eba875c1f85fe1df785b7"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="FWD-0.05.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="37f02a31e6857ddd62acb7edc9c48f32"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BAR-2.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="bfa196347dc037eea08109ce9cb1d21c"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BAR-0.2.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="fbfed2b59874d4767eda4ca6ff663d7c"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BAR-3.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="3ad0d59c33e73f92a0344871e43df4f5"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BAR-4.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="b2bc378b23efdf3777120e4bdb817736"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BAR-0.5.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="8285d9c9981d404ff7a323689873d448"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BWD-1.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="0cd79b7aa0710e61e82aa8642a549f16"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BWD-0.1.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="5c51fe98aa036370219a337a2de9bc69"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BWD-2.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="8338779e5c8a3afc1bf2ab2bb94b2353"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BWD-0.2.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="7a261fb24423b8b7fe721eb7f2ef4dff"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BWD-3.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="c48ff5e689ee9c6b914076c4ca9b955e"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BWD-4.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="7223850ae43d038c457a1f00b7c4fb6c"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BWD-0.5.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="e64e72810e4f8168d08877078a72393b"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="FWD-0.1.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="d3954ac60ee5beed378f1c896a838ed2"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="FWD-1.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="75460ec5d66f8770dde8a5eb2d3548d8"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+<entry
+   committed-rev="2636"
+   name="fit_calib.C"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-20T21:06:59.813599Z"
+   checksum="c82cad06ce44330c18fd0231ca68d9f7"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="FWD-0.2.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="128466fce6ed2dd7d8f0fa6a830b0da5"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="FWD-2.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="c56cd75ccc2e279c153b0e726be943fa"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="FWD-3.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="cf5b84da23871e46d29ca221310d5c13"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="FWD-4.0.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="cb3fb37f355b6e2e00ec9b8694538a65"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="FWD-0.5.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="82ee72f705c18123e6511cef3ca71871"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BAR-0.05.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="76ee1b2e6ca88d5cabe9acaca9a4f488"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+<entry
+   committed-rev="2632"
+   name="BWD-0.05.tcl"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="281ff321154963adb70b724493531289"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:46.000000Z"/>
+</wc-entries>

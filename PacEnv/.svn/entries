@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2627"
+   name=""
+   committed-date="2011-04-11T17:59:16.694893Z"
+   url="https://sbrepo.pd.infn.it:8910/PACRAT/PacEnv/trunk"
+   last-author="brownd"
+   kind="dir"
+   uuid="2aa36f44-f9d8-11dc-81b7-9e774fc32887"
+   revision="2648"/>
+<entry
+   committed-rev="596"
+   name="ElementsList.data"
+   text-time="2011-04-27T19:01:51.000000Z"
+   committed-date="2008-11-21T00:50:49.681476Z"
+   checksum="7e2fd6ceb5bdf72aba703e421e748553"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:01:47.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   committed-rev="2184"
+   name="MaterialsList.data"
+   text-time="2011-04-27T19:01:51.000000Z"
+   committed-date="2010-07-08T23:50:18.725504Z"
+   checksum="218c176d0a26d71d2a90187425627a54"
+   last-author="Mrama"
+   kind="file"
+   prop-time="2011-04-27T19:01:49.000000Z"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="1871"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:01:51.000000Z"
+   committed-date="2010-01-25T09:16:31.585181Z"
+   checksum="019bce8b4e2a003f031a3d7ecc43f10e"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:01:49.000000Z"/>
+<entry
+   committed-rev="596"
+   name="IsotopesList.data"
+   text-time="2011-04-27T19:01:51.000000Z"
+   committed-date="2008-11-21T00:50:49.681476Z"
+   checksum="a0d3a827aa01af38d911ed37caaf5a52"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:01:51.000000Z"/>
+<entry
+   committed-rev="2472"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T19:01:51.000000Z"
+   committed-date="2010-10-18T12:16:55.207847Z"
+   checksum="3830beafb661b92c5af2437d60cd441d"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T19:01:51.000000Z"/>
+<entry
+   committed-rev="211"
+   name="README"
+   text-time="2011-04-27T19:01:51.000000Z"
+   committed-date="2008-06-27T19:35:37.724647Z"
+   checksum="0cec2062b101c83b92e42c5f081ee42e"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:01:51.000000Z"/>
+</wc-entries>

@@ -1,0 +1,132 @@
+History file for FrameUtil package
+----------------------------------
+
+$Id$
+
+Entries (latest first):
+
+Jan 14 2010	R. Stroili
+	split code in src and include directories
+
+Oct 04 2006	A. De Silva
+	Removed FwkString.
+
+Nov 06 2004     A. De Silva
+	Reworked APPListDeleteAll() to erase objects faster.
+
+Sep 26 2003 	A. De Silva
+	Removed PYTHON.  Tagged as V00-04-07.
+
+Mar 19 2003     R. Bartoldus
+        Add missing typename keywords to APPList.cc to allow compilation
+        under gcc-3.
+
+Mar 18 2003     R. Bartoldus
+        Add a missing typename keyword to APPListIterator to allow it
+        to compile under gcc-3.
+        [History APPListIterator.hh ]
+
+Mar 28 2002	A. De Silva
+	FwkString is back. (tagged V00-04-02)
+
+Mar 14 2002	A. De Silva
+	APPList uses STL instead of RWCString.
+
+2001.11.28	V00-02-17	Gregory Dubois-Felsmann
+	System header file usage corrected.  Applicable to all releases, not
+	just the Unix98-ish 11-series.
+	[History ftclCmdSelect.h]
+
+Apr 16 2001	G. Raven
+	AbsInterp.cc modified - don't call getenv() unless it is to be used.
+
+Feb 28 2001 	A. De Silva
+	APPList::insert( const Item *theItem, const Item *beforeItem ) now 
+	inserts to list if beforeItem=0.  Ditto for args passed by ref.
+
+
+Feb  7 2001     A. De Silva
+	New class AbsCommand to break circular dependency between FrameUtil
+	and Framework.  Also ifdef-ed out Python code since that interpreter is
+	not used by BaBar - it pulls in Framework dependency so it should be 
+	fixed first before use, if ever.
+
+Jan  4 2001	A. De Silva
+	Go back to original design -  exitTcl is no longer faked in
+	FtclInterp::startInterpLoop() when an EOF is encountered; "exit" is
+	instead.
+
+Dec  8 2000	A. De Silva
+	Introduced two new methods in AbsInterp: 
+	void setDoLoopInterp(bool) 	and 
+	bool getDoLoopInterp() const
+	These are needed to tell the Interpreter loop as to when it should
+	exit (such as when a sourced tcl script has a Framework exit command.)
+	Also fixed a bug which caused exit/quit commands, buffered by blank 
+	characters, to be ignored.
+
+Nov 20 2000	A. De Silva
+	Prior to this change, when an EOF was encountered, an exit was faked
+	in FtclInterp::startInterpLoop().  This has been changed so that 
+	exitTcl is now faked.
+
+Nov 10 2000	A. De Silva
+	runCommandFile returns AbsInterp::OK or AbsInterp::ERROR.
+
+Jun 30 2000	A. De Silva
+	exitTcl defined in FtclInterp.cc ctor.  (this redefines the tcl exit
+	command which otherwise would be clobbered by Framework.)
+
+Jun 05 2000	A. De Silva
+	Fixed memory leaks.
+ 	Also, APPListDeleteAll() deletes items in reverse order.
+ 	New method appendResult() in AbsInterp class.  
+ 	Also reimplemented AbsInterp::setResult() as per TCL manual guidelines 
+   	(ie, don't write directly to tcl_interpreter->result !)
+
+May 24 2000	A. De Silva
+	This version has a bug fix in APPList::append(item* theItem, item*
+	afterItem).
+
+May 21 2000	A. De Silva
+	Moved inline code from APPList*.icc to *.hh and to *.cc (non-inline.)
+	Moved in test program for APPList from AListAdapter package.
+	Removed string.hh class since this conflicts with STL.
+
+May 12 2000	A. De Silva
+	Conversion to use FwkString in all FrameUtil code.
+
+May 08 2000	A. De Silva
+	Check Tcl return status before printing error message in 
+	runCommandFile method.
+
+May 07 2000	A. De Silva
+	Removed printout of tcl->result when command files are evaluated.  
+	This removes extra lines, which have ni information, from printing. 
+ 	(Error messages in tcl were already being generated.)
+
+May 06 2000	A. De Silva
+	Reintroduce AbsInterp::theInterpreter(Tcl_Interp*) method in 
+	AbsInterp.  This is needed by other packages (RooModules, GraDisplay 
+	and  OepFramework) which I don't want to force migrations on now.  
+	(Also needed if TK code is not yanked out in Framework.)
+
+May 04 2000	A. De Silva
+	New implementation of APPList class.
+
+May 03 2000	A. De Silva
+	Another method added to APPList.  This was in HepAList and other 
+	packages need it.
+
+May 02 2000	A. De Silva
+	FwkString has a isEmpty() method.  This is to ease the Framework 
+	migration since it was present in HepString and packages used it.
+	length() and operator[] implemented in APPList.  These were present in
+	HepAList and BaBar needs them.
+
+May 01 2000	A. De Silva
+	Interp stuff are code changes from CDF.  FwkString is a new class 
+	meant to replace HepAString in Framework code.
+	APPList containers moved here from Framework.
+
+(History file prior to this was missing.)

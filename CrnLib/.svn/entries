@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="846"
+   name=""
+   committed-date="2011-03-08T13:24:45.250377Z"
+   url="https://sbrepo.pd.infn.it:8910/Generators/CrnLib/tags/V00-00-03"
+   last-author="stroili"
+   kind="dir"
+   uuid="7b731e25-c66e-4470-8c2d-112e6345f304"
+   revision="886"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="607"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:01:19.000000Z"
+   committed-date="2010-03-30T12:17:14.007865Z"
+   checksum="e5586f74c6c0270a3328ad4f51ba3f28"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:01:16.000000Z"/>
+<entry
+   committed-rev="841"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T19:01:19.000000Z"
+   committed-date="2010-11-25T16:25:59.824688Z"
+   checksum="4574ca67935e1e39e9aaf14a87eb012b"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:01:19.000000Z"/>
+</wc-entries>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="817"
+   name=""
+   committed-date="2011-03-08T15:12:53.246681Z"
+   url="https://sbrepo.pd.infn.it:8910/Core/MsgLogger/tags/V00-01-02"
+   last-author="stroili"
+   kind="dir"
+   uuid="7d373392-5316-41f4-94df-42a166793eec"
+   revision="830"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   committed-rev="518"
+   name="History"
+   text-time="2011-04-27T18:38:32.000000Z"
+   committed-date="2010-01-15T08:25:10.963855Z"
+   checksum="8a61355194318757873d079520126116"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:30.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="518"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:38:32.000000Z"
+   committed-date="2010-01-15T08:25:10.963855Z"
+   checksum="7278d365f236314fe9a7552aaa8d9690"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:31.000000Z"/>
+<entry
+   committed-rev="775"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:38:32.000000Z"
+   committed-date="2010-11-25T16:07:15.468941Z"
+   checksum="fd4d25796c7cf9ef79ae0e3d3da78ee1"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:32.000000Z"/>
+<entry
+   committed-rev="240"
+   name="README"
+   text-time="2011-04-27T18:38:32.000000Z"
+   committed-date="2009-03-04T07:59:43.361216Z"
+   checksum="8248e0dee0d7ac54b5e46330ad6ba200"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:32.000000Z"/>
+</wc-entries>

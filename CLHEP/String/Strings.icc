@@ -1,0 +1,109 @@
+// -*- C++ -*-
+// $Id: Strings.icc,v 1.16 2005/11/24 02:26:02 dwright Exp $
+//
+// This file is a part of what might become the CLHEP -
+// a Class Library for High Energy Physics.
+// 
+// This is the definitions of the inline member functions of the
+// HepString class
+//
+#include <string.h>
+
+#ifdef HEP_DEBUG_INLINE
+#define inline
+#endif
+
+inline HepString::~HepString() {
+  if(str) {
+    free(str);
+  }
+  str = 0;
+}
+
+inline void HepString::realloc() {
+  str = (char *) ( str ? ::realloc(str, size*sizeof(char)) :
+		   malloc(size*sizeof(char)) );
+}
+
+inline unsigned HepString::length() const {
+  return size - 1;
+}
+
+inline bool HepString::isEmpty() const {
+  return bool(size==1);
+}
+
+inline bool HepString::operator ! () const {
+  return bool(size==1);
+}
+
+inline HepString::HepString()
+: size(1), str(0) {
+  realloc();
+  str[0] = '\0';
+}
+
+inline char HepString::operator () (unsigned i) const {
+  return i < length() ? str[i] : '\0';
+}
+
+inline HepString::operator const char * () const {
+  return str;
+}
+
+inline long HepString::toInt() const {
+  return atol(str);
+}
+
+inline bool HepString::operator == 
+(const std::basic_string<char> & s) const {
+  return bool(*this==s.c_str());
+}
+
+inline bool HepString::operator != 
+(const std::basic_string<char> & s) const {
+  return bool(!(*this==s.c_str()));
+}
+
+inline bool HepString::operator == (const HepString & s) const {
+  return bool(str[0] == s.str[0] && strcmp(str, s.str) == 0);
+}
+
+inline bool HepString::operator != (const HepString & s) const {
+  return bool(!operator == (s));
+}
+
+inline bool HepString::operator != (const char* s) const {
+  return bool(!operator == (s));
+}
+
+inline int HepString::index(const HepString & s) const {
+  char * i = strstr(str, s.str);
+  return i ? int(i-str) : -1;
+}
+
+inline int HepString::index(char c) const {
+  char * i = strchr(str, c);
+  return i ? int(i-str) : -1;
+}
+
+inline int HepString::lIndex(char c) const {
+  char * i = strrchr(str, c);
+  return i ? int(i-str) : -1;
+}
+
+inline double HepString::toFloat() const {
+  return atof(str);
+}
+
+inline std::ostream & operator << (std::ostream & o, const HepString & s) {
+  return o << (const char *) s;
+}
+
+inline bool operator != (const char * s1, const HepString & s2) {
+  return bool(!(s1 == s2));
+}
+
+#ifdef HEP_DEBUG_INLINE
+#undef inline
+#endif

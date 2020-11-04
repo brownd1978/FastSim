@@ -1,0 +1,11 @@
+IfdSimpleProxyDict with 0 entries.
+IfdSimpleProxyDict with 1 entries:
+   Mrk Key
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<HepAList<ListA>>]  ]
+Number of ListA objects=0
+Adding 10 A objects to the HepAList...done.
+Length of the list=10
+Number of ListA objects=10
+Deleting the ProxyDict...Done.
+Now verifying that all the A's are gone.  Expect 0 in next printout:
+Number of ListA objects=0

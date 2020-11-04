@@ -1,0 +1,16 @@
+$Id: BUGS,v 1.3 1998/02/02 06:43:59 jake Exp $
+
+Bugs, deficiencies, pious hopes, etc. in package BaBar:
+------------------------------------------------------
+
+Initials of those noting or resolving bugs:
+
+	gpdf	Gregory Dubois-Felsmann
+
+The regression test for type definitions needs to have tests for signedness
+added appropriately.  [gpdf]
+
+The definitions of d_Char and d_Octet in BaBarODMGTypes.h, modified to be
+compatible with Objectivity's, are now both plain "char".  This means that
+their signedness may vary from platform to platform.  This is a necessary
+evil required by the need for Objectivity compatibility.  [gpdf]

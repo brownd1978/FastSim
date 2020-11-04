@@ -1,0 +1,95 @@
+// -*- C++ -*-
+// $Id: AListBase.icc,v 1.14 2005/11/24 00:56:39 dwright Exp $
+//
+// This file is a part of what might become the CLHEP -
+// a Class Library for High Energy Physics.
+// 
+// This is the definitions of the inline member functions of the
+// HepAListBase class
+//
+
+#ifdef HEP_DEBUG_INLINE
+#define inline
+#endif
+
+inline HepAListBase::HepAListBase()
+: p(0), n(0), s(0)
+{
+}
+
+inline HepAListBase::~HepAListBase()
+{
+  n = 0;
+  realloc();
+}
+
+inline void HepAListBase::realloc()
+{
+  allocate(n);
+}
+
+inline void HepAListBase::checksize()
+{
+  if( n>s ) allocate(2*n);
+}
+
+inline void HepAListBase::insert(void * e) {
+  if ( e ) newInsert(0) = e;
+}
+
+inline void HepAListBase::insert(void * e, void * r) {
+  if ( e ) newInsert(fIndex(r)) = e;
+}
+
+inline void HepAListBase::append(void * e) {
+  if ( e ) newAppend(n) = e;
+}
+
+inline void HepAListBase::insert(void * e, unsigned pos) {
+  if ( e && pos < n ) newInsert(pos) = e;
+  else append(e);
+}
+
+inline bool HepAListBase::hasMember(const void * e) const {
+  return bool(index(e) >= 0);
+}
+
+inline void * HepAListBase::operator[] (unsigned i) const {
+  return ( i < n ) ? p[i] : 0;
+}
+
+inline void * HepAListBase::first() const {
+  return n ? p[0] : 0;
+}
+
+inline void * HepAListBase::last() const {
+  return n ? p[n-1] : 0;
+}
+
+inline void HepAListBase::removeAll() {
+  n = 0;
+}
+
+inline void HepAListBase::remove(unsigned i) {
+  if ( i < n ) removeEntry(i);
+}
+
+inline int HepAListBase::length() const {
+  return n;
+}
+
+inline bool HepAListBase::empty() const {
+  return bool(n == 0);
+}
+
+inline bool HepAListBase::isEmpty() const {
+  return bool(n == 0);
+}
+
+inline void HepAListBase::sort(compare_function* func) {
+   qsort( p, n, sizeof(void *), func);
+}
+
+#ifdef HEP_DEBUG_INLINE
+#undef inline
+#endif

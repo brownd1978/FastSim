@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2628"
+   name=""
+   committed-date="2011-04-11T22:34:31.952111Z"
+   url="https://sbrepo.pd.infn.it:8910/PACRAT/PacDisplay/trunk/macros"
+   last-author="brownd"
+   kind="dir"
+   uuid="2aa36f44-f9d8-11dc-81b7-9e774fc32887"
+   revision="2643"/>
+<entry
+   committed-rev="2168"
+   name="LoadDisplay.C"
+   text-time="2011-04-27T18:43:49.000000Z"
+   committed-date="2010-07-06T08:57:28.191265Z"
+   checksum="bfde329e8763256a3c838d4005deb86e"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:43:49.000000Z"/>
+<entry
+   committed-rev="2628"
+   name="PacDisplayMacro.C"
+   text-time="2011-04-27T21:11:29.000000Z"
+   committed-date="2011-04-11T22:34:31.952111Z"
+   checksum="5d2c3360b7f3ba2fcb644c8894a3e11f"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T21:11:29.000000Z"/>
+</wc-entries>

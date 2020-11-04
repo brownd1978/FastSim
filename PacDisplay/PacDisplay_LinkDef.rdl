@@ -1,0 +1,37 @@
+// define all the templates used in storing the display
+#ifdef __CINT__
+
+// don't include the structs if they're already there: this avoids problems with CINT
+#include <vector>
+#include "PacDisplay/PacDispTrackTraj.hh"
+#include "PacDisplay/PacDispPoint.hh"
+#include "PacDisplay/PacDispSimHit.hh"
+#include "PacDisplay/PacDispCluster.hh"
+#include "PacDisplay/PacDispMat.hh"
+#include "PacDisplay/PacDispCyl.hh"
+#include "PacDisplay/PacDispRing.hh"
+#include "PacDisplay/PacDispRect.hh"
+#include "PacDisplay/PacDispCone.hh"
+
+//#pragma link off all globals;
+//#pragma link off all classes;
+//#pragma link off all functions;
+
+#pragma link C++ class PacDispMat;
+#pragma link C++ class PacDispCyl;
+#pragma link C++ class PacDispRing;
+#pragma link C++ class PacDispRect;
+#pragma link C++ class PacDispCone;
+#pragma link C++ class PacDispTraj;
+#pragma link C++ class PacDispTrackTraj;
+#pragma link C++ class PacDispPoint;
+#pragma link C++ class PacDispSimHit;
+#pragma link C++ class PacDispCluster;
+
+#pragma link C++ class vector<PacDispTrackTraj>;
+#pragma link C++ class vector<PacDispPoint>;
+#pragma link C++ class vector<PacDispSimHit>;
+#pragma link C++ class vector<PacDispCluster>; 
+
+#endif
+//#endif

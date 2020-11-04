@@ -1,0 +1,60 @@
+// This is the History file for BbrGeom
+//
+//       $Id$
+//
+
+2010/01/13 stroili
+split code in src and include directories
+
+TAG V00-10-00
+2007/09/20 gapon
+CLHEP migration
+
+TAG V00-08-05
+2004/05/12 gowdy
+Fix my first attempt removing the warnings in BbrError. Also fix
+warnings in the test executable.
+
+TAG V00-08-04
+2004/05/12 gowdy
+Remove a bunch of warnings on Solaris.
+
+2001/02/15 echarles
+Added BbrAngle to list of LIBEXTRARDLFILES
+
+TAG V00-07-11
+2001/02/15 echarles
+Added BbrGeom_LinkDef.rdl to further define what goes into the
+cint dictionary
+
+2000/11/21 echarles
+Added LIBEXTRARDLFILES line to GNUmakefile to define what goes into the
+cint dictionary
+
+2000/10/18 echarles
+Remove historic ifdef from Trajectory.hh, Make BbrErrProjector d'tor public
+so that cint doesn't choke on it.
+
+2000/01/18  kelsey
+Change testBbrGeom.cc to use static BbrErrProject::localError.  I should
+have done this when I made the change below.  Sorry.
+
+1999/08/31  kelsey
+Change BbrErrProjector::localError to STATIC, and hide ctor.  This forces
+calling function directly without wasting time creating a temporary object
+just to call functions.  This is conventional C++ hack to make a "class" act
+as a "namespace" instead of an object.
+
+
+Revision 1.3  1999/01/08 01:16:58  sschaff
+Add TrkGeomTrajVisitor and TrkPieceTraj.
+
+
+Revision 1.2  1999/01/07 22:23:24  sschaff
+Fix botched History file.
+
+
+Revision 1.1  1999/01/07 22:15:47  sschaff
+Added Trajectory, TrkGeomTraj classes, History.  Updated link file, and 
+fixed includes in BbrLorentzVectorErr.cc, BbrDoubleErr.cc, BbrError.cc, 
+and BbrPointErr.cc, all of which were missing the package.

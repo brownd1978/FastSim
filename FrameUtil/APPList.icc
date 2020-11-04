@@ -1,0 +1,212 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+//
+// Description:
+//	Class APPList. This is an addapter class for List class for use
+//      with Framework.  It uses the Rogue Wave class for its implementation.
+//
+// Author List:
+//	Liz Sexton-Kennedy		Original Author
+//	A. De Silva                     Modified Liz's STL classes to RW.
+//      A. De Silva                     Changed RW to STL::list.
+//
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+//-----------
+// Headers --
+//-----------
+
+#include "Experiment/Experiment.hh"
+#include "FrameUtil/APPList.hh"
+
+#include <list>
+#include <algorithm>
+
+template<class Item> class APPListIterator;
+
+//              ----------------------------------------
+//              -- Public Function Member Definitions --
+//              ----------------------------------------
+
+//----------------
+// Constructors --
+//----------------
+
+template <class Item>
+APPList<Item>::APPList() 
+  : _list( new std::list<Item>() ) 
+{}
+
+template <class Item>
+APPList<Item>::APPList(const APPList<Item>& aList)
+  :   _list( new std::list<Item> ( *((APPList<Item>&)aList)._list ))
+{}
+ 
+template <class Item>
+APPList<Item>& APPList<Item>::operator =(const APPList<Item>& aList)
+{
+  if (_list != 0) delete _list;
+  _list = new std::list<Item> (* ((APPList<Item>&)aList)._list );
+  return *this;
+}
+
+template <class Item>
+APPList<Item>::~APPList() 
+{
+  delete _list;
+}
+
+//-------------
+// Selectors --
+//-------------
+
+template <class Item>
+Item * APPList<Item>::first() const
+{
+  if ( _list->empty( ) ) {
+    return 0;
+  } else {
+    return  & _list->front();
+  }
+}
+
+// If I return an Item it will make a copy...
+template <class Item>
+Item * APPList<Item>::last() const
+{
+  if ( _list->empty( ) ) {
+    return 0;
+  } else {
+    return & _list->back();
+  }
+}
+
+//-------------
+// Modifiers --
+//-------------
+
+template <class Item>
+void APPList<Item>::insert( const Item *theItem, const Item *beforeItem )
+{
+  if (0 != beforeItem) {
+    insert(*theItem, *beforeItem);
+  } else {
+    _list->push_front(*theItem);
+  }
+}
+
+template <class Item>
+void APPList<Item>::insert( const Item &theItem, const Item &beforeItem )
+{
+  typename std::list<Item>::iterator index =
+    std::find(_list->begin(), _list->end(), beforeItem);
+  if (index != _list->end()) {
+    _list->insert(index, theItem);
+  } else {
+    _list->push_front(theItem);
+  }
+}
+
+template <class Item>
+void APPList<Item>::insert( const Item &theItem, unsigned pos )
+{
+  if (pos <  _list->size() ) {
+    typename std::list<Item>::iterator index = _list->begin();
+    std::advance(index, pos);
+    _list->insert(index, theItem);
+  } else {
+    _list->push_back(theItem);
+  }
+}
+
+
+template <class Item>
+inline void APPList<Item>::append( const Item *theItem, const Item *afterItem)
+{
+  if ( afterItem == 0 ) {
+    // This is CLHEP behavior, if the afterItem is 0 stick theItem on the end
+    _list->push_back(*theItem);
+  }
+  else {
+    append(*theItem, *afterItem);
+  }
+}
+
+template <class Item>
+void APPList<Item>::append( const Item &theItem, const Item &afterItem)
+{
+  typename std::list<Item>::iterator index =
+    std::find(_list->begin(), _list->end(), afterItem);
+  if (index !=  _list->end() ) {
+    index++;
+    _list->insert(index, theItem);
+  } else {
+    _list->push_back(theItem);
+  }
+}
+
+template <class Item>
+void APPList<Item>::append(const APPList<Item> &addedList)
+{
+  const APPList<Item>* p_list = &addedList;
+  if (this == p_list) return;
+  std::copy(addedList._list->begin(), addedList._list->end(), 
+	    std::back_insert_iterator<std::list<Item> > (*_list)); 
+}
+
+template <class Item>
+void APPList<Item>::remove( const APPList<Item> &removedList )
+{
+  APPList<Item>* p_list = (APPList<Item>*) &removedList;
+  APPListIterator<Item> rmItem(*p_list);
+  while ( rmItem.next() ) { 
+    _list->remove(*rmItem.current());
+  }
+}
+
+template <class Item>
+void APPList<Item>::remove( unsigned pos )
+{
+  if (pos < _list->size() ) {
+    typename std::list<Item>::iterator index = _list->begin();
+    std::advance(index, pos);
+    _list->erase(index);
+  }  
+}
+
+template <class Item>
+Item* APPList<Item>::operator[] ( unsigned i) const
+{
+  if (i < _list->size()) {
+    typename std::list<Item>::iterator index = _list->begin();
+    std::advance(index, i);
+    return & (*index);
+  } else {
+    return 0;
+  }
+}
+
+template <class Item>
+void APPListDeleteAll( APPList<Item> & alist) {
+  // This is nothing like CLHEP's DeleteAll, and should only be used by
+  // Framework.  The framework lists are all lists of pointers to things
+  // that have been allocated with new.  In other words Item is always a
+  // pointer.  The following is therefore OK.  Under any other circumstances
+  // this code would not be OK.
+
+  // Note: order of deletion is important, especially for modules which
+  // have pointers to other modules. (order is first in, last deleted.)
+
+  APPListIterator<Item> iter(alist);
+  iter.skipAll();
+  while ( Item* ptrItem = iter.prev() ) {
+    delete (*ptrItem);  
+  }
+  alist.removeAll();
+  
+}
+
+
+
+

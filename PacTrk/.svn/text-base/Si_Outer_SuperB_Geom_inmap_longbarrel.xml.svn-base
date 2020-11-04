@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+
+<!--- Lampshade design for the INMAP SuperB Detector options.  This design uses inmap sensors for all of the detector.  Assume
+      that the bus material is that of the hybrid pixel solution, and then modify the geometry according to:
+           Layer 4/5:  Bus = as per hybrid pixel, 50um silicon, and a 1.146% X/X0 CF support
+--->
+
+
+<!-- Layer 4 -->
+                <cyl name="Svt-AlBus" id="4" zmin="-40." zmax="40" radius="12.37" thick="0.0250" mat="SB-HPixel-AlBus"  overlap="0.0" />   
+                <cyl name="SvtHybridPixels" id="4"  zmin="-40.0" zmax="40.0" radius="12.395" thick="0.0050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />  
+                <cyl name="SvtCF" id="4" zmin="-40.0" zmax="40.0" radius="13.00" thick="0.273" mat="svt-CFiber" gap="0.864" />
+
+
+
+<!-- Layer 5 -->
+<!-- Layer 5 sensors are supported off of the CFRP for Layer 4 -->
+                <cyl name="SvtHybridPixels" id="5"  zmin="-45.0" zmax="45.0" radius="13.92" thick="0.0050" mat="svt-Silicon" meas="SiHybridPixels" overlap="0.01" />  
+                <cyl name="Svt-AlBus" id="5" zmin="-45.0" zmax="45.0" radius="13.925" thick="0.0250" mat="SB-HPixel-AlBus"  overlap="0.0" />   
+
+
+
+    </included>
+</edml>

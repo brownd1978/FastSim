@@ -1,0 +1,29 @@
+
+Things to do:
+
+0.  Think about T vs. T* in all args.
+0'' Memory managemetn:  chase through ~ProxyDict and ~DictDataProxyIFace
+
+A.  gobs of code is inline via class decl.  should it be?
+	NB:  some of this is to beat template instantiation problems.
+
+1.  Decide appropriate copy ctor, assignment for all classes.  In
+	particulare:
+		Counter class.  should it be allowed? (allowed for now)
+		Derivatives of Key:  maybe its ok?  supressed for now.
+
+2.  Check public/private declaration of all ctors against
+	paper design.  This is crucial for correct implementation
+	of the type-safe access to the dictionary.
+3.  DictKey is a CompKey, and TypeToken is an IntKey.  Think very
+	about how this affects how these things can be used.  For
+	example, no one is supposed to be able to actually make
+	a DcitKey except for the type-interface get() and put(), but
+	since DictKey's are Key's, they understand clone().  Is
+	this a problem?  Does this imply things for Key's interface
+	that we don't want, e.g., clone, assignment, and copy must
+	be held private?  I'd like to keep Keys as reusable.
+
+4.  default ctor for IfdDataProxy. ick.
+
+key::add is just cons, so add car and cdr for key?  oh my.

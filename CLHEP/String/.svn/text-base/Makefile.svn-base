@@ -1,0 +1,8 @@
+# Package Makefile: 
+#   it can make all levels or a particular level directly from
+#   the package directory. the include is so that the user and package
+#   directories are isolated from changes
+#
+
+include $(ODF_BASE)/Odf/tools/Makefile.package
+

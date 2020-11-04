@@ -1,0 +1,36 @@
+#!/bin/sh
+
+file=PdtLund.hh
+
+cat << @EOF > $file
+//
+// Do not edit! Automatically generated file
+//
+#ifndef PDTLUNDTYPE_HH
+#define PDTLUNDTYPE_HH
+
+class PdtLund
+{
+public:
+  enum LundType
+  {
+@EOF
+
+grep "add*. p" pdt.table | grep -v Collision | \
+sed 's/anti-/anti_/' | \
+sed 's/*/_star/' | \
+sed 's/+/_plus/g' | \
+sed 's/-/_minus/g' | \
+sed "s/'/_prime/g" | \
+sed 's/~/_tilde/g' | \
+sed 's/\//_/g' | \
+sed 's/(/_/g' | \
+sed 's/)//g' | \
+awk '{print "   ",$4,"=",$5,","}' |sed 's/ _minus/ -/g' >> $file
+cat << @EOF >> $file
+    null = 0
+  };
+};
+
+#endif
+@EOF

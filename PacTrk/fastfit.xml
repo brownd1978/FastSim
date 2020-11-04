@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+  <config>
+    <sect name="TrackReconstructor">
+     <param name="fastfit"       type="bool"  > true </param>
+    </sect>
+  </config>
+</edml>
+

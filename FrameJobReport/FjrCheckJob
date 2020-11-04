@@ -1,0 +1,242 @@
+#!@PERL@
+##================================================================-*-Perl-*-
+## Project: BaBar detector at the SLAC PEP-II B-factory
+## Package: FrameJobReport
+##    File: $Id: FjrCheckJob,v 1.2 2005/03/25 18:31:28 roethel Exp $
+## Authors:
+##   WR, Will Roethel, University of California, Irvine 
+## History (reverse order):
+##   V1.0 Mar-2005 WR  Initial version
+##
+## Copyleft (C) 2003-2004 University of California, Irvine
+##==========================================================================
+use FindBin;
+use lib $FindBin::Bin;
+
+use IO::File; 
+use strict; 
+use Getopt::Long;
+
+
+# defined exit codes:
+#   0: job checked ok
+#   1: help() or --version exit; successful exit signal for all
+#      jobs that didn't check a job report file
+#   2: stopTime not found
+#   3: event count mismatch 
+
+
+my $versionId = '$Id: FjrCheckJob,v 1.2 2005/03/25 18:31:28 roethel Exp $';
+my ($help, $version, $verbose, $nocheck, $processed); 
+
+GetOptions("help"=> \$help,
+           "version|V"=> \$version,
+	   "verbose" => \$verbose, 
+	   "nocheck" => \$nocheck, 
+	   "processed|p" => \$processed)
+    
+    or help();
+
+
+if (defined $help) {
+    help(); 
+}
+if (defined $version) {
+    print $versionId ."\n"; 
+    exit 1; 
+}
+my $verbosity = 0; 
+if (defined $verbose) {
+    $verbosity = 1; 
+}
+
+
+my $jobReportName = $ARGV[0];
+unless (defined $jobReportName) {
+    print "No job report name provided.\n"; 
+    help(); 
+}
+
+
+my $io = IO::File->new(); 
+unless (-e $jobReportName && -r $jobReportName) {
+    print "$jobReportName does not exist or is not readable!\n";
+    exit 10;
+}
+
+$io->open("<$jobReportName"); 
+my @text = $io->getlines();
+$io->close(); 
+
+#
+#--  check job 
+#
+
+my $exitCode = 1;
+unless (defined $nocheck) {
+    my $isOk = 0; 
+    my $failedStr = ""; 
+    # check for completeness
+    $isOk = checkCompleteness(\@text, $verbosity); 
+    if ($isOk) {
+	# check event counters
+	$isOk = checkEventCount(\@text, $verbosity); 
+	unless ($isOk) {
+	    $exitCode = 3; 
+	    $failedStr = "Event count mismatch!";
+	}
+    } else {
+	$exitCode = 2; 
+	$failedStr = "Bbr::JobReport.stopTime not found!"; 
+    }
+    
+    if ($isOk) {
+	$exitCode = 0;
+	print "Job checked Ok!\n"; 
+    } else {
+	print "Job failed! - ". $failedStr ."\n"; 
+    }
+}
+
+if (defined $processed) {
+    my $processed = getKeySum("Bbr::KanEventInput::Collection", 
+			      "processedInputEvents", \@text); 
+    print "Events processed: $processed\n"; 
+}
+exit $exitCode; 
+
+
+#---
+
+
+sub checkCompleteness {
+    my $text = shift; 
+    my $verbosity = shift; 
+
+    my $isOk = 0; 
+    foreach my $line (@text) {
+	chomp $line; 
+	if ($line =~ /Bbr::JobReport\.stopTime/) {
+	    $isOk = 1;
+	    if ($verbosity) {
+		print "Bbr::JobReport\.stopTime found!\n"; 
+	    }
+	    last; 
+	}
+    }
+    return $isOk; 
+}
+    
+
+#---
+
+
+sub checkEventCount {
+    my $text = shift; 
+    my $verbosity = shift; 
+
+    my $totalCollectionEventsSum = getKeySum("Bbr::KanEventInput::Collection", 
+					     "totalCollectionEvents", $text); 
+    my $skippedInputEventsSum = getKeySum("Bbr::KanEventInput::Collection", 
+					  "skippedInputEvents", $text); 
+    my $filteredOutInputEventsSum = getKeySum("Bbr::KanEventInput::Collection",
+					  "filteredOutInputEvents", $text); 
+    my $processedInputEventsSum = getKeySum("Bbr::KanEventInput::Collection", 
+					  "processedInputEvents", $text); 
+    
+    if ($totalCollectionEventsSum == $skippedInputEventsSum + 
+	$filteredOutInputEventsSum + $processedInputEventsSum) { 
+	if ($verbosity) {
+	    print "Events match!\n"; 
+	}
+	return 1;
+    } else {
+	if ($verbosity) {
+	    print "Event check mismatch.";
+	} 
+	return 0; 
+    }
+}
+
+
+#---
+
+sub getKeySum {
+    my $catalog = shift; 
+    my $key = shift; 
+    my $text = shift; 
+
+
+    my $sum = 0;
+    foreach my $line (@{$text}) {
+	chomp $line;
+	my ($cat, $keyVal) = ($line =~ /^(.*?)\.(.*)$/); 
+	unless ($cat && $keyVal) {
+	    next; 
+	}
+	if ($cat =~ /$catalog/) {
+	    if ($keyVal =~ /$key/) {
+		my ($keyStr, $valueStr) = ($keyVal =~ /^(\S*) (.*)$/ ); 
+		unless (defined $keyStr && defined $valueStr) {
+		    next; 
+		}
+		if ($keyStr eq $key) {
+		    $sum = $sum + $valueStr; 
+		}
+	    }
+	}
+    }
+    return $sum;
+}
+
+#---
+
+
+sub help {
+    print << "EOT";
+usage: FjrCheckJobs [OPTIONS] jobReportFile 
+
+  Analyze the job report file to validate the success of a framework job.
+Optionally report the number of processed events in the job.
+
+Options:
+     --help          print this text and exit
+ -V, --version       print version info and exit
+     --verbose            
+     
+     --nocheck       skip the check itself - useful in combination
+                     with the --processed option
+ -p, --processed     total number of processed events in this job.
+
+  
+Details:
+  FjrCheckJobs checks the job report file for the existence of the 
+line Bbr::JobReport.stopTime. By definition this line indicates that the 
+framework exited normally (equivalent to the unix exit code 0). 
+  In addition the the sum of the numbers of skipped, filtered and processed 
+events determined by framework counters are compared with the sum of the total 
+number of events in the input collections as stored in the collection
+header. 
+
+  Since the bookkeeping can not provide correct event counts for processed
+events when using the extended collection syntax, FjrCheckJobs' --processed 
+option returns the sum of the processed events in the job.
+
+
+For easy implementation into scripts the following exit codes are used:
+
+  0:  job checked ok.
+  1:  Default exit code. Process ran successfully but did not check jobs. 
+      (e.g. the exit code when printing the help information. Note that 
+      using the wrong command line options will print the help information.).  
+  2:  stopTime not found.
+  3:  event count mismatch
+ 10:  job report file not found or not readable.
+
+Note that exit code 0 will only be returned if a job has been checked
+successfully.
+
+EOT
+exit 1; 
+}
+

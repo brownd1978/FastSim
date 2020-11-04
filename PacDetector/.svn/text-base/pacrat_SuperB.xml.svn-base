@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    This file and subfiles describe the proposed SuperB detector in the EDML schema
+-->
+<edml>
+
+    <!-- Define the SuperB detector.  -->
+
+    <!-- the following includes add volumes and elements to the detector, and define the specific measurements and
+    configurations of those detectors.  They need to be included in order from the IP outwards -->
+    <include file="PacDetector/IP_SuperB.xml"  />
+
+    <include file="PacTrk/Si_SuperB.xml"  /> 
+
+    <include file="PacTrk/Dch_SuperB.xml" />
+
+    <include file="PacEmc/PacEmcGeom_SuperB.xml" />
+
+    <include file="PacEmc/EmcBwd_SuperB.xml" />
+
+    <include file="PacDirc/Dirc_SuperB.xml" />
+
+    <include file="PacForwardPid/ForwardPid_SuperB.xml" />
+
+    <include file="PacEmc/Emc_SuperB.xml" />
+
+    <include file="PacIfr/Ifr_SuperB.xml" />
+    
+    <include file="PacDetector/Machine_SuperB.xml"  />
+    
+    <!-- generic configuration -->
+
+    <include file="PacTrk/Track_reconstruction.xml" />
+
+    <include file="PacSim/Material_simulation.xml" />
+    
+    <include file="PacDetector/SuperBVolume.xml" />
+    
+    <!-- define this configuration -->
+    <config>
+        <sect name="General">
+            <param name="ConfigKey" type="int" > 100 </param>
+            <param name="ConfigName" type="string"> SuperB </param>
+        </sect>
+    </config>
+    
+
+</edml>

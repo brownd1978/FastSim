@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="619"
+   name=""
+   committed-date="2010-08-06T15:02:16.699600Z"
+   url="https://sbrepo.pd.infn.it:8910/Tools/CLHEP/tags/V00-01-05/src/Geometry"
+   last-author="brownd"
+   kind="dir"
+   uuid="03b460ae-468b-4fc1-b513-ef89764f6eec"
+   revision="746"/>
+<entry
+   committed-rev="192"
+   name="Translation.cc"
+   text-time="2011-04-27T19:05:11.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="501e39ea19987212530030aeb15a853d"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:11.000000Z"/>
+<entry
+   committed-rev="192"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:05:11.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="96e3d3a5293a5d405c0127ad21dabc03"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:11.000000Z"/>
+<entry
+   committed-rev="192"
+   name="AngleSets.cc"
+   text-time="2011-04-27T19:05:11.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="02ea000189b04a5a9685c1059c55ab8e"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:11.000000Z"/>
+<entry
+   committed-rev="619"
+   name="HepPoint.cc"
+   text-time="2011-04-27T19:05:11.000000Z"
+   committed-date="2010-08-06T15:02:16.699600Z"
+   checksum="af0dfbc577bbbb0855ac2a8485b70cf1"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:05:11.000000Z"/>
+<entry
+   committed-rev="192"
+   name="Transformation.cc"
+   text-time="2011-04-27T19:05:11.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="b427cf49df6b09f9123a440764f43781"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:11.000000Z"/>
+</wc-entries>

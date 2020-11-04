@@ -1,0 +1,73 @@
+Package:	RandControl
+Created by:	A.Salnikov
+Coordinators:	Andy Salnikov
+
+  This package will contain the modules for the control of the random
+numbers (seeds) in the Framework simulation jobs.
+
+  The ideas behind it are described in the short paper found at
+doc/Random.ps (original FrameMaker file is at ~salnikov/Documents/Random.fm)
+
+		What to do with this?
+		---------------------
+
+  The usual (simplest) way to get the modules in someone's job is to
+include the following lines in the AppUserBuild::AppUserBuild(...)
+
+	#include "RandControl/RacModules.hh"
+
+	AppUserBuild::AppUserBuild( AppFramework* theFramework ) :
+		AppBuild( theFramework )
+	{
+	  ........................
+	
+	  // Now, load the modules for the randoms control
+	  RacModules( this ) ;
+	
+	  ........................
+	}
+
+And 'overrive LINK_RandControl += XXX' in the GNUmakefile somewhere
+before the 'link_all_reco.mk' (that works starting from 6.4.1
+release.)
+
+This will create 5 (as for today) modules: 
+	RandomControl,
+	RandomPickerPrimary,
+	RandomPickerSimulation,
+	RandomPickerDigis,
+	RandomPickerReco. 
+
+  Then one needs to install the modules (probably not all of them) in
+the path - RandomControl is usually the first module in the path,
+RandomPickerPrimary has to be before the primary generator modules
+(GFISingleParticle or GFIEvtGen), RandomPickerSimulation should go
+before Bogus module, RandomPickerDigis before XxxDigi modules,
+RandomPickerReco before reco stage. (Note: randControl.tcl file was
+created to make all this work automatically, but this is quite tedious
+task and it may happen impossible to do at all.)
+
+		Directory list.
+		---------------
+
+  Presently the following classes and routines are in the package:
+
+RacRanecuEngine.{hh,cc}    - Ranecu generator implementation, has both
+			     HepRandomEngine and RacAbsSkipper interfaces.
+RacAbsSkipper.hh           - Abstract "skipper" interface for the generators.
+RacAbsEnginePtr.{hh,cc}    - An abstract "pointer" to the angines, it can be 
+			     saved in the AbsEvent and has a clone() method.
+RacRandomControl.{hh,cc}   - "RandomControl" module.
+RacRandomPicker.{hh,cc}    - "RandomPicker" module.
+RacRanecuEnginePtr.{hh,cc} - An implementation of the RacAbsEnginePtr for the
+			     RacRanecuEngine generator.
+RacRunConfig.{hh,cc}       - Class which knows everything abot run "classes"
+			     and processing stages.
+RacTestInput.{hh,cc}       - Dummy input module which puts the GEvent object
+			     in the AbsEvent.
+testRanecuSkipper.{cc,t}   - test routine for the RacRanecuEngine which compares 
+			     it against the original RanecuEngine from CLHEP.
+randControl.tcl            - defines a 'randControl' Tcl function which has to be 
+			     called with the path name. It has some logic inside 
+			     to install modules in the path. Should become a 
+			     standard way for the Framework jobs.

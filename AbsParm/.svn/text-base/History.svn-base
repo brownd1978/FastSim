@@ -1,0 +1,103 @@
+$Id$
+
+	      Reverse chronological history of AbsParm
+	      ----------------------------------------
+
+If you make changes to this package, please
+	a)  Enter your initials in the "who" table below w/ full name and
+	    email
+	b)  Explain what you did in the history table
+	c)  Record any tag you made.  (You need not tag in order to
+	    make an entry in the table.)
+
+
+Explanation of "Who"
+--------------------
+   EDF	Ed Frank	  Univ. of Pennsylvania,  efrank@upenn5.hep.upenn.edu
+   AME	Al Eisner	  Univ. of CA, Santa Cruz,   eisner@slac.stanford.edu
+   MHK	Michael Kelsey	  Princeton University,  kelsey@slac.stanford.edu
+   ADS  Asoka De Silva    TRIUMF, desilva@triumf.ca
+   AR   Anders Ryd	  Caltech
+   AM   Akbar Mokhtarani  LBL
+   CR   Chris Roat	
+   RB   Rainer Bartoldus  SLAC,  bartoldu@slac.stanford.edu
+   SJG  Stephen J. Gowdy  SLAC, gowdy@slac.stanford.edu
+   gpdf Gregory Dubois-Felsmann Caltech
+
+============================================================================
+Tag		Date	Who	Description
+============================================================================
+V00-09-00 	04Oct06	ads	remove FwkString
+
+V00-08-06	02Aug06 ads	Fixed bug in AbsParmPairs::dump().
+
+V00-08-05       10Feb05 ads     Implemented replacement of AbsParmVector 
+				values.
+
+V00-08-04       08Nov04 gpdf    ostrstream->ostringstream in AbsParmIfdStrKey
+
+V00-08-03       31Oct04 SJG     Initalise bool in AbsParmVector if the parse
+				fails.
+
+V00-08-02       26Oct04 ADS     Fixed warnings on depreciation of implicit 
+				typename on Linux24RHEL3_i386_gcc323.
+
+V00-08-01	27Aug04 ADS	Fixed compilation errors on Linux.	
+
+V00-06-01       15May04 RB      Removed two unused variables; removed one
+                                unused #include <strstream.h>.  Fixed a
+                                bug where delete [] was used on a strstream
+                                rather than rdbuf->freeze(0).
+
+V00-05-01	01APR04 ADS	_name has been removed from AbsParm.  Using 
+				base class' command() instead.
+
+V00-05-00	02MAR04	CR	Added support for a vector of bool.
+
+V00-04-03	28Mar02 ADS	FwkString is back.
+
+		26Mar02 MHK	Unnecessary includes AbsParmNamedObject.cc
+
+V00-04-00	24Mar02	ADS	RW migration
+ 
+                18Jan02 Ryd     Addes string support for AbsParmVector
+       
+		 2Aug01 ADS	Added string accessor in AbsParmIfdStrKey.
+
+		30Jul01 ADS	Moved Framework/AbsParmIfdStrKey to here.
+				Ran make-linkfiles.
+
+		 5Jan01 ADS	Ran Framework/FwkMigrate_v3 script.
+
+		11Dec00	ADS	At D. Brown's request, add symbolic name
+				functionality to AbsParmVector.
+
+		05Jun00 ADS	removed TK code since this is removed from 
+				Framework.
+
+		17May00	ADS	Created AbsParmIfdStrKey.hh for eventual move
+				of this class from Framework.
+
+		17May00 AM	Memento code bug fixes.
+
+		12May00 ADS	Framework migration (CDF merge '99)
+
+		24Feb00 ADS	Removed dummy.cc and added AbsParmTestModule
+				in the library.
+
+	 	23Feb00 AR	Added code to clear a AbsParmVector.
+	
+		14Nov99	ADS	changed description() to classDescription().
+	
+		23Oct99	MHK	Add new AbsParmNamedValue and Object classes
+				to associated TCL strings with arbitrary
+				objects.  Tested with enumeration.
+
+	        20Oct99 ADS     - Added copy constructor in AbsParmList and
+				  modified test programs to check this.
+ 
+V00-01-01	16Dec98 AME	- Change class name AbsParmList to 
+				  AbsParmVector (also internal names in class).
+
+V00-01-00	16Dec98 EDF	- First version
+

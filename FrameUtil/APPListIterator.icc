@@ -1,0 +1,103 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+//
+// Description:
+//	Class APPListIterator. This is an addapter List class iterator for use
+//      with Framework.  It uses the Rogue Wave class for its implementation.
+//
+// Author List:
+//	Liz Sexton-Kennedy		Original Author
+//    	A. De Silva			Modified STL classes to RW.
+//
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+#include "FrameUtil/APPListIterator.hh"
+
+#include <list>
+
+//----------------
+// Constructors --
+//----------------
+//  Note: In order to emulate AList behavior I need _isValid.  With CLHEP
+//  iterators are initialized to BEFORE the first element.  With stdlib
+//  they are initialized at the first element, so for this iterator you 
+//  must call next to validiate it and make it point to begin.
+//  (ADS, 5 Feb 99) : RW has the same behaviour as STL for the first element..
+
+template <class Item>
+APPListIterator<Item>::APPListIterator( const APPList<Item> & aList )
+  :  _theList( ( (APPList<Item>&)aList ).getList( ) ),
+     _listIter(_theList->begin()),
+     _isValid( false )
+{}
+
+template <class Item>
+APPListIterator<Item>::APPListIterator(const APPListIterator<Item>& aListIter )
+  : _theList( aListIter._theList ),
+    _listIter( aListIter._listIter ),    
+    _isValid( true )
+{}
+
+template <class Item>
+APPListIterator<Item>::~APPListIterator( )
+{}
+
+//-------------
+// Selectors --
+//-------------
+template <class Item>
+Item * APPListIterator<Item>::current( ) const
+{
+  if ( _listIter == _theList->end( ) || !_isValid ) {
+    return 0;
+  } else {
+    return & (*_listIter);
+  }
+}
+
+template <class Item>
+Item * APPListIterator<Item>::next( )
+{
+  // if not valid then we are already at the beginning
+  if ( _isValid ) {
+    ++_listIter;
+  }
+
+  // calling next validates the iterator after construction
+  _isValid = true;
+
+  if ( _listIter != _theList->end( ) ) {
+    return & (*_listIter);
+  } else {
+    return 0;
+  }
+}
+
+template <class Item>
+Item * APPListIterator<Item>::prev()
+{
+  if ( _listIter == _theList->begin() || !_isValid ) {
+    return 0;
+  } else {
+    --_listIter;
+  }
+  
+  return & (*_listIter);
+}
+
+template <class Item>
+void APPListIterator<Item>::rewind( )
+{
+  _listIter = _theList->begin();
+  _isValid = false;
+}
+
+template <class Item>
+void APPListIterator<Item>::skipAll( )
+{
+  _listIter = _theList->end();
+  _isValid = true;
+}
+
+

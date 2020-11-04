@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="800"
+   name=""
+   committed-date="2011-03-08T12:30:40.247560Z"
+   url="https://sbrepo.pd.infn.it:8910/Core/BdbTime/tags/V00-01-03"
+   last-author="stroili"
+   kind="dir"
+   uuid="7d373392-5316-41f4-94df-42a166793eec"
+   revision="830"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   committed-rev="219"
+   name="convert"
+   text-time="2011-04-27T19:03:48.000000Z"
+   committed-date="2009-03-04T07:59:01.339847Z"
+   checksum="9e0c3289020af8981a851a38ead28fe2"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:03:46.000000Z"/>
+<entry
+   committed-rev="496"
+   name="History"
+   text-time="2011-04-27T19:03:48.000000Z"
+   committed-date="2010-01-13T17:10:44.768059Z"
+   checksum="eb6eef0a7ba04122b112b72369cc51ff"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:03:46.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="496"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:03:48.000000Z"
+   committed-date="2010-01-13T17:10:44.768059Z"
+   checksum="6fab7fbc1ffe3df3549629574942c0da"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:03:47.000000Z"/>
+<entry
+   committed-rev="219"
+   name="convert.sed"
+   text-time="2011-04-27T19:03:48.000000Z"
+   committed-date="2009-03-04T07:59:01.339847Z"
+   checksum="ec8882f83ac2df98a03a7ca3104b6a74"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:03:47.000000Z"/>
+<entry
+   name="bins"
+   kind="dir"/>
+<entry
+   committed-rev="770"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T19:03:48.000000Z"
+   committed-date="2010-11-25T15:54:32.924262Z"
+   checksum="ea71674c332c91cd2a0c940b41765eb5"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:03:48.000000Z"/>
+<entry
+   committed-rev="219"
+   name="README"
+   text-time="2011-04-27T19:03:48.000000Z"
+   committed-date="2009-03-04T07:59:01.339847Z"
+   checksum="0220112fdfc9e836c6c7ba47a9b25f6a"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:03:48.000000Z"/>
+</wc-entries>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+        <config>
+            <sect name="PacMaterial">
+
+                <!--
+                    Landau Shift Param
+                -->
+                <param name="lanshift" type="float" > 0.20</param>
+                <param name="lanrms"  type="float" > 5.0</param>
+
+                <!-- energy loss factors -->
+                <param name="IonLossEnergy"  type="float" > 0.000153536</param>
+                <param name="IonLossMinKappa"  type="float" > 5e-4 </param>
+                <!--
+                    Scat Angle Smear Param.  totalradfrac is the average rad fraction in the active tracking volume, used in reconstruction to account for non-Gaussian tails
+                -->
+                <param name="totalradfrac"  type="float" > 0.016</param>
+                
+                <param name="maxnsingle"  type="float" > 100.0</param>
+                <param name="maxradfrac1"  type="float" > 0.1 </param>
+                <param name="maxradfrac2"  type="float" > 10 </param>
+                
+            </sect>
+
+            <!-- shower properties  -->
+            <sect name="PacShower">
+                <param name="nshower" type="int" > 2 </param> <!-- this is the maximum number of discrete (brems, etc.) EM interactions in a material before the interaction is consider to have initiated a shower -->
+                <param name="showerradfrac" type="int" > 0.5 </param> <!-- radfrac above which the material always starts an em shower -->
+                <param name="minshowerfrac" type="float" > 0.01 </param> <!-- This is the minimum fractional shower energy to propagate in a shower profile.  The shower is consider to stop when it reaches this level -->
+                <param name="hadorder" type="int" > 2 </param> <!-- This is the polynomial order of the exponentially-damped hadron shower longitudinal profile function. -->
+                <param name="hadscale" type="float" > 0.3 </param> <!-- This is the scale for hadronic shower longitudinal profile function (ie position of shower max) -->
+                <param name="hadshowerquantum" type="float" > 0.010 </param> <!-- This is the quantum in GeV used in the Poisson randomization of hadron shower longitudinal profile energy deposition -->
+                <param name="thinfract" type="float" > 0.05 </param> <!-- had. int. thickness to separate elements into thin (discrete interactions) and thick( showering) -->
+                <param name="minmom_e" type="float" > 0.03 </param> <!-- minimum electron momentum -->
+                <param name="minmom_gamma" type="float" > 0.005 </param> <!-- minimum gamma momentum -->
+                <param name="minmom_had" type="float" > 0.001 </param> <!-- minimum hadron momentum -->
+                <param name="mine" type="float" > 0.001 </param> <!-- minimum kinetic energy -->
+            </sect>
+            <sect name="PacInteraction">
+                <param name="nhaddau_offset" type="float" > 0.33 </param> <!-- this is the offset of the linear parameterization of the Poisson term for the number of hadronic interaction daughters -->
+                <param name="nhaddau_slope" type="float" > 0.47 </param> <!-- this is the slope of the linear parameterization of the Poisson term for the number of hadronic interaction daughters -->
+                <param name="max_nhaddau" type="int" > 5 </param> <!-- this is the maximum number of hadronic interaction daughters -->
+                <param name="nucprob_0" type="float" > 0.0 </param> <!-- the probability of generating a nucleon with 0 hadronic interaction daughters -->
+                <param name="nucprob_1" type="float" > 0.0 </param> <!-- the probability of generating a nucleon with 1 hadronic interaction daughters -->
+                <param name="nucprob_2" type="float" > 0.0 </param> <!-- the probability of generating a nucleon with >=2 hadronic interaction daughters -->
+            </sect>
+            <sect name="PacSimulate">
+                <param name="maxflt" type="float" > 5000 </param> <!--  maximum flight length to follow a particle -->                
+                <param name="minmom" type="float" > 0.01 </param> <!-- this is the minimum particle momentum to simulate-->                
+                <param name="mine_shower" type="float" > 0.001 </param> <!-- this is the minimum shower energy to simulate-->                
+                <param name="mine_hadshower" type="float" > 0.01 </param> <!-- this is the minimum hadronic shower energy to simulate-->
+                <param name="xtolerance" type="float" > 0.05 </param> <!-- tolerance for transverse displacement-->
+                <param name="teststep" type="float" > 5.0 </param> <!-- test step for transverse displacement-->
+            </sect>
+            <sect name="PacBrems">
+                <param name="min_egamma" type="float" > 0.01 </param> <!-- Minimum brems photon energy (in GeV) to explicitly simulate-->
+                <param name="min_efrac" type="float" > 0.001 </param> <!-- Minimum brems photon energy fraction. This is correlated with the photon number density function so don't change this unless you update that function too!!!!!-->
+            </sect>
+            
+        </config>
+    </included>
+</edml>

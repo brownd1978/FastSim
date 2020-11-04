@@ -1,0 +1,210 @@
+Package History (most recent first)
+-----------------------------------
+
+   01/15/10 - Roberto Stroili
+   --------------------------
+	split code in src and include directories
+
+   10/10/07 - Dennis Wright V00-06-06
+   ----------------------------------
+        All files from tag V00-06-04 brought to the HEAD and retagged
+
+   09/21/07 - Igor Gaponenko V00-06-04-02
+   --------------------------------------
+        Same tag as V00-06-04-01 plus the most recent version of the History file
+
+   09/21/07 - Igor Gaponenko gapon21Sep07
+        Restored the head of CVS
+
+   09/21/07 - Igor Gaponenko, Dennis Wright V00-06-04-01
+        CLHEP/Geant4 migration (actual modifications made by Dennis Wright)
+
+   04/27/07 - Dennis Wright dhw27Apr07
+        Add new PDG values for isotopes to geant.tabel and pdt.table
+
+   08/29/04 - Stephen J. Gowdy V00-05-02
+	Update particle name (as string) to PdtEntry map to use
+	AstStringMap. Remove some "using" declartions from Pdt.hh.
+   08/28/04 - Stephen J. Gowdy
+	Move test module to BINCCFILES as the library cannot
+	depend on the framework.
+
+   09/10/03 - Abi Soffer V00-03-45
+	Added some dummy particles for new particle simulation
+   07/22/03 - Rainer Bartoldus V00-03-43
+        Change ambiguous function parameter name from cout to os.
+        [DecayMode.{hh,cc}, History]
+
+   12/29/02 Lange
+        Update eta mass to new measurement from NA48 (PLB533 (2002) 196)
+
+    3/07/02 - Lockman V00-03-25-01
+	Based on V00-03-25, the version in the current nightly build,
+        Changed chargedgeantino code in pdt.table from 100 to 101.
+
+    3/07/02 - Lockman V00-03-24-01
+	Based on V00-03-24, the version in 11.9.1,
+        Changed chargedgeantino code in pdt.table from 100 to 101.
+
+    1/20/02 - Ryd
+        Removed the BaBar/BaBarStdFwd.hh to use a plain
+        string include.
+
+    1/16/02 - Dennis Wright
+        Changed chargedgeantino code in pdt.table from 100 to 101.
+
+    1/08/02 - Abi Soffer
+	Added chargedgeantino to pdt.table.
+
+    4/04/01 - Eric Charles
+        Fixed up dependancies, removed depencandy on CLHEP, moved 
+	dependancy on rw to be in cc files only.  This required adding the 
+	DecayMode.cc file and move some implmentations to it.
+
+    2/15/01 - Eric Charles
+        Added PDT_LinkDef.rdl file to control cint dictionary generation
+
+    2/2/01 - Abi Soffer
+	Increased Upsilon(4S) width to 19 MeV to broaden mES distribution
+	(http://www.slac.stanford.edu/BFROOT/www/Physics/Tools/generators/mtg-010201/mes.html).
+
+    11/21/00 - Eric Charles
+        Added LIBEXTRARDLFILES line to GNUmakefile
+
+    9/15/00 - Mark Ian Williams
+        Changed X_su, X_sd, X_ss particle codes again!
+
+    9/15/00 - Mark Ian Williams
+        Changed X_su, X_sd, X_ss particle codes.
+
+    9/14/00 - Mark Ian Williams
+        Added X_su, X_sd, X_ss particles for BtoXsgamma model in EvtGen
+
+    9/10/00 - Ryd
+        Added a series of excited Lambda states.
+
+    8/31/00 - Abi
+        Fixed D lifetimes according to the pdg'00.
+
+    8/28/00 - Ryd
+        Fixed B lifetimes according to the pdg'00.
+
+    8/21/00 - Abi
+	Fixed the charge and spin of the pi(2S) states.
+
+    8/20/00 - Ryd
+
+ Added the K'*, K''*, K_3*, and K_4* states.
+
+
+    8/20/00 - Abi
+	Updated meson masses and widths:
+Quantity	old value	new value	reference (default=PDG 2000)
+----------------------------------------------------------------------------
+W mass		80.33		80.419		
+W width		 2.06		 2.12		
+
+eta mass	 0.54745	 0.54730	
+eta(2S) mass	 1.295		 1.297
+omega mass	 0.78194  	 0.78257
+omega width	 0.00843	 0.00844
+
+D+ mass		 1.86929	 1.8693
+D0 mass		 1.86451	 1.8645
+D*+ mass	 2.00993	 2.010
+D*0 mass	 2.00663	 2.0067
+
+D_1+ mass	 2.4222		 2.427
+D_1+ width	 0.019		 0.028
+D_10 width	 0.019		 0.0189
+D_2*0 mass	 2.459		 2.4589
+D_2*+ width	 0.023		 0.025
+
+D'_1+ mass	 2.445	 	 2.461	CLEO thesis (Tim Nelson), unpublished
+D'_1+ width	 0.250	 	 0.290	CLEO thesis (Tim Nelson), unpublished
+D'_1+ masDm	 0.250	 	 0.290	CLEO thesis (Tim Nelson), unpublished
+D'_10 mass	 2.445	 	 2.461	CLEO thesis (Tim Nelson), unpublished
+D'_10 width	 0.250	 	 0.290	CLEO thesis (Tim Nelson), unpublished
+D'_10 masDm	 0.250	 	 0.290	CLEO thesis (Tim Nelson), unpublished
+
+D_s+ mass	 1.9685		 1.9686
+D_s*+ mass	 2.1123		 2.1124
+
+B+ mass		 5.2789		 5.2791
+B0 mass		 5.2791		 5.2794
+
+eta_c width	 0.013		 0.0132
+J/psi mass	 3.09688	 3.09687
+psi(2S) mass	 3.68600	 3.68596
+psi(3770) width	 0.025		 0.0236
+h_c mass	 3.46	  	 3.52614  (this state needs confirmation)
+chi_c0 mass	 3.4151	 	 3.4150
+chi_c0 width	 0.014		 0.0149
+chi_c1 mass	 3.51053	 3.51051
+chi_c2 mass	 3.55617	 3.55618
+
+Upsilon mass	 9.46037	 9.46030
+Upsilon width	 0		 0.0000525
+Upsilon maxDm	 0		 0.0005
+Upsilon(2S) mss 10.02330	10.02326
+Upsilon(2S) wdth 0		 0.000044
+Upsilon(2S) mxDm 0		 0.0004
+Upsilon(3S) mss 10.3553		10.3552
+Upsilon(3S) wdth 0.000026	 0.0000263
+
+Upsilon(4S) parameters not updated to PDG 2000, since we use BAD 32 for the
+mass and then tune to get the observed m_ES distribution. See 7/13/00 
+comment below.
+
+Upsilon(5S) mss 10.86000	10.865
+Upsilon(5S) wdth 0		 0.110
+chi_b0 mass	 9.8598		 9.8599
+chi_b1 mass 	 9.8919		 9.8927
+chi_b2 mass	 9.9132		 9.9126
+
+
+    7/13/00 - Abi
+	Changed Upsilon(4S) mass to 10.57500 (BAD 32) and its width to 0.018
+ 	(http://www.slac.stanford.edu/BFROOT/www/Physics/Tools/PepBeams/upsParameters/). max_Dm increased to 0.039.
+
+    5/29/00 - salnikov
+	Adding _conjugate data member to PdtEntry to cache the value 
+	from Pdt::conjugate(). PdtEntry::conjugate() definition updated to work
+	with this cache.
+
+    990413 - ryd
+        Largely rewritten to use rw hash table for particle lookup.
+	Also some general cleanup removed the util.{cc,hh} in favour
+        of the regular framework file path finding. 
+
+    990203 - ryd
+        Reduced the maximum deviation from the nominal mass of the D'_1 to 
+        250MeV such that its mass can't fall below the threshold for D* pi.
+
+    990222 - savinov
+        Added f_0(1500) (mass = 1500 MeV/c^2 and width = 112 MeV according to PDG-98)
+
+    990203 - ryd
+        Set the maximum deviation from the nominal D* masses to be
+        approximately 5 full widths.
+
+    990117 - ryd
+        The charged D* width is now 80 keV and the neutral D*
+        width is set to 61 keV.
+
+    990111 - ryd
+        Set the width of the D*B = width of D*0 and added
+        maximum deviations from mean mass to 5 times the width.
+
+
+    3/1/97 - foucher
+	Added this history file.
+	Added 3 charge accessor functions in Pdt.hh.
+
+    11/20/98 - losecco
+	Added Binary Search based lookup classes
+
+    1/18/99 - losecco
+	Converted binary search based class to Pdt itself.
+	If I had done this a week earlier I could have avoided merging all
+	of the PidNeutralType code that had been added on 1/13/99.

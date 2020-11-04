@@ -1,0 +1,79 @@
+Modification history at bottom.
+
+   Product name : STDHEP
+       Versions : V3_00
+ Product Number : PM0091
+           Date : 26-Jul-1995
+  Origin/Author : Lynn Garren, Paul Lebrun
+     Maintainer : Lynn Garren
+  Support Level : 5*
+
+Description:
+   STDHEP contains a set of translation routines which convert
+   Herwig, Jetset, Isajet, or QQ events to and from the standard
+   HEP event format.  STDHEP also contains utility routines
+   to work with the HEPEVT common block and a set of I/O routines.
+   The HEPEVT common block allows 4000 particles per event.
+
+   The translation of Xi_c and Xi_b particles has changed with version
+   2.01.  Also, the read/write routines changed with version 2.01.  
+   A bug was found in the 2.x read/write routines.  That bug was
+   fixed in version 3.00.  Please use stdrepair on old I/O files.
+   This version is not backwards compatible.
+
+   Mcfio, an xdr I/O interface package, is included with stdhep.
+
+Usage:
+   % setup cern
+   % setup lund
+   % setup stdhep
+   % f77 -o myprog myprog.f \
+        $LULIB/ludata.o $LULIB/pydata.o \
+        $STDHEP_DIR/lib/libstdhep.a $LULIB/liblund.a $CRNLIB/libpacklib.a
+
+
+Documentation:
+   PM0091 available from the Fermilab Computing Department Program Librarian.
+   Online documentation is available in $STDHEP_DIR/doc.
+
+Modification history:
+---------------------
+
+V03-00-09
+  include/hep2geant.inc moved from src/.
+
+V03-00-08
+
+V03-00-07
+
+V03-00-06 07-Oct-1998 Lockman
+  copy beget/hep2geant.F to stdhep/hep2geant.F. Bogus shouldnt need this 
+  routine.
+
+V03-00-05  7/31/98
+
+  New subroutine stdtranslate.F added.  (Abi Soffer)
+
+10/03/97 P. Kim
+
+  Hep2geant.F renamed to hep2geant.F.nocompile
+  It calls gsvert and gskine in Geant3, so makes the stdhep library 
+  incompatible with Bogus.  BBSIM picks up hep2geant from beget anyway.  
+
+10/02/97 P. Kim
+ 
+  Replaced hep2geant.F  with  (hep2geant.F / hep2geant.inc) from Beget.
+  Stdhep Version 3.0 changed PHEP and VEHP in stdhep.inc to double precision.
+  Torre made protection against the problem of calling GSKINE with double
+  precision argument, in hep2geant.F in the Beget package which we use in 
+  BBSIM.  Bogus does not use Beget, but links to the stdhep library via 
+  DbiEvent, so it is now necessary to fix hep2geant.F in stdhep.  
+
+7/23/96 T. Wenaus
+- clean up duplicate stdhep.inc files. Single copy now in include/stdhep.inc
+- suppress stdrepair main program from compilation/library
+- suppress unresolved references in building C++ codes referencing STDHEP
+4/12/96 T. Wenaus
+- make mods to build the STDHEP XDR I/O code used by McFIO
+  - modify src/GNUmakefile to compile *.c
+  - fix includes in src/mcf_Stdhep_xdr.c

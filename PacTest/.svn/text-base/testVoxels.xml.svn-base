@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<edml>
+  <config>
+
+      <param name="rbounds" type="vector_double" > -0.5 200.</param>
+      <param name="nrvoxels" type="int" > 20</param>
+      <param name="zbounds" type="vector_double" >   -100.0 100.0 </param>
+      <param name="nzvoxels" type="int" > 10</param>
+      <param name="minphisize" type="double" > 20.0 </param>
+
+      <param name="point" type="vector_double" >   -12.5 17.2 54.3 </param>
+
+      <!-- Helix parameters -->
+      <param name="helixpars" type="vector_double" >   5.00, 1.58, 0.02, -80, 0.1 </param>
+      <param name="flightlen" type="double" > 500. </param>
+      <!-- random helix parameter ranges -->
+      <param name="rndseed" type="long"> 323413</param>
+      <param name="nhelix" type="long"> 100000</param>
+      <param name="min_omega" type="double"> 1e-5</param>
+      <param name="max_omega" type="double"> 5e-2</param>
+      <param name="min_tandip" type="double"> -1.5</param>
+      <param name="max_tandip" type="double"> 1.5</param>
+      
+
+  </config>
+</edml>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="723"
+   name=""
+   committed-date="2011-03-08T13:19:49.271759Z"
+   url="https://sbrepo.pd.infn.it:8910/Tools/CommonUtils/tags/V00-01-02"
+   last-author="stroili"
+   kind="dir"
+   uuid="03b460ae-468b-4fc1-b513-ef89764f6eec"
+   revision="746"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   committed-rev="443"
+   name="History"
+   text-time="2011-04-27T18:49:38.000000Z"
+   committed-date="2010-01-14T12:24:42.352840Z"
+   checksum="29fa5336789ea2c07d8ac065cd5bea13"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:49:28.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   committed-rev="193"
+   name="RefCnt.t"
+   text-time="2011-04-27T18:49:38.000000Z"
+   committed-date="2009-03-04T12:20:59.974915Z"
+   checksum="f21facf5c53bfe252385f359552edd12"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:49:28.000000Z"/>
+<entry
+   name="doc"
+   kind="dir"/>
+<entry
+   committed-rev="193"
+   name="freeunit.F"
+   text-time="2011-04-27T18:49:38.000000Z"
+   committed-date="2009-03-04T12:20:59.974915Z"
+   checksum="1af67458bd02c1c67f88174fbdb3a4a4"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:49:35.000000Z"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="443"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:49:38.000000Z"
+   committed-date="2010-01-14T12:24:42.352840Z"
+   checksum="449c18ff0210e9e1f35e857ab334beea"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:49:35.000000Z"/>
+<entry
+   committed-rev="676"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:49:38.000000Z"
+   committed-date="2010-10-18T12:15:38.220574Z"
+   checksum="28e8308a41dd7e9f156d3bffb972fe88"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T18:49:38.000000Z"/>
+<entry
+   committed-rev="193"
+   name="README"
+   text-time="2011-04-27T18:49:38.000000Z"
+   committed-date="2009-03-04T12:20:59.974915Z"
+   checksum="2974e89f4abd4c771fd0801b91c4a146"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:49:38.000000Z"/>
+</wc-entries>

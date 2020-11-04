@@ -1,0 +1,48 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AbsParmNamedObject.icc 489 2010-01-13 16:45:39Z stroili $
+//
+// Description:
+//	Templated class AbsParmNamedObject<>
+//
+//      See header for more info
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	Michael Kelsey	<kelsey@slac.stanford.edu>
+//
+// Copyright Information:
+//	Copyright (C) 1999	Princeton University
+//
+// Revision History:
+//	20020326  M. Kelsey -- Remove unnecessary includes
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+#include "Experiment/Experiment.hh"
+#include "AbsParm/AbsParmNamedObject.hh"
+
+#include <iostream>
+
+#include "FrameUtil/AbsInterp.hh"
+
+//-------------------------------
+// Constructors and Destructor --
+//-------------------------------
+
+template <class T>
+AbsParmNamedObject<T>::AbsParmNamedObject(const char* const theCommand,
+					  AppModule* theTarget)
+  : AbsParmNamedValue<T*>(theCommand, theTarget) {}
+
+template <class T>
+AbsParmNamedObject<T>::AbsParmNamedObject(const AbsParmNamedObject& theOther,
+					  AppModule* theTarget)
+  : AbsParmNamedValue<T*>(theOther, theTarget) {}
+
+
+template <class T>
+AbsParmNamedObject<T>::~AbsParmNamedObject() {}
+

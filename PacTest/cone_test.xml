@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+This is a simple experiment description in what which would
+eventually turn into EDML:
+ 
+  "Experiment Description Markup (or Modelling) Language"
+ 
+Right now we don't have any formal schema for EDML. Therefore
+the current implementation of a EDML parser would check both
+syntax and semantics of the model. Besides, introducing the formal
+XML schema for EDML may  result in some changes in a syntax
+of EDML.
+-->
+ 
+<edml>
+
+  <!--
+  Here goes a section in which we instantiate and tune up relevant propeties of
+  specific measurement devices. The following devices are recognized:
+
+    "DoubleSideSiStrips"
+    "DriftChamber"
+  -->
+
+  <measures>
+
+    <device name="2SideSi"
+          type="DoubleSideSiStrips"
+        phirms="0.0015"
+		      zrms="0.002"
+		    phieff="1.0"
+		      zeff="1.0" />
+<!--
+    <device name="SiCyl"
+          type="DoubleSideSiStrips"
+        phirms="0.0015"
+		      zrms="0.002"
+	hieff_fname="const" hieff_pars="0.95"
+	 zeff_fname="const"  zeff_pars="0.95" />
+-->
+    <device name="Axial"
+          type="DriftChamber"
+           rms="0.0125"
+		       eff="0.99"
+		     angle="0.0" />
+
+    <device name="Stereo+"
+          type="DriftChamber"
+           rms="0.0125"
+		       eff="0.99"
+		     angle="0.06" />
+
+    <device name="Stereo-"
+          type="DriftChamber"
+           rms="0.0125"
+		       eff="0.99"
+		     angle="-0.06" />
+
+  </measures>
+
+  <!--
+  The last section of the document presents a final composition of the detector(s).
+  In this description we're going to refer onto relevant parts of this document.
+
+    NOTE: Currently we can't do this automatically as this would
+          require to have some sort of the EDML schema.
+  -->
+
+  <detector name="PacCylDetector">
+
+    <!--
+    A detector is composed of volumes using the following markup:
+
+      <volume name="...">
+
+        ..sub-detector elements..
+
+      </volume>
+
+    Each volume has sub-detector elements of teh following types:
+
+      _________________________________
+      1. cylindric sub-detector objects
+
+        Each cylinder object has the following format:
+
+        <cyl name="string"
+             zmin="units" zmax="units"
+            radius="units" thick="units"
+              gap="fraction" overlap="fraction"
+              mat="name"
+             meas="type" />
+
+        And here is a syntax and a menaing of the attributes:
+
+          'name' [MANDATORY]
+
+            - an arbitrary name of the subdetector. A specific implementation of the EDML
+            parser may require that the names were unique.
+
+          'zmin' 'zmax' [MANDATORY]
+
+            - represent the begin and the end coordinates of the cylinder along
+            its Z dimension. A unit of measurement is either defined elsewhere
+            (perhaps through this EDML file) or it's implied (hard coded within
+            an application).
+
+          'radius' 'think' [MANDATORY]
+
+            - is a size of the cylinder in the R dimension. The corresponidng
+              measurement units are expected to be the same as for the Z dimension.
+
+          'gap' 'overlap' [OPTIONAL]
+
+            - model the relevant concepts in which there may be holes (hence 'gap')
+            or overlaps in the detector coverage in the PHI angle dimension.
+            In both cases we're only interested in a fraction of the full 2-pi angle,
+            rather than in a specific layout of the detector in that dimension.
+            The fraction is expressed as a number in the range of: 0 to 1.0. Zero
+            value means that the relevant parameters has no effect on the detector's
+            coverage. A missing attribute is also treated as zero value.
+
+          'mat' [OPTIONAL]
+
+            - a symbolic name for the detector material. This name is an external symbolic
+            reference onto an information found elsewhere. Its format and its meaning are
+            beyond a scope of EDML. The attribute is allowed to be omitted. And empty
+            string as the attribute's value is equivalent to the empty attribute.
+
+          'meas' [OPTIONAL]
+
+            - a reference onto one of the previously defined (section '<measures>') types
+            of measurement devices associated with the cylinder. All EDML parsers will
+            cross-check names used in this attribute for their existence and suitability
+            for cylindric sub-detectors.
+      _______________________________________
+      2. ring-like plane sub-detector objects
+
+        Each object has the following format:
+
+        <ring name="string"
+                 z="units"
+          lowradius="units"
+           hiradius="units"
+             thick="units"
+               mat="name"
+              meas="type" />
+
+    -->
+    <!--
+    It's also possible to include definitions from another file using
+    EDML this directive:
+
+      <include file="volume_Svt.xml" />
+
+    Note the following rules for using the nested EDML files:
+
+      1. a contents of a nested file will be translated in a context of
+      the current tag
+
+      2. the nested files have to be written using this template:
+
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <edml>
+          <included>
+            ..whatever is included..
+          </included>
+        </edml>
+
+      3. nested files can't be parsed as top-level EDML documents. Any
+      attempt to do so will result in a failure and error messages reported
+      by the translator.
+
+      4. the nested EDML documents may also include other files. The EDML
+      translator will do its best to detect cycles. If the one will be detected
+      then the translator abort the translation and issue a error message.
+
+    -->
+    <!-- note that the elements MUST be listed in order of increasing distance from the IP.  The simplified particle tracking
+    we use to find material intersections require this.  When detector elements overlap in terms of their distance (such as barrel
+    vs endcap), list the barrel elements first.  For the same reason, the volumes must listed in order of increasing distance
+    from the IP. 
+    -->
+
+    <include file="../PacDetector/Si_Tracking_Region.xml"  />
+    <volume name="ConeVol">
+      <cone name="TestCone" id="1" rmin="10" rmax="80" tantheta="-1.0" zvertex="-25" thick="0.034000" mat="svt-Silicon"  meas="2SideSi" />
+    </volume>
+  </detector>
+
+  <config>
+
+    <!--
+    Here goes a section in which various configuration parameters can be put
+    using the following general syntax:
+
+      <param name="user-defined-parameter-name" type="type">value</param>"
+      ..
+      <sect name="user-defined-section-name">
+        <param name="user-defined-parameter-name" type="type">value</param>"
+        ..
+        <sect name="user-defined-section-name">
+          <param name="user-defined-parameter-name" type="type">value</param>"
+          ..
+        </sect>
+        ..
+      </sect>
+
+    For example:
+
+      <sect name="PacField">
+        <param name="B_nom"    type="float">1.5</param>
+        <param name="DeltaB"   type="vector_float">0.0 0.0 0.0</param>
+        <param name="B_radius" type="float">153.0</param>
+        <param name="B_zlow"   type="float">-110.75</param>
+        <param name="B_zhi"    type="float">165.16</param>
+      </sect>
+
+    This would get translated in the transient memory into a dictionary with
+    the following structure:
+    
+      key                  value
+      -------------------  --------------------------
+      "PacField.B_nom"     1.5
+      "PacField.DeltaB"    { 0.0, 0.0, 0.0, }
+      "PacField.B_radius"  153.0
+      "PacField.B_zlow"    -110.75
+      "PacField.B_zhi"     165.16
+
+    It's also possible to declare stand-alone parameters w/o a section. The syntax is
+    the same as for other parameters in a scope of sections. For example:
+
+      <param name="pdt" type="string">PARENT/PDT/pdt.table</param>
+
+    This would get translated into the following transient dictionary entry:
+
+      key                  value
+      -------------------  --------------------------
+      "pdt"                "pdt.table"
+
+    Nested sections (of any depth) are also allowed. For example:
+
+      <sect name="Outer">
+        <param name="P1" type="float">1.5</param>
+        <param name="P2" type="vector_float">0.0 0.0 0.0</param>
+        <sect name="Inner">
+          <param name="P3" type="float">153.0</param>
+          <param name="P3" type="float">-110.75</param>
+        </sect>
+        <param name="P4" type="float">165.16</param>
+      </sect>
+
+    This would get translated into the following transient dictionary entries:
+
+      key                  value
+      -------------------  --------------------------
+      "Outer.P1"           1.5
+      "Outer.P2"           { 0.0, 0.0, 0.0, }
+      "Outer.Inner.P3"     153.0
+      "Outer.Inner.P4"     -110.75
+      "Outer.P5"           165.16
+
+    -->
+
+    <!--
+    PDT
+    -->
+    <param name="pdt_file" type="string"> PARENT/PDT/pdt.table</param>
+
+    <!--
+    Magnetic field
+    -->
+    <sect name="PacField">
+      <param name="B_nom"    type="float"         > 1.5</param>
+      <param name="DeltaB"   type="vector_double" > 0.0, 0.0, 0.0</param>
+      <param name="B_radius" type="float"         > 153.0</param>
+      <param name="B_zlow"   type="float"         > -110.75</param>
+      <param name="B_zhi"    type="float"         > 207</param>
+    </sect>
+
+    <!--
+    initial track fit
+    -->
+    <sect name="TrackReconstructor">
+      <param name="bend_sites"     type="bool"  > false</param>
+      <param name="material_sites" type="bool"  > true</param>
+      <param name="inner_radius"  type="float" > 2.49</param>
+      <param name="inner_zmin"    type="float" > -25</param>
+      <param name="inner_zmax"    type="float" > 40</param>
+      <param name="outer_radius"  type="float" > 81.0</param>
+      <param name="outer_zmin"    type="float" > -115</param>
+      <param name="outer_zmax"    type="float" > 200</param>
+      <param name="fastfit"       type="bool"  > true</param>
+    </sect>
+
+    <!--
+    material effects
+    -->
+    <sect name="PacMaterial">
+
+      <!--
+      Landau Shift Param
+      -->
+      <param name="lanshift" type="float" > -0.20</param>
+      <param name="lanrms"  type="float" > 0.03</param>
+
+      <!--
+      Gauss Shift Param
+      -->
+      <!--
+      <param name="elossshift"    type="float" > 0.00</param>
+      <param name="elossrmsprob"  type="float" > 0.02</param>
+      <param name="elossrmsfact"  type="float" > 5.00</param>
+      <param name="elosscorefact" type="float" > 1.00</param>
+      -->
+
+      <!--
+      Scat Angle Smear Param
+      -->
+      <param name="tailprob" type="float" > 0.02</param>
+      <param name="tailfact" type="float" > 10.00</param>
+      <param name="corefact"  type="float" > 1.00</param>
+    </sect>
+
+    <!--
+    EMC properties
+    -->
+    <sect name="PacEmcGeom">
+
+      <param name="barrelBegin"  type="float" > 0.4795</param>
+      <param name="barrelEnd"    type="float" > 2.4574</param>
+      <param name="barrelNRings" type="float" > 48</param>
+      <param name="barrelNPhis"  type="float" > 120</param>
+
+      <param name="fwdBegin"  type="float" > 0.2757</param>
+      <param name="fwdEnd"    type="float" > 0.4680</param>
+      <param name="fwdNRings" type="float" > 8</param>
+      <param name="fwdNPhis"  type="vector_double" > 80, 80, 100, 100, 100, 120, 120, 120</param>
+
+
+      <!-- Moliere radius:  FWD, Barrel, BWD -->
+      <param name="rMoliere"  type="vector_double" > 2.07, 3.7, 3.7 </param>
+      <param name="rMoliereFluc" type="vector_double" > 0.1, 0.1, 0.1 </param>
+
+      <!-- EM energy resolution: FWD,Barrel,BWD  Coef/E^(1/4) + Const   -->
+      <param name="EnergyResCoef"  type="vector_double" > 0.023, 0.023, 0.14 </param>
+      <param name="EnergyResConst" type="vector_double" > 0.014, 0.014, 0.03 </param>
+      <param name="EnergyResEPower" type="vector_double" > 0.25, 0.25, 0.5 </param>
+
+    </sect>
+
+  </config>
+</edml>

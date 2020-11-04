@@ -1,0 +1,327 @@
+01/15/10 - R. Stroili
+	split code in src and include directories
+
+09/20/07 - I. Gaponenko
+	CLHEP migration: replaced forward declarations with direct includes
+	of the corresponding headers. Tag as V01-05-06.
+
+11/20/06 - A. De Silva
+	Fixes for gcc 3.4.6.
+
+03/20/02 - W. Ford
+	Modify call to pieceDFTraj.append(-5,testTraj22,gap); to conform
+	to modification of that function's signature.
+
+01/30/01 - E. Charles 
+        Fix include path for BFieldFixed in test program.
+
+10/17/00 - S. Wagner
+	Plug memory leak in TrkHelixFitter.cc; tag as V01-02-05
+10/05/00 - S. Wagner
+        Move HelixTraj, NeutParams, NeutTraj, TrkCompTrk, TrkHelixUtils, 
+        TrkMomCalculator, TrkMomVisitor to TrkBase; leave behind forwarding
+        headers.
+03/13/00 - J. Albert
+        Changes in regard to removal of dynamic allocation of _dtparams
+        in TrkBase/TrkSimpTraj.
+
+12/08/99 - G. Raven
+        Remove protection against going out of trajectory range
+        in HelixTraj::distTo[1st|2nd]Error: 
+           a) this kills TrkHitAdd right now
+           b) it changes the behaviour of HelixTraj. It should either
+              be changed in ALL trajectory classes, or NONE.
+
+11/20/99 - J. Albert
+        Added protection against going out of trajectory range in
+        HelixTraj::distTo[1st|2nd]Error.
+
+04/27/99 - S. Gowdy
+	Remove include of SvtHit from TrkBmSomething.
+	Updated dependencies.
+
+04/05/99 - S. Schaffner
+	More optimizations.  Implemented getDFInfo2() for Circle and Helix.
+	Small optimizations to Helix::getDFInfo2 -- now almost unreadable.
+	Similar changes to HelixFitter to get rid of temporaries.  Fixed 
+	chisq convergence criterion in HelixFitter.
+
+02/19/99 - S. Schaffner
+	Turned off the reference-point shifting.  Added a number of 
+	speed optimizations to the trajectory classes.  Removed 
+	updateMeasurement() from HelixFitter (now done in updateFitStuff).
+	Modified HelixFitter to use RW list of Hots.
+
+02/03/99 - S. Schaffner
+	Modify TrkHelixFitter to move trajectory reference point to first hit 
+	on track before fitting, and then move it back afterwards
+
+1/11/99  - S. Schaffner
+	Moved TrkVisitor to TrkBase.
+
+1/7/99   - S. Schaffner
+	Moved TrkGeomTrajVisitor to BbrGeom, TrkPieceLineTraj, 
+	TrkTransformVisitor, TrkLineTraj to TrajGeom.
+
+11/20/98 - S. Schaffner
+	Store TrkIdManager as base class, not derived class, in TrkContextEv.
+
+11/19/98 - S. Schaffner
+	Add test of BbrHelixTraj to testTrkFitter.  Add protected print 
+	statements to TrkMomCalculator.  Implement faster access functions 
+	(position(), getInfo()) in HelixTraj.  Switch to using base class 
+	op=() in various trajectory classes.
+
+11/6/98  - S. Schaffner
+	ErrLogger migration.
+
+11/5/98  - S. Schaffner
+	Change some abs() to fabs() here and there.  Mods to 
+	TrkMomCalculator: protect against sqrt(-), switch to using 
+	nominal field instead of field at the point, remove position args.
+
+10/30/98 - S. Schaffner
+	Add protection in TrkHelixFitter against doing any calculations 
+	with Hots whose updateFitStuff has failed.  Remove inheritence of 
+	TrkIdManDefault from AbsEvtObj (the base class already inherits).
+
+10/29/98 - S. Schaffner
+	Speed up TrkHelixFitter: only updateMeasurement on first iteration; 
+	cache derivs.
+
+10/8/98 - S. Schaffner
+	Fix bugs in NeutTraj: 
+	  distTo1stErr and 2ndErr were both zero, should have been 
+	     large numbers;
+	  x() and y() both left out a factor of cosDip().
+	Also speeded up position() calculation.
+
+10/5/98 - R.Faccini
+        *  Modify constructor of TrkCompTrk to allow for XP covariance matrix
+        *  add   TrkHelixUtils::lineFromMomErr
+        *  add getAllWeights(HepPoint...) to all classes deriving from 
+           TrkAbsFit    
+9/24/98 - S. Schaffner
+	Remove CircleParams.  It's a trend.
+
+9/?/98  - S. Schaffner
+	Remove HelixParams, and all traces of it.  Interpretation of the 
+	entries in TrkParams is now the job of HelixTraj.
+          
+9/14/98 - S. Schaffner
+	Add missing function implementations (nSvt, nDch, nActive) to 
+	TrkDeadRep.
+
+9/8/98  - S. Schaffner
+	Added bfield to TrkCompTrk.  Made trajectories and bfield references 
+	instead of pointers in TrkMomCalculator.  Implemented vertexing 
+	functions for TrkCompTrk.
+
+8/21/98  -- S. Schaffner
+	Added derived classes for TrkContext (TrkContextCustom) and 
+	TrkIdManager (TrkIDManDefault, TrkIDManDumb).
+
+Release 6.10.0
+
+7/22/98 -- S. Schaffner
+	Add cloning of hots to TrkSimpleRep copy ctor (moved here from 
+	TrkRep).
+
+7/20/98 -- J. Albert
+        Added function helixFromMomErr in TrkHelixUtils, fixed TrkCompTrk
+        constructor using this function, made it inherit from TrkAbsFit,
+        and uncommented the class.
+
+7/15/98 -- S. Schaffner
+	Fix access functions in TrkMergeMap to handle empty map.
+
+Release 6.9.0
+
+7/7/98  -- S. Schaffner
+	Modified TrkContextEv to accept anEvent == 0.
+
+6/30/98 -- J. Albert 
+        Established a Visitor pattern to calculate momentum from
+        trajectories.  New classes added: TrkMomCalculator, TrkMomVisitor,
+        and TrkVisitor.  Modified the SimpleTraj's to accept the visitor
+        (Helix, Circle, Line and Neut, as well as Simple itself) by adding
+        an accept function.  Modified TrkSimpleRep to use the momentum
+        visitors.  Note: the Visitor pattern is described in the reference
+        _Design Patterns_.
+
+6/24/98 -- Schaffner
+	Updated FitMakers to require and pass TrkContext.
+
+Release 6.8.0
+
+6/23/98 -- S. Schaffner
+	Removed t0 from TrkContextEv.  Added t0 to Helix, Circle and Mini 
+	Makers.  
+
+4/40/98 -- S. Schaffner
+	Create derived class TrkContextEv -- can create TrkContext from 
+	AbsEvent.
+	
+4/28/98 -- S. Schaffner
+	Remove TrkPersistTrk.  Add TrkContext argument to TrkCircleMaker::
+	makeTrack.
+
+ 4/2/98 -- S. Schaffner
+	Remove default t0 argument in FitMakers.  Update to new location 
+	of TrkViewInfo enum in TrkBase.
+
+3/27/98 -- S. Schaffner
+	Add t0 as argument to all makeTrack() functions in FitMakers 
+	(TrkHelixMaker, etc).  (Defaults to 0. during migration.)
+
+3/27/98 -- S. Schaffner
+	Moved TrkHelix from TrkDataP.
+
+3/23/98 -- S. Schaffner
+	Update to TrkRecoTrk split interface.
+
+3/16/98 -- S. Schaffner	
+	Make dtor NeutTraj dtor virtual.  Change TrkDeadMaker to permit 
+	replacing an existing rep with a DeadRep.
+
+ 3/3/98 -- S. Schaffner
+	Add chisq data member to TrkSimpleRep, and stop using chisq in 
+	TrkParams.
+
+2/27/98 -- S. Schaffner
+	Add minimal protection against pt = 0 tracks in TrkHelixUtils.cc.
+
+2/22/98 -- S. Schaffner
+	Added TrkMergeMap; permits navigation from a merged track to the 
+	two tracks that went into its creation (or any other 1->2 mapping 
+	of tracks).
+
+1/28/98 -- S. Schaffner
+	Add TrkDeadRep: dummy TrkRep to represent a failed fit. Add 
+	TrkDeadMaker to create them.
+
+1/26/98  -- S. Schaffner
+	Modify arguments to TrkHelixFitter::fit() to take AList of Hots, 
+	rather than HotList.
+	Add ctors to simple reps (and TrkSimpleRep) to handle creation 
+	from set of values, without hit list.
+	Added TrkMiniMaker -- factory for creating hitless helix reps -- 
+	used for holding minimal track info.
+
+1/6/98   -- S. Schaffner
+	Removed set2d from trajs, since it's now in base class TrkFitStatus.
+
+1/1/98   -- D. Brown
+	Implementation of changes to changePar functions in trajs.
+
+12/08/97 -- S. Schaffner
+	Add dependence on BField package.  Change TrkBase/BField.hh to 
+	BField/BField.hh everywhere.  Tagged as V00-04-16.
+
+12/01/97 -- S. Schaffner
+	Modify TrkLineParams.cc and TrkCircleParams.cc to handle change to 
+	TrkExchangePar enum.
+
+12/01/97 -- S. Schaffner
+	Remove all fitNumber stuff from the Reps.
+
+11/7/97 -- S. Schaffner
+	Implement TransformVisitor for PieceLineTrajs.
+
+11/6/97 -- S. Schaffner
+	Modify LineTraj and PieceLineTraj to inherit from GeomTraj.  Create 
+	visitor classes for GeomTrajs: TrkGeomTrajVisitor (base class) and 
+	TrkTransformVisitor (to carry out coordinate transformations on 
+	trajectories).  The latter is implemented only for line trajs 
+	today (i.e. not for pieceLineTrajs).
+
+11/3/97 -- Schaffner
+	Handle changes to enums in TrkErrCode and TrkHelixParams.  Addition 
+	(by Princeton students) of TrkNeutParams and TrkNeutTraj.
+
+10/22/97 -- Schaffner
+	Modify TrkHelixFitter to handle new return type of updateFitStuff.
+	TrkHelixMaker no longer sets all Rep ptrs to default, since 
+	TrkRecoTrk does it.
+
+10/1/97 -- D. Brown
+	Converted the concrete simptrajs to the new explicit reference point
+	formulation (relatively minor changes, realy).  Only the HelixTraj
+	has really been tested.  Added a (standalone) test program for testing
+	the HelixTraj.
+
+9/22/97 - S. Schaffner
+	Implement nDof() for TrkSimpleRep.  Modify TrkHelixFitter to handle 
+	changed definitions in TrkHitOnTrk.
+9/15/97 - G. Sciolla
+	Modify TrkHelixUtils::fltTroRad to handle omega = 0.
+
+8/26/97 - S. Schaffner
+	First implementation of delta-chi finding in TrkHelixFitter.cc.
+	
+8/21/97 - S. Schaffner
+
+	Modify TrkHelixFitter's test on minimum number of hits required.  
+	Reduce minimum to the minimum (to avoid losing Svt tracks) and 
+	generalize to accomodate circle and line fits.
+
+8/21/97 - S. Schaffner
+
+	Cope with removal of weight matrix from TrkParams-derived classes.  
+	Add TrkHelixMaker::setValidRange().  Update to new convention re 
+	Trajectory ranges (non-infinite).
+
+7/28/97 - S. Schaffner
+
+	CLHEP directory structure migration.
+
+7/18/97 - J. LoSecco
+
+	Replaced obscure code in TrkHelixUtils for the helixFromMom
+	function with cleaner better documented code.
+	The equations come from
+	R.~Luchsinger and C.~Grab, Comp.~Phys.~Comm.~{\bf 76}, 263-280 (1993).
+
+7/16/97 - S. Schaffner
+
+	Add support for straight-line fits: TrkDifLineTraj, TrkLineParams,
+	TrkLineRep, TrkLineMaker.  TrkDifLineTraj.cc still needs to have the
+	Kalman-style derivs implemented.  Finish tidying up TrkHelixFitter.cc
+	to make it fully generic: now fits lines, helices, and circles
+	automatically.
+
+6/30/97 - S. Schaffner
+
+	Bug fix -- kludge TrkHelixMaker to handle creation of TrkPersistTrks 
+	(which are created without a Rep inside).
+
+6/27/97 - S. Schaffner
+
+	Modify params classes to use access functions for parameters -- now 
+	works with recent change in TrkBase::TrkParams.
+	Add code to normalize phi0 (in Helix and CircleParams) on output, in 
+	the Reps and Trajs.
+
+6/12/97 - S. Schaffner
+
+	Implement fitNumber, as described in TrkBase history, in derived Rep 
+	classes.
+	Switch to PdtPid::PidType from TrkPart::type.
+
+6/4/97 - S. Schaffner
+
+	Modify Reps to fit new base class syntax.
+
+5/23/97 - S. Schaffner
+
+	Add tests of new Pocas to testTrkFitter.cc.  Add some commented out 
+	lines in TrkHelixFitter.cc.
+	Added TrkCircleParams, TrkCircleTraj, TrkCircleRep.
+	Add TrkSimpleRep, as base class for TrkCircleRep and TrkHelixRep.
+	Modify TrkHelixFitter to fit any simpleRep.
+	Move hit-dropping and flipping flags from TrkHelixRep into 
+	TrkHelixFitter.
+	Remove same flags from TrkHelixMaker ctor, and add function 
+	setFlipAndDrop to control.
+	Migrate to BbrAngle::rad()
+

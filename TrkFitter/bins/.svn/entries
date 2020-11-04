@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="150"
+   name=""
+   committed-date="2010-10-05T09:11:34.289749Z"
+   url="https://sbrepo.pd.infn.it:8910/Trk/TrkFitter/tags/V00-01-03/bins"
+   last-author="stroili"
+   kind="dir"
+   uuid="d2f80444-6bfe-4292-bdcb-35731a61be00"
+   revision="172"/>
+<entry
+   committed-rev="126"
+   name="testTrkFitter.cc"
+   text-time="2011-04-27T19:14:20.000000Z"
+   committed-date="2010-05-19T07:11:43.685177Z"
+   checksum="61c2bad07bbd2979feaa611d3e951af6"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:14:20.000000Z"/>
+<entry
+   committed-rev="150"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:14:20.000000Z"
+   committed-date="2010-10-05T09:11:34.289749Z"
+   checksum="10106494aec4b9c0f6172d8422408a89"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:14:20.000000Z"/>
+</wc-entries>

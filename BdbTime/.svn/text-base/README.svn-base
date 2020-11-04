@@ -1,0 +1,4 @@
+This package contains the transient classes used to describe
+time and time intervals as used by the conditions database.
+These classes define the transient user interface to conditions
+data via the environment and conditions proxies.

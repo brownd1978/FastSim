@@ -1,0 +1,239 @@
+CommonUtils History
+-------------------
+
+$Id$
+
+Initials of modifiers:
+
+	gpdf	Gregory Dubois-Felsmann
+	ads	Asoka De Silva
+	sjg	Stephen J. Gowdy
+        RB      Rainer Bartoldus
+
+History, latest first:
+----------------------
+
+2010.01.14 Roberto Stroili
+	o split code in src and include directories
+
+2006.03.25 Rainer Bartoldus V00-12-00
+        o Add missing <stddef.h> includes to several ComPackBase.hh
+          derived class headers, which got exposed of using size_t
+          without it by the fix in tag V00-11-00.
+
+2006.03.21 Rainer Bartoldus V00-11-00
+        o Make disallowed copy and assignment private and undefined
+          rather than abort().  Remove then unused <stddef.h> header.
+        o Remove BaBar.hh from all header files.  Except, leave
+          BbrReferencer.hh alone as it is #include'd in 100+ packages
+          through BtaCandidate (which itself has an extra BaBar.hh).
+          Defer this to a later tag
+        o Fix $Id tags in changed files.
+        Note: Regression tests (still) fail on testBbrBitVector and
+        timer. The latter apparently due to some debug printout.
+        Note: The ComPack stuff should be moved to its own package.
+
+2005.06.05 Andy Salnikov V00-10-00
+	- Add default parameter to ComPathNameSearch, if it is true (default)
+	  then the error message will be printed when file is not found, if
+	  false then message will be suppressed. ComPathNameSearch returns
+	  empty string in any case when it can't find the file
+	- replace cerr with ErrMsg(error) in library class. Test applications
+	  still use cerr. And there are _many_ cout's out ther, don't wanna 
+	  touch that, I don't understand what all this stuff doing.
+	- inserted typename in the template code where necessary.
+	- replaced <strstream> stuff with <sstream> stuff. This should be 
+	  eliminated completely, it is used only to convert command-line 
+	  parameters into numbers and does it incorrectly. Can replace with
+	  better and more efficient something, like SysUtils stuff
+
+2004.08.24 Rainer Bartoldus V00-09-03
+	Switch to standard use of std::distance.
+	Replace an endl with a '\n' and add missing #include <iostream>.
+	Remove "rscid" static.
+	Lift #include "BaBar/BaBar.hh" to the top.
+
+2004.08.18 Asoka De Silva V00-09-01
+	Allow for special chars ":/" in extended collection syntax value.
+	(Needed for Event ID filters.)
+
+2004.08.16 Asoka De Silva V00-09-00
+	Minor Framework migration - use AppFwkExitCode instead of FwkExitCode.
+
+2004.07.24 Rainer Bartoldus V00-07-03
+        Add searchFile to the nightly binlist category.
+        [History binlist]
+	
+2004.06.03 ads tagged as V00-07-02
+        Changes for the extended syntax collection - allow for string arguments
+        and storing unsigned ints.       
+
+2004.06.01 chcheng tagged chcheng-20040601a
+        Put the order of member data in .hh file back to the original order, and
+        reorder the initialization in the constructors to match the member data.
+
+2004.06.01 chcheng tagged chcheng-20040601
+	Fix warning messages.
+
+2004.05.17 gpdf	V00-06-04
+	Added knowledge of Framework's "stop requested" exit code (64) to
+	terminationDecoder.  This adds a bin-phase dependency on Framework.
+	Added some retroactive info for recent changes below.
+	[History bin_CommonUtils.mk terminationDecoder.cc]
+
+[2004.05.? ? V00-06-03
+	Special tag that backs up ComPackedCovariance.cc to RCS revision
+	1.3, on some backward-compatibility-with-existing-release grounds.]
+
+2004.05.05 Rainer Bartoldus [V00-06-02]
+	Introduce binlist file.
+
+2004.05.04 A. De Silva Tagged V00-06-01
+	Added print method to ComExtendedSyntaxParser.
+
+[2004.04.27 ads V00-06-00 more changes to extended syntax parsing:
+	"Extended syntax parser allows for different delimitors."]
+
+2004.04.21 A. De Silva Tagged V00-05-00
+	Changes to syntax parsing.  
+
+2004.04.17 W. Hulsbergen
+	Fixed bug in ComPackedCovariance.cc (dimension of vector with
+	rotation angles). Tagged V00-04-20
+2004.04.14 A. De Silva
+	Added code for extended syntax parsing.  This will be used for 
+	the extended collection syntax.
+
+2004.02.27 A. De Silva
+	Fixed errors on Sun that suddenly cripped up in the nightly:
+	Error: Overloading ambiguity between "std::log(double)" and 
+	"std::log(long double)" etc.
+2003.07.28 Rainer Bartoldus (bartoldu)
+	Add #include of BaBar.hh and ComPrintOnDelete.hh
+	to ComPrintOnDelete.cc.
+
+2002.04.10 A. De Silva
+	Added operator<() method for Bbrreferencer.hh for use in std::map.
+
+2002.03.24 A. De Silva
+	RW migration.
+
+2001.08.28 Dave Brown
+	Add packer for rational numbers.
+	Put a base class under ComPackBase, so that the return codes won't get
+        templated (this is still backwards-compatible with templated 
+        return codes).  Update ComPackRat to use these
+
+2001.04.05 Asoka De Silva (Ads)
+      * Fixed ComPackNonFlatFloat class as per David Aston's instructions to 
+	avoid packing/unpacking errors.
+
+2001.01.25 Stephen J. Gowdy (gowdy):
+      * Add ComPackStrings which add a bunch of strings together to make
+	one longer string.
+
+2001.01.11 Stephen J. Gowdy (gowdy):
+	Update test to test more functionality.
+
+2001.01.10 Stephen J. Gowdy (gowdy):
+ 	Add simple class to back a number of bools into one byte.
+
+2001.01.04 Dave Aston (dyaeb): temporary tag: dya20010104
+      * Change ComPackedConsistencyBroken to set values of likelihood or 
+        consistency which unpack as >1.0 at exactly 1.0, rather than as 
+        the centre of the last bin <1.0. 
+        This is an improvement only in reading the old MicroDST.  
+
+2000.12.21 Dave Aston (dyaeb): temporary tag: dya20001221
+      * Change ComPackedConsistency to store a hard zero only when given 
+        a hard zero. All else less than the minimum representable number 
+        unpacks at that minimum (about 3e-21 at the precision used). 
+
+2000.12.13 Dave Aston (dyaeb): temporary tag: dya20001213
+      * New classes cloned (otherwise unchanged) from the V00-03-02 
+        tag of CommonUtils, viz: ComPackUFloatBroken, ComPackFloatBroken, 
+        ComPackNonFlatFloatBroken, ComPackedConsistencyBroken and 
+        ComPackedDEDXBroken.  
+        This is a consistent "Broken" set to read the old MicroDST 
+        after the BtdDataP and BtdDataR classes have been modified.  
+      * ComPackFloat bugs fixed. Now behaves the same as ComPackUFloat 
+        with an additional sign bit. 
+      * ComPackFloat and  ComPackUFloat::testMe procedures improved.
+      * ComPackFloat and  ComPackUFloat .t files updated.
+
+2000.12.01 Dave Aston (dyaeb): temporary tag: dya20001201
+      * Change ComPackedConsistency to give more precision -- 
+        6 bits exponent & 6 bits mantissa in both likelihood and 
+        consistency values. Packing is still as two d_UShorts but 
+        now very differently arranged. It still uses ComPackUFloat.
+      * Fix nasty bugs and features in ComPackUFloat! Best precision
+        extends down to zero. Packing intervals are correctly centred 
+        wherever possible (minor exceptions are: at minimum value != 0.;  
+        at boundary of an exponent change). Only a hard zero (==0.) 
+        packs and unpacks as a hard zero.
+      * The same nasty bugs and features are still in ComPackFloat 
+        (but they shouldn't be). 
+      * Improved testCommonUtils test suite.
+
+2000.11.22 Dave Brown
+	Remove unnecessary and arbitrary range restriction in ComPackFlatFloat.
+        
+2000.11.02 Dave Brown
+	Move packflat to packflatbroken and packflat_001 to packflat
+
+2000.11.02 Phil Strother
+	Remove old commented out includes.
+
+2000.11.01 Lief Wilden
+	Small change to the handling of overflows (as suggested by 
+	David N. Brown):
+	In case of an overflow (unpacked value > range of packer) unpacking 
+	will be done to the center of last bin within the range of the packer.
+	This means loosing one bin precision, but packing and unpacking will 
+	be symmetric.
+
+2000.10.29 Lief Wilden
+	Small modifications to some packer classes. Unpacking is now
+	done to "bin centers" and not the upper edge of a bin. This
+	eliminates a systematic bias of the unpacked distributions.
+	The following classes have been modified:
+	ComPackFlatFloat / ComPackFloat / ComPackUFloat
+
+2000.10.19 Dave Brown
+        Add version of flat float packer which fixes packing problem.
+        Apparently ComPackFlatFloat has a bug and in order to maintain 
+        backward compatibility - ie, to preserve reproducibility with old data,
+        a new class was added: ComPackFlatFloat_001.
+
+2000.10.16 Dave Brown
+	Fix some simple coding errors.  Standardize the meaning of the 
+	_bitRange data member to a more sensible one, and provide a public 
+	accessor
+
+2000.10.13 Dave Brown
+	Add exponential float packer.  This differs from the existing 
+	packFloat in that the range and exponent values can be specified.
+
+2000.10.05 Lief Wilden
+	Moved several Bta* classes from BtaDataP.  These are renamed to Com*.
+
+2000.07.12 sjg
+	Remove definition of a RW operator== in ComMatrix.hh.
+
+2000.03.22 ads
+	Added a new function ComTimeStamp which returns the time stamp.
+
+2000.02.19 ads
+	Modified ComPathNameSearch so that (1) the environment BFRECOPATH is
+	replaced by BFSEARCHPATH and (2) BFSEARCHPATH is used if it is defined;
+	otherwise, the DEFAULTBFSEARCHPATH (previously known as 
+	DEFAULTBFRECOPATH)  is used.
+
+2000.02.18 gpdf	
+	Added debugging tools 'terminator' and 'terminationDecoder'.
+	[History GNUmakefile; new: terminator.cc terminationDecoder.cc]
+
+2000.02.16 gpdf	
+	Modified return codes from searchFile executable.
+	Added History file.
+	[searchFile.cc; new: History]

@@ -1,0 +1,127 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+//      $Id: 
+//
+// Description:
+//      Module RecAListMerge
+// Environment:
+//      Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//      Dave Brown
+//
+// Copyright Information:
+//      Copyright (C) 2005 LBNL
+//
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+#include "RecoUtils/RecAListMerge.hh"
+#include "ProxyDict/IfdStrKey.hh"
+#include "CLHEP/Alist/AList.h"
+#include "ProxyDict/IfdHepAListProxy.hh"
+#include "ProxyDict/IfdDataProxy.hh"
+#include "ErrLogger/ErrLog.hh"
+#include <assert.h>
+
+template <class A>
+RecAListMerge<A>::RecAListMerge( const char* name,
+				 const char* description) :
+  AppModule(name,description),
+  _copy("CopyType",this),
+  _dpol("DuplicatePolicy",this),
+  _input("InputLists",this),
+  _output("OutputList",this,"Merged")
+{
+  _copy.addItem("Shallow",shallow); // default
+  _copy.addItem("Deep",deep);
+  _dpol.addItem("Error",error); // default
+  _dpol.addItem("Ignore",ignore);
+  _dpol.addItem("Respect",respect);
+  commands( )->append( &_copy );
+  commands( )->append( &_dpol );
+  commands( )->append( &_input );
+  commands( )->append( &_output );
+
+}
+
+template <class A>
+RecAListMerge<A>::~RecAListMerge()
+{
+  std::vector<IfdStrKey*>::iterator ikey = _keys.begin();
+  while(ikey != _keys.end()){
+    delete *ikey;
+    ++ikey;
+  }
+}
+
+template <class A>
+AppResult 
+RecAListMerge<A>::beginJob( AbsEvent* anEvent )
+{
+// fill the IfdKey cache
+  const std::vector<std::string>& inputs = _input.value();
+  std::vector<std::string>::const_iterator istring = inputs.begin();
+  while(istring != inputs.end()){
+    _keys.push_back(new IfdStrKey(*istring));
+    ++istring;
+  }
+  return AppResult::OK;
+}
+
+template <class A>
+AppResult
+RecAListMerge<A>::event( AbsEvent* anEvent ) {
+// create temporary storage for the results
+  std::vector<A*> merged;
+// loop over inputs
+  std::vector<IfdStrKey*>::const_iterator ikey = _keys.begin();
+  while(ikey != _keys.end()){
+// fetch the list from the event
+    HepAList<A>* list = Ifd<HepAList<A> >::get(anEvent,**ikey);
+    if(list != 0){
+// loop over the list contents
+      unsigned nitem = list->length();
+      for(unsigned iitem=0;iitem<nitem;++iitem){
+	A* item = (*list)[iitem];
+// check for duplication
+	typename std::vector<A*>::const_iterator found = 
+	  std::find(merged.begin(),merged.end(),item);
+// add in the item if it's new or we're respecting duplicates
+	if(found == merged.end() ||
+	   _dpol.value()==respect)
+	  merged.push_back(item);
+	else if(_dpol.value()==error)
+	  ErrMsg(error) << "Found duplicate item!!!" << endmsg;
+      }
+    } else
+      ErrMsg(error) << "Can't find list " << **ikey << endmsg;
+    ++ikey;
+  }
+// now we have linearized and compactivied the input.  Put them
+// on a new HepAList and put that into the event
+  HepAList<A>* newlist = new HepAList<A>;
+  assert(newlist != 0);
+// presize, to avoid memory overhead
+  unsigned nmerged = merged.size();
+  newlist->allocate(nmerged);
+// fill the output list with the appropriate value (deep or shallow copy)
+  for(unsigned imerged=0;imerged<nmerged;++imerged){
+    A* item = merged[imerged];
+    if(_copy.value()==shallow)
+      newlist->append(item);
+    else
+      newlist->append(new A(*item));
+  }
+// put the new list into the event with the appropriate proxy.  This
+// makes sure there's no memory leaks or double-deletes
+  IfdDataProxy<HepAList<A> >* proxy(0);
+  if(_copy.value() == shallow)
+    proxy = new IfdDataProxy<HepAList<A > >(newlist);
+  else
+    proxy = new IfdHepAListProxy<A>(newlist);
+  assert(proxy != 0);
+  if(!Ifd<HepAList<A> >::put(anEvent,proxy,_output.value()))
+    ErrMsg(error) << "Failed to put proxy for merged output into event" << endmsg;
+// done
+  return AppResult::OK;
+}

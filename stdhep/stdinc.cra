@@ -1,0 +1,6 @@
++EXE.
++ASM,21,T=A./usr/products/stdhep/v1_05/src/stdhep.inc
++USE,STDINC.
++USE,STDDES.
++PAM,11,           T=C,A./usr/products/stdhep/v1_05/src/stdhep
++QUIT.

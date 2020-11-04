@@ -1,0 +1,380 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AbsParmVector.icc 489 2010-01-13 16:45:39Z stroili $
+//
+// Description:
+//      See header for info.   NOTE:   This .cc file is in with the .hh
+// files because template definition and declaration files must be kept
+// in the same directory.  If this file is ever moved in with the other
+// .cc files (i.e., if Framework is ever reorganized so that .hh and .cc
+// files live in the same directory), then you must exclude this .cc file
+// from the list of library files.
+//
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	Bob Jacobsen 	 	Original Author of AbsParmXXX class
+//      Ed Frank                University of Pennsylvania.
+//
+// BUGS:
+//------------------------------------------------------------------------
+
+#include "BaBar/BaBar.hh"
+
+//-----------------------
+// This Class's Header --
+//-----------------------
+#include "AbsParm/AbsParmVector.hh"
+
+//-------------
+// C Headers --
+//-------------
+
+#include <stdio.h>
+#include <string.h>
+#include <iostream>
+
+
+//-------------------------------
+// Collaborating Class Headers --
+//-------------------------------
+
+#include "Framework/AppModule.hh"
+#include "FrameUtil/AbsInterp.hh"
+#include "BbrStdUtils/String.hh"
+
+#include <string>
+using std::string;
+#include <vector>
+#include <map>
+using std::cout;
+using std::endl;
+using std::ostream;
+
+
+//----------------
+// Constructors --
+//----------------
+
+
+template <class T>
+AbsParmVector<T>::AbsParmVector( const char* const theCommand,
+			         AppModule* theTarget )
+  : AbsParm( theCommand, theTarget )
+  , _theSymbol(0), _dict(0)
+{}
+
+template <class T>
+AbsParmVector<T>::AbsParmVector( const AbsParmVector& theOther,
+				 AppModule* theTarget)
+  : AbsParm( theOther, theTarget)
+  , _theVector( theOther._theVector )  
+  , _theSymbol(0), _dict(0)
+{
+  if (0 != theOther._dict) {
+    // Symbolic name list
+    _theSymbol = new std::vector<std::string>(*theOther._theSymbol);
+    _dict = new std::map<std::string,T>(*theOther._dict);
+  }
+}
+
+// See .hh file for why this is commented out:
+//
+// template <class T>
+// AbsParmVector<T>::AbsParmVector( const char* const theCommand,
+// 			            AppModule* theTarget,
+//			            const std::vector<T>& defVector )
+//   : AbsParm( theCommand, theTarget )
+//   , _theVector( defVector)
+// {}
+
+
+
+//--------------
+// Destructor --
+//--------------
+
+template <class T>
+AbsParmVector<T>::~AbsParmVector( )
+{
+  if (0 != _dict) {
+    delete _theSymbol;
+    delete _dict;
+  }
+}
+
+//		-------------------------------------------
+// 		-- Protected Function Member Definitions --
+//		-------------------------------------------
+
+
+//-----------
+// Handler --
+//-----------
+template <class T> 
+int AbsParmVector<T>::handle( int argc, char* argv[])
+{
+  AppModule* theInput = target( );
+  int result = AbsInterp::ERROR;
+  
+  setArgs( argc, argv );
+  if ( 2 <= argc ) {
+    if ( 0 == strcmp( argv[1], "clear" ) ) {
+      //Only vectors can be cleared.
+      result = clearHandler();
+    }
+    else{
+      //Ok, now defer to the base class for the common commands.
+      result = AbsParm::handle(argc,argv);
+    }
+  } else {
+    theInput->setError( "wrong # args" );
+  }
+  return result;
+}
+
+// Register name/value pair for TCL interface
+template <class T>
+void AbsParmVector<T>::addItem(const std::string& name, const T& value) {
+  if (0 == _dict) {
+    _dict = new std::map<std::string,T>();
+    _theSymbol = new std::vector<std::string>;
+  }
+  (*_dict)[name] = value;
+}
+
+template <class T> 
+int AbsParmVector<T>::setHandler( )
+{
+  AppModule* theTarget = target();
+  T someT;
+
+  bool setAtPosition(false);
+  unsigned posAt(0);
+
+  // Validate if a position is specified
+  std::string message;
+  if ( _argc == 5) {
+    if ( 0 == strcmp( _argv[3], "at" ) ) {   
+      int result = sscanf (_argv[4], "%u", &posAt);
+      if (result != 0 && posAt < _theVector.size()) {
+	setAtPosition = true;
+      }
+      else {
+	message += "Invalid position";
+      }
+    }
+    else {
+      message += "Invalid syntax";
+    }
+    if (! setAtPosition) {
+      message += ", command: "; 
+      for (int i = 0; i < _argc; i++) {
+	message += _argv[i];
+	message += " ";
+      } 
+      theTarget->setError(message.c_str());
+      return AbsInterp::ERROR;
+    }
+  }
+
+  if ( _argc == 3 || setAtPosition ) {
+    
+    if (0 == _dict) {
+      set_value(someT);
+      if (! setAtPosition) {
+	_theVector.push_back(someT);
+      }
+      else {
+	_theVector[posAt] = someT;
+      }
+    }
+    
+    else {
+      const std::string arg(getArgument(2));
+      typename std::map<std::string,T>::iterator iter;
+      if ( (iter = _dict->find(arg)) != _dict->end() ) {
+	someT = iter->second;
+	set_value(someT);
+	if (! setAtPosition) {
+	  _theVector.push_back(someT);
+	  _theSymbol->push_back(arg);
+	} 
+	else {
+	  _theVector[posAt] = someT;
+	  (*_theSymbol)[posAt] = arg;
+	}
+      } 
+      else {
+	cout << command() << ": " << arg << " invalid.  "
+	     << "Please choose from" << endl;
+	for (iter = _dict->begin(); iter != _dict->end(); iter++) {
+	  cout << "      " << iter->first << endl;
+	}
+      }      
+    }
+
+  }
+    
+  else if (_argc < 3)
+    cout << "Need to specify new value" << endl;
+
+  else
+    cout << "Only one value permitted" << endl;
+  
+  return AbsInterp::OK;
+}
+
+
+template <class T>
+int AbsParmVector<T>::listHandler( ) const
+{
+
+  AppModule* theInput = target( );
+  
+  cout << "Value of " <<  command()  << " for module " << theInput->name()
+       << ": " << endl;
+  print( cout );
+  
+  return AbsInterp::OK;
+}
+
+template <class T>
+int AbsParmVector<T>::getHandler( )
+{
+  return AbsInterp::OK;
+}
+
+template <class T>
+int AbsParmVector<T>::clearHandler( )
+{
+  _theVector.clear();
+  if (0 != _dict) {
+    _theSymbol->clear();
+  }
+  return AbsInterp::OK;
+}
+
+template <class T>
+void
+AbsParmVector<T>::print( ostream& o ) const {
+
+  int indx = 0;
+  if (0 == _dict) {
+    typename std::vector<T>::const_iterator iter;
+    for( iter=_theVector.begin(); iter != _theVector.end(); iter++ ) {
+      o << command()  << "[" << indx << "]="
+	<<  *iter << endl;
+      indx++;
+    }
+  }
+  else {
+    std::vector<std::string>::const_iterator iter;
+    for( iter=_theSymbol->begin(); iter != _theSymbol->end(); iter++ ) {
+      o << command() << "[" << indx << "]="
+	<<  *iter << endl;
+      indx++;
+    }
+  }
+}
+
+//
+// The following methods ought to be external to this class, eg., just
+// some converter functions, set_value_from_char( X).  That way we
+// don't have to remake them for every specialization of
+// AbsParmVector<T> *and* every specialization of AbsParmGeneral<T>.
+// Actually, this would be a great use of explicit template
+// specialization, but we don't do that in BaBar.
+//    -Ed
+
+
+template <class T>
+void AbsParmVector<T>::set_value(double &x)
+{
+  sscanf (getArgument( 2 ), "%lg", &x);
+}
+
+template <class T>
+void AbsParmVector<T>::set_value(float &x)
+{
+  sscanf (getArgument( 2 ), "%g", &x);
+}
+
+
+template <class T>
+void AbsParmVector<T>::set_value(long& x)
+{
+   sscanf (getArgument( 2 ), "%ld", &x);
+}
+
+template <class T>
+void AbsParmVector<T>::set_value(int& x)
+{
+   sscanf (getArgument( 2 ), "%d", &x);
+}
+
+template <class T>
+void AbsParmVector<T>::set_value(std::string& x)
+{
+  x = getArgument( 2 );
+}
+
+template <class T>
+void AbsParmVector<T>::set_value(bool& x)
+{
+  if (getArgument( 2 )[0]=='t' || getArgument(2)[0] =='T') x = true;
+  else if (getArgument( 2 )[0]=='f' || getArgument(2)[0] =='F') x = false;
+  else {
+    AppModule* theInput = target( );
+    theInput->fullReport("value must start with [TFtf]");
+    x = false;
+  }
+}
+
+template <class T>
+void AbsParmVector<T>::dumpState(AppConfigRecorder* r)
+{
+  if (0 == _dict) {
+    typename std::vector<T>::iterator iter;
+    for( iter=_theVector.begin(); iter != _theVector.end(); iter++ ) 
+      r->store(*iter, "set");
+  }
+  else {
+    std::vector<std::string>::iterator iter;
+    for( iter=_theSymbol->begin(); iter != _theSymbol->end(); iter++ )
+      r->store(*iter, "set");
+  }
+}
+template <class T>
+void AbsParmVector<T>::restoreState(char* var[]){
+	int rval;
+	setArgs(3, var);
+	rval = setHandler();
+}  
+
+template <class T>
+std::string 
+AbsParmVector<T>::classDescription () const {
+  if (0 == _dict) {
+    return "Vector parameter: set <value> [at <position>] or list.";
+  }
+  else {
+    return "Symbolic vector parameter: set <value> [at <position>] or list.";
+  }
+
+}
+
+template <class T>
+std::string
+AbsParmVector<T>::type () const {
+  if (0 == _dict) {
+    return "Vector";
+  }
+  else {
+    return "Symbolic vector";
+  }
+}
+
+

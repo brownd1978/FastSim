@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+        <detector>
+            <volume name="Si Tracking Region">
+
+                <!-- Organize the layout in terms of layers.  This guarantees particles from the IP will hit the appropriate detector elements in order.  The order of forward vs backward is arbitrary, since a particle goes either one way or the other -->
+
+                <!-- layer0 is really a 3-layer structure, with inner maps, support/cooling, then outer maps .  To model the geometric coherence
+                between the inner and outer layers, we model this as a single layer with 100% overlap.  That way the gap is interpreted as
+                a dead zone for the entire layer.  It ignores the tiny lever arm between the maps. Note also that, to keep positive indices with 2 layers of MAPs, the BaBar layers 1->5 have been renumbered 2->6 -->
+
+                <cyl name="SvtMaps" id="0"  zmin="-3.5" zmax="6.5" radius="1.15" thick="0.005" mat="svt-Silicon" meas="SiMaps" overlap="0.01" /> 
+                <cyl name="SvtMapsSupport" id="0" zmin="-3.5" zmax="6.5" radius="1.25" thick="0.143" mat="SB-MapsSupport" />
+                <cyl name="SvtMaps" id="1"  zmin="-3.5" zmax="6.5" radius="1.35" thick="0.005" mat="svt-Silicon" meas="SiMaps" overlap="0.01" /> 
+
+
+                <cyl name="SvtSi" id="2"  zmin="-5.815" zmax="11.168" radius="3.32" thick="0.0366" mat="svt-Silicon" meas="2SideSiInner,SiStripsdEdx" overlap="0.034" />
+                <cyl name="SvtCF" id="2" zmin="-5.815" zmax="11.168" radius="3.7" thick="0.1" mat="svt-CFiber" gap="0.864" />
+                 <cyl name="SvtSi" id="3" zmin="-7.027" zmax="11.168" radius="4.02" thick="0.0366" mat="svt-Silicon" meas="2SideSiInner,SiStripsdEdx" overlap="0.024" />
+                 <cyl name="SvtCF" id="3" zmin="-7.027" zmax="11.168" radius="4.84" thick="0.1" mat="svt-CFiber" gap="0.736" />
+                 <cyl name="SvtSi" id="4" zmin="-10.3185" zmax="16.263" radius="5.92" thick="0.0366" mat="svt-Silicon" meas="2SideSiLayer3,SiStripsdEdx" overlap="0.015" />
+                 <cyl name="SvtCF" id="4" zmin="-10.3185" zmax="16.263" radius="5.92" thick="0.1" mat="svt-CFiber" gap="0.778" />
+
+                   <!-- We model layers 4+5 as simple cylinders (no lampshade) with length to cover
+                   the same polar angle range as the real arch modules
+                 -->
+
+                 <cyl name="SvtSi" id="5" zmin="-21.34" zmax="33.48" radius="12.22" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.048"/>
+                 <cyl name="SvtCF" id="5" zmin="-21.34" zmax="33.48" radius="12.92" thick="0.3" mat="svt-CFiber" gap="0.945" />
+                 <cyl name="SvtSi" id="6" zmin="-24.84" zmax="38.96" radius="14.22" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.02" />
+                 <cyl name="SvtCF" id="6" zmin="-24.84" zmax="38.96" radius="14.92" thick="0.3" mat="svt-CFiber" gap="0.947" />
+
+            </volume>
+        </detector>
+    </included>
+</edml>

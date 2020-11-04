@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="600"
+   name=""
+   committed-date="2010-06-21T07:46:30.602827Z"
+   url="https://sbrepo.pd.infn.it:8910/Tools/CLHEP/tags/V00-01-05/src/Combination"
+   last-author="stroili"
+   kind="dir"
+   uuid="03b460ae-468b-4fc1-b513-ef89764f6eec"
+   revision="746"/>
+<entry
+   committed-rev="600"
+   name="Lockable.cc"
+   text-time="2011-04-27T19:05:08.000000Z"
+   committed-date="2010-06-21T07:46:30.602827Z"
+   checksum="55b63a08310c334cadde42380ce378fa"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:08.000000Z"/>
+<entry
+   committed-rev="192"
+   name="Makefile.in"
+   text-time="2011-04-27T19:05:08.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="4142bc558e14d88bca13ca26035ef3a3"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:08.000000Z"/>
+<entry
+   committed-rev="192"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:05:08.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="96e3d3a5293a5d405c0127ad21dabc03"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:08.000000Z"/>
+<entry
+   committed-rev="192"
+   name="Lock.cc"
+   text-time="2011-04-27T19:05:08.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="8b72e6fcb96a8c0b978511cbb08bda2d"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:08.000000Z"/>
+</wc-entries>

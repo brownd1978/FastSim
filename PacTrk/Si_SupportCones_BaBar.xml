@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+
+
+          <!--file to describe the BaBar-SVT support cones -->
+          <!--description simplified by M. Bomben, based on
+          http://costard.lbl.gov/LBNL_BaBar_Web/old_svt/b0903.ps-->
+
+
+          <!--Fwd part is made of 1 cylinder and 1 cone-->
+
+                <cyl name="SvtFwdSupportCyl" id="0" zmin="13.71645" zmax="17.17430" radius="3.13510" thick="0.07620" mat="Svt-SupportCones"  /> 
+                <cone name="SvtFwdSupportCone" id="0" rho1="4.34721" z1="17.17430" rho2="13.94182" z2="42.042558" thick="0.07620" mat="Svt-SupportCones"  />
+
+          <!--Bwd part is made of 4 cylinders and 3 cones-->
+          <!--The below configuration is not used!!!     -->
+          <!-- A single cone for backward support is used instead     -->
+
+                <!--cyl name="SvtBwdSupportCyl" id="0" zmin="-13.61008" zmax="-10.13373" radius="3.13510" thick="0.0760" mat="Svt-SupportCones"  /> 
+                <cyl name="SvtBwdSupportCyl" id="1" zmin="-16.01375" zmax="-14.01008" radius="5.40300" thick="0.0760" mat="Svt-SupportCones"  /> 
+                <cone name="SvtBwdSupportCone" id="0" rho1="5.6030" z1="-16.01375" rho2="8.16500" z2="-19.60015" thick="0.07620" mat="Svt-SupportCones"  />
+                <cyl name="SvtBwdSupportCyl" id="2" zmin="-22.08976" zmax="-19.60015" radius="8.56500" thick="0.0760" mat="Svt-SupportCones"  /> 
+                <cone name="SvtBwdSupportCone" id="1" rho1="8.56500" z1="-22.08976" rho2="10.66858" z2="-23.93365" thick="0.07620" mat="Svt-SupportCones"  />
+                <cyl name="SvtBwdSupportCyl" id="3" zmin="-26.47839" zmax="-23.93365" radius="11.06858" thick="0.0760" mat="Svt-SupportCones"  /> 
+                <cone name="SvtBwdSupportCone" id="2" rho1="11.06858" z1="-26.47833" rho2="14.15379" z2="-32.32313" thick="0.07620" mat="Svt-SupportCones"  /-->
+
+                <!-- Single support cone for svt-backward  -->
+                <!-- This is an 'effective' support  -->
+                <!-- A better description is needed  -->
+
+                <cone name="SvtBwdSupportCone" id="0" rho1="3.32" z1="-10.7333" rho2="11.42" z2="-36.9250" thick="0.07620" mat="Svt-SupportCones"  />
+
+
+
+    </included>
+</edml>
+
+

@@ -1,0 +1,10 @@
+testing AbsArgs...
+
+Explicitly create typed-AbsArgVal's
+
+Call f( AbsArg ) using AbsArgVal<double> and AbsArgVal<int> args..
+Expect output of 'got a double' followed by 'not found'
+f:  got a double arg of 3.1
+f:  did not find a value
+
+Testing clone method...Pass.

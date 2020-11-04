@@ -1,0 +1,33 @@
+.TH RecoUtilsApp 1 "July 31, 1996"
+.SH NAME
+.HP 10
+GenEnv - module for accessing general environmental information
+
+.SH CONTAINED MODULES
+.HP 10
+.B (none)
+.RE
+
+.SH DESCRIPTION
+GenEnv contains any general information not specific to a
+subdetector. For example the global Ntuple Manager.
+
+This object must be accessed through AbsEnv.
+
+.RE
+
+.SH COMMANDS
+HepTupleManager*& ntupleManager(); - returns ntuple manager
+
+HepScalerManager*& scalerManager(); - returns scaler manager
+
+const DetMaterial* findDetMaterial( const string& matName ) const; - finds
+a specific material given its name
+
+.SH "SEE ALSO"
+AbsEnv
+
+.SH AUTHOR
+Bob Jacobsen (Bob_Jacobsen@lbl.gov)
+
+Stephen Gowdy (S.Gowdy@ed.ac.uk)

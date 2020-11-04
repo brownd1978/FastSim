@@ -1,0 +1,96 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AbsArgCast.icc 520 2010-01-15 11:40:48Z stroili $
+//
+// Description:
+//      AbsArgCast.hh is forced to implement all the meothds because of DEC 
+//      cxx.  However, HP-UX complains about no .cc file.  So here we have
+//      an empty one.
+//      
+//      EXCLUDE THIS FILE FROM THE LIST OF .CC FILE TO COMPILE!
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//      Ed Frank		University of Pennsylvania
+//
+// Copyright Information:
+//	Copyright (C) 1997
+//
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+//-----------------------
+// This Class's Header --
+//-----------------------
+#include "ProxyDict/AbsArgCast.hh"
+
+#include "ProxyDict/IfdTypeKey.hh"
+#include "ProxyDict/AbsArg.hh"
+#include "ProxyDict/AbsArgVal.hh"
+
+//		----------------------------------------
+// 		-- Public Function Member Definitions --
+//		----------------------------------------
+
+//----------------
+// Constructors --
+//----------------
+
+//--------------
+// Destructor --
+//--------------
+
+//-------------
+// Methods   --
+//-------------
+    
+
+template <class T>
+T*
+AbsArgCast<T>::value( AbsArg* a ) {
+  return value( *a );
+}
+
+
+template <class T>
+T*
+AbsArgCast<T>::value( AbsArg& a ) {
+
+  IfdTypeKey<T> tk;
+
+  if ( tk == a.getTypeKey() ) {
+    return ((AbsArgVal<T>*) &a)->_myT;
+  } else {
+    return (T*) 0;
+  }
+}
+
+//-------------
+// Operators --
+//-------------
+    
+//-------------
+// Selectors --
+//-------------
+    
+//-------------
+// Modifiers --
+//-------------
+
+//		-----------------------------------------------
+// 		-- Static Data & Function Member Definitions --
+//		-----------------------------------------------
+
+//		-------------------------------------------
+// 		-- Protected Function Member Definitions --
+//		-------------------------------------------
+
+//		-----------------------------------------
+// 		-- Private Function Member Definitions --
+//		-----------------------------------------
+
+//		-----------------------------------
+// 		-- Internal Function Definitions --
+//		-----------------------------------

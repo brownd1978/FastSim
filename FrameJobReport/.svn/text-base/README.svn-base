@@ -1,0 +1,52 @@
+This package consists of the classes needed for generating the job summary
+reports.  The files/classes are:
+
+FjrFwkJobReport:
+        Instantiates the Job Report for Framework.  It is a singleton since
+        there is only one such object for Framework and a wrapper for the
+	underlying JobReport classes.
+
+FjrAbsJobReport:
+	Abstract class.
+
+FjrJobReportFile:
+	Class to write to the job summary file.  
+	It inherits from AbsJobReport.
+
+
+Usage:
+(Please also see the FrameExtension package on how to activate the job 
+summary report).
+	
+#include "FrameJobReport/FjrFwkJobReport.hh"
+...	
+	FjrFwkJobReport* theReport = FjrFwkJobReport::getFwkJobReport();
+	if (theReport->isEnabled()) {
+	  theReport->report(FjrAbsJobReport::Bbr, hierarchy,
+                      valueMeaning, value);
+	}
+
+In the above, 
+
+- the first argument is the owner - can be either 
+	FjrAbsJobReport::Bbr
+  or 
+	FjrAbsJobReport::Usr
+- hierarchy is a string of the form
+	level1::level2::...::levelN
+  where the levelX are words comprising of characters [0-9a-zA-Z]
+  and the upper level hierarchy level1::...::level(N-1) must be reported
+  prior to level1::...::levelN (assuming N>1).
+- valueMeaning is a string comprising of characters [0-9a-zA-Z]
+- value is a string which does not have a '\n'.
+
+The output in the summary file will be of the form:
+Bbr::hierarchy.valueMeaning value
+  or
+Usr::hierarchy.valueMeaning value
+
+
+
+
+
+

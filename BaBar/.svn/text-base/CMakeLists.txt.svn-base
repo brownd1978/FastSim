@@ -1,0 +1,25 @@
+string(REGEX REPLACE "^.*/([^ ]+)$" "\\1" pkgname ${CMAKE_CURRENT_SOURCE_DIR})
+
+set(${pkgname}_CXX_FLAGS "")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${${pkgname}_CXX_FLAGS}")
+
+configPkg(${pkgname})
+
+#
+# Generate library
+#
+add_library(${pkgname} ${Sources})
+target_link_libraries(${pkgname} ${LIB_LINK_LIST})
+
+add_executable(test${pkgname} test/test${pkgname}.cc)
+#target_link_libraries(test${pkgname} ${BIN_LINK_LIST})
+target_link_libraries(test${pkgname} ${pkgname})
+add_test(t${pkgname} ${EXECUTABLE_OUTPUT_PATH}/test${pkgname})
+#
+add_executable(test${pkgname}ODMGTypes test/test${pkgname}ODMGTypes.cc)
+target_link_libraries(test${pkgname}ODMGTypes ${BIN_LINK_LIST})
+add_test(t${pkgname}ODMGTypes ${EXECUTABLE_OUTPUT_PATH}/test${pkgname}ODMGTypes)
+#
+add_executable(testStandards test/testStandards.cc)
+target_link_libraries(testStandards ${BIN_LINK_LIST})
+add_test(tStandards ${EXECUTABLE_OUTPUT_PATH}/testStandards)

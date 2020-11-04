@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+        <detector>
+            <volume name="Si Tracking Region">
+                 <include file="PacTrk/Si_Inner_SuperB_Geom_inmap.xml"  /> 
+                 <include file="PacTrk/Si_Outer_SuperB_Geom_inmap_longbarrel.xml"  />
+                 <include file="PacTrk/Si_SupportCones.xml"  /> 
+            </volume>
+        </detector>
+    </included>
+</edml>

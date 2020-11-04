@@ -1,0 +1,20 @@
+#ifndef PacDispCone_HH
+#define PacDispCone_HH
+
+#include <stdio.h>
+#include <Rtypes.h>
+#define STRINGSIZE 100
+
+struct PacDispCone {
+  virtual ~PacDispCone() {;}
+  Double_t tanTheta,zVertex,thick,lowR,hiR;
+  Int_t imat;
+  PacDispCone(): tanTheta(0.0),zVertex(0.0),thick(-1.0),lowR(0.0),hiR(0.0){}
+  static const char* rootnames() {
+    return "tanTheta/D:zVertex/D:thick/D:lowR/D:hiR/D:imat/I";
+  }
+  ClassDef(PacDispCone,1)
+};
+
+#endif
+

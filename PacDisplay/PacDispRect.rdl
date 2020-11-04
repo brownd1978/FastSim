@@ -1,0 +1,23 @@
+#ifndef PacDispRect_HH
+#define PacDispRect_HH
+
+#include <stdio.h>
+#include <Rtypes.h>
+#define STRINGSIZE 100
+
+struct PacDispRect {
+  virtual ~PacDispRect() {;}
+  Double_t cx,cy,cz,thickness,usize,vsize;
+  Double_t nx,ny,nz;
+  Double_t ux,uy,uz;
+  Int_t imat;
+  PacDispRect(): cx(0.0),cy(0.0),cz(0.0),thickness(-1.0),usize(-1.0),
+    vsize(-1.0),nx(0.0),ny(0.0),nz(1.0),ux(1.0),uy(0.0),uz(0.0),imat(0){}
+  static const char* rootnames() {
+    return "cx/D:cy/D:cz/D:thick/D:usize/D:vsize/D:nx/D:ny/D:nz/D:ux/D:uy/D:uz/D:imat/I";
+  }
+  ClassDef(PacDispRect,1)
+};
+
+#endif
+

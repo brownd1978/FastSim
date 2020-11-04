@@ -1,0 +1,163 @@
+#! /bin/sh
+#--------------------------------------------------------------------------
+#
+# FwkMigrate_APP:
+#
+# This is a script that will do the migrations listed below.
+#
+#  To use:
+#
+#     cd <your package>
+#     FwkMigrate_APP
+#
+# If there are no migrations, the program will run silently.
+# (You can run it more than once on a package.)
+# This script will go into sub-directories and do the migrations.
+#
+#
+# For the list of migrations done by this script, please see the section 
+# labelled "*** MIGRATIONS ***" below
+#
+#
+# Author:
+# Asoka De Silva (desilva@triumf.ca)
+#
+# History:
+#
+#  24 Feb 04 - New Script to change APP to App in Framework.
+#
+#--------------------------------------------------------------------------
+
+# The filetypes to search and migrated
+ft="*.hh *.cc *.icc *.h *.c *.ddl *.rdl"
+
+#***************************************************************************
+doMigrationDescription() {
+# define the migrations in a file
+# 	$1: file name of the file describing the migrations
+#***************************************************************************
+#
+#                             *** MIGRATIONS ***
+#
+# syntax : echo "<old> -> <new> " >> $migfile#
+#
+echo "APPBasicCommand -> AppBasicCommand " > $1 
+echo "APPBuild -> AppBuild " >> $1 
+echo "APPCommand -> AppCommand " >> $1 
+echo "APPEchoCommand -> AppEchoCommand " >> $1 
+echo "APPEventsCommand -> AppEventsCommand " >> $1 
+echo "APPExecNode -> AppExecNode " >> $1 
+echo "APPExecutable -> AppExecutable " >> $1 
+echo "APPExitCommand -> AppExitCommand " >> $1 
+echo "APPFilterModule -> AppFilterModule " >> $1 
+echo "APPFrameMemento -> AppFrameMemento " >> $1 
+echo "APPFramework -> AppFramework " >> $1 
+echo "APPHash -> AppHash " >> $1 
+echo "APPHelpCommand -> AppHelpCommand " >> $1 
+echo "APPInputCommand -> AppInputCommand " >> $1 
+echo "APPInputModule -> AppInputModule " >> $1 
+echo "APPJob -> AppJob " >> $1 
+echo "APPMain -> AppMain " >> $1 
+echo "APPMemento -> AppMemento " >> $1 
+echo "APPMenu -> AppMenu " >> $1 
+echo "APPModule -> AppModule " >> $1 
+echo "APPModuleCommand -> AppModuleCommand " >> $1 
+echo "APPModuleMemento -> AppModuleMemento " >> $1 
+echo "APPNameNode -> AppNameNode " >> $1 
+echo "APPNoCloneModule -> AppNoCloneModule " >> $1 
+echo "APPOutputModule -> AppOutputModule " >> $1 
+echo "APPPath -> AppPath " >> $1 
+echo "APPPathCommand -> AppPathCommand " >> $1 
+echo "APPPathMemento -> AppPathMemento " >> $1 
+echo "APPRun -> AppRun " >> $1 
+echo "APPSequence -> AppSequence " >> $1 
+echo "APPSequenceCommand -> AppSequenceCommand " >> $1 
+echo "APPSequenceMemento -> AppSequenceMemento " >> $1 
+echo "APPShowCommand -> AppShowCommand " >> $1 
+echo "APPUserBuild -> AppUserBuild " >> $1 
+
+}
+
+
+#***************************************************************************
+countInstances () {
+# count the number of instances that the migration has to be done for a file
+# args are:
+# 	$1: file name containing list of items to migrate
+#	$2: file to check for migration
+#***************************************************************************
+for item in `cat $1` 
+do
+  count=`egrep -ch $item $2`
+  foundInstances=`expr $foundInstances + $count`
+done
+}
+
+
+#***************************************************************************
+doMigration () {
+# do the migration for a file
+# args are 
+#	$1: file to migrate
+#	$2: number of instances to migrate in file
+#	$3: script file containing commands for sed	
+#***************************************************************************
+  echo $1 " will be migrated; " $2 " instances found." &&
+  cp $1 ${1}.bak.fwk && 
+  sed -f $3 ${1}.bak.fwk > $1 &&
+  rm ${1}.bak.fwk
+}
+
+
+#***************************************************************************
+# main ()
+#***************************************************************************
+
+#[ $# -ne 0 ] && exit
+USAGE="cd to your package directory and then run FwkMigrate_APP."
+while getopts h scriptArg
+do
+  case $scriptArg in
+     h) echo $USAGE
+        exit;;
+     \?) echo $USAGE
+        exit 2;;
+  esac
+done
+
+packageDir=`pwd`
+
+# Write, to a file, the migrations ...
+migfile=${packageDir}/migrationList
+doMigrationDescription $migfile
+
+# write to a script file the commands for the migration
+scriptfile=${packageDir}/migrationScript
+searchfile=${packageDir}/migrationSearch
+awk '{ print "s|"$1"|"$3"|g" }' $migfile > $scriptfile
+awk '{ print ""$1"" }' $migfile > $searchfile
+
+# Go through each package/directory and see if there is something to change.
+for ftype in $ft
+do 
+  find . -type f -name $ftype -print | while read fname
+  do
+    foundInstances=0 &&
+    countInstances $searchfile $fname &&
+    if [ $foundInstances -gt 0 ]
+    then
+      doMigration $fname $foundInstances $scriptfile
+    fi
+  done
+done
+
+# cleanup everything
+rm $migfile
+rm $scriptfile
+rm $searchfile
+
+exit
+
+
+
+

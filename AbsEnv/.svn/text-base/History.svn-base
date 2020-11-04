@@ -1,0 +1,223 @@
+// History of AbsEnv
+//
+//     $Id$
+//
+
+AbsEnv package
+Coordinator: Stephen J. Gowdy
+
+2010-01-13: R. Stroili
+	split code into src and include subdirectories
+
+V00-07-00 --------------------------------------------------------
+
+2004-12-06: Andy Salnikov
+        I have added new CfgEnv sub-environment to AbsEnv. This is 
+        going to replace BdbConfigEnv, but during the migration both
+        will be present here. BdbConfigEnv will be removed once
+        migration is complete. 
+
+V00-05-01 --------------------------------------------------------
+
+8th May 2004: Stephen J. Gowdy
+	Fix warnings and a bug in ThreeCoordIndex (previously the
+	== and != compared an object with itself instead of the
+	other object).
+
+V00-05-00 --------------------------------------------------------
+V00-04-20 --------------------------------------------------------
+
+27th March 2003: Stephen J. Gowdy
+	Don't use a pointer value being 0 to deterine if the set
+	methods have been called previously, now check a local variable
+	(this means you should only have one AbsEnv person job, but
+	that should be the case currently).
+
+V00-04-19 --------------------------------------------------------
+
+27th March 2003: Stephen J. Gowdy
+	Add reset methods to AbsEnv to avoid need to use set to zero
+	the pointer.
+
+V00-04-18 --------------------------------------------------------
+
+24th May 2002: Stephen J. Gowdy
+	Update History file since V00-04-14 tag.
+
+V00-04-17 --------------------------------------------------------
+
+24th May 2002: Stephen J. Gowdy
+	Remove RW from comments in various files.
+	Remove LINK_rw entry from link_AbsEnv.mk file (no reason
+	for it to have been present in previous tag).
+
+V00-04-16 --------------------------------------------------------
+
+28th Feb 2002: Matthias Steinke
+	Don't use typedef in class space for AbsDetIndex types (now
+	seperate header file).
+	Add operator< for AbsDetIndex.
+	
+
+V00-04-15 --------------------------------------------------------
+
+7th Jan 2002: Matthias Steinke
+	Do RW migration.
+
+V00-04-14 --------------------------------------------------------
+
+16-October-2001: Anders Ryd
+        Added FiltEnv to AbsEnv to support the configuration of filter.
+
+02-August-2001: Asoka De Silva
+	Removed AbsParm*.hh which had forwarding headers.
+	Removed ProxyDict/IfdData.hh include.
+
+04-July-2001: Asoka De Silva
+        Ran Framework/FwkMigrate_v3 script 
+          (please see script for details of changes.)
+
+V00-04-10 --------------------------------------------------------------
+
+15 February 2001: Eric C
+	Added AbsEnv_LinkDef.rdl file for completeness.
+
+V00-04-09 --------------------------------------------------------------
+
+05 February 2001: Phil S
+	Allow behaviour of setting an env twice and print
+	warning if this occurs.
+
+V00-04-08 --------------------------------------------------------------
+
+21 December 2000: Paul Dauncey
+	Added L1DctEnv, L1EmtEnv and L1GltEnv to the abstract environment.
+
+V00-04-07 --------------------------------------------------------------
+
+21st November 2000: Eric Charles
+   Added LIBEXTRARDLFILES to GNUmakefile so that AbsEnv will be built
+   into the cint dictionary
+
+8th January 2000: Rainer Bartoldus
+        Make AbsDetIndex::itsIndex() accessor inlined.
+
+V00-04-06 --------------------------------------------------------------
+
+3d November 1999: Gautier Hamel de Monchenault
+
+   Add access to a BtaEnv object which is designed to serve Conditions data in
+   Beta packages (packages BtaEnv and BtaBuildEnv for the concrete implementation)
+
+V00-04-05 --------------------------------------------------------------
+
+GNUmakefile updates.
+
+V00-04-04 --------------------------------------------------------------
+
+14th April 1999: Stephen J. Gowdy
+	Make op== in Two and ThreeCoordIndex inlined and simpler. Now
+	it only compares the index value which should be unique. Slight
+	danger if this class is being used incorrectly.
+	Also added small regression test.
+
+14th April 1999: bbrau
+	Added DhpMonEnv to AbsEnv.
+
+V00-04-03 --------------------------------------------------------------
+
+24th March 1999: Yury Kolomensky
+	Added BdbConfigEnv pointer to the environment
+
+20th March 1999: Stephen J. Gowdy
+	Tidied up some code, no functional change.
+
+V00-04-02 --------------------------------------------------------------
+
+23rd November 1998: Stephen J. Gowdy
+	ErrLogger migration done.
+
+22nd November 1998: Abi Sofer
+	Added a PepEnv to the abstract environment.
+
+V00-04-01 --------------------------------------------------------------
+
+14th October 1998: David N. Brown (LBL)
+	Added a OprEnv to the abstract environment.
+
+V00-04-00 --------------------------------------------------------------
+
+14th June 1998: Anders Ryd
+	Added a L3TEnv to the abstract environment.
+
+8th November 1997: Stephen J. Gowdy
+	A number of changes to please CodeWizard.
+	Most notable are removale of constness from AbsEnv, removal of
+	operator= from AbsEvtObj, [Two|Three]CoordIndex and clean up of
+	operator= in AbsDetIndex.
+
+V00-03-07 --------------------------------------------------------------
+
+10th November 1997: Stephen J. Gowdy
+	Tidied up AbsEnv now that all old entries are gone.
+
+9th November 1997: Roberto Stroili
+	Removed references to DchGeom which are no longer required.
+
+V00-03-06 --------------------------------------------------------------
+
+11th September 1997 Phil S
+	Renamed static unsigned TwoCoordIndex::hash(const TwoCoordIndex &) 
+	to ..... hashFun to avoid naming conflict with hash() function added
+	below which SunOS5 doesn't like.
+
+V00-03-05 --------------------------------------------------------------
+
+6th September 1997: Stephen J. Gowdy
+	Finnally for round to get rid of hidden warnings on AIX and HP.
+	Added hash() function to TwoCoordIndex to do this.
+	Made operator=() in AbsDetStructure private and do nothing.
+	Made operator==() in AbsDetStructure non-virtual.
+	AbsEnvObj now uses the stream that is passed in to print on
+	for print functions.
+
+V00-03-04 --------------------------------------------------------------
+
+27th August 1997: Stephen J. Gowdy
+	Added package name to includes in AbsEnvDataHolder and
+	ThreeCoordIndex.
+
+V00-03-03 --------------------------------------------------------------
+
+28th June 1997: David Quarrie
+	In TwoCoordIndex.hh
+        "#include "AbsDetIndex.hh" replaced by 
+        "#include "AbsEnv/AbsDetIndex.hh"
+
+V00-03-02 --------------------------------------------------------------
+
+23 Apr 1997: Stephen J. Gowdy
+	Removed all AbsParms to Framework.
+	Updated dependancies and GNUmakefile.
+
+21 Apr 1997:  Ed Frank
+	Added AbsParmIfdStrKey
+
+V00-03-01 --------------------------------------------------------------
+
+11 Apr 1997: Stephen J. Gowdy
+	Removed dependancy on GenEnv in AbsEnv
+	Added AbsDetStructureIterator.
+
+25 Mar 1997: Dave Brown
+	Added TrkEnv* to AbsEnv
+
+10 Feb 1997: gowdy
+	Moved some functions of Two&ThreeCoordIndex to .cc and made them
+	non-inline due to them requiring another include.
+
+  Jan 14, 1997 - StephenG Removed FVCGeom* from AbsEnv, now in SvtEnv
+
+  (various unrecorded old stuff)
+  Dec 2, 1996 - Bob J  Added AbsParmFilename
+

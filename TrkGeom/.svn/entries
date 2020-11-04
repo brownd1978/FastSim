@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="170"
+   name=""
+   committed-date="2011-03-08T16:12:23.259482Z"
+   url="https://sbrepo.pd.infn.it:8910/Trk/TrkGeom/tags/V00-01-02"
+   last-author="stroili"
+   kind="dir"
+   uuid="d2f80444-6bfe-4292-bdcb-35731a61be00"
+   revision="172"/>
+<entry
+   committed-rev="105"
+   name="History"
+   text-time="2011-04-27T19:13:17.000000Z"
+   committed-date="2010-01-15T12:14:11.935014Z"
+   checksum="7fb37f339eb9b642017761b24dab652a"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:13:16.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   committed-rev="34"
+   name="TrkSvtSLayout.dat"
+   text-time="2011-04-27T19:13:17.000000Z"
+   committed-date="2009-03-20T10:04:27.741304Z"
+   checksum="65c41204f42ddbf8281b3d4a858f8931"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:13:17.000000Z"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="105"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:13:17.000000Z"
+   committed-date="2010-01-15T12:14:11.935014Z"
+   checksum="af672845faf39dbf445cb90efc19e759"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:13:17.000000Z"/>
+<entry
+   committed-rev="34"
+   name="TrkBPLayout.dat"
+   text-time="2011-04-27T19:13:17.000000Z"
+   committed-date="2009-03-20T10:04:27.741304Z"
+   checksum="f28d1ac64b7eab0f10c963f2f9ce5351"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:13:17.000000Z"/>
+<entry
+   committed-rev="34"
+   name="TrkSTLayout.dat"
+   text-time="2011-04-27T19:13:17.000000Z"
+   committed-date="2009-03-20T10:04:27.741304Z"
+   checksum="09dd270decf6b7ec598c7cea26770284"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:13:17.000000Z"/>
+<entry
+   committed-rev="159"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T19:13:17.000000Z"
+   committed-date="2010-10-18T12:17:51.216864Z"
+   checksum="51875b8490bbaf065abc7e1fb1b567f1"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T19:13:17.000000Z"/>
+<entry
+   committed-rev="34"
+   name="README"
+   text-time="2011-04-27T19:13:17.000000Z"
+   committed-date="2009-03-20T10:04:27.741304Z"
+   checksum="8e5f9762b88d310f36c30d4f12532917"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:13:17.000000Z"/>
+</wc-entries>

@@ -1,0 +1,65 @@
+#   History file for MemUtil package
+#   $Id$
+#
+
+$Log: History,v $
+2010/01/15 stroili
+- split code in src and include directories
+
+Revision 1.2  2006/02/07 17:22:25  salnikov
+- renamed few methods in the classes to avoid possible clash with the
+  names used in the ref-counted classes
+- make the pointers (somewhat) polymorphic, added conversions and casts.
+
+
+Revision 1.1  2002/05/30 00:48:31  salnikov
+- adding MemUtil files to BaBar CVS
+
+
+
+=== the history for SmrPtr package in SND ===
+
+2001-12-27 Dmitry A. Bukin
+ - V000-006
+
+Jun 13, 2001 - Andy
+  - class SmrRCPtr<T> reimplmented using SmrRCIPtr<T> 
+
+Jun 13, 2001 - Andy
+  - added class SmrRCIPtr<T> for intrusive ref-counting
+
+May 21, 2001 - Andy
+  - inline many methods in smart pointer classes
+
+May 09, 2001 - Andy
+  - initial import to cvs
+
+
+=== the history for MemUtil package in SND ====
+
+2001-12-27 Dmitry A. Bukin
+ - V000-005
+
+Jun 25, 2001 - Andy
+  - get MemUnsafePool compile
+
+Jun 23, 2001 - Andy
+  - Add MemUnsafePool, pool which does not care about the size of 
+    the request. Callers must ensure the same size of request.
+  - MemAllocator and MemClassAllocator reimplemented using 
+    MemUnsafePool
+
+May 27, 2001 - Andy
+  - further attempts to optimize things
+
+May 26, 2001 - Andy
+  - simplify structure and code, remove statistics
+  - testAllocSpeed
+
+May 25, 2001 - Andy
+  - add new class MemClassAllocator
+  - some dirty tricks in the MemAllocator to avoid undefined behaviour
+    in static initializers/finalizers
+
+May 24, 2001 - Andy
+  - initial import to cvs

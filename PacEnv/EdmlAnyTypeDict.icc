@@ -1,0 +1,156 @@
+// File and Version Information:
+//      $Id: EdmlAnyTypeDict.cc,v 1.2 2007/10/04 00:55:08 gapon Exp $
+
+#include "BaBar/BaBar.hh"
+
+#include "PacEnv/EdmlAnyTypeDict.hh"
+#include "PacEnv/EdmlType2Id.hh"
+
+#include <map>
+#include <vector>
+#include <iostream>
+#include <cstdlib>
+using std::cerr;
+using std::endl;
+
+#include <assert.h>
+
+template <typename T>
+EdmlAnyTypeDictImpl::Holder<T>::Holder( T* thePtr ) :
+    HolderBase( EdmlType2Id<T>::id( )),
+    ptr(thePtr)
+{ }
+
+template <typename T>
+EdmlAnyTypeDictImpl::Holder<T>&
+EdmlAnyTypeDictImpl::Holder<T>::operator=( const EdmlAnyTypeDictImpl::Holder<T>& other ) {
+    if( this != &other ) {
+	HolderBase::operator=( other );
+	delete ptr;
+	ptr = new T( *other.ptr );
+    }
+    return *this;
+}
+
+template <class K>
+EdmlAnyTypeDict<K>::EdmlAnyTypeDict( const EdmlAnyTypeDict<K>& other )
+{
+    for( typename HolderBaseMap::const_iterator itr = other._data.begin( );
+       itr != other._data.end( ); ++itr ) _data[itr->first] = itr->second->clone( );
+}
+
+template <class K>
+EdmlAnyTypeDict<K>::~EdmlAnyTypeDict( )
+{
+    clear();
+}
+
+template <class K>
+EdmlAnyTypeDict<K>&
+EdmlAnyTypeDict<K>::operator=( const EdmlAnyTypeDict<K>& other )
+{
+    if( this != &other ) {
+	clear();
+	for( typename HolderBaseMap::const_iterator itr = other._data.begin( );
+	    itr != other._data.end( ); ++itr ) _data[itr->first] = itr->second->clone( );
+    }
+    return *this;
+}
+
+template <class K>
+void
+EdmlAnyTypeDict<K>::clear( )
+{
+    for( typename HolderBaseMap::iterator itr = _data.begin( );
+	itr != _data.end( ); ++itr )
+	delete itr->second;
+    _data.clear( );
+}
+
+template <class K>
+bool
+EdmlAnyTypeDict<K>::exists( const K& theKey ) const
+{
+    typename HolderBaseMap::const_iterator itr = _data.find( theKey );
+    return itr != _data.end( );
+}
+
+template <class K>
+template <typename V>
+bool
+EdmlAnyTypeDict<K>::insert( const K& theKey,
+                            const V& theValue )
+{
+    if( exists( theKey )) return false;
+    _data[theKey] = new EdmlAnyTypeDictImpl::Holder<V>( new V( theValue ));
+    return true;
+}
+
+template <class K>
+template <typename V>
+bool
+EdmlAnyTypeDict<K>::replace( const K&   theKey,
+                             const V&   theValue,
+                             const bool forceCreateFlag)
+{
+    typename HolderBaseMap::const_iterator itr = _data.find( theKey );
+    if( itr !=  _data.end( )) {
+	if( itr->second->typeId != EdmlType2Id<V>::id( )) return false;
+	delete itr->second;
+    } else {
+	if( !forceCreateFlag ) return false;
+    }
+    _data[theKey] = new EdmlAnyTypeDictImpl::Holder<V>( new V( theValue ));
+    return true;
+}
+
+template <class K>
+template <typename V>
+bool
+EdmlAnyTypeDict<K>::find( const K& theKey,
+                          V&       theValue ) const
+{
+    typename HolderBaseMap::const_iterator itr = _data.find( theKey );
+    if( itr == _data.end( )) return false;
+
+    const EdmlAnyTypeDictImpl::HolderBase* holderBasePtr = itr->second;
+    if( holderBasePtr->typeId != EdmlType2Id<V>::id( )) return false;
+
+    const EdmlAnyTypeDictImpl::Holder<V>* holderPtr = dynamic_cast<const EdmlAnyTypeDictImpl::Holder<V>*>( holderBasePtr );
+    theValue = V( *holderPtr->ptr );
+
+    return true;
+}
+
+template <class K>
+template <typename V>
+V
+EdmlAnyTypeDict<K>::get( const K& theKey ) const
+{
+    V value;
+    if( !this->find( theKey, value )) {
+	cerr << "EdmlAnyTypeDict<K>::get<V>(): ** FATAL ** couldn't find a value of type 'V'"
+	     << " for key: '" << theKey << "'. Make sure (1) the key exists in the dictionary,"
+	     << " and (2) the corresponding value is of type 'V'." << endl;
+	std::abort( );
+    }
+    return value;
+}
+
+template <class K>
+std::string
+EdmlAnyTypeDict<K>::val2str( const K& theKey ) const
+{
+    typename HolderBaseMap::const_iterator itr = _data.find( theKey );
+    if( itr == _data.end( )) return std::string( );
+    return itr->second->toString( );
+}
+
+template< class K >
+void
+EdmlAnyTypeDict<K>::keys( std::vector<K>& theVectorOfKeys ) const
+{
+  theVectorOfKeys.resize( 0 );
+  for( typename HolderBaseMap::const_iterator itr = _data.begin( );
+       itr != _data.end( ); ++itr ) theVectorOfKeys.push_back( itr->first );
+}

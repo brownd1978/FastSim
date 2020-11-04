@@ -1,0 +1,21 @@
+#ifndef PacDispCluster_HH
+#define PacDispCluster_HH
+
+#include <stdio.h>
+#include <Rtypes.h>
+#define STRINGSIZE 100
+
+struct PacDispCluster {
+  virtual ~PacDispCluster() {;}
+  Double_t x,y,z,energy;
+  Int_t ith, iph;
+  Double_t rlocal,theta,phi,dtheta,dphi;
+  PacDispCluster():x(0.0),y(0.0),z(0.0),energy(0.0),ith(0),iph(0),rlocal(0.0),theta(0.0),phi(0.0),dtheta(0.0),dphi(0.0){}
+  static const char* rootnames() {
+    return "x/D:y/D:z/D:e/D:ith/I:iph/I:rlocal/D:theta/D:phi/D:dtheta/D:dphi/D";
+  }
+  ClassDef(PacDispCluster,1)
+};
+
+#endif
+

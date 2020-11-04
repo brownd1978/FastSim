@@ -1,0 +1,165 @@
+// -*- C++ -*-
+// $Id: AListBase.cc 192 2009-03-04 12:20:53Z stroili $
+//
+// This file is a part of what might become the CLHEP -
+// a Class Library for High Energy Physics.
+// 
+// This is the implementation of the HepAListBase class.
+//
+
+#ifdef GNUPRAGMA
+#pragma implementation
+#endif
+
+#include "CLHEP/config/CLHEP.h"
+#include "CLHEP/Alist/AListBase.h"
+#include <assert.h>
+
+#ifdef HEP_DEBUG_INLINE
+#include "CLHEP/Alist/AListBase.icc"
+#endif
+
+void HepAListBase::allocate(int newsize)
+{
+  // allocate only if new size is different and more then num of elements
+  if( newsize==s || newsize<n ) return;
+
+  if( newsize>0 ) {
+    if( p!=0 ) {
+      p = (void **) ::realloc(p,newsize*sizeof(void*));
+    } else {
+      // is it necessary? ( realloc(NULL) equiv malloc, see man)
+      p = (void **) ::malloc(newsize*sizeof(void*)); 
+    }
+    s = newsize;
+  } else {
+    // allocate(0) _must_ free the pointer -- this behaviour is used in destructor
+    // newsize<0 is  an obvious misuse; since newsize==0 => s!=0 (first if) => p!=0 
+    assert(newsize==0 && p!=0); 
+    ::free(p);
+    p = 0;
+    s = 0;
+  }
+}
+
+void HepAListBase::copyArray( void ** dst,  void **  src,
+			  int arraySize) {
+  while ( --arraySize >= 0 ) *(dst++) = *(src++);
+}
+
+void * & HepAListBase::newInsert( int ir) {
+  n++; checksize();
+   int i;
+  for ( i = n-1; i > ir; i-- )
+    p[i] = p[i-1];
+  return i >= 0 ? p[i] : p[0];
+}
+
+void * & HepAListBase::newAppend( int ir) {
+  n++; checksize();
+   int i;
+  for ( i = n-1; i > ir; i-- )
+    p[i] = p[i-1];
+  return p[i];
+}
+
+void HepAListBase::removeEntry(int ir) {
+  for (  int i = ir+1; i < int(n); i++ ) p[i-1] = p[i];
+  n--;
+  checksize();
+}
+
+void HepAListBase::append(void * e, void * r) {
+  if ( e ) {
+    int ir = index(r);
+    newAppend( ir >= 0 ? ir+1 : n ) = e;
+  }
+}
+
+void HepAListBase::append(const HepAListBase & l) {
+  int ln = l.n;
+  n += ln;
+  checksize();
+  copyArray(p+n-ln, l.p, ln);
+}
+
+void HepAListBase::operator = (const HepAListBase & l) {
+  if ( this != &l ) {
+    n = l.n;
+    realloc();            // exact allocation here
+    copyArray(p, l.p, n);
+  }
+}
+
+HepAListBase::HepAListBase(const HepAListBase & l)
+  : p(0),n(l.n),s(0)
+{
+  if ( n > 0 ) {
+    realloc();            // exact allocation here
+    copyArray(p, l.p, n);
+  } else {
+    assert(n==0); // n<0 is  an obvious misuse
+  }
+}
+
+int HepAListBase::fIndex(const void * e) const {
+   int i = -1;
+  while ( ++i < int(n) ) if ( p[i] == e ) return i;
+  return -1;
+}
+
+int HepAListBase::index(const void * e) const {
+   int i = n;
+  while ( --i >= 0 && p[i] != e );
+  return i;
+}
+
+void HepAListBase::purge() {
+  int ie;
+  for ( int i = 0; i < int(n); i++ ) {
+    while ( (ie = index(p[i])) != i ) removeEntry(ie);      
+  }
+}
+
+void HepAListBase::remove(const HepAListBase & l) {
+   int i = l.n;
+  while ( --i >= 0 ) remove(l.p[i]);
+}
+
+void HepAListBase::remove(const void * e) {
+  if ( e && n ) {
+    int ir;
+    while ( ( ir = index(e) ) >= 0 ) removeEntry(ir);
+  }
+}
+
+void HepAListBase::replace( void * eo,  void * en) {
+   int i = n;
+   void ** q =p;
+  while ( --i >= 0 ) {
+    if ( *q == eo ) *q = en;
+    q++;
+  }
+}
+
+void HepAListBase::reverse() {
+
+   int i = n / 2;
+   void ** pf = p;
+   void ** pl = p+n-1;
+   void * t;
+
+  while ( i-- > 0 ) {
+    t = *pf;
+    *(pf++) = *pl;
+    *(pl--) = t;
+  }
+}
+
+void HepAListBase::swap(unsigned i1, unsigned i2) {
+  if ( i1 >= n || i2 >= n || i1 == i2) return;
+  void * e = p[i1];
+  p[i1]=p[i2];
+  p[i2] = e;
+}
+

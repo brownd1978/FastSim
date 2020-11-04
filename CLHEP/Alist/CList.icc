@@ -1,0 +1,227 @@
+// -*- C++ -*-
+// $Id: CList.icc,v 1.16 2005/11/24 00:56:39 dwright Exp $
+//
+// This file is a part of what might become the CLHEP -
+// a Class Library for High Energy Physics.
+// 
+// This is the definitions of the inline member functions of the
+// HepCList class
+//
+
+template <class T>
+inline HepCList<T>::HepCList() {}
+
+template <class T>
+inline HepCList<T>::~HepCList() {
+  removeAll();
+}
+
+template <class T>
+inline HepCList<T>::HepCList(const HepCList<T> & l) {
+  append(l);
+}
+
+template <class T>
+inline HepCList<T>::HepCList(const HepAList<T> & l) {
+  append(l);
+}
+
+template <class T>
+inline HepCList<T>::HepCList(const HepConstAList<T> & l) {
+  append(l);
+}
+
+template <class T>
+inline void HepCList<T>::insert(const T & e) {
+  HepAListBase::insert(new T(e));
+}
+
+template <class T>
+inline void HepCList<T>::insert(const T & e, const T & r) {
+  HepAListBase::insert(new T(e), fIndex(r));
+}
+
+template <class T>
+inline void HepCList<T>::insert(const T & e, unsigned pos) {
+  HepAListBase::insert(new T(e), pos);
+}
+
+template <class T>
+inline void HepCList<T>::append(const T & e) {
+  HepAListBase::append(new T(e));
+}
+
+template <class T>
+inline void HepCList<T>::operator += (const T & e) {
+  HepAListBase::append(new T(e));
+}
+
+template <class T>
+inline void HepCList<T>::append(const T & e, const T & r) {
+  HepAListBase::insert(new T(e), index(r)+1);
+}
+
+template <class T>
+inline void HepCList<T>::append(const HepCList<T> & l) {
+  unsigned oldn = n;
+  unsigned ln = l.length();
+  n += ln;
+  realloc();
+  for ( unsigned i = 0; i < ln; i++) p[oldn+i] = new T(*(l[i]));
+}
+
+template <class T>
+inline void HepCList<T>::append(const HepAList<T> & l) {
+  unsigned oldn = n;
+  unsigned ln = l.length();
+  n += ln;
+  realloc();
+  for ( unsigned i = 0; i < ln; i++) p[oldn+i] = new T(*(l[i]));
+}
+
+template <class T>
+inline void HepCList<T>::append(const HepConstAList<T> & l) {
+  unsigned oldn = n;
+  unsigned ln = l.length();
+  n += ln;
+  realloc();
+  for ( unsigned i = 0; i < ln; i++) p[oldn+i] = new T(*(l[i]));
+}
+
+template <class T>
+inline void HepCList<T>::operator += (const HepCList<T> & l) {
+  append(l);
+}
+
+template <class T>
+inline void HepCList<T>::operator += (const HepAList<T> & l) {
+  append(l);
+}
+
+template <class T>
+inline void HepCList<T>::operator += (const HepConstAList<T> & l) {
+  append(l);
+}
+
+template <class T>
+inline void HepCList<T>::remove(const T & e) {
+  register int i;
+  while ( (i = index(e)) >= 0 ) remove(i);
+}
+
+template <class T>
+inline void HepCList<T>::remove(unsigned i) {
+  T * e = Nth(i);
+  HepAListBase::remove(i);
+  delete e;
+}
+
+template <class T>
+inline void HepCList<T>::remove(const HepCList<T> & l) {
+  register int i = l.n;
+  while ( --i >= 0 ) remove(*(l[i]));
+}
+
+template <class T>
+inline void HepCList<T>::remove(const HepAList<T> & l) {
+  register int i = l.length();
+  while ( --i >= 0 ) remove(*(l[i]));
+}
+
+template <class T>
+inline void HepCList<T>::remove(const HepConstAList<T> & l) {
+  register int i = l.length();
+  while ( --i >= 0 ) remove(*(l[i]));
+}
+
+template <class T>
+inline bool HepCList<T>::member(const T & e) const {
+  return bool(index(e) >= 0);
+}
+
+template <class T>
+inline bool HepCList<T>::hasMember(const T & e) const {
+  return bool(index(e) >= 0);
+}
+
+template <class T>
+inline void HepCList<T>::replace(const T & eo, const T & en) {
+  if ( eo != en ) {
+    int i;
+    while ( (i = index(eo)) >= 0 ) {
+      delete (T *) p[i];
+      p[i] = new T(en);
+    }
+  }
+}
+
+template <class T>
+inline T * HepCList<T>::operator[] (unsigned i) const {
+  return Nth(i);
+}
+
+template <class T>
+inline int HepCList<T>::index(const T & e) const {
+  register unsigned i = n;
+  while ( i-- ) if ( *(Nth(i)) == e ) return i;
+  return -1;
+}
+
+template <class T>
+inline int HepCList<T>::fIndex(const T & e) const {
+  register int i = -1;
+  while ( ++i < int(n) ) if ( *(Nth(i)) == e ) return i;
+  return -1;
+}
+
+template <class T>
+inline T * HepCList<T>::first() const {
+  return (T *) HepAListBase::first();
+}
+
+template <class T>
+inline T * HepCList<T>::last() const {
+  return (T *) HepAListBase::last();
+}
+
+template <class T>
+inline void HepCList<T>::operator = (const HepCList<T> & l) {
+  removeAll();
+  append(l);
+}
+
+template <class T>
+inline void HepCList<T>::operator = (const HepAList<T> & l) {
+  removeAll();
+  append(l);
+}
+
+template <class T>
+inline void HepCList<T>::operator = (const HepConstAList<T> & l) {
+  removeAll();
+  append(l);
+}
+
+template <class T>
+inline void HepCList<T>::removeAll() {
+  T * e;
+  while ( n ) {
+    e = (T *) p[--n];
+    delete e;
+  }
+}
+
+template <class T>
+inline T * HepCList<T>::Nth(unsigned i) const {
+  if ( i < n ) return (T *) p[i];
+  else return 0;
+}
+
+template <class T>
+inline void HepCList<T>::purge() {
+  int ie;
+  for ( int i = 0; i < int(n); i++ ) {
+    while ( (ie = index(*(Nth(i)))) != i ) HepCList<T>::remove((unsigned)ie);      
+  }
+}
+

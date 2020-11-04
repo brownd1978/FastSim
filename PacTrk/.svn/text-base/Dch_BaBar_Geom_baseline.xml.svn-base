@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+  <included>
+    <define>
+    	<constant name="wirezmin" value="-101.5"></constant>
+    	<constant name="wirezmax" value="174.9"></constant>
+    	</define>
+
+    <detector>
+	<volume name="Drift_Tracking">
+
+	    <cyl name="SupportTube" id="100" zmin="wirezmin" zmax="wirezmax" radius="21.30" thick="0.218" mat="dch-CFiber" />
+	    <cyl name="DchInnerCyl" id="101" zmin="wirezmin" zmax="wirezmax" radius="23.60" thick="0.1000" mat="dch-Beryllium" />
+	
+	    <cyl name="dch-Wires" id="151" zmin="wirezmin" zmax="wirezmax" radius="26.05" thick="0.0120" mat="dch-Wires" gap="0.985" />
+	    <cyl name="dch-He-Ibu" id="152" zmin="wirezmin" zmax="wirezmax" radius="26.06" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="153" zmin="wirezmin" zmax="wirezmax" radius="27.24" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="154" zmin="wirezmin" zmax="wirezmax" radius="27.25" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx"/>
+	    <cyl name="dch-Wires" id="155" zmin="wirezmin" zmax="wirezmax" radius="28.43" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="156" zmin="wirezmin" zmax="wirezmax" radius="28.44" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="157" zmin="wirezmin" zmax="wirezmax" radius="29.62" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="158" zmin="wirezmin" zmax="wirezmax" radius="29.63" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="159" zmin="wirezmin" zmax="wirezmax" radius="31.25" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="160" zmin="wirezmin" zmax="wirezmax" radius="31.26" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="161" zmin="wirezmin" zmax="wirezmax" radius="32.44" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="162" zmin="wirezmin" zmax="wirezmax" radius="32.45" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="163" zmin="wirezmin" zmax="wirezmax" radius="33.63" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="164" zmin="wirezmin" zmax="wirezmax" radius="33.64" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="165" zmin="wirezmin" zmax="wirezmax" radius="34.82" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="166" zmin="wirezmin" zmax="wirezmax" radius="34.83" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="167" zmin="wirezmin" zmax="wirezmax" radius="36.35" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="168" zmin="wirezmin" zmax="wirezmax" radius="36.36" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+	    <cyl name="dch-Wires" id="169" zmin="wirezmin" zmax="wirezmax" radius="37.54" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="170" zmin="wirezmin" zmax="wirezmax" radius="37.55" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+	    <cyl name="dch-Wires" id="171" zmin="wirezmin" zmax="wirezmax" radius="38.73" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="172" zmin="wirezmin" zmax="wirezmax" radius="38.74" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+	    <cyl name="dch-Wires" id="173" zmin="wirezmin" zmax="wirezmax" radius="39.92" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="174" zmin="wirezmin" zmax="wirezmax" radius="39.93" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+	    <cyl name="dch-Wires" id="175" zmin="wirezmin" zmax="wirezmax" radius="42.28" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="176" zmin="wirezmin" zmax="wirezmax" radius="42.29" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="177" zmin="wirezmin" zmax="wirezmax" radius="43.47" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="178" zmin="wirezmin" zmax="wirezmax" radius="43.48" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="179" zmin="wirezmin" zmax="wirezmax" radius="44.66" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="180" zmin="wirezmin" zmax="wirezmax" radius="44.67" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="181" zmin="wirezmin" zmax="wirezmax" radius="45.85" thick="0.0120" mat="dch-Wires" gap="0.988" />
+	    <cyl name="dch-He-Ibu" id="182" zmin="wirezmin" zmax="wirezmax" radius="45.86" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="183" zmin="wirezmin" zmax="wirezmax" radius="47.67" thick="0.0120" mat="dch-Wires" gap="0.985" />
+	    <cyl name="dch-He-Ibu" id="184" zmin="wirezmin" zmax="wirezmax" radius="47.68" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="185" zmin="wirezmin" zmax="wirezmax" radius="48.86" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="186" zmin="wirezmin" zmax="wirezmax" radius="48.87" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="187" zmin="wirezmin" zmax="wirezmax" radius="50.05" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="188" zmin="wirezmin" zmax="wirezmax" radius="50.06" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="189" zmin="wirezmin" zmax="wirezmax" radius="51.24" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="190" zmin="wirezmin" zmax="wirezmax" radius="51.25" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="191" zmin="wirezmin" zmax="wirezmax" radius="52.62" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="192" zmin="wirezmin" zmax="wirezmax" radius="52.63" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+	    <cyl name="dch-Wires" id="193" zmin="wirezmin" zmax="wirezmax" radius="53.81" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="194" zmin="wirezmin" zmax="wirezmax" radius="53.82" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+          <cyl name="dch-Wires" id="195" zmin="wirezmin" zmax="wirezmax" radius="55.00" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="196" zmin="wirezmin" zmax="wirezmax" radius="55.01" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+	    <cyl name="dch-Wires" id="197" zmin="wirezmin" zmax="wirezmax" radius="56.19" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="198" zmin="wirezmin" zmax="wirezmax" radius="56.20" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+	    <cyl name="dch-Wires" id="199" zmin="wirezmin" zmax="wirezmax" radius="58.55" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="200" zmin="wirezmin" zmax="wirezmax" radius="58.56" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="201" zmin="wirezmin" zmax="wirezmax" radius="59.74" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="202" zmin="wirezmin" zmax="wirezmax" radius="59.75" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="203" zmin="wirezmin" zmax="wirezmax" radius="60.93" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="204" zmin="wirezmin" zmax="wirezmax" radius="60.94" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="205" zmin="wirezmin" zmax="wirezmax" radius="62.12" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="206" zmin="wirezmin" zmax="wirezmax" radius="62.13" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="207" zmin="wirezmin" zmax="wirezmax" radius="63.68" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="208" zmin="wirezmin" zmax="wirezmax" radius="63.69" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="209" zmin="wirezmin" zmax="wirezmax" radius="64.87" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="210" zmin="wirezmin" zmax="wirezmax" radius="64.88" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="211" zmin="wirezmin" zmax="wirezmax" radius="66.06" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="212" zmin="wirezmin" zmax="wirezmax" radius="66.07" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="213" zmin="wirezmin" zmax="wirezmax" radius="67.25" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="214" zmin="wirezmin" zmax="wirezmax" radius="67.26" thick="1.4300" mat="dch-He-Ibu" meas="Stereo+,DchdEdx" />
+	    <cyl name="dch-Wires" id="215" zmin="wirezmin" zmax="wirezmax" radius="68.81" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="216" zmin="wirezmin" zmax="wirezmax" radius="68.82" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+	    <cyl name="dch-Wires" id="217" zmin="wirezmin" zmax="wirezmax" radius="70.00" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="218" zmin="wirezmin" zmax="wirezmax" radius="70.01" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+	    <cyl name="dch-Wires" id="219" zmin="wirezmin" zmax="wirezmax" radius="71.19" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="220" zmin="wirezmin" zmax="wirezmax" radius="71.20" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+	    <cyl name="dch-Wires" id="221" zmin="wirezmin" zmax="wirezmax" radius="72.38" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="222" zmin="wirezmin" zmax="wirezmax" radius="72.39" thick="1.4300" mat="dch-He-Ibu" meas="Stereo-,DchdEdx" />
+	    <cyl name="dch-Wires" id="223" zmin="wirezmin" zmax="wirezmax" radius="74.73" thick="0.0120" mat="dch-Wires" gap="0.986" />
+	    <cyl name="dch-He-Ibu" id="224" zmin="wirezmin" zmax="wirezmax" radius="74.74" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="225" zmin="wirezmin" zmax="wirezmax" radius="75.92" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="226" zmin="wirezmin" zmax="wirezmax" radius="75.93" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="227" zmin="wirezmin" zmax="wirezmax" radius="77.11" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="228" zmin="wirezmin" zmax="wirezmax" radius="77.12" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    <cyl name="dch-Wires" id="229" zmin="wirezmin" zmax="wirezmax" radius="78.30" thick="0.0120" mat="dch-Wires" gap="0.987" />
+	    <cyl name="dch-He-Ibu" id="230" zmin="wirezmin" zmax="wirezmax" radius="78.31" thick="1.4300" mat="dch-He-Ibu" meas="Axial,DchdEdx" />
+	    
+	    <cyl name="DchOuterCyl" id="200" zmin="wirezmin" zmax="wirezmax" radius="80.00" thick="0.1600" mat="dch-CFiber" />
+	    <cyl name="DchOuterCyl" id="201" zmin="wirezmin" zmax="wirezmax" radius="80.9" thick="0.0125" mat="dch-Aluminum" />
+	    <ring name="DchEndplate" id="211" z="wirezmin" lowradius="23.6" hiradius="80.9" thick="2.40" mat="dch-Aluminum" />
+	    <ring name="DchEndplate" id="212" z="wirezmax" lowradius="23.6" hiradius="46.9" thick="2.40" mat="dch-Aluminum" />
+	    <ring name="DchEndplate" id="213" z="wirezmax" lowradius="46.9" hiradius="80.9" thick="1.20" mat="dch-Aluminum" />
+	    <ring name="DchElectronics" id="214" z="-102.5" lowradius="23.6" hiradius="80.9" thick="0.20" mat="dch-Aluminum" />
+	    <ring name="DchElectronics" id="215" z="-131.5" lowradius="23.6" hiradius="80.9" thick="0.20" mat="dch-Aluminum" />
+        </volume>
+    </detector>
+   <!-- voxel parameter config section must have the same section name as the volume -->
+   <config>
+       <sect name="Drift_Tracking">
+           <param name="rbounds"    type="vector"        >
+                    21 23 25 27 28 29 31 32 33 34 
+		    36 37 38 39 42 43 44 45 46 47
+		    48 50 51 52 53 54 56 58 59 60
+		    62 63 64 66 67 68 69 71 72 74
+		    75 77 78 79 80.5 81 </param>
+                <!-- no phi segmentation needed, as all elements are perfectly cylindrical -->
+                <param name="nphivoxels"    type="vector"         >
+                    1 1 1 1 1 1 1 1 1 1
+                    1 1 1 1 1 1 1 1 1 1
+                    1 1 1 1 1 1 1 1 1 1
+                    1 1 1 1 1 1 1 1 1 1
+                    1 1 1 1 1 </param>
+           <param name="zbounds"   type="vector"         > -132 -103 -102 -101 174 175   </param>            
+       </sect>
+   </config>
+  </included>
+</edml>

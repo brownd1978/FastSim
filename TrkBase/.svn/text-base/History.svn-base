@@ -1,0 +1,646 @@
+$Id: History,v 1.111 2007/09/24 21:56:26 gapon Exp $
+
+15/01/10 - R. Stroili
+	split code in src and include directories
+
+24/09/07 - I. Gaponenko (V02-10-14)
+	CLHEP migration: replaced forward declarations for CLHEP classes with
+	direct includes of the corresponding header files. The modification
+	is backward compatible with the old version of CLHEP.
+	Also made a trivial fix in file TrkHelixUtils.cc to avoid an ambiguity
+	between a locally declared variable 'pi' and the one 'Constants::pi'
+	which comes from the CLHEP library. The new version of the library brings
+	its 'pi' into the global namespace with 'using' statement which results
+	in a conflict with the locally declared copy of 'pi'. The modification
+        is backward compatible with the old version of CLHEP.
+
+17/05/07 - M. Kelsey
+	TrkPocaVertex.cc, TrkPrimaryVertex.cc:  Both of these files are
+	  missing the required BaBar.hh as first-include.
+
+[ Nothing documented since 2005 ]
+ 
+12/06/05 - M. Kelsey (V02-12-04)
+
+11/27/05 - M. Kelsey
+	Make TrkHitOnTrkIter typedef's public instead of private (MacOSX).
+ 
+09/10/04 - R. Bartoldus (V02-07-01)
+	Insert a missing #include <math.h>.
+	Remove "rscid" statics.
+
+10/30/03 - S. Gowdy
+	Added dummy vector in TrkHotListDataTest.cc so that it compiles.
+	Probably doesn't work though and someone who knows what they are
+	doing should probably fix it (TrkHotListEmpty now has this as
+	part of the constructor).
+
+09/10/03 - M. Kelsey (grazie G. Raven)
+	TrkFundHit:  Change setUsedHit and related functions to take const
+	  HOT argument.  Requires recompilation of all packages which use
+	  TrkFundHit directly:
+
+	DchData		DchReco		JetNet		SvtData
+	SvtReco		TrkDataP	TrkDchHitAdd	TrkHitAdd
+	TrkKinkTests
+
+06/24/02 - E. Charles:
+        TrkExpectedHotSet.cc: protect against null point in test which track to  	  match.
+ 
+06/24/02 - E. Charles:
+        TrkExpectedHotSet.cc: get rid of improperly stl-migrated vector 
+          initialization.  Was being initiliazed with 5 junk hits.  
+
+06/10/02 - E. Charles
+	TrkExpectedHot:  Added ability to make expected hots from gHits.  This
+	  required added functions to determine type of expected hot so that
+	  type of gHit would be known.  Also added pointer to parent expected
+          track for convience.
+ 	TrkExpectedHotSet:  Added ability to determine if HotSet is Svt or Dch
+	  as above.
+	TrkExpectedHotFactory:  Added map filling methods bases on GHit.  Also
+	  added a map to determine if a particular hit is used during the
+	  pat-rec algorithm.  
+	TrkExpectedMap:  Added maps for GHit and GTracks.
+	TrkExpectedTrk:  Added ptr to associated gTrack.
+ 	TrkSimpTraj:  Moved location of declaration of _theOrigin to top of
+	  file so that it gets seen by the compiler before it gets used.  This
+	  is esp. needed for CINT.  
+ 
+05/22/02 - M. Kelsey (V02-00-10)
+	TrkRep.cc:  Modify base version of resid(...,exclude) to eliminate
+	  the assertion.  Instead, utilize the boolean return value to
+	  flag whether the residual and error exist and are trustworthy.
+	  Allows calling of HOT::resid() function from mini-cache tracks,
+	  without crashing executable.
+
+05/13/02 - M. Kelsey (V02-00-09)
+	TrkHitList:  Change "cerr" to "ErrMsg(warning)" so that we can see
+	  which modules are responsible for using the old list accessors.
+	  Add private "quietRWList" accessor without the warning messages,
+	  so that TrkHitListIterImpl and TrkHitList::end() don't generate
+	  the error messages themselves.
+
+05/02/02 - M. Kelsey (V02-00-08)
+	Remove size argument from TrkFitStatus::_history ctor.
+
+04/17/02 - M. Kelsey
+	Add print, printAll, and operator<< functions to TrkExchangePar.
+	Fix date stamps below (Roberto's last one was ambiguous, and we all
+	chose the wrong "01" to be the year :-)
+
+12/25/01 - M. Kelsey
+	Fix TrkFitStatus::printHistory() to terminate lines with endl, not
+	with endmsg.
+
+10/29/01 - M. Kelsey
+	Add TrkErrCode::setMessage() to allow changing string without
+	changing status code or success/failure.
+
+08/14/01 - W. Ford
+	Remove null definition of mutable for XLC compiler.
+ 
+01/06/01 - R. Stroili
+	remove function TrkHitOnTrk::dchHit()
+
+10/05/00 - S. Wagner
+        Move HelixTraj, NeutParams, NeutTraj, TrkCompTrk, TrkHelixUtils, 
+        TrkMomCalculator, TrkMomVisitor from TrkFitter. Remove default
+        (=0) BField option in TrkCompTrk c-tor, so no depend on TrkEnv, AbsEnv.
+06/16/00 -- M. Kelsey (V01-02-04)
+	Add new TrkFundHit::printAll() function which prints hit info
+	plus list of all HOTs which use this hit.  Useful for debugging
+	TrkHitAdd stuff.  SvtHit doesn't have a print() function yet.
+
+NO COMMENTS FOR ANY CHANGES BETWEEN APRIL AND JUNE!  ARGH!
+
+04/20/00 -- M. Kelsey (MHK-V00-01-03-01)
+	Remove terminating endl in TrkErrCode::print() (.cc ONLY!)
+
+04/17/00 -- G. Raven
+       o Make TrkDifPoca & TrkPoca more "identical"
+       o Change interface of TrkHitList::appenList to accept a RW vector
+         instead of a HepAList
+       o Change interface of TrkHitOnTrk: make it const correct -- the only
+         member to change state is 'updateMeasurement'. (cached) Fit information
+         (chi, derivatives) are retrieved using 'getFitStuff'.
+       o Add method to TrkHitOnTrk to access unbiased residuals (i.e. residuals
+         which are computed without the hit under question part of the track)
+       o Add 'updatePoca' method to allow more code sharing between DCH & SVT
+         HitOnTrack implementation
+       o Add methods in TrkHitOnTrk which basically allow a dynamic cast to 
+         DCH & SVT HitOnTrack to avoid code that blindly casts.
+       o Add access control to TrkHitOnTrk::updateMeasurements: anyone who wants
+         to call this needs to inherit from TrkHitOnTrkUpdater
+       o Check for valid pointer to TrkRep in TrkRecoTrk::hits before dereferencing it
+       o Minor speedup in TrkRep::positionErr
+       o Add a virtual 'resid' function to TrkRep which allows access to unbiased
+         residuals (which is used by TrkHitOnTrk)
+       o Add operator== to TrkSimpTraj to allow caching in TrkHitOnTrk
+
+03/13/00 -- J. Albert (jea-03-13-00a)
+       Removed dynamic allocation of _dtparams in TrkSimpTraj.
+
+01/30/00 -- E. Charles (eac013100)
+       Added TrkExpectedMap classes and support. 
+
+01/05/00 -- J. Albert (jea-01-05-00)
+       Equivalent POCA changes in TrkDifPoca to the ones in TrkPoca
+
+12/28/99 -- M. Kelsey (MHK-991228)
+	Add TrkDirection.cc with operator<< to print direction names.
+
+11/30/99 -- J. Albert (jea-11-29-99, jea-11-29-99nixErrMsg)
+       Bug fix to the fix below.  Also limit the kink "overhangs" to
+       1/1000 the precision rather than 1/10.
+
+11/29/99 -- J. Albert (jea-11-29-99)
+       Attempt to fix some of the POCA errors we get:
+
+       traj-to-point POCA: make sure second derivative is positive -- if
+       not, go the other way.  Make tiny oscillation a trace message (as 
+       it is completely normal), if larger oscillation is detected, try
+       halfway point, if that fails twice, exit with a warning.
+       traj-to-traj POCA: make sure Jacobian is positive -- if not, and if
+       the predicted step is the opposite sign of delta-dot-dir term, go
+       the other way.  Also, if the distance is larger than the distance
+       of the previous step, try going the other way if that is an
+       improvement.
+       both: make some HepPoints & Hep3Vectors static, increase number of 
+       iterations before failure to 50 (helps when traj has many pieces).
+
+8/23/99  -- D. Brown
+	Add ambiguity functions to TrkHitOnTrk, virtual with default
+	implementations (to show no ambiguity).  The DchHot functions
+	of the same name now overload these base-class functions.
+
+4/5/99   -- S. Schaffner
+	Several changes for optimization.  Modify TrkDifPieceTraj to 
+   	cache previously visited piece and start from that.  Added 
+	getDfInfo2() (w/ stupid default behavior) for faster difNumber 
+	access to trajs.  TrkFundHit now stores its list of hots in a
+	RW list.
+
+1/10/99  -- S. Schaffner
+	Moved TrkVisitor here from TrkFitter.
+
+1/7/99   -- S. Schaffner
+	Moved Trajectory and TrkGeomTraj to BbrGeom.  Left forwarding headers
+	here for next release.  Also moved BbrHelixTraj and TrkPieceTraj.
+
+11/23/98 -- S. Schaffner
+	Change various consts in TrkRecoTrk, TrkExtInterface, and TrkFitMaker
+	to permit TrkDataP to keep working.
+
+11/20/98 -- S. Schaffner
+	Finish ErrLogger migration.
+
+11/19/98 -- S. Schaffner
+	Add some protected print statements to TrkRecoTrk, TrkRep.  Add 
+	operator=() to Trajectory.  Migrate cout to ErrLogger (cerr still 
+	to come).  Add new class BbrHelixTraj -- should move somewhere else 
+	soon.
+
+9/24/98 -- S. Schaffner
+	Add TrkHitUse to the TrkHitList interface.
+
+9/?/98  -- S. Schaffner
+	Add new class TrkHitUse, for input of hits into tracks (will 
+	eventually replace TrkHitOnTrk for that purpose).  Abstract base class.
+
+9/8/98  -- S. Schaffner
+	Add localTrajectory() to TrkAbsFit.  Remove dummy implementation of 
+	vertexing functions in TrkAbsFit and make pure virtual.  Remove 
+	TrkAbsFit::arrivalTime() and TrkAbsFit::particleType() (now pure
+	virtuals in TrkFit).  
+
+8/21/98 -- S. Schaffner
+	Remove TrkContext data member from TrkRecoTrk -- id manager now 
+	carried by TrkId.  Make TrkIdManager abstract.  Make TrkContext 
+	abstract.  Gut TrkId: remove statics and value calculation, add 
+	ptr to id manager.
+
+Release 6.10.0
+
+7/22/98 -- S. Schaffner
+	Remove cloning of hots in TrkRep copy ctor (moved to derived classes, 
+	so Kal can manipulate hots as it clones them -- this was the original 
+	design, which got lost somewhere along the way).
+
+7/21/98 -- J. Albert
+        Added TrkAbsFit class as abstract class for TrkFit and for
+        TrkCompTrk.
+
+Release 6.9.0
+
+7/6/98  -- S. Schaffner
+	Removed default id manager argument from TrkContext ctor; removed 
+	BABAR_EPSILON from TrkDifPoca.cc and TrkHitOnTrk.cc; move 
+	setCurrent(false) when updating hotss from TrkRecoTrk to TrkRep;
+	add accessor function to BField in TrkRecoTrk; remove cached 
+	TrkContext pointer from TrkRep -- navigate via TrkRecoTrk.
+
+6/30/98 -- J. Albert
+        Made momentum functions in TrkRep purely virtual, as the derived
+        class TrkSimpleRep now uses the momentum visitor functions (see
+        TrkFitter 6/30/98 History entry).  Modified TrkSimpTraj to 
+        virtually accept a visitor.
+
+6/24/98 -- S. Schaffner
+	Removed migration path from TrkFitMaker -- createTrack now requires 
+	a TrkContext argument.  Renamed non-const version of TrkRecoTrk::
+	context().  Added TrkContext::operator==().  Made TrkRep::nSvt(), etc 
+	non-inlined (they became virtual somewhere along the way).
+
+6/23/98 -- S. Schaffner
+	Removed time from TrkContext, added it to TrkRecoTrk and TrkFitMaker.
+	Added TrkRecoTrk::updateRep.  Provided ugly kludge (default value) 
+	for migration to bunch time in TrkFitMaker.
+
+5/26/98 -- S. Schaffner
+	Remove 5/13 change to TrkFundHit dtor (it's already done in the 
+	derived classes, dolt).  (Did change the implementation in the 
+ 	derived classes -- no longer remove hots while iterating over list.) 
+	Fix a couple of BField includes.  Add protection to 
+	TrkHitList::removeHit if the hit isn't on the list; also add bool 
+	return.  Move initialization of _defaultType in TrkRecoTrk 
+	copy ctor, assignment op higher up, so track is in better-defined 
+	state when hots are added.
+
+5/13/98 -- S. Schaffner
+	Add to TrkFundHit dtor: removes hit from tracks.
+
+ 5/1/98 -- S. Schaffner
+	Add TrkRecoTrk::addHypoTo; add function to TrkFitMaker to permit 
+	FitMakers to monkey with BField (or anything else in the TrkContext).
+	Fix bug in resetT0() (should have been incrementing fitNumber for 
+	all particle types, not for all existing reps).
+
+4/30/98 -- S. Schaffner
+	Remove TrkContext ctor(AbsEvent) (moved to derived class in TrkFitter).
+
+4/28/98 -- S. Schaffner
+	Add the implementation of TrkRep::updateHots(), which seems to 
+	have disappeared (via TrkHotList::updateHots()).  Add TrkContext, 
+	with BField, t0 and TrkIdManager pointers.  Modify TrkRecoTrk to 
+	take TrkContext as argument to ctor, modify TrkFitMaker to provide it, 
+	and provide migration path that still accepts bunch time.
+
+4/21/98 -- S. Schaffner
+	Add TrkRep::updateHots(), with default implementation, and 
+	same function in TrkHotList classes.
+
+4/17/98 -- S. Schaffner
+	Add TrkIdManager -- currently just a shell around TrkId static 
+	functions.
+
+4/11/98 -- S. Schaffner
+	Modify TrkRecoTrk and TrkId to permit id's to be set by persistent 
+	tracks. 
+
+ 4/2/98 -- S. Schaffner
+	Protect TrkPocaBase against zero or negative precision.  Create new 
+	class TrkEnums and more TrkViewInfo there; remove trkViewInfo.hh.  
+
+3/30/98 -- S. Schaffner
+	Implement TrkRep::arrivalTime().
+
+3/27/98 -- S. Schaffner
+	Add t0 (bunch time) to TrkRecoTrk and TrkRep, with functions for 
+	accessing, resetting, etc.  Require time argument when creating 
+	tracks with TrkFitMaker.
+
+3/25/98 -- S. Schaffner
+	Remove TrkBaseTrk.	
+
+3/23/98 -- S. Schaffner
+	Eliminate old (unsplit) TrkRecoTrk interface.
+
+ 3/4/98 -- S. Schaffner
+	Add protection against invoking TrkRecoTrk::addFit() on tracks w/o 
+	hits.
+
+ 3/3/98 -- S. Schaffner
+	Remove chisq from TrkParams.
+
+2/27/98 -- S. Schaffner
+	Change static member data to static variables in static member 
+	functions in TrkPocaBase.
+
+ 2/2/98 -- S. Schaffner
+	Change TrkRecoTrk::fitResult() to return pointer instead of reference.
+	Now test on validity of fit before returning TrkFit or HitList.
+
+1/28/98 -- S. Schaffner
+	Add TrkRep::printType().
+
+1/26/98 -- S. Schaffner
+	Make TrkHotList into an abstract base class; add derived classes 
+	TrkHotListEmpty and TrkHotListFull, for tracks with and without 
+	hits.  Move implementations of some functions (e.g. startFoundRange())
+	to TrkHotList (all functions that require different implementations 
+	for tracks without stored hits); add call-downs to TrkRep.hh  
+	Add nDch() and nSvt() to TrkFit, TrkRep and (implementation) 
+	TrkHotList.  Remove all knowledge of TrkHotList from TrkRecoTrk.
+	Add hitCapable() to TrkRep.
+	Add setFitNumber() to TrkRecoTrk.
+	Add repointHypo() to TrkRecoTrk.
+	Remove dependence on TrkRep.hh from TrkRecoTrk.hh
+	Remove changeFit() from TrkFitMaker (not universally required in 
+	derived classes).
+
+1/20/98  Tag as V00-05-01
+
+1/12/98  -- S. Schaffner
+	Completed break-up of TrkRecoTrk interface: supply mechanism for 
+	getting rep-specific interfaces.  To wit, a new abstract class, 
+	TrkExtInterface, which communicates with TrkReps by means of an 
+	IfdKey, to determine that the two match; also added function to 
+	TrkRecoTrk to attach the interfaces.  The only function to 
+	be accessed this way right now is extendThrough (implemented in 
+	KalmanTrack).  
+
+1/9/98   -- S. Schaffner
+	More break-up of TrkRecoTrk: the main interface has been moved 
+	to a new class, TrkFit, and access to TrkFit provided in TrkRecoTrk.
+	All of the moved functions are now implemented in TrkRecoTrk by 
+	passing through to TrkFit.
+
+1/6/98   -- S. Schaffner
+	Begin break-up of TrkRecoTrk interface: created two new classes, 
+	TrkHitList and TrkFitStatus, to encapsulate parts of interface.  
+	Moved all appropriate functions to the new classes; functions still 
+	exist in RecoTrk, but only as call-downs to the new classes.
+
+1/1/98   -- D. Brown
+	Add fltlen parameter to changeParam function, to avoid
+	ambiguities in changing parameter reference point.  This affects 
+	ALL TrkSimpTraj subclasses.
+  
+12/15/97 -- S. Schaffner
+	Small change to TrkRecoTrk::whichfit() -- now returns
+	PdtPid::null if there is no rep present.  This situation should only
+	occur while creating tracks from Beast.
+
+12/08/97 -- S. Schaffner
+	Add dependence on BField package.  Tagged as V00-04-16 (V00-04-15 
+	had everything but dependence change.)
+
+12/0?/97 -- A. Snyder
+	Moved BField to BField package; left shell of header behind.
+
+12/01/97 -- S. Schaffner
+	Move enum for parameter indices within class declaration in 
+	TrkExchangePar.  Add ctor from SymMatrix.
+
+12/01/97 -- S. Schaffner
+	Misc. minor fixes suggested by CodeWizard (removing virtual 
+	inlined functions, making one dtor virtual . . .).
+	Moved all support for TrkRecoTrk::fitNumber() into TrkRecoTrk itself, 
+	and out of the reps.
+
+11/21/97 -- S. Schaffner
+	Make TrkGeomTraj::accept() no longer pure virtual.
+
+11/19/97 -- S. Schaffner
+	Remove bbBField.
+
+11/12/97 -- S. Schaffner
+	Modify TrkMomDeriv and TrkPosDeriv to accept a trajectory instead 
+	of a track as input.
+
+11/7/97 -- S. Schaffner
+	Provide more direct access to guts of TrkPieceTraj to permit visitors 
+	to function.
+
+11/6/97 -- S. Schaffner
+	Create new abstract Trajectory class, TrkGeomTraj, as base class 
+	for all non-differential trajs.  Only function at present: accept() 
+	(for Visitor pattern).
+
+11/3/97 -- S. Schaffner
+	Make TrkRep::cloneNewHypo non-const to keep CodeWizard from getting 
+	into such a snit.
+
+11/3/97 -- S. Schaffner 
+	Moved TrkCompTrk to TrkFitter to avoid cyclic dependency.
+
+11/3/97 -- S. Schaffner
+	Enums moved into classes in TrkErrCode and TrkHelixParams.
+
+10/31/91 -- V. Miftakov
+	Created TrkCompTrk.
+
+10/27/97 -- S. Schaffner
+	Create TrkBaseTrk as base class to TrkRecoTrk, and modify latter.
+	Tighten test on parallelism in TrkPocaBase to catch borderline 
+	cases.
+
+10/22/97 -- S. Schaffner
+	Make TrkHitOnTrk::updateFitStuff() return TrkErrCode.
+	Remove TrkRecoTrk::fitExists().
+
+10/20/97 -- D. Brown
+	-Trajectory.hh:
+  	 Added prototype (with default implementation) for printAll
+  	 made print and printAll virtual
+	-TrkSimpTraj.hh:
+  	 Added sensible print and printAll functions
+	-TrkDifPieceTraj.hh,TrkDifPieceTraj.cc
+  	 Improved append function, and added a corresponding prepend
+  	 There are still some failures, but MUCH fewer than before
+
+10/15/97 -- S. Schaffner
+	Add TrkRecoTrk::whichFit(hypo), which tells particle type of fit 
+	currently being used for type hypo.  Modify TrkRecoTrk::addFit() 
+	to permit refitting even when that hypo is already pointing at a 
+	fit.  Add automatic fit when invoking addFit().
+
+10/10/97 -- S. Schaffner
+	Added new classes (TrkMomDeriv and TrkPosDeriv) for calculating
+	derivative matrix (trk params wrt momentum and position).  Fixed two
+	more Poca bugs: add a bit to step in TrkPocaBase::steToPointPoca to
+	keep from getting stuck at kinks, and moved calculation of
+	distance-to-error after calculation of which direction we should be
+	moving in.  Both fixes were already in one place in the code, but not
+	in similar spots elsewhere (no doubt a sign of poor design).
+
+10/?/97 -- S. Schaffner
+	More Poca fixes: extend step slightly for point-poca, and get order
+	of calculations right (same fixes were already in elsewhere in code).
+
+10/1/97 -- S.Schaffner
+	Yet another improvement to TrkDifPoca.  In case of point of closest
+	approach being at a cusp point on a piecewise trajectory, do something
+	sensible in the case that the piecewise trajectory is not the DifTraj,
+	and something desperate in the case that it is the DifTraj (after all,
+	how *are* you supposed to take derivatives of a piecewise function?).
+
+10/1/97 -- D. Brown
+        Made TrkSimpTraj parameters reference point an explicit data member.  
+        This can now be specified at construction time, defaulted to the 
+	origin.  Along with this are (virtual) functions to translate the 
+	parameters and covariance matrix to another reference point.  Also 
+	simplified the TrkDifPieceTraj append method to use pocas, not 
+	difpocas.
+
+9/29/97 - S. Schaffner
+	Fixed bugs in TrkDifPoca and TrkPoca.cc.  Oscillation test now
+	looks for tiny steps in either trajectory; when it finds an
+	oscillation, picks the likely cusp (based on smaller distToError) and
+	does a point-traj poca to that point.  Also increased the number of
+	tiny steps needed for oscillation test to 5.
+
+9/22/97 -- S. Schaffner
+	Added nDof() to TrkRecoTrk (and pure virtual call-down to TrkRep). 
+	Removed "alleged oscillation" warning from Pocas.  Modified TrkHotList
+	deleteHits() to delete from the AList, instead of the RW list -- 
+	was getting bizarre crash with latter  -- revisit this.  Removed 
+	updateResid(), setResid from TrkHitOnTrk, made resid() non-cached, 
+	and changed the meaning of arguments in updateFitStuff -- 
+	deltaChisq -> deltaChi, and derivs now of deltaChi instead of resid.
+	Also added 2nd updateFitStuff, without derivs.
+	Fixed calculation of doca for parallel trajectories.
+
+8/27/97 -- S. Schaffner
+	Restore foundRange functions for now -- they weren't supposed to 
+	disappear until warnings had been issued.
+
+8/21/97 -- S. Schaffner
+	Get rid of finite/infinite range distinction in Trajectories; default
+	now really big range.  Changes (unspecified) from Dave Brown in 
+	piecewise trajectories -- permit DifPieceTraj to be used directly by 
+	Kalman.  Remove start and endFoundRange() from 
+	TrkRecoTrk.  Make extendThrough() return TrkErrCode.  Remove 
+	operator+ and information matrix from TrkParams (and base class 
+	in difAlgebra).
+
+8/5/97  -- S. Schaffner
+	Add BaBar.hh to TrkFundHit.hh (added to TrkHitOnTrk.hh last week).
+
+7/29/97 -- S. Schaffner
+	Back out extendThrough change for now.  Move localTrajectory from 
+	DifPieceTraj to DifTraj, and implement for SimpTraj.
+
+7/28/97 -- S. Schaffner
+	CLHEP directory structure migration.
+	Add setValidRange to TrkRecoTrk and TrkRep (default implementation).  
+	Make extendThrough() return a TrkErrCode.  Both still have to be 
+	implemented for KalRep.
+
+7/11/97 -- S. Schaffner
+	Still fiddling with Pocas.  Increase # of tiny steps to trip
+	oscillation trap; decrease size of tiny step to
+	0.5*precision(); correct the calculation in the event of a
+	trip (and return after calculation is done).
+
+7/7/97 -- S. Schaffner
+	Two bug fixes in TrkPoca.cc and TrkDifPoca.cc: 1) extend step size by 
+	epsilon, so searches don't stall on kinks; 2) choose direction before 
+	testing for stopping stepping.
+
+6/4/97 -- S. Schaffner
+	Make HotLists be owned by TrkReps instead of TrkRecoTrks; Reps
+	now have a ptr to their track, and have a single ctor.
+	Make HotList ctor take AList of Hots as input (and make the
+	ctor do the cloning).
+	Rep now has massHypo() instead of defaultParticle().
+	Remove TrkRep::cloneHots().
+	TrkHitOnTrk now points to TrkRep, not TrkRecoTrk.
+	TrkHitOnTrk::setUsed() invocation also moved to base class.
+	Test for setUsed() and setUnused() invocations: only apply if rep's 
+	hypo == track's default hypo.
+	Change TrkHitOnTrk::getRep() to parentRep() and massHypo() to 
+	particleType().
+
+
+6/27/97 -- S. Schaffner
+  	MomentumErr() implemented.
+
+6/26 -- S. Schaffner
+	Changed GNUmakefile to get dependencies from link_all_reco.mk. 
+	Also was going to fix include in TrkSimpTraj but someone has done 
+	it already.
+
+6/24 -- S. Schaffner
+Bug fix:
+  TrkHitOnTrks were not cleaning up after themselves properly in their 
+    dtor, iff the rep they were pointing to had a different particle type 
+    than the track's default, _and_ was in fact pointed to by the track 
+    as the default (this can only happen when a single rep is used for 
+    multiple hypotheses).  Fixed the test in TrkHitOnTrk, and added 
+    TrkHitOnTrk as friend to TrkRecoTrk to implement.
+
+6/24 -- S. Schaffner
+Modifications to permit return of error matrices on position, etc, from 
+  RecoTrk.  Rewrote TrkParams to inherit for difAlgebra/DifIndepPar (also 
+  rewritten for this purpose).
+Implemented positionErr() and directionErr() in TrkRecoTrk.  MomentumErr() 
+  is no longer commented out, but is not yet implemented.  
+
+6/16 -- S. Schaffner
+Bug fixes:
+  Copy isValid and isCurrent flags in TrkRecoTrk::copyReps.
+  Increment _nActive in TrkHotList ctor.
+
+6/12 -- S. Schaffner
+Add fitNumber() to TrkRecoTrk (counts number of times a fit has been 
+        carried), along with data member and function in TrkRep 
+        to support it.  All TrkReps hand off their current number to 
+        successors.  TrkRecoTrk increments when fitting or swapping reps.
+Switch to PdtPid::PidType from TrkPart::type.
+Change TrkRecoTrk::removeHot to removeHit.
+
+6/9 -- S. Schaffner
+Move hitList deletion to TrkFundHit from derived classes (fixed Svt and Dch).
+
+5/30/97 -- S. Schaffner
+Create (from Gautier) TrkPart, and remove trkMassHypo.hh.
+Switch to using TrkPart throughout.
+Move invocation of setUnusedHit to base class (TrkHitOnTrk) dtor (temporarily 
+        commented out).  (Now uncommented: 6/4).
+Removed TrkFundHit::makeHot() (and from derived classes): no longer needed, 
+   since TrkRecoTrk::appendHit() is gone.  Might need it again someday, if
+   a user has a list of hits to add to a track without knowing what they are.
+Remove KalHit as friend of TrkHitOnTrk.
+
+5/26/97 -- S. Schaffner
+Trajectory: 
+  remove step().
+TrkRecoTrk:
+  remove appendHit, appendList(hit).
+  move fltToRad to TrkHelixUtil, changing to return 3-d length instead of 2-d.
+
+5/23/97 -- S. Schaffner
+TrkRecoTrk:
+  Remove pz().
+  Fix printAll() (replace ostr << *this with print(ostr)).
+  Fix printing of "is 2-d".
+  Fix cloneHots to really clone hots.
+
+TrkHitOnTrk:
+  Add pure virtual getGTrack().
+
+TrkPoca:
+  Split into TrkPoca and TrkDifPoca, and add distance to point to both.
+  Change calling sequence.
+
+TrkExchangePar:
+  Default covariance to zero.
+  Add non-const access to covariance.
+
+TrkRep:
+  Add virtual const traj() (to existing non-const version).
+
+---------------------------------------------------------------------------
+[Lots of other stuff happens . . .]
+
+13 Nov96: Now works with modified version of DchReco.  Performance the same 
+            as old DchReco except for small changes in z-fits -- probably 
+            due to coincident change to 3-d path-length.  Implementation of 
+            hits as Trajs still to be done (among other things).
+
+1  Nov96: Add sketchy HelixRep.  Compiles.   (sschaff -- until further notice)
+
+30 Oct 96: First compilable version. (sschaff)
+

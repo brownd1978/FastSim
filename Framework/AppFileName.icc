@@ -1,0 +1,32 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+//      $Id: AppFileName.icc,v 1.3 2006/10/16 18:51:06 desilva Exp $
+//
+// Description:
+//	Class AppFileName permits multiple path search. 
+//      Doesn't need to be part of the Framework
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	Luca Lista		Original Author
+//
+// Copyright Information:
+//      Copyright (C) 1999      INFN 
+//
+//------------------------------------------------------------------------
+
+//
+// inlined methods
+//
+
+inline const std::string&  AppFileName::value() const
+{ 
+  return _fileName; 
+}
+
+inline void AppFileName::set( const std::string& v )
+{
+  _fileName = v;
+}

@@ -1,0 +1,17 @@
+#!/bin/sh
+#  Convert BdbTime include paths
+#  Dave Brown, 12-22-98
+#
+for filetype in hh cc icc ddl; do
+  echo converting $filetype file types
+  for file in *.$filetype; do
+    if [ -f $file ]; then
+      oldfile=$file.old
+      echo converting file $file, old version saved as $oldfile
+      cp $file $file.old
+      sed -f ../BdbTime/convert.sed $file.old > $file
+      echo Differences between old and new:
+      diff $file.old $file
+    fi  
+  done
+done

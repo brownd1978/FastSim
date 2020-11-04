@@ -1,0 +1,44 @@
+$Id: README 228 2009-03-04 07:59:17Z stroili $
+
+README for FrameLogger
+
+The FrameLogger package is a concrete implementation of the ErrLogger package
+for use with offline Framework executables.  It uses an AppAction to record 
+the context of messages before they are issued.
+
+Messages of some lower severities (as in "ErrMsg(<severity>)", see 
+ErrLogger/ErrLog.hh) will only be displayed when certain TCL parameters are
+set in a module.  Additional detail, such as the name of the currently 
+executing Framework module, is added to messages printed at higher severity 
+levels, based on the context recorded by the AppAction.
+
+See the truth table below:
+
+verbose:     false  false  true  |output|
+production:  true   false    *   |stream|   message and action
+---------------------------------+------+--------------------------
+debugging                    X     cout   just the message text
+trace                        X     cout   just the message text
+routine               X      X     cout   <moduleName>:message
+warning        X      X      X     cerr   <moduleName>::<file(line)>:message
+error          X      X      X     cerr   same as warning
+severe         X      X      X     cerr   same as warning & exit(!=0)
+fatal          X      X      X     cerr   same as warning & aborts
+
+
+<file(line)> above is the "facility" string given to ErrLog::msg,
+which for the ErrMsg() macro is __FILE__"("__LINE__")", stripped down
+to just the filename and line number (leading directory components of
+the pathname are removed).
+
+Messages generated when no module is executing or if the AppAction is
+not enabled are passed only for severities >= routine.  This is probably
+not ideal and should be adjusted to respect Framework's own verbose and
+production parameters, so that there is some control available.         FIXME
+
+If Framework's own "production" parameter is set true, then a wall-clock
+time stamp is prepended to every message that is printed.
+
+If the Framework "job report" mechanism is enabled, then a count of 
+messages at each severity level is accumulated for output at end-job.
+The count is accumulated before the severity filtering described above.

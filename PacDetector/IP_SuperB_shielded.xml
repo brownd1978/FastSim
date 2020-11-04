@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+        <config>
+            <sect name="PacField">
+                <param name="B_nom"    type="float"         > 1.5</param>
+                <param name="DeltaB"   type="vector_double" > 0.0, 0.0, 0.0</param>
+                <param name="B_radius" type="float"         > 153.0</param>
+                <param name="B_zlow"   type="float"         > -145</param>
+                <param name="B_zhi"    type="float"         > 207</param>
+            </sect>
+        </config>
+
+	<define>
+		    <variable name="loopvar1" type="int"></variable>
+		    <variable name="loopvar2" type="int"></variable>
+
+		    <!-- Define inner cones of fwd beamstopper (coneA) -->
+
+		    <formula name="fwd_beamstopperconeA_z1" par0="loopvar1" formula="5.0+[0]"></formula>
+		    <formula name="fwd_beamstopperconeA_z2" par0="loopvar1" formula="6.0+[0]"></formula>
+		    <formula name="fwd_beamstopperconeA_r1" par0="loopvar1" par1="loopvar2"
+			formula="(1.1+0.03571*[0])*(8-[1])*0.125+(1.2+0.09286*[0])*[1]*0.125"></formula>
+		    <formula name="fwd_beamstopperconeA_r2" par0="loopvar1" par1="loopvar2"
+			formula="(1.1+0.03571*(1+[0]))*(8-[1])*0.125+(1.2+0.09286*(1+[0]))*[1]*0.125"></formula>
+		    <formula name="fwd_beamstopperconeA_thick" par0="loopvar1" par1="loopvar2"
+			formula="((1.2+0.09286*(0.5+[0]))-(1.1+0.03571*(0.5+[0])))*0.125/sqrt(1+0.125^2*(0.03571*(8-[1])+0.09286*[1])^2)"></formula>
+		    <formula name="fwd_beamstopperconeA_id" par0="loopvar1" par1="loopvar2"
+			formula="1001+[0]*9+[1]"></formula>
+		    <formula name="fwd_beamstopperringA_r1" par0="loopvar1" formula="1.1+0.03571*[0]"></formula>
+		    <formula name="fwd_beamstopperringA_r2" par0="loopvar1" formula="1.2+0.09286*[0]"></formula>
+		    <formula name="fwd_beamstopperringA_id" par0="loopvar1" formula="1127+[0]"></formula>
+
+		    <!-- Define middle cones of fwd beamstopper (coneB) -->
+
+		    <formula name="fwd_beamstopperconeB_z1" par0="loopvar1" formula="19.0+[0]"></formula>
+		    <formula name="fwd_beamstopperconeB_z2" par0="loopvar1" formula="20.0+[0]"></formula>
+		    <formula name="fwd_beamstopperconeB_r1" par0="loopvar1" par1="loopvar2"
+			formula="(1.6+0.02449*[0])*(8-[1])*0.125+(2.5+0.44898*[0])*[1]*0.125"></formula>
+		    <formula name="fwd_beamstopperconeB_r2" par0="loopvar1" par1="loopvar2"
+			formula="(1.6+0.02449*(1+[0]))*(8-[1])*0.125+(2.5+0.44898*(1+[0]))*[1]*0.125"></formula>
+		    <formula name="fwd_beamstopperconeB_thick" par0="loopvar1" par1="loopvar2"
+			formula="((2.5+0.44898*(0.5+[0]))-(1.6+0.02449*(0.5+[0])))*0.125/sqrt(1+0.125^2*(0.02449*(8-[1])+0.44898*[1])^2)"></formula>
+		    <formula name="fwd_beamstopperconeB_id" par0="loopvar1" par1="loopvar2"
+			formula="1201+[0]*9+[1]"></formula>
+		    <formula name="fwd_beamstopperconeB_tip_r1" par0="loopvar2" formula="2.18776*(8-[0])*0.125+13.27552*[0]*0.125"></formula>
+		    <formula name="fwd_beamstopperconeB_tip_r2" par0="loopvar2" formula="2.2*(8-[0])*0.125+13.5*[0]*0.125"></formula>
+		    <formula name="fwd_beamstopperconeB_tip_thick" par0="loopvar2"
+			formula="1.3992/sqrt(1+0.125^2*(0.02448*(8-[0])+0.44896*[0])^2)"></formula>
+		    <formula name="fwd_beamstopperconeB_tip_id" par0="loopvar2" formula="1417+[0]"></formula>
+		    <formula name="fwd_beamstopperringB_r1" par0="loopvar1" formula="1.6+0.02449*[0]"></formula>
+		    <formula name="fwd_beamstopperringB_r2" par0="loopvar1" formula="2.5+0.44898*[0]"></formula>
+		    <formula name="fwd_beamstopperringB_id" par0="loopvar1" formula="1426+[0]"></formula>
+
+		    <!-- Define outer cones of fwd beamstopper (coneC) -->
+
+		    <formula name="fwd_beamstopperconeC_r1" par0="loopvar2" formula="10.5*(8-[0])*0.125+13.5*[0]*0.125"></formula>
+		    <formula name="fwd_beamstopperconeC_r2" par0="loopvar2" formula="19.5*(8-[0])*0.125+22.5*[0]*0.125"></formula>
+		    <formula name="fwd_beamstopperconeC_id" par0="loopvar2" formula="1601+[0]"></formula>
+		    <formula name="fwd_beamstopperringC_r1" par0="loopvar1" formula="10.5+0.037484*([0]-43.5)"></formula>
+		    <formula name="fwd_beamstopperringC_r2" par0="loopvar1" formula="13.5+0.037484*([0]-43.5)"></formula>
+		    <formula name="fwd_beamstopperringC_mid_id" par0="loopvar1" formula="1610+([0]-44)/4"></formula>
+		    <formula name="fwd_beamstopperringC_end_id" par0="loopvar1" formula="1620+([0]-84)/16"></formula>
+
+		    <!-- Define inner cones of bwd beamstopper (coneA) -->
+
+		    <formula name="bwd_beamstopperconeA_z1" par0="loopvar1" formula="-5.0-[0]*1.0"></formula>
+		    <formula name="bwd_beamstopperconeA_z2" par0="loopvar1" formula="-5.0-(1+[0])*1.0"></formula>
+		    <formula name="bwd_beamstopperconeA_r1" par0="loopvar1" par1="loopvar2"
+			formula="(1.1+0.05*[0])*(8-[1])*0.125+(1.2+0.13*[0])*[1]*0.125"></formula>
+		    <formula name="bwd_beamstopperconeA_r2" par0="loopvar1" par1="loopvar2"
+			formula="(1.1+0.05*(1+[0]))*(8-[1])*0.125+(1.2+0.13*(1+[0]))*[1]*0.125"></formula>
+		    <formula name="bwd_beamstopperconeA_thick" par0="loopvar1" par1="loopvar2"
+			formula="((1.2+0.13*(0.5+[0]))-(1.1+0.05*(0.5+[0])))*0.125/sqrt(1+0.125^2*(0.05*(8-[1])+0.13*[1])^2)"></formula>
+		    <formula name="bwd_beamstopperconeA_id" par0="loopvar1" par1="loopvar2" formula="2001+[0]*9+[1]"></formula>
+		    <formula name="bwd_beamstopperringA_r1" par0="loopvar1" formula="1.1+0.05*[0]"></formula>
+		    <formula name="bwd_beamstopperringA_r2" par0="loopvar1" formula="1.2+0.13*[0]"></formula>
+		    <formula name="bwd_beamstopperringA_id" par0="loopvar1" formula="2091+[0]"></formula>
+
+		    <!-- Define middle cones of bwd beamstopper (coneB) -->
+
+		    <formula name="bwd_beamstopperconeB_z1" par0="loopvar1" formula="-15.0-[0]*1.0"></formula>
+		    <formula name="bwd_beamstopperconeB_z2" par0="loopvar1" formula="-15.0-(1+[0])*1.0"></formula>
+		    <formula name="bwd_beamstopperconeB_r1" par0="loopvar1" par1="loopvar2"
+			formula="(1.6+0.03333*[0])*(8-[1])*0.125+(2.5+0.61111*[0])*[1]*0.125"></formula>
+		    <formula name="bwd_beamstopperconeB_r2" par0="loopvar1" par1="loopvar2"
+			formula="(1.6+0.03333*(1+[0]))*(8-[1])*0.125+(2.5+0.61111*(1+[0]))*[1]*0.125"></formula>
+		    <formula name="bwd_beamstopperconeB_thick" par0="loopvar1" par1="loopvar2"
+			formula="((2.5+0.61111*(0.5+[0]))-(1.6+0.03333*(0.5+[0])))*0.125/sqrt(1+0.125^2*(0.03333*(8-[1])+0.61111*[1])^2)"></formula>
+		    <formula name="bwd_beamstopperconeB_id" par0="loopvar1" par1="loopvar2"
+			formula="3000+[0]*9+[1]"></formula>
+		    <formula name="bwd_beamstopperringB_r1" par0="loopvar1" formula="1.6+0.03333*[0]"></formula>
+		    <formula name="bwd_beamstopperringB_r2" par0="loopvar1" formula="2.5+0.61111*[0]"></formula>
+		    <formula name="bwd_beamstopperringB_id" par0="loopvar1" formula="3162+[0]"></formula>
+
+		    <!-- Define outer cones of bwd beamstopper (coneC) -->
+
+		    <formula name="bwd_beamstopperconeC_r1" par0="loopvar2"
+			formula="10.5*(8-[0])*0.125+13.5*[0]*0.125"></formula>
+		    <formula name="bwd_beamstopperconeC_r2" par0="loopvar2"
+			formula="19.5*(8-[0])*0.125+22.5*[0]*0.125"></formula>
+		    <formula name="bwd_beamstopperconeC_id" par0="loopvar2" formula="3172+[0]"></formula>
+		    <formula name="bwd_beamstopperringC_r1" par0="loopvar1" formula="10.5+0.049073*(-33.0-[0])"></formula>
+		    <formula name="bwd_beamstopperringC_r2" par0="loopvar1" formula="13.5+0.049073*(-33.0-[0])"></formula>
+		    <formula name="bwd_beamstopperringC_mid_id" par0="loopvar1" formula="3180+(-34-[0])/4"></formula>
+		    <formula name="bwd_beamstopperringC_end_id" par0="loopvar1" formula="3190+(-74-[0])/16"></formula>
+	</define>
+
+        <detector name="SuperB Detector">
+            <volume name="Beampipe">
+
+<!-- change the inner radius of the beampipe to 1.30cm to reduce bkg level on SVT Layer0. Keep for the moment the 
+     material unchanged. To be confirmed. -->
+
+		<!-- fwd beamstopper (coneA) constructed here -->
+
+		    <loop variable="loopvar1" count="14" startvalue="0" stepvalue="1">
+			<ring name="Fwd_Beamstopper_RingA" id="fwd_beamstopperringA_id" z="fwd_beamstopperconeA_z1"
+			lowradius="fwd_beamstopperringA_r1" hiradius="fwd_beamstopperringA_r2" thick="1.0" mat="pep-Tungsten" />
+			
+			<loop variable="loopvar2" count="4" startvalue="0" stepvalue="1">
+				<cone name="Fwd_Beamstopper_ConeA" id="fwd_beamstopperconeA_id" rho1="fwd_beamstopperconeA_r1"
+				z1="fwd_beamstopperconeA_z1" rho2="fwd_beamstopperconeA_r2" z2="fwd_beamstopperconeA_z2"
+				thick="fwd_beamstopperconeA_thick" mat="pep-Tungsten" />
+			</loop>
+
+                  <loop variable="loopvar2" count="4" startvalue="5" stepvalue="1">
+                  	<cone name="Fwd_Beamstopper_ConeA" id="fwd_beamstopperconeA_id" rho1="fwd_beamstopperconeA_r1"
+                  	z1="fwd_beamstopperconeA_z1" rho2="fwd_beamstopperconeA_r2" z2="fwd_beamstopperconeA_z2"
+                  	thick="fwd_beamstopperconeA_thick" mat="pep-Tungsten" />
+                  </loop>
+
+		    </loop>
+
+		<!-- fwd beamstopper (coneB) contructed here -->
+
+		    <loop variable="loopvar1" count="24" startvalue="0" stepvalue="1">
+			<ring name="Fwd_Beamstopper_RingB" id="fwd_beamstopperringB_id" z="fwd_beamstopperconeB_z1"
+			lowradius="fwd_beamstopperringB_r1" hiradius="fwd_beamstopperringB_r2" thick="1.0" mat="pep-Tungsten" />			
+
+			<loop variable="loopvar2" count="4" startvalue="0" stepvalue="1">
+				<cone name="Fwd_Beamstopper_ConeB" id="fwd_beamstopperconeB_id" rho1="fwd_beamstopperconeB_r1"
+				z1="fwd_beamstopperconeB_z1" rho2="fwd_beamstopperconeB_r2" z2="fwd_beamstopperconeB_z2"
+				thick="fwd_beamstopperconeB_thick" mat="pep-Tungsten" />
+			</loop>
+
+                  <loop variable="loopvar2" count="4" startvalue="5" stepvalue="1">
+                        <cone name="Fwd_Beamstopper_ConeB" id="fwd_beamstopperconeB_id" rho1="fwd_beamstopperconeB_r1"
+                        z1="fwd_beamstopperconeB_z1" rho2="fwd_beamstopperconeB_r2" z2="fwd_beamstopperconeB_z2"
+                        thick="fwd_beamstopperconeB_thick" mat="pep-Tungsten" />
+                  </loop>
+
+		    </loop>
+
+		<!-- fwd beamstopper (coneB tip) constructed here -->
+
+		    <ring name="Fwd_Beamstopper_RingB_tip" id="1435" z="43.0" lowradius="2.187755" hiradius="13.275510" thick="0.5"
+		    mat="pep-Tungsten" />
+
+	 	    <loop variable="loopvar2" count="4" startvalue="0" stepvalue="1">
+		    	<cone name="Fwd_Beamstopper_ConeB_tip" id="fwd_beamstopperconeB_tip_id" rho1="fwd_beamstopperconeB_tip_r1" z1="43.0"
+		    	rho2="fwd_beamstopperconeB_tip_r2" z2="43.5" thick="fwd_beamstopperconeB_tip_thick" mat="pep-Tungsten" />
+		    </loop>
+
+	 	    <loop variable="loopvar2" count="4" startvalue="5" stepvalue="1">
+			<cone name="Fwd_Beamstopper_ConeB_tip" id="fwd_beamstopperconeB_tip_id" rho1="fwd_beamstopperconeB_tip_r1" z1="43.0"
+		    	rho2="fwd_beamstopperconeB_tip_r2" z2="43.5" thick="fwd_beamstopperconeB_tip_thick" mat="pep-Tungsten" />
+		    </loop>
+		
+		<!-- fwd beamstopper (coneC) constructed here -->
+
+		    <ring name="Fwd_Beamstopper_RingC_first" id="1610" z="44.0" lowradius="10.518742" hiradius="13.518742" thick="0.5"
+		    mat="pep-Tungsten" />
+	
+		    <loop variable="loopvar2" count="4" startvalue="0" stepvalue="1">
+		    	<cone name="Fwd_Beamstopper_ConeC" id="fwd_beamstopperconeC_id" rho1="fwd_beamstopperconeC_r1"
+		 	z1="43.5" rho2="fwd_beamstopperconeC_r2" z2="283.6" thick="0.37474" mat="pep-Tungsten" />
+		    </loop>
+
+		    <loop variable="loopvar2" count="4" startvalue="5" stepvalue="1">
+		    	<cone name="Fwd_Beamstopper_ConeC" id="fwd_beamstopperconeC_id" rho1="fwd_beamstopperconeC_r1"
+			z1="43.5" rho2="fwd_beamstopperconeC_r2" z2="283.6" thick="0.37474" mat="pep-Tungsten" />
+		    </loop>
+
+		    <loop variable="loopvar1" count="10" startvalue="48" stepvalue="4">
+		    	<ring name="Fwd_Beamstopper_RingC_middle" id="fwd_beamstopperringC_mid_id" z="loopvar1"
+			lowradius="fwd_beamstopperringC_r1" hiradius="fwd_beamstopperringC_r2" thick="4.0" mat="pep-Tungsten" />
+		    </loop>
+
+		    <loop variable="loopvar1" count="12" startvalue="100" stepvalue="16">
+			<ring name="Fwd_Beamstopper_RingC_end" id="fwd_beamstopperringC_end_id" z="loopvar1"
+			lowradius="fwd_beamstopperringC_r1" hiradius="fwd_beamstopperringC_r2" thick="16.0" mat="pep-Tungsten" />
+		    </loop>
+
+		    <ring name="Fwd_Beamstopper_RingC_last" id="1633" z="283.6" lowradius="19.5" hiradius="22.5" thick="7.6" mat="pep-Tungsten" />
+
+		<!-- bwd beamstopper (coneA) constructed here -->
+
+		    <loop variable="loopvar1" count="10" startvalue="0" stepvalue="1">
+			<ring name="Bwd_Beamstopper_RingA" id="bwd_beamstopperringA_id" z="bwd_beamstopperconeA_z1"
+			lowradius="bwd_beamstopperringA_r1" hiradius="bwd_beamstopperringA_r2" thick="1.0" mat="pep-Tungsten" />
+			
+			<loop variable="loopvar2" count="4" startvalue="0" stepvalue="1">
+				<cone name="Bwd_Beamstopper_ConeA" id="bwd_beamstopperconeA_id" rho1="bwd_beamstopperconeA_r1"
+				z1="bwd_beamstopperconeA_z1" rho2="bwd_beamstopperconeA_r2" z2="bwd_beamstopperconeA_z2"
+				thick="bwd_beamstopperconeA_thick" mat="pep-Tungsten" />
+			</loop>
+
+			<loop variable="loopvar2" count="4" startvalue="5" stepvalue="1">
+				<cone name="Bwd_Beamstopper_ConeA" id="bwd_beamstopperconeA_id" rho1="bwd_beamstopperconeA_r1"
+				z1="bwd_beamstopperconeA_z1" rho2="bwd_beamstopperconeA_r2" z2="bwd_beamstopperconeA_z2"
+				thick="bwd_beamstopperconeA_thick" mat="pep-Tungsten" />
+			</loop>
+
+		    </loop>
+
+		<!-- bwd beamstopper (coneB) contructed here -->
+
+		    <loop variable="loopvar1" count="18" startvalue="0" stepvalue="1">
+			<ring name="Bwd_Beamstopper_RingB" id="bwd_beamstopperringB_id" z="bwd_beamstopperconeB_z1"
+			lowradius="bwd_beamstopperringB_r1" hiradius="bwd_beamstopperringB_r2" thick="1.0" mat="pep-Tungsten" />			
+
+			<loop variable="loopvar2" count="4" startvalue="0" stepvalue="1">
+				<cone name="Bwd_Beamstopper_ConeB" id="bwd_beamstopperconeB_id" rho1="bwd_beamstopperconeB_r1"
+				z1="bwd_beamstopperconeB_z1" rho2="bwd_beamstopperconeB_r2" z2="bwd_beamstopperconeB_z2"
+				thick="bwd_beamstopperconeB_thick" mat="pep-Tungsten" />
+			</loop>
+
+			<loop variable="loopvar2" count="4" startvalue="5" stepvalue="1">
+                  	<cone name="Bwd_Beamstopper_ConeB" id="bwd_beamstopperconeB_id" rho1="bwd_beamstopperconeB_r1"
+                  	z1="bwd_beamstopperconeB_z1" rho2="bwd_beamstopperconeB_r2" z2="bwd_beamstopperconeB_z2"
+                  	thick="bwd_beamstopperconeB_thick" mat="pep-Tungsten" />
+			</loop>
+
+		    </loop>
+		    
+		<!-- bwd beamstopper (coneC) constructed here -->
+
+		    <ring name="Bwd_Beamstopper_RingC_first" id="3171" z="-34.0" lowradius="10.549073" hiradius="13.549073" thick="1.0"
+		    mat="pep-Tungsten" />	
+		    <loop variable="loopvar2" count="4" startvalue="0" stepvalue="1">
+		    	<cone name="Bwd_Beamstopper_ConeC" id="bwd_beamstopperconeC_id" rho1="bwd_beamstopperconeC_r1"
+		 	z1="-33.0" rho2="bwd_beamstopperconeC_r2" z2="-216.4" thick="0.37455" mat="pep-Tungsten" />
+		    </loop>
+		    <loop variable="loopvar2" count="4" startvalue="5" stepvalue="1">
+		    	<cone name="Bwd_Beamstopper_ConeC" id="bwd_beamstopperconeC_id" rho1="bwd_beamstopperconeC_r1"
+			z1="-33.0" rho2="bwd_beamstopperconeC_r2" z2="-216.4" thick="0.37455" mat="pep-Tungsten" />
+		    </loop>
+		    <loop variable="loopvar1" count="10" startvalue="-38" stepvalue="-4">
+		    	<ring name="Bwd_Beamstopper_RingC_middle" id="bwd_beamstopperringC_mid_id" z="loopvar1"
+			lowradius="bwd_beamstopperringC_r1" hiradius="bwd_beamstopperringC_r2" thick="4.0" mat="pep-Tungsten" />
+		    </loop>
+		    <loop variable="loopvar1" count="8" startvalue="-90" stepvalue="-16">
+			<ring name="Bwd_Beamstopper_RingC_end" id="bwd_beamstopperringC_end_id" z="loopvar1"
+			lowradius="bwd_beamstopperringC_r1" hiradius="bwd_beamstopperringC_r2" thick="16.0" mat="pep-Tungsten" />
+		    </loop>
+		    <ring name="Bwd_Beamstopper_RingC_last" id="3199" z="-216.4" lowradius="19.5" hiradius="22.5" thick="14.4" mat="pep-Tungsten" />
+
+                <cyl name="Beampipe" id="0" zmin="-282" zmax="356" radius="1.30" thick="0.0911" mat="SB-BPipe" />
+            </volume>
+        </detector>
+        <!-- voxel parameter config section must have the same section name as the volume -->
+        <config>
+            <sect name="Beampipe">
+                <param name="rbounds"    type="vector"        >  0.0 1.4 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 </param>
+                <!-- no phi segmentation needed, as all elements are perfectly cylindrical -->
+                <param name="nphivoxels"    type="vector"         > 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </param>
+                <param name="zbounds"   type="vector"         > -283 -209 -194 -178 -162 -146 -130 -114 -98 -82
+		-72 -68 -64 -60 -56 -52 -48 -44 -40 -36
+		-33.5 -32.5 -31.5 -30.5 -29.5 -28.5 -27.5 -26.5 -25.5 -24.5
+		-23.5 -22.5 -21.5 -20.5 -19.5 -18.5 -17.5 -16.5 -15.5 -14.5
+		-13.5 -12.5 -11.5 -10.5 -9.5 -8.5 -7.5 -6.5 -5.5 -4.5
+		4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5
+		14.5 15.5 16.5 17.5 18.5 19.5 20.5 21.5 22.5 23.5
+		24.5 25.5 26.5 27.5 28.5 29.5 30.5 31.5 32.5 33.5
+		34.5 35.5 36.5 37.5 38.5 39.5 40.5 41.5 42.5 43.5
+		46 50 54 58 62 66 70 74 78 82
+		92 108 124 140 156 172 188 204 220 236
+		252 268 280 357 </param>            
+            </sect>
+        </config>        
+    </included>
+</edml>

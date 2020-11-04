@@ -1,0 +1,43 @@
+// -*- C++ -*-
+// $Id: Lock.icc,v 1.11 2005/11/24 01:06:45 dwright Exp $
+//
+// This file is a part of what might become the CLHEP -
+// a Class Library for High Energy Physics.
+// 
+// This is the definitions of the inline member functions of the
+// HepLock class
+//
+
+#ifdef HEP_DEBUG_INLINE
+#define inline
+#endif
+
+inline HepLock::HepLock()
+: _lockBit(-1) {}
+
+inline HepLock::HepLock(HepLockable *p)
+: _lockBit(-1) {
+  _members.append(p);
+}
+
+inline HepLock::HepLock(HepLockable &p)
+: _lockBit(-1) {
+  _members.append(&p);
+}
+
+inline HepLock::~HepLock() {
+     unlock();
+}
+
+inline void HepLock::add(HepLockable &p) {
+  add(&p);
+}
+
+inline void HepLock::remove(HepLockable &p) {
+  remove(&p);
+}
+ 
+#ifdef HEP_DEBUG_INLINE
+#undef inline
+#endif
+

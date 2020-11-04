@@ -1,0 +1,1684 @@
+------------------------------------------------------------------------
+                 Particle Data Table
+
+   id  name       mass    width    spin  charge  lifetime
+                  (GeV)   (GeV)                  (cm)    
+------------------------------------------------------------------------
+     1 d          0.0099 Stable      0.5   -0.333333    Stable
+    -1 d~         0.0099 Stable      0.5   0.333333    Stable
+     2 u          0.0056 Stable      0.5   0.666667    Stable
+    -2 u~         0.0056 Stable      0.5   -0.666667    Stable
+     3 s           0.199 Stable      0.5   -0.333333    Stable
+    -3 s~          0.199 Stable      0.5   0.333333    Stable
+     4 c            1.35 Stable      0.5   0.666667    Stable
+    -4 c~           1.35 Stable      0.5   -0.666667    Stable
+     5 b               5 Stable      0.5   -0.333333    Stable
+    -5 b~              5 Stable      0.5   0.333333    Stable
+     6 t             120 Stable      0.5   0.666667    Stable
+    -6 t~            120 Stable      0.5   -0.666667    Stable
+    21 g               0 Stable        1    0    Stable
+    11 e-        0.00051 Stable      0.5   -1    Stable
+   -11 e+        0.00051 Stable      0.5    1    Stable
+    12 nu_e            0 Stable      0.5    0    Stable
+   -12 nu_e~           0 Stable      0.5    0    Stable
+    13 mu-        0.1057 2.99593e-19 0.5   -1    65865
+               1.000 -> nu_e~ e- nu_mu
+   -13 mu+        0.1057 2.99593e-19 0.5    1    65865
+               1.000 -> nu_e e+ nu_mu~
+    14 nu_mu           0 Stable      0.5    0    Stable
+   -14 nu_mu~          0 Stable      0.5    0    Stable
+    15 tau-       1.7841 2.16843e-12 0.5   -1    0.0091
+               0.177 -> nu_e~ e- nu_tau
+               0.177 -> nu_mu~ mu- nu_tau
+               0.108 -> nu_tau pi-
+               0.225 -> nu_tau rho-
+               0.003 -> nu_tau pi- pi0
+               0.060 -> nu_tau rho- pi0
+               0.020 -> nu_tau pi- pi0 pi0
+               0.025 -> nu_tau rho- pi0 pi0
+               0.013 -> nu_tau pi- pi0 pi0 pi0 nu_tau pi- K_S0
+               0.004 -> nu_tau pi- K_S0
+               0.004 -> nu_tau pi- K_L0
+               0.007 -> nu_tau K-
+               0.014 -> nu_tau K*-
+               0.002 -> nu_tau K- pi0
+               0.002 -> nu_tau K*- pi0
+               0.001 -> nu_tau K- K_S0
+               0.001 -> nu_tau K- K_L0
+               0.054 -> nu_tau pi- rho0
+               0.014 -> nu_tau pi- pi+ pi-
+               0.016 -> nu_tau pi- omega
+               0.005 -> nu_tau pi- eta
+               0.012 -> nu_tau rho- rho0
+               0.012 -> nu_tau pi- rho0 pi0
+               0.006 -> nu_tau rho- pi+ pi-
+               0.006 -> nu_tau pi- pi+ pi- pi0 nu_tau rho- omega
+               0.006 -> nu_tau rho- omega
+               0.006 -> nu_tau pi- omega pi0
+               0.006 -> nu_tau rho- eta
+               0.002 -> nu_tau pi- eta pi0
+               0.001 -> nu_tau rho- rho0 pi0
+               0.001 -> nu_tau pi- rho0 rho0
+               0.002 -> nu_tau pi- eta eta
+               0.002 -> nu_tau pi- rho0 pi0 pi0 nu_tau pi- rho+ rho-
+               0.002 -> nu_tau pi- rho+ rho-
+               0.002 -> nu_tau pi- rho+ pi- pi0 nu_tau pi- rho- pi+ pi0
+               0.002 -> nu_tau pi- rho- pi+ pi0 gamma tau-
+   -15 tau+       1.7841 2.16843e-12 0.5    1    0.0091
+               0.177 -> nu_e e+ nu_tau~
+               0.177 -> nu_mu mu+ nu_tau~
+               0.108 -> nu_tau~ pi+
+               0.225 -> nu_tau~ rho+
+               0.003 -> nu_tau~ pi+ pi0
+               0.060 -> nu_tau~ rho+ pi0
+               0.020 -> nu_tau~ pi+ pi0 pi0
+               0.025 -> nu_tau~ rho+ pi0 pi0
+               0.013 -> nu_tau~ pi+ pi0 pi0 pi0 nu_tau~ pi+ K_S0
+               0.004 -> nu_tau~ pi+ K_S0
+               0.004 -> nu_tau~ pi+ K_L0
+               0.007 -> nu_tau~ K+
+               0.014 -> nu_tau~ K*+
+               0.002 -> nu_tau~ K+ pi0
+               0.002 -> nu_tau~ K*+ pi0
+               0.001 -> nu_tau~ K+ K_S0
+               0.001 -> nu_tau~ K+ K_L0
+               0.054 -> nu_tau~ pi+ rho0
+               0.014 -> nu_tau~ pi+ pi- pi+
+               0.016 -> nu_tau~ pi+ omega
+               0.005 -> nu_tau~ pi+ eta
+               0.012 -> nu_tau~ rho+ rho0
+               0.012 -> nu_tau~ pi+ rho0 pi0
+               0.006 -> nu_tau~ rho+ pi- pi+
+               0.006 -> nu_tau~ pi+ pi- pi+ pi0 nu_tau~ rho+ omega
+               0.006 -> nu_tau~ rho+ omega
+               0.006 -> nu_tau~ pi+ omega pi0
+               0.006 -> nu_tau~ rho+ eta
+               0.002 -> nu_tau~ pi+ eta pi0
+               0.001 -> nu_tau~ rho+ rho0 pi0
+               0.001 -> nu_tau~ pi+ rho0 rho0
+               0.002 -> nu_tau~ pi+ eta eta
+               0.002 -> nu_tau~ pi+ rho0 pi0 pi0 nu_tau~ pi+ rho- rho+
+               0.002 -> nu_tau~ pi+ rho- rho+
+               0.002 -> nu_tau~ pi+ rho- pi+ pi0 nu_tau~ pi+ rho+ pi- pi0
+               0.002 -> nu_tau~ pi+ rho+ pi- pi0 gamma tau+
+    16 nu_tau          0 Stable      0.5    0    Stable
+   -16 nu_tau~         0 Stable      0.5    0    Stable
+    17 chi-          100 Stable      0.5   -1    Stable
+               1.000 -> Wvirt- nu_chi
+   -17 chi+          100 Stable      0.5    1    Stable
+               1.000 -> Wvirt+ nu_chi~
+    18 nu_chi          0 Stable      0.5    0    Stable
+   -18 nu_chi~         0 Stable      0.5    0    Stable
+    22 gamma           0 Stable        1    0    Stable
+    23 Z0           91.2 2.5   1    0    7.89308e-15
+    24 W+             80 2.1   1    1    9.39652e-15
+   -24 W-             80 2.1   1   -1    9.39652e-15
+    25 H0             50 Stable        1    0    Stable
+    32 Z'0           500 Stable        1    0    Stable
+    33 Z"0           900 Stable        1    0    Stable
+    34 W'+           500 Stable        1    1    Stable
+   -34 W'-           500 Stable        1   -1    Stable
+    35 H'0           300 Stable        1    0    Stable
+    36 A0            300 Stable        1    0    Stable
+    37 H+            300 Stable        1    1    Stable
+   -37 H-            300 Stable        1   -1    Stable
+    40 R0           5000 Stable        1    0    Stable
+   -40 R~0          5000 Stable        1    0    Stable
+    81 specflav        0 Stable        0    0    Stable
+    82 rndmflav        0 Stable        0    0    Stable
+   -82 rndmflav~        0 Stable        0    0    Stable
+    83 phasespa        0 Stable        0    0    Stable
+               1.000 -> rndmflav rndmflav~
+    84 c-hadron        0 1.97327e-12   0   0.666667    0.01
+   -84 c-hadron~        0 1.97327e-12   0   -0.666667    0.01
+    85 b-hadron        0 4.589e-13   0   -0.333333    0.043
+   -85 b-hadron~        0 4.589e-13   0   0.333333    0.043
+    86 t-hadron        0 Stable        0   0.666667    Stable
+   -86 t-hadron~        0 Stable        0   -0.666667    Stable
+    87 l-hadron        0 Stable        0   -0.333333    Stable
+   -87 l-hadron~        0 Stable        0   0.333333    Stable
+    88 h-hadron        0 Stable        0   0.666667    Stable
+   -88 h-hadron~        0 Stable        0   -0.666667    Stable
+    89 Wvirt+          0 Stable        0    1    Stable
+   -89 Wvirt-          0 Stable        0   -1    Stable
+    91 cluster         0 Stable        0    0    Stable
+    92 string          0 Stable        0    0    Stable
+    93 indep.          0 Stable        0    0    Stable
+    94 CMshower        0 Stable        0    0    Stable
+    95 SPHEaxis        0 Stable        0    0    Stable
+    96 THRUaxis        0 Stable        0    0    Stable
+    97 CLUSjet         0 Stable        0    0    Stable
+    98 CELLjet         0 Stable        0    0    Stable
+    99 table           0 Stable        0    0    Stable
+   111 pi0         0.135 Stable        0    0    Stable
+               0.988 -> gamma gamma
+               0.012 -> gamma e- e+
+   113 rho0         0.77 0.153   1    0    1.28972e-13
+               1.000 -> pi+ pi-
+   115 a_20        1.318 0.11   2    0    1.79388e-13
+               0.350 -> rho+ pi-
+               0.350 -> rho- pi+
+               0.144 -> eta pi0
+               0.105 -> omega pi+ pi-
+               0.024 -> K+ K-
+               0.024 -> K_L0 K_S0
+               0.003 -> pi0 gamma
+   130 K_L0       0.4977 1.2698e-17   0    0    1554
+               0.217 -> pi0 pi0 pi0
+               0.124 -> pi+ pi- pi0
+               0.193 -> nu_e~ e- pi+
+               0.193 -> nu_e e+ pi-
+               0.135 -> nu_mu~ mu- pi+
+               0.135 -> nu_mu mu+ pi-
+               0.002 -> pi+ pi-
+               0.001 -> pi0 pi0
+   210 pi_diffr+        0 Stable        0    1    Stable
+  -210 pi_diffr-        0 Stable        0   -1    Stable
+   211 pi+        0.1396 2.52886e-17   0    1    780.3
+               1.000 -> mu+ nu_mu
+  -211 pi-        0.1396 2.52886e-17   0   -1    780.3
+               1.000 -> mu- nu_mu~
+   213 rho+       0.7669 0.149   1    1    1.32434e-13
+               1.000 -> pi+ pi0
+  -213 rho-       0.7669 0.149   1   -1    1.32434e-13
+               1.000 -> pi- pi0
+   215 a_2+        1.318 0.11   2    1    1.79388e-13
+               0.350 -> rho+ pi0
+               0.350 -> rho0 pi+
+               0.144 -> eta pi+
+               0.105 -> omega pi+ pi0
+               0.048 -> K+ K~0
+               0.003 -> pi+ gamma
+  -215 a_2-        1.318 0.11   2   -1    1.79388e-13
+               0.350 -> rho- pi0
+               0.350 -> rho0 pi-
+               0.144 -> eta pi-
+               0.105 -> omega pi- pi0
+               0.048 -> K- K0
+               0.003 -> pi- gamma
+   221 eta        0.5488 Stable        0    0    Stable
+               0.389 -> gamma gamma
+               0.319 -> pi0 pi0 pi0
+               0.237 -> pi+ pi- pi0
+               0.049 -> gamma pi+ pi-
+               0.005 -> gamma e- e+
+               0.001 -> pi+ pi- e- e+
+   223 omega       0.782 0.0085   1    0    2.32149e-12
+               0.893 -> pi+ pi- pi0
+               0.080 -> gamma pi0
+               0.017 -> pi+ pi-
+               0.005 -> pi0 pi0 gamma
+               0.005 -> pi0 pi0 pi0
+   225 f_2         1.274 0.185   2    0    1.06663e-13
+               0.573 -> pi+ pi-
+               0.287 -> pi0 pi0
+               0.063 -> pi+ pi- pi0 pi0
+               0.028 -> pi+ pi- pi+ pi-
+               0.021 -> K+ K-
+               0.021 -> K_L0 K_S0
+               0.004 -> eta eta
+               0.003 -> pi0 pi0 pi0 pi0
+   310 K_S0       0.4977 7.37671e-15   0    0    2.675
+               0.686 -> pi+ pi-
+               0.314 -> pi0 pi0
+   311 K0         0.4977 Stable        0    0    Stable
+  -311 K~0        0.4977 Stable        0    0    Stable
+   313 K*0        0.8962 0.0505   1    0    3.90747e-13
+               0.665 -> K+ pi-
+               0.333 -> K0 pi0
+               0.002 -> K0 gamma
+  -313 K*~0       0.8962 0.0505   1    0    3.90747e-13
+               0.665 -> K- pi+
+               0.333 -> K~0 pi0
+               0.002 -> K~0 gamma
+   315 K*_20       1.426 0.115   2    0    1.71589e-13
+               0.332 -> K+ pi-
+               0.166 -> K0 pi0
+               0.168 -> K*+ pi-
+               0.084 -> K*0 pi0
+               0.086 -> K*+ pi- pi0
+               0.043 -> K*0 pi+ pi-
+               0.059 -> K+ rho-
+               0.029 -> K0 rho0
+               0.029 -> K0 omega
+               0.002 -> K0 eta
+               0.002 -> K0 gamma
+  -315 K*_2~0      1.426 0.115   2    0    1.71589e-13
+               0.332 -> K- pi+
+               0.166 -> K~0 pi0
+               0.168 -> K*- pi+
+               0.084 -> K*~0 pi0
+               0.086 -> K*- pi+ pi0
+               0.043 -> K*~0 pi- pi+
+               0.059 -> K- rho+
+               0.029 -> K~0 rho0
+               0.029 -> K~0 omega
+               0.002 -> K~0 eta
+               0.002 -> K~0 gamma
+   321 K+         0.4936 5.32022e-17   0    1    370.9
+               0.635 -> mu+ nu_mu
+               0.212 -> pi+ pi0
+               0.056 -> pi+ pi+ pi-
+               0.017 -> pi+ pi0 pi0
+               0.048 -> nu_e e+ pi0
+               0.032 -> nu_mu mu+ pi0
+  -321 K-         0.4936 5.32022e-17   0   -1    370.9
+               0.635 -> mu- nu_mu~
+               0.212 -> pi- pi0
+               0.056 -> pi- pi- pi+
+               0.017 -> pi- pi0 pi0
+               0.048 -> nu_e~ e- pi0
+               0.032 -> nu_mu~ mu- pi0
+   323 K*+        0.8921 0.0513   1    1    3.84653e-13
+               0.666 -> K0 pi+
+               0.333 -> K+ pi0
+               0.001 -> K+ gamma
+  -323 K*-        0.8921 0.0513   1   -1    3.84653e-13
+               0.666 -> K~0 pi-
+               0.333 -> K- pi0
+               0.001 -> K- gamma
+   325 K*_2+       1.426 0.099   2    1    1.9932e-13
+               0.332 -> K0 pi+
+               0.166 -> K+ pi0
+               0.168 -> K*0 pi+
+               0.084 -> K*+ pi0
+               0.086 -> K*0 pi+ pi0
+               0.043 -> K*+ pi+ pi-
+               0.059 -> K0 rho+
+               0.029 -> K+ rho0
+               0.029 -> K+ omega
+               0.002 -> K+ eta
+               0.002 -> K+ gamma
+  -325 K*_2-       1.426 0.099   2   -1    1.9932e-13
+               0.332 -> K~0 pi-
+               0.166 -> K- pi0
+               0.168 -> K*~0 pi-
+               0.084 -> K*- pi0
+               0.086 -> K*~0 pi- pi0
+               0.043 -> K*- pi- pi+
+               0.059 -> K~0 rho-
+               0.029 -> K- rho0
+               0.029 -> K- omega
+               0.002 -> K- eta
+               0.002 -> K- gamma
+   331 eta'       0.9575 0.0002   0    0    9.86635e-11
+               0.441 -> pi+ pi- eta
+               0.205 -> pi0 pi0 eta
+               0.301 -> gamma rho0
+               0.030 -> gamma omega
+               0.022 -> gamma gamma
+               0.001 -> pi0 pi0 pi0
+   333 phi        1.0194 0.0044   1    0    4.4847e-12
+               0.495 -> K+ K-
+               0.343 -> K_L0 K_S0
+               0.043 -> rho- pi+
+               0.043 -> rho0 pi0
+               0.043 -> rho+ pi-
+               0.019 -> pi+ pi- pi0
+               0.013 -> gamma eta
+               0.001 -> pi0 gamma
+   335 f'_2        1.525 0.076   2    0    2.59641e-13
+               0.500 -> K+ K-
+               0.500 -> K_L0 K_S0
+   411 D+         1.8693 6.16647e-13   0    1    0.032
+  -411 D-         1.8693 6.16647e-13   0   -1    0.032
+   413 D*+        2.0101 Stable        1    1    Stable
+               0.490 -> D0 pi+
+               0.340 -> D+ pi0
+               0.170 -> D+ gamma
+  -413 D*-        2.0101 Stable        1   -1    Stable
+               0.490 -> D~0 pi-
+               0.340 -> D- pi0
+               0.170 -> D- gamma
+   415 D*_2+       2.422 0.06   2    1    3.28878e-13
+               0.300 -> D0 pi+
+               0.150 -> D+ pi0
+               0.160 -> D*0 pi+
+               0.080 -> D*+ pi0
+               0.130 -> D*0 pi+ pi0
+               0.060 -> D*+ pi+ pi-
+               0.080 -> D0 pi+ pi0
+               0.040 -> D+ pi+ pi-
+  -415 D*_2-       2.422 0.06   2   -1    3.28878e-13
+               0.300 -> D~0 pi-
+               0.150 -> D- pi0
+               0.160 -> D*~0 pi-
+               0.080 -> D*- pi0
+               0.130 -> D*~0 pi- pi0
+               0.060 -> D*- pi- pi+
+               0.080 -> D~0 pi- pi0
+               0.040 -> D- pi- pi+
+   421 D0         1.8645 1.54162e-12   0    0    0.0128
+  -421 D~0        1.8645 1.54162e-12   0    0    0.0128
+   423 D*0        2.0071 Stable        1    0    Stable
+               0.520 -> D0 pi0
+               0.480 -> D0 gamma
+  -423 D*~0       2.0071 Stable        1    0    Stable
+               0.520 -> D~0 pi0
+               0.480 -> D~0 gamma
+   425 D*_20       2.422 0.06   2    0    3.28878e-13
+               0.300 -> D+ pi-
+               0.150 -> D0 pi0
+               0.160 -> D*+ pi-
+               0.080 -> D*0 pi0
+               0.130 -> D*+ pi- pi0
+               0.060 -> D*0 pi+ pi-
+               0.080 -> D+ pi- pi0
+               0.040 -> D0 pi+ pi-
+  -425 D*_2~0      2.422 0.06   2    0    3.28878e-13
+               0.300 -> D- pi+
+               0.150 -> D~0 pi0
+               0.160 -> D*- pi+
+               0.080 -> D*~0 pi0
+               0.130 -> D*- pi+ pi0
+               0.060 -> D*~0 pi- pi+
+               0.080 -> D- pi+ pi0
+               0.040 -> D~0 pi- pi+
+   431 D_s+       1.9693 1.50631e-12   0    1    0.0131
+  -431 D_s-       1.9693 1.50631e-12   0   -1    0.0131
+   433 D*_s+      2.1127 Stable        1    1    Stable
+               1.000 -> D_s+ gamma
+  -433 D*_s-      2.1127 Stable        1   -1    Stable
+               1.000 -> D_s- gamma
+   435 D*_2s+       2.61 0.1   2    1    1.97327e-13
+               0.400 -> D0 K+
+               0.400 -> D+ K0
+               0.100 -> D*_s+ pi0
+               0.050 -> D_s+ pi0
+               0.050 -> D_s+ pi+ pi-
+  -435 D*_2s-       2.61 0.1   2   -1    1.97327e-13
+               0.400 -> D~0 K-
+               0.400 -> D- K~0
+               0.100 -> D*_s- pi0
+               0.050 -> D_s- pi0
+               0.050 -> D_s- pi- pi+
+   441 eta_c      2.9796 0.001   0    0    1.97327e-11
+   443 J/psi      3.0969 Stable        1    0    Stable
+               0.069 -> e- e+
+               0.069 -> mu- mu+
+               0.862 -> rndmflav rndmflav~
+   445 chi_2c     3.5563 0.0026   2    0    7.5895e-12
+               0.150 -> J/psi gamma
+               0.850 -> rndmflav rndmflav~
+   511 B0         5.2794 5.02104e-13   0    0    0.0393
+  -511 B~0        5.2794 5.02104e-13   0    0    0.0393
+   513 B*0        5.3354 Stable        1    0    Stable
+               1.000 -> B0 gamma
+  -513 B*~0       5.3354 Stable        1    0    Stable
+               1.000 -> B~0 gamma
+   515 B*_20        5.83 0.1   2    0    1.97327e-13
+               0.300 -> B+ pi-
+               0.150 -> B0 pi0
+               0.160 -> B*+ pi-
+               0.080 -> B*0 pi0
+               0.130 -> B*+ pi- pi0
+               0.060 -> B*0 pi+ pi-
+               0.080 -> B+ pi- pi0
+               0.040 -> B0 pi+ pi-
+  -515 B*_2~0       5.83 0.1   2    0    1.97327e-13
+               0.300 -> B- pi+
+               0.150 -> B~0 pi0
+               0.160 -> B*- pi+
+               0.080 -> B*~0 pi0
+               0.130 -> B*- pi+ pi0
+               0.060 -> B*~0 pi- pi+
+               0.080 -> B- pi+ pi0
+               0.040 -> B~0 pi- pi+
+   521 B+         5.2776 5.02104e-13   0    1    0.0393
+  -521 B-         5.2776 5.02104e-13   0   -1    0.0393
+   523 B*+        5.3354 Stable        1    1    Stable
+               1.000 -> B+ gamma
+  -523 B*-        5.3354 Stable        1   -1    Stable
+               1.000 -> B- gamma
+   525 B*_2+        5.83 0.1   2    1    1.97327e-13
+               0.300 -> B0 pi+
+               0.150 -> B+ pi0
+               0.160 -> B*0 pi+
+               0.080 -> B*+ pi0
+               0.130 -> B*0 pi+ pi0
+               0.060 -> B*+ pi+ pi-
+               0.080 -> B0 pi+ pi0
+               0.040 -> B+ pi+ pi-
+  -525 B*_2-        5.83 0.1   2   -1    1.97327e-13
+               0.300 -> B~0 pi-
+               0.150 -> B- pi0
+               0.160 -> B*~0 pi-
+               0.080 -> B*- pi0
+               0.130 -> B*~0 pi- pi0
+               0.060 -> B*- pi- pi+
+               0.080 -> B~0 pi- pi0
+               0.040 -> B- pi- pi+
+   531 B_s0      5.47972 5.02104e-13   0    0    0.0393
+  -531 B_s~0     5.47972 5.02104e-13   0    0    0.0393
+   533 B*_s0      5.5068 Stable        1    0    Stable
+               1.000 -> B_s0 gamma
+  -533 B*_s~0     5.5068 Stable        1    0    Stable
+               1.000 -> B_s~0 gamma
+   535 B*_2s0       6.07 0.1   2    0    1.97327e-13
+               0.400 -> B+ K-
+               0.400 -> B0 K~0
+               0.100 -> B*_s0 pi0
+               0.050 -> B_s0 pi0
+               0.050 -> B_s0 pi+ pi-
+  -535 B*_2s~0      6.07 0.1   2    0    1.97327e-13
+               0.400 -> B- K+
+               0.400 -> B~0 K0
+               0.100 -> B*_s~0 pi0
+               0.050 -> B_s~0 pi0
+               0.050 -> B_s~0 pi- pi+
+   541 B_c+            0 4.589e-13   0   -0.333333    0.043
+  -541 B_c-            0 4.589e-13   0   0.333333    0.043
+   543 B*_c+           0 4.589e-13   1   -0.333333    0.043
+  -543 B*_c-           0 4.589e-13   1   0.333333    0.043
+   545 B*_2c+          0 4.589e-13   2   -0.333333    0.043
+  -545 B*_2c-          0 4.589e-13   2   0.333333    0.043
+   551 eta_b         9.4 Stable        0    0    Stable
+   553 Upsilon    9.4603 Stable        1    0    Stable
+   555 chi_2b     9.9132 Stable        2    0    Stable
+               0.220 -> Upsilon gamma
+   611 T+              0 Stable        0   0.666667    Stable
+  -611 T-              0 Stable        0   -0.666667    Stable
+   613 T*+             0 Stable        1   0.666667    Stable
+  -613 T*-             0 Stable        1   -0.666667    Stable
+   615 T*_2+           0 Stable        2   0.666667    Stable
+  -615 T*_2-           0 Stable        2   -0.666667    Stable
+   621 T0              0 Stable        0   0.666667    Stable
+  -621 T~0             0 Stable        0   -0.666667    Stable
+   623 T*0             0 Stable        1   0.666667    Stable
+  -623 T*~0            0 Stable        1   -0.666667    Stable
+   625 T*_20           0 Stable        2   0.666667    Stable
+  -625 T*_2~0          0 Stable        2   -0.666667    Stable
+   631 T_s+            0 Stable        0   0.666667    Stable
+  -631 T_s-            0 Stable        0   -0.666667    Stable
+   633 T*_s+           0 Stable        1   0.666667    Stable
+  -633 T*_s-           0 Stable        1   -0.666667    Stable
+   635 T*_2s+          0 Stable        2   0.666667    Stable
+  -635 T*_2s-          0 Stable        2   -0.666667    Stable
+   641 T_c0            0 Stable        0   0.666667    Stable
+  -641 T_c~0           0 Stable        0   -0.666667    Stable
+   643 T*_c0           0 Stable        1   0.666667    Stable
+  -643 T*_c~0          0 Stable        1   -0.666667    Stable
+   645 T*_2c0          0 Stable        2   0.666667    Stable
+  -645 T*_2c~0         0 Stable        2   -0.666667    Stable
+   651 T_b+            0 Stable        0   0.666667    Stable
+  -651 T_b-            0 Stable        0   -0.666667    Stable
+   653 T*_b+           0 Stable        1   0.666667    Stable
+  -653 T*_b-           0 Stable        1   -0.666667    Stable
+   655 T*_2b+          0 Stable        2   0.666667    Stable
+  -655 T*_2b-          0 Stable        2   -0.666667    Stable
+   661 eta_t         238 Stable        0    0    Stable
+   663 Theta         238 Stable        1    0    Stable
+   665 chi_2t     238.45 Stable        2    0    Stable
+               0.300 -> Theta gamma
+   711 L0              0 Stable        0   -0.333333    Stable
+  -711 L~0             0 Stable        0   0.333333    Stable
+   713 L*0             0 Stable        1   -0.333333    Stable
+  -713 L*~0            0 Stable        1   0.333333    Stable
+   715 L*_20           0 Stable        2   -0.333333    Stable
+  -715 L*_2~0          0 Stable        2   0.333333    Stable
+   721 L+              0 Stable        0   -0.333333    Stable
+  -721 L-              0 Stable        0   0.333333    Stable
+   723 L*+             0 Stable        1   -0.333333    Stable
+  -723 L*-             0 Stable        1   0.333333    Stable
+   725 L*_2+           0 Stable        2   -0.333333    Stable
+  -725 L*_2-           0 Stable        2   0.333333    Stable
+   731 L_s0            0 Stable        0   -0.333333    Stable
+  -731 L_s~0           0 Stable        0   0.333333    Stable
+   733 L*_s0           0 Stable        1   -0.333333    Stable
+  -733 L*_s~0          0 Stable        1   0.333333    Stable
+   735 L*_2s0          0 Stable        2   -0.333333    Stable
+  -735 L*_2s~0         0 Stable        2   0.333333    Stable
+   741 L_c+            0 Stable        0   -0.333333    Stable
+  -741 L_c-            0 Stable        0   0.333333    Stable
+   743 L*_c+           0 Stable        1   -0.333333    Stable
+  -743 L*_c-           0 Stable        1   0.333333    Stable
+   745 L*_2c+          0 Stable        2   -0.333333    Stable
+  -745 L*_2c-          0 Stable        2   0.333333    Stable
+   751 L_b0            0 Stable        0   -0.333333    Stable
+  -751 L_b~0           0 Stable        0   0.333333    Stable
+   753 L*_b0           0 Stable        1   -0.333333    Stable
+  -753 L*_b~0          0 Stable        1   0.333333    Stable
+   755 L*_2b0          0 Stable        2   -0.333333    Stable
+  -755 L*_2b~0         0 Stable        2   0.333333    Stable
+   761 L_t+            0 Stable        0   -0.333333    Stable
+  -761 L_t-            0 Stable        0   0.333333    Stable
+   763 L*_t+           0 Stable        1   -0.333333    Stable
+  -763 L*_t-           0 Stable        1   0.333333    Stable
+   765 L*_2t+          0 Stable        2   -0.333333    Stable
+  -765 L*_2t-          0 Stable        2   0.333333    Stable
+   771 eta_l         238 Stable        0    0    Stable
+   773 Theta_l       238 Stable        1    0    Stable
+   775 chi_2l     238.45 Stable        2    0    Stable
+   811 H+              0 Stable        0   0.666667    Stable
+  -811 H-              0 Stable        0   -0.666667    Stable
+   813 H*+             0 Stable        1   0.666667    Stable
+  -813 H*-             0 Stable        1   -0.666667    Stable
+   815 H*_2+           0 Stable        2   0.666667    Stable
+  -815 H*_2-           0 Stable        2   -0.666667    Stable
+   821 H0              0 Stable        0   0.666667    Stable
+  -821 H~0             0 Stable        0   -0.666667    Stable
+   823 H*0             0 Stable        1   0.666667    Stable
+  -823 H*~0            0 Stable        1   -0.666667    Stable
+   825 H*_20           0 Stable        2   0.666667    Stable
+  -825 H*_2~0          0 Stable        2   -0.666667    Stable
+   831 H_s+            0 Stable        0   0.666667    Stable
+  -831 H_s-            0 Stable        0   -0.666667    Stable
+   833 H*_s+           0 Stable        1   0.666667    Stable
+  -833 H*_s-           0 Stable        1   -0.666667    Stable
+   835 H*_2s+          0 Stable        2   0.666667    Stable
+  -835 H*_2s-          0 Stable        2   -0.666667    Stable
+   841 H_c0            0 Stable        0   0.666667    Stable
+  -841 H_c~0           0 Stable        0   -0.666667    Stable
+   843 H*_c0           0 Stable        1   0.666667    Stable
+  -843 H*_c~0          0 Stable        1   -0.666667    Stable
+   845 H*_2c0          0 Stable        2   0.666667    Stable
+  -845 H*_2c~0         0 Stable        2   -0.666667    Stable
+   851 H_b+            0 Stable        0   0.666667    Stable
+  -851 H_b-            0 Stable        0   -0.666667    Stable
+   853 H*_b+           0 Stable        1   0.666667    Stable
+  -853 H*_b-           0 Stable        1   -0.666667    Stable
+   855 H*_2b+          0 Stable        2   0.666667    Stable
+  -855 H*_2b-          0 Stable        2   -0.666667    Stable
+   861 H_t0            0 Stable        0   0.666667    Stable
+  -861 H_t~0           0 Stable        0   -0.666667    Stable
+   863 H*_t0           0 Stable        1   0.666667    Stable
+  -863 H*_t~0          0 Stable        1   -0.666667    Stable
+   865 H*_2t0          0 Stable        2   0.666667    Stable
+  -865 H*_2t~0         0 Stable        2   -0.666667    Stable
+   871 H_l+            0 Stable        0   0.666667    Stable
+  -871 H_l-            0 Stable        0   -0.666667    Stable
+   873 H*_l+           0 Stable        1   0.666667    Stable
+  -873 H*_l-           0 Stable        1   -0.666667    Stable
+   875 H*_2l+          0 Stable        2   0.666667    Stable
+  -875 H*_2l-          0 Stable        2   -0.666667    Stable
+   881 eta_h         397 Stable        0    0    Stable
+   883 Theta_h       397 Stable        1    0    Stable
+   885 chi_2h     397.45 Stable        2    0    Stable
+  1114 Delta-      1.234 0.115 0.5   -1    1.71589e-13
+               1.000 -> n0 pi-
+ -1114 Delta~+     1.234 0.115 0.5    1    1.71589e-13
+               1.000 -> n~0 pi+
+  2110 n_diffr0        0 Stable        0    0    Stable
+ -2110 n_diffr~0        0 Stable        0    0    Stable
+  2112 n0         0.9396 Stable        0    0    Stable
+ -2112 n~0        0.9396 Stable        0    0    Stable
+  2114 Delta0      1.233 0.115 0.5    0    1.71589e-13
+               0.331 -> p+ pi-
+               0.663 -> n0 pi0
+               0.006 -> n0 gamma
+ -2114 Delta~0     1.233 0.115 0.5    0    1.71589e-13
+               0.331 -> p~- pi+
+               0.663 -> n~0 pi0
+               0.006 -> n~0 gamma
+  2210 p_diffr+        0 Stable        0    1    Stable
+ -2210 p_diffr~-        0 Stable        0   -1    Stable
+  2212 p+         0.9383 Stable        0    1    Stable
+ -2212 p~-        0.9383 Stable        0   -1    Stable
+  2214 Delta+      1.232 0.115 0.5    1    1.71589e-13
+               0.663 -> p+ pi0
+               0.331 -> n0 pi+
+               0.006 -> p+ gamma
+ -2214 Delta~-     1.232 0.115 0.5   -1    1.71589e-13
+               0.663 -> p~- pi0
+               0.331 -> n~0 pi-
+               0.006 -> p~- gamma
+  2224 Delta++     1.231 0.115 0.5    2    1.71589e-13
+               1.000 -> p+ pi+
+ -2224 Delta~--    1.231 0.115 0.5   -2    1.71589e-13
+               1.000 -> p~- pi-
+  3112 Sigma-     1.1974 4.45433e-15   0   -1    4.43
+               0.999 -> n0 pi-
+               0.001 -> nu_e~ e- n0
+ -3112 Sigma~+    1.1974 4.45433e-15   0    1    4.43
+               0.999 -> n~0 pi+
+               0.001 -> nu_e e+ n~0
+  3114 Sigma*-    1.3872 0.039 0.5   -1    5.05967e-13
+               0.880 -> Lambda0 pi-
+               0.060 -> Sigma0 pi-
+               0.060 -> Sigma- pi0
+ -3114 Sigma*~+   1.3872 0.039 0.5    1    5.05967e-13
+               0.880 -> Lambda~0 pi+
+               0.060 -> Sigma~0 pi+
+               0.060 -> Sigma~+ pi0
+  3122 Lambda0    1.1156 2.50161e-15   0    0    7.888
+               0.641 -> p+ pi-
+               0.357 -> n0 pi0
+               0.001 -> n0 gamma
+               0.001 -> nu_e~ e- p+
+ -3122 Lambda~0   1.1156 2.50161e-15   0    0    7.888
+               0.641 -> p~- pi+
+               0.357 -> n~0 pi0
+               0.001 -> n~0 gamma
+               0.001 -> nu_e e+ p~-
+  3212 Sigma0     1.1926 Stable        0    0    Stable
+               1.000 -> Lambda0 gamma
+ -3212 Sigma~0    1.1926 Stable        0    0    Stable
+               1.000 -> Lambda~0 gamma
+  3214 Sigma*0    1.3837 0.036 0.5    0    5.48131e-13
+               0.880 -> Lambda0 pi0
+               0.060 -> Sigma+ pi-
+               0.060 -> Sigma- pi+
+ -3214 Sigma*~0   1.3837 0.036 0.5    0    5.48131e-13
+               0.880 -> Lambda~0 pi0
+               0.060 -> Sigma~- pi+
+               0.060 -> Sigma~+ pi-
+  3222 Sigma+     1.1894 8.22196e-15   0    1    2.4
+               0.516 -> p+ pi0
+               0.483 -> n0 pi+
+               0.001 -> p+ gamma
+ -3222 Sigma~-    1.1894 8.22196e-15   0   -1    2.4
+               0.516 -> p~- pi0
+               0.483 -> n~0 pi-
+               0.001 -> p~- gamma
+  3224 Sigma*+    1.3828 0.036 0.5    1    5.48131e-13
+               0.880 -> Lambda0 pi+
+               0.060 -> Sigma+ pi0
+               0.060 -> Sigma0 pi+
+ -3224 Sigma*~-   1.3828 0.036 0.5   -1    5.48131e-13
+               0.880 -> Lambda~0 pi-
+               0.060 -> Sigma~- pi0
+               0.060 -> Sigma~0 pi-
+  3312 Xi-        1.3213 4.01888e-15   0   -1    4.91
+               1.000 -> Lambda0 pi-
+ -3312 Xi~+       1.3213 4.01888e-15   0    1    4.91
+               1.000 -> Lambda~0 pi+
+  3314 Xi*-        1.535 0.0099 0.5   -1    1.9932e-12
+               0.667 -> Xi0 pi-
+               0.333 -> Xi- pi0
+ -3314 Xi*~+       1.535 0.0099 0.5    1    1.9932e-12
+               0.667 -> Xi~0 pi+
+               0.333 -> Xi~+ pi0
+  3322 Xi0        1.3149 2.27074e-15   0    0    8.69
+               0.995 -> Lambda0 pi0
+               0.005 -> Lambda0 gamma
+ -3322 Xi~0       1.3149 2.27074e-15   0    0    8.69
+               0.995 -> Lambda~0 pi0
+               0.005 -> Lambda~0 gamma
+  3324 Xi*0       1.5318 0.0091 0.5    0    2.16843e-12
+               0.333 -> Xi0 pi0
+               0.667 -> Xi- pi+
+ -3324 Xi*~0      1.5318 0.0091 0.5    0    2.16843e-12
+               0.333 -> Xi~0 pi0
+               0.667 -> Xi~+ pi-
+  3334 Omega-     1.6724 8.02142e-15 0.5   -1    2.46
+               0.676 -> Lambda0 K-
+               0.234 -> Xi0 pi-
+               0.085 -> Xi- pi0
+               0.005 -> nu_e~ e- Xi0
+ -3334 Omega~+    1.6724 8.02142e-15 0.5    1    2.46
+               0.676 -> Lambda~0 K+
+               0.234 -> Xi~0 pi+
+               0.085 -> Xi~+ pi0
+               0.005 -> nu_e e+ Xi~0
+  4112 Sigma_c0    2.454 Stable        0    0    Stable
+               1.000 -> Lambda_c+ pi-
+ -4112 Sigma_c~0    2.454 Stable        0    0    Stable
+               1.000 -> Lambda_c~- pi+
+  4114 Sigma*_c0      2.5 Stable      0.5    0    Stable
+               1.000 -> Lambda_c+ pi-
+ -4114 Sigma*_c~0      2.5 Stable      0.5    0    Stable
+               1.000 -> Lambda_c~- pi+
+  4122 Lambda_c+   2.2849 3.6542e-12   0    1    0.0054
+ -4122 Lambda_c~-   2.2849 3.6542e-12   0   -1    0.0054
+  4132 Xi_c0        2.46 1.5179e-12   0    0    0.013
+ -4132 Xi_c~0       2.46 1.5179e-12   0    0    0.013
+  4212 Sigma_c+   2.4529 Stable        0    1    Stable
+               1.000 -> Lambda_c+ pi0
+ -4212 Sigma_c~-   2.4529 Stable        0   -1    Stable
+               1.000 -> Lambda_c~- pi0
+  4214 Sigma*_c+      2.5 Stable      0.5    1    Stable
+               1.000 -> Lambda_c+ pi0
+ -4214 Sigma*_c~-      2.5 Stable      0.5   -1    Stable
+               1.000 -> Lambda_c~- pi0
+  4222 Sigma_c++   2.4522 Stable        0    2    Stable
+               1.000 -> Lambda_c+ pi+
+ -4222 Sigma_c~--   2.4522 Stable        0   -2    Stable
+               1.000 -> Lambda_c~- pi-
+  4224 Sigma*_c++      2.5 Stable      0.5    2    Stable
+               1.000 -> Lambda_c+ pi+
+ -4224 Sigma*_c~--      2.5 Stable      0.5   -2    Stable
+               1.000 -> Lambda_c~- pi-
+  4232 Xi_c+        2.46 1.5179e-12   0    1    0.013
+ -4232 Xi_c~-       2.46 1.5179e-12   0   -1    0.013
+  4312 Xi'_c0       2.55 Stable        0    0    Stable
+               1.000 -> Xi_c0 gamma
+ -4312 Xi'_c~0      2.55 Stable        0    0    Stable
+               1.000 -> Xi_c~0 gamma
+  4314 Xi*_c0       2.63 Stable      0.5    0    Stable
+               0.500 -> Xi_c0 pi0
+               0.500 -> Xi_c0 gamma
+ -4314 Xi*_c~0      2.63 Stable      0.5    0    Stable
+               0.500 -> Xi_c~0 pi0
+               0.500 -> Xi_c~0 gamma
+  4322 Xi'_c+       2.55 Stable        0    1    Stable
+               1.000 -> Xi_c+ gamma
+ -4322 Xi'_c~-      2.55 Stable        0   -1    Stable
+               1.000 -> Xi_c~- gamma
+  4324 Xi*_c+       2.63 Stable      0.5    1    Stable
+               0.500 -> Xi_c+ pi0
+               0.500 -> Xi_c+ gamma
+ -4324 Xi*_c~-      2.63 Stable      0.5   -1    Stable
+               0.500 -> Xi_c~- pi0
+               0.500 -> Xi_c~- gamma
+  4332 Omega_c0     2.73 1.5179e-12   0    0    0.013
+ -4332 Omega_c~0     2.73 1.5179e-12   0    0    0.013
+  4334 Omega*_c0      2.8 Stable      0.5    0    Stable
+               1.000 -> Omega_c0 gamma
+ -4334 Omega*_c~0      2.8 Stable      0.5    0    Stable
+               1.000 -> Omega_c~0 gamma
+  4412 Xi_cc+          0 1.97327e-12   0   0.666667    0.01
+ -4412 Xi_cc~-         0 1.97327e-12   0   -0.666667    0.01
+  4414 Xi*_cc+         0 1.97327e-12 0.5   0.666667    0.01
+ -4414 Xi*_cc~-        0 1.97327e-12 0.5   -0.666667    0.01
+  4422 Xi_cc++         0 1.97327e-12   0   0.666667    0.01
+ -4422 Xi_cc~--        0 1.97327e-12   0   -0.666667    0.01
+  4424 Xi*_cc++        0 1.97327e-12 0.5   0.666667    0.01
+ -4424 Xi*_cc~--        0 1.97327e-12 0.5   -0.666667    0.01
+  4432 Omega_cc+        0 1.97327e-12   0   0.666667    0.01
+ -4432 Omega_cc~-        0 1.97327e-12   0   -0.666667    0.01
+  4434 Omega*_cc+        0 1.97327e-12 0.5   0.666667    0.01
+ -4434 Omega*_cc~-        0 1.97327e-12 0.5   -0.666667    0.01
+  4444 Omega*_ccc++        0 1.97327e-12 0.5   0.666667    0.01
+ -4444 Omega*_ccc~--        0 1.97327e-12 0.5   -0.666667    0.01
+  5112 Sigma_b-      5.8 Stable        0   -1    Stable
+               1.000 -> Lambda_b0 pi-
+ -5112 Sigma_b~+      5.8 Stable        0    1    Stable
+               1.000 -> Lambda_b~0 pi+
+  5114 Sigma*_b-     5.81 Stable      0.5   -1    Stable
+               1.000 -> Lambda_b0 pi-
+ -5114 Sigma*_b~+     5.81 Stable      0.5    1    Stable
+               1.000 -> Lambda_b~0 pi+
+  5122 Lambda_b0     5.62 5.02104e-13   0    0    0.0393
+ -5122 Lambda_b~0     5.62 5.02104e-13   0    0    0.0393
+  5132 Xi_b-        5.84 5.02104e-13   0   -1    0.0393
+ -5132 Xi_b~+       5.84 5.02104e-13   0    1    0.0393
+  5142 Xi_bc0          0 4.589e-13   0   -0.333333    0.043
+ -5142 Xi_bc~0         0 4.589e-13   0   0.333333    0.043
+  5212 Sigma_b0      5.8 Stable        0    0    Stable
+               1.000 -> Lambda_b0 pi0
+ -5212 Sigma_b~0      5.8 Stable        0    0    Stable
+               1.000 -> Lambda_b~0 pi0
+  5214 Sigma*_b0     5.81 Stable      0.5    0    Stable
+               1.000 -> Lambda_b0 pi0
+ -5214 Sigma*_b~0     5.81 Stable      0.5    0    Stable
+               1.000 -> Lambda_b~0 pi0
+  5222 Sigma_b+      5.8 Stable        0    1    Stable
+               1.000 -> Lambda_b0 pi+
+ -5222 Sigma_b~-      5.8 Stable        0   -1    Stable
+               1.000 -> Lambda_b~0 pi-
+  5224 Sigma*_b+     5.81 Stable      0.5    1    Stable
+               1.000 -> Lambda_b0 pi+
+ -5224 Sigma*_b~-     5.81 Stable      0.5   -1    Stable
+               1.000 -> Lambda_b~0 pi-
+  5232 Xi_b0        5.84 5.02104e-13   0    0    0.0393
+ -5232 Xi_b~0       5.84 5.02104e-13   0    0    0.0393
+  5242 Xi_bc+          0 4.589e-13   0   -0.333333    0.043
+ -5242 Xi_bc~-         0 4.589e-13   0   0.333333    0.043
+  5312 Xi'_b-       5.96 Stable        0   -1    Stable
+               1.000 -> Xi_b- gamma
+ -5312 Xi'_b~+      5.96 Stable        0    1    Stable
+               1.000 -> Xi_b~+ gamma
+  5314 Xi*_b-       5.97 Stable      0.5   -1    Stable
+               1.000 -> Xi_b- gamma
+ -5314 Xi*_b~+      5.97 Stable      0.5    1    Stable
+               1.000 -> Xi_b~+ gamma
+  5322 Xi'_b0       5.96 Stable        0    0    Stable
+               1.000 -> Xi_b0 gamma
+ -5322 Xi'_b~0      5.96 Stable        0    0    Stable
+               1.000 -> Xi_b~0 gamma
+  5324 Xi*_b0       5.97 Stable      0.5    0    Stable
+               1.000 -> Xi_b0 gamma
+ -5324 Xi*_b~0      5.97 Stable      0.5    0    Stable
+               1.000 -> Xi_b~0 gamma
+  5332 Omega_b-     6.12 5.02104e-13   0   -1    0.0393
+ -5332 Omega_b~+     6.12 5.02104e-13   0    1    0.0393
+  5334 Omega*_b-     6.13 Stable      0.5   -1    Stable
+               1.000 -> Omega_b- gamma
+ -5334 Omega*_b~+     6.13 Stable      0.5    1    Stable
+               1.000 -> Omega_b~+ gamma
+  5342 Omega_bc0        0 4.589e-13   0   -0.333333    0.043
+ -5342 Omega_bc~0        0 4.589e-13   0   0.333333    0.043
+  5412 Xi'_bc0         0 4.589e-13   0   -0.333333    0.043
+ -5412 Xi'_bc~0        0 4.589e-13   0   0.333333    0.043
+  5414 Xi*_bc0         0 4.589e-13 0.5   -0.333333    0.043
+ -5414 Xi*_bc~0        0 4.589e-13 0.5   0.333333    0.043
+  5422 Xi'_bc+         0 4.589e-13   0   -0.333333    0.043
+ -5422 Xi'_bc~-        0 4.589e-13   0   0.333333    0.043
+  5424 Xi*_bc+         0 4.589e-13 0.5   -0.333333    0.043
+ -5424 Xi*_bc~-        0 4.589e-13 0.5   0.333333    0.043
+  5432 Omega'_bc0        0 4.589e-13   0   -0.333333    0.043
+ -5432 Omega'_bc~0        0 4.589e-13   0   0.333333    0.043
+  5434 Omega*_bc0        0 4.589e-13 0.5   -0.333333    0.043
+ -5434 Omega*_bc~0        0 4.589e-13 0.5   0.333333    0.043
+  5442 Omega_bcc+        0 4.589e-13   0   -0.333333    0.043
+ -5442 Omega_bcc~-        0 4.589e-13   0   0.333333    0.043
+  5444 Omega*_bcc+        0 4.589e-13 0.5   -0.333333    0.043
+ -5444 Omega*_bcc~-        0 4.589e-13 0.5   0.333333    0.043
+  5512 Xi_bb-          0 4.589e-13   0   -0.333333    0.043
+ -5512 Xi_bb~+         0 4.589e-13   0   0.333333    0.043
+  5514 Xi*_bb-         0 4.589e-13 0.5   -0.333333    0.043
+ -5514 Xi*_bb~+        0 4.589e-13 0.5   0.333333    0.043
+  5522 Xi_bb0          0 4.589e-13   0   -0.333333    0.043
+ -5522 Xi_bb~0         0 4.589e-13   0   0.333333    0.043
+  5524 Xi*_bb0         0 4.589e-13 0.5   -0.333333    0.043
+ -5524 Xi*_bb~0        0 4.589e-13 0.5   0.333333    0.043
+  5532 Omega_bb-        0 4.589e-13   0   -0.333333    0.043
+ -5532 Omega_bb~+        0 4.589e-13   0   0.333333    0.043
+  5534 Omega*_bb-        0 4.589e-13 0.5   -0.333333    0.043
+ -5534 Omega*_bb~+        0 4.589e-13 0.5   0.333333    0.043
+  5542 Omega_bbc0        0 4.589e-13   0   -0.333333    0.043
+ -5542 Omega_bbc~0        0 4.589e-13   0   0.333333    0.043
+  5544 Omega*_bbc0        0 4.589e-13 0.5   -0.333333    0.043
+ -5544 Omega*_bbc~0        0 4.589e-13 0.5   0.333333    0.043
+  5554 Omega*_bbb-        0 4.589e-13 0.5   -0.333333    0.043
+ -5554 Omega*_bbb~+        0 4.589e-13 0.5   0.333333    0.043
+  6112 Sigma_t0        0 Stable        0   0.666667    Stable
+ -6112 Sigma_t~0        0 Stable        0   -0.666667    Stable
+  6114 Sigma*_t0        0 Stable      0.5   0.666667    Stable
+ -6114 Sigma*_t~0        0 Stable      0.5   -0.666667    Stable
+  6122 Lambda_t+        0 Stable        0   0.666667    Stable
+ -6122 Lambda_t~-        0 Stable        0   -0.666667    Stable
+  6132 Xi_t0           0 Stable        0   0.666667    Stable
+ -6132 Xi_t~0          0 Stable        0   -0.666667    Stable
+  6142 Xi_tc+          0 Stable        0   0.666667    Stable
+ -6142 Xi_tc~-         0 Stable        0   -0.666667    Stable
+  6152 Xi_tb0          0 Stable        0   0.666667    Stable
+ -6152 Xi_tb~0         0 Stable        0   -0.666667    Stable
+  6212 Sigma_t+        0 Stable        0   0.666667    Stable
+ -6212 Sigma_t~-        0 Stable        0   -0.666667    Stable
+  6214 Sigma*_t+        0 Stable      0.5   0.666667    Stable
+ -6214 Sigma*_t~-        0 Stable      0.5   -0.666667    Stable
+  6222 Sigma_t++        0 Stable        0   0.666667    Stable
+ -6222 Sigma_t~--        0 Stable        0   -0.666667    Stable
+  6224 Sigma*_t++        0 Stable      0.5   0.666667    Stable
+ -6224 Sigma*_t~--        0 Stable      0.5   -0.666667    Stable
+  6232 Xi_t+           0 Stable        0   0.666667    Stable
+ -6232 Xi_t~-          0 Stable        0   -0.666667    Stable
+  6242 Xi_tc++         0 Stable        0   0.666667    Stable
+ -6242 Xi_tc~--        0 Stable        0   -0.666667    Stable
+  6252 Xi_tb+          0 Stable        0   0.666667    Stable
+ -6252 Xi_tb~-         0 Stable        0   -0.666667    Stable
+  6312 Xi'_t0          0 Stable        0   0.666667    Stable
+ -6312 Xi'_t~0         0 Stable        0   -0.666667    Stable
+  6314 Xi*_t0          0 Stable      0.5   0.666667    Stable
+ -6314 Xi*_t~0         0 Stable      0.5   -0.666667    Stable
+  6322 Xi'_t+          0 Stable        0   0.666667    Stable
+ -6322 Xi'_t~-         0 Stable        0   -0.666667    Stable
+  6324 Xi*_t+          0 Stable      0.5   0.666667    Stable
+ -6324 Xi*_t~-         0 Stable      0.5   -0.666667    Stable
+  6332 Omega_t0        0 Stable        0   0.666667    Stable
+ -6332 Omega_t~0        0 Stable        0   -0.666667    Stable
+  6334 Omega*_t0        0 Stable      0.5   0.666667    Stable
+ -6334 Omega*_t~0        0 Stable      0.5   -0.666667    Stable
+  6342 Omega_tc+        0 Stable        0   0.666667    Stable
+ -6342 Omega_tc~-        0 Stable        0   -0.666667    Stable
+  6352 Omega_tb0        0 Stable        0   0.666667    Stable
+ -6352 Omega_tb~0        0 Stable        0   -0.666667    Stable
+  6412 Xi'_tc+         0 Stable        0   0.666667    Stable
+ -6412 Xi'_tc~-        0 Stable        0   -0.666667    Stable
+  6414 Xi*_tc+         0 Stable      0.5   0.666667    Stable
+ -6414 Xi*_tc~-        0 Stable      0.5   -0.666667    Stable
+  6422 Xi'_tc++        0 Stable        0   0.666667    Stable
+ -6422 Xi'_tc~--        0 Stable        0   -0.666667    Stable
+  6424 Xi*_tc++        0 Stable      0.5   0.666667    Stable
+ -6424 Xi*_tc~--        0 Stable      0.5   -0.666667    Stable
+  6432 Omega'_tc+        0 Stable        0   0.666667    Stable
+ -6432 Omega'_tc~-        0 Stable        0   -0.666667    Stable
+  6434 Omega*_tc+        0 Stable      0.5   0.666667    Stable
+ -6434 Omega*_tc~-        0 Stable      0.5   -0.666667    Stable
+  6442 Omega_tcc++        0 Stable        0   0.666667    Stable
+ -6442 Omega_tcc~--        0 Stable        0   -0.666667    Stable
+  6444 Omega*_tcc++        0 Stable      0.5   0.666667    Stable
+ -6444 Omega*_tcc~--        0 Stable      0.5   -0.666667    Stable
+  6452 Omega_tbc+        0 Stable        0   0.666667    Stable
+ -6452 Omega_tbc~-        0 Stable        0   -0.666667    Stable
+  6512 Xi'_tb0         0 Stable        0   0.666667    Stable
+ -6512 Xi'_tb~0        0 Stable        0   -0.666667    Stable
+  6514 Xi*_tb0         0 Stable      0.5   0.666667    Stable
+ -6514 Xi*_tb~0        0 Stable      0.5   -0.666667    Stable
+  6522 Xi'_tb+         0 Stable        0   0.666667    Stable
+ -6522 Xi'_tb~-        0 Stable        0   -0.666667    Stable
+  6524 Xi*_tb+         0 Stable      0.5   0.666667    Stable
+ -6524 Xi*_tb~-        0 Stable      0.5   -0.666667    Stable
+  6532 Omega'_tb0        0 Stable        0   0.666667    Stable
+ -6532 Omega'_tb~0        0 Stable        0   -0.666667    Stable
+  6534 Omega*_tb0        0 Stable      0.5   0.666667    Stable
+ -6534 Omega*_tb~0        0 Stable      0.5   -0.666667    Stable
+  6542 Omega'_tbc+        0 Stable        0   0.666667    Stable
+ -6542 Omega'_tbc~-        0 Stable        0   -0.666667    Stable
+  6544 Omega*_tbc+        0 Stable      0.5   0.666667    Stable
+ -6544 Omega*_tbc~-        0 Stable      0.5   -0.666667    Stable
+  6552 Omega_tbb0        0 Stable        0   0.666667    Stable
+ -6552 Omega_tbb~0        0 Stable        0   -0.666667    Stable
+  6554 Omega*_tbb0        0 Stable      0.5   0.666667    Stable
+ -6554 Omega*_tbb~0        0 Stable      0.5   -0.666667    Stable
+  6612 Xi_tt+          0 Stable        0   0.666667    Stable
+ -6612 Xi_tt~-         0 Stable        0   -0.666667    Stable
+  6614 Xi*_tt+         0 Stable      0.5   0.666667    Stable
+ -6614 Xi*_tt~-        0 Stable      0.5   -0.666667    Stable
+  6622 Xi_tt++         0 Stable        0   0.666667    Stable
+ -6622 Xi_tt~--        0 Stable        0   -0.666667    Stable
+  6624 Xi*_tt++        0 Stable      0.5   0.666667    Stable
+ -6624 Xi*_tt~--        0 Stable      0.5   -0.666667    Stable
+  6632 Omega_tt+        0 Stable        0   0.666667    Stable
+ -6632 Omega_tt~-        0 Stable        0   -0.666667    Stable
+  6634 Omega*_tt+        0 Stable      0.5   0.666667    Stable
+ -6634 Omega*_tt~-        0 Stable      0.5   -0.666667    Stable
+  6642 Omega_ttc++        0 Stable        0   0.666667    Stable
+ -6642 Omega_ttc~--        0 Stable        0   -0.666667    Stable
+  6644 Omega*_ttc++        0 Stable      0.5   0.666667    Stable
+ -6644 Omega*_ttc~--        0 Stable      0.5   -0.666667    Stable
+  6652 Omega_ttb+        0 Stable        0   0.666667    Stable
+ -6652 Omega_ttb~-        0 Stable        0   -0.666667    Stable
+  6654 Omega*_ttb+        0 Stable      0.5   0.666667    Stable
+ -6654 Omega*_ttb~-        0 Stable      0.5   -0.666667    Stable
+  6664 Omega*_ttt++        0 Stable      0.5   0.666667    Stable
+ -6664 Omega*_ttt~--        0 Stable      0.5   -0.666667    Stable
+  7112 Sigma_l-        0 Stable        0   -0.333333    Stable
+ -7112 Sigma_l~+        0 Stable        0   0.333333    Stable
+  7114 Sigma*_l-        0 Stable      0.5   -0.333333    Stable
+ -7114 Sigma*_l~+        0 Stable      0.5   0.333333    Stable
+  7122 Lambda_l0        0 Stable        0   -0.333333    Stable
+ -7122 Lambda_l~0        0 Stable        0   0.333333    Stable
+  7132 Xi_l-           0 Stable        0   -0.333333    Stable
+ -7132 Xi_l~+          0 Stable        0   0.333333    Stable
+  7142 Xi_lc0          0 Stable        0   -0.333333    Stable
+ -7142 Xi_lc~0         0 Stable        0   0.333333    Stable
+  7152 Xi_lb-          0 Stable        0   -0.333333    Stable
+ -7152 Xi_lb~+         0 Stable        0   0.333333    Stable
+  7162 Xi_lt0          0 Stable        0   -0.333333    Stable
+ -7162 Xi_lt~0         0 Stable        0   0.333333    Stable
+  7212 Sigma_l0        0 Stable        0   -0.333333    Stable
+ -7212 Sigma_l~0        0 Stable        0   0.333333    Stable
+  7214 Sigma*_l0        0 Stable      0.5   -0.333333    Stable
+ -7214 Sigma*_l~0        0 Stable      0.5   0.333333    Stable
+  7222 Sigma_l+        0 Stable        0   -0.333333    Stable
+ -7222 Sigma_l~-        0 Stable        0   0.333333    Stable
+  7224 Sigma*_l+        0 Stable      0.5   -0.333333    Stable
+ -7224 Sigma*_l~-        0 Stable      0.5   0.333333    Stable
+  7232 Xi_l0           0 Stable        0   -0.333333    Stable
+ -7232 Xi_l~0          0 Stable        0   0.333333    Stable
+  7242 Xi_lc+          0 Stable        0   -0.333333    Stable
+ -7242 Xi_lc~-         0 Stable        0   0.333333    Stable
+  7252 Xi_lb0          0 Stable        0   -0.333333    Stable
+ -7252 Xi_lb~0         0 Stable        0   0.333333    Stable
+  7262 Xi_lt+          0 Stable        0   -0.333333    Stable
+ -7262 Xi_lt~-         0 Stable        0   0.333333    Stable
+  7312 Xi'_l-          0 Stable        0   -0.333333    Stable
+ -7312 Xi'_l~+         0 Stable        0   0.333333    Stable
+  7314 Xi*_l-          0 Stable      0.5   -0.333333    Stable
+ -7314 Xi*_l~+         0 Stable      0.5   0.333333    Stable
+  7322 Xi'_l0          0 Stable        0   -0.333333    Stable
+ -7322 Xi'_l~0         0 Stable        0   0.333333    Stable
+  7324 Xi*_l0          0 Stable      0.5   -0.333333    Stable
+ -7324 Xi*_l~0         0 Stable      0.5   0.333333    Stable
+  7332 Omega_l-        0 Stable        0   -0.333333    Stable
+ -7332 Omega_l~+        0 Stable        0   0.333333    Stable
+  7334 Omega*_l-        0 Stable      0.5   -0.333333    Stable
+ -7334 Omega*_l~+        0 Stable      0.5   0.333333    Stable
+  7342 Omega_lc0        0 Stable        0   -0.333333    Stable
+ -7342 Omega_lc~0        0 Stable        0   0.333333    Stable
+  7352 Omega_lb-        0 Stable        0   -0.333333    Stable
+ -7352 Omega_lb~+        0 Stable        0   0.333333    Stable
+  7362 Omega_lt0        0 Stable        0   -0.333333    Stable
+ -7362 Omega_lt~0        0 Stable        0   0.333333    Stable
+  7412 Xi'_lc0         0 Stable        0   -0.333333    Stable
+ -7412 Xi'_lc~0        0 Stable        0   0.333333    Stable
+  7414 Xi*_lc0         0 Stable      0.5   -0.333333    Stable
+ -7414 Xi*_lc~0        0 Stable      0.5   0.333333    Stable
+  7422 Xi'_lc+         0 Stable        0   -0.333333    Stable
+ -7422 Xi'_lc~-        0 Stable        0   0.333333    Stable
+  7424 Xi*_lc+         0 Stable      0.5   -0.333333    Stable
+ -7424 Xi*_lc~-        0 Stable      0.5   0.333333    Stable
+  7432 Omega'_lc0        0 Stable        0   -0.333333    Stable
+ -7432 Omega'_lc~0        0 Stable        0   0.333333    Stable
+  7434 Omega*_lc0        0 Stable      0.5   -0.333333    Stable
+ -7434 Omega*_lc~0        0 Stable      0.5   0.333333    Stable
+  7442 Omega_lcc+        0 Stable        0   -0.333333    Stable
+ -7442 Omega_lcc~-        0 Stable        0   0.333333    Stable
+  7444 Omega*_lcc+        0 Stable      0.5   -0.333333    Stable
+ -7444 Omega*_lcc~-        0 Stable      0.5   0.333333    Stable
+  7452 Omega_lbc0        0 Stable        0   -0.333333    Stable
+ -7452 Omega_lbc~0        0 Stable        0   0.333333    Stable
+  7462 Omega_ltc+        0 Stable        0   -0.333333    Stable
+ -7462 Omega_ltc~-        0 Stable        0   0.333333    Stable
+  7512 Xi'_lb-         0 Stable        0   -0.333333    Stable
+ -7512 Xi'_lb~+        0 Stable        0   0.333333    Stable
+  7514 Xi*_lb-         0 Stable      0.5   -0.333333    Stable
+ -7514 Xi*_lb~+        0 Stable      0.5   0.333333    Stable
+  7522 Xi'_lb0         0 Stable        0   -0.333333    Stable
+ -7522 Xi'_lb~0        0 Stable        0   0.333333    Stable
+  7524 Xi*_lb0         0 Stable      0.5   -0.333333    Stable
+ -7524 Xi*_lb~0        0 Stable      0.5   0.333333    Stable
+  7532 Omega'_lb-        0 Stable        0   -0.333333    Stable
+ -7532 Omega'_lb~+        0 Stable        0   0.333333    Stable
+  7534 Omega*_lb-        0 Stable      0.5   -0.333333    Stable
+ -7534 Omega*_lb~+        0 Stable      0.5   0.333333    Stable
+  7542 Omega'_lbc0        0 Stable        0   -0.333333    Stable
+ -7542 Omega'_lbc~0        0 Stable        0   0.333333    Stable
+  7544 Omega*_lbc0        0 Stable      0.5   -0.333333    Stable
+ -7544 Omega*_lbc~0        0 Stable      0.5   0.333333    Stable
+  7552 Omega_lbb-        0 Stable        0   -0.333333    Stable
+ -7552 Omega_lbb~+        0 Stable        0   0.333333    Stable
+  7554 Omega*_lbb-        0 Stable      0.5   -0.333333    Stable
+ -7554 Omega*_lbb~+        0 Stable      0.5   0.333333    Stable
+  7562 Omega_ltb0        0 Stable        0   -0.333333    Stable
+ -7562 Omega_ltb~0        0 Stable        0   0.333333    Stable
+  7612 Xi'_lt0         0 Stable        0   -0.333333    Stable
+ -7612 Xi'_lt~0        0 Stable        0   0.333333    Stable
+  7614 Xi*_lt0         0 Stable      0.5   -0.333333    Stable
+ -7614 Xi*_lt~0        0 Stable      0.5   0.333333    Stable
+  7622 Xi'_lt+         0 Stable        0   -0.333333    Stable
+ -7622 Xi'_lt~-        0 Stable        0   0.333333    Stable
+  7624 Xi*_lt+         0 Stable      0.5   -0.333333    Stable
+ -7624 Xi*_lt~-        0 Stable      0.5   0.333333    Stable
+  7632 Omega'_lt0        0 Stable        0   -0.333333    Stable
+ -7632 Omega'_lt~0        0 Stable        0   0.333333    Stable
+  7634 Omega*_lt0        0 Stable      0.5   -0.333333    Stable
+ -7634 Omega*_lt~0        0 Stable      0.5   0.333333    Stable
+  7642 Omega'_ltc+        0 Stable        0   -0.333333    Stable
+ -7642 Omega'_ltc~-        0 Stable        0   0.333333    Stable
+  7644 Omega*_ltc+        0 Stable      0.5   -0.333333    Stable
+ -7644 Omega*_ltc~-        0 Stable      0.5   0.333333    Stable
+  7652 Omega'_ltb0        0 Stable        0   -0.333333    Stable
+ -7652 Omega'_ltb~0        0 Stable        0   0.333333    Stable
+  7654 Omega*_ltb0        0 Stable      0.5   -0.333333    Stable
+ -7654 Omega*_ltb~0        0 Stable      0.5   0.333333    Stable
+  7662 Omega_ltt+        0 Stable        0   -0.333333    Stable
+ -7662 Omega_ltt~-        0 Stable        0   0.333333    Stable
+  7664 Omega*_ltt+        0 Stable      0.5   -0.333333    Stable
+ -7664 Omega*_ltt~-        0 Stable      0.5   0.333333    Stable
+  7712 Xi_ll-          0 Stable        0   -0.333333    Stable
+ -7712 Xi_ll~+         0 Stable        0   0.333333    Stable
+  7714 Xi*_ll-         0 Stable      0.5   -0.333333    Stable
+ -7714 Xi*_ll~+        0 Stable      0.5   0.333333    Stable
+  7722 Xi_ll0          0 Stable        0   -0.333333    Stable
+ -7722 Xi_ll~0         0 Stable        0   0.333333    Stable
+  7724 Xi*_ll0         0 Stable      0.5   -0.333333    Stable
+ -7724 Xi*_ll~0        0 Stable      0.5   0.333333    Stable
+  7732 Omega_ll-        0 Stable        0   -0.333333    Stable
+ -7732 Omega_ll~+        0 Stable        0   0.333333    Stable
+  7734 Omega*_ll-        0 Stable      0.5   -0.333333    Stable
+ -7734 Omega*_ll~+        0 Stable      0.5   0.333333    Stable
+  7742 Omega_llc0        0 Stable        0   -0.333333    Stable
+ -7742 Omega_llc~0        0 Stable        0   0.333333    Stable
+  7744 Omega*_llc0        0 Stable      0.5   -0.333333    Stable
+ -7744 Omega*_llc~0        0 Stable      0.5   0.333333    Stable
+  7752 Omega_llb-        0 Stable        0   -0.333333    Stable
+ -7752 Omega_llb~+        0 Stable        0   0.333333    Stable
+  7754 Omega*_llb-        0 Stable      0.5   -0.333333    Stable
+ -7754 Omega*_llb~+        0 Stable      0.5   0.333333    Stable
+  7762 Omega_llt0        0 Stable        0   -0.333333    Stable
+ -7762 Omega_llt~0        0 Stable        0   0.333333    Stable
+  7764 Omega*_llt0        0 Stable      0.5   -0.333333    Stable
+ -7764 Omega*_llt~0        0 Stable      0.5   0.333333    Stable
+  7774 Omega*_lll-        0 Stable      0.5   -0.333333    Stable
+ -7774 Omega*_lll~+        0 Stable      0.5   0.333333    Stable
+  8112 Sigma_h0        0 Stable        0   0.666667    Stable
+ -8112 Sigma_h~0        0 Stable        0   -0.666667    Stable
+  8114 Sigma*_h0        0 Stable      0.5   0.666667    Stable
+ -8114 Sigma*_h~0        0 Stable      0.5   -0.666667    Stable
+  8122 Lambda_h+        0 Stable        0   0.666667    Stable
+ -8122 Lambda_h~-        0 Stable        0   -0.666667    Stable
+  8132 Xi_h0           0 Stable        0   0.666667    Stable
+ -8132 Xi_h~0          0 Stable        0   -0.666667    Stable
+  8142 Xi_hc+          0 Stable        0   0.666667    Stable
+ -8142 Xi_hc~-         0 Stable        0   -0.666667    Stable
+  8152 Xi_hb0          0 Stable        0   0.666667    Stable
+ -8152 Xi_hb~0         0 Stable        0   -0.666667    Stable
+  8162 Xi_ht+          0 Stable        0   0.666667    Stable
+ -8162 Xi_ht~-         0 Stable        0   -0.666667    Stable
+  8172 Xi_hl0          0 Stable        0   0.666667    Stable
+ -8172 Xi_hl~0         0 Stable        0   -0.666667    Stable
+  8212 Sigma_h+        0 Stable        0   0.666667    Stable
+ -8212 Sigma_h~-        0 Stable        0   -0.666667    Stable
+  8214 Sigma*_h+        0 Stable      0.5   0.666667    Stable
+ -8214 Sigma*_h~-        0 Stable      0.5   -0.666667    Stable
+  8222 Sigma_h++        0 Stable        0   0.666667    Stable
+ -8222 Sigma_h~--        0 Stable        0   -0.666667    Stable
+  8224 Sigma*_h++        0 Stable      0.5   0.666667    Stable
+ -8224 Sigma*_h~--        0 Stable      0.5   -0.666667    Stable
+  8232 Xi_h+           0 Stable        0   0.666667    Stable
+ -8232 Xi_h~-          0 Stable        0   -0.666667    Stable
+  8242 Xi_hc++         0 Stable        0   0.666667    Stable
+ -8242 Xi_hc~--        0 Stable        0   -0.666667    Stable
+  8252 Xi_hb+          0 Stable        0   0.666667    Stable
+ -8252 Xi_hb~-         0 Stable        0   -0.666667    Stable
+  8262 Xi_ht++         0 Stable        0   0.666667    Stable
+ -8262 Xi_ht~--        0 Stable        0   -0.666667    Stable
+  8272 Xi_hl+          0 Stable        0   0.666667    Stable
+ -8272 Xi_hl~-         0 Stable        0   -0.666667    Stable
+  8312 Xi'_h0          0 Stable        0   0.666667    Stable
+ -8312 Xi'_h~0         0 Stable        0   -0.666667    Stable
+  8314 Xi*_h0          0 Stable      0.5   0.666667    Stable
+ -8314 Xi*_h~0         0 Stable      0.5   -0.666667    Stable
+  8322 Xi'_h+          0 Stable        0   0.666667    Stable
+ -8322 Xi'_h~-         0 Stable        0   -0.666667    Stable
+  8324 Xi*_h+          0 Stable      0.5   0.666667    Stable
+ -8324 Xi*_h~-         0 Stable      0.5   -0.666667    Stable
+  8332 Omega_h0        0 Stable        0   0.666667    Stable
+ -8332 Omega_h~0        0 Stable        0   -0.666667    Stable
+  8334 Omega*_h0        0 Stable      0.5   0.666667    Stable
+ -8334 Omega*_h~0        0 Stable      0.5   -0.666667    Stable
+  8342 Omega_hc+        0 Stable        0   0.666667    Stable
+ -8342 Omega_hc~-        0 Stable        0   -0.666667    Stable
+  8352 Omega_hb0        0 Stable        0   0.666667    Stable
+ -8352 Omega_hb~0        0 Stable        0   -0.666667    Stable
+  8362 Omega_ht+        0 Stable        0   0.666667    Stable
+ -8362 Omega_ht~-        0 Stable        0   -0.666667    Stable
+  8372 Omega_hl0        0 Stable        0   0.666667    Stable
+ -8372 Omega_hl~0        0 Stable        0   -0.666667    Stable
+  8412 Xi'_hc+         0 Stable        0   0.666667    Stable
+ -8412 Xi'_hc~-        0 Stable        0   -0.666667    Stable
+  8414 Xi*_hc+         0 Stable      0.5   0.666667    Stable
+ -8414 Xi*_hc~-        0 Stable      0.5   -0.666667    Stable
+  8422 Xi'_hc++        0 Stable        0   0.666667    Stable
+ -8422 Xi'_hc~--        0 Stable        0   -0.666667    Stable
+  8424 Xi*_hc++        0 Stable      0.5   0.666667    Stable
+ -8424 Xi*_hc~--        0 Stable      0.5   -0.666667    Stable
+  8432 Omega'_hc+        0 Stable        0   0.666667    Stable
+ -8432 Omega'_hc~-        0 Stable        0   -0.666667    Stable
+  8434 Omega*_hc+        0 Stable      0.5   0.666667    Stable
+ -8434 Omega*_hc~-        0 Stable      0.5   -0.666667    Stable
+  8442 Omega_hcc++        0 Stable        0   0.666667    Stable
+ -8442 Omega_hcc~--        0 Stable        0   -0.666667    Stable
+  8444 Omega*_hcc++        0 Stable      0.5   0.666667    Stable
+ -8444 Omega*_hcc~--        0 Stable      0.5   -0.666667    Stable
+  8452 Omega_hbc+        0 Stable        0   0.666667    Stable
+ -8452 Omega_hbc~-        0 Stable        0   -0.666667    Stable
+  8462 Omega_htc++        0 Stable        0   0.666667    Stable
+ -8462 Omega_htc~--        0 Stable        0   -0.666667    Stable
+  8472 Omega_hlc+        0 Stable        0   0.666667    Stable
+ -8472 Omega_hlc~-        0 Stable        0   -0.666667    Stable
+  8512 Xi'_hb0         0 Stable        0   0.666667    Stable
+ -8512 Xi'_hb~0        0 Stable        0   -0.666667    Stable
+  8514 Xi*_hb0         0 Stable      0.5   0.666667    Stable
+ -8514 Xi*_hb~0        0 Stable      0.5   -0.666667    Stable
+  8522 Xi'_hb+         0 Stable        0   0.666667    Stable
+ -8522 Xi'_hb~-        0 Stable        0   -0.666667    Stable
+  8524 Xi*_hb+         0 Stable      0.5   0.666667    Stable
+ -8524 Xi*_hb~-        0 Stable      0.5   -0.666667    Stable
+  8532 Omega'_hb0        0 Stable        0   0.666667    Stable
+ -8532 Omega'_hb~0        0 Stable        0   -0.666667    Stable
+  8534 Omega*_hb0        0 Stable      0.5   0.666667    Stable
+ -8534 Omega*_hb~0        0 Stable      0.5   -0.666667    Stable
+  8542 Omega'_hbc+        0 Stable        0   0.666667    Stable
+ -8542 Omega'_hbc~-        0 Stable        0   -0.666667    Stable
+  8544 Omega*_hbc+        0 Stable      0.5   0.666667    Stable
+ -8544 Omega*_hbc~-        0 Stable      0.5   -0.666667    Stable
+  8552 Omega_hbb0        0 Stable        0   0.666667    Stable
+ -8552 Omega_hbb~0        0 Stable        0   -0.666667    Stable
+  8554 Omega*_hbb0        0 Stable      0.5   0.666667    Stable
+ -8554 Omega*_hbb~0        0 Stable      0.5   -0.666667    Stable
+  8562 Omega_htb+        0 Stable        0   0.666667    Stable
+ -8562 Omega_htb~-        0 Stable        0   -0.666667    Stable
+  8572 Omega_hlb0        0 Stable        0   0.666667    Stable
+ -8572 Omega_hlb~0        0 Stable        0   -0.666667    Stable
+  8612 Xi'_ht+         0 Stable        0   0.666667    Stable
+ -8612 Xi'_ht~-        0 Stable        0   -0.666667    Stable
+  8614 Xi*_ht+         0 Stable      0.5   0.666667    Stable
+ -8614 Xi*_ht~-        0 Stable      0.5   -0.666667    Stable
+  8622 Xi'_ht++        0 Stable        0   0.666667    Stable
+ -8622 Xi'_ht~--        0 Stable        0   -0.666667    Stable
+  8624 Xi*_ht++        0 Stable      0.5   0.666667    Stable
+ -8624 Xi*_ht~--        0 Stable      0.5   -0.666667    Stable
+  8632 Omega'_ht+        0 Stable        0   0.666667    Stable
+ -8632 Omega'_ht~-        0 Stable        0   -0.666667    Stable
+  8634 Omega*_ht+        0 Stable      0.5   0.666667    Stable
+ -8634 Omega*_ht~-        0 Stable      0.5   -0.666667    Stable
+  8642 Omega'_htc++        0 Stable        0   0.666667    Stable
+ -8642 Omega'_htc~--        0 Stable        0   -0.666667    Stable
+  8644 Omega*_htc++        0 Stable      0.5   0.666667    Stable
+ -8644 Omega*_htc~--        0 Stable      0.5   -0.666667    Stable
+  8652 Omega'_htb+        0 Stable        0   0.666667    Stable
+ -8652 Omega'_htb~-        0 Stable        0   -0.666667    Stable
+  8654 Omega*_htb+        0 Stable      0.5   0.666667    Stable
+ -8654 Omega*_htb~-        0 Stable      0.5   -0.666667    Stable
+  8662 Omega_htt++        0 Stable        0   0.666667    Stable
+ -8662 Omega_htt~--        0 Stable        0   -0.666667    Stable
+  8664 Omega*_htt++        0 Stable      0.5   0.666667    Stable
+ -8664 Omega*_htt~--        0 Stable      0.5   -0.666667    Stable
+  8672 Omega_hlt+        0 Stable        0   0.666667    Stable
+ -8672 Omega_hlt~-        0 Stable        0   -0.666667    Stable
+  8712 Xi'_hl0         0 Stable        0   0.666667    Stable
+ -8712 Xi'_hl~0        0 Stable        0   -0.666667    Stable
+  8714 Xi*_hl0         0 Stable      0.5   0.666667    Stable
+ -8714 Xi*_hl~0        0 Stable      0.5   -0.666667    Stable
+  8722 Xi'_hl+         0 Stable        0   0.666667    Stable
+ -8722 Xi'_hl~-        0 Stable        0   -0.666667    Stable
+  8724 Xi*_hl+         0 Stable      0.5   0.666667    Stable
+ -8724 Xi*_hl~-        0 Stable      0.5   -0.666667    Stable
+  8732 Omega'_hl0        0 Stable        0   0.666667    Stable
+ -8732 Omega'_hl~0        0 Stable        0   -0.666667    Stable
+  8734 Omega*_hl0        0 Stable      0.5   0.666667    Stable
+ -8734 Omega*_hl~0        0 Stable      0.5   -0.666667    Stable
+  8742 Omega'_hlc+        0 Stable        0   0.666667    Stable
+ -8742 Omega'_hlc~-        0 Stable        0   -0.666667    Stable
+  8744 Omega*_hlc+        0 Stable      0.5   0.666667    Stable
+ -8744 Omega*_hlc~-        0 Stable      0.5   -0.666667    Stable
+  8752 Omega'_hlb0        0 Stable        0   0.666667    Stable
+ -8752 Omega'_hlb~0        0 Stable        0   -0.666667    Stable
+  8754 Omega*_hlb0        0 Stable      0.5   0.666667    Stable
+ -8754 Omega*_hlb~0        0 Stable      0.5   -0.666667    Stable
+  8762 Omega'_hlt+        0 Stable        0   0.666667    Stable
+ -8762 Omega'_hlt~-        0 Stable        0   -0.666667    Stable
+  8764 Omega*_hlt+        0 Stable      0.5   0.666667    Stable
+ -8764 Omega*_hlt~-        0 Stable      0.5   -0.666667    Stable
+  8772 Omega_hll0        0 Stable        0   0.666667    Stable
+ -8772 Omega_hll~0        0 Stable        0   -0.666667    Stable
+  8774 Omega*_hll0        0 Stable      0.5   0.666667    Stable
+ -8774 Omega*_hll~0        0 Stable      0.5   -0.666667    Stable
+  8812 Xi_hh+          0 Stable        0   0.666667    Stable
+ -8812 Xi_hh~-         0 Stable        0   -0.666667    Stable
+  8814 Xi*_hh+         0 Stable      0.5   0.666667    Stable
+ -8814 Xi*_hh~-        0 Stable      0.5   -0.666667    Stable
+  8822 Xi_hh++         0 Stable        0   0.666667    Stable
+ -8822 Xi_hh~--        0 Stable        0   -0.666667    Stable
+  8824 Xi*_hh++        0 Stable      0.5   0.666667    Stable
+ -8824 Xi*_hh~--        0 Stable      0.5   -0.666667    Stable
+  8832 Omega_hh+        0 Stable        0   0.666667    Stable
+ -8832 Omega_hh~-        0 Stable        0   -0.666667    Stable
+  8834 Omega*_hh+        0 Stable      0.5   0.666667    Stable
+ -8834 Omega*_hh~-        0 Stable      0.5   -0.666667    Stable
+  8842 Omega_hhc++        0 Stable        0   0.666667    Stable
+ -8842 Omega_hhc~--        0 Stable        0   -0.666667    Stable
+  8844 Omega*_hhc++        0 Stable      0.5   0.666667    Stable
+ -8844 Omega*_hhc~--        0 Stable      0.5   -0.666667    Stable
+  8852 Omega_hhb+        0 Stable        0   0.666667    Stable
+ -8852 Omega_hhb~-        0 Stable        0   -0.666667    Stable
+  8854 Omega*_hhb+        0 Stable      0.5   0.666667    Stable
+ -8854 Omega*_hhb~-        0 Stable      0.5   -0.666667    Stable
+  8862 Omega_hht++        0 Stable        0   0.666667    Stable
+ -8862 Omega_hht~--        0 Stable        0   -0.666667    Stable
+  8864 Omega*_hht++        0 Stable      0.5   0.666667    Stable
+ -8864 Omega*_hht~--        0 Stable      0.5   -0.666667    Stable
+  8872 Omega_hhl+        0 Stable        0   0.666667    Stable
+ -8872 Omega_hhl~-        0 Stable        0   -0.666667    Stable
+  8874 Omega*_hhl+        0 Stable      0.5   0.666667    Stable
+ -8874 Omega*_hhl~-        0 Stable      0.5   -0.666667    Stable
+  8884 Omega*_hhh++        0 Stable      0.5   0.666667    Stable
+ -8884 Omega*_hhh~--        0 Stable      0.5   -0.666667    Stable
+ 10111 a_00        0.983 0.057   0    0    3.46188e-13
+               0.800 -> eta pi0
+               0.100 -> rho+ pi-
+               0.100 -> rho- pi+
+ 10113 b_10        1.233 0.15   1    0    1.31551e-13
+               1.000 -> omega pi0
+ 10211 a_0+        0.983 0.057   0    1    3.46188e-13
+               0.800 -> eta pi+
+               0.100 -> rho+ pi0
+               0.100 -> rho0 pi+
+-10211 a_0-        0.983 0.057   0   -1    3.46188e-13
+               0.800 -> eta pi-
+               0.100 -> rho- pi0
+               0.100 -> rho0 pi-
+ 10213 b_1+        1.233 0.15   1    1    1.31551e-13
+               1.000 -> omega pi+
+-10213 b_1-        1.233 0.15   1   -1    1.31551e-13
+               1.000 -> omega pi-
+ 10221 f_0             1 Stable        0    0    Stable
+               0.520 -> pi+ pi-
+               0.260 -> pi0 pi0
+               0.110 -> K+ K-
+               0.110 -> K_L0 K_S0
+ 10223 h_1          1.17 0.335   1    0    5.89036e-14
+               0.333 -> rho+ pi-
+               0.334 -> rho0 pi0
+               0.333 -> rho- pi+
+ 10311 K*_00       1.429 0.287   0    0    6.87551e-14
+               0.667 -> K+ pi-
+               0.333 -> K0 pi0
+-10311 K*_0~0      1.429 0.287   0    0    6.87551e-14
+               0.667 -> K- pi+
+               0.333 -> K~0 pi0
+ 10313 K_10          1.3 0.09   1    0    2.19252e-13
+               0.280 -> K+ rho-
+               0.140 -> K0 rho0
+               0.313 -> K*+ pi-
+               0.157 -> K*0 pi0
+               0.110 -> K0 omega
+-10313 K_1~0         1.3 0.09   1    0    2.19252e-13
+               0.280 -> K- rho+
+               0.140 -> K~0 rho0
+               0.313 -> K*- pi+
+               0.157 -> K*~0 pi0
+               0.110 -> K~0 omega
+ 10321 K*_0+       1.429 0.287   0    1    6.87551e-14
+               0.667 -> K0 pi+
+               0.333 -> K+ pi0
+-10321 K*_0-       1.429 0.287   0   -1    6.87551e-14
+               0.667 -> K~0 pi-
+               0.333 -> K- pi0
+ 10323 K_1+          1.3 0.09   1    1    2.19252e-13
+               0.280 -> K0 pi+
+               0.140 -> K+ pi0
+               0.313 -> K*0 pi+
+               0.157 -> K*+ pi0
+               0.110 -> K+ omega
+-10323 K_1-          1.3 0.09   1   -1    2.19252e-13
+               0.280 -> K~0 pi-
+               0.140 -> K- pi0
+               0.313 -> K*~0 pi-
+               0.157 -> K*- pi0
+               0.110 -> K- omega
+ 10331 f'_0          1.4 0.25   0    0    7.89308e-14
+               0.620 -> pi+ pi-
+               0.310 -> pi0 pi0
+               0.035 -> K+ K-
+               0.035 -> K_L0 K_S0
+ 10333 h'_1         1.41 0.08   1    0    2.46659e-13
+               0.250 -> K*0 K~0
+               0.250 -> K*~0 K0
+               0.250 -> K*+ K-
+               0.250 -> K*- K+
+ 10411 D*_0+       2.272 0.06   0    1    3.28878e-13
+               0.600 -> D0 pi+
+               0.300 -> D+ pi0
+               0.067 -> D*0 pi+
+               0.033 -> D*+ pi0
+-10411 D*_0-       2.272 0.06   0   -1    3.28878e-13
+               0.600 -> D~0 pi-
+               0.300 -> D- pi0
+               0.067 -> D*~0 pi-
+               0.033 -> D*- pi0
+ 10413 D_1+        2.322 0.06   1    1    3.28878e-13
+               0.667 -> D0 pi+
+               0.333 -> D+ pi0
+-10413 D_1-        2.322 0.06   1   -1    3.28878e-13
+               0.667 -> D~0 pi-
+               0.333 -> D- pi0
+ 10421 D*_00       2.272 0.06   0    0    3.28878e-13
+               0.600 -> D+ pi-
+               0.300 -> D0 pi0
+               0.067 -> D*+ pi-
+               0.033 -> D*0 pi0
+-10421 D*_0~0      2.272 0.06   0    0    3.28878e-13
+               0.600 -> D- pi+
+               0.300 -> D~0 pi0
+               0.067 -> D*- pi+
+               0.033 -> D*~0 pi0
+ 10423 D_10        2.322 0.06   1    0    3.28878e-13
+               0.667 -> D+ pi-
+               0.333 -> D0 pi0
+-10423 D_1~0       2.322 0.06   1    0    3.28878e-13
+               0.667 -> D- pi+
+               0.333 -> D~0 pi0
+ 10431 D*_0s+       2.46 0.04   0    1    4.93318e-13
+               0.500 -> D_s+ pi0
+               0.500 -> D*_s+ pi0
+-10431 D*_0s-       2.46 0.04   0   -1    4.93318e-13
+               0.500 -> D_s- pi0
+               0.500 -> D*_s- pi0
+ 10433 D_1s+        2.51 0.04   1    1    4.93318e-13
+               1.000 -> D*_s+ pi0
+-10433 D_1s-        2.51 0.04   1   -1    4.93318e-13
+               1.000 -> D*_s- pi0
+ 10441 chi_0c     3.4151 0.0135   0    0    1.46168e-12
+               0.007 -> J/psi gamma
+               0.993 -> rndmflav rndmflav~
+ 10443 h_1c         3.46 0.01   1    0    1.97327e-12
+               1.000 -> rndmflav rndmflav~
+ 10511 B*_00        5.68 0.1   0    0    1.97327e-13
+               0.600 -> B+ pi-
+               0.300 -> B0 pi0
+               0.067 -> B*+ pi-
+               0.033 -> B*0 pi0
+-10511 B*_0~0       5.68 0.1   0    0    1.97327e-13
+               0.600 -> B- pi+
+               0.300 -> B~0 pi0
+               0.067 -> B*- pi+
+               0.033 -> B*~0 pi0
+ 10513 B_10         5.73 0.1   1    0    1.97327e-13
+               0.667 -> B+ pi-
+               0.333 -> B0 pi0
+-10513 B_1~0        5.73 0.1   1    0    1.97327e-13
+               0.667 -> B- pi+
+               0.333 -> B~0 pi0
+ 10521 B*_0+        5.68 0.1   0    1    1.97327e-13
+               0.600 -> B0 pi+
+               0.300 -> B+ pi0
+               0.067 -> B*0 pi+
+               0.033 -> B*+ pi0
+-10521 B*_0-        5.68 0.1   0   -1    1.97327e-13
+               0.600 -> B~0 pi-
+               0.300 -> B- pi0
+               0.067 -> B*~0 pi-
+               0.033 -> B*- pi0
+ 10523 B_1+         5.73 0.1   1    1    1.97327e-13
+               0.667 -> B0 pi+
+               0.333 -> B+ pi0
+-10523 B_1-         5.73 0.1   1   -1    1.97327e-13
+               0.667 -> B~0 pi-
+               0.333 -> B- pi0
+ 10531 B*_0s0       5.92 0.1   0    0    1.97327e-13
+               0.400 -> B+ K-
+               0.400 -> B0 K~0
+               0.100 -> B_s0 pi0
+               0.100 -> B*_s0 pi0
+-10531 B*_0s~0      5.92 0.1   0    0    1.97327e-13
+               0.400 -> B- K+
+               0.400 -> B~0 K0
+               0.100 -> B_s~0 pi0
+               0.100 -> B*_s~0 pi0
+ 10533 B_1s0        5.97 0.1   1    0    1.97327e-13
+               0.500 -> B*+ K-
+               0.500 -> B*0 K~0
+-10533 B_1s~0       5.97 0.1   1    0    1.97327e-13
+               0.500 -> B*- K+
+               0.500 -> B*~0 K0
+ 10541 B*_0c+          0 4.589e-13   0   -0.333333    0.043
+-10541 B*_0c-          0 4.589e-13   0   0.333333    0.043
+ 10543 B_1c+           0 4.589e-13   1   -0.333333    0.043
+-10543 B_1c-           0 4.589e-13   1   0.333333    0.043
+ 10551 chi_0b     9.8598 Stable        0    0    Stable
+               0.020 -> Upsilon gamma
+ 10553 h_1b        9.875 0.01   1    0    1.97327e-12
+ 10611 T*_0+           0 Stable        0   0.666667    Stable
+-10611 T*_0-           0 Stable        0   -0.666667    Stable
+ 10613 T_1+            0 Stable        1   0.666667    Stable
+-10613 T_1-            0 Stable        1   -0.666667    Stable
+ 10621 T*_00           0 Stable        0   0.666667    Stable
+-10621 T*_0~0          0 Stable        0   -0.666667    Stable
+ 10623 T_10            0 Stable        1   0.666667    Stable
+-10623 T_1~0           0 Stable        1   -0.666667    Stable
+ 10631 T*_0s+          0 Stable        0   0.666667    Stable
+-10631 T*_0s-          0 Stable        0   -0.666667    Stable
+ 10633 T_1s+           0 Stable        1   0.666667    Stable
+-10633 T_1s-           0 Stable        1   -0.666667    Stable
+ 10641 T*_0c0          0 Stable        0   0.666667    Stable
+-10641 T*_0c~0         0 Stable        0   -0.666667    Stable
+ 10643 T_1c0           0 Stable        1   0.666667    Stable
+-10643 T_1c~0          0 Stable        1   -0.666667    Stable
+ 10651 T*_0b+          0 Stable        0   0.666667    Stable
+-10651 T*_0b-          0 Stable        0   -0.666667    Stable
+ 10653 T_1b+           0 Stable        1   0.666667    Stable
+-10653 T_1b-           0 Stable        1   -0.666667    Stable
+ 10661 chi_0t      238.4 Stable        0    0    Stable
+               0.300 -> Theta gamma
+ 10663 h_1t       238.42 Stable        1    0    Stable
+               0.300 -> Theta gamma
+ 10711 L*_00           0 Stable        0   -0.333333    Stable
+-10711 L*_0~0          0 Stable        0   0.333333    Stable
+ 10713 L_10            0 Stable        1   -0.333333    Stable
+-10713 L_1~0           0 Stable        1   0.333333    Stable
+ 10721 L*_0+           0 Stable        0   -0.333333    Stable
+-10721 L*_0-           0 Stable        0   0.333333    Stable
+ 10723 L_1+            0 Stable        1   -0.333333    Stable
+-10723 L_1-            0 Stable        1   0.333333    Stable
+ 10731 L*_0s0          0 Stable        0   -0.333333    Stable
+-10731 L*_0s~0         0 Stable        0   0.333333    Stable
+ 10733 L_1s0           0 Stable        1   -0.333333    Stable
+-10733 L_1s~0          0 Stable        1   0.333333    Stable
+ 10741 L*_0c+          0 Stable        0   -0.333333    Stable
+-10741 L*_0c-          0 Stable        0   0.333333    Stable
+ 10743 L_1c+           0 Stable        1   -0.333333    Stable
+-10743 L_1c-           0 Stable        1   0.333333    Stable
+ 10751 L*_0b0          0 Stable        0   -0.333333    Stable
+-10751 L*_0b~0         0 Stable        0   0.333333    Stable
+ 10753 L_1b0           0 Stable        1   -0.333333    Stable
+-10753 L_1b~0          0 Stable        1   0.333333    Stable
+ 10761 L*_0t+          0 Stable        0   -0.333333    Stable
+-10761 L*_0t-          0 Stable        0   0.333333    Stable
+ 10763 L_1t+           0 Stable        1   -0.333333    Stable
+-10763 L_1t-           0 Stable        1   0.333333    Stable
+ 10771 chi_0l      238.4 Stable        0    0    Stable
+ 10773 h_1l       238.42 Stable        1    0    Stable
+ 10811 H*_0+           0 Stable        0   0.666667    Stable
+-10811 H*_0-           0 Stable        0   -0.666667    Stable
+ 10813 H_1+            0 Stable        1   0.666667    Stable
+-10813 H_1-            0 Stable        1   -0.666667    Stable
+ 10821 H*_00           0 Stable        0   0.666667    Stable
+-10821 H*_0~0          0 Stable        0   -0.666667    Stable
+ 10823 H_10            0 Stable        1   0.666667    Stable
+-10823 H_1~0           0 Stable        1   -0.666667    Stable
+ 10831 H*_0s+          0 Stable        0   0.666667    Stable
+-10831 H*_0s-          0 Stable        0   -0.666667    Stable
+ 10833 H_1s+           0 Stable        1   0.666667    Stable
+-10833 H_1s-           0 Stable        1   -0.666667    Stable
+ 10841 H*_0c0          0 Stable        0   0.666667    Stable
+-10841 H*_0c~0         0 Stable        0   -0.666667    Stable
+ 10843 H_1c0           0 Stable        1   0.666667    Stable
+-10843 H_1c~0          0 Stable        1   -0.666667    Stable
+ 10851 H*_0b+          0 Stable        0   0.666667    Stable
+-10851 H*_0b-          0 Stable        0   -0.666667    Stable
+ 10853 H_1b+           0 Stable        1   0.666667    Stable
+-10853 H_1b-           0 Stable        1   -0.666667    Stable
+ 10861 H*_0t0          0 Stable        0   0.666667    Stable
+-10861 H*_0t~0         0 Stable        0   -0.666667    Stable
+ 10863 H_1t0           0 Stable        1   0.666667    Stable
+-10863 H_1t~0          0 Stable        1   -0.666667    Stable
+ 10871 H*_0l+          0 Stable        0   0.666667    Stable
+-10871 H*_0l-          0 Stable        0   -0.666667    Stable
+ 10873 H_1l+           0 Stable        1   0.666667    Stable
+-10873 H_1l-           0 Stable        1   -0.666667    Stable
+ 10881 chi_0h      397.4 Stable        0    0    Stable
+ 10883 h_1h       397.42 Stable        1    0    Stable
+ 20113 a_10         1.26 0.4   1    0    4.93317e-14
+               0.500 -> rho+ pi-
+               0.500 -> rho- pi+
+ 20213 a_1+         1.26 0.4   1    1    4.93317e-14
+               0.500 -> rho0 pi+
+               0.500 -> rho+ pi0
+-20213 a_1-         1.26 0.4   1   -1    4.93317e-14
+               0.500 -> rho0 pi-
+               0.500 -> rho- pi0
+ 20223 f_1         1.283 0.025   1    0    7.89308e-13
+               0.140 -> a_0+ pi-
+               0.140 -> a_00 pi0
+               0.140 -> a_0- pi+
+               0.100 -> eta pi+ pi-
+               0.050 -> eta pi0 pi0
+               0.080 -> rho+ pi- pi0
+               0.080 -> rho0 pi+ pi-
+               0.080 -> rho0 pi0 pi0
+               0.080 -> rho- pi+ pi0
+               0.028 -> K+ K- pi0
+               0.027 -> K+ K~0 pi-
+               0.028 -> K0 K~0 pi0
+               0.027 -> K0 K- pi+
+ 20313 K*_10       1.401 0.184   1    0    1.07243e-13
+               0.667 -> K*+ pi-
+               0.333 -> K*0 pi0
+-20313 K*_1~0      1.401 0.184   1    0    1.07243e-13
+               0.667 -> K*- pi+
+               0.333 -> K*~0 pi0
+ 20323 K*_1+       1.401 0.184   1    1    1.07243e-13
+               0.667 -> K*0 pi+
+               0.333 -> K*+ pi0
+-20323 K*_1-       1.401 0.184   1   -1    1.07243e-13
+               0.667 -> K*~0 pi-
+               0.333 -> K*- pi0
+ 20333 f'_1        1.422 0.055   1    0    3.58776e-13
+               0.250 -> K*0 K~0
+               0.250 -> K*~0 K0
+               0.250 -> K*+ K-
+               0.250 -> K*- K+
+ 20413 D*_1+       2.372 0.06   1    1    3.28878e-13
+               0.667 -> D*0 pi+
+               0.333 -> D*+ pi0
+-20413 D*_1-       2.372 0.06   1   -1    3.28878e-13
+               0.667 -> D*~0 pi-
+               0.333 -> D*- pi0
+ 20423 D*_10       2.372 0.06   1    0    3.28878e-13
+               0.667 -> D*+ pi-
+               0.333 -> D*0 pi0
+-20423 D*_1~0      2.372 0.06   1    0    3.28878e-13
+               0.667 -> D*- pi+
+               0.333 -> D*~0 pi0
+ 20433 D*_1s+       2.56 0.04   1    1    4.93318e-13
+               0.350 -> D0 K+
+               0.350 -> D+ K0
+               0.300 -> D*_s+ pi0
+-20433 D*_1s-       2.56 0.04   1   -1    4.93318e-13
+               0.350 -> D~0 K-
+               0.350 -> D- K~0
+               0.300 -> D*_s- pi0
+ 20443 chi_1c     3.5106 0.0135   1    0    1.46168e-12
+               0.273 -> J/psi gamma
+               0.727 -> rndmflav rndmflav~
+ 20513 B*_10        5.78 0.1   1    0    1.97327e-13
+               0.667 -> B*+ pi-
+               0.333 -> B*0 pi0
+-20513 B*_1~0       5.78 0.1   1    0    1.97327e-13
+               0.667 -> B*- pi+
+               0.333 -> B*~0 pi0
+ 20523 B*_1+        5.78 0.1   1    1    1.97327e-13
+               0.667 -> B*0 pi+
+               0.333 -> B*+ pi0
+-20523 B*_1-        5.78 0.1   1   -1    1.97327e-13
+               0.667 -> B*~0 pi-
+               0.333 -> B*- pi0
+ 20533 B*_1s0       6.02 0.1   1    0    1.97327e-13
+               0.350 -> B+ K-
+               0.350 -> B0 K~0
+               0.300 -> B*_s0 pi0
+-20533 B*_1s~0      6.02 0.1   1    0    1.97327e-13
+               0.350 -> B- K+
+               0.350 -> B~0 K0
+               0.300 -> B*_s~0 pi0
+ 20543 B*_1c+          0 4.589e-13   1   -0.333333    0.043
+-20543 B*_1c-          0 4.589e-13   1   0.333333    0.043
+ 20553 chi_1b     9.8919 Stable        1    0    Stable
+               0.350 -> Upsilon gamma
+ 20613 T*_1+           0 Stable        1   0.666667    Stable
+-20613 T*_1-           0 Stable        1   -0.666667    Stable
+ 20623 T*_10           0 Stable        1   0.666667    Stable
+-20623 T*_1~0          0 Stable        1   -0.666667    Stable
+ 20633 T*_1s+          0 Stable        1   0.666667    Stable
+-20633 T*_1s-          0 Stable        1   -0.666667    Stable
+ 20643 T*_1c0          0 Stable        1   0.666667    Stable
+-20643 T*_1c~0         0 Stable        1   -0.666667    Stable
+ 20653 T*_1b+          0 Stable        1   0.666667    Stable
+-20653 T*_1b-          0 Stable        1   -0.666667    Stable
+ 20663 chi_1t      238.5 Stable        1    0    Stable
+               0.300 -> Theta gamma
+ 20713 L*_10           0 Stable        1   -0.333333    Stable
+-20713 L*_1~0          0 Stable        1   0.333333    Stable
+ 20723 L*_1+           0 Stable        1   -0.333333    Stable
+-20723 L*_1-           0 Stable        1   0.333333    Stable
+ 20733 L*_1s0          0 Stable        1   -0.333333    Stable
+-20733 L*_1s~0         0 Stable        1   0.333333    Stable
+ 20743 L*_1c+          0 Stable        1   -0.333333    Stable
+-20743 L*_1c-          0 Stable        1   0.333333    Stable
+ 20753 L*_1b0          0 Stable        1   -0.333333    Stable
+-20753 L*_1b~0         0 Stable        1   0.333333    Stable
+ 20763 L*_1t+          0 Stable        1   -0.333333    Stable
+-20763 L*_1t-          0 Stable        1   0.333333    Stable
+ 20773 chi_1l      238.5 Stable        1    0    Stable
+ 20813 H*_1+           0 Stable        1   0.666667    Stable
+-20813 H*_1-           0 Stable        1   -0.666667    Stable
+ 20823 H*_10           0 Stable        1   0.666667    Stable
+-20823 H*_1~0          0 Stable        1   -0.666667    Stable
+ 20833 H*_1s+          0 Stable        1   0.666667    Stable
+-20833 H*_1s-          0 Stable        1   -0.666667    Stable
+ 20843 H*_1c0          0 Stable        1   0.666667    Stable
+-20843 H*_1c~0         0 Stable        1   -0.666667    Stable
+ 20853 H*_1b+          0 Stable        1   0.666667    Stable
+-20853 H*_1b-          0 Stable        1   -0.666667    Stable
+ 20863 H*_1t0          0 Stable        1   0.666667    Stable
+-20863 H*_1t~0         0 Stable        1   -0.666667    Stable
+ 20873 H*_1l+          0 Stable        1   0.666667    Stable
+-20873 H*_1l-          0 Stable        1   -0.666667    Stable
+ 20883 chi_1h      397.5 Stable        1    0    Stable
+
+------------------------------------------------------------------------

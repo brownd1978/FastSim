@@ -1,0 +1,176 @@
+//--------------------------------------------------------------------------
+//
+// File and Version Information:
+// 	$Id: BbrRefCountedPointer.icc 443 2010-01-14 12:24:42Z stroili $
+//
+// Description:
+//      Nonintrusive reference-counted pointer template.
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	Alex Samuel, originator
+//
+// Copyright Information:
+//	Copyright (C) 1999	       California Institute of Technology
+//
+//--------------------------------------------------------------------------
+
+#include "BaBar/BaBar.hh"
+
+#include "CommonUtils/BbrRefCountedPointer.hh"
+
+#include <assert.h>
+
+#ifdef BBRREFCOUNTEDPOINTER_DEBUG
+#include <iostream>
+#endif
+
+
+template <class T>
+inline BbrRefCountedPointer<T>::
+BbrRefCountedPointer() :
+    BbrRefCountedPointerBase()
+{
+    // do nothing
+}
+
+
+template <class T>
+inline BbrRefCountedPointer<T>::
+BbrRefCountedPointer(T*& pointer) :
+    BbrRefCountedPointerBase()
+{
+    take(pointer);
+}
+
+
+template <class T>
+inline BbrRefCountedPointer<T>::
+BbrRefCountedPointer(const BbrRefCountedPointer<T>& rcPointer) :
+    BbrRefCountedPointerBase(rcPointer)
+{
+    // do nothing
+}
+
+
+template <class T>
+inline BbrRefCountedPointer<T>::
+~BbrRefCountedPointer()
+{
+    null();
+}
+
+
+template <class T>
+inline bool BbrRefCountedPointer<T>::
+isNull() const
+{
+    return BbrRefCountedPointerBase::isNull();
+}
+
+
+template <class T>
+inline void BbrRefCountedPointer<T>::
+take(T*& pointer)
+{
+    if(pointer == 0)
+    {
+	null();
+    }
+
+    else
+    {
+	BbrRefCountedPointerBase::take((void*) pointer);
+	pointer = 0;
+    }
+}
+
+
+template <class T>
+inline T* BbrRefCountedPointer<T>::
+release()
+{
+    return reinterpret_cast<T*> (BbrRefCountedPointerBase::release());
+}
+
+
+template <class T>
+inline void BbrRefCountedPointer<T>::
+null()
+{
+    if(isNull())
+	return;
+
+    T* pointer = getPointer();
+    int refCount = clear();
+    if(refCount == 0)
+	delete pointer;
+}
+
+
+template <class T>
+inline T* BbrRefCountedPointer<T>::
+getPointer() const
+{
+    if(isNull())
+	return 0;
+
+    else
+	return reinterpret_cast<T*> (BbrRefCountedPointerBase::getPointer());
+}
+
+
+template <class T>
+inline T* BbrRefCountedPointer<T>::
+operator-> () const
+{
+    return getPointer();
+}
+
+
+template <class T>
+inline T& BbrRefCountedPointer<T>::
+operator* () const
+{
+    return *getPointer();
+}
+
+
+template <class T>
+inline BbrRefCountedPointer<T>::
+operator T* () const
+{
+    return getPointer();
+}
+
+
+template <class T>
+inline bool BbrRefCountedPointer<T>::
+operator== (T* pointer) const
+{
+    return getPointer() == pointer;
+}
+
+
+template <class T>
+inline bool BbrRefCountedPointer<T>::
+operator!= (T* pointer) const
+{
+    return ! operator== (pointer);
+}
+
+
+template <class T>
+inline const BbrRefCountedPointer<T>& BbrRefCountedPointer<T>::
+operator= (const BbrRefCountedPointer<T>& rcPointer)
+{
+    if(&rcPointer != this)
+    {
+        null();
+        BbrRefCountedPointerBase::operator= (rcPointer);
+    }
+    return *this;
+}
+

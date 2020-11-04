@@ -1,0 +1,22 @@
+// File and Version Information:
+//      $Id: EdmlType2Id.cc,v 1.3 2007/06/12 21:28:27 kelsey Exp $
+
+#include "BaBar/BaBar.hh"
+
+#include "PacEnv/EdmlType2Id.hh"
+
+/// Translate the type into its identifier
+/**
+  * This class will use the specified (or the default) generator of identifiers.
+  * A reson why we may want to parameterize the current class with different
+  * generators is that we may want to have a better control over actual number
+  * of identifiers associated with transient types. For example, we may consider
+  * using predefined type numbers rather than automatically generated ones. Or,
+  * we may want to have two independent collections of transient types whose
+  * identifiers both start with 0.
+  */
+template<class T, class GENERATOR>
+unsigned int EdmlType2Id<T,GENERATOR>::id() {
+  static unsigned int value = GENERATOR::next( );
+  return value;
+}

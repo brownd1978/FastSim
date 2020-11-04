@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+   <included>
+
+      <cyl type="EmcCylinder" name="EmcCsIBarrel" id="0" zmin="-113" zmax="207" radius="105.000000" thick="30.000000" mat="emc-CsI" meas="Emc" />
+ 
+    </included>
+</edml>

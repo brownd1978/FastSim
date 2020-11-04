@@ -1,0 +1,34 @@
+string(REGEX REPLACE "^.*/([^ ]+)$" "\\1" pkgname ${CMAKE_CURRENT_SOURCE_DIR})
+
+set (${pkgname}_CXX_FLAGS "-Wall -Wno-sign-compare -Wno-parentheses  -DCLHEP_CONFIG_FILE=CLHEP/config/CLHEP-gcc-3.h")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${${pkgname}_CXX_FLAGS}")
+
+configPkg(${pkgname})
+
+#
+# Generate library
+#
+add_library(${pkgname} ${Sources})
+target_link_libraries(${pkgname} ${LIB_LINK_LIST})
+
+#
+# Define variables containing libraries
+#
+
+add_executable(testIOStreamUtils test/testIOStreamUtils.cc)
+add_executable(testRegEx test/testRegEx.cc)
+add_executable(testString test/testString.cc)
+add_executable(testTokenize test/testTokenize.cc)
+
+#
+# Link directives
+#
+target_link_libraries(testIOStreamUtils ${BIN_LINK_LIST})
+target_link_libraries(testRegEx ${BIN_LINK_LIST})
+target_link_libraries(testString ${BIN_LINK_LIST})
+target_link_libraries(testTokenize ${BIN_LINK_LIST})
+
+add_test(tIOStreamUtils ${EXECUTABLE_OUTPUT_PATH}/testIOStreamUtils)
+add_test(ttestRegEx ${EXECUTABLE_OUTPUT_PATH}/testRegEx)
+add_test(tString ${EXECUTABLE_OUTPUT_PATH}/testString)
+add_test(tTokenize ${EXECUTABLE_OUTPUT_PATH}/testTokenize)

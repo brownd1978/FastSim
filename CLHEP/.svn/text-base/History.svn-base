@@ -1,0 +1,1981 @@
+#
+# $Id$
+#
+
+Fri 22-Jan-2010 stroili
+      split code in src and include directories
+
+Thu 21-Aug-2008 gpdf 
+      Retag V02-00-05 as V02-01-00 (including inlining of HepPoint)
+      Retag V02-00-04 as V02-00-06 (excluding it)
+      V02-00-06 is the tag for completion of R24(.3.*) initial
+      production.  V02-01-00 is for the next performance-improved
+      release series.
+
+Mon 11-Aug-2008 Jim Hamilton (V02-00-05)
+      Inlined constructors and opertors of HepPoint
+
+Fri 05-Oct-2007 Igor Gaponenko (V02-00-01)
+      Cleaned up the package from obsolete files existed in
+      its pre-migrated (to CERN CLHEP) version. No modifications
+      made to the actual code. Added an exlicit package dependency
+      file to make this package depending on CERN CLHEP which is
+      now an external library (not a part of BABAR releases).
+
+Wed 26-Sep-2007 Igor Gaponenko (V02-00-00)
+      Migrated the package to be a true extension of the CERN CLHEP
+      library which itself is now an external package (not a part of
+      the BABAR releases). Most of the previous contents (corresponding
+      to similar functionality found in the CERN CLHEP library) of
+      the current package has been eliminated. NOTE: now, in order
+      to use (compile, link, etc.) the current package one have to
+      bring into a release the corresponding tags of SoftRelTools
+      and PackageList packages.
+
+Fri 27-Apr-2007 Dennis Wright (dhw27Apr07)
+      Back out changes to random engines
+
+Mon 23-Apr-2007 Dennis Wright (dhw23Apr07)
+      In Random directory:
+      DualRand, NonRandomEngine, RanecuEngine, Ranlux64Engine,
+      RanluxEngine, RanshiEngine, TrippleRand, added methods
+            virtual std::ostream & put (std::ostream & os) const;
+            static std::string engineName();
+            std::vector<unsigned long> put () const;
+
+Thu 02-Apr-2007 Dennis Wright (dhw03Apr07)
+      Add GNUmakefile
+
+Thu 31-Mar-2007 Dennis Wright (dhw02Apr07)
+      In Random directory:
+        RandomEngine.h, .cc, add stream methods needed for saveFullState 
+          method:
+            virtual std::ostream & put (std::ostream & os) const;
+            std::ostream & operator<< 
+               (std::ostream & os, const HepRandomEngine & e);
+
+        engineIDulong.h added for streaming output
+        DoubConv added
+
+        DRand48Engine, Hurd160Engine, Hurd288Engine, JamesRandom, 
+        MTwistEngine, RandEngine, added methods
+            virtual std::ostream & put (std::ostream & os) const;
+            static std::string engineName();
+            std::vector<unsigned long> put () const;
+
+Thu 29-Mar-2007 Dennis Wright (dhw30Mar07)
+      Make changes to allow compilation of Geant4 8.2:
+
+      Random/Random.h, cc: add method static std::ostream& saveFullState ( std::ostream & os )
+                    but make it return only the argument  
+                    (part of upgrade to CLHEP 1.9.2.1)
+
+      Geometry/Transform3D.h, .cc: add methods dx(), dy(), dz() 
+                    (part of upgrade to CLHEP 1.9.2.1)
+
+      config/fstream.h : remove option for <fstream.h> header
+      config/iostream.h : remove option for <iostream.h> header
+      config/iomanip.h : remove option for <iomanip.h> header
+
+Thu 24-Nov-2005 Dennis Wright (V01-06-18)
+      Convert all remaining files from HepDouble to double
+                                       HepFloat to float
+                                       HepInt to int
+                                       HepBoolean to bool
+                                       HepStd to std
+
+Sat 16-Jul-2005 Dennis Wright (V01-06-17)
+      Vector/
+        Rotation.h :  add inline << operator
+        ZMxpv.h : replace exit(-1) by abort() to help with error traceback
+
+      All directories: replace HepStd:: with std::
+                       replace HepSTL:: with std:: 
+
+      HepMC/GenVertex.h : remove methods operator HepPoint3D() const;
+         and HepPoint3D point3d() const, and their implementaions -
+         they cause Linux compiler warning
+
+
+Thu 18-Nov-2004 Dennis Wright (V01-06-16)
+      Random/
+        gaussQTables.cdat, 
+        RandLandau.cc : append f to all constants to prevent them from 
+                        defaulting to doubles
+
+        DRand48Engine.h, .cc: new 1.8.0 version (with different WIN32 flags)
+        added file drand48.src, required by DRand48Engine
+
+        RandGeneral.cc : correct two bugs - correct deletion of theIntegraPdf
+                         and correct assert ( nabove = nbelow+1 );
+                         (should be ==)
+
+        RandPoisson.icc : update initialization in constructors
+
+        Randomize.h : add RandBit.h, RandGaussQ.h, RandGaussT.h, RandLandau.h,
+                      RandPoissonQ, RandPoissonT to includes,
+                      remove RandPoisson.h from includes
+
+        Random.cc : replace redundant code in createInstance() method 
+
+        *** Note: at this point the Random directory differs from CLHEP 1.8.0.0
+        *** by two files: RandFlat.cc and RandGauss.cc 
+
+      Vector/
+        LorentzVector.h, .icc : replace operator Hep3Vector () const 
+                                with operator const Hep3Vector & () const;
+
+      Geometry/
+        HepPoint.cc: replace HepStd:: with std::, HepDouble with double,
+                     HepInt with int.
+                     replace deprecated strstream: 
+                        replace #include "CLHEP/config/strstream.h" with
+                                #include "CLHEP/config/sstream.h"
+                        replace istrstream with istringstream
+                        replace HepString with std::string
+
+      String/
+        Strings.cc: replace ostrstream with ostringstream, also replace 
+                    strstream.h with sstream.h
+                    re-code constructors HepString(double f, unsigned p)
+                    and HepString(int) to use ostringstream 
+
+Fri 17-Sep-2004 Matthew Weaver (V01-06-14-01 -> becomes V01-06-15)
+      LorentzVector.h: moved declaration of 'tolerance' before its 
+                       first reference (for online).
+
+Mon 13-Sep-2004 Dennis Wright (V01-06-14)
+      LorentzVector.h,.icc,.cc: for consistency with CLHEP 1.8.0.0,
+         change 
+                void boost(double,double,double) to 
+                HepLorentzVector& boost(double,double,double)
+         and
+                inline void boost(const Hep3Vector &) to
+                inline HepLorentzVector & boost(const Hep3Vector &)
+
+      RandGeneral.h: change private copy constructor definition to a 
+                declaration.  Now consisitent with CLHEP 1.8.0 and avoids 
+                compiler warning
+                            
+Fri 10-Sep-2004 Rainer Bartoldus (V01-06-13)
+      test/testLorentzVectorQ.cc: add usingHepStd::endl;
+
+Xxx xx-Aug-2004 Rainer Bartoldus (V01-06-12)
+      IOstreams migration
+
+Wed 1-Jul-2004 Dennis Wright (V01-06-11)
+
+      LorentzRotation.h, .cc: change argument of matrixMultiplication method 
+                   from HepLorentzRotation to HepRep4x4
+      LorentzRotation.icc: change implementation of some methods to conform 
+                   to CLHEP 1.8.0
+
+      LorentzVector.h, .icc, .cc: change rotateX, rotateY, rotateZ, rotateUz,
+                   rotate from 
+                       inline void 
+                   to 
+                       HepLorenzVector & 
+ 
+      ThreeVector.h, .cc: change rotateX, rotateY, rotateZ, rotateUz, rotate 
+                   from 
+                       void 
+                   to 
+                       Hep3Vector & 
+
+      ThreeVectorR.cc, SpaceVectorR.cc, LorentzVectorR.cc now updated to 
+          CLHEP 1.8.0
+
+Fri 02-Apr-2004 Dennis Wright (V01-06-10)
+
+      ** Directory Vector now as close to CLHEP 1.8.0.0 as possible without
+         changing BaBar code:  52 files identical with CLHEP 1.8.0.0,
+         17 different.  Differing files are:
+
+          LorentzRotation.h, .icc, .cc
+          LorentzVector.h, .icc, .cc
+          LorentzVectorB.cc
+          LorentzVectorQ.h, .icc, .cc   (not in CLHEP 1.8.0.0)
+          LorentzVectorR.cc
+          Rotation.h, .cc
+          SpaceVectorR.cc
+          ThreeVector.h, .cc
+          ThreeVectorR.cc
+
+          Most of the listed files differ from CLHEP 1.8.0.0 by only a 
+          few methods 
+
+          Files added from CLHEP.1.8.0.0:
+
+          LorentzRotationC.cc - extends LorentzRotation class
+          RotationXYZ.cc
+          RotationE.cc, RotationL.cc - extend Rotation class
+          ThreeVectorR.cc, SpaceVectorD.cc - extend ThreeVector class 
+          SpaceVectorP.cc, SpaceVectorR.cc - extend ThreeVector class
+          ZMinput.cc
+
+          Classes added from CLHEP 1.8.0.0
+
+          RotationX, RotationY, RotationZ
+          TwoVector
+
+      ** Directory Random now differs from CLHEP 1.8.0.0 by 11 files:
+         (81 files are identical to CLHEP 1.8.0.0) 
+ 
+          DRand48Engine.h, .cc
+          RandGauss.cc
+          RandGeneral.h, .cc
+          RandFlat.icc
+          RandLandau.cc
+          RandPoisson.icc
+          Random.cc
+          Randomize.h
+          gaussQTables.cdat
+           
+          Modifications in V01-06-10:
+ 
+          DualRand.cc:  added some endls:   os << HepStd::endl;
+          RandStudentT.h, .cc: replace HUGE_VAL with DBL_MAX (from float.h)
+          RandecuEngine.cc: add endl:  outfile << HepStd::endl;
+          flatToGaussian.cc : initialized some un-inited variables:
+                   const double* tptr = 0;
+                   double  dx = 0;
+                   double  h = 0;
+          Hurd160Engine.cc and Hurd288Engine.cc : in method saveStatus add
+                   outFile << HepStd::endl;
+          RandPoissonQ.cc: method poissonDeviateSmall: initialize rRemainder   
+         
+Thu 05-Mar-2004 Dennis Wright (V01-06-09)
+ 
+        ** LorentzVector **
+        Add all remaining methods from CLHEP 1.8.0.0.  LorentzVector class
+          now differs by only a few lines per file from CLHEP 1.8.0.0
+        Added files LorentzVectorB.cc, LorentzVectorL.cc, LorentzVectorR.cc
+ 
+        ** LorentzRotation **
+        Add global method
+            operator* (const HepRotation&, const HepLorentzRotation&)
+        Add constructor
+            HepLorentzRotation(const HepBoost&), and
+            HepLorentzRoation & operator = (const HepBoost&)
+        Add (from CLHEP 1.8.0.0) files RotationInterfaces.h, .icc, .cc
+        Add (from CLHEP 1.8.0.0) file LorentzRotationD.cc
+ 
+        ** Boost **
+        Added (from CLHEP 1.8.0.0) files Boost.h, .icc, .cc
+                                         BoostX.h, .icc, .cc
+                                         BoostY.h, .icc, .cc
+                                         BoostZ.h, .icc, .cc
+ 
+        ** Rotation **
+        Added (from CLHEP 1.8.0.0) files RotationA.cc
+                                         RotationC.cc
+                                         RotationP.cc
+
+Thu 12-Feb-2004 Rainer Bartoldus (V01-06-06-01)
+        ** ThreeVector **
+        Move a protected static data member ('tolerance') ahead of the
+        public methods that reference it as a default argument.
+        This is to regain compatibility with gcc 2.7.2.
+
+Thu 05-Feb-2004 Dennis Wright (V01-06-08)
+
+        ** LorentzVector **
+        Add 3 inline constructors: HepLorentzVector(), HepLorentzVector(x,y,z),
+            HepLorentzVector(t)
+        Remove default arguments from HepLorentzVector(x,y,z,t)
+
+        Add inline methods: et2(), et(), invariantMass2, getX(), getY(), 
+            getZ(), getT(), v(), getV(), setV(const Hep3Vector &),
+            bool operators >, <, >=, <=, 
+            operator / (const HepLorentzVector &, double a), isNear, howNear,
+            isNearCM, howNearCM, isParallel, howParallel, deltaR, howLightLike,
+            euclideanNorm2, euclideanNorm, eta(), eta(const Hep3Vector &)
+
+        Add static double tolerance to LorentzVector.h
+        Add file LorentzVectorC.cc 
+
+Mon 02-Feb-2004 Dennis Wright (V01-06-07)
+
+        add #define HEP_USE_STD_STL 1 to CLHEP-gcc-3.h
+ 
+Fri 21-Nov-2003 Dennis Wright (V01-06-06)
+
+        Bill Lockman and David Williams fix of problems with caching of 
+        random numbers:
+          Random/RandFlat.icc: shootBit(), fireBit() 
+          Random/RandGauss.cc: shoot(), shoot(HepRandomEngine*), normal() 
+  
+Fri 31-Oct-2003 Dennis Wright (V01-06-05)
+
+        1. In config/CLHEP-CC-6.0.h, add 
+           and change
+                 #define HEP_USE_STD 1
+           back to 
+                 #undef HEP_USE_STD
+           because of buil;d errors on Sun
+
+        2. Remove Eval from GNUmakefile SUBDIRS line
+
+        
+Fri 23-Oct-2003 Dennis Wright (V01-06-04)
+
+        1. In config/CLHEP.h, add the stanza 
+                        #ifndef HepSTL
+                        #ifndef HEP_USE_STD_STL
+                        #define HepSTL
+                        #else
+                        #define HepSTL std
+                        #endif
+                        #endif
+           just after HEP_SHORT_NAMES stanza
+
+        2. In config/CLHEP-CC-6.0.h, add 
+                 #define HEP_USE_STD_STL 1
+           and change
+                 #undef HEP_USE_STD
+           to
+                 #define HEP_USE_STD 1
+
+        3. Added directory GenericFunctions from CLHEP 1.8.0.0 and added to it 
+           the GNUmakefile found in parallel directories
+        4. Added directory Evaluator from CLHEP 1.8.0.0 and added to it 
+           the GNUmakefile found in parallel directories
+        5. include the above directory from steps 3,4 in the SUBDIRS 
+           line in CLHEP/GNUmakefile
+
+Fri 17-Oct-2003 Dennis Wright (V01-06-03)
+
+        Add GNUmakefile to Units and Utilities
+
+
+Fri 17-Oct-2003 Dennis Wright (V01-06-02)
+
+        NOTE: tags V01-06-00 and V01-06-01 are NO GOOD
+        ----------------------------------------------
+
+        Make changes to bring BaBar CLHEP closer to CLHEP 1.8.0
+        -------------------------------------------------------
+        1. In config/CLHEP.h , move
+                     typedef bool   HepBoolean;
+
+                     #ifdef HEP_SHORT_NAMES
+                     typedef HepBoolean Boolean;
+                     #endif
+            up to just after
+ 
+                     typedef float  HepFloat;
+              
+        2. Added directory RandomObjects from CLHEP 1.8.0.0 and added to 
+           it the GNUmakefile found in parallel directories
+        3. Added directory StdHep from CLHEP 1.8.0.0 and added to it 
+           the GNUmakefile found in parallel directories
+        4. include the above directories from steps 2,3 in the SUBDIRS 
+           line in CLHEP/GNUmakefile
+
+        5. Geometry
+           a. change HepDouble to double, HepFloat to float, HepInt to int
+              and HepBoolean to bool in most files
+           b. In Transform3D.h, add 
+               method bool operator != (const HepTransform3D & transform) const
+               helper class HepTransform3D_row
+               inline const HepTransform3D_row operator [] (int) const 
+
+               inline HepTransform3D::HepTransform3D_row::HepTransform3D_row
+               (const HepTransform3D & r, int i)
+
+               inline double HepTransform3D::HepTransform3D_row::operator[]
+               (int jj) const
+
+               inline const HepTransform3D::HepTransform3D_row
+               HepTransform3D::operator[](int i) const
+           c. In Plane3D.h
+                fix old bug (15 Oct 2000) by changing
+              aa = n.x(); bb = n.y(); cc = n.z(); dd = -n*point().transform(m);
+                to
+              dd = -n*point().transform(m); aa = n.x(); bb = n.y(); cc = n.z();
+           d. For Normal3D.h, Point3D.h, Vector3D.h, 
+              replace Hep3Vector base class with BasicVector3D base class
+         
+        6. Matrix, Random, String, src, test
+            change HepDouble to double, HepFloat to float, HepInt to int,
+            HepBoolean to bool
+
+        7. Units
+           a. replace HepDouble with double in all files 
+           b. to file SystemOfUnits.h add line
+              static const double pc = parsec;
+           c. to file Makefile.in add line
+              HEADERS = *.h
+ 
+        8. Utilities
+           to Makefile.in add HEADERS = *.h
+
+        9. Vector
+           a. ThreeVector.hh, .icc, .cc : add >30 new methods from CLHEP 1.8.0
+           b. ThreeVector.hh, .icc, .cc : re-arrange order of many methods
+           c. ThreeVector.hh: make coords (dx,dy,dz) protected data members
+           d. Add classes HepEulerAngles and HepAxisAngle from 1.8.0
+           e. replace HepDouble, HepFloat, HepInt, HepBoolean with 
+             double, float, int, bool
+
+       10. Added directory Evaluator but it will
+           not be built in this version 
+
+Thu 28-Aug-2002 Amedeo Perazzo (V01-05-21)
+
+	1. The parser of the vxworks cross compiler is not smart
+           enough to see that tolerance in ThreeVector is actually in
+           the right scope: move declaration of tolerance up a few
+           lines, ie before it's used in the same class.
+
+	2. Turn on HEP_QSORT_NEEDS_FUNCTION_WITH_EXTERN_C_LINKAGE in
+	   CLHEP-online.h.
+
+Thu  7-Aug-2002 Rainer Bartoldus (V01-05-20)
+	1. Turn on HEP_QSORT_NEEDS_FUNCTION_WITH_EXTERN_C_LINKAGE
+	   in CLHEP-gcc-3.h as is needed on Solaris and ok for Linux.
+	   Realize that the name -gcc-3 is misleading, should fix that
+           in a later version.
+
+Wed  9-Jul-2003 Rainer Bartoldus (V01-05-19)
+
+        1. Add missing HepStd:: scope resolution to endl in
+           Vector/LorentzVector.cc.
+
+        2. Introduce config/CLHEP-gcc-3.h, derived from
+           CLHEP-egcs-1.1b.h, to support standard iostreams
+           on Linux (#define HEP_USE_STD 1).
+
+Mon  5-May-2003 Dennis Wright (V01-05-18)
+
+        1. To Units/SystemOfUnits.h, add unit "parsec" from CLHEP 1.8.0.0
+
+        2. To Vector/ThreeVector add methods from CLHEP 1.8.0.0 :
+           a. set(double, double, double)
+           b. getX(), getY(), getZ()
+           c. setTolerance(double)
+           d. double getTolerance()
+           e. bool isParallel(const Hep3Vector &v, 
+                              double epsilon = tolerance) const
+           f. bool isOrthogonal(const Hep3Vector &v, 
+                                double epsilon = tolerance) const
+           g. double howParallel(const Hep3Vector &v) const
+           h. double howOrthogonal(const Hep3Vector &v) const
+           i. void setSpherical(double, double, double)
+           j. void setCylindrical(double, double, double)
+           k. void setRhoPhiTheta(double, double, double)
+           l. void setRhoPhiEta(double, double, double)
+           m. int compare(const Hep3Vector &v) const
+           n. bool operator > (const Hep3Vector &v) const
+           o. bool operator < (const Hep3Vector &v) const
+           p. bool operator <= (const Hep3Vector &v) const
+           q. bool operator >= (const Hep3Vector &v) const
+           r. double negativeInfinity() const
+
+        3. Add the following lines to Vector/ThreeVector (from 1.8.0.0)
+           a. static double tolerance 
+              to private data
+           b. enum {ToleranceTicks = 100};
+           c. double Hep3Vector::tolerance = 
+                          Hep3Vector::ToleranceTicks*2.22045e-16;
+              to .cc
+
+        4. Add SpaceVector.cc from 1.8.0.0 to Vector/
+       
+Wed 29-Jan-2003 Dennis Wright (V01-05-17)
+ 
+        1. Added HepMC and HepPDT from CLHEP.1.8.0.0 and added to each of
+           these the GNUmakefile found in parallel directories
+        2. include the above directories in the SUBDIRS line in 
+           CLHEP/GNUmakefile
+        3. copied sstream.h and StringStream.h to CLHEP/config directory 
+           from CLHEP.1.8.0.0
+        4. add include <algorithm> to top of HepPDT/version.cc
+        5. added the line 
+                         #define HEP_HAVE_SSTREAM 1
+           to CLHEP/config/CLHEP-CC-6.0.h  (for Sun OS58)
+           and CLHEP/config/CLHEP-egcs-1.1b.h  (for Linux)
+        6. changed <streambuf.h> header to <streambuf> in 
+           CLHEP/config/StringStream.h
+        7. added the stanza
+                         #ifndef HepIOS
+                         #define HepIOS std::ios
+                         #endif
+           to the end of CLHEP/config/CLHEP.h
+        8. in CLHEP/Random/RandGauss.icc, RandPoisson.icc, re-order data 
+           member initialization to agree with order in headers
+
+        9. in CLHEP/Vector/Rotation.h, .cc, added IDENTITY rotation from 
+           1.8.0.0
+
+       10. add print function to Rotation.h and
+           add file RotationIO.cc from 1.8.0.0 to implement it
+
+       11. add (double, Hep3Vector) constructor to go with existing
+               (Hep3Vector, double) constructor in LorentzVector.h, .icc
+
+       12. add beta() and gamma() functions to LorentzVector.h
+
+       13. add inline restMass2() function to LorentzVector.h, .icc
+
+       14. add files ZMxpv.h and LorentzVectorK.cc from 1.8.0.0.  Remove
+           all functions from LorentzVectorK.cc except beta() and gamma().
+
+       15. in CLHEP/Vector/ThreeVector.h, .cc, added 
+           operator / (vector, double)
+
+       16. in CLHEP/Vector/LorentzRotation.h, .icc, added set(Hep3Vector) 
+           method
+
+Tue 20-Aug-2002 A. Perazzo (V01-05-15)
+	Add define HEP_HAVE_TYPENAME in CLHEP-online.h.
+
+Tue 21-May-2002 G. P. Dubois-Felsmann (V01-05-14-01)
+	This is V01-05-14 less certain changes that only work in 11-series
+	builds; these have been reverted to their versions in V01-05-05-04:
+	  String/Strings.{h,icc,cc} Vector/LorentzVector.{h,icc,cc}
+	  config/TemplateFunctions.h test/testStrings.cc
+	This was done simply by retagging existing RCS revisions.  This
+	entry to the History file is the only actual change to a file.
+
+Wed 10-Apr-2002 A. Perazzo (V01-05-14)
+        Makefile changed to pass to lower level makefiles whatever
+        targets are required by the user.
+
+Wed 10-Apr-2002 Willy Langeveld (V01-05-13)
+	Fixed a bug in the RandGeneral destructor, changing delete
+        to delete[].
+
+Thu  4-Apr-2002 A. Perazzo (V01-05-10)
+        Merged the cvs branch made for the online build: in this
+        branch one file, CLHEP-online.h, replaced the multiple
+        configuration files CLHEP-VXWORKS.h, CLHEP-odf-SunOS5.h and
+        CLHEP-odf-SunOS58.h.
+
+Thu  4-Apr-2002 Gregory Dubois-Felsmann (V01-05-09)
+	A serious error has been corrected in CLHEP-CC-6.0.h, which was
+	resulting in the "typename" keyword being preprocessed away to
+	the null string -- something which (unlike for "explicit") tends
+	to produce syntactically invalid code.  "typename" is supported
+	in Sun Workshop 6.
+	(NB: this was originally tagged as V01-06-01 because of a lack of
+	appreciation for the connection with CLHEP version numbers.  That
+	tag will be deleted from CVS.)
+	[History config/CLHEP-CC-6.0.h]
+
+Thu  4-Apr-2002 Gregory Dubois-Felsmann (V01-05-08)
+	The long-standing branch in CLHEP has been closed by restoring
+	the files in V01-05-06-05 to the HEAD of CVS (by Terry Hung).
+	This has been verified with "diff -kk" (without "-kk" some 
+	differences appear because files have been restored with different
+	RCS revision numbers, which appear in many files in "$ I d $" 
+	(stretched to avoid substitution here) strings.
+	This tag provides a starting point for further work.
+	(NB: this was originally tagged as V01-06-00 because of a lack of
+	appreciation for the connection with CLHEP version numbers.  That
+	tag will be deleted from CVS.)
+	[History]
+
+Fri 29-Mar-2002 Ilya Narsky (V01-05-06-05)
+	Made constructor HepString(const std::string &) explicit to avoid
+	ambiguities.
+
+Wed 27-Mar-2002 Ilya Narsky (V01-05-06-04)
+	Included std::string into HepString constructor and basic
+	operator arguments.
+
+Thu 07-Mar-2002 Bill Lockman (V01-05-06-03)
+- remove the conditional #ifndef CLHEP_MAX_MIN_DEFINED block 
+
+Wed 06-Mar-2002 D.H. Wright (V01-05-06-02)
+- get min, max from STL instead of CLHEP:
+  in config/TemplateFunctions.h immediately after #include <algorithm>,
+  insert  using std::min;
+          using std::max;
+
+Wed 28-Feb-2002 Lockman (V01-05-06-01)
+- same as V01-05-06, except that config/TemplateFunctions.h V01-05-05-01 is
+  used (this version #include <algorithm> to pick up min and max
+
+Thu 20 Dec 2001 W.G.J. Langeveld (wgl20011220-00)
+- This tag takes CLHEP out of SRT and makes it an external package.
+  The modifications and their impacts for this purpose are listed below.
+  The points most likely to require attention in the migration are
+  prefaced with a *.
+- Added link_CLHEP.mk with a dependence on the external CLHEP package.
+  See also changes (to be) made to PackageList and SoftRelTools. 
+- deleted all files that are original CLHEP source files. See the
+  following items for where this will cause migration problems.
+- deleted "ChangeLog.CERN", the original ChangeLog history file in CLHEP
+  (it is available in the SLAC CLHEP package).
+- deleted "INSTALL.CERN", the original INSTALL description file in CLHEP.
+  (it is available in the SLAC CLHEP package).
+- Left the file CLHEP_LinkDef.hh (this is for ROOT's CINT).
+- Modified GNUmakefile(s) to only compile additional BaBar source. The
+  library created keeps the same name (libCLHEP.a) since the 
+  libraries in SLAC CLHEP package space have different names.
+* Kept the following files and directories which were added to
+  the original distribution in order to allow dual-use for online:
+    CLHEP		.dual-pkg
+    CLHEP/Alist/	0_control/
+    CLHEP/Matrix/	0_control/, 2_segment/
+    CLHEP/String/	0_control/
+  I don't know what these files/directories do, and it is not clear to me
+  that just leaving them in SRT CLHEP will be good enough for online.
+- Kept the file called CLHEP/Matrix/OdfCLHEPTemplates.cc, which defines a 
+  HepPile<double *> as its only function. While there never was a good
+  reason this file should be in the SRT CLHEP pacakge, now that SRT CLHEP
+  is BaBar-specific, we can just leave it there.
+- Kept the directory CLHEP/CLHEP containing wrappers to CLHEP headers
+  added for backward compatibility with some BaBar packages. Not sure
+  this is still used anywhere, but the way this is implemented, it 
+  shouldn't hurt anything.
+- Removed all "control files", since they now reside in SLAC CLHEP space
+  and will be picked up by the AFS @sys mechanism and the fact that
+  CLHEP-default.h is the correct one for each "@sys".
+  Examples: CLHEP/config: CLHEP-CC-4.2.h, CLHEP-aCC.h, CLHEP-cxx-5.5.h,
+  CLHEP-cxx-6.0.h, CLHEP-default.h, CLHEP-egcs-1.1b.h
+- Deleted CLHEP/config/CLHEP-CC-5.0.h, which  contained a BaBar specific
+  flag BABAR_SOL7WS5_FIX, resolving a compiler/linker bug with the Solaris
+  7 WS 5.0 compiler. Since we no longer use either Solaris 7 or WS 5.0,
+  this is now irrelevant.
+- Deleted CLHEP/config/CLHEP.h which contained BaBar specific definition
+  of false/true and bool for those compilers not supporting native boolean
+  types. It was 'char'-based in BaBar,  whereas 'int' was used in the
+  original CLHEP. There are no more compilers without bools, so this mod
+  is now superfluous, and removing it should not cause trouble.
+- Deleted CLHEP/config/TemplateFunctions.h which contained a condition: if
+  BABAR_MATH_TEMPLATES is defined most (all?) of the CLHEP templates are
+  ignored. There are some conflicts between the BaBar templates and the
+  CLHEP ones, so BaBar should NOT define them, but include this header
+  instead. Then removing the conditional (i.e. using the SLAC CLHEP package
+  version) would not cause trouble. On the other hand, this is academic,
+  since as it turns out, srtglimpse shows that the only place
+  BABAR_MATH_TEMPLATES shows up is in this file, so apparently BaBar does
+  not depend on this at all.
+- In CLHEP/Geometry, the BaBar specific classes and files
+      AngleSets[.h.cc], HepPoint[.h.cc],
+      Transformation[.h.cc], Translation[.h.cc]
+  were retained in SRT, since they do not by themselves conflict with
+  CLHEP classes.
+- In CLHEP/test, the BaBar specific file testLorentzVectorQ.cc does not
+  conflict with CLHEP, and was retained.
+- In CLHEP/Random there was a patch to RandFlat.icc for shootBit/fireBit
+  to fix random sequence issues in geant4. This is no longer relevant,
+  since this was fixed in CLHEP/geant4. This file was deleted from SRT
+  with all the others.
+* BaBar added read/write virtual functions to the original distribution
+  in the files CLHEP/Matrix/SymMatrix[.h.cc]. A new class was introduced,
+  HepSymMatrixBB (in SymMatrixBB[.h|.icc|.cc]) deriving from HepSymMatrix
+  and adding these two functions as a migration aid.
+- The file CLHEP/Matrix/GenMatrix.cc had an off-by-one bug in operator==
+  which was fixed in the BaBar version. Since this bug is now fixed in
+  standard CLHEP, this file was deleted with all the others.
+* In the file CLHEP/Matrix/SymMatrix.cc a special case was put in for 5x5
+  symmetric matrix inversion. The new class HepSymMatrixBB mentioned before
+  overrides the two invert methods to keep the optimized code. While
+  dropping this optimization may cause a speed problem for a small number
+  of situations, there is no migration issue (code will continue to work
+  without modifications). People can change their code to use the derived
+  version to regain the optimized code.
+- In the file CLHEP/Matrix/SymMatrix.cc speedups were put in to the default
+  case symmetric matrix inversion, involving creation of temporaries to
+  avoid repeated calculation. With modern compilers, the speedups are likely
+  small and there is no migration issue in dropping them, so they were
+  dropped. HepSymMatrixBB does not reinstitute them.
+* In the file CLHEP/Matrix/GenMatrix.icc the following Babar changes were
+  made: in delete_m, remove check on if(m) when deleting m as checks on this
+  are already in the delete operator as C++ standard; in new_m, remove check
+  on size==0 and just pass the data_array in such cases.
+  These are not strictly needed and the resulting speed penalty is likely
+  to be small, considering that compilers have improved since these changes
+  were made. The only possible migration issue is the unlikely situation that
+  anyone depends on the data_array being passed back if the size is 0. This
+  was an incompatible change, and it was dropped.
+- There were various changes to inline num_row, num_col and
+  operator()(int row, int col) in the BaBar varsion of the following files
+  in CLHEP/Matrix:
+    GenMatrix.[hh|icc|cc]
+    Matrix.[hh|icc|cc]
+    SymMatrix.[hh|icc|cc]
+    DiagMatrix.[hh|icc|cc]
+    Vector.[hh|icc|cc]
+  These are not strictly needed and the resulting speed penalty is likely
+  to be small, considering that compilers have improved since these changes
+  were made, so all these were dropped.
+- BaBar added the class CLHEP/Vector/Classes/LorentzVectorQ and files
+  LorentzVectorQ[.h.icc.cc] to the original distribution, deriving from a
+  LorentzVector and implementing one with charge. Regardless of how useful
+  this class is, it by itself does not cause any problems, so it was left
+  in SRT.
+* BaBar added methods to CLHEP/Vector/Rotation[.h.cc]:
+      similarity(const HepSymMatrix &)
+      operator *(const HepPoint & p)
+  These functions introduce dependencies with Matrix and Geometry (and a
+  class (HepPoint) in Geometry that is NOT in standard CLHEP!). A new class
+  HepRotationBB (in files RotationBB[.h|.icc|.cc] was introduced as a migration
+  aid that has these functions.
+* BaBar moved the constructor by components in CLHEP/Vector/Rotation.h 
+  from 'protected' to 'public'. The new class HepRotationBB has this
+  contructor public.
+* BaBar added methods to CLHEP/Vector/ThreeVector[.h.cc]:
+      transform(const HepTranslation &)
+      transform(const HepTransformation &)
+  These functions introduce dependencies with classes in Geometry that
+  are NOT in standard CLHEP! A new class Hep3VectorBB (in files 
+  ThreeVector[.h|.icc|.cc]) was added as a migration aid that has these
+  functions.
+- An old "src" directory has recently shown up in the latest BaBar
+  CLHEP tags. This directory was not in the tag this tag is based on,
+  and this directory should not return.
+
+Wed 07-Nov-2001 Lockman (V01-05-06)
+Based on V01-05-05, except for LorentzVector class
+Vector/LorentzVector.h: 
+- Added operator /= to the end of this class
+- inline void rotateUz(const Hep3Vector &) changed from 
+  inline void rotateUz(Hep3Vector &)
+
+Vector/LorentzVector.cc:
+- Added implementation of /= operator. 
+  Pulled in the following other changes
+- operator () (int i) const; [trivial mod]
+- operator () (int i); [return static HepDouble dummy under certain conditions]
+- operator << 
+- operator >> [formatting changes, and parsing checks, apparently]
+
+Vector/LorentzVector.icc: 
+- rotateUz(Hep3Vector &) changed to rotateUz(const Hep3Vector &)
+
+Wed 07-Nov-2001 Lockman (V01-05-05)
+Based on V01-05-04, with the following updates:
+      o Geometry/Transform3D.h, Transform3D.cc:
+      - Added method HepDouble HepTransform3D::operator () (int i, int j) const
+        to obtain FORTRAN-style indexing into HepTransform3D matrices
+      - Added method HepTransform3D::getDecomposition(HepScale3D & scale,
+				 HepRotate3D & rotation,
+				 HepTranslate3D & translation) const
+	to return Scale, Rotation, Translation of a general transformation
+NOTE: These add methods to Transform3D class, but do not change existing
+      methods. 
+***   Not appropriate for a lettered build, however, since a header file is 
+      changed. ***
+
+Mon 10 Sep 2001 from M. Steinke (V01-05-04)
+Based on V01-05-01, with the following updates
+      o Matrix/Vector.h: changed inline HepVector(int p) to 
+	explicit inline HepVector(int p)
+      o tagged the following files in CLHEP/src:
+U ALBapp2.cc
+U ALBapplist.cc
+U ALBassign.cc
+U ALBctor.cc
+U ALBfindex.cc
+U ALBindex.cc
+U ALBpurge.cc
+U ALBremlist.cc
+U ALBremove.cc
+U ALBreplace.cc
+U ALBreverse.cc
+U ALBswap.cc
+U DiagMatrixD.cc
+U DiagMatrixF.cc
+U LORassign.cc
+U LORinverse.cc
+U LORmult.cc
+U LORpersist.cc
+U LORvmult.cc
+U LVDmmult.cc
+U LVDoutput.cc
+U LVDsete.cc
+U LVDsetm.cc
+U LVFmmult.cc
+U LVFoutput.cc
+U LVFsete.cc
+U LVFsetm.cc
+U PISboolean.cc
+U PISref.cc
+U PISversion.cc
+U POSboolean.cc
+U RNDbw.cc
+U RNDbwc.cc
+U RNDbwm2.cc
+U RNDbwm2c.cc
+U RNDgauss.cc
+U ROTassign.cc
+U ROTmult.cc
+U ROTpersist.cc
+U ROTrct.cc
+U ROTrot.cc
+U ROTrphi.cc
+U ROTrtheta.cc
+U STRassign.cc
+U STRcassign.cc
+U STRcat.cc
+U STRcatass.cc
+U STRcats.cc
+U STRccat.cc
+U STRccatass.cc
+U STRccon.cc
+U STRdcon.cc
+U STReq.cc
+U STReqs.cc
+U STRicon.cc
+U STRinput.cc
+U STRlower.cc
+U STRsassign.cc
+U STRscat.cc
+U STRscatass.cc
+U STRscon.cc
+U STRseq.cc
+U STRsubstr.cc
+U STRupper.cc
+U TVDmmult.cc
+U TVDoutput.cc
+U TVDrct.cc
+U TVDrotate.cc
+U TVDrphi.cc
+U TVDrtheta.cc
+U TVFmmult.cc
+U TVFoutput.cc
+U TVFrct.cc
+U TVFrotate.cc
+U TVFrphi.cc
+U TVFrtheta.cc
+
+Tue 21 Nov 2000 E. Charles (V01-05-01)
+      This tag is on top of V01-05-00 with only these additions
+      o Main directory
+        - Added LIBEXRTRARDLFILES to V01-05-00 version of GNUmakefile
+             - GNUmakefile has since been reverted to HEAD
+        - tagged CLHEP_LinkDef.hh file
+      o config:
+        - moved two #define statements to first space in line in V01-05-00 
+          version of CLHEP.h
+             - config/CLHEP has since been reverted to HEAD
+
+Tue 21 Nov 2000 E. Charles (eac2000092101)
+      o Main directory
+        - Add CLHEP_LinkDef.hh file for root dictionary generation
+
+Tue 12 Sep 2000 W.G.J. Langeveld (wgl2000091202)
+      o Main directory:
+	- Update README.BaBar to reflect the changes below.
+
+Tue 12 Sep 2000 W.G.J. Langeveld (wgl2000091201)
+      o Matrix:
+	- Copy all files from 1.5, modified as follows:
+	- GenMatrix.cc: fix off-by-1 bug in operator==, conform previous
+	  BaBar version. Mail was sent to the CLHEP editors.
+	- GenMatrix.h: change enum{size_max = 25} to ...= 28 conform
+	  previous BaBar version.
+	- Retain BaBar Odf Makefile and OdfCLHEPTemplates.cc, as well as
+	  0_control and 2_segment directories.
+	- SymMatrix.cc: retain BaBar 5x5 matrix inversion special case,
+	  though slightly edited to minimize change from 1.5.
+	- SymMatrix.[cc,h]: retain BaBar functions
+          virtual void write(HepStd::ostream & stream) const and
+	  virtual void read(HepStd::istream & stream).
+	No other past BaBar modifications were retained. Specifically,
+	optimizations involving matrix indexing were not propagated, since
+	matrix indexing was changed in 1.5. Other BaBar optimizations
+	were not retained either: some should be part of normal compiler
+	optimizations, and others could only provide marginal speedups, for
+	which it is not worth sacrificing compatibility with the main CLHEP
+	distribution.
+	These changes require a rebuild of everthing that uses CLHEP.
+
+Thu 7 Sep 2000 W.G.J. Langeveld (wgl2000090701)
+      o Vector:
+	- Copy all files from 1.5, except:
+	- Added BaBar files LorentzVectorQ[.h.icc.cc]
+	- Rotation[.h.cc] - added BaBar methods similarity(const HepSymMatrix &)
+	  and operator *(const HepPoint & p)
+	- Rotation.h - constructor by components moved from 'protected' to 'public'.
+	- ThreeVector[.h.cc] - added BaBar methods transform(const HepTranslation &)
+	  and transform(const HepTransformation &)
+      o config:
+	- Changed Solaris header CLHEP-CC-5.0.h to
+	  #define HEP_QSORT_NEEDS_FUNCTION_WITH_EXTERN_C_LINKAGE 1
+	  to avoid a warning on Solaris 7 with WS 5.0.
+      o Alist:
+	- The config change required a minor edit in AListBase.h.
+      o main directory:
+	- Removed "test" from the list of subdirectories to compile,
+	  to avoid "main" routines getting into the library. There are
+	  no headers here, so noone should depend on any other functions
+	  that might be defined in these files.
+	The above changes may require a rebuild of everything.
+
+Fri 1 Sep 2000 W.G.J. Langeveld (wgl2000090101)
+      o Alist:
+	No significant differnces, except for a BaBar enhancement
+	in AListBase.*, implementing logarithmic allocation rather
+	than linear. We'll try to convince CERN to implement this
+	in their version.
+	- Copied all files from 1.5, except AListBase.h, ALIstBase.cc
+	  and AListBase.icc, for which we use the older BaBar version,
+          with minor edits (to help out "diff"). 
+      o Geometry:
+	No changes. There are still several additional BaBar files in
+	this directory, which were left alone.
+	- Copied all files.
+      o String:
+	- Readded inadvertently deleted Makefile (for ODF).
+
+Thu 31 Aug 2000 W.G.J. Langeveld (wgl2000083101)
+      o Combination:
+	No significant differences
+	- copied from 1.5
+      o Units:
+	No significant differences
+	- copied from 1.5
+      o Utilities:
+	No significant differences
+	- copied from 1.5
+      o String:
+	No significant differences. Preserve BaBar directory 0_control
+	- copied from 1.5
+
+Wed 30 Aug 2000 W.G.J. Langeveld (wgl2000083001)
+      o Main directory:
+	- Update all CLHEP-specific files to their 1.5 version.
+	- Rename configure.from-archive and configure.in.from-archive to
+	  the more appropriate configure.CERN and configure.in.CERN
+      o Hist:
+	This no longer exists in CLHEP 1.5. Srtglimpse shows that there
+	is only one .cc file that makes reference to some of these files:
+		EvtGen/dist_utils/evtgenevent_.cc
+	There are other references to files of the same name that once
+	existed in the "HepTuple" package.
+	- All files in this directory, except for GNUmakefile were deleted.
+      o CLHEP:
+	This is a BaBar-special directory that does not exist in CLHEP.
+	It contains wrappers for some CLHEP include files forwarding to
+	the proper CLHEP subdirectory. This is for backward compatibility only.
+	New code should use properly qualified subdirectories.
+        - the wrappers for Hist/*.h were deleted.
+      o classdoc:
+	There are no changes here, so it is up to date with 1.5.
+      o docs:
+	- one new file, validation.doc added, otherwise no change.
+      o test:
+	There are no headers and no library functions here, so we 
+	don't really care.
+	- All files were copied over from the 1.5 version. This added
+          several new files. There is one non-standard BaBar file:
+                testLorentzVectorQ.cc.
+	  which was left where it was.
+	The above changes probably do not require a recompile of everything.
+
+Fri 25 Aug 2000 W.G.J. Langeveld (wgl2000082501)
+      o Tools:
+	New directory.
+	- Added.
+      o StdHepC++:
+	New directory.
+	- Added.
+      o Main directory:
+	- Added new Tools and StdHepC++ to SUBDIRS in GNUmakefile
+      o config:
+	- Updated CLHEP.h (required for StdHepC++) and TemplateFunctions.h
+	  to the 1.5 versions. This does away with all previous BaBar
+	  modifications, including babar_bool and BABAR_MATH_TEMPLATES.
+	- Regenerated CLHEP-CC-5.0.h, CLHEP-cxx-6.0.h and CLHEP-egcs-1.1b.h
+	  (required because of the CLHEP.h update above) to reflect more
+	  closely the capabilities of modern compilers, using the CLHEP
+	  configure script on Linux, Solaris 2.7, and OSF.
+	- Made one change after this to #undef HEP_USE_STD on Solaris
+	  and OSF for compatibility with older BaBar code. Apparently
+	  this is not necessary on Linux.
+	- Updated *.in to 1.5 versions (not used by BaBar). Added new
+	  iosfwd.h.
+	These changes require a recompile of everything that uses CLHEP.
+
+Tue 12 Sep 2000 W.G.J. Langeveld (wgl2000091202)
+      o Main directory:
+	- Update README.BaBar to reflect the changes below.
+
+Tue 12 Sep 2000 W.G.J. Langeveld (wgl2000091201)
+      o Matrix:
+	- Copy all files from 1.5, modified as follows:
+	- GenMatrix.cc: fix off-by-1 bug in operator==, conform previous
+	  BaBar version. Mail was sent to the CLHEP editors.
+	- GenMatrix.h: change enum{size_max = 25} to ...= 28 conform
+	  previous BaBar version.
+	- Retain BaBar Odf Makefile and OdfCLHEPTemplates.cc, as well as
+	  0_control and 2_segment directories.
+	- SymMatrix.cc: retain BaBar 5x5 matrix inversion special case,
+	  though slightly edited to minimize change from 1.5.
+	- SymMatrix.[cc,h]: retain BaBar functions
+          virtual void write(HepStd::ostream & stream) const and
+	  virtual void read(HepStd::istream & stream).
+	No other past BaBar modifications were retained. Specifically,
+	optimizations involving matrix indexing were not propagated, since
+	matrix indexing was changed in 1.5. Other BaBar optimizations
+	were not retained either: some should be part of normal compiler
+	optimizations, and others could only provide marginal speedups, for
+	which it is not worth sacrificing compatibility with the main CLHEP
+	distribution.
+	These changes require a rebuild of everthing that uses CLHEP.
+
+Thu 7 Sep 2000 W.G.J. Langeveld (wgl2000090701)
+      o Vector:
+	- Copy all files from 1.5, except:
+	- Added BaBar files LorentzVectorQ[.h.icc.cc]
+	- Rotation[.h.cc] - added BaBar methods similarity(const HepSymMatrix &)
+	  and operator *(const HepPoint & p)
+	- Rotation.h - constructor by components moved from 'protected' to 'public'.
+	- ThreeVector[.h.cc] - added BaBar methods transform(const HepTranslation &)
+	  and transform(const HepTransformation &)
+      o config:
+	- Changed Solaris header CLHEP-CC-5.0.h to
+	  #define HEP_QSORT_NEEDS_FUNCTION_WITH_EXTERN_C_LINKAGE 1
+	  to avoid a warning on Solaris 7 with WS 5.0.
+      o Alist:
+	- The config change required a minor edit in AListBase.h.
+      o main directory:
+	- Removed "test" from the list of subdirectories to compile,
+	  to avoid "main" routines getting into the library. There are
+	  no headers here, so noone should depend on any other functions
+	  that might be defined in these files.
+	The above changes may require a rebuild of everything.
+
+Fri 1 Sep 2000 W.G.J. Langeveld (wgl2000090101)
+      o Alist:
+	No significant differnces, except for a BaBar enhancement
+	in AListBase.*, implementing logarithmic allocation rather
+	than linear. We'll try to convince CERN to implement this
+	in their version.
+	- Copied all files from 1.5, except AListBase.h, ALIstBase.cc
+	  and AListBase.icc, for which we use the older BaBar version,
+          with minor edits (to help out "diff"). 
+      o Geometry:
+	No changes. There are still several additional BaBar files in
+	this directory, which were left alone.
+	- Copied all files.
+      o String:
+	- Readded inadvertently deleted Makefile (for ODF).
+
+Thu 31 Aug 2000 W.G.J. Langeveld (wgl2000083101)
+      o Combination:
+	No significant differences
+	- copied from 1.5
+      o Units:
+	No significant differences
+	- copied from 1.5
+      o Utilities:
+	No significant differences
+	- copied from 1.5
+      o String:
+	No significant differences. Preserve BaBar directory 0_control
+	- copied from 1.5
+
+Wed 30 Aug 2000 W.G.J. Langeveld (wgl2000083001)
+      o Main directory:
+	- Update all CLHEP-specific files to their 1.5 version.
+	- Rename configure.from-archive and configure.in.from-archive to
+	  the more appropriate configure.CERN and configure.in.CERN
+      o Hist:
+	This no longer exists in CLHEP 1.5. Srtglimpse shows that there
+	is only one .cc file that makes reference to some of these files:
+		EvtGen/dist_utils/evtgenevent_.cc
+	There are other references to files of the same name that once
+	existed in the "HepTuple" package.
+	- All files in this directory, except for GNUmakefile were deleted.
+      o CLHEP:
+	This is a BaBar-special directory that does not exist in CLHEP.
+	It contains wrappers for some CLHEP include files forwarding to
+	the proper CLHEP subdirectory. This is for backward compatibility only.
+	New code should use properly qualified subdirectories.
+        - the wrappers for Hist/*.h were deleted.
+      o classdoc:
+	There are no changes here, so it is up to date with 1.5.
+      o docs:
+	- one new file, validation.doc added, otherwise no change.
+      o test:
+	There are no headers and no library functions here, so we 
+	don't really care.
+	- All files were copied over from the 1.5 version. This added
+          several new files. There is one non-standard BaBar file:
+                testLorentzVectorQ.cc.
+	  which was left where it was.
+	The above changes probably do not require a recompile of everything.
+
+Fri 25 Aug 2000 W.G.J. Langeveld (wgl2000082501)
+      o Tools:
+	New directory.
+	- Added.
+      o StdHepC++:
+	New directory.
+	- Added.
+      o Main directory:
+	- Added new Tools and StdHepC++ to SUBDIRS in GNUmakefile
+      o config:
+	- Updated CLHEP.h (required for StdHepC++) and TemplateFunctions.h
+	  to the 1.5 versions. This does away with all previous BaBar
+	  modifications, including babar_bool and BABAR_MATH_TEMPLATES.
+	- Regenerated CLHEP-CC-5.0.h, CLHEP-cxx-6.0.h and CLHEP-egcs-1.1b.h
+	  (required because of the CLHEP.h update above) to reflect more
+	  closely the capabilities of modern compilers, using the CLHEP
+	  configure script on Linux, Solaris 2.7, and OSF.
+	- Made one change after this to #undef HEP_USE_STD on Solaris
+	  and OSF for compatibility with older BaBar code. Apparently
+	  this is not necessary on Linux.
+	- Updated *.in to 1.5 versions (not used by BaBar). Added new
+	  iosfwd.h.
+	These changes require a recompile of everything that uses CLHEP.
+
+Mon 21 Aug 2000 W.G.J. Langeveld (V01-05-00)
+      o Random:
+	This is the first of a series of tags that will update the BaBar
+	version of CLHEP to 1.5. This particular tag changes the Random
+	directory, wholesale, to the 1.5 version. To use this and newer
+	versions, EVERYTHING that uses CLHEP must be recompiled (yes there
+	are changes in the headers that affect such things as vtables).
+
+Fri 16 Aug 2000 W.G.J. Langeveld (V01-04-13)
+        Change back to CLHEP-CC-5.0.h as it was in V01-04-11, except for
+	one added define for a linker problem involving CLHEP and Geant4
+        2.0 on Solaris with the Workshop 5.0 compiler.
+	This fix will do nothing on other platforms.
+
+Mon 10 Jul 2000 W.G.J. Langeveld (V01-04-12)
+	Change CLHEP-CC-5.0.h file for Solaris 7/CC 5.0.
+	Fixes to Matrix/SymMatrix.cc (HepStd::endl rather than just endl)
+        and Geometry/HepPoint.cc (HepStd::istrstream rather than just istrstream).
+	Put configure and configure.in back in so we can automatically
+	generate new header files, rather than changing old ones by hand.
+	Because these used to be part of the SRT release of CLHEP, I added
+	them back in as configure.from-archive and configure.in.from-archive,
+	to avoid confusion and to prevent someone from running these accidentally.
+
+Sat 08 Jul 2000 Stephen J. Gowdy (V01-04-11)
+	Add CLHEP-CC-5.0.h file for Solaris 7/CC 5.0.
+	Minor change to AListBase.h to allow compilation with
+	this compiler. These changes were done by Akbar Moktarani.
+
+Wed 28 Jun 2000 Stephen J. Gowdy (V01-04-10)
+	Change default matrix size from 25 to 28 after study by
+	Andy Salnikov shows there are lots of symmetric 7x7 matrix usage.
+
+Wed 21 Jun 2000 Stephen J. Gowdy (V01-04-09)
+	Standarise GNUmakefiles to allow building shared libraries. Needs
+	PakcageList sjg20000621a or newer.
+
+Wed 07 Jun 2000 J. Albert
+   Fix bug in HepGenMatrix::operator==
+
+Fri 24 Mar 2000 Alex Korol
+   Allocation in HepAListBase modified to avoid reallocation for every added element:
+       - add new data-member "s" which represents size of buffer
+       - when buffer is not large enough for the next element, double buffer size
+       - explicit preallocation now available using public method "allocate"
+
+Mon 13 Mar 2000 J. Albert (V01-04-05)
+   - SymMatrix.cc - added special 5x5 inversion case
+   - GenMatrix.[hh|icc|cc]
+     Matrix.[hh|icc|cc]
+     SymMatrix.[hh|icc|cc]
+     DiagMatrix.[hh|icc|cc]
+     Vector.[hh|icc|cc] - inlining changes to num_row, num_col, and
+                           operator()(int row, int col)
+
+Fri 10 Mar 2000 D.C. Williams + Bill Lockman (V01-04-04-01)
+        * Add patched Random/RandFlat.icc
+          Patch shootBit/fireBit to fix random sequence issues in geant4;
+          no other BaBar code should be affected
+	  
+Fri 11 Feb 2000 J. Albert  (V01-04-04)	  
+     - GenMatrix.icc - in delete_m, remove check on if(m) when
+                       deleting m as checks on this are already 
+                       in the delete operator as C++ standard.
+                       in new_m, remove check on size==0 and
+                       just pass the data_array in such cases.
+     - SymMatrix.cc - speedups to default case symmetric matrix
+                      inversion, involving creation of 
+                      temporaries to avoid repeated calculation.
+
+Tue 03 Aug 1999 Gabriele Cosmo (V01-04-01)
+	* Replaced all occurences of std:: with HepStd:: to avoid conflicts
+	  with the user and system code in case HEP_USE_STD is not defined.
+	  Fix suggested also to CLHEP editor at CERN.
+
+Tue 20 Jul 1999 Gabriele Cosmo (V01-04-00)
+	* Merged changes with CLHEP 1.4 from CERN.
+	  Refer to ChangeLog.CERN to review all changes/updates brought to
+	  the code. Main new features:
+	  - minor fixes (see ChangeLog.CERN)
+	  - support for namespaces (std::) and ISO/ANSI compilers.
+	  - porting to AIX/xlC 4.3.2.
+	  - completed merging with BaBar CLHEP version (only HepPoint and
+	    related classes are now excluded in CERN version).
+	* Forced non ISO/ANSI installation for DEC and Linux platforms.
+	* Updated all platform dependent setups in config/.
+	* Added README.BaBar summarizing differences between the current
+	  tag and the original CLHEP distribution.
+
+Wed 12 May 1999 Gabriele Cosmo (V01-03-08)
+	* Added structure to make CLHEP a dual-use package (D.N.Brown).
+
+Wed 12 May 1999 Stephen J. Gowdy (V01-03-07)
+	* Added config file for Sun.
+	* Removed inclusion of <algorithm> for OSF and Linux
+
+Mon 03 May 1999 Gabriele Cosmo (V01-03-06)
+	* Added protection (__STD_ALGORITHM and __MAXMIN_DEFINED flags) in
+	  config/TemplateFunctions.h for classes with STL, to solve clashes
+	  with definition of min/max functions.
+	  It requires revision 1.13 of SoftRelTools/arch_spec_STL.mk to work
+	  with. (S.Gowdy)
+
+Wed 28 Apr 1999 Gabriele Cosmo (V01-03-05)
+	* Replaced new_m and delete_m in HepGenMatrix by a faster version
+	  that has no memory leaks like the original one using HepPile.
+	  (courtesy of M.Steinke)
+
+Thu 15 Apr 1999 Gabriele Cosmo (V01-03-04)
+	* Invoke HepCList<T>::remove(unsigned i) in function
+	  HepCList<T>::remove(const T & e) to explicitly delete the removed
+	  objects from the list. (courtesy of A.Desilva)
+	  
+Fri 22 Jan 1999 Gabriele Cosmo
+	* Replaced "bool" with "HepBoolean" in implementation of operator>>
+	  in both HepLorentzVector and Hep3Vector.
+	* Fix to CList::removeAll() now implemented in a cleaner way.
+
+Mon 18 Jan 1999 Gabriele Cosmo (V01-03-03)
+	* HepPoint: fixed a bug in operator>>. (A.Soffer)
+	* HepLorentzVector, Hep3Vector: fixed a bug in operator>>. (A.Soffer)
+	* Moved RandGauss::setFlag() and RandGauss::getFlag() to public
+	  and introduced non-static setF() and getF(). Usage of setFlag(false)
+	  in the client code allows generation of brand-new couple of Gaussian
+	  distributed values.
+
+Mon 18 Jan 1999 Scott Metzler
+	Fix counting bug in CList::removeAll that causes an empty list
+	to be set to have -1 entries.
+
+Thu 07 Jan 1999 Gabriele Cosmo (V01-03-02)
+	* Imported Random module HepRandom-02-01-00 from CERN. (NOTE:
+	  still excluding migration to std:: reserved for future update
+	  to CLHEP 1.4). No functional changes introduced.
+	* Updated configure.in and removed obsolete files Makefile and
+	  configure.awk from CVS HEAD.
+
+Thu 17 Dec 1998 Gabriele Cosmo (V01-03-01)
+	* Imported CLHEP 1.3 from CERN including latest fixes.
+	* Merged with BaBar fixes and additions.
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     +++ Summary of the changes/additions introduced in V01-03-01 +++
+         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+>>> All Modules <<<
+o General restructuring, comments and files template.
+o Removed references to old PersistentIO module, now removed.
+o config/iostream.h replaces <iostream> system header.
+o Fixed usage of HepBoolean in all classes where "bool" was used instead.
+o Usage of the new header TemplateFunctions.h where needed.
+o Removed obsolete files. Removed obsolete directories:
+  oldRandom, src, vmp, bfast, PersistentIO
+o created new directory classdoc/ and moved scripts therein.
+o updated GNUmakefiles where needed.
+
+>>> Matrix <<<
+o DiagMatrix: fixed 3 bugs in respectively: operator+=, operator-= and
+  invert(int&).
+o Matrix: new implementation of operator=. Bug fix.
+o Pile: moved private members to bottom and destructor on top.
+o SymMatrix:
+  - NOTE: kept read()/write() methods, to be discussed;
+  - removed old_invert() and old_inverse() methods.
+
+>>> Geometry <<<
+o Moved AngleSets.hh to AngleSets.h
+o Normal3D, Plane3D, Point3D, Vector3D: added "const" qualifier to argument in
+  transform().
+o Plane3D: added operator== and operator!=.
+o Transform3D: fixed bug in constructor.
+
+>>> Combination <<<
+o Removed classes: DecayChannel, FloatWithError, HepBaseParticle,
+                   InterfaceParticle, ParticleData.
+o Chooser: fixed signature in constructor.
+o Combiner: fixed bug in method next().
+o Lock: added missing "void" return type to HepLockAddList() and
+  HepLockRemoveList().
+
+>>> Alist <<<
+o AIteratorBase, AListBase: restored constructors and methods to be protected
+                            as was in the original implementation.
+o AList: added compare() function.
+o ConstAList: fixed bug in implementation of sort()
+
+>>> Vector <<<
+o LorentzRotation:
+  - NOTE: kept constructor by elements public (protected in original CLHEP)!
+  - added new sub-class HepLorentzRotation_row and operator[]
+    for C-style subscripting;
+  - added new protected constructor;
+  - removed register qualifier for arguments in setBoost();
+  - removed constructor HepLorentzRotation(HepDouble*) and
+    operator*(const Hep3Vector&);
+  - fixed bug in implementation of inverse();
+  - new implementation of matrixMultiplication().
+o LorentzVector:
+  - operator()(int) not inlined;
+  - new functions: setPerp(), mt2(), mt(), rapidity(), pseudoRapidity()
+    and operators: operator[](int), operator()(int).
+  - removed private operators: =, +=, -=, *=.
+  - fix in the implementation of mag().
+o Rotation:
+  - NOTE: kept constructor by elements public (protected in original CLHEP)!
+  - added new sub-class HepRotation_row and operator[] for C-style
+    subscripting;
+  - minor change in: operator*(), thetaX(), thetaY(), thetaZ().
+o ThreeVector:
+  - new operators: operator[](int), operator()(int)
+      and methods: setPerp(), pseudoRapidity()
+  - fixes in methods: setMag(), cross(), orthogonal, perp2(), transform()
+       and operators: -, *, *= ;
+  - fixes in: rotateX(), rotateY(), rotateZ(), rotate().
+
+>>> Utilities <<<
+o added inclusion of config/templateFunctions.h in CLHEP.h.
+
+>>> Units <<<
+o PhysicalConstants, SystemOfUnits: added new constants and units.
+
+>>> Random <<<
+o Added new engines and generators:
+  DualRand, Hurd160Engine, Hurd288Engine, MTwistEngine, RandBinomial,
+  RandChiSquare, RandGamma, RandGeneral, RandStudentT, Ranlux64Engine,
+  RanshiEngine, TripleRand.
+o Integrated all fixes from the FNAL ZOOM group.
+
+>>> test <<<
+o cleaned-up obsolete tests and updated existing ones.
+
+>>> docs <<<
+o updated Random.html.
+
+>>> config <<<
+o Added files: TemplateFunctions.h, fstream.h, iostream.h, strstream.h
+o Updated CLHEP.h and architecture-dependent configuration headers, by
+  adding all new configuration flags.
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+Tue 24 Nov 1998 Scott Metzler
+	Fix memory leak in HepString constructors for double and
+	integer.
+
+Tue 27 Oct 1998 Akbar Mokhatarani
+	Number of chages by Abi Soffer mainly to streamline the input/output.
+	It uses operator >> and << instead of read/write
+	
+Tue 24 mar 1998 Gabriele Cosmo (V01-00-28)
+        * Retrieved versions of config/CLHEP.h and config/CLHEP-aCC.h
+          from V01-00-26 (version in 6.3.1 release) and merged to HEAD.
+        * Updated Random classes (HEPRandom 1.9.2) and related docs.
+
+Thu 19 mar 1998 Gabriele Cosmo (V01-00-27)
+	Merged CLHEP.
+	This tag collects the merged Vector classes (SLAC and
+	CERN-CLHEP 1.1 versions) introduced in V01-00-19, with the
+	last configuration changes done in the last tags V01-00-25/26.
+	This has to be considered as the first stage of a definite
+	migration to the unified CLHEP (v.1.3 ?)
+	
+Wed 25 feb 1998 Gabriele Cosmo (V01-00-25)
+	Hopefully fixed tagging mess for 6.1.1
+	This tag refers to V01-00-18 (tag used in 6.0.2) adding
+	last updates by Marc and Bob.
+
+Tue 24 feb 1998 Marc Turcotte & Bob Jacobsen
+        CLHEP-aCC.h: HEP_HAVE_STL enabled for aCC
+        CLHEP.hh __DECCXX_VER <= 60060002
+          #define babar_bool int
+          #define babar_false 0
+          #define babar_true 1
+        and
+        added CLHEP-cxx-5.5.h for cxx5.5. 
+
+Thu 18th December 1997 Gabriele Cosmo - SLAC/BaBar (V01-00-15)
+        Added new cast operator to LorentzVector and fixed a bug
+        in m().
+        Added #ifdef protection to body in Random/Randomize.h
+
+Thu 11th December 1997 Gabriele Cosmo - SLAC/BaBar
+        Updated Vector classes to CLHEP1.1 at CERN (changes needed
+        to allow running G4 Alpha03, and to be approved in BaBar):
+
+        * LorentzVector - removed inheritance from Hep3Vector;
+                          added new operators and methods.
+        * LorentzRotation - removed inheritance from HepRotation;
+                          added new operators and methods.
+        * Rotation - added new operators and methods.
+        * PhysicsConstants & SystemOfUnits - added new constants and
+                          units.
+        * CLHEP.h - added definition of M_2PI.
+        * POStream & PIStream - updated << and >> operators for new
+                          LorentzVector and LorentzRotation.
+        * updated testLorentzVector and testUnits in test/.
+
+Tue 16th October 1997 Gabriele Cosmo - SLAC/BaBar
+	Updated Random classes and docs to HepRandom 1.9.1 as in the
+	original CLHEP repository at CERN.
+	Added directive in CLHEP/test/GNUmakefile to build testRandom
+	test when issuing "gmake CLHEP.bin".
+
+Tue 8th July 1997 Stephen J. Gowdy - Univ of Edinburgh
+	Changed the destuctor of HepPoint to be non-inline to see if this
+	cures a problem with defaulted arguments on HP.
+
+Mon. June 16 1997 Akbar Mokhtarani - BaBar/LBNL
+	changed member function names dfinv and dfact in Matrix.h
+	and Matrix.cc to dfinv_matrix and dfact_matrix to avoid
+	name conflict with CERNLIB functions. Also changed one
+	instances of dfact in Vector.cc. 
+	
+Thu Dec  5 1996   E. Frank - BaBar/Un. of Penn. (efrank@upenn5.hep.upenn.edu)
+
+        Fixes for compilation under Sun CC 4.0.1.
+
+	*HepTransformation::operator *= and transform failed to return
+	 values.  add return *this
+
+	*{SymMatrix, Matrix, DiagMatrix}.icc had trouble in inverse( int&)
+	 in that they declared an m that hid the m in the class.
+	 Rename m to mTmp.
+
+	*GenMatrix.hh/cc had trouble with size_max.  Give explicit scope
+	 in the .cc file and (unfortunately) move it to public.
+
+        *InterfaceParticle.cc:  there is a problem when bool does not exist
+	 and is typedef'd to char.  See comments there.
+
+	*DiagMatrix.icc:  fast() can not return its static zero.  Move
+	 zero to file scope and remove const to get it to compile. Ugly.
+
+
+Tue Nov  5 1996   M. Haire - BaBar - commented out (via //HP) part of the
+	code for the operator [][] in Matrix*.icc, DiagMatrix*.icc, 
+	SymMatrix*.icc, due to a bug in HP gcc-2.7.2.*. The operation should
+	be unchanged.
+
+Wed Mar  1 12:41:43 1995  Leif Lonnblad  <lonnblad@surya11>
+
+	* Added a lot of #ifndef HEP_NO_PERSISTENT_STREAMS to disable the
+        use of persistent streams. Also changed the Makefiles and
+        configure script to disable the making of files special for
+        persistent streams.
+
+Mon Feb  6 11:11:11 1995  Leif Lonnblad  <lonnblad@surya11>
+
+	* Fixed some warnings I got when I ran gcc -Wall
+
+Wed Jan 25 18:39:02 1995  Paul Rensing  <rensing@afal17.cern.ch>
+
+	* add "inline" to routines in Chooser and Combiner so they work
+	with DEC cxx.
+
+	* change Matrix operator* to faster code from Tom Pavel.
+
+	* Matrix classes pass tests on DEC cxx.
+
+Tue Jan 24 14:23:57 1995  Leif Lonnblad  <lonnblad@surya11>
+
+	* Fixed various small bugs in matrix classes. All tests on
+        matrixes passes now with gcc on SunOS 4.*.
+
+Thu Jan 19 17:08:42 1995  rensing paul  <rensing@afal17.cern.ch>
+
+	* Add the Matrix/Vector files! There is still a bug in the float
+	version.
+
+	* Change CLHEP_HIGH_PRECISION to use true/false instead of
+	defined/undefined. This allows the user to change the default
+	easily. 
+
+Thu Jan 19 11:13:47 1995  Paul Rensing  <rensing@afal17.cern.ch>
+
+	* Fix bugs in Random: set oldm in constructor, change method exp()
+	to exponential() to avoid clash with math library routine.
+
+	* Fix bug in HBookFile: automatic id number was not set right.
+
+Wed Nov  9 09:50:37 1994  Leif Lonnblad  <lonnblad@surya11>
+
+	* Fixed stupid little bug in test/testPIBS.cc
+
+	* Modified configure.in and aclocal.m4 to use features of autoconf
+        2.1
+
+	* Modified Makefile.in's to get CXXFLAGS from configure.
+
+Tue Oct 25 15:11:28 1994  Leif Lonnblad  <lonnblad@surya11>
+
+	* Changed src/HBookFile.cc, src/HBookTuple.cc and
+        src/HBookHistogram.cc to use macros defined in CLHEP/fortran.h
+
+	* Put a wrapper around the call to the fortran routine 'hbook2_'
+        to avoid seeing gcc die all the time.
+
+	* Changed initialization of the local 'id' variable in the
+        constructors for HBookHistogram (src/HBookHistogram.cc).
+
+	* Made all 'HepUniformRandom??' classes (CLHEP/Random.h,
+        CLHEP/Random.icc and src/Random.cc) persistent.
+
+	* Moved all '#pragma interface' and '#pragma implementation' so
+        that they come before any '#include' in each file.
+
+	* Included a test in configure.in to check if the fortran compiler
+        postpends an underscore on external names. Also changed
+        CLHEP/CLHEP.h.in and CLHEP/fortran.h accordingly
+
+Mon Oct 24 17:12:41 1994  Paul Rensing  (rensing@afal01.cern.ch)
+
+	* Change all "#ifdef GNUPRAGMA" to "#ifdef __GNUC__". Make
+	complementary changes to Makefile.in.
+
+Mon Oct 24 16:15:51 1994  Paul Rensing  (rensing@afal01.cern.ch)
+
+	* Add HBook tuple/histogram classes
+
+	* Fix missing return statements in P[IO]Stream classes
+
+	* Add PIOStream.cc to define const in PIOStream. Change consts to
+	static const in PIOStream.h and change switch statements to
+	"if...else" because DEC cxx does not like switch.
+
+Thu Oct 20 11:31:07 1994  Leif Lonnblad  <lonnblad@surya11>
+
+	* removed everything to do with the bfast and vmp subdirectories
+        except for the README.BFAST and README.VMP which now contain
+        pointers to where to get these packages. Also all test programs in
+        the test directory having to do with vmp was removed.
+
+Thu Oct 20 11:31:07 1994  Leif Lonnblad  <lonnblad@surya11>
+
+	* removed CLHEP/CLHEP.h and introduced CLHEP/CLHEP.h.in. Changed
+        configure.in so that it creates a CLHEP/CLHEP.h from
+        CLHEP/CLHEP.h.in fixing some defines there rather than adding them
+        to the DEFS macros in the Makefiles. Also changed
+        CLHEP/Makefile.in todeal with the new procedure and added a
+        aclocal.m4 file containing some definitions to be used by
+        autoconf.
+
+Wed Oct 19 13:41:18 1994  Paul Rensing  (rensing@afal01.cern.ch)
+
+	* Change all HepBoolean references to bool. When compiler does not
+	have a built-in bool, provide definition in CLHEP.h. typedef
+	HepBoolean to be the same as bool for backward compatibility.
+
+Wed Oct 19 10:10:30 1994  Leif Lonnblad  <lonnblad@surya11>
+
+	* Fixed bugs in Makefile.in's, compilation in separate directory
+        now works.
+
+	* Added I/O operators for lists in HepPOStream and HepPIStream
+        (CLHEP/POStream.h CLHEP/POStream.h). Also changed 
+	HepInterfaceParticle (src/IntefaceParticle.cc) to use the new
+        operators.
+
+Tue Oct 18 15:56:48 1994  Leif Lonnblad  <lonnblad@surya11>
+
+	* Added test in configure.in to check if functions taking
+        'reference to pointer to class template' argument hides functions
+        with 'pointer to function' agrument. (This is the case in gcc
+        2.6.0)
+
+	* Modified HepPIStream to be able to read classes with multiple
+        inheritance. This required major changes in
+        (CLHEP/ClassDescription.h CLHEP/ClassDescription.icc
+        CLHEP/PIStream.h src/PIStream.cc and src/ClassDescription.cc).  If
+	it actually works is still unclear, but single inheritance classes
+	still works.
+
+	* Made HepPersistentBase (CLHEP/PersistentBase.h
+        src/PersistentBase.cc)a sub-class of HepRTTIBase. Also changed the
+        macro HEP_DEFINE_PERSISTENT which now must be placed among the
+        private parts of a class and should have a semi-colon after.
+
+Fri Oct 14 09:07:41 1994  Leif Lonnblad  <lonnblad@surya11>
+
+	* Changed HepPersistentClassDescription (CLHEP/ClassDescription.h
+        CLHEP/ClassDescription.icc src/ClassDescription.cc) and
+        HepDescriptionList (CLHEP/DescriptionList.h
+        src/DescriptionList.cc) to allow for multiple inheritance.
+
+	* Made short name versions of HepXHat, HepYHat and HepZHat
+        expicitly 'static' to avoid linking problems some (buggy)
+        compilers.
+
+	* Removed i/o to and from persistent streams from the three- and
+        Lorentz vector classes and rotation classes to avoid unnecessary
+        linking of the classes for persistent i/o. Instead included member
+        operators for this i/o in the HepPIStream and HepPOStream classes.
+
+Thu Oct 13 13:49:38 1994  Leif Lonnblad  <lonnblad@surya11>
+
+	* Removed global constants hepStreamToken, hepBeginPersistent,
+        hepEndPersistent, hepEndString, hepStreamBufferMaxSize and
+        hepStreamBufferInitSize in CLHEP/CLHEP.h and replaced them by the
+        const members of a dummy class HepPIOStream (CLHEP/PIOStream.h)
+        token, beginPersistent, endPersistent, endString, maxSize,
+        initSize.
+
+	* Added 'depend' target in all 'Makefile.in's using g++dep.
+
+	* Removed comments in test/testRTTI.cc which handled bugs in
+        earlier vestion of gcc. gcc 2.6.0 correctly compiles the RTTI
+        stuff.
+
+	* added '#undef index' after all inclusions of the string.h
+        standard header file to avoid problems when the STDC function
+        index is implemented as a macro.
+
+	* Changed all comparison methods in the HepString class
+        (CLHEP/String.h CLHEP/String.icc src/String.cc) to take const
+        references as arguments.
+
+	* In the dtor for HepChooser (CLHEP/Chooser.icc) all the iterators
+        are now deleted properly.
+
+	* Modified new Random classes (CLHEP/Random.h CLHEP/Random.icc) to
+        take a reference to an existing HepRandom object as argument in
+        the constructor.
+
+	* Changed initialization of the static list in the
+        HepDescriptionList class (CLHEP/DescriptionList.f
+        src/DescriptionList.cc). Now uses a wrapper class around the
+        actual list so that the order of static initializerd becomes
+        unimportant. The file HepPIOInit.o (src/HepPIOInit.cc) is no
+        longer necessary but is included to overwrite previous
+        installations.
+
+	* Due to a bug in gcc 2.6.0 the persistent stream manipulators
+        doesn't work. Added #ifdef's in CLHEP/CLHEP.h and
+        test/testPIBS*.cc as a workaround to be able to test CLHEP.  Also
+        added #ifdef's to avoid problems with built-in boolean type in
+        CLHEP/CLHEP.h
+
+	* Added classes HepCList (CLHEP/CList.h CLHEP/CList.icc) and
+        HepCListIterator (CLHEP/CIterator.h CLHEP/CIterator.icc). These
+        are analog to HepAList and HepAListIterator but places only copies
+        of the objects on the list. Also modified CLHEP/Makefile.in and
+        test/testAList.cc accordingly.
+
+	* Changed test/Makefile.in to ignore the test of VMP classes.
+
+	* Changed configure.in to check if the compiler have built-in
+        boolean type.
+
+	* Changed all 'Makefile.in's and configure.in to allow for
+        compilation in a different directory.
+
+	* Changed all 'Makefile.in's and configure.in to better handle
+        Fortran run-time libraries.
+
+Fri Mar 11 11:46:41 1994  Leif Lonnblad  (lonnblad@surya11)
+
+	* Added RTTIBase.*, TypeInfo.* and testRTTI.cc for simulating
+	ANSI-standard run-time type information
+
+Tue Feb  8 10:38:50 1994  Leif Lonnblad  (lonnblad@surya11)
+
+	* CLHEP version 0.13
+
+	* Minor bug in testVMP.cc giving dependence of standard headers in
+	test/Makefile.in
+
+Fri Feb  4 09:50:40 1994  Leif Lonnblad  (lonnblad@surya11)
+
+	* src/AListBase.cc: Added call to realloc() to free space when
+	an object is removed from the list.
+
+	* Added remove(unsigned) in HepAListBase to remove the object with
+	the given index from the list.
+
+Wed Feb  2 13:32:18 1994  Leif Lonnblad  (lonnblad@surya11)
+
+	* Added a NEWS file in top directory
+
+Tue Feb  1 15:55:26 1994  Leif Lonnblad  (lonnblad@surya11)
+
+	* Added bfast directory with code by Rensing. Also added
+	README.BFAST in top directory.
+
+Fri Jan 28 09:12:08 1994  Leif Lonnblad  (lonnblad@surya11)
+
+	* src/PIStream.cc and src/POStream.cc: The standard header file on
+	the DEC/Alpha claims that the first argument to 'popen' should be
+	"char *". It should of course be "const char *" but to avoid
+	hassle have to make the explicit cast a HepString with
+	(char *)(const char *) to allow it as first argument.
+
+	* CLHEP/CmdArg.h: The DEC C++ compiler doesn't allow cast from
+	char ** to const char ** so I changed the arguments to the
+	setValue method.
+
+	* CLHEP/AListBase.icc: Removed unnecessary check unsigned >= 0.
+
+Thu Jan 27 14:33:27 1994  Leif Lonnblad  (lonnblad@surya11)
+
+	* CLHEP/CmdArg.icc: Fixed bug in 
+	HepCmdArgString::operator const char * ()
+
+	* src/CmdLine.cc: Fixed bug in HepCmdLine::handleOptions()
+
+	* src/LorentzRotation.cc: SGI compiler doesn't like initializers
+	for arrays so removed this from
+	HepLorentzRotation::matrixMultiplication and
+	HepLorentzRotation::inverse()
+
+	* src/CmdLine.cc: HepCmdLine::printUsage now uses manipulators
+	instead of the ostream::form function
+
+	* CLHEP/ThreeVector.h : made Hep3Vector[DF]::transform() non-inline
+	also made xhat, yhat and zhat const.
+
+	* CLHEP/PIStream.h: Due to problems with having virtual operator
+	members, all member operators were made inlined calling normal
+	virtual functions.
+
+
+	* CLHEP/LorentzVector.icc: Removed un-necessary return statement
+	in HepLorentzVector[DF]::boost.
+
+	* CLHEP/LorentzVector.h: made HepLorentzVector[DF]::transform()
+	non-inline
+
+	* CLHEP/LorentzRotation.h (public): made HepLorentzRotation::inverse()
+	non-inline
+
+	* CLHEP/Lockable.h (protected): removed unused argument names to
+	avoid warniongs.
+
+	* CLHEP/Lock.h (protected): Also include AIterator.h.
+
+	* CLHEP/InterfaceParticle.icc: Changed HepInterfaceParticleNullString 
+	to be extern. Also changed from (?:) to if-then-lse in
+	HepInterfaceParticle::name() to avoid bug in SGI compiler.
+
+	* CLHEP/CmdArg.h (public): Removed unused argument names in 
+	HepCmdArgBoolean::operator int()
+
+	* Fixed a number of missplaced inline declarations.
+
+	* CLHEP/Chooser.h (public): Changed naxNList to a global variable
+	const unsigned HepMaxNLists
+
+Tue Jan 25 10:50:09 1994  Leif Lonnblad  (lonnblad@surya11)
+
+	* Changed naming of member functions returning booleans from
+	"something" to "isSomething" or "hasSomething" in AList (member ->
+	hasMember, empty -> isEmpty), String (empty -> isEmpty), Particle
+	(empty -> isEmpty, haveTypeInfo -> hasTypeInfo).
+
+Mon Jan 24 10:37:28 1994  Leif Lonnblad  (lonnblad@surya11)
+
+	* Added skipAll() to HepAListIteratorBase.
+
+	* Added next() and prev() functions to the iterators.
+
+	* Added a insert(T *, unsigned pos) members in the list to insert
+	an object at a given place.
+
+Fri Jan 21 09:59:00 1994  Leif Lonnblad  (lonnblad@surya11)
+
+	* distclean now removes all output files in the test directory
+
+	* Added the AR and ARFLAGS macros in the makefiles
+
+	* Added new VMP files for rotation together with the new test
+	routine.
+
+	* Fixed HEP_SHORT_NAMES to give defines for template classes as
+	typedef didn't work in that case.
+
+Thu Jan 20 13:52:24 1994  Leif Lonnblad  (lonnblad@surya11)
+
+	* Added 'extern' unit vectors for Hep3VectorD
+
+	* Fixed continuation lines in Fortran compile rule in all
+	Makefiles
+
+	* Made more members in AList const.
+
+	* Added copy constructor for the Iterator classes.
+
+	* Added current() and index() methods in the Iterator classes.
+
+	* Added macro HEP_NO_INLINE_IN_DECLARATION. This should be defined
+	for complilers which do not allow the 'inline' keyword both in the
+	class declaration and in the member definitions. (I'm not sure
+	this is needed but I recall that some compiler complained about
+	this...)
+
+	* Added macro HEP_SHORT_NAMES. If defined when including a CLHEP
+	header file a shorter and more convenient name is typedef'ed for
+	the classes in this header file.
+
+	* Changed naming conventions for three- anf Lorentz vectors
+	to follow the suggestion in hepnet.lang.c++ by Paul Rensing.
+
+Wed Aug 25 11:51:24 1993  Leif Loennblad  (lonnblad@ips103)
+
+	* CLHEP version 0.12
+
+	* Fixed cast argument to getSafePersistent in InterfaceParticle.cc
+
+	* Fixed bug in install_manpages target
+
+	* Removed nested declarations of TypeInfo and PositionInfo in
+	HepInterfaceParticle and made them global classes
+	HepInterfaceParticleTypeInfo HepInterfaceParticlePositionInfo
+
+	* Again removed default arguments in chi2.icc
+
+	* Updated VMP sources to version  2.0.
+
+Tue Aug 24 12:05:45 1993  Leif Loennblad  (lonnblad@ips103)
+
+	* Removed default arguments in chi2.icc
+
+	* Removed accidental 'virtual' qualifyers in HepBaseParticle.cc
+
+	* Removed accidental  'pure virtual' definitions in HepBaseParticle
+
+        * Made testVMP.cc include <iostream.h> instead of "iostream.h".
+
+	* Removed unnecessary sq_extra.hh file from VMP.
+
+	* Added a '\0' in the end of the ostrstream in testString.cc
+
+	* Added the VMP vector manipulation package written by Jim Panetta
+	and Ernest Prabhakar.
+
+Mon Aug 23 17:18:50 1993  Leif Loennblad  (lonnblad@ips103)
+
+	* On popular request. Merged all source files into one file per class.
+	
+	* Changed macros for C++ compile command in make files to CXX
+
+	* Changed environment variable for pre-defined C++ compile
+	commmand to CXX in configure.in
+
+Fri Jul  2 14:24:16 1993  Leif Loennblad  (lonnblad@ips103)
+
+	* Added 'long poisson(float)' method for HepRandom written by
+	Irwin Sheer.
+
+	* Removed Fortran interface function 'rlu' to the Random class
+	from the library. Instead instructions on how to write such a
+	function is given in Random.h.
+
+	* Made all random classe persistent.
+
+Thu Jul  1 15:32:15 1993  Leif Loennblad  (lonnblad@ips103)
+
+	* Removed all 'pure virtual' member definitions in HepBaseParticle
+	and introduced actual functions returning null values
+	instead. Also added the boolean functions haveTypeInfo() and
+	havePositionInfo().
+
+	* Added car() and cdr() members to HepString. They correspond to
+	the lisp functions with the same name treating the string as a
+	list of white-space separated list of sub-strings.
+
+	* Moved all header files to new sub-directory CLHEP and modified
+	the 'dist' target in the make files. Also changed all include
+	directives to #inclue "CLHEP/*.h".
+
+Wed May 19 16:31:41 1993  Leif Loennblad  (lonnblad at ips103)
+
+	* Added a HEP_MAKE_NESTED_PERSISTENT macro in PersistentBase.h to
+	deal with nested class definitions.
+
+	* Added HepBaseParticle and HepInterfaceParticle classes, and
+	modified Makefiles accordingly
+
+Thu May 13 18:52:06 1993  Leif Loennblad  (lonnblad at ips103)
+
+	* CLHEP version 0.11
+
+	* Changed the naming of the protected, non-const functions x(),
+	y(), z(), e() in Hep3Vector and HepLorentzVector to xx(), yy(),
+	zz(), ee() to avoid name clashes with the public functions with
+	the same name on some compilers.
+
+	* test release 4 of CLHEP version 0.11
+
+	* testPIXS.cc was changed so that a visible error is produced if
+	something goes wrong.
+
+	* To ensure that the all object files are linked for the test
+	programs for persistency, a macro HEP_STRANGE_LD was introduced.
+	When defined all relevant classes are explicitly referenced in the
+	main programs.
+
+	* All test programs now ends with 'return 0;'
+
+	* Fixed correct dependencies in the test directory
+
+	* Changed the configure script to run more smoothly
+
+	* The DEC C++ compiler has a general problem with operators. They
+	are not treated as ordinary member functions. A lot of operators
+	have therefore been chamged, mainly in the persistent stream
+	classes. 
+
+	* Changed all makefiles to run more smoothly
+
+	* Added member functions to HepLorentzVector for returning  the
+	light-cone momenta.
+
+	* operator * for HepLorentzRotation wasn't found by DEC  C++. Making
+	operator  * (HepLorentzVector) non-const and operator *
+	(HepLorentzRotation) a global operator did the trick - god knows
+	why.
+
+	* The templates  min, max, abs and sqr was wor some  reason not
+	declared inline. They are now.
+
+	* The DEC C++ compiler complains about global functions that are
+	first declared and then implemented inline. All  headers have been
+	changed so that this never happens.
+
+Mon May 10 15:39:46 1993  Leif Loennblad  (lonnblad at ips103)
+
+	* test release 1 of CLHEP version 0.11
+
+	* Removed dependencies of the libg++ 'procbuf' class. Using
+	standard fstream created from a file descriptor from 'popen'
+	instead.
+
+	* In POBinStream.cc: Changed lines of type
+	  unsigned size = sizeof(float);
+	  char ptr[size];
+	to
+	  unsigned size = sizeof(float);
+	  char ptr[sizeof(float)];
+	to avoid problems with cfront type compilers
+
+	* Changed the macro for implementing presistent functions in
+	PersistentBase.h, so that staticClassId now returns a the ponter
+	to itself instead of the pointer to the destructor, which is not
+	allowed in cfront type compilers.
+
+	* Changed all numering of elements in HepAList and HepConstAList
+	from going from 1 to n to the C-array style of going from 0 to n-1.
+	This affects the member functions 'index', 'findex'. ' newAppend'
+	'newInsert', 'operator[]', 'removeEntry', and 'swap'.
+
+	* CLHEP version 0.10

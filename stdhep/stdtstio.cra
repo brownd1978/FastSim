@@ -1,0 +1,4 @@
++EXE.
++USE,*TSTIO.
++PAM,11,T=C,A./usr/products/stdhep/v1_05/src/stdhep
++QUIT.

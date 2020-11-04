@@ -1,0 +1,74 @@
+string(REGEX REPLACE "^.*/([^ ]+)$" "\\1" pkgname ${CMAKE_CURRENT_SOURCE_DIR})
+
+#
+# Set specific compiler flags for the package
+#
+set(${pkgname}_CXX_FLAGS "-Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${${pkgname}_CXX_FLAGS}")
+
+configPkg(${pkgname})
+
+set(PacTest_RDL ${CMAKE_CURRENT_SOURCE_DIR}/include/PacSimHitInfo.rdl)
+string(REPLACE ".rdl" ".hh" newstring ${PacTest_RDL})
+configure_file(${PacTest_RDL} ${newstring} COPYONLY)
+
+message(STATUS "Creating ROOT IO source. ${CMAKE_CURRENT_SOURCE_DIR}")
+
+execute_process(COMMAND rootcint -f
+${CMAKE_CURRENT_SOURCE_DIR}/src/PacTestCint.cc -c
+-I${ROOT_INCLUDE_DIR}
+-I${ROOT_INCLUDE_DIR}/root -I/usr/X11R6/include
+-D_GNU_SOURCE -D__STD_ALGORITHM -Dregister= -p
+-DCLHEP_TARGET_H="CLHEP/config/CLHEP-gcc-3.h"
+${CMAKE_CURRENT_SOURCE_DIR}/include/PacSimHitInfo.hh ERROR_FILE
+err.log)
+
+#
+# Generate library
+#
+add_library(${pkgname} ${CMAKE_CURRENT_SOURCE_DIR}/src/PacTestCint.cc ${Sources})
+target_link_libraries(${pkgname} ${LIB_LINK_LIST})
+
+add_executable(testChargedTrackDK bins/testChargedTrackDK.cc)
+target_link_libraries(testChargedTrackDK ${BIN_LINK_LIST})
+add_test(ttestChargedTrackDK ${EXECUTABLE_OUTPUT_PATH}/testChargedTrackDK)
+
+add_executable(testDetEffect bins/testDetEffect.cc)
+target_link_libraries(testDetEffect ${BIN_LINK_LIST})
+add_test(ttestDetEffect ${EXECUTABLE_OUTPUT_PATH}/testDetEffect)
+
+add_executable(testEdmlParser bins/testEdmlParser.cc)
+target_link_libraries(testEdmlParser ${BIN_LINK_LIST})
+add_test(ttestEdmlParser ${EXECUTABLE_OUTPUT_PATH}/testEdmlParser)
+
+add_executable(testEmcBumps bins/testEmcBumps.cc)
+target_link_libraries(testEmcBumps ${BIN_LINK_LIST})
+add_test(ttestEmcBumps ${EXECUTABLE_OUTPUT_PATH}/testEmcBumps)
+
+add_executable(testEmcCluster bins/testEmcCluster.cc)
+target_link_libraries(testEmcCluster ${BIN_LINK_LIST})
+add_test(ttestEmcCluster ${EXECUTABLE_OUTPUT_PATH}/testEmcCluster)
+
+add_executable(testLandau bins/testLandau.cc)
+target_link_libraries(testLandau ${BIN_LINK_LIST})
+add_test(ttestLandau ${EXECUTABLE_OUTPUT_PATH}/testLandau)
+
+add_executable(testOneNeutral bins/testOneNeutral.cc)
+target_link_libraries(testOneNeutral ${BIN_LINK_LIST})
+add_test(ttestOneNeutral ${EXECUTABLE_OUTPUT_PATH}/testOneNeutral)
+
+add_executable(testOneTrack bins/testOneTrack.cc)
+target_link_libraries(testOneTrack ${BIN_LINK_LIST})
+add_test(ttestOneTrack ${EXECUTABLE_OUTPUT_PATH}/testOneTrack)
+
+add_executable(testShowerModel bins/testShowerModel.cc)
+target_link_libraries(testShowerModel ${BIN_LINK_LIST})
+add_test(ttestShowerModel ${EXECUTABLE_OUTPUT_PATH}/testShowerModel)
+
+add_executable(testTrackReconstruction bins/testTrackReconstruction.cc)
+target_link_libraries(testTrackReconstruction ${BIN_LINK_LIST})
+add_test(ttestTrackReconstruction ${EXECUTABLE_OUTPUT_PATH}/testTrackReconstruction)
+
+add_executable(testVoxels bins/testVoxels.cc)
+target_link_libraries(testVoxels ${BIN_LINK_LIST})
+add_test(ttestVoxels ${EXECUTABLE_OUTPUT_PATH}/testVoxels)

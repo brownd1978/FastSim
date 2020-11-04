@@ -1,0 +1,27 @@
+.TH GenBuildEnv 3 "25th Feb 1997"
+.SH NAME
+.HP 10
+GenBuildEnv - module for building general environmental information
+
+.SH CONTAINED MODULES
+.HP 10
+.B (none)
+.RE
+
+.SH DESCRIPTION
+
+This object creates the General Environment. It is resposible for
+deleting anything it creates. It has "ownership" of GenEnv, the
+ntupleManager and the DetectorModel list of materials.
+
+.RE
+
+.SH COMMANDS
+
+See AppModule commands.
+
+.SH "SEE ALSO"
+AppModule
+
+.SH AUTHOR
+Stephen Gowdy (S.Gowdy@ed.ac.uk)

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+        <config>
+            <sect name="PacField">
+                <param name="B_nom"    type="float"         > 1.5</param>
+                <param name="DeltaB"   type="vector_double" > 0.0, 0.0, 0.0</param>
+                <param name="B_radius" type="float"         > 153.0</param>
+                <param name="B_zlow"   type="float"         > -110.75</param>
+                <param name="B_zhi"    type="float"         > 207</param>
+            </sect>
+        </config>
+        <detector name="BaBar Detector">
+        <volume name="Beampipe">
+            <cyl name="Beampipe" id="0" zmin="-282" zmax="356" radius="2.500000" thick="0.250000" mat="pep-BPipeB" />
+        </volume>
+    </detector>
+    <!-- voxel parameter config section must have the same section name as the volume -->
+    <config>
+        <sect name="Beampipe">
+            <param name="rbounds"    type="vector"        >  0 2.6 </param>
+            <!-- no phi segmentation needed, as all elements are perfectly cylindrical -->
+            <param name="nphivoxels"    type="vector"         > 1 </param>
+            <param name="zbounds"   type="vector"         > -283 357 </param>            
+        </sect>
+    </config>        
+    
+    </included>
+</edml>

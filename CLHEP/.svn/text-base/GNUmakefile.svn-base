@@ -1,0 +1,38 @@
+# Please see SoftRelTools/HOWTO-GNUmakefile for documentation
+# $Id$
+#################################################################
+#++ library products				[build it with 'lib']
+
+LIBREMOVEFILES := 
+LIBTMPLFILES := 
+LIBDDLORDERED := 
+
+LIBEXTRARDLFILES := CLHEP/Geometry/AngleSets.h CLHEP/Geometry/HepPoint.h CLHEP/Vector/ThreeVector.h CLHEP/Matrix/DiagMatrix.h CLHEP/Matrix/GenMatrix.h CLHEP/Vector/LorentzRotation.h CLHEP/Vector/LorentzVector.h CLHEP/Vector/LorentzVectorQ.h CLHEP/Matrix/Matrix.h CLHEP/Matrix/Matrix.h CLHEP/Geometry/HepPoint.h CLHEP/Vector/Rotation.h CLHEP/String/Strings.h CLHEP/Matrix/SymMatrix.h CLHEP/Matrix/SymMatrix.h CLHEP/Geometry/Transformation.h CLHEP/Geometry/Translation.h CLHEP/Matrix/Vector.h CLHEP/Matrix/Vector.h CLHEP_LinkDef.hh
+
+
+#################################################################
+#++ extra binary products	[not in production, build it with extrabin]
+
+EXTRABINS := 
+
+#################################################################
+#++ binary products				[build it with 'bin']
+
+BINS := 
+BINCCFILES := 
+
+#++ Binary rules		 [in production, build it with 'bin']
+
+#++ shell script products.. 			[build it with 'bin']
+BINSCRIPTS := 
+
+#################################################################
+#++ regression test scripts			[build it with 'test']
+
+#################################################################
+#++ include standard makefile from SoftRelTools.
+SUBDIRS = src test
+include SoftRelTools/standard.mk
+
+
+

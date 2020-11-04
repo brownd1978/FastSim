@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+ 
+<!--
+This document is a part of the sample experiment description in a format
+which would eventually turn into EDML:
+ 
+  "Experiment Description Markup (or Modelling) Language"
+ 
+Right now we don't have any formal schema for EDML. Therefore
+the current implementation of a EDML parser would check both
+syntax and semantics of the model. Besides, introducing the formal
+XML schema for EDML may  result in some changes in a syntax
+of EDML.
+-->
+ 
+<edml>
+  <config>
+
+    <!-- ROOT file to save results to -->
+    <param name="outputfile" type="string"> testShowerModel.root</param>
+    <!-- Prints out Positon/Momentum/Parameter Info (make sure numtracks isn't large!!) -->
+    <param name="verbose" type="bool"> false</param>
+    <!-- printing frequency -->
+    <param name="printfreq" type="long"> 1000</param>
+
+    <!-- Number of tracks to generate -->
+    <param name="numenergy" type="long"> 100</param>
+    <!-- Number of steps to take -->
+    <param name="numsteps" type="long"> 50</param>
+    <!-- step size in dimensionless units -->
+    <param name="dstep" type="double">2.0</param>
+    <!-- materials to test -->
+    <param name="material1" type="string">ifr-Iron</param>
+    <param name="thick1" type="double" >4.0</param>
+    <param name="material2" type="string">ifr-ABSplastic</param>
+    <param name="thick2" type="double" >26</param>
+
+    <!-- particle description -->
+    <param name="elow" type="double" > 0.01 </param>
+    <param name="ehigh" type="double" > 1.0 </param>
+    <param name="PdtPdg" type="int" > 11</param>
+    
+    <sect name="PacShower">
+        <param name="nshower" type="int" > 1 </param> <!-- this is the maximum number of discrete (brems, etc.) EM interactions in a material before the interaction is consider to have initiated a shower -->
+        <param name="hadorder" type="int" > 2 </param> <!-- This is the polynomial order of the exponentially-damped hadron shower longitudinal profile function. -->
+        <param name="hadscale" type="float" > 1.0 </param> <!-- This is the scale for hadronic shower longitudinal profile function (ie position of shower max) -->
+        <param name="hadshowerquantum" type="float" > 0.001 </param> <!-- This is the quantum in GeV used in the Poisson randomization of hadron shower longitudinal profile energy deposition -->
+    </sect>
+
+  </config>
+</edml>

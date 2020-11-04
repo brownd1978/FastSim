@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2634"
+   name=""
+   committed-date="2011-04-15T13:41:35.558064Z"
+   url="https://sbrepo.pd.infn.it:8910/PACRAT/PacDetector/trunk"
+   last-author="Mrama"
+   kind="dir"
+   uuid="2aa36f44-f9d8-11dc-81b7-9e774fc32887"
+   revision="2648"/>
+<entry
+   committed-rev="2326"
+   name="pacrat_BaBar.xml"
+   text-time="2011-04-27T19:05:28.000000Z"
+   committed-date="2010-08-27T23:05:55.617100Z"
+   checksum="6860dd9ef32962ce2076d58df7648fae"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:05:26.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   committed-rev="2326"
+   name="Machine_SuperB.xml"
+   text-time="2011-04-27T19:05:28.000000Z"
+   committed-date="2010-08-27T23:05:55.617100Z"
+   checksum="699d9edebe853282c5d3c0d871d3f525"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:05:26.000000Z"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="1867"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:05:28.000000Z"
+   committed-date="2010-01-25T08:59:19.931680Z"
+   checksum="86a49bda8405f339ea2e5ac0d5e1d2fe"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:27.000000Z"/>
+<entry
+   committed-rev="2362"
+   name="IP_SuperB.xml"
+   text-time="2011-04-27T19:05:28.000000Z"
+   committed-date="2010-09-09T18:14:32.623629Z"
+   checksum="171b68330906126d61a793ec7c25369c"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:05:27.000000Z"/>
+<entry
+   committed-rev="1256"
+   name="SuperBVolume.xml"
+   text-time="2011-04-27T19:05:28.000000Z"
+   committed-date="2009-06-10T01:26:26.410068Z"
+   checksum="0596788956a6247819b2cdc83282ba05"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:05:27.000000Z"/>
+<entry
+   committed-rev="2426"
+   name="IP_SuperB_shielded.xml"
+   text-time="2011-04-27T19:05:28.000000Z"
+   committed-date="2010-10-05T17:40:05.148985Z"
+   checksum="c770bef7db6582a47166e6c10e43ee74"
+   last-author="swerskyd"
+   kind="file"
+   prop-time="2011-04-27T19:05:27.000000Z"/>
+<entry
+   committed-rev="2634"
+   name="pacrat_SuperB.xml"
+   text-time="2011-04-27T19:37:21.000000Z"
+   committed-date="2011-04-15T13:41:35.558064Z"
+   checksum="489bc9a97b5b32b2cbebf838a65b9bc5"
+   last-author="Mrama"
+   kind="file"
+   prop-time="2011-04-27T19:37:21.000000Z"/>
+<entry
+   committed-rev="2362"
+   name="Machine_BaBar.xml"
+   text-time="2011-04-27T19:05:28.000000Z"
+   committed-date="2010-09-09T18:14:32.623629Z"
+   checksum="167e20490fa39d13b4984406634067cf"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:05:28.000000Z"/>
+<entry
+   committed-rev="2468"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T19:05:28.000000Z"
+   committed-date="2010-10-18T12:16:50.298801Z"
+   checksum="51875b8490bbaf065abc7e1fb1b567f1"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T19:05:28.000000Z"/>
+<entry
+   committed-rev="209"
+   name="README"
+   text-time="2011-04-27T19:05:28.000000Z"
+   committed-date="2008-06-27T19:18:09.936003Z"
+   checksum="2b067d548649ca47d1e1b708a2169f60"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:05:28.000000Z"/>
+<entry
+   committed-rev="1256"
+   name="BaBarVolume.xml"
+   text-time="2011-04-27T19:05:28.000000Z"
+   committed-date="2009-06-10T01:26:26.410068Z"
+   checksum="0596788956a6247819b2cdc83282ba05"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:05:28.000000Z"/>
+<entry
+   committed-rev="2362"
+   name="IP_BaBar.xml"
+   text-time="2011-04-27T19:05:28.000000Z"
+   committed-date="2010-09-09T18:14:32.623629Z"
+   checksum="85d4cb08aa789a001b3970415638b0a9"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:05:28.000000Z"/>
+</wc-entries>

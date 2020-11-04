@@ -1,0 +1,11 @@
+#
+#  Test version of support tube data file; this
+#  creates a 1-segment tube.
+#
+#
+# TrkSTLayoutT ! define the tag
+21.6853
+3
+1.168 0.2083 1.168
+pep-Steel dch-CFiber pep-Steel
+-40.9269 -39.8069 73.0072 74.12072

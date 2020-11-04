@@ -1,0 +1,51 @@
+// -*- C++ -*-
+// $Id: AIteratorBase.icc,v 1.11 2005/11/24 00:32:09 dwright Exp $
+//
+// This file is a part of what might become the CLHEP -
+// a Class Library for High Energy Physics.
+// 
+// This is the definitions of the inline member functions of the
+// HepAListIteratorBase class
+//
+
+#ifdef HEP_DEBUG_INLINE
+#define inline
+#endif
+
+inline HepAListIteratorBase::HepAListIteratorBase(const HepAListBase & li)
+: l(&li), i(0) {}
+
+inline HepAListIteratorBase::
+HepAListIteratorBase(const HepAListIteratorBase & li)
+: l(li.l), i(li.i) {}
+
+inline HepAListIteratorBase::~HepAListIteratorBase() {}
+
+inline void * HepAListIteratorBase::next() {
+  return i < l->n ? l->p[i++] : 0;
+}
+
+inline void * HepAListIteratorBase::current() const {
+  return i < l->n ? l->p[i] : 0;
+}
+
+inline void * HepAListIteratorBase::prev() {
+  if ( i >= l->n ) i = l->n;
+  return i ? l->p[--i] : 0;
+}
+
+inline void HepAListIteratorBase::rewind() {
+  i = 0;
+}
+
+inline void HepAListIteratorBase::skipAll() {
+  i = l->n;
+}
+
+inline int HepAListIteratorBase::index() const {
+  return i;
+}
+
+#ifdef HEP_DEBUG_INLINE
+#undef inline
+#endif

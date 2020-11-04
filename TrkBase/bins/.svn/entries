@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="152"
+   name=""
+   committed-date="2010-10-05T09:56:55.665503Z"
+   url="https://sbrepo.pd.infn.it:8910/Trk/TrkBase/trunk/bins"
+   last-author="stroili"
+   kind="dir"
+   uuid="d2f80444-6bfe-4292-bdcb-35731a61be00"
+   revision="172"/>
+<entry
+   committed-rev="102"
+   name="TrkExchangeDataTest.cc"
+   text-time="2011-04-27T18:54:07.000000Z"
+   committed-date="2010-01-15T12:11:32.120465Z"
+   checksum="0be966a0d15b997fec0f67e04b21d820"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:54:07.000000Z"/>
+<entry
+   committed-rev="128"
+   name="TrkHotListDataTest.cc"
+   text-time="2011-04-27T18:54:08.000000Z"
+   committed-date="2010-05-19T07:13:45.421979Z"
+   checksum="efb7c7e475d6612ac49ad2b88e80bc57"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:54:07.000000Z"/>
+<entry
+   committed-rev="152"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:54:08.000000Z"
+   committed-date="2010-10-05T09:56:55.665503Z"
+   checksum="3b7f59eb229db6f19e43dbee3d5f7191"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:54:07.000000Z"/>
+<entry
+   committed-rev="102"
+   name="TrkHelixDataTest.cc"
+   text-time="2011-04-27T18:54:08.000000Z"
+   committed-date="2010-01-15T12:11:32.120465Z"
+   checksum="9f2ddcd02e151aec8b97c7a67b20889c"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:54:07.000000Z"/>
+<entry
+   committed-rev="102"
+   name="TrkDifPieceTrajTest.cc"
+   text-time="2011-04-27T18:54:08.000000Z"
+   committed-date="2010-01-15T12:11:32.120465Z"
+   checksum="db503f09af48d05c35adcdf20601a83e"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:54:07.000000Z"/>
+</wc-entries>

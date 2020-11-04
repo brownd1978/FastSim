@@ -1,0 +1,19 @@
+#ifndef PacSimHitInfo_HH
+#define PacSimHitInfo_HH
+
+#include <Rtypes.h>
+#define STRINGSIZE 200
+
+struct PacSimHitInfo {
+  virtual ~PacSimHitInfo(){}
+  Int_t shi, sheffect,shelemnum,shtypenum, shmeastype;  
+  Float_t shgloblen, shpathlen, shradlen, shintlen, shradlenint, shintlenint;
+  Float_t shx, shy, shz, shmomin, shmomout, shtime;
+  
+  static const char* rootnames() {
+    return "shi/I:sheffect/I:shelemnum/I:shtypenum/I:shmeastype/I:shgloblen/F:shpathlen/F:shradlen/F:shintlen/F:shradlenint/F:shintlenint/F:shx/F:shy/F:shz/F:shmomin/F:shmomout/F:shtime/F"; }
+    
+    ClassDef(PacSimHitInfo,1)
+};
+
+#endif

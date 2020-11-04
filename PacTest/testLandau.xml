@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+ 
+<!--
+This document is a part of the sample experiment description in a format
+which would eventually turn into EDML:
+ 
+  "Experiment Description Markup (or Modelling) Language"
+ 
+Right now we don't have any formal schema for EDML. Therefore
+the current implementation of a EDML parser would check both
+syntax and semantics of the model. Besides, introducing the formal
+XML schema for EDML may  result in some changes in a syntax
+of EDML.
+-->
+ 
+<edml>
+  <config>
+
+    <!-- ROOT file to save results to -->
+    <param name="outputfile" type="string"> testLandau.root</param>
+
+    <!-- Number of tracks to generate -->
+    <param name="numtracks" type="double"> 10000000</param>
+
+    <!-- Material Energy Loss -->
+    <param name="elossmean" type="double"> 0.000</param>
+    <param name="elossrms"  type="double"> 1.0</param>
+
+
+    <!-- Landau Shift Param -->
+    <param name="lanshift" type="double"> 0.0</param>
+    <param name="lanrms"   type="double"> 1.0</param>
+
+  </config>
+</edml>

@@ -1,0 +1,149 @@
+// -*- C++ -*-
+// $Id: Chooser.icc,v 1.11 2005/11/24 01:06:44 dwright Exp $
+//
+// This file is a part of what might become the CLHEP -
+// a Class Library for High Energy Physics.
+// 
+// This is the definitions of the inline member functions of the
+// HepChooser class
+//
+
+template <class TYPE>
+inline HepChooser<TYPE>::HepChooser(HepAList<TYPE> *l1, HepAList<TYPE> *l2, 
+			     HepAList<TYPE> *l3, HepAList<TYPE> *l4, 
+			     HepAList<TYPE> *l5, HepAList<TYPE> *l6)
+{
+   HepAList< HepAList<TYPE> > ll;
+   ll.append(l1);
+   if (l2) ll.append(l2);
+   if (l3) ll.append(l3);
+   if (l4) ll.append(l4);
+   if (l5) ll.append(l5);
+   if (l6) ll.append(l6);
+   init(ll);
+}
+
+template <class TYPE>
+inline HepChooser<TYPE>::HepChooser(HepAList< HepAList<TYPE> > &ll)
+{
+   init(ll);
+}
+
+template <class TYPE>
+inline void HepChooser<TYPE>::init(HepAList< HepAList<TYPE> > &ll)
+{
+   nlists = ll.length();
+   startList = new int[nlists];
+   iter = new HepAListIterator<TYPE> *[nlists];
+
+   for (int i=0; i<nlists; i++) 
+   {
+      iter[i] = new HepAListIterator<TYPE>( *(ll[i]) );
+      startList[i] = -1;
+      
+      for (int j=i-1; j>=0; j--) {
+	 if (ll[i] == ll[j]) {
+	    startList[i] = j;
+	    iter[i]->skip( iter[j]->index()+1 );
+	    break;
+	 }
+      }
+   }
+   
+   done = 0;
+}
+
+template <class TYPE>
+inline HepChooser<TYPE>::~HepChooser() {
+  for ( int i = 0; i < nlists; i++ ) delete iter[i];
+  delete [] startList;
+  delete [] iter;
+}
+
+template <class TYPE>
+inline HepAList<TYPE> * HepChooser<TYPE>::next() {
+  if (done) {
+    return 0;
+  }else{
+    currList.removeAll();
+    nextComb();
+    if (currList.length() == 0) {
+      return 0;
+    }else{
+      return &currList;
+    }
+  }
+}
+
+template <class TYPE>
+inline HepAList<TYPE> * HepChooser<TYPE>::operator () () {
+  return next();
+}
+
+template <class TYPE>
+inline void HepChooser<TYPE>::orderMatters() {
+  int i;
+  for (i=0; i<nlists; i++) {
+    startList[i] = -1;
+    iter[i]->rewind();
+  }
+}
+
+template <class TYPE>
+inline void HepChooser<TYPE>::nextComb() {
+  int i;
+  TYPE *p;
+     
+  for (i=0; i<nlists && !done; i++) {
+    if ( !(p = iter[i]->current()) ) {
+      done = 1;		// probably means not enough items
+      break;			// in list (list may be empty).
+    }
+
+    if (p->locked()) {
+      int j = incrIndex(i);
+      for (int n=i-1; n>=j; n--) {
+	p = currList[n];
+	p->unlock(0);
+	currList.remove(p);
+      }
+      i = j - 1;
+    }
+    else {
+      p->lock(0);
+      currList.append(p);
+    }
+  }
+
+  HepAListIterator<TYPE> it(currList);
+  while (p = it()) p->unlock(0);
+
+  if (! done)		// past last comb. (done set by incrIndex)
+    incrIndex(nlists-1);
+  else
+    currList.removeAll();
+}
+
+template <class TYPE>
+inline int HepChooser<TYPE>::incrIndex(int i) {
+  // if i < 0, we must be trying to wrap index 0. This means
+  // we have exhausted all combinations and we are done.
+  if (i < 0) {
+    done = 1;
+    return 0;
+  }
+
+  iter[i]->skip(1);
+  if (! iter[i]->current()) return incrIndex(i-1);
+
+  for (int f = i+1; f<nlists; f++) {
+    iter[f]->rewind();
+    if (startList[f] >= 0) {
+      iter[f]->skip( iter[startList[f]]->index()+1 );
+      if ( ! iter[f]->current() ) {
+	return incrIndex(i-1);
+      }
+    }
+  }
+  return i;
+}

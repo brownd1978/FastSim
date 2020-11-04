@@ -1,0 +1,98 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AppExecutable.icc,v 1.1 2004/08/16 22:16:21 bartoldu Exp $
+//
+// Description:
+//	Class AppExecutable. This is the abstract parent class for the
+//	executable elements (modules, sequences & paths etc.) in the
+//	BaBar Application Framework.
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	David R. Quarrie		Original Author
+//      Marc Turcotte                   Introducted Actions '97
+//      Marc Turcotte                   Made name() return const char* 7/30/98
+//
+// Copyright Information:
+//	Copyright (C) 1994, 1995	Lawrence Berkeley Laboratory
+//      Copyright (C) 1997              University of Texas at Dallas
+//
+//------------------------------------------------------------------------
+
+//		-----------------------------------------------
+// 		-- Inline Public Function Member Definitions --
+//		-----------------------------------------------
+
+//-------------
+// Selectors --
+//-------------
+    
+inline const char* 
+AppExecutable::description( ) const
+{
+  return _description;
+}
+
+inline AppExecutable::ExecType 
+AppExecutable::execType( ) const
+{
+  return _execType;
+}
+
+inline AppFramework* 
+AppExecutable::framework( ) const
+{
+  return _framework;
+}
+
+inline bool 
+AppExecutable::isClonable( ) const
+{
+  return true;
+}
+
+inline bool 
+AppExecutable::isEnabled( ) const
+{
+  return _isEnabled;
+}
+
+inline bool
+AppExecutable::passed( ) const
+{
+  return _passed;
+}
+
+inline const char* 
+AppExecutable::name( ) const
+{
+  return _name;
+}
+
+//-------------
+// Modifiers --
+//-------------
+
+inline void AppExecutable::setEnabled( bool mode )
+{
+  _isEnabled = mode;
+}
+
+inline void 
+AppExecutable::setFramework( const AppFramework* const theFrame )
+{
+  _framework = (AppFramework*)theFrame;
+}
+
+ 
+//		-------------------------------------------
+// 		-- Protected Function Member Definitions --
+//		-------------------------------------------
+
+inline void
+AppExecutable::setExecType( AppExecutable::ExecType aType )
+{
+  _execType = aType;
+}

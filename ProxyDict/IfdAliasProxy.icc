@@ -1,0 +1,103 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: IfdAliasProxy.icc 520 2010-01-15 11:40:48Z stroili $
+//
+// Description:
+//    See .hh file.
+//
+//      EXCLUDE THIS FILE FROM THE LIST OF .CC FILE TO COMPILE!
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//      Ed Frank		University of Pennsylvania
+//
+// Copyright Information:
+//	Copyright (C) 1998
+//
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+//-----------------------
+// This Class's Header --
+//-----------------------
+#include "ProxyDict/IfdAliasProxy.hh"
+
+#include "ProxyDict/Ifd.hh"
+
+
+//		----------------------------------------
+// 		-- Public Function Member Definitions --
+//		----------------------------------------
+
+//----------------
+// Constructors --
+//----------------
+
+template <class T>
+IfdAliasProxy<T>::IfdAliasProxy( IfdKey&  k )
+   : _targetKey( k.clone() )
+{}
+
+template <class T>
+IfdAliasProxy<T>::IfdAliasProxy( )
+   : _targetKey( 0 )
+{}
+
+
+//--------------
+// Destructor --
+//--------------
+
+//-------------
+// Methods   --
+//-------------
+    
+template <class T>
+void*
+IfdAliasProxy<T>::get(IfdProxyDict* d,  const IfdKey& , AbsArg& a ) {
+  // Note that we explicitly use Ifd<T> to make sure that
+  // our type and the target type are compatible.
+  //
+  if ( 0 == _targetKey ) {
+    return Ifd<T>::get(d, a );
+  } else {
+    return Ifd<T>::get(d, *_targetKey, a );
+  }
+}
+
+template <class T>
+void
+IfdAliasProxy<T>::store( IfdProxyDict*d, const IfdKey& k, AbsArg& a) {
+  // no op.
+}
+
+
+//-------------
+// Operators --
+//-------------
+    
+//-------------
+// Selectors --
+//-------------
+    
+//-------------
+// Modifiers --
+//-------------
+
+//		-----------------------------------------------
+// 		-- Static Data & Function Member Definitions --
+//		-----------------------------------------------
+
+//		-------------------------------------------
+// 		-- Protected Function Member Definitions --
+//		-------------------------------------------
+
+//		-----------------------------------------
+// 		-- Private Function Member Definitions --
+//		-----------------------------------------
+
+//		-----------------------------------
+// 		-- Internal Function Definitions --
+//		-----------------------------------

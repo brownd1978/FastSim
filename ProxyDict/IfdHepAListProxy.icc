@@ -1,0 +1,108 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: IfdHepAListProxy.icc 520 2010-01-15 11:40:48Z stroili $
+//
+// Description:
+//	See .hh file.
+//      
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	<Author1>		<originator/contributor etc.>
+//	<Author2>		<originator/contributor etc.>
+//
+// Copyright Information:
+//	Copyright (C) 1997	<Institution>
+//
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+//-----------------------
+// This Class's Header --
+//-----------------------
+#include "ProxyDict/IfdHepAListProxy.hh"
+
+
+//---------------
+// C++ Headers --
+//---------------
+
+//-------------------------------
+// Collaborating Class Headers --
+//-------------------------------
+
+#include "CLHEP/Alist/AIterator.h"
+
+
+//		----------------------------------------
+// 		-- Public Function Member Definitions --
+//		----------------------------------------
+
+//----------------
+// Constructors --
+//----------------
+
+
+template <class T>
+IfdHepAListProxy<T>::IfdHepAListProxy( HepAList<T>* t)
+   : IfdDataProxy< HepAList<T> >(t)
+{}
+
+
+template <class T>
+IfdHepAListProxy<T>::IfdHepAListProxy( HepAList<T>* (*f)(const IfdKey& k))
+   : IfdDataProxy< HepAList<T> >( f )
+{}
+
+
+//--------------
+// Destructor --
+//--------------
+
+template <class T>
+IfdHepAListProxy<T>::~IfdHepAListProxy( ) {
+  if ( 0 == this->_myT) return;
+
+  HepAListIterator<T> grimReaper( *(this->_myT) );
+  T* p;
+       
+  while( 0 != (p = grimReaper.next()) ) {
+    delete p;
+  }
+  this->_myT->removeAll();
+  delete this->_myT;
+  this->_myT=0;
+}
+
+//-------------
+// Methods   --
+//-------------
+    
+//-------------
+// Operators --
+//-------------
+    
+//-------------
+// Selectors --
+//-------------
+    
+//-------------
+// Modifiers --
+//-------------
+
+//		-----------------------------------------------
+// 		-- Static Data & Function Member Definitions --
+//		-----------------------------------------------
+
+//		-------------------------------------------
+// 		-- Protected Function Member Definitions --
+//		-------------------------------------------
+
+//		-----------------------------------------
+// 		-- Private Function Member Definitions --
+//		-----------------------------------------
+
+//		-----------------------------------
+// 		-- Internal Function Definitions --
+//		-----------------------------------

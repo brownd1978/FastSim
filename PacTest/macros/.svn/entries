@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2618"
+   name=""
+   committed-date="2011-03-23T23:58:58.428422Z"
+   url="https://sbrepo.pd.infn.it:8910/PACRAT/PacTest/trunk/macros"
+   last-author="brownd"
+   kind="dir"
+   uuid="2aa36f44-f9d8-11dc-81b7-9e774fc32887"
+   revision="2642"/>
+<entry
+   committed-rev="2585"
+   name="testScattering.C"
+   text-time="2011-04-27T18:56:00.000000Z"
+   committed-date="2011-02-28T17:57:25.442530Z"
+   checksum="f738e5c5a6642148aefac4365a9a6127"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:56:00.000000Z"/>
+<entry
+   committed-rev="2618"
+   name="fitLandau.C"
+   text-time="2011-04-27T19:37:11.000000Z"
+   committed-date="2011-03-23T23:58:58.428422Z"
+   checksum="c11d34f049c296652814ecbec14a08de"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:37:11.000000Z"/>
+<entry
+   committed-rev="2608"
+   name="plotBrems.C"
+   text-time="2011-04-27T19:37:11.000000Z"
+   committed-date="2011-03-12T15:54:05.501814Z"
+   checksum="81304f25eb23d1bc86059cbed3a2bdc7"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:37:11.000000Z"/>
+</wc-entries>

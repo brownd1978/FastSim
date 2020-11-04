@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="816"
+   name=""
+   committed-date="2011-03-08T15:12:40.244560Z"
+   url="https://sbrepo.pd.infn.it:8910/Core/MemUtil/tags/V00-01-02"
+   last-author="stroili"
+   kind="dir"
+   uuid="7d373392-5316-41f4-94df-42a166793eec"
+   revision="830"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   committed-rev="517"
+   name="History"
+   text-time="2011-04-27T18:38:38.000000Z"
+   committed-date="2010-01-15T08:24:18.071214Z"
+   checksum="ce8d5c4126ed9717d25b88202c4de5c0"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:37.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="517"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:38:39.000000Z"
+   committed-date="2010-01-15T08:24:18.071214Z"
+   checksum="e79b4557fedae6f0ada15b03b4883781"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:38.000000Z"/>
+<entry
+   committed-rev="774"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:38:39.000000Z"
+   committed-date="2010-11-25T16:06:58.325417Z"
+   checksum="5a6c9b1972a5e3fb6773c1493069d27a"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:38.000000Z"/>
+<entry
+   committed-rev="239"
+   name="README"
+   text-time="2011-04-27T18:38:39.000000Z"
+   committed-date="2009-03-04T07:59:42.053605Z"
+   checksum="19f628c69f84914951ae016a9e7791a6"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:38:38.000000Z"/>
+</wc-entries>

@@ -1,0 +1,34 @@
+$Id$
+
+This package contains files that extend Framework's functionality.
+They include:
+
+FweJobReportModule: 
+	A module that should be added to framework in AppUserBuild.
+	This allows a user to communicate with the Framework Job Summary 
+	Report - to define the output file and hence enable it.
+
+FweJobReportCommand:
+	Commands for tcl interface with Job Report.
+
+
+Usage:
+
+The FweJobReportModule module must be added to AppUserBuild.cc
+
+#include "FrameExtension/FweJobReportModule.hh"
+...
+  add (new FweJobReportModule("JobReportModule",
+                              "Framework Job Summary Report"));
+
+To activate the job summary report, 
+
+JobReportModule> jobReport filename <SummaryFilename>
+
+Type 'help jobReport' for more details or commands.
+
+For information on how to use the Framework Job report facility, please look 
+at FrameJobReport/README.
+
+
+

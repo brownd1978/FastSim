@@ -1,0 +1,20 @@
+#
+#  Define incdir to be the directory where you want to put the headerfiles.
+#
+incdirCLHEP = $(prefix)/include/CLHEP/Combination
+
+srcdir = @srcdir@
+VPATH = @srcdir@
+
+SOURCES = Lock.cc Lockable.cc
+
+MAN_PAG = Lock Lockable
+
+ALLOBJECTS = Lock.o Lockable.o
+
+#
+# objects used when there are no persistent streams
+#
+SOMEOBJECTS = $(ALLOBJECTS)
+
+include ../config/Makefile.common

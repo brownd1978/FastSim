@@ -1,0 +1,50 @@
+/**
+ * @file SmrPtr/SmrRCPtr.cc
+ *
+ * Implementation of class SmrRCPtr.
+ * 
+ * @see SmrPtr/SmrRCPtr.h
+ * @author Andrei A. Salnikov
+ * @date   May  9, 2001
+ * Copyright (C) BINP, 2001 
+ *
+ * $Id: MemRCPtr.icc 517 2010-01-15 08:24:18Z stroili $
+ */
+
+// ----- includes ------
+
+// Experiment.h must be in any implementation file
+#include "BaBar/BaBar.hh"
+
+// standard C headers
+
+// standard C++ headers
+
+// this class header
+#include "MemUtil/MemRCPtr.hh"
+
+// other packages headers
+
+// ----- methods definition ------
+template< class T >
+void
+MemRCPtr< T >::print(ostream& s) const
+{
+  s << this->get() ; 
+}
+
+template< class T >
+void
+MemRCPtr< T >::dump(ostream& s) const
+{
+  s << "<ptr:" << get() ;
+  if ( get() ) {
+    s << " cnt:" << count() ;
+  }
+  s << ">" ;
+}
+
+
+// Local Variables: ***
+// mode: c++ ***
+// End: ***

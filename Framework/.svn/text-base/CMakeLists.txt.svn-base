@@ -1,0 +1,28 @@
+string(REGEX REPLACE "^.*/([^ ]+)$" "\\1" pkgname ${CMAKE_CURRENT_SOURCE_DIR})
+
+#
+# Set specific compiler flags for the package
+#
+set(${pkgname}_CXX_FLAGS "-Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${${pkgname}_CXX_FLAGS}")
+
+configPkg(${pkgname})
+
+list(REMOVE_ITEM Sources ${CMAKE_CURRENT_SOURCE_DIR}/src/AppMain.cc)
+
+#
+# Generate library
+#
+add_library(${pkgname} ${Sources})
+target_link_libraries(${pkgname} ${LIB_LINK_LIST})
+
+add_custom_command(OUTPUT ${LIBRARY_OUTPUT_PATH}/AppMain.o
+                   COMMAND ${CMAKE_CXX_COMPILER} -Wall
+                   -I$ENV{SBROOT}/releases/$ENV{SBCURRENT}/include
+                   -I${PROJECT_SOURCE_DIR}/include -I${CLHEP_INCLUDE_DIR} -c
+                   ${CMAKE_CURRENT_SOURCE_DIR}/src/AppMain.cc -o ${LIBRARY_OUTPUT_PATH}/AppMain.o
+                   COMMENT "Generating AppMain.o in ${LIBRARY_OUTPUT_PATH}")
+add_custom_target(app_main_obj DEPENDS ${LIBRARY_OUTPUT_PATH}/AppMain.o)
+
+set(FMK_OBJ_DIR ${LIBRARY_OUTPUT_PATH})
+set_target_properties(app_main_obj PROPERTIES LOCATION ${LIBRARY_OUTPUT_PATH})

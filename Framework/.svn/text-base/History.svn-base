@@ -1,0 +1,452 @@
+$Id$
+
+History (latest first)
+
+Jan 14, 2010 Roberto Stroili
+	split code in src and include directories
+
+Oct 04, 2006 Asoka De Silva
+	Removed FwkString.
+
+Jul 13, 2006 Asoka De Silva	
+	Made AbsParmGeneral<bool> behave consistent with AbsParmBool in 
+	accepting 1 and 0 as true/false.
+
+Nov 14, 2005 Asoka De Silva
+	Fixed dumb bug in AppModuleCommand (compare strings) for 
+	"module enable path <name>" command.
+
+Jul 01, 2005 Stephen J. Gowdy
+	Remove ambiguity in AbsParmFilename.
+
+Mar 14, 2005 Asoka De Silva
+	Made AppInputModule an abstract class and created two new classes,
+	AppFileInput and AppCollectionInput which inherit from it.  Also
+	created corresponding command classes AppFileInputCommand and
+	AppCollectionInputCommand.
+
+Jan 17, 2005 Michael Kelsey
+	AppMain.cc:  Change "exit(status)" to "::exit(status)" to prevent
+	some other library from intercepting exit code and multiplying by
+	256 :-(
+
+Jan 03, 2005 Asoka De Silva
+	Removed an assert from AppFramework (call ::abort() instead).  
+
+Nov 09, 2004 Asoka De Silva
+	Removed all changes bewtween V01-08-01 and V01-09-00.  Also 
+	renamed function in use only in AppFramework and put it inside
+	an anonymous namespace.
+	Removed AbsParm::_parmList.  
+	Removal of objects from APPList made to work faster.
+	Added AppExecutable:;fullReport(const std::string&) method.
+
+Oct 05, 2004 Asoka De Silva
+	Fixed AbsParm's _parmList type as APPList instead of std::set.
+	so that we have the same order of printout for PrintParms on
+	any platform.	
+
+Oct 05, 2004 Rainer Bartoldus
+	Migrate from strstream to stringstream.  Change return type of
+	AppStopType::getStopTypeKey() from char* to string to allow
+	this migration.  (Also addresses a memory leak in
+	FrameExamples.)  Update link file to remove BaBar.
+
+Aug 31, 2004 Asoka De Silva
+	Made adding actions more like adding modules.  That is, 
+	actions should be added as 
+	  theFramework->add(...)
+	instead of 
+	  theFramework->actions()->append(...)
+	This also provides a framework pointer in actions.
+	Also included a script to do package migrations (FwkMigrate_Action).
+	The older method of adding actions will remain intact until such time
+	as when this migration is completed.
+
+Aug 26, 2004 Asoka De Silva
+	Removed all "BaBar/BaBar.hh" in favor of "Experiment/Experiment.hh"
+	Fixed AppFramework::show() to show all actions when "show" is
+	typed at prompt.
+	Fixed the many compilation warnings on Linux.
+
+Aug 23, 2004 Rainer Bartoldus
+	Reconstruct the link_Framework.mk file, which got lost in a
+	previous tag.  Remove many (all) #include "BaBar/BaBar.hh" and
+	"Experiment/Experiment.hh" from header files, where they don't
+	belong, as well as a few "BaBar/Experiment.hh".  Add $Id$ tags
+	to many source files that had them missing (and a few that had
+	them broken).
+
+Aug 16, 2004 Rainer Bartoldus
+	Move all sources from the src to the top directory.
+	Modify the top GNUmakefile accordingly.
+	Move all headers from the Framework subdirectory to the top
+	directory.
+	Lift BaBar_FrameworkRc.tcl to the top and change
+	AppFramework.cc accordingly.
+	Remove six remaining APP* forwarding headers from the top.
+
+Aug 16, 2004 Asoka De Silva
+	Included FwkMigrate_APP migration script and removed FwkMigrate_v3.
+	Also did a minor migration of FwkExitCode to AppFwkExitCode.
+	This will be tagged as V01-01-00.
+
+Jul 30, 2004 Asoka De Silva
+	New AppReportAttributes to allow for specifying how many levels
+	of a hierarchy to list (in mod/path list) and to also suppress
+	printing of previously listed sequence members.
+	New command seq/path listMembers.
+	Removed indentation code from APPFramework.  
+	For more details/usage, please do seq help and path help.
+	Also order of endjobs reversed.
+
+Jun 07, 2004 Asoka De Silva
+	Source FrameScripts/BaBarScripts.tcl for all Framework jobs.
+
+May 21, 2004 Asoka De Silva
+	Reverse order of modules in endJob().  This is meant to be temporary 
+	for testing.  Tagged as ads21May04-2.  This is removed from the HEAD
+	of Framework.
+
+Apr  8, 2004 Asoka De Silva
+	Moved AbsParmBool strictModuleDisable to APPFramework.  It was 
+	left in APPModule by mistake.
+
+Apr  1, 2004 Asoka De Silva
+	- removed _theAbsEvent and APPFramework::theEvent().
+	- changed char* to const char* in APPCommand::command() return value.
+	- eliminate duplication of APPCommand's name in AbsParm 
+	  (removed _name).
+	- APPExecutable::description() returns const char* instead of char*.
+	- APPExecNode inlined.
+	- flag for generating errors or warnings when disabling non-existing
+	  modules.  strictModuleDisable (by default) will only print
+	  warning messages.  if set to true, it will generate error messages 
+	  and stop further processing of the tcl file.
+
+Mar 31, 2004 Asoka De Silva
+	Removed Accounting modules.  Tagged as ads31Mar04. 
+
+Mar 30, 2004 Asoka De Silva
+	Many bug fixes in APPModuleCommand, APPSequenceCommand and 
+	APPPathCommand.  This is still link compatible, if necessary, to 
+	V00-12-00.  tagged as ads30Mar04.
+
+Feb 26, 2004 Asoka De Silva
+	Removed static _theAbsEvent from APPFramework and APPModule.
+	Data member _theAbsEvent still exists in AppFramework temporarily
+	since there are two packages which still use it.
+
+Feb 24, 2004 Asoka De Silva
+	Added deleteEvent() to AppInputModule.
+
+Jan 30, 2004 Rainer Bartoldus
+        Change AbsParmString to contain its FwkString data member by
+        value rather than allocating it on the heap.  Add a set()
+        method to AbsParmString	as it exists for other AbsParm types.
+
+Dec  8, 2003 Asoka De Silva
+	Added FwkExitCodes.hh for exit codes to be used in Framework 	
+	applications.  Also added FrameJobReport's job summary file
+	in APPMain.cc.
+
+Aug 14, 2003 Asoka De Silva
+	Removed ifdef CDF.  Tagged as V00-09-00.  
+	Also, this History file created.
+
+Jul 30, 2001 Asoka De Silva
+	AbsParmIfdStrKey moved to AbsParm package.
+
+Jul 18, 2001 Rainer Bartoldus
+        Add beforeOther()/afterOther() methods to AppAction and
+        AppActionController.  Reorder methods for readability.
+        Implement the use of the actions in the corresponding other()
+        methods in APPFramework and AppActionApplicator.  All of this
+        in anlogy to beforeEvent()/afterEvent().
+
+Jun 21, 2001 Rainer Bartoldus
+        Make APPCommand and AbsParm* assignment operator arguments const.
+
+Jun 11, 2001 Rainer Bartoldus
+        Default assignment of e.g. AbsParmBool leads to memory corruption!
+        Declare copy constructors and assigment operators for all AbsParm*
+        and APPCommand. Other classes need to follow. Made private without
+        implementation to disallow for now. Should add implementations later.
+
+Fev 28, 2001 Asoka De Silva
+	Fix to prevent dereferencing pointers to null in APPSequence.cc's 
+	insert methods (REMEDY 4898).
+
+Feb  7, 2001 Asoka De Silva
+	APPCommand now inherits from FrameUtil/AbsCommand to break circular
+	dependency.
+
+Feb  5, 2001 Asoka De Silva	
+	Removed a few ifdef CDF statements pertaining to AppFramework ctor
+	(3rd arg is now removed from Opr software so we can do this now.)
+	Also fixed bug so that if the default path (AllPath) has been deleted, 
+	cloning a module does not cause Framework to try and add it to a 
+	non-existing path.
+
+Jan 10, 2001 Asoka De Silva
+	If a proc redefines a tcl command, an error message will be generated 
+	and the Framework application will terminate.
+
+Jan.  4, 2001 Asoka De Silva
+	Assert if a command is redefined.
+
+Dec.  8, 2000 Asoka De Silva
+	Fixed a bug where an exit command in a tcl script, when sourced, 
+	did not cause a Framework application to exit.
+
+Dec.  5, 2000 Asoka De Silva
+	Fixed bug in APPSequenceCommand::insertHandler.  Now, if the sequence
+	is empty and a module is inserted, jobs will not SEGV.
+
+Nov. 27, 2000 Asoka De Silva
+	Fixed a few memory leaks.
+
+Nov. 14, 2000 Asoka De Silva
+	Generate more information in AppSourceFileCommand if there is
+	an error.
+
+Nov. 10, 2000 Asoka De Silva
+	Bug fix in APPModuleCommand where AbsInterp::Error was not being
+	set.
+
+Nov.  1, 2000 Asoka De Silva
+	Invalid commands will be printed out so that they can be tracked down.
+
+Oct. 18, 2000 Asoka De Silva
+	Removed "module action" "action on" and "action off" commands.
+	This is the last stage of the migration begun on Jun 11.  (see below.)
+
+Jul. 06, 2000 Asoka De Silva
+	Fixed bug in check for commands which were redefined.
+
+Jul. 05, 2000 Asoka De Silva
+	More things in migration script.  (Also has non-Framework stuff.)
+	(Note that this script will be removed when migrations are completed.)
+	
+Jul. 04, 2000 Asoka De Silva
+	Hold off asserting if commands are redefined.  This will be reinserted
+	at a later date.
+
+Jun. 30, 2000 Asoka De Silva
+	Flushed out several memory leaks in memento code.  Changed dump*
+	command so that existing file is not overwritten.  Removed exitTcl
+	definition from rc file - it is now defined in FrameUtil code.
+	Also, now if a command is redefined, an error message is generated 
+	before an assert.
+
+Jun. 11, 2000 Asoka De Silva
+	Simplified actions so that only "action enable/disable <action>" 
+	commands are valid.  Older action commands are still valid but will 
+	give warnings.  These will be removed at a later date.  Also fixed 
+	memento code to dump/restore actions.
+
+Jun.  8, 2000 Asoka De Silva
+	AppFramework ctor has 3 args again for BaBar, but the third 
+	(Tcl_Interp*) is ignored.  This is needed for OepFramework during the 
+	migration for backward compatibility.  This change will be removed 
+	circa Aug 00.
+
+Jun.  7, 2000 Asoka De Silva
+	Removed obsolete tcl files.  Reformatted some code (to 80 chars).
+	Moved endJob() from AppFramework::talkTo() to APPMain.cc; 
+	this was otherwise fatal for BaBar's OEP and OPR packages.	
+
+Jun.  3, 2000 Asoka De Silva
+	Code cleanup, fixed bug where module/path/sequence name was
+	not printed out when it was unknown.  Also eliminated TK code
+	(and lots of ifndef CDFs in the process.)
+
+Jun.  1, 2000 Asoka De Silva
+	Cleanups and used partial/fullReport() instead of cout.
+
+May. 26, 2000 Asoka De Silva
+	Cleaned up AppFramework destructor.  Made action dtor virtual.
+	removed  setupTheApp(), setCommandPrompt().
+	Fixed several memory leaks.
+	
+May. 17, 2000 Asoka De Silva
+	Renamed Fwk_macro_migrate to FwkMigrate_v1 since there are now
+	more than just macro migrations in there.
+
+May. 12, 2000 Asoka De Silva
+	Merged code with CDF's 1999 code.  Changes include:
+	
+ 1.     Interpreter role of the Framework is moved out of the package to 
+        FrameUtil.  (There is still the Babar TK code, which is pulling the 
+        interpreter in, but I will rip this out later.)
+
+ 2.     HepString has been replaced with FrameUtil/FwkString (derived from 
+        RWCString in BaBar.)  There are still a few places where these remain
+        but they are ifdef'ed for BaBar (eg AbsParmIfdStrKey which should be
+        moved to the AbsParm package one day.)                        
+
+ 3.     HepAList has been replaced with a new container class APPList and the 
+        iterator APPListIterator.  (These will reside in the FrameUtil 
+        package.) Note that the containers are now of a list of pointers.
+
+ 4.     inputEvent() removed from APPModule.  In APPInputModule, this now has 
+        two args.  inputEvent() is also overloaded to avoid a migration in 
+        BaBar.
+
+ 5.     help() and show() now have two args.
+
+ 6.     Memento code: CDF's changes were removed.  APPList and FwkString
+        replaces HepAList (and iterator) and HepString where applicable. 
+
+ 7.     Many cleanups; among them:      
+          ErrLogger calls removed.
+          Spurious includes removed.
+          ProxyDict calls ifdef'ed for BaBar. 
+
+
+Mar. 24, 2000 Asoka De Silva
+	Added code to print time stamp (if framework verbose is set) before
+	and after module etc. destructors are called during the framework
+	shutdown. 
+	
+Mar. 17, 2000 Asoka De Silva
+	Moved sourceFoundFile command definition from APPFramework to AppModule.
+
+Mar. 10, 2000 Asoka De Silva
+	In AppModuleCommand, removed warning when attempting to disable
+	modules which do not exist.  (All other warnings remain intact 
+	when modules do not exist.)  
+
+Mar.  3, 2000 Asoka De Silva
+	In frameworkrc.tcl, renamed the original tcl "exit" command as
+	"exitTcl" so that it is not clobbered by Framework.  Also made
+	sequences work in code.
+
+Feb. 10, 2000 Asoka De Silva
+	Fixed bug in AppModuleCommand ("module action enable ..." did not 
+	set the enable actions flag for disabled modules.)
+	Modified code so that commands are checked to see if they are being 
+	redefined.  (If so, a warning message is generated.)
+
+Jan. 12 2000 Asoka De Silva
+	Provide "sourceFoundFile" Tcl command.
+
+Jan. 12 2000 Akbar Mokhtarani
+	Implemented the command "module enable path <path1> <path2> ..."
+
+Jan. 11 2000 Asoka De Silva
+	AppFileName is implemented to use CommonUtils/ComPathNameSearch.
+
+Dec. 14 1999 Alex Samuel
+        Add set_value methods to AbsParmGeneral for signed and unsigned short.
+
+Nov. 14 1999 Asoka De Silva
+	Made APPCommand::description() virtual and return string.  This 
+	corrected a bug -- help, within module talk, did not print
+	out the AbsParm* descriptions. Also, user added descriptions are also
+	printed out, in addition to the default AbsParm* class descriptions, 
+	when help is invoked.   
+
+Oct. 27 1999 Akbar Mokhtarani
+	Added initForRestore function in APPCommand to take care of 
+	problem with cloning lists.
+
+Oct. 20 1999 Asoka De Silva
+	Copy constructors for AbsParm* added (except for AbsParm itself 
+	which is abstract.)
+
+Oct. 19 1999  Alex Samuel
+	Add accessor for Framework's stop-request flag.  Initialize
+        the flag to false in the constructor.
+
+Oct.  4 1999  Asoka De Silva
+	Implemented "path/sequence enable/disable all".
+
+Oct.  1 1999  Asoka De Silva
+	Online help updated and implemented when missing.  Small memory leak
+	fixed in APPFramework.cc.
+
+Aug. 16 1999  Asoka De Silva
+ 	Moved code from AppFileName to AbsParmFilename so that if a file is
+	not found in the search path, the decision about what to do next is 
+	with AbsParmFilename.  Also extended AppFileName with new methods to
+	check if a file exists.
+ 
+Aug. 11 1999  Asoka De Silva
+	Added BFROOT to the end of the default path in AppFilename.cc.
+
+Aug.  9 1999  Asoka De Silva
+	Fixed bug reported in Remedy 2623. 
+
+Jul. 27 1999  Asoka De Silva
+	Added class AppFileName to handle multiple paths.  Modified
+	AbsParmFilename to use this class.
+ 
+Jul. 21 1999  Asoka De Silva
+	Fixed several bugs reported in Remedy (2510, 2141, 2158, 2253, 2146).
+
+Jun. 24 1999  Michael Kelsey
+	Change src/GNUmakefile to build APPMain.o explicitly, by compiling
+	APPMain.cc.  Previous version extracted it from the .a library after
+	the latter was built (this fails during shared-library build).
+
+Apr. 19 1999  Gregory Dubois-Felsmann
+	Change AppStop.{hh,cc} to use AppStream instead of APPStream.
+	Avoids an "incomplete class" error in compilation.
+
+Apr.  8 1999  David Quarrie
+	Rework the handling of output streams. A stream is now an abstract
+	concept, with a file stream being a concrete implementation of
+	this, corresponding to an output file. This is supported by the
+	AppOutputCommand class that implements a generic "output" command,
+	with the AppFileOutputCommand subclass customizing this for the
+	concrete case of output files. Finally, the AppStreamsOutputModule
+	provides an abstraction for a multi-streamed output module, with the
+	AppFileOutputModule providing a concrete implementation based on
+	output files. These changes have obsoleted the APPStream, 
+	APPOutputCommand and APPFileOutputModule classes, which have been 
+	removed.
+
+Apr.  7 1999  G. Dubois-Felsmann
+	Add AbsParmGeneral<>::set_value(unsigned*), as for (int*).
+	Fix long-standing size bug in set_value(int*).
+
+Mar. 30 1999  M. Kelsey
+	Add AbsParmGeneral<>::set_value(long*), idential to (int*).
+
+Jan. 29 1999  A. De Silva
+	Moved APPMODULE* macros from APPModule.hh to BaBar/BaBar.hh.
+
+Nov. 25 1998  Akbar Mokhtarani
+	moved XXXMemento file from FrameMemento to tjis package because
+	of the dependecy of this package on FrameMemento it was thought
+	to add these few calsses here instead of making a new package.
+
+Nov. 22 1998  Akbar Mokhtarani
+	Did the following changes to construct a history of modules and
+	their AbsParmXXX settings:
+	added setAbsArg, getVal functions to AbsParm and it subclasses.
+	added a "value" function to APPModule to return the command
+	value
+	added node() function to APPSequence.hh to return the _nodes
+
+Oct 27, 1998 Alex Romosan
+	changed AbsParmFilename to find either a regular file or a
+	directory.
+
+June 29, 1998 M. Kelsey
+	Add comments to AbsParmFilename.hh and .cc, explaining purpose
+	and use of search path, and search names RELEASE and PARENT.
+
+Jan-Apr '98 Marc Turcotte
+       Added AppFrame and dynamic dispatch 
+
+Dec 8, 1997  Phil S
+	Add operator== to AbsParmIfdStrKey.
+
+Nov  7, 1996  A. Mokhtarani - leak removal
+
+Nov  6, 1996 B. Jacobsen - fix for Tcl symbol definition in AppMain,
+              should always return 0 to shell at end of job
+
+

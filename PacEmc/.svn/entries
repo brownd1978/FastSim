@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2636"
+   name=""
+   committed-date="2011-04-20T21:06:59.813599Z"
+   url="https://sbrepo.pd.infn.it:8910/PACRAT/PacEmc/trunk"
+   last-author="chcheng"
+   kind="dir"
+   uuid="2aa36f44-f9d8-11dc-81b7-9e774fc32887"
+   revision="2648"/>
+<entry
+   committed-rev="2632"
+   name="PacEmcGeom_SuperB.xml"
+   text-time="2011-04-27T19:37:46.000000Z"
+   committed-date="2011-04-14T06:11:50.977885Z"
+   checksum="8629dc34500739977e3c3a99aaa34397"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T19:37:45.000000Z"/>
+<entry
+   committed-rev="2320"
+   name="EmcBwd_SuperB.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2010-08-27T23:01:41.781625Z"
+   checksum="7c091304891c6b132cbd9f9d23707bb4"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:59:01.000000Z"/>
+<entry
+   committed-rev="2320"
+   name="Emc_SuperB.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2010-08-27T23:01:41.781625Z"
+   checksum="cb2cfd7ab0ad59c976a8ee00939a1e92"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:59:01.000000Z"/>
+<entry
+   committed-rev="1530"
+   name="CsIFwd_Babar_Layers.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-07-16T21:52:27.111333Z"
+   checksum="9ba3bceec16f471a2ed52008a20a4521"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:01.000000Z"/>
+<entry
+   committed-rev="983"
+   name="EmcMeasure.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-03-12T23:44:59.019234Z"
+   checksum="2fc7873ce0ce263c2412de0c409235d3"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:01.000000Z"/>
+<entry
+   committed-rev="2111"
+   name="PacEmcGeom_BaBar.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2010-05-28T23:37:45.946852Z"
+   checksum="837b5b7a77a46be7429553f47aa99c7e"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:01.000000Z"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="2364"
+   name="Emc_BaBar.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2010-09-09T18:14:49.635600Z"
+   checksum="b171b6c216514f33913b38da118859db"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="1530"
+   name="LSOFwd_SuperB_Layers-back10.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-07-16T21:52:27.111333Z"
+   checksum="20530741099e04f3b13e580e6fefae96"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="2010"
+   name="EmcBarrel_1000ns.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2010-03-06T07:04:26.832480Z"
+   checksum="03ec7b015987b1c99875d8c78c53f2d4"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="1607"
+   name="emcGeom.C"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-07-29T01:15:12.573005Z"
+   checksum="bb885269096aba8d6d8393ce30e59f7a"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="985"
+   name="CsIBarrel_Babar_basic.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-03-14T01:07:24.235421Z"
+   checksum="5f0d9662b4f51a1e8b9f5ffe73669b0c"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="2009"
+   name="PacEmcGeom_SuperB_emcbar1microsec.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2010-03-06T05:32:42.827037Z"
+   checksum="ec1fdc8c1bcc47c970b206dfc606e63b"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="1567"
+   name="PbScintBwd_SuperB_139.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-07-22T18:43:37.363892Z"
+   checksum="1aa2e070dae392073e84f56df7e1ebd7"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="1567"
+   name="EmcDetBwd_SuperB.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-07-22T18:43:37.363892Z"
+   checksum="72e7f22d8442916412da4d80367efd91"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="2471"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2010-10-18T12:16:54.219470Z"
+   checksum="3830beafb661b92c5af2437d60cd441d"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="986"
+   name="LSOFwd_SuperB_basic.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-03-17T21:21:34.281152Z"
+   checksum="1e0474830a2f122840b904d365b0b92a"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="1028"
+   name="EmcDetBarrel_BaBar.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-03-27T23:06:02.691766Z"
+   checksum="d67815c52fcb92735c549ede900e85a7"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="985"
+   name="PbScintBwd_SuperB_basic.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-03-14T01:07:24.235421Z"
+   checksum="a48de19717067a359eac90d08b3ca791"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   committed-rev="1023"
+   name="EmcDetFwd_SuperB.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-03-27T20:14:12.371285Z"
+   checksum="bd4585d3e91c4ad7b7c6ea4810d5fba1"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:03.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   committed-rev="1554"
+   name="EmcBwd_SuperB_+10IP.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-07-20T13:33:59.898505Z"
+   checksum="9b728c1835196fbe4810938cc354bd4e"
+   last-author="Mrama"
+   kind="file"
+   prop-time="2011-04-27T18:59:04.000000Z"/>
+<entry
+   committed-rev="1554"
+   name="Emc_SuperB_+10IP.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-07-20T13:33:59.898505Z"
+   checksum="4d5d80569e97098a0c3e1ea78ba92172"
+   last-author="Mrama"
+   kind="file"
+   prop-time="2011-04-27T18:59:04.000000Z"/>
+<entry
+   committed-rev="1870"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2010-01-25T09:13:18.590764Z"
+   checksum="4052b26412ea2c5e1c2969d19eb00b60"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:59:04.000000Z"/>
+<entry
+   committed-rev="266"
+   name="emcshowerlib.config"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2008-07-24T04:53:24.565727Z"
+   checksum="52b4b23312601a28514389e07cb49862"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:04.000000Z"/>
+<entry
+   committed-rev="1028"
+   name="EmcDetFwd_BaBar.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-03-27T23:06:02.691766Z"
+   checksum="d335307031ea213868a6a0a89dee4efa"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:04.000000Z"/>
+<entry
+   committed-rev="1530"
+   name="LSOFwd_SuperB_Layers.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-07-16T21:52:27.111333Z"
+   checksum="d86972a14cc59e1afe84233f2e7e1114"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:04.000000Z"/>
+<entry
+   committed-rev="625"
+   name="README"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2008-12-05T19:24:06.236664Z"
+   checksum="a7bafa5df9940bbc8e3e7dc89de4eddf"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:04.000000Z"/>
+<entry
+   committed-rev="1567"
+   name="PbScintBwd_SuperB_120.xml"
+   text-time="2011-04-27T18:59:05.000000Z"
+   committed-date="2009-07-22T18:43:37.363892Z"
+   checksum="6bb8d5e8c0ef1f2fd359b17c293a7c11"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:05.000000Z"/>
+<entry
+   committed-rev="985"
+   name="CsIFwd_Babar_basic.xml"
+   text-time="2011-04-27T18:59:06.000000Z"
+   committed-date="2009-03-14T01:07:24.235421Z"
+   checksum="a910f8ca0ea413ec5a9824d2d9f0f656"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:05.000000Z"/>
+<entry
+   committed-rev="1023"
+   name="EmcDetBarrel_SuperB.xml"
+   text-time="2011-04-27T18:59:06.000000Z"
+   committed-date="2009-03-27T20:14:12.371285Z"
+   checksum="d67815c52fcb92735c549ede900e85a7"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:05.000000Z"/>
+<entry
+   name="calib"
+   kind="dir"/>
+<entry
+   committed-rev="1530"
+   name="CsIBarrel_Babar_Layers.xml"
+   text-time="2011-04-27T18:59:06.000000Z"
+   committed-date="2009-07-16T21:52:27.111333Z"
+   checksum="f7f243e8b5e2373ff99f1cbeb8848cd1"
+   last-author="chcheng"
+   kind="file"
+   prop-time="2011-04-27T18:59:05.000000Z"/>
+</wc-entries>

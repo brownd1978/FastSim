@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="825"
+   name=""
+   committed-date="2011-03-14T19:28:15.873768Z"
+   url="https://sbrepo.pd.infn.it:8910/Core/DetectorModel/trunk"
+   last-author="brownd"
+   kind="dir"
+   uuid="7d373392-5316-41f4-94df-42a166793eec"
+   revision="830"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="500"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:00:24.000000Z"
+   committed-date="2010-01-14T12:42:10.982991Z"
+   checksum="d63a121ad76d87ed8cd78ed15cea91f1"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:00:22.000000Z"/>
+<entry
+   committed-rev="734"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T19:00:24.000000Z"
+   committed-date="2010-10-18T12:15:51.221766Z"
+   checksum="46e6a798ef5f8e0d61459c5d4f9c2ac0"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T19:00:24.000000Z"/>
+<entry
+   committed-rev="500"
+   name="README"
+   text-time="2011-04-27T19:00:24.000000Z"
+   committed-date="2010-01-14T12:42:10.982991Z"
+   checksum="cbe3caac5be192cad9b136859a4dc877"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:00:24.000000Z"/>
+</wc-entries>

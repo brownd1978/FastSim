@@ -1,0 +1,75 @@
+	Files supported in $STDHEP_DIR (6 total):
+
+README                  -- Product description
+HISTORY                 -- Current and past history
+INDEX                   -- This index
+libstdhep.a             -- STDHEP user library
+libstdhep_g.a           -- debug version of STDHEP user library
+pdg_mass.tbl		-- Table of masses and widths from PDG
+
+	Files supported in $STDHEP_DIR/bin/ (2 total):
+
+STD_phase_display	-- phase space display of events in STDHEP format
+STD_space_display	-- real space display of events in STDHEP format
+
+	Files supported in $STDHEP_DIR/doc/ (2 total):
+
+stdmain.ps		-- Postscript version of STDHEP manual 
+stdhep.doc		-- ASCII document describing STDHEP routines
+
+	Files supported in $STDHEP_DIR/example/ (25 total):
+
+HERWIG.DAT              -- output from stdtsth.sh
+HERWIGZ.DAT             -- output from stdtsthz.sh
+ISAJET.DAT              -- output from stdtsti.sh
+ISAJETZ.DAT             -- output from stdtstiz.sh
+JETSET.DAT              -- output from stdtstj.sh
+JETSETZ.DAT             -- output from stdtstjz.sh
+PYTHIA.DAT              -- output from stdtstp.sh
+QQLIB.DAT		-- output from stdtstq.sh
+STDHEP.DAT              -- output from stdtst.sh
+STDHEPIO.DAT            -- output from stdtstio.sh
+STDHEPIOM.DAT           -- output from stdtstiom.sh
+STDHEPIOZ.DAT           -- output from stdtstioz.sh
+STDTEST.CMD             -- input for ISAJET portion of STDHEP test
+stdtst.sh               -- simple test package for STDHEP
+stdtsth.sh              -- test package for STDHEP with HERWIG
+stdtsti.sh              -- test package for STDHEP with ISAJET
+stdtstj.sh              -- test package for STDHEP with JETSET
+stdtstp.sh              -- test package for STDHEP with PYTHIA
+stdtstq.sh              -- test package for STDHEP with QQ
+stdtstio.sh             -- test package for STDHEP simple I/O
+stdtstiom.sh            -- test package for STDHEP multiple input stream I/O
+stdtsthz.sh             -- test package for STDHEP with HERWIG and zebra I/O
+stdtstiz.sh             -- test package for STDHEP with ISAJET and zebra I/O
+stdtstjz.sh             -- test package for STDHEP with JETSET and zebra I/O
+stdtstioz.sh            -- test package for STDHEP zebra I/O
+
+	Files supported in $STDHEP_DIR/src/ (5 total):
+	
+stdcm1.inc              -- stdhep extracted include file for STDCM1 common block
+stdhep.source           -- stdhep extracted fortran
+stdhep.inc              -- stdhep extracted include file for HEPEVT common block
+stdlun.inc              -- stdhep extracted include file for HEPLUN common block
+stdhep.mk		-- make STDHEP program library
+fort			-- subdirectory containing individual stdhep routines
+	
+	Files supported in $STDHEP_DIR/src/car (17 total):
+
+stdcm1.cra              -- patchy cradle for stdcm1.inc
+stdhep.car              -- stdhep source code
+stdhep.cra              -- patchy cradle for stdhep
+stdinc.cra              -- patchy cradle for stdhep.inc
+stdlun.cra              -- patchy cradle for stdlun.inc
+stdtst.cra		-- patchy cradle for stdhep test
+stdtsth.cra		-- patchy cradle for stdhep herwig test
+stdtsthz.cra		-- patchy cradle for stdhep herwig/zebra test
+stdtsti.cra		-- patchy cradle for stdhep isajet test
+stdtstio.cra		-- patchy cradle for stdhep I/O test
+stdtstiom.cra		-- patchy cradle for stdhep multiple input I/O test
+stdtstioz.cra		-- patchy cradle for stdhep zebra I/O test
+stdtstiz.cra		-- patchy cradle for stdhep isajet/zebra test
+stdtstj.cra		-- patchy cradle for stdhep jetset test
+stdtstjz.cra		-- patchy cradle for stdhep jetset/zebra test
+stdtstp.cra		-- patchy cradle for stdhep pythia test
+stdtstq.cra		-- patchy cradle for stdhep qq test

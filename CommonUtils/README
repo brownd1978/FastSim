@@ -1,0 +1,47 @@
+CommonUtils contains simple utililities that do NOT depend
+on specific reco or similation code, including Framework
+
+Initial package coordinator is Bob Jacobsen
+
+
+
+			Class BbrCounter
+			================
+
+Keeps track of how many objects of a class X exist.  To use, publically
+inherit X from BbrCounter<X>, then name sure you define 
+  int BbrCounter<X>::_nAlloc;
+somewhere
+
+			Class BbrReferencer and BbrRefCounted
+			=====================================
+
+Mixin implementation of reference counting
+
+			Class BbrRefCountedPointer
+			==========================
+
+Non-intrusive (doubly-indirected) reference counted pointer.
+
+			Class ComPrintOnDelete<T>
+			=========================
+
+Class ComPrintOnDelete<T> is a template wrapper classes of type T
+which have the function.
+
+	print(ostream &) const;
+
+Note that the function may have a return value of any type (which is
+ignored), but must be a const function. The ComPrintOnDelete<T> owns a
+pointer of type T*, whose print(ostream &) function is called when the 
+ComPrintOnDelete<T> is deleted (or goes out of scope). This enables the
+user to get, for example, a printed timing summary at the end of the job
+from many timers, without having to go to each of these timers and tell
+it to print its summary. See detailed documentation in ComPrintOnDelete.hh.
+
+
+			Classes ComPack*
+                        ================
+
+Please see documentation in ./doc directory
+

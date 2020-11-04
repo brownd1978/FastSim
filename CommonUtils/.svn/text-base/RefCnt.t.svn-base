@@ -1,0 +1,46 @@
+--- run -------------------------------------------------------------------
+testCommonUtils
+--- stdin -----------------------------------------------------------------
+2
+--- stdout ----------------------------------------------------------------
+enter 0 to test ComPrintOnDelete, 
+      1 to test ComPathNameSearch, 
+      2 to test the reference counting 
+      3 to test Com3State
+      4 to test ComFloatIOManip
+      5 to test ComCovAccum
+      6 to test ComPackInt
+      7 to test ComPackFloat
+      8 to test ComPackFlatFloat
+      9 to test ComPackUFloat
+     10 to test ComTemplatedBitMap 
+     11 to test ComTimeStamp :
+
+
+TEST OF THE REFERENCE COUNTING MECHANISM
+==> Creating BbrRefFoo instance number 1
+==> Creating BbrRefBar instance number 1
+==> Creating BbrRefFoo instance number 2
+==> Creating BbrRefFoo instance number 3
+==> Creating BbrRefFoo instance number 4
+==> Creating BbrRefFoo instance number 5
+==> Creating BbrRefBar instance number 2
+foo1!=foo2
+foo1==foo3
+foo2!=foo3
+foo1  ooo BbrRefFoo instance number 2 - value : 6.2832
+foo2  ooo BbrRefFoo instance number 3 - value : 3.1416
+foo3  ooo BbrRefFoo instance number 4 - value : 6.2832
+Number of instances of Foo : 5
+Number of instances of Bar : 2
+*** Deleting BbrRefFoo instance number 4
+*** Deleting BbrRefFoo instance number 3
+*** Deleting BbrRefFoo instance number 1
+*** Deleting BbrRefBar instance number 1 - nb of instances left 2 - nb of pending links -1
+*** Deleting BbrRefFoo instance number 2
+*** Deleting BbrRefFoo instance number 5
+*** Deleting BbrRefBar instance number 2 - nb of instances left 1 - nb of pending links -1
+Number of instances of Foo : 0
+Number of instances of Bar : 0
+--- stderr ----------------------------------------------------------------
+---------------------------------------------------------------------------

@@ -1,0 +1,6 @@
+// README file for GenEnv
+//    $Id$
+//
+
+This package will hold general enviromental information. The first thing
+will be the general Histogram manager.

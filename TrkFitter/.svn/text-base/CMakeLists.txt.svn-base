@@ -1,0 +1,21 @@
+string(REGEX REPLACE "^.*/([^ ]+)$" "\\1" pkgname ${CMAKE_CURRENT_SOURCE_DIR})
+
+#
+# Set specific compiler flags for the package
+#
+set(${pkgname}_CXX_FLAGS "-Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${${pkgname}_CXX_FLAGS}")
+
+configPkg(${pkgname})
+
+list(REMOVE_ITEM Sources ${CMAKE_CURRENT_SOURCE_DIR}/src/TestPointHelix.cc)
+
+#
+# Generate library
+#
+add_library(${pkgname} ${Sources})
+target_link_libraries(${pkgname} ${LIB_LINK_LIST})
+
+add_executable(test${pkgname} bins/testTrkFitter.cc)
+target_link_libraries(test${pkgname} ${BIN_LINK_LIST})
+add_test(ttest${pkgname} ${EXECUTABLE_OUTPUT_PATH}/test${pkgname})

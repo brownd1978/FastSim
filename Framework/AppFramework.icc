@@ -1,0 +1,92 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AppFramework.icc,v 1.1 2004/08/16 22:16:21 bartoldu Exp $
+//
+// Description:
+//	Class AppFramework. This is the overall framework for the BaBar
+//	analysis framework. It controls the creation of sequences and
+//	paths and the processing of events.
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	David R. Quarrie		Original Author
+//      Marc Turcotte                   added a Framework::job()
+//
+// Copyright Information:
+//	Copyright (C) 1994, 1995	Lawrence Berkeley Laboratory
+//      Copyright (C) 1998              University of Texas at Dallas
+//
+//------------------------------------------------------------------------
+
+//		-----------------------------------------------
+// 		-- Inline Public Function Member Definitions --
+//		-----------------------------------------------
+
+//-------------
+// Selectors --
+//-------------
+
+inline AppInputModule*
+AppFramework::theInputModule( ) const
+{
+  return _theInputModule;
+}
+
+inline AppOutputModule*
+AppFramework::theOutputModule( ) const
+{
+  return _theOutputModule;
+}
+
+inline APPList< AppModule* >*
+AppFramework::modules( ) const
+{
+  return _modules;
+}
+
+inline APPList< AppExecNode* >*
+AppFramework::nodes( ) const
+{
+  return _execNodes;
+}
+
+inline APPList< AppPath* >*
+AppFramework::paths( ) const
+{
+  return _paths;
+}
+
+inline APPList< AppSequence* >*
+AppFramework::sequences( ) const
+{
+  return _sequences;
+}
+
+inline APPList< AppInputModule* >*
+AppFramework::inputModules( ) const
+{
+  return _inputModules;
+}
+
+inline APPList< AppOutputModule* >*
+AppFramework::outputModules( ) const
+{
+  return _outputModules;
+}
+
+inline APPList< AppCloneRecorder* >*
+AppFramework::cloneList( ) const
+{
+  return _cloneList;
+}
+
+inline int
+AppFramework::maxNameLength( ) const
+{
+  return _maxNameLength;    
+}
+
+
+

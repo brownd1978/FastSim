@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="480"
+   name=""
+   committed-date="2010-01-22T10:00:19.802815Z"
+   url="https://sbrepo.pd.infn.it:8910/Tools/CLHEP/tags/V00-01-05/src/Vector"
+   last-author="stroili"
+   kind="dir"
+   uuid="03b460ae-468b-4fc1-b513-ef89764f6eec"
+   revision="746"/>
+<entry
+   committed-rev="192"
+   name="LorentzVectorQ.cc"
+   text-time="2011-04-27T19:05:09.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="f626a0bc4458e9134cdfa934f90c316b"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:09.000000Z"/>
+<entry
+   committed-rev="192"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:05:09.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="96e3d3a5293a5d405c0127ad21dabc03"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:09.000000Z"/>
+</wc-entries>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2635"
+   name=""
+   committed-date="2011-04-18T04:53:23.430012Z"
+   url="https://sbrepo.pd.infn.it:8910/PACRAT/PacGeom/trunk"
+   last-author="brownd"
+   kind="dir"
+   uuid="2aa36f44-f9d8-11dc-81b7-9e774fc32887"
+   revision="2642"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="1873"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:04:08.000000Z"
+   committed-date="2010-01-25T09:18:40.296775Z"
+   checksum="cd097422901df5ef27cbf8a511ca6754"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:04:06.000000Z"/>
+<entry
+   committed-rev="2474"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T19:04:08.000000Z"
+   committed-date="2010-10-18T12:16:57.206221Z"
+   checksum="51875b8490bbaf065abc7e1fb1b567f1"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T19:04:08.000000Z"/>
+<entry
+   committed-rev="212"
+   name="README"
+   text-time="2011-04-27T19:04:08.000000Z"
+   committed-date="2008-06-27T19:36:29.495358Z"
+   checksum="f938c9d015c3d0b9fe49e09d33ee2dfd"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T19:04:08.000000Z"/>
+</wc-entries>

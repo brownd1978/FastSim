@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+   <included>
+   <!-- centered at z= -120 cm -->
+<ring name="EmcPbScintBwd" id="0" z="-114.75" lowradius="31" hiradius="75" thick="3.5" mat="emc-PbScint" meas="Emc" />
+<ring name="EmcPbScintBwd" id="1" z="-118.25" lowradius="31" hiradius="75" thick="3.5" mat="emc-PbScint" meas="Emc" />
+<ring name="EmcPbScintBwd" id="2" z="-121.75" lowradius="31" hiradius="75" thick="3.5" mat="emc-PbScint" meas="Emc" />
+<ring name="EmcPbScintBwd" id="3" z="-125.25" lowradius="31" hiradius="75" thick="3.5" mat="emc-PbScint" meas="Emc" />
+
+    </included>
+</edml>

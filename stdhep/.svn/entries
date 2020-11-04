@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="878"
+   name=""
+   committed-date="2011-03-08T15:54:30.267317Z"
+   url="https://sbrepo.pd.infn.it:8910/Generators/stdhep/tags/V00-01-05"
+   last-author="stroili"
+   kind="dir"
+   uuid="7b731e25-c66e-4470-8c2d-112e6345f304"
+   revision="886"/>
+<entry
+   committed-rev="219"
+   name="HISTORY"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="c02ad3462166a58b4346b5324dc8bb87"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:34.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="doc"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   name="ups"
+   kind="dir"/>
+<entry
+   committed-rev="219"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="e8b45592f41d4ee1d1194a9ef1274054"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:39.000000Z"/>
+<entry
+   committed-rev="219"
+   name="HISTORY.babar"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="6da03341a69dafa25cfd92c07566bc4e"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:39.000000Z"/>
+<entry
+   committed-rev="219"
+   name="INDEX"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="0a9fd82dddc46b73d531ba2fd42126e0"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:39.000000Z"/>
+<entry
+   committed-rev="219"
+   name="Ftp"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="3d74bbc829e9097c9184d007e6696d34"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:48.000000Z"/>
+<entry
+   committed-rev="820"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2010-10-18T12:18:13.220239Z"
+   checksum="c59c4859ba9875b267982b268d2dbb41"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T18:42:48.000000Z"/>
+<entry
+   committed-rev="219"
+   name="README"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="eee0baead2b0e480790de81cf722722e"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:48.000000Z"/>
+<entry
+   committed-rev="219"
+   name="pdg_mass.tbl"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="b4d812cb441e24e6d155a48dde326fcd"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:48.000000Z"/>
+</wc-entries>

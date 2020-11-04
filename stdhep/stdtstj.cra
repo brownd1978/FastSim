@@ -1,0 +1,6 @@
++EXE.
++USE,*STDTSTJ,UNIX.
++USE,JETCDES.      JETSET and PYTHIA common blocks
++PAM,11,T=C,A./usr/products/lund/v7_03d/src/jetcde
++PAM,12,T=C,A./usr/products/stdhep/v1_05/src/stdhep
++QUIT.

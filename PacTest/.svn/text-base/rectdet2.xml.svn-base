@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <config>
+         <sect name="General">
+             <param name="ConfigKey" type="int" > 1 </param>
+             <param name="ConfigName" type="string"> Test </param>
+         </sect>
+         <sect name="DetectorVolume">
+             <param name="rmax"    type="float"        >  200</param>
+             <param name="zmin"   type="float"         > -50</param>
+             <param name="zmax"    type="float"         >  200</param>
+         </sect>
+         
+     </config>
+    <include file="PacSim/Material_simulation.xml" />
+    <include file="PacTrk/Track_reconstruction.xml" />
+
+    <measures>
+        <device name="WPC"
+            type="DriftChamber"
+            sensitiveTimeWindow="0.5e-6"
+            rms_par0="0.0178977"
+            rms_par1="0"
+            rms_par2="-0.161932"
+            rms_par3="0.357955"
+            rms_par4="-0.238636"
+            rms_par5="0.0409091"
+            eff="0.99"
+            cell_size="1.8"
+            trunc_frac="0.8"
+            dedx_par1="0.0013202"
+            dedx_par2="1"
+            dedx_par3="-0.5"
+            angle="0"  />
+    <device name="2SideSi"
+              type="DoubleSideSiStrips"
+              sensitiveTimeWindow="0.4e-6"
+              phiResModel="0."
+              phiResPar0="0.001"
+              phiPTRatio="0.18"
+              phingFrac="0.2"
+              phingFactor="2.5"
+              phiEff="0.95"
+              zResModel="0."
+              zResPar0="0.0014"
+              zPTRatio="0.18"
+              zngFrac="0.1"
+              zngFactor="2.0"
+              zEff="0.95"
+              NormRes="0.000"
+              trunc_frac="1."
+              dedx_par1="0.00025"
+              dedx_par2="1"
+              dedx_par3="-0.5"
+              svt_thresh="0.25"
+              svt_fit_p0="1.546e-3"
+              svt_fit_p1="5.921e-1"
+              svt_fit_p2="155.6"
+              svt_fit_p3="-0.1357"
+              svt_fit_p4="2.43e-3"
+              />
+    </measures>
+    <detector name="Rect Detector">
+        <volume name="Rectangle Elements">
+            <rect name="R0L1" id="0" orientation="1" centerrho="1.732050" centerz="0" centerphi="0.0" axisphi="0.0" usize="2" vsize="10" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R1L1" id="0" orientation="1" centerrho="1.732050" centerz="0" centerphi="1.047198" axisphi="0.0" usize="2" vsize="10" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R2L1" id="0" orientation="1" centerrho="1.732050" centerz="0" centerphi="2.094395" axisphi="0.0" usize="2" vsize="10" thick="0.03" mat="svt-Silicon" meas="2SideSi" />                        
+            <rect name="R3L1" id="0" orientation="1" centerrho="1.732050" centerz="0" centerphi="3.141593" axisphi="0.0" usize="2" vsize="10" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R4L1" id="0" orientation="1" centerrho="1.732050" centerz="0" centerphi="4.188790" axisphi="0.0" usize="2" vsize="10" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R5L1" id="0" orientation="1" centerrho="1.732050" centerz="0" centerphi="5.235988" axisphi="0.0" usize="2" vsize="10" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            
+            <rect name="R0L2" id="0" orientation="1" centerrho="2.598075" centerz="0" centerphi="0.0" axisphi="0.0" usize="3" vsize="15" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R1L2" id="0" orientation="1" centerrho="2.598075" centerz="0" centerphi="1.047198" axisphi="0.0" usize="3" vsize="15" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R2L2" id="0" orientation="1" centerrho="2.598075" centerz="0" centerphi="2.094395" axisphi="0.0" usize="3" vsize="15" thick="0.03" mat="svt-Silicon" meas="2SideSi" />                        
+            <rect name="R3L2" id="0" orientation="1" centerrho="2.598075" centerz="0" centerphi="3.141593" axisphi="0.0" usize="3" vsize="15" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R4L2" id="0" orientation="1" centerrho="2.598075" centerz="0" centerphi="4.188790" axisphi="0.0" usize="3" vsize="15" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R5L2" id="0" orientation="1" centerrho="2.598075" centerz="0" centerphi="5.235988" axisphi="0.0" usize="3" vsize="15" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            
+            <rect name="R0L3" id="0" orientation="1" centerrho="3.46410" centerz="0" centerphi="0.0" axisphi="0.0" usize="4" vsize="20" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R1L3" id="0" orientation="1" centerrho="3.46410" centerz="0" centerphi="1.047198" axisphi="0.0" usize="4" vsize="20" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R2L3" id="0" orientation="1" centerrho="3.46410" centerz="0" centerphi="2.094395" axisphi="0.0" usize="4" vsize="20" thick="0.03" mat="svt-Silicon" meas="2SideSi" />                        
+            <rect name="R3L3" id="0" orientation="1" centerrho="3.46410" centerz="0" centerphi="3.141593" axisphi="0.0" usize="4" vsize="20" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R4L3" id="0" orientation="1" centerrho="3.46410" centerz="0" centerphi="4.188790" axisphi="0.0" usize="4" vsize="20" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R5L3" id="0" orientation="1" centerrho="3.46410" centerz="0" centerphi="5.235988" axisphi="0.0" usize="4" vsize="20" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            
+            <rect name="R0L4" id="0" orientation="1" centerrho="8.66025" centerz="0" centerphi="0.0" axisphi="0.0" usize="10" vsize="50" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R1L4" id="0" orientation="1" centerrho="8.66025" centerz="0" centerphi="1.047198" axisphi="0.0" usize="10" vsize="50" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R2L4" id="0" orientation="1" centerrho="8.66025" centerz="0" centerphi="2.094395" axisphi="0.0" usize="10" vsize="50" thick="0.03" mat="svt-Silicon" meas="2SideSi" />                        
+            <rect name="R3L4" id="0" orientation="1" centerrho="8.66025" centerz="0" centerphi="3.141593" axisphi="0.0" usize="10" vsize="50" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R4L4" id="0" orientation="1" centerrho="8.66025" centerz="0" centerphi="4.188790" axisphi="0.0" usize="10" vsize="50" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R5L4" id="0" orientation="1" centerrho="8.66025" centerz="0" centerphi="5.235988" axisphi="0.0" usize="10" vsize="50" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            
+            <rect name="R0L5" id="0" orientation="1" centerrho="10" centerz="0" centerphi="0.0" axisphi="0.0" usize="11.54701" vsize="57.7" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R1L5" id="0" orientation="1" centerrho="10" centerz="0" centerphi="1.047198" axisphi="0.0" usize="11.54701" vsize="57.7" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R2L5" id="0" orientation="1" centerrho="10" centerz="0" centerphi="2.094395" axisphi="0.0" usize="11.54701" vsize="57.7" thick="0.03" mat="svt-Silicon" meas="2SideSi" />                        
+            <rect name="R3L5" id="0" orientation="1" centerrho="10" centerz="0" centerphi="3.141593" axisphi="0.0" usize="11.54701" vsize="57.7" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R4L5" id="0" orientation="1" centerrho="10" centerz="0" centerphi="4.188790" axisphi="0.0" usize="11.54701" vsize="57.7" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+            <rect name="R5L5" id="0" orientation="1" centerrho="10" centerz="0" centerphi="5.235988" axisphi="0.0" usize="11.54701" vsize="57.7" thick="0.03" mat="svt-Silicon" meas="2SideSi" />
+
+        </volume>
+        <volume name="Cylinder">
+            <cyl name="C1" id="0" zmin="0" zmax="150" radius="120" thick="0.1" mat="SB-BPipe" />
+        </volume>    
+    </detector>
+</edml>

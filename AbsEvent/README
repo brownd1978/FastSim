@@ -1,0 +1,25 @@
+AbsEvent package
+Coordinator: Bob Jacobsen
+
+The AbsEvent class is the central repository of "event related"
+data in BaBar reconstruction code.  Other classes in this package
+are base classes for various data classes that are included in the
+event.
+
+Depends on:
+  AbsParm class depends on Framework
+
+Depended on by:
+  DbiEvent inherits from this. 
+  Framework depends on this through DbiEvent
+
+Interesting Classes:
+  AbsEvent    -  Central repository of event related info.  DO NOT
+		change this class, as its no longer necessary to do so.
+
+  AbsEvtObj   - Used as a base by all objects (classes) in an event,
+                it defines some common bookkeeping behavior
+
+  AbsGHit     - Common base for all "Geant3 Hit" classes, defines
+                time shifting common function for mixing
+

@@ -1,0 +1,91 @@
+// -*- C++ -*-
+// $Id: CmdArg.icc,v 1.12 2005/11/24 02:26:01 dwright Exp $
+//
+// This file is a part of what might become the CLHEP -
+// a Class Library for High Energy Physics.
+// 
+// This is the definitions of the inline member functions of the
+// HepCmdArg, HepCmdArgInt, HepCmdArgFloat, HepCmdArgString, HepCmdArgBoolean
+// and HepCmdArgStringList classes
+//
+
+#ifdef HEP_DEBUG_INLINE
+#define inline
+#endif
+
+inline char HepCmdArg::charName() const {
+  return  _charName;
+}
+
+inline const HepString & HepCmdArg::keywordName() const {
+  return _keyword;
+}
+
+inline const HepString & HepCmdArg::valueName() const {
+  return _valueName;
+}
+
+inline const HepString & HepCmdArg::description() const {
+  return _description;
+}
+
+inline bool HepCmdArg::isPositional() const {
+  return _isPositional;
+}
+
+inline bool HepCmdArg::isRequired() const {
+  return _isRequired;
+}
+
+inline HepCmdArgInt::operator int() {
+  return _value;
+}
+
+inline HepCmdArgInt & HepCmdArgInt::operator= (int a) {
+   _value = a;
+   return *this;
+}
+
+inline HepCmdArgFloat::operator float() {
+  return _value;
+}
+
+inline HepCmdArgFloat & HepCmdArgFloat::operator= (float a) {
+   _value = a;
+   return *this;
+}
+
+inline HepCmdArgString::operator const char * () {
+  return _value.isEmpty() ? 0 : (const char *)_value;
+}
+
+inline HepCmdArgString & HepCmdArgString::operator= (const HepString & a) {
+   _value = a;
+   return *this;
+}
+
+inline HepCmdArgBoolean::operator bool() {
+  return _value;
+}
+
+inline HepCmdArgBoolean & HepCmdArgBoolean::operator= (bool a) {
+   _value = a;
+   return *this;
+}
+
+inline const HepAList<HepString> & HepCmdArgStringList::stringList() const {
+  return _list;
+}
+
+inline const HepString & HepCmdArgStringList::operator[] (unsigned i) const {
+  return *_list[i];
+}
+  
+inline unsigned HepCmdArgStringList::length() const {
+  return _list.length();
+}
+
+
+#ifdef HEP_DEBUG_INLINE
+#undef inline
+#endif

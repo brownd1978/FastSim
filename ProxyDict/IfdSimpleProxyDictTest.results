@@ -1,0 +1,176 @@
+Maing an empty dictionary to test...
+IfdSimpleProxyDict with 0 entries.
+
+Making 3 objects each of classes B, C, D.
+Making IfdDataProxy for each...
+Here each object prints its name.  For convenience we
+will use thse as the secondary keys too.
+B[1] B[2] B[3] C[1] C[2] C[3] D[1] D[2] D[3] 
+Tests:
+  -Can get/put new data types w/o recompiling dictionary.
+  -A failed put returns false, and a good put returns true.
+  -Can not put same key in twice.
+  -Can put same type in multiple times, if w/ differnt keys.
+
+Storing the objects willy nilly.  All of these puts
+should succeed,causing (true) to print 9 times.
+(true) (true) (true) (true) (true) (true) (true) (true) (true) 
+Attempting to put one in again.  This should print (false)
+(false) 
+
+Printing the dictionary again.  Look for 9 entries.
+IfdSimpleProxyDict with 9 entries:
+   Mrk Key
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[2])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[2])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[2])  ]
+
+Pulling out the objects.  Will call each ones print()
+which should match its key.
+
+IfdStrKey(B[1]) fetches B[1] 
+IfdStrKey(B[2]) fetches B[2] 
+[default B]  fetches B[3] 
+IfdStrKey(C[1]) fetches C[1] 
+IfdStrKey(C[2]) fetches C[2] 
+[default C]  fetches C[3] 
+IfdStrKey(D[1]) fetches D[1] 
+IfdStrKey(D[2]) fetches D[2] 
+[default D]  fetches D[3] 
+
+Test to make sure that a failed get returns false.  You
+should see B[1] printed, and then NULL printed.
+B[1] 
+NULL
+
+Adding a proxy that actually uses a fault handler.  Look for (true) 
+(true) 
+Now pulling B[3] back  out twice.  First time should tickle the fault handler
+IfdStrKey(B[3]) fetches (bProxy::faultHandler called.  Bptr of 0xbogus)
+B[3] 
+This time should not cause a fault:
+IfdStrKey(B[3]) fetches B[3] 
+Now request tests of the proxy caches via ProxyDict::testProxyCache.
+bProxy::testCache called.
+Sneak in a keyUsed().  This should print (true) but not cause a fault.
+(true)
+This time should cause a fault again:
+IfdStrKey(B[3]) fetches (bProxy::faultHandler called.  Bptr of 0xbogus)
+B[3] 
+Now testing markForStore().  Look for a T in 'Store' column
+IfdSimpleProxyDict with 10 entries:
+   Mrk Key
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[2])  ]
+    T  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[3])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[2])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[2])  ]
+
+Now testing storeAllMarked(). T in 'Store' column should clear.
+bProxy::storeHandler called.  Bptr of 0xbogus
+IfdSimpleProxyDict with 10 entries:
+   Mrk Key
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[2])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[3])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[2])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[2])  ]
+
+Testing markForStore() w/ control of flag clearing.
+Marking item for store again. Look for a T in 'Store' column
+IfdSimpleProxyDict with 10 entries:
+   Mrk Key
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[2])  ]
+    T  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[3])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[2])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[2])  ]
+
+Now storeAllMarked(keepStoreFlags). 'Store' column should stay same.
+bProxy::storeHandler called.  Bptr of 0xbogus
+IfdSimpleProxyDict with 10 entries:
+   Mrk Key
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[2])  ]
+    T  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[3])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[2])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[2])  ]
+
+Now storeAllMarked(clearStoreFlags).'Store' column should go to F.
+bProxy::storeHandler called.  Bptr of 0xbogus
+IfdSimpleProxyDict with 10 entries:
+   Mrk Key
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[2])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[3])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[2])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[2])  ]
+
+Try the explicit string-as-key interface.  Look for (true)
+(true) 
+Now pull it back out via the string, (strTest) :B[4] 
+Now pull it back out via and IfdStrKey (crosswire test): B[4] 
+Testing alias proxy...
+bProxy::testCache called.
+Put in an alias to the faulting proxy.  Expect a 
+fault here: (bProxy::faultHandler called.  Bptr of 0xbogus)
+B[3] 
+Now call faulting proxy directly.  Do not expect afault this time: B[3] 
+
+Inserting a proxy for non-IfdData data.
+Fetching NoIfd data returns: instance 0 of NoIfd
+
+Testing 'proxy-free' put...
+Fetching NoIfd data returns: instance 1 of NoIfd
+
+final dump of dict.
+IfdSimpleProxyDict with 14 entries:
+   Mrk Key
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>]  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>]  ]
+    F  IfdCompositeKey[ IfdTypeKey(3)  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[2])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(B[3])  ]
+    F  IfdCompositeKey[ IfdTypeKey(3) IfdStrKey(proxyLess)  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(strTest)  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<D>] IfdStrKey(D[2])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<B>] IfdStrKey(alias)  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[1])  ]
+    F  IfdCompositeKey[ IfdTypeKey[Ifd<C>] IfdStrKey(C[2])  ]
+
+Testing the deletion of an IfdSimpleProxyDict
+Done w/ deletion

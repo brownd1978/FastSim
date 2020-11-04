@@ -1,0 +1,76 @@
+This is the README file for the Memento part of the Framework. The Memento part
+is for saving the configurations of Framework and restoring it from the saved
+files. It is implemented as a Framework command and should be invoked manually
+at Framework prompt.
+
+There two ways to save the history (modules' settings and the execution order).
+
+1)You can produce a file in tcl format and run your executable on this file.
+  To do this, type (at Framework prompt):
+
+  >config dumptcl filename
+
+  where the "filename" is the name of the tcl file you want to create. Once you
+  have created a file you can source it at Framework prompt or type it as the 
+  input file at the command line
+
+2)You can also write a file in "raw" format and restore the execution web from
+  it. To do this, type:
+
+  >config dumpraw filename
+
+  where, again, "filename" is the file you want to created. To restore from this 
+  file, run your executable without any tcl file and at the Framework prompt type:
+
+  >config restore filename
+
+  where "filename" is the file created above.
+
+All the parameters' settings (AbsParm type or otherwise, see below), actions, paths, 
+sequences, and clones are dumped and restored in both cases
+
+Notes:
+
+   1)If you specify an existing file, the new settings are appended to that file.
+     This is good for keeping track of job history through a time period.
+     Your job will probably crash if you try to run/restore from these
+     appended files
+
+   2)This is a static command meaning that if you make changes to modules,
+     paths, and sequences after you save the configuration, those changes
+     are not saved unless you dump it manually again.
+
+   3)these file should be in the current directory.
+
+How it works:
+
+After issuing any of the above commands to dump the history, the 
+AppFrameMemento polls the individual modules in the Framework list and
+gets their  commands and attributes and saves them in the output file.
+It then cleans up after itself and returns control to Framework. Upon
+restoring from the raw file, AppFrameMemento reads the commands and actions
+for each module from the file and searches the module list in Framework. If 
+it finds the module, the module is restored to its stored state and all 
+the commands are set. If the module is missing, a message is printed. If 
+there are new modules in the Framework list that had not been saved, a 
+message for each module is also printed.  
+
+
+Writing Commands:
+
+All the standard commands (AbsParmxxx type) have been implemented. However,
+if the users write their own commands (by inheriting from APPCommand) and
+these command have state that need to be saved, they should implement two
+virtual function, "dumpState" and "restoreState", in their commands that 
+pass the type and value of the command to the Memento part for storing.
+Note that commands that change the state (e.g set a parameter) of the module
+should implement the "isShowable()" funtion as returning "true". That is the
+distinction between commands that have state and commands without state.
+There are some "primitive" data type that  AppConfigRecorder can dump/restore.
+(See that file for the list.) There is also a general purpose command type
+in the form of (*argc, *argv[]) that can be dumped/restored. See FrameExample/
+CommandExample.hh, .cc for implementing this type of command. List  commands 
+can also be dumped/restored. See BetaP/BtaBdbLoader.hh, .cc for an example.
+Users are responsible to restore their commands in restoreState member 
+function. This is usually done by calling the handle member function in
+the command.

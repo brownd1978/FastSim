@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    PacBabarEmc
+    Created by David Brown on 2009-01-07.
+    Copyright (c) 2009 __LBNL__. All rights reserved.
+-->
+<edml>
+    <config>
+        <sect name="PacEmcGeom">
+	    <!-- singal shape and integral window -->
+	    <param name="signalShapePar" type="vector_double">        0.1e-6,  1e-6,  0.01e-6 </param>
+	    <param name="signalWindowTLow" type="vector_double">     -0.1e-6, -1e-6, -0.01e-6 </param>
+	    <param name="signalWindowTHigh" type="vector_double">     0.1e-6,  1e-6,  0.01e-6 </param>
+	    <param name="backgroundWindowTLow" type="vector_double"> -0.25e-6, -2.5e-6, -0.025e-6 </param>
+        </sect>
+    </config>
+</edml>

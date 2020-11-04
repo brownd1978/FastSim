@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+        <config>
+            <sect name="DetectorVolume">
+                <param name="rmax"    type="float"        >  320</param>
+                <param name="zmin"   type="float"         > -300</param>
+                <param name="zmax"    type="float"         >  380</param>
+            </sect>
+        </config>
+    </included>
+</edml>

@@ -1,0 +1,31 @@
+$Id$
+
+History of TrkGeom
+------------------
+
+(most recent first)
+
+2010-01-15 Roberto Stroili
+  o split code in src and include directories
+
+2007-09-04 Igor Gaponenko V00-04-06
+  o Get rid of the "friendship" for the obsolete class TrkPassiveCdbR
+
+2006-09-14 Andy salnikov V00-04-05
+  o Adding more friends to data classes for ROOT persistency
+  o fixed memory leak in TrkSvtSLayoutT destructor
+
+2006-08-19 Andy Salnikov V00-04-04
+  o Bug fix in TrkTimeOffset, copy&paste error, forgot to remove base 
+    class from it which was BdbObject
+
+2006-08-15 Andy Salnikov V00-04-03
+  o Added new class TrkTimeOffset which is a transient format for 
+    persistent TrkGeomP/TrkTimeOffsetP.
+
+2004-12-14  Rainer Bartoldus  V00-04-01
+  o Change from std::list<DetElem*> to DetElemList to follow interface
+    change in DetectorModel.
+  o Remove a stray "rscid" static.
+  o Correct link files.
+  o Start History file.

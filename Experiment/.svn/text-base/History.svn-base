@@ -1,0 +1,21 @@
+History file for Experiment package
+
+$Id$
+
+2010.01.14 stroili
+	split code in src and include directories
+
+2004.05.07 gpdf	V00-00-03
+	Change original decision that this package should not generate a
+	library.  Now provides a dummy library to maintain the general
+	structural standard that every package must provide a library.  It
+	will be an acceptable optimization to arrange that this library
+	does not appear in any link.  Added a History file and dollar-Id
+	lines where missing.
+	(Is this all too silly?  The proverbial hobgoblin of foolish 
+	consistency?)
+	[Experiment.hh README link_Experiment.mk; new: History GNUmakefile
+	 dummyExperiment.cc]
+
+[2000.01.23 jake V00-00-02]    [gpdf: never deployed]
+	[added link_Experiment.mk file]

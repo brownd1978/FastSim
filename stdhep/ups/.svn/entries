@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="219"
+   name=""
+   committed-date="2009-03-02T18:28:11.676294Z"
+   url="https://sbrepo.pd.infn.it:8910/Generators/stdhep/tags/V00-01-05/ups"
+   last-author="stroili"
+   kind="dir"
+   uuid="7b731e25-c66e-4470-8c2d-112e6345f304"
+   revision="886"/>
+<entry
+   committed-rev="219"
+   name="unsetup.csh"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="a05845e07826527af4634dc3f58bf3fc"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:47.000000Z"/>
+<entry
+   committed-rev="219"
+   name="setup.sh"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="9e5b11e7d85526d533e3e4e4638e25e4"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:47.000000Z"/>
+<entry
+   committed-rev="219"
+   name="setup.csh"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="dd4c999124af3da486d99723c4e79c88"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:47.000000Z"/>
+<entry
+   committed-rev="219"
+   name="unsetup.sh"
+   text-time="2011-04-27T18:42:48.000000Z"
+   committed-date="2009-03-02T18:28:11.676294Z"
+   checksum="6d273d63358bf07e080d40d1bb6c6625"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:42:47.000000Z"/>
+<entry
+   name="toInfo"
+   kind="dir"/>
+</wc-entries>

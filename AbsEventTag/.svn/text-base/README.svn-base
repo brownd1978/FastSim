@@ -1,0 +1,15 @@
+//------------------------------------------------------------------------
+//
+//      AbsEventTag/README
+//
+//      $Id$
+//
+//------------------------------------------------------------------------
+
+This package contains the abstract event tag. The use of this tag
+is described in "The BaBar Event Query Tag User's Guide" at
+
+http://www.slac.stanford.edu/BFROOT/doc/Computing/Databases/Event/Docs/BdbEventTagUsersGuide.html
+
+The package coordinator is David Quarrie <quarrie@slac.stanford.edu>.
+

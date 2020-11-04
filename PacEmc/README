@@ -1,0 +1,50 @@
+This package contains the classes used to describe the EM calorimeter used in
+PACRAT.
+
+
+o  PacEmcModel:
+
+    Read the config file to set up Emc geometry, including the radius
+    and the segmentation in theta and phi.
+
+o  PacEmcDigi and PacEmcCluster
+
+     - To take the role of EmcDigi and EmcCluster in Babar
+         (simplified, without calibration, data-flow info, etc)
+
+     - Often-used moment calculations are imported too, and can be
+       accessed to through PacEmcCluster.
+
+     - PacEmcDigi uses PacEmcModel to translate index to real coordinates.
+
+o  PacEmcClusterEnergySums and PacEmcXClMoments
+
+    - Calcuate shape variables.
+
+o  PacReconstructEmc
+
+   -  Contains a method returning a PacEmcCluster
+    PacEmcCluster *PacReconstructEmc::makeEmcCluster(const PacSimTrack *simtrk)
+
+      if simtrk intersects a detector element with 
+
+          measurementType()==PacMeasurement::Calor
+
+      a cluster is created
+
+          pelem->measurement()->createEmcCluster(*ihit,cluster);
+                 -------------
+                  |-> a  PacMeasurement
+
+
+o  PacEmcClusterMeas
+
+     - subclass of PacMeasurement
+
+     - has a method to create a cluster
+  virtual void createEmcCluster(const PacSimHit& hit, PacEmcCluster *cluster) const;
+
+          Currently there is a trivial implementation for photons: 
+             Building a PacEmcCluster with one PacEmcDigi whose energy is
+             exactly equal to incident momentum of PacSimHit.
+

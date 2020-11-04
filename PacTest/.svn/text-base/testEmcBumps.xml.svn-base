@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+ 
+<!--
+This document is a part of the sample experiment description in a format
+which would eventually turn into EDML:
+ 
+  "Experiment Description Markup (or Modelling) Language"
+ 
+Right now we don't have any formal schema for EDML. Therefore
+the current implementation of a EDML parser would check both
+syntax and semantics of the model. Besides, introducing the formal
+XML schema for EDML may  result in some changes in a syntax
+of EDML.
+-->
+ 
+<edml>
+  <config>
+
+    <!-- ROOT file to save results to -->
+    <param name="outputfile" type="string"> testEmcBumps.root</param>
+
+    <!-- Helix parameters -->
+
+    <param name="initpos" type="vector_double"> 0.000 0.0 0.0</param>
+
+    <param name="initpmag1" type="double"> 1.0 </param>
+    <param name="inittheta1" type="double"> 1.75 </param>
+    <param name="initphi1" type="double"> 0.85 </param>
+
+    <param name="initpmag2" type="double"> 0.5 </param>
+    <param name="inittheta2" type="double"> 1.7 </param>
+    <param name="initphi2" type="double"> 0.75 </param>
+
+
+    <!-- particle -->
+    <param name="PdtPdg1" type="long"> 22</param>
+    <param name="PdtPdg2" type="long"> 22</param>
+
+    <!-- initial track fit -->
+    <param name="flightlen" type="double"> 500.</param>
+
+    <!-- Where to find the PDT information -->
+    <param name="pdt_file" type="string"> RELEASE/PDT/pdt.table</param>
+
+
+  </config>
+</edml>

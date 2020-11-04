@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+	<detector>
+	    <volume name="Si_Tracking">
+
+                <!-- Organize the layout in terms of layers.  This guarantees particles from the IP will hit the appropriate detector elements in order.  The order of forward vs backward is arbitrary, since a particle goes either one way or the other -->
+
+                <!-- angular coverage is 300 mrad in forward and backward direction in the 
+		     laboratory frame-->
+                <!-- layer0 Hybrid Pixel solution, according to F. Bosi drawing: 8 modules layout. 
+		    The average radius for the sensor is estimated about 1.60 cm. The amount of material for 
+		     support, cooling and front end chip considers also the overlap between
+		     modules and has been evaluated from the drawing. (radius enlarged to reduce bkg rate NN 07/10/09)
+		  -->
+
+                <!-- Now the BaBar SVT -->
+                
+                <!-- We include the kapton thickness as part of the Si -->
+                 <cyl name="SvtSi" id="1"  zmin="-5.815" zmax="11.168" radius="3.32" thick="0.0366" mat="svt-Silicon" meas="2SideSiInner,SiStripsdEdx" overlap="0.034" />
+                 <!--  The CF ribs are modeled as a cylinder with gaps.  The thickness is set to the effective
+                 thickness seen by a radial track, and the gap is adjusted so that the total amount of material
+                 traversed on average is correct. -->
+                 <cyl name="SvtCF" id="1" zmin="-5.815" zmax="11.168" radius="3.7" thick="0.1" mat="svt-CFiber" gap="0.864" />
+                 <cyl name="SvtSi" id="2" zmin="-7.027" zmax="11.168" radius="4.02" thick="0.0366" mat="svt-Silicon" meas="2SideSiInner,SiStripsdEdx" overlap="0.024" />
+                 <cyl name="SvtCF" id="2" zmin="-7.027" zmax="11.168" radius="4.84" thick="0.1" mat="svt-CFiber" gap="0.736" />
+                 <cyl name="SvtSi" id="3" zmin="-10.3185" zmax="16.263" radius="5.92" thick="0.0366" mat="svt-Silicon" meas="2SideSiLayer3,SiStripsdEdx" overlap="0.015" />
+                 <cyl name="SvtCF" id="3" zmin="-10.3185" zmax="16.263" radius="5.92" thick="0.1" mat="svt-CFiber" gap="0.778" />
+                 <!-- layers 4 and 5 have barrel and lampshade parts.  lampshades are modeled as cones -->
+                 <cyl name="SvtSi" id="4" zmin="-10.056" zmax="18.946" radius="12.22" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.048" />
+                 <cyl name="SvtCF" id="4" zmin="-10.056" zmax="18.946" radius="12.92" thick="0.3" mat="svt-CFiber" gap="0.945" />
+
+                 <cone name="SvtSiFwd" id="4" rho1="12.22" z1="18.966" rho2="9.03" z2="24.96" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.02" />
+                 <cone name="SvtCFFwd" id="4" rho1="12.92" z1="18.966" rho2="9.73" z2="24.96" thick="0.3" mat="svt-CFiber" gap="0.945" />
+
+                 <cone name="SvtSiBwd" id="4" rho1="9.14" z1="-16.126" rho2="12.22" z2="-10.076" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.02" />
+                 <cone name="SvtCFBwd" id="4" rho1="9.84" z1="-16.126" rho2="12.92" z2="-10.076" thick="0.3" mat="svt-CFiber" gap="0.945" />
+
+
+                 <cyl name="SvtSi" id="5" zmin="-14.397" zmax="25.516" radius="14.22" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.02" />
+                 <cyl name="SvtCF" id="5" zmin="-14.397" zmax="25.516" radius="14.92" thick="0.3" mat="svt-CFiber" gap="0.947" />    
+
+                 <cone name="SvtSiFwd" id="5" rho1="14.22" z1="25.536" rho2="11.46" z2="31.736" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.01" />
+                 <cone name="SvtCFFwd" id="5" rho1="14.92" z1="25.536" rho2="12.16" z2="31.736" thick="0.3" mat="svt-CFiber" gap="0.947" />
+
+                 <cone name="SvtSiBwd" id="5" rho1="11.79" z1="-20.757" rho2="14.22" z2="-14.417" thick="0.0366" mat="svt-Silicon" meas="2SideSiOuter,SiStripsdEdx" overlap="0.01" />
+                 <cone name="SvtCFBwd" id="5" rho1="12.49" z1="-20.757" rho2="14.92" z2="-14.417" thick="0.3" mat="svt-CFiber" gap="0.947" />              
+                
+    	    </volume>
+	</detector>
+	<!-- voxel parameter config section must have the same section name as the volume -->
+    <config>
+        <sect name="Si_Tracking">
+            <param name="rbounds"    type="vector"        >
+                3.0 3.5 3.8 4.5 5.0 6.0 8.0 9.0 10.0 11.0 12.0 12.5 13.5 14.5 15 </param>
+            <!-- no phi segmentation needed, as all elements are perfectly cylindrical -->
+            <param name="nphivoxels"    type="vector"         >  1 1 1 1 1 1 1 1 1 1 1 1 1 1 </param>
+            <param name="zbounds"   type="vector"         >  -30 -20 -13 -6 6 13 25 30   </param>            
+        </sect>
+    </config>
+    </included>
+</edml>

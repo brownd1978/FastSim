@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="600"
+   name=""
+   committed-date="2010-06-21T07:46:30.602827Z"
+   url="https://sbrepo.pd.infn.it:8910/Tools/CLHEP/tags/V00-01-05/src/String"
+   last-author="stroili"
+   kind="dir"
+   uuid="03b460ae-468b-4fc1-b513-ef89764f6eec"
+   revision="746"/>
+<entry
+   committed-rev="600"
+   name="CmdLine.cc"
+   text-time="2011-04-27T19:05:09.000000Z"
+   committed-date="2010-06-21T07:46:30.602827Z"
+   checksum="e818d60fbfa5fb6b386d8645330b4335"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:09.000000Z"/>
+<entry
+   committed-rev="192"
+   name="CmdArg.cc"
+   text-time="2011-04-27T19:05:09.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="ef603b29713546b4eaef1fa968ec0875"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:09.000000Z"/>
+<entry
+   committed-rev="192"
+   name="Makefile.in"
+   text-time="2011-04-27T19:05:09.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="5181e83ca3f15b18cb2e79394b11b574"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:09.000000Z"/>
+<entry
+   committed-rev="192"
+   name="GNUmakefile"
+   text-time="2011-04-27T19:05:09.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="96e3d3a5293a5d405c0127ad21dabc03"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:09.000000Z"/>
+<entry
+   committed-rev="192"
+   name="Makefile"
+   text-time="2011-04-27T19:05:09.000000Z"
+   committed-date="2009-03-04T12:20:53.222653Z"
+   checksum="f72fbed8d0578df91d01bb60e7016d39"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:09.000000Z"/>
+<entry
+   committed-rev="600"
+   name="Strings.cc"
+   text-time="2011-04-27T19:05:09.000000Z"
+   committed-date="2010-06-21T07:46:30.602827Z"
+   checksum="02058e9af3d7d8668d7cdd1f78c0bd3d"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T19:05:09.000000Z"/>
+</wc-entries>

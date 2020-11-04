@@ -1,0 +1,50 @@
+AbsEnv package
+Coordinator: Stephen J. Gowdy
+
+Contains the "Reconstruction Environment", which is used by various
+reconstruction modules to obtain what they need re histogramming support,
+calibration access, etc.
+
+Depends on:
+  BaBar, ProxyDict and RogueWave
+
+Depended on by:
+  FrameExample for ParmExample files
+  GenEnv EmcEnv SvtEnv TrkEnv IfrEnv DrcEnv DchEnv PepEnv
+	.. and almost everyone else.
+
+
+Base Classes:
+  AbsEnv   -  root class of the "environment" tree used by reconstruction
+              modules to find geometry, constants, etc.
+
+  AbsDetEnv - Abstract detector environment
+  AbsDetIndex - Abstract detector index
+  AbsDetIndexFactory - this can be used to make AbsDetIndexs (this is abstract)
+  AbsDetStructure - hold the list of AbsDetIndexs for a AbsDetEnv and
+			answers questions about them (this is mostly abstract)
+  AbsDetStructureIterator - iterators over itsChannels of AbsDetStructure
+  AbsConcreteIndexFactory - will do a simple construction
+  AbsEnvDataHolder - an abstract dataholder for use in the environment
+  ThreeCoordIndex - a three coord index (implementation of AbsDetIndex)
+  TwoCoordIndex - a two coord index (implementation of AbsDetIndex)
+
+
+The following are now in Framework
+  AbsParm  -  used by modules to obtain and access parameter values
+              (See also ParmExample in FrameExample/)
+  AbsParmDouble - To hold a "double" parameter
+  AbsParmBool   - To hold a "bool" parameter
+  AbsParmFilename - To hold a "filename", which is a string that
+                    is converted to a pathname by searching for a 
+                    file.
+  AbsParmGeneral - To hold a templated class as a parameter. Must be
+		    able to be read from a stream using >>.
+  AbsParmIfdStrKey - To hold a secondary key for accesing the Event.
+		     This is an IfdStrKey that is produced from a
+		     string read in through Tcl.
+
+
+History: Now in History file...
+
+

@@ -1,0 +1,266 @@
+// -*- C++ -*-
+// $Id: AList.icc,v 1.15 2008/04/17 18:41:53 fransham Exp $
+//
+// This file is a part of what might become the CLHEP -
+// a Class Library for High Energy Physics.
+// 
+// This is the definitions of the inline member functions of the
+// HepAList class
+//
+
+template <class T>
+inline HepAList<T>::HepAList() {}
+
+template <class T>
+inline HepAList<T>::~HepAList() {}
+
+template <class T>
+inline HepAList<T>::HepAList(const HepAList<T> & l) 
+: HepAListBase(l) {}
+
+template <class T>
+inline void HepAList<T>::insert(T * e) {
+  HepAListBase::insert(e);
+}
+
+template <class T>
+inline void HepAList<T>::insert(T & e) {
+  HepAListBase::insert(&e);
+}
+
+template <class T>
+inline void HepAList<T>::insert(T * e, T * r) {
+  HepAListBase::insert(e, r);
+}
+
+template <class T>
+inline void HepAList<T>::insert(T & e, T & r) {
+  HepAListBase::insert(&e, &r);
+}
+
+template <class T>
+inline void HepAList<T>::insert(T * e, unsigned pos) {
+  HepAListBase::insert(e, pos);
+}
+
+template <class T>
+inline void HepAList<T>::insert(T & e, unsigned pos) {
+  HepAListBase::insert(&e, pos);
+}
+
+template <class T>
+inline void HepAList<T>::append(T * e) {
+  HepAListBase::append(e);
+}
+
+template <class T>
+inline void HepAList<T>::append(T & e) {
+  HepAListBase::append(&e);
+}
+
+template <class T>
+inline void HepAList<T>::operator += (T * e) {
+  HepAListBase::append(e);
+}
+
+template <class T>
+inline void HepAList<T>::operator += (T & e) {
+  HepAListBase::append(&e);
+}
+
+template <class T>
+inline void HepAList<T>::append(T * e, T * r) {
+  HepAListBase::append(e, r);
+}
+
+template <class T>
+inline void HepAList<T>::append(T & e, T & r) {
+  HepAListBase::append(&e, &r);
+}
+
+template <class T>
+inline void HepAList<T>::append(const HepAList<T> & l) {
+  HepAListBase::append(l);
+}
+
+template <class T>
+inline void HepAList<T>::operator += (const HepAList<T> & l) {
+  HepAListBase::append(l);
+}
+
+template <class T>
+inline void HepAList<T>::remove(const T * e) {
+  HepAListBase::remove(e);
+}
+
+template <class T>
+inline void HepAList<T>::remove(const T & e) {
+  HepAListBase::remove(&e);
+}
+
+template <class T>
+inline void HepAList<T>::remove(unsigned i) {
+  HepAListBase::remove(i);
+}
+
+template <class T>
+inline void HepAList<T>::remove(const HepAList<T> & l) {
+  HepAListBase::remove(l);
+}
+
+template <class T>
+inline bool HepAList<T>::member(const T * e) const {
+  return HepAListBase::hasMember(e);
+}
+
+template <class T>
+inline bool HepAList<T>::member(const T & e) const {
+  return HepAListBase::hasMember(&e);
+}
+
+template <class T>
+inline bool HepAList<T>::hasMember(const T * e) const {
+  return HepAListBase::hasMember(e);
+}
+
+template <class T>
+inline bool HepAList<T>::hasMember(const T & e) const {
+  return HepAListBase::hasMember(&e);
+}
+
+template <class T>
+inline void HepAList<T>::replace(T * eo, T * en) {
+  HepAListBase::replace(eo, en);
+}
+
+template <class T>
+inline void HepAList<T>::replace(T & eo, T & en) {
+  HepAListBase::replace(&eo, &en);
+}
+
+template <class T>
+inline T * HepAList<T>::operator[] (unsigned i) const {
+  return (T *) HepAListBase::operator[](i);
+}
+
+template <class T>
+inline int HepAList<T>::index(const T * e) const {
+  return HepAListBase::index(e);
+}
+
+template <class T>
+inline int HepAList<T>::index(const T & e) const {
+  return HepAListBase::index(&e);
+}
+
+template <class T>
+inline int HepAList<T>::fIndex(const T * e) const {
+  return HepAListBase::fIndex(e);
+}
+
+template <class T>
+inline int HepAList<T>::fIndex(const T & e) const {
+  return HepAListBase::fIndex(&e);
+}
+
+template <class T>
+inline T * HepAList<T>::first() const {
+  return (T *) HepAListBase::first();
+}
+
+template <class T>
+inline T * HepAList<T>::last() const {
+  return (T *) HepAListBase::last();
+}
+
+template <class T>
+inline void HepAList<T>::operator = (const HepAList<T> & l) {
+  HepAListBase::operator=(l);
+}
+
+template <class T>
+inline void HepAList<T>::sort(int (*func)(const T **, const T **) ) {
+   qsort( p, n, sizeof(void *), (compare_function *)func);
+}
+
+
+// template <class T>
+// inline void HepAList<T>::deleteAll() {
+//   T * e;
+//   while ( e = last() ) {
+//     remove(e);
+//     delete e;
+//   }
+// }
+template <class T>
+inline void AListSort(HepAList<T> &l)
+{
+  int len = l.length();
+  for(int in = len/2; in>=0; in--){
+    AListHeapify(l,in,len-1);
+  }
+  for(int end = len-1; end>0; --end){
+    l.swap(0,end);
+    AListHeapify(l, 0, end-1);
+  }
+}
+
+//  OLD (SLOW) IMPLEMENTATION:
+//template <class T>
+//inline void AListSort(HepAList<T> &l)
+//{
+//  if(l.length()>1){
+//      unsigned int i, j;
+//   
+//      for (i=l.length()-1; i>=1; i--) {
+//         for (j=0; j<i; j++) {
+//           if ( *(l[j]) > (*l[j+1]) ) l.swap(j,j+1);
+// Yes it's slower. But it does not have to be a friend.
+//           {
+//              T *tmp = (T *)l.p[j];
+//              l.p[j] = (T *)l.p[j+1];
+//              l.p[j+1] = (T *)tmp;
+//           }
+//         }
+//      }
+//   }
+//  }
+
+template <class T>
+inline void AListHeapify(HepAList<T> &l, int node, int end)
+{
+  if(2*node+1 > end) return;
+  int child;
+  if(2*node+2 > end){ 
+    child = 2*node+1;
+  }else{
+    ( *l[2*node+2] > *l[2*node+1] )?(child = 2*node+2):(child=2*node+1);  
+  }
+  if( *l[child] > *l[node] ){
+    l.swap(child, node);
+    AListHeapify(l,child, end);
+  }
+}
+
+
+
+
+template <class T>
+inline void AListReverseSort(HepAList<T> &l)
+{
+   if (l.length()>1) {
+      unsigned int i, j;
+   
+      for (i=l.length()-1; i>=1; i--) {
+         for (j=0; j<i; j++) {
+           if ( (*l[j]) < *(l[j+1]) ) l.swap(j,j+1);
+// Yes it's slower. But it does not have to be a friend.
+//       {
+//          T *tmp = (T *)l.p[j];
+//          l.p[j] = (T *)l.p[j+1];
+//          l.p[j+1] = (T *)tmp;
+//       };
+         }
+      }
+   }
+}

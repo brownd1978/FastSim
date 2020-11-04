@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+    <included>
+        <detector>
+            <volume name="Calorimeter Region" zshift="-10"> 
+                <include file="PacEmc/EmcDetBarrel_SuperB.xml" />
+                <include file="PacEmc/EmcDetFwd_SuperB.xml" /> 
+            </volume>
+        </detector>
+    </included>
+</edml>

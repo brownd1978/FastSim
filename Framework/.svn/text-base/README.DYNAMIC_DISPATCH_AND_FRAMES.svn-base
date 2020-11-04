@@ -1,0 +1,204 @@
+PRELIMINARY PRELIMINARY PRELIMINARY PRELIMINARY PRELIMINARY PRELIMINARY 
+
+
+Dynamic Dispatch and Frames
+---------------------------
+
+Version 0.2 (6/24/98) Reflecting the Fermilab June 15-17 '98 Agreement
+                      on Frames between Bob Jacobsen, Marjorie Shapiro, 
+                      Liz Sexton-Kennedy and Marc Turcotte.
+                      
+Marc Turcotte
+University of Texas at Dallas HEP/BaBar Experiment
+turcotte@utdallas.edu
+
+Introduction
+------------
+
+Enhancements are being made to Framework. This is a result of an ongoing 
+infrastructure-level collaboration between CDF, CLEO and BaBar. This short
+note decribes the related areas of dynamic dispatch and frames which were
+originally implemented in close collaboration with CLEO. Dynamic dispatch 
+refers to the ability of the user to bind a target module member function 
+to a particular type of stop and to affect the dispatch dynamically. The 
+available (implemented) stop types are defined in the class AppStopType. 
+Data appears in AppRecords (which can be identical to AbsEvent) on an 
+AppStream. Therefore, a stop is defined in AppStop as comprised of an 
+AppRecord, an AppStopType and an AppStream. A frame is a sync of many 
+streams: a collection of stops. A frame provider module generates the 
+frames according to criteria set by a user. Consumer modules just process 
+frames.
+
+The following figure clarifies key concepts:
+
+
+
+                              +--------+
+                              |        |
+AppStream #1 |---------[]-----|---[]---|-----[]-----[]-------...
+AppStream #2 |-----[]-----[]--|--[]----|--[]-----[]-----[]---...
+...                           |        |
+AppStream N  |----------------|-----[]-|---------------------...
+                              |        |
+                              +--------+
+                              AppFrame
+                                                           
+Figure 1
+--------
+Data appears on many streams. A sync in imposed on the appearance
+of a AppStopType of a particular type. The AppFrame collects the
+AppStops that are available at that time. Each stop has a record,
+a stop type and a stream. The width of the frame is a parameter of 
+the provider mechanism.
+
+
+
+In Figure 1, each [] corresponds to an AppStop which carries its
+AppRecord, AppStopType and AppStream. The AppFrame, the frame,
+is just the result of a particular sync.            
+
+Binding for Dynamic Dispatch
+----------------------------
+
+Binding for dynamic dispatch is done in the constructor of the 
+user module. The FrameExample/UserDynamicDispatch.hh and .cc 
+provides an example. First, a binder object is created:
+
+  AppBinder<UserDynamicDispatchExample>* myAppBinder = 
+  new AppBinder<UserDynamicDispatchExample>;           
+
+and later used:
+
+  myAppBinder->bind(AppStopType(AppStopType::level1_accept), 
+               &UserDynamicDispatchExample::myLevel1AcceptMemberFunction, 
+               this, theFramework);    
+                                          
+and then discarted:
+
+  delete myAppBinder; // toss binder out     
+
+This has the effect of making an entry in the dynamic dispatch
+table of the base class AppModule for the member function called
+"myLevel1AcceptMemberFunction". The entry is a binding to the
+AppStopType::level1_accept. For this mechanism to work, the user
+member function _must_ implement the signature and return type:
+
+  AppResult myLevel1AcceptMemberFunction(AppFrame* aFrame);
+
+where the name "myLevel1AcceptMemberFunction" is, however, arbitrary.
+
+There can be any number of binding entries made. Note that the user
+does _not_ need to implement any of the traditional begin/end/event 
+member functions. See the example for more details.
+
+Dynamic Dispatch
+----------------
+
+The Framework can be used (by setting the parameter "enableFrames" to 
+true, from the tcl command line) to dispatch any frame provided to it 
+according to the contents of the dispatch table of any user module. The 
+Framework knows nothing of the actual frame contents or internal structure.
+Framework can move arbitrary frames.
+
+The actual dispatch is done (internally) by the 
+
+  AppResult AppModule::frame(AppFrame* aFrame, 
+                             AppStopType& theDispatchStopType)
+
+member function. Note that for a consumer type of module, the user
+does _not_ have to implement this function; it is built-in the Framework.
+The dispatch stop type argument tells the framework where to target
+the frame.
+
+Frame Consumer/Provider Modules
+-------------------------------
+
+As alluded to in the previous paragraphs, modules come in two flavors.
+The consumer flavor fills the dispatch table upon construction and
+the Framework takes care of dispatching AppFrames to the correct
+targets according to whether the frame contains the AppStopType proper 
+to the binding. Evidently, frames must enter the system somehow. They
+do so through a frame provider type of module. Because the frame
+provider module must actually return a frame, the frame input is
+done by:
+
+AppResult AppModule::inputFrame(AppFrame*& aFrame,
+                                AppStopType& theDispatchStopType)
+
+Frames can be output from the system using the member function:
+
+AppResult AppModule::outputFrame(AppFrame* aFrame )
+                                 
+Note that it is possible to implement an output module using
+a regular dynamic dispatch target member function of a regular module
+  
+  AppResult AppModule::anyNameYouWant(AppFrame* aFrame) 
+  
+
+Figure 2 illustrates some of the key concepts of provider/consumer
+and execution dyanmics:
+
+
+AppPath/
+AppSequence ...-------+---------------+--...--+--------------+---...
+                      |  InputModule  |       |    module    |
+                      +---------------+       +--------------+
+                      |               |       |              |
+                      |inputFrame(...)|       |  frame(...)  |     
+                      |               |       |       \ \ \  |     
+                      +---------------+       +--------\-\-\-+     
+                     /       ^                       ^  . . \ C
+                  s /        |                       |   . . \ o
+                 e /         |                       |        \ n
+                d |  +----------------+       +--------------+ \ s
+                i |  | frame          |       | frame        |  \ u
+                v |  |    provider    |       |   consumer   |   \ m
+                o |  |        module  |       |       module |    \ e
+                r |  +----------------+       +--------------+     | s
+                P |  |                |       |   binding1   | <...|            
+                  |_ |inputFrame(...) |       |   binding2   | <...| 
+                     |                |       |              |     .
+                     +----------------+       |     ...      |     .
+                                              |              |     .
+                                              |   bindingN   | <...|
+                                              +--------------+
+
+Figure 2
+
+Two flavors of modules are shown. A provider module overrides
+the AppResult AppModule::inputFrame(AppFrame*& aFrame) member function 
+to implement a mechanism to provide a frame. A consumer module
+just provides delivery points (bindings) for a frame. The signature
+of the delivery point is:
+
+Output modules output frames through:
+  AppResult AppModule::outputFrame(AppFrame* aFrame)
+or through the regular:
+  AppResult AppModule::anyNameYouWant(AppFrame* aFrame)
+and are not shown on the figure.
+
+A Simple Example 
+----------------
+
+The FrameExample/UserDynamicDispatchExample provide a simple implementation.
+It is intented to be used with the script file FrameExample/DDdemo2.tcl.
+The frame provider module, DemoFrameProviderModule, is an example of 
+how a frame provider might be written/perform. In the example, no real 
+data is ever generated/handled. Rather, stop types are generated at 
+random and stops and frames stuffed with them. The implementation uses a
+frame width = 1 but it does not have to. This means that any new AppStopType 
+of a type already seen replaces an old one in the frame. The frame is 
+released when the hard wired sync stop type is seen (e.g. level1_accept). 
+The frame width is a parameter. If set to some higher integer value, 
+such as 2, 3 ..., that many stops of a given stop type would pile up 
+in the frame. This facility was engineered in to allow the user to 
+target a wide (fat?) frame to a module member function. The intent is 
+to give the user the ability to look in one or more records; as many 
+as is needed to do the job.
+
+-marc turcotte
+
+
+PRELIMINARY PRELIMINARY PRELIMINARY PRELIMINARY PRELIMINARY PRELIMINARY 
+
+                 

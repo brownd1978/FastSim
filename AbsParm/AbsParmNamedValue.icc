@@ -1,0 +1,160 @@
+//--------------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AbsParmNamedValue.icc 489 2010-01-13 16:45:39Z stroili $
+//
+// Description:
+//	Templated class AbsParmNamedValue<>
+//
+//      See header for more info
+//
+// Environment:
+//	Software developed for the BaBar Detector at the SLAC B-Factory.
+//
+// Author List:
+//	Michael Kelsey	<kelsey@slac.stanford.edu>
+//
+// Copyright Information:
+//	Copyright (C) 1999	Princeton University
+//------------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+#include "Experiment/Experiment.hh"
+#include "AbsParm/AbsParmNamedValue.hh"
+
+#include <iostream>
+
+#include "BbrStdUtils/String.hh"
+#include "FrameUtil/AbsInterp.hh"
+#include <string>
+using std::string;
+#include <map>
+using std::cout;
+using std::endl;
+using std::ostream;
+
+//-------------------------------
+// Constructors and Destructor --
+//-------------------------------
+
+// NOTE:  Initial value is UNINITIALIZED in constructor
+
+template <class T>
+AbsParmNamedValue<T>::AbsParmNamedValue(const char* const theCommand,
+					AppModule* theTarget)
+  : AbsParm(theCommand, theTarget),
+    _xName(""), _dict(0)
+{
+  _dict = new std::map<std::string,T>();
+}
+
+template <class T>
+AbsParmNamedValue<T>::AbsParmNamedValue(const AbsParmNamedValue& theOther,
+					AppModule* theTarget)
+  : AbsParm(theOther, theTarget)
+  , _x(theOther._x)
+  , _xName(theOther._xName)
+  , _dict(new std::map<std::string,T>(*theOther._dict))
+{
+}
+
+
+template <class T>
+AbsParmNamedValue<T>::~AbsParmNamedValue() {
+  delete _dict;
+}
+
+
+//----------------------------------------
+//-- Public Function Member Definitions --
+//----------------------------------------
+
+// Register name/value pair for TCL interface
+
+template <class T>
+void AbsParmNamedValue<T>::addItem(const std::string& name, const T& value) {
+  (*_dict)[name] = value;
+  if (_dict->size()==1) {		// First value is default
+    _xName = name;
+    _x = value;
+  }
+}
+
+template <class T>
+void AbsParmNamedValue<T>::set(const T& v) 
+{ 
+  // first set the value
+  _x = v; 
+  // now set the name
+  if(_dict)
+    for( typename std::map<std::string, T>::const_iterator it = _dict->begin() ;
+	 it != _dict->end() ; ++it) 
+      if( it->second==_x ) {
+	_xName = it->first ; 
+	break ;
+      }
+}
+
+
+// Output name
+
+template <class T>
+void AbsParmNamedValue<T>::print(ostream& o) const {
+  o << _xName;
+}
+
+template <class T>
+ostream& operator<<(ostream& o, const AbsParmNamedValue<T>& anAbsPS) {
+  anAbsPS.print(o);
+  return o;
+}
+
+//-------------------------------------------
+//-- Protected Function Member Definitions --
+//-------------------------------------------
+
+template <class T>
+int AbsParmNamedValue<T>::setHandler() {
+  if (_argc < 3)      cout << "Need to specify new value" << endl;
+  else if (_argc > 3) cout << "Only one value permitted" << endl;
+  else {
+    T value;
+    const std::string arg(getArgument(2));
+    typename std::map<std::string,T>::iterator iter;
+    if ( (iter = _dict->find(arg)) != _dict->end() ) {
+      value = iter->second;
+      _x = value;
+      _xName = arg;
+    } else {
+      cout << command() << ": " << arg << " invalid.  Please choose from" << endl;
+      for (iter = _dict->begin(); iter != _dict->end(); iter++) {
+	cout << "	" << iter->first << endl;
+      }
+    }
+  }
+  
+  return AbsInterp::OK;
+}
+
+template <class T>
+int AbsParmNamedValue<T>::listHandler() const {
+  cout << "Value of " <<  command() << " for module " << target()->name();
+  cout << ": " << *this << endl;
+  
+  return AbsInterp::OK;
+}
+
+template <class T>
+int  AbsParmNamedValue<T>::getHandler() {
+  return AbsInterp::OK;
+}
+
+template <class T>
+void AbsParmNamedValue<T>::restoreState(char* var[]) {
+  int rval;
+  setArgs(3, var);
+  rval = setHandler();
+}  
+
+
+
+

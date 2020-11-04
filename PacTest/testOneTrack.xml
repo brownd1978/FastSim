@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+This document is a part of the sample experiment description in a format
+which would eventually turn into EDML:
+ 
+  "Experiment Description Markup (or Modelling) Language"
+ 
+Right now we don't have any formal schema for EDML. Therefore
+the current implementation of a EDML parser would check both
+syntax and semantics of the model. Besides, introducing the formal
+XML schema for EDML may  result in some changes in a syntax
+of EDML.
+-->
+
+<edml>
+  <config>
+
+    <param name="displaytrack" type="bool"> true</param>
+    <param name="printtrack" type="bool"> true</param>
+    <param name="printfit" type="bool"> false </param>
+
+    <param name="displayfile" type="string" > testOneTrack.root</param>
+    <param name="displayresolution" type="int" > 200</param>
+
+    <!-- Helix parameters -->
+    <param name="initpos" type="vector_double" >   0 0 0 </param>
+    <param name="initmom" type="vector_double" >  1.0 -1.0 -0.1 </param>
+
+    <!-- mu+ -->
+    <param name="PdtPdg" type="int" > 13</param>
+
+    <!-- initial track fit -->
+    <param name="flightlen" type="double" > 500.</param>
+    
+
+  </config>
+</edml>

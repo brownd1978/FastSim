@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edml>
+   <included>
+
+      <cone name="EmcLSOFwd" id="0" rmin="67.855" rmax="112.737" tantheta="-2.558" zvertex="248.05" thick="20.000000" mat="emc-LSO" meas="Emc" />
+
+    </included>
+</edml>

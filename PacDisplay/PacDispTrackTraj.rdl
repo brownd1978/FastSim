@@ -1,0 +1,25 @@
+#ifndef PacDispTrackTraj_HH
+#define PacDispTrackTraj_HH
+
+#include <stdio.h>
+#include <Rtypes.h>
+#define STRINGSIZE 100
+#include "PacDisplay/PacDispTraj.hh"
+
+struct PacDispTrackTraj : public PacDispTraj {
+  virtual ~PacDispTrackTraj() {;}
+  Int_t pid;
+  Int_t charge;
+  PacDispTrackTraj(): pid(-1),charge(0){}
+  PacDispTrackTraj(Int_t particleid, Int_t trkcharge,
+    Int_t it, Int_t firstpoint, Int_t lastpoint): PacDispTraj(it,firstpoint,lastpoint),pid(particleid),charge(trkcharge){}
+  static const char* rootnames() {
+    static char retval[STRINGSIZE];
+    snprintf(retval,STRINGSIZE,"%s:pid/I:charge/I",PacDispTraj::rootnames());
+    return retval;
+  }
+  ClassDef(PacDispTrackTraj,1)
+};
+
+#endif
+

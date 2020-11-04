@@ -1,0 +1,100 @@
+#!/bin/sh
+
+file=PdtGeant.hh
+file_cc=PdtGeant.cc
+num_1=`wc -l geant.table | awk '{print $1}'`
+num=`expr $num_1 + 1`
+first=`cat geant.table | \
+sed 's/anti-/anti_/' | \
+sed 's/*/_star/' | \
+sed 's/+/_plus/g' | \
+sed 's/-/_minus/g' | \
+sed "s/'/_prime/g" | \
+sed 's/~/_tilde/g' | \
+sed 's/\//_/g' | \
+sed 's/(/_/g' | \
+sed 's/)//g' | \
+awk '{print $1}' |sed 's/ _minus/ -/g' | \
+head -1`
+
+cat << @EOF > $file
+//
+// Do not edit! Automatically generated file
+//
+#ifndef PDTGEANT_HH
+#define PDTGEANT_HH
+#include "PDT/PdtLund.hh"
+
+class PdtGeant
+{
+public:
+  enum GeantType
+  {
+@EOF
+
+cat geant.table | \
+sed 's/anti-/anti_/' | \
+sed 's/*/_star/' | \
+sed 's/+/_plus/g' | \
+sed 's/-/_minus/g' | \
+sed "s/'/_prime/g" | \
+sed 's/~/_tilde/g' | \
+sed 's/\//_/g' | \
+sed 's/(/_/g' | \
+sed 's/)//g' | \
+awk '{print "   ",$1,"=",$2,","}' |sed 's/ _minus/ -/g' >> $file
+
+cat << @EOF >> $file
+    anti_nu_e = 4,
+    nu_mu = 4,
+    anti_nu_mu = 4,
+    nu_tau = 4,
+    anti_nu_tau = 4,
+    null = 0
+  };
+protected:
+  static const GeantType _firstGeantId;
+  static const int _nGeantId;
+  static const PdtLund::LundType _lundId[$num];
+  
+  friend class Pdt;
+};
+
+#endif
+@EOF
+
+cat << @EOF > $file_cc
+//
+// Do not edit! Automatically generated file
+//
+#include "PDT/PdtGeant.hh"
+
+const PdtGeant::GeantType PdtGeant::_firstGeantId = $first;
+
+const int PdtGeant::_nGeantId = $num;
+
+const PdtLund::LundType PdtGeant::_lundId[$num] =
+{
+  PdtLund::null,
+@EOF
+
+cat geant.table | \
+sed 's/anti-/anti_/' | \
+sed 's/*/_star/' | \
+sed 's/+/_plus/g' | \
+sed 's/-/_minus/g' | \
+sed "s/'/_prime/g" | \
+sed 's/~/_tilde/g' | \
+sed 's/\//_/g' | \
+sed 's/(/_/g' | \
+sed 's/)//g' | \
+awk '{print "  PdtLund::"$1","}' |sed 's/ _minus/ -/g' |\
+sed 's/null_.*,/null,/g' >> $file_cc
+
+cat << @EOF >> $file_cc
+};
+@EOF
+
+
+
+

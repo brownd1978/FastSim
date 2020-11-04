@@ -1,0 +1,66 @@
+// -*- C++ -*-
+// $Id: Combiner.icc,v 1.11 2005/11/24 01:06:44 dwright Exp $
+//
+// This file is a part of what might become the CLHEP -
+// a Class Library for High Energy Physics.
+// 
+// This is the definitions of the inline member functions of the
+// HepCombiner class
+//
+
+template <class TYPE>
+inline HepCombiner<TYPE>::HepCombiner(HepAList<TYPE> *l1, HepAList<TYPE> *l2,
+				      HepAList<TYPE> *l3, HepAList<TYPE> *l4, 
+				      HepAList<TYPE> *l5, HepAList<TYPE> *l6)
+   : HepChooser<TYPE>(l1,l2,l3,l4,l5,l6), currObj(0) 
+{}
+
+template <class TYPE>
+inline HepCombiner<TYPE>::HepCombiner(HepAList< HepAList<TYPE> > &ll)
+   : HepChooser<TYPE>(ll), currObj(0) 
+{}
+
+template <class TYPE>
+inline HepCombiner<TYPE>::~HepCombiner() {
+  delete currObj;
+}
+
+template <class TYPE>
+inline TYPE * HepCombiner<TYPE>::next() {
+  if (HepCombiner<TYPE>::done) {
+    return 0;
+  }else{
+    if (currObj) {
+      delete currObj;
+      currObj = 0;
+    }
+
+    HepAList<TYPE> *lst = HepChooser<TYPE>::next();
+    if (!lst) {
+      return 0;
+    }else if (HepCombiner<TYPE>::nlists == 1) {
+      return (*lst)[0];
+    }else{
+      currObj = combine(lst);
+      return currObj;
+    }
+  }
+}
+
+template <class TYPE>
+inline TYPE * HepCombiner<TYPE>::operator() () {
+  return next();
+}
+
+template <class TYPE>
+inline TYPE * HepCombiner<TYPE>::combine(const HepAList<TYPE> *l) {
+  TYPE *t = new TYPE;
+  HepAListIterator<TYPE> i(*l);
+  TYPE *p;
+  while ( p=i() ) {
+    *t += *p;
+    t->addChild(p);
+  }
+  return t;
+}
+    

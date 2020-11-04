@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="172"
+   name=""
+   committed-date="2011-04-11T19:53:02.241827Z"
+   url="https://sbrepo.pd.infn.it:8910/Trk/KalmanTrack/trunk"
+   last-author="brownd"
+   kind="dir"
+   uuid="d2f80444-6bfe-4292-bdcb-35731a61be00"
+   revision="172"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="107"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:43:37.000000Z"
+   committed-date="2010-01-21T09:12:24.986130Z"
+   checksum="dbc8831f6a28f9188ed44a02eed2ab4a"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:43:34.000000Z"/>
+<entry
+   committed-rev="161"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:43:37.000000Z"
+   committed-date="2010-11-25T16:06:21.924342Z"
+   checksum="1b5bffc53ee11c3415638704f43ff1c0"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:43:37.000000Z"/>
+<entry
+   committed-rev="71"
+   name="README"
+   text-time="2011-04-27T18:43:37.000000Z"
+   committed-date="2008-09-08T22:23:52.230651Z"
+   checksum="7f46b6f7e1af21435fe5e879746a9efe"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:43:37.000000Z"/>
+</wc-entries>

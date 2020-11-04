@@ -1,0 +1,45 @@
+This package defines the transient representation of the general 
+tracking system features (beampipe and support tube) as used in reconstruction.
+
+
+History:
+
+02 Jan 2003 David Norvil Brown (V00-01-12)
+	Add a #include of tpslist.h to TrkPassive.hh to restore 
+	compilation in downstream package TrkGeomP.
+
+30 Dec 2002 David Norvil Brown (V00-01-11)
+	Propagated last of the DetectorModel RW migrations.  This mostly
+	affects classes derived from DetType and DetElem, where numerous
+	Rw lists, vectors, strings, and booleans were migrated to std 
+	versions.  
+
+16 Dec 2002 David Norvil Brown (V00-01-10)
+	Propagated RW migration in DetectorModel.
+
+10 Aug 2001 Johan Blouw (V00-00-04)
+	Committed changes by Dave Brown and Johan Blouw to optimize
+	description of support tube and svt shields. 
+
+7 Aug 2001, Johan Blouw (V00-00-034
+	Both the Support Tube and the Svt shields are now coded in a way
+	similar to the beampipe. TrkPassive has been updated accordingly.
+	Two new classes have been introduced: TrkSTLayout and TrkSvtSLayout
+	for the support tube and the svt shields, respectively.
+	Note that the geometry descriptions are on TrkSvtSLayout.dat and 
+	TrkSTLayout.dat. Inconsitencies with ErrLogger have been removed.
+	(The ErrMsg routine requires to use of endmsg instead of endl.)
+
+20 July 2001, Johan Blouw (V00-00-03)
+	Committed changes to TrkBPLayout.dat and TrkBPType concerning
+	the geometry of the beampipe (now 4 sections, see BAD 106) and
+	some extra output from TrkBPType.
+
+12 July 2001, Johan Blouw (V00-00-02)
+	Committed changes made by Dave N. Brown to allow for
+	beampipe consisting of multiple parts.
+
+12 July 2001, Johan Blouw (V00-00-01)
+	Dave Brown and Johan Blouw instantiated package. It provides
+    	TrkEnv with the geometry of the beampipe and support tube.
+	TrkGeom follows the SvtGeom example.

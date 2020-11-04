@@ -1,0 +1,13 @@
+README for Experiment package
+
+$Id: README 225 2009-03-04 07:59:13Z stroili $
+
+BaBar and CDF are sharing code, but have different environments, compilers,
+etc.  In BaBar, we originally were using the BaBar/BaBar.hh header to cope
+with this.  Code shared with CDF is having this changed to Experiment.hh,
+which at BaBar is equivalent.
+
+This package is not meant to generate a useful library.
+
+Package Coordinator: Bob Jacobsen
+

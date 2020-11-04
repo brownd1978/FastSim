@@ -1,0 +1,7 @@
+
+Parameter labels:
+    - P_1 = d_0: tranverse distance from origin at point of closest approach
+    - P_2 = phi_0: angle of trajectory in tranverse plane at the point of closest approach
+    - P_3 = omega: transverse curvature
+    - P_4 = z_0: z-component at point of closest approach
+    - P_5 = tan lambda: pitch of helix

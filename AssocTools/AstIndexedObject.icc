@@ -1,0 +1,38 @@
+//-------------------------------------------------------------------
+// File and Version Information:
+// 	$Id: AstIndexedObject.icc 436 2010-01-13 16:51:56Z stroili $
+//
+// Description:
+//      Simple class to hold an object and its index (in a vector
+//      for example) in the same class
+//   
+// Author List:
+//      Phil Strother               March 2000
+//
+//-------------------------------------------------------------------
+#include "BaBar/BaBar.hh"
+
+//-----------------------
+// This Class's Header --
+//-----------------------
+#include "AssocTools/AstIndexedObject.hh"
+
+
+template<class T>
+AstIndexedObject<T>::AstIndexedObject(int anInt, T*aT){
+  _myInt = anInt;
+  _myT = aT;
+}
+
+//--------------
+// Destructor --
+//--------------
+template<class T>
+AstIndexedObject<T>::~AstIndexedObject()
+{}
+
+template<class T>
+bool
+AstIndexedObject<T>::operator==(const AstIndexedObject<T> &other) const{
+  return ( (other._myInt == _myInt) && (other._myT == _myT) );
+}

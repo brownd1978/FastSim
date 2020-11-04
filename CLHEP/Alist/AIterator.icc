@@ -1,0 +1,41 @@
+// -*- C++ -*-
+// $Id: AIterator.icc,v 1.11 2005/11/24 00:32:08 dwright Exp $ 
+//
+// This file is a part of what might become the CLHEP -
+// a Class Library for High Energy Physics.
+// 
+// This is the definitions of the inline member functions of the
+// HepAListIterator class
+//
+
+template <class T>
+inline HepAListIterator<T>::HepAListIterator(const HepAList<T> & li)
+: HepAListIteratorBase(li) {}
+
+template <class T>
+inline HepAListIterator<T>::
+HepAListIterator(const HepAListIterator<T> & li)
+: HepAListIteratorBase(li) {}
+
+template <class T>
+inline HepAListIterator<T>::~HepAListIterator() {}
+
+template <class T>
+inline T * HepAListIterator<T>::operator () () {
+  return (T *) HepAListIteratorBase::next();
+}
+
+template <class T>
+inline T * HepAListIterator<T>::next() {
+  return (T *) HepAListIteratorBase::next();
+}
+
+template <class T>
+inline T * HepAListIterator<T>::prev() {
+  return (T *) HepAListIteratorBase::prev();
+}
+
+template <class T>
+inline T * HepAListIterator<T>::current() const {
+  return (T *) HepAListIteratorBase::current();
+}

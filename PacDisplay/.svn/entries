@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2642"
+   name=""
+   committed-date="2011-04-27T01:46:02.404528Z"
+   url="https://sbrepo.pd.infn.it:8910/PACRAT/PacDisplay/trunk"
+   last-author="brownd"
+   kind="dir"
+   uuid="2aa36f44-f9d8-11dc-81b7-9e774fc32887"
+   revision="2643"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   name="macros"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="1869"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:43:50.000000Z"
+   committed-date="2010-01-25T09:02:49.743893Z"
+   checksum="05150c0cb7f48da96cb31e83575e0bb7"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:43:49.000000Z"/>
+<entry
+   committed-rev="1822"
+   name="PacDisplay.tcl"
+   text-time="2011-04-27T18:43:50.000000Z"
+   committed-date="2010-01-12T13:45:29.565613Z"
+   checksum="f5ca31fa6520cb5b6b21afe9b18a5e54"
+   last-author="brownd"
+   kind="file"
+   prop-time="2011-04-27T18:43:50.000000Z"/>
+<entry
+   committed-rev="2483"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:43:50.000000Z"
+   committed-date="2010-10-18T16:34:57.828056Z"
+   checksum="b99f9310cb8042f75acee4a9a840a121"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T18:43:50.000000Z"/>
+<entry
+   committed-rev="861"
+   name="README"
+   text-time="2011-04-27T18:43:50.000000Z"
+   committed-date="2009-02-13T01:15:29.008567Z"
+   checksum="e9970970b721af525654759825e7d45c"
+   last-author="asuzuki"
+   kind="file"
+   prop-time="2011-04-27T18:43:50.000000Z"/>
+</wc-entries>

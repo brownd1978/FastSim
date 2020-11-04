@@ -1,0 +1,226 @@
+Package:	RandControl
+Coordinator:	Andy Salnikov
+
+		Reverse chronological order, please.
+		====================================
+
+$Log: History,v $
+Revision 1.34  2007/09/21 02:06:06  gapon
+2010/01/15 stroili
+	split code in src and include directories
+
+Tag: V00-05-02-01
+
+- CLHEP migration: replaced forward declarations with direct includes
+  of the corresponding headers; extended interface of class RacRanecuEngine
+  (backward compatible with the old CLHEP)
+
+Modified Files:
+	History RacAbsEnginePtr.hh RacRandomControl.hh
+	RacRanecuEngine.hh RacRanecuEnginePtr.hh
+
+Igor Gaponenko
+
+
+Revision 1.33  2007/02/13 05:44:08  salnikov
+- added Framework action which prints the number of consumed seeds for
+  each framework module
+
+
+Revision 1.32  2006/10/05 07:13:26  swaban
+ Oct 6, 2006, Swagato V00-05-02: Changed default # of events per run to 10000.
+
+Revision 1.31  2002/05/15 05:24:19  abi
+Corrected error message when generating more events than are allowed per run.
+
+Revision 1.30  2002/05/15 05:10:55  abi
+Updated History
+
+Oct 6, 2006, Swagato V00-05-02: Changed default # of events per run to 10000.
+
+May 14, 2002, Abi (V00-02-03)
+----------------------------------
+Corrected error message when generating more events than are allowed per run.
+
+
+May 14, 2002, Abi (V00-02-02)
+----------------------------------
+- RunCongif::RunClass parameters now settable in RacRandomControl tcl commands.
+- Removed array of RunClasses, leaving only one.
+- Changed default run range from 0 to 166,000,000.
+- Changed default # of events per run to 2000.
+- Printing error and aborting (unless _abortOnPrimaryOverConsumption is false)
+  if generating more events than are allowed per run.
+
+Revision 1.29  2002/03/27 22:21:33  salnikov
+- fix problems after Framework migration from FwkString to std:;string
+
+
+Revision 1.28  2002/03/25 21:53:50  salnikov
+- STL migration, all RW classes replaced
+- some cosmetic changes
+
+
+February 1, 2002, Andy (V00-01-18)
+----------------------------------
+  - greedy runs were not greedy at all:) Now they are. Use 50M of 
+    seeds per event.
+  - Need to update docs
+
+January 15, 2002, Andy (V00-01-17)
+----------------------------------
+  - reduce the noise from event-level printing
+
+January 3, 2002, Andy (V00-01-16)
+---------------------------------
+  - add the "greedy" run class, which uses huge number of seeds in generators.
+  - update postscript file in doc/
+
+October 17, 2001, Andy (V00-01-15)
+----------------------------------
+  - fix to compile in 11.4.0 release, some migration stuff was left over
+
+November 1, 2000, Andy (V00-01-14)
+----------------------------------
+  - extend the idea to the analysis (and reco) stages, where there is no
+    run/event number. For this purpose I reserve upper quarter of the 
+    ranecu sequence (whole sequence is 2^60) for the "Reco" and "Analysis"
+    stages. Positioning inside this subsequence is done based on the event
+    time (odfBinTime, to reduce overlap between consequent events I reverse 
+    bit order in the time before skipping). 
+  - engines for simulation stages ("Primary", "Simulation", "Digis") are put
+    in the event only when GEvent is present in the AbsEvent. "Reco" and 
+    "Analysis" stages are put in the event only when AbsEventID is present
+    in the AbsEvent.
+  - new class RacEidConfig defines "Reco" and "Analysis" stages and 
+    algorithm to skip seeds for these stages.
+  - new module RacEidMaker to create EventID from GEvent. This is a copy of 
+    the EidSim's module with some stuff removed to get rid of the dependencies.
+  - cout and cerr replaced with ErrMsg everywhere.
+
+October 12, 2000. Asoka De Silva (V00-01-13)
+--------------------------------------------
+Overloaded inputEvent method in RacTestInput to stop OSF from generating
+warnings.  Also ran slow migration script (Framework/FwkMigate_v3 - please
+see script for details.)
+
+July 24, 2000. Abi Soffer (V00-01-12)
+--------------------------------------
+RacRandomControl::event clears the RandGauss cache by calling
+RandGauss::setFlag(false);
+at the end of the event() function (Dave Williams). This is needed
+for bogus, which uses RandGauss, and would otherwise result in 
+irreproducibility.
+
+May 31, 2000. Abi Soffer (V00-01-11)
+------------------------------------
+  - abortOnOverConsumption changed to abortOnPrimaryOverConsumption
+    and only causes an abort if the Primary stage uses more seeds than
+    allowed for one event. Clarified error messages a little. Introduced
+    tcl parameter _reportNumSeedsUsed to print out # of seeds used on 
+    each event (false by default). Whatever's printed to seed-overuse.tx
+    is now also printed to ErrMsg(error).
+
+
+May 12, 2000. A.Salnikov (V00-01-10)
+------------------------------------
+  - Added a Tcl parameterto RandControl module - abortOnOverConsumption. With 
+    this set to true job will abort when the seed consumption pers stage exceeds 
+    the max allowed number of randoms per event. When false it will print a message
+    in seed-overuse.txt.
+
+May 11, 2000. A.Salnikov (V00-01-09)
+------------------------------------
+  - Change the order of randoms inside run, now they sweep across all stages of
+    event, as opposed to the old behaviour, when they went through all events
+    in one stage before going to next stage.
+
+Apr 28, 2000. A. Soffer (V00-01-08)
+-----------------------------------
+  - Framework migration: commands()->append(x) => commands()->append(&x)
+
+Sep 07, 1999. A Ryd (V00-01-06)
+-------------------------------
+  - Allow for up to 3,000,000 random numbers per full event with a 40%
+    fraction for the digi mixer.
+
+Jun 05, 1999. S.Gowdy
+---------------------
+  - Change to use 64bit support from BaBar.hh instead of own (doesn't work
+    on Linux).
+
+May 04, 1999. G.Cosmo (V00-01-04)
+---------------------------------
+  - Added Andrei's original documentation (PS file). Created doc/
+    directory.
+
+Dec 23, 1998. A.Soffer (V00-01-03)
+----------------------------------
+  - The first event number can now be set in Tcl. This enables checking
+    the integrity of the random seeds using GqaRandCheck, which is very
+    for trapping stray random number generators in the fortran event
+    generators. Updated RacTestInput module.
+
+Dec 19, 1998. G.Cosmo (V00-01-02)
+---------------------------------
+  - Updated RacRanecuEngine according to the new CLHEP random
+    classes.
+
+Dec 5, 1998. G.Dubois-Felsmann (V00-01-01)
+------------------------------------------
+  - Corrected format of link_RandControl.mk file.
+
+Oct 1, 1998. G.Cosmo (V00-01-00)
+--------------------------------
+  - Framework migration: updated RacRandomControl, RacRandomPicker
+    and RacTestInput classes.
+
+Apr 24, 1998. A.Salnikov (V00-00-08)
+-----------------------------------
+  - fix in the order of parameters to skip() in RacRandomControl. Run
+    number and stage number were mixed.
+
+Apr 8, 1998. A.Salnikov (V00-00-07)
+-----------------------------------
+  - small unimportant changes to RacRunConfig class to make all
+    compilers happy.
+
+Apr 7, 1998. A.Salnikov (V00-00-06)
+-----------------------------------
+  - move testRanecuSkipper executable and test file in the test/
+    subdirectory. Great simplification of the GNUmakefiles.
+
+Apr 2, 1998. A.Salnikov (V00-00-05)
+-----------------------------------
+  - Add this package in PackageList, update GNUmakefile and
+    link_RandControl.mk
+
+Apr 2, 1998. A.Salnikov (V00-00-04)
+-----------------------------------
+  - Some changes in CLHEP/Random needed changes in RacRanecuEngine
+    also, in the way how it access the seedTable[]
+  - Add package name to makefile's 'echo "Linking..."'
+
+Mar 30, 1998. A.Salnikov (V00-00-03)
+------------------------------------
+  - Add RacModules() function - analog of the XxxSequence() - which
+    creates RandomControl module and four RandomPicker modules "on
+    behalf" of the calling AppUserBuild class.
+  - testRandControl.tcl script added to make a simple framework from
+    the things built in the AppUsrBuild.cc
+
+Mar 30, 1998. A.Salnikov (V00-00-02)
+------------------------------------
+  - Adding randControl.tcl which defines randControl function, which has
+    some logic inside it, which installs RandomControl and RandomPicker
+    modules, which ...
+
+Mar 27, 1998. A.Salnikov (V00-00-01)
+------------------------------------
+  - Fix for the absence of the setbase() manipulator in cxx.
+
+Mar 27, 1998. A.Salnikov (V00-00-00)
+------------------------------------
+  - First release. Importing it into SRT.
+  - I do not put it into PackageList today, will do it only after the
+    next BaBar release.

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="811"
+   name=""
+   committed-date="2011-03-08T14:45:35.250650Z"
+   url="https://sbrepo.pd.infn.it:8910/Core/GenEnv/tags/V00-01-01"
+   last-author="stroili"
+   kind="dir"
+   uuid="7d373392-5316-41f4-94df-42a166793eec"
+   revision="830"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   committed-rev="510"
+   name="History"
+   text-time="2011-04-27T18:56:17.000000Z"
+   committed-date="2010-01-14T15:28:09.370367Z"
+   checksum="7dbe4a2e4ed6acc3bde5be439aef846e"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:56:16.000000Z"/>
+<entry
+   name="include"
+   kind="dir"/>
+<entry
+   committed-rev="231"
+   name="GenBuildEnv.3"
+   text-time="2011-04-27T18:56:17.000000Z"
+   committed-date="2009-03-04T07:59:27.947189Z"
+   checksum="44e7f02f6854c97941cf95d5e4df5973"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:56:16.000000Z"/>
+<entry
+   committed-rev="231"
+   name="GenEnv.3"
+   text-time="2011-04-27T18:56:17.000000Z"
+   committed-date="2009-03-04T07:59:27.947189Z"
+   checksum="d8019ca7630fc49e07e259dd3e3f072d"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:56:16.000000Z"/>
+<entry
+   name="src"
+   kind="dir"/>
+<entry
+   committed-rev="510"
+   name="GNUmakefile"
+   text-time="2011-04-27T18:56:17.000000Z"
+   committed-date="2010-01-14T15:28:09.370367Z"
+   checksum="72a2098710b45deb809fcf4b31a001ed"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:56:17.000000Z"/>
+<entry
+   committed-rev="743"
+   name="CMakeLists.txt"
+   text-time="2011-04-27T18:56:17.000000Z"
+   committed-date="2010-10-18T12:16:20.240521Z"
+   checksum="bae15374dc6289214ae75f3910f73bb7"
+   last-author="mcorvo"
+   kind="file"
+   prop-time="2011-04-27T18:56:17.000000Z"/>
+<entry
+   committed-rev="231"
+   name="README"
+   text-time="2011-04-27T18:56:17.000000Z"
+   committed-date="2009-03-04T07:59:27.947189Z"
+   checksum="e47bdd7c1ccf23d5badfd746f9481cf9"
+   last-author="stroili"
+   kind="file"
+   prop-time="2011-04-27T18:56:17.000000Z"/>
+</wc-entries>

@@ -1,0 +1,228 @@
+
+       Using and Migrating to the new ProxyDict based
+		     BaBar Event Design
+
+
+			  Ed Frank
+		 University of Pennsylvania
+			 19 May 97
+
+
+
+Overview:
+---------
+
+The new event design changes the way you obtain data from the event.  In
+the Old AbsEvent, all data lists were hardwired in.  Doing "new
+AbsEvent" yielded an object with all BaBar lists, and all of these lists
+were empty.  In the new AbsEvent, which is based on the ProxyDict
+package, NO lists are hardwired in.  Doing "new AbsEvent" yields an
+object that is completely empty.  This does not mean the event has empty
+lists like above.  It means there are no lists at all.  Some agent must
+put lists into the event before any other agent can get them back out
+again.
+
+So, both the operation of the event and the semantics for obtaining data
+from the event have changed.  This note is a set of recipes for
+migrating to the new event design, a migration that will take place over
+the coming weeks.
+
+
+Status of the Event Migration
+-----------------------------
+
+We have been using the new event design, hidden behind a migration
+interface, on all releases using the native compiler since about 3.1.2.
+Also, the MDC1 ran using the new event design, hidden behind a migration
+interface, so we know it functions.  It is time to remove the migration
+interface and force all BaBar modules to use the new interface so that
+we can realize our objective of removing the inter-package couplings
+caused by the old AbsEvent design.
+
+
+Access to Data
+--------------
+   Old AbsEvent:
+	HepAList<Stuff>* l = ev->getStuffAList();
+
+   New AbsEvent:
+	HepAList<Stuff>* l = Ifd< HepAList<Stuff> >::get( ev );
+
+   Migration:
+	-You must change every ev->getX to the new Ifd<T>::get( event )
+	 form in your code.
+
+   Comments:
+	-In the new event design, it is possible to request data
+	 that are not in the event.  In that case, a NULL is returned.
+
+	-As a warning, note carefully the space between the two
+	 closing right angles, ">".  Many compilers insist on this space.
+	 Compare:
+	   HepAList<Stuff>* l = Ifd<HepAList<Stuff> >::get( ev );
+	   HepAList<Stuff>* l = Ifd<HepAList<Stuff>>::get( ev );
+	 The second of these is likely  not to compile.
+
+	-If you have data in the event that are not HepALists, please
+	 send a note and I will help you.
+
+Adding a new List:
+------------------
+
+   Old AbsEvent:
+	Edit AbsEvent.cc, declare a new HepAList<NewStuff>* _aListNewStuff
+	member and a HepAList<NewStuff>* getNewStuffList() method.
+
+   New AbsEvent:
+	The new event is much richer than the old because it allows
+	you to put data into the event without recompilation and
+	without playing with the InputModule.  Data may be added to
+	the event at any time, in any module, i.e., it may be done
+	outside of the InputModule.
+
+	Recall that the new event is a dictionary and that it does
+	not store the data directly.  Instead, it stores agents
+	called proxies and the proxies are responsible for managing
+	the data.  When you do an Ifd<T>::get(), the dictionary
+	looks up the corresponding proxy, and forwards the get() to
+	the proxy.  While this allows a great deal of flexibility,
+	here we will only show how to add a new HepAList to the
+	event.  If you have other needs, please tell me and I will
+	tell you how to proceed.
+
+	To add a new list to the event you do the following steps.
+		1.  create the list.
+		2.  create a proxy, passing the new list as an
+			argument in the constructor.
+		3.  add the proxy to the event.
+	Note that step (2) passes ownership of the list to the
+	proxy, and that step (3) passes ownership of the proxy
+	to the dictionary.  Thus, you should NOT call operator
+	delete on either the list or the proxy, even though
+	you did the call to operator new.
+
+	The code to do these steps is as follows:
+	   #include "AbsEvent/AbsEvent.hh"
+   	   #include "ProxyDict/IfdHepAListProxy.hh"
+
+	   HepAList<Stuff>      *list = new HepAList<Stuff>;
+	   IfdHepAListProxy<Stuff) *proxy= new IfdHepAListProxy<Stuff>(list);
+	   Ifd< HepAList<Stuff> >::put( ev, proxy );
+	The three lines of code correspond to the three steps described
+	in the previous paragraph.
+
+	Several things should be noted.
+	        1.  <overcome by events>
+
+		2.  The put() method returns a boolean which is true when
+		    the list was added successfully, and false otherwise.
+		    For brevity sake, I did not show a test on the
+		    return value, but it is wise to do so.
+
+		3.  You may only store one item of a given type and
+		    given secondary key (see below concerning secondary
+		    keys).  If you try to put in two, then the put()
+		    will return 'false.'  In this case, the attempt to
+		    store the second one is guaranteed to leave the
+		    first one unharmed.
+
+		4.  You should think about where (what module) to place
+		    this call to put().  This is discussed below.
+
+		5.  I suggest that you add _empty_ lists to the
+		    event, and then do manipulations later, rather
+		    then filling up a list first and then putting it into
+		    the event.  Right now, it really does not matter
+		    which you do, but if you have a choice, add the
+		    empty list, then manipulate it.
+
+
+Where to do the put()
+---------------------
+	In the old event design, lists were owned by the event and were
+	created in its constructor.  In the new event, anyone can create
+	a list, and then pass ownership of the list to the event.
+	The question then arises, where should the call to put() be
+	done?  In particular, should it be done within a subsystem's
+	collection of modules, or should it be done within the
+	InputModule.  To answer this, it must first be pointed out
+	that there are really two different kinds of data:  there are
+	those that are read in from disk (persistent data) and there
+	are those that are "scratch space," and that just allow
+	modules to communicate with one another.  I call these
+	lists "temporary lists."  At present, almost every single
+	list in the event is a temporary list, with the 10 or so
+	dbio lists being the only exceptions.
+
+	Temporary lists should, if at all possible, be added to the event
+	within the subsystem modules that use the data.  There is usually
+	one module that is known to run first that can take on
+	the responsibility of adding the list to the event.
+
+	The alternative	is to have the APPFileInputModule add the list.
+	The problem here is that the InputModule then becomes dependent
+	on every one of the lists that it adds, and thus causes
+	applications that link against it to pull in code that the
+	application does not need.
+
+	At present, the APPFileInputModule adds all the lists that were
+	in the old event.  We would like to move as many of these as
+	we can out of the InputModule.
+
+	When we begin to support persistence of data, then this recipe
+	will necessarily change.  Persistent lists really ought to be
+	added by an InputModule, and not by the subsystem modules.
+	We will need to revisit this in the future.
+
+Secondary Keys
+--------------
+	When you do a put or a get, e.g., 
+
+		Ifd<T>::get(ev)
+		Ifd<T>::put(ev, proxy)
+
+	the Ifd class maps the class name, T, onto a key that is
+	used to access the dictionary.  This is the primary key for
+	searching.  If you need to store more than one list of a given
+	kind, then you must provide a secondary key.  We suggest
+	the use of a string.  The calls then look like the following:
+
+		Ifd<T>::get( ev, "someString" );
+		Ifd<T>::put( ev, proxy, "someString");
+
+	Note that the type, T, and the secondary key must be 
+	identical between the get() and put() calls.  Also note that
+	the secondary key is not required, and may be omitted
+	in cases where there is no degeneracy, or for the default
+	item in a degenerate case.  
+
+	To avoid hardwiring these strings into your code, we provide
+	an AbsParm so that you may control this secondary key from Tcl.
+	The AbsParm is called AbsParmIfdStrKey and an example of its
+	usage is given in FrameExample/ParmExample.cc.  In typical usage,
+	a module would own one of these, e.g.,
+		AbsParmIfdStrKey	key;  // in the .hh file of the module
+
+	and then  the module would use it via
+		Ifd<T>::get( ev, key.value() );
+	   or	Ifd<T>::put( ev, proxy, key.value());
+	
+	Users would set the key value in a Tcl file via
+		module talk MyModule
+		   key set someString
+		exit
+
+
+Writing New Proxies
+-------------------
+	The proxies provide polymorphism for the new event, and
+	are responsible for fetching the associated data.  Because
+	they are called only when the user requests data, they can
+	be used to defer and cache expensive computations, using
+	the users request for them as the stimulus that causes the
+	work to be done.
+
+	I will defer giving a description of writing a new proxy
+	for another time:  we are still settling that right now.
+	If there is something you need to do, please send me mail,
+	and I will help you to do it.

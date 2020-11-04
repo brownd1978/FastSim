@@ -1,0 +1,46 @@
+/**
+ * @file MemUtil/MemClassAllocator.cc
+ *
+ * Implementation of class MemClassAllocator.
+ * 
+ * @see MemUtil/MemClassAllocator.h
+ * @author Andrei A. Salnikov
+ * @date   May 25, 2001
+ * Copyright (C) BINP, 2001 
+ *
+ * $Id: MemClassAllocator.icc 517 2010-01-15 08:24:18Z stroili $
+ */
+
+// ----- includes ------
+
+// Experiment.h must be in any implementation file
+#include "BaBar/BaBar.hh"
+
+// standard C headers
+
+// standard C++ headers
+
+// this class header
+#include "MemUtil/MemClassAllocator.hh"
+
+// other packages headers
+
+// ----- methods definition ------
+
+// default constructor
+template< typename Class >
+MemClassAllocator< Class >::MemClassAllocator()
+  : pool_ ()
+{
+}
+
+// destructor
+template< typename Class >
+MemClassAllocator< Class >::~MemClassAllocator()
+{
+}
+
+
+// Local Variables: ***
+// mode: c++ ***
+// End: ***

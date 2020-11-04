@@ -1,0 +1,20 @@
+// This is the History file for TrajGeom.  An entry added immediately after 
+//  the "Log: History,v" line will automatically have the date and username
+//  prepended.
+//
+//       $Id$
+//
+$Log: History,v $
+2010/01/15 stroili
+split code in src and include directories
+
+Revision 1.2  1999/01/07 23:04:40  sschaff
+*** empty log message ***
+
+Moved classes here from TrkFitter and TrkBase: TrkLineTraj, BbrHelixTraj, 
+TrkTransformVisitor, TrkPieceLineTraj.
+
+Revision 1.1  1999/01/05 21:45:36  sschaff
+Added History, README.
+
+First version -- completely empty of real code.

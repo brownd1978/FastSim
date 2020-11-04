@@ -1,0 +1,30 @@
+// -*- C++ -*-
+// $Id$
+// ---------------------------------------------------------------------------
+//
+// This file is a part of the CLHEP - a Class Library for High Energy Physics.
+//
+// This is the implementation of the HepLorentzVectorQ class.
+//
+// Author: Stephanie Lau
+
+#ifdef __GNUC__
+#pragma implementation
+#endif
+
+#include "CLHEP/config/CLHEP.h"
+#include "CLHEP/Vector/LorentzVectorQ.h"
+#include "CLHEP/Vector/LorentzRotation.h"
+
+#ifdef HEP_DEBUG_INLINE
+#include "CLHEP/Vector/LorentzVectorQ.icc"
+#endif
+
+
+std::ostream & operator << (std::ostream & s, const HepLorentzVectorQ & q)
+{
+  return s << "(" << q.x() << "," << q.y() << ","
+           << q.z() << ";" << q.t() << ";" <<  q.q() << ")";
+}
+
+

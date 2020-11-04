@@ -1,0 +1,5 @@
+G3Data/GEvent.cc
+G3Data/GTrack.cc
+G3Data/GTrackList.cc
+G3Data/GTrimMarker.cc
+G3Data/GVertex.cc

@@ -1,0 +1,1 @@
+This package contains the basic geometry and detector description classes used by PACRAT.  It also defines the abstract base classes for the detector and measurement concepts.

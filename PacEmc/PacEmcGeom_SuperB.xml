@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    PacBabarEmc
+    Created by David Brown on 2009-01-07.
+    Copyright (c) 2009 __LBNL__. All rights reserved.
+-->
+<edml>
+    <included>
+        <include file="PacEmc/EmcMeasure.xml" />
+
+
+        <config>
+            <sect name="PacEmcGeom">
+
+                <param name="barrelNRings" type="int" > 48</param>
+                <param name="barrelNPhis"  type="int" > 120</param>
+
+                <param name="fwdNRings" type="int" > 20</param>
+                <param name="fwdNPhis"  type="vector_int" > 175, 175, 175, 175, 175, 205, 205, 205, 205, 205, 235, 235, 235, 235, 235, 265, 265, 265, 265, 265</param>
+
+                <param name="bwdNRings" type="int" > 8 </param>
+                <param name="bwdNPhis"  type="int" > 60</param>
+
+                <!-- Moliere radius:  FWD, Barrel, BWD -->
+                <param name="rMoliere"  type="vector_double" > 2.07, 3.7, 3.3 </param>
+                <param name="rMoliereFluc" type="vector_double" > 0.1, 0.1, 0.1 </param>
+
+		<!-- Gap between crystals -->
+                <param name="crystalGap" type="vector_double" > 0.03, 0.03, 0.03 </param>
+
+		<!-- number of bins of a 2D histogram that stores simtrk kinetic energy at EMC -->
+		<param name="nbinsPhiSimTrkKE"  type="int" > 60 </param>
+		<param name="nbinsThetaSimTrkKE"  type="int" > 40 </param>
+		<param name="simTrkKEThreshold"  type="double" > 0.010 </param>
+
+                <!-- EM energy resolution: FWD,Barrel,BWD  sigma~ Coef/E^(power) + Const -->
+                <param name="EnergyResCoef"  type="vector_double" > 0.0102, 0.0102, 0.14 </param>
+                <param name="EnergyResConst" type="vector_double" > 0.0000, 0.0000, 0.03 </param>
+                <param name="EnergyResEPower" type="vector_double" > 0.264, 0.264, 0.5 </param>
+                <!-- EM energy resolution exponential tail: tau~ Coef/E^(power) + Const -->
+                <param name="EnergyResExpCoef" type="vector_double" > 0.0165, 0.0165, 0.0 </param>
+                <param name="EnergyResExpConst" type="vector_double" > 0.0284, 0.0284, 0.0 </param>
+                <param name="EnergyResExpEPower" type="vector_double" > 0.50, 0.50, 0.0 </param>
+
+                <param name="thetaResolution" type="vector_double" > 2.0e-3, 5.0e-3, 1e-2 </param>      
+                <param name="phiResolution" type="vector_double" > 2.0e-3, 5.0e-3, 1e-2 </param>      
+                <param name="radialResolution" type="vector_double" > 4, 2, 10 </param>      
+
+                <param name="hadShowerSigma" type="vector_double" > 7.5, 7.5, 7.5 </param>
+                <param name="hadShowerMaxR" type="vector_double" > 30, 30, 30 </param>
+                <param name="hadShowerQuanta" type="vector_double" > 0.05, 0.05, 0.05 </param>
+                <param name="hadShowerSmear" type="vector_double" > 0.05, 0.05, 0.05 </param>
+                <param name="hadShowerMinE" type="vector_double" > 0.0001, 0.0001, 0.0001 </param>
+
+                <!-- energy cut off when each (partial) digi is generated before fluctuation -->
+                <param name="ecutoff" type="vector_double" > 0.0001, 0.0001, 0.0001 </param>
+                <!-- digi energy threshold in a cluster -->
+                <param name="digiThreshold" type="vector_double" > 0.001, 0.001, 0.001 </param>
+
+                <param name="emEssentricity" type="vector_double" > 0.0, 0.0, 0.0 </param>
+                <param name="emEssenRMS" type="vector_double" > 0.2, 0.2, 0.2 </param>
+                <param name="emAsymmetry" type="vector_double" > 0.2, 0.2, 0.2 </param>
+                <param name="noiseOccupancy" type="vector_double" > 0.03, 0.03, 0.03 </param>
+                <param name="noiseOccSigma" type="vector_double" > 0.01, 0.01, 0.01 </param>
+                <param name="noiseExpConst" type="vector_double" > 2e-4, 2e-4, 2e-4 </param>
+
+                <param name="emShowerEMfrac" type="double" > 1.01 </param>
+                <param name="emShowerEMfracSigma" type="double" > 0.0 </param>
+                <param name="hadShowerEMfrac" type="double" > 0.3 </param>
+                <param name="hadShowerEMfracSigma" type="double" > 0.1 </param>
+
+                <param name="showerDepth" type="vector_double" > 8, 12, 7 </param>
+
+                <!-- energy calibration parameters -->
+		<param name="calibType" type="string"> AdHoc </param>
+		<param name="calibParsFWD" type="vector_double"> -0.0512972 , 0.0136196 , 1.44164 , -1.27552</param>
+		<param name="calibParsBarrel" type="vector_double">-0.0792646 , 0.0261693 , 1.8396 , 2.09121</param>
+		<param name="calibParsBWD" type="vector_double">-0.121655 , 0.00011922 , 0.831763 , 707.627</param>
+		<!-- singal shape and integral window -->
+		<param name="sigLifeF1" type="vector_double">  1, 0.64, 1 </param>
+		<param name="sigTau1" type="vector_double"> 41e-9, 680e-9, 10e-9> </param>
+		<param name="sigTau2" type="vector_double"> 41e-9, 3340e-9, 10e-9> </param>
+		<param name="sigFilterT1" type="vector_double"> 40e-9, 680e-9, 10e-9> </param>
+		<param name="sigFilterT2" type="vector_double"> 40e-9, 250e-9, 10e-9> </param>
+
+
+		<param name="signalWindowTLow" type="vector_double">  -0.025e-6, -0.12e-6, -0.01e-6 </param>
+		<param name="signalWindowTHigh" type="vector_double">  0.025e-6,  0.12e-6,  0.01e-6 </param>
+		<param name="acceptedWindowTLow" type="vector_double">  -0.150e-6, -1e-6,  -0.05e-6 </param>
+		<param name="backgroundWindowTLow" type="vector_double"> -0.25e-6, -2.5e-6, -0.1e-6 </param>
+
+                <!-- time resolution: gaussian sigma -->
+		<param name="timeResolution" type="vector_double"> 1e-6, 1e-6, 100e-12> </param>
+            </sect>
+        </config>
+    </included>
+</edml>
